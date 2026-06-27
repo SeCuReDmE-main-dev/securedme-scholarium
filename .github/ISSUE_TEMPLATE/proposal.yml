@@ -1,0 +1,16 @@
+name: Scholarium proposal
+about: Suggest a public-safe improvement
+labels: enhancement
+body:
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What should change?
+    validations:
+      required: true
+  - type: textarea
+    id: risk
+    attributes:
+      label: Public-safety notes
+      description: Does this affect uploads, accounts, comments, analytics, or moderation?

@@ -1,0 +1,10 @@
+* text=auto
+*.md text
+*.txt text
+*.csv text
+*.json text
+*.yml text
+*.yaml text
+*.php text
+*.css text
+*.js text

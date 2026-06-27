@@ -1,0 +1,25 @@
+# SecuredMe Scholarium
+
+SecuredMe Scholarium is a public, pre-alpha research commons for white papers, publication records, book-submission workflows, and research-note discovery.
+
+The project is inspired by public academic publishing and discovery patterns, but it is intentionally locked in pre-alpha:
+
+- public reading is open;
+- public uploads are disabled;
+- public account/profile edits are disabled;
+- comments and unaudited publishing are disabled;
+- owner/Codex publishing remains the only write path until alpha approval.
+
+## Current Engine
+
+The first implementation is an Omeka Classic theme and content model. Omeka Items represent publications, book submissions, white papers, and research notes. Collections group topic areas. Tags/research interests power discovery.
+
+## Repository Boundary
+
+This public repo contains only public-safe application/theme code and public design notes.
+
+Private infrastructure, credentials, cPanel/WHC/Cloudflare details, deployment notes, raw research dumps, and admin records remain in the private SecuredMe admin repository.
+
+## Status
+
+Pre-alpha. Community feedback is welcome through GitHub Issues, but public publishing is not open yet.
