@@ -4,6 +4,8 @@ SecuredMe Scholarium is a public, pre-alpha research commons for white papers, p
 
 > **Official school governance.** This maintained classroom tool is open source, PR-reviewed, and supported for Codex/OpenAI or Antigravity/Gemini-assisted school workflows only. See [SCHOOL_TOOL_GOVERNANCE.md](SCHOOL_TOOL_GOVERNANCE.md) and [AGENTS.md](AGENTS.md).
 
+> **License.** This project uses the Secured Educational License 2.0 (`LicenseRef-SEL-2.0`). See [LICENSE](LICENSE), [NOTICE](NOTICE), and [DISCLAIMER](DISCLAIMER).
+
 The project is inspired by public academic publishing and discovery patterns, but it is intentionally locked in pre-alpha:
 
 - public reading is open;
