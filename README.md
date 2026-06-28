@@ -1,5 +1,8 @@
 # SecuredMe Scholarium
 
+> **Development status.** This school tool is currently tagged **pre-alpha / in development**. External PRs are not evaluated for merge until the maintained tool reaches a stable, fully functional 100% classroom release after the pre-alpha phase. Issues and forks remain allowed, but official PR review is paused until that stability gate is met.
+
+
 SecuredMe Scholarium is a public, pre-alpha research commons for white papers, publication records, book-submission workflows, and research-note discovery.
 
 > **Official school governance.** This maintained classroom tool is open source, PR-reviewed, and supported for Codex/OpenAI or Antigravity/Gemini-assisted school workflows only. See [SCHOOL_TOOL_GOVERNANCE.md](SCHOOL_TOOL_GOVERNANCE.md) and [AGENTS.md](AGENTS.md).
@@ -27,3 +30,5 @@ Private infrastructure, credentials, cPanel/WHC/Cloudflare details, deployment n
 ## Status
 
 Pre-alpha. Community feedback is welcome through GitHub Issues, but public publishing is not open yet.
+
+
