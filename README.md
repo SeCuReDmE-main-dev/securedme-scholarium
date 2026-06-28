@@ -4,6 +4,14 @@
 
 **Attribution:** Jean-Sebastien Beaulieu · [ORCID 0009-0007-2904-0443](https://orcid.org/0009-0007-2904-0443) · [SecuredMe](https://securedme.ca) · [SecuredMe Scholarium](https://scholarium.securedme.ca)
 
+<!-- SECUREDME-SUITE-BADGES:START -->
+[![Issues](https://img.shields.io/github/issues/SeCuReDmE-main-dev/securedme-scholarium?color=161B6A)](https://github.com/SeCuReDmE-main-dev/securedme-scholarium/issues)
+[![Milestones](https://img.shields.io/badge/milestones-M0--M7-23B8FF)](https://github.com/SeCuReDmE-main-dev/securedme-scholarium/milestones)
+[![Project Board](https://img.shields.io/badge/project-kanban-6F42FF)](https://github.com/users/SeCuReDmE-main-dev/projects/3)
+[![Branch](https://img.shields.io/badge/branch-main-0E7490)](https://github.com/SeCuReDmE-main-dev/securedme-scholarium/tree/main)
+<!-- SECUREDME-SUITE-BADGES:END -->
+
+
 
 ## School Authentication And Secret Boundary
 This repository is a small SecuredMe school tool. Official classroom use must not require `.env` files, API keys, raw tokens, or local model secrets. Student and teacher workflows must use Codex/OpenAI or Antigravity/Gemini through browser WebAuth, fingerprinted session approval, and encrypted local session records when authentication is needed.
@@ -42,6 +50,7 @@ Private infrastructure, credentials, cPanel/WHC/Cloudflare details, deployment n
 ## Status
 
 Pre-alpha. Community feedback is welcome through GitHub Issues, but public publishing is not open yet.
+
 
 
 
