@@ -1,0 +1,37 @@
+{
+  "name": "securedme-scholarium-codex-adapter",
+  "version": "0.1.0",
+  "description": "Scholarium classroom research adapter.",
+  "author": {
+    "name": "SecuredMe",
+    "url": "https://securedme.ca"
+  },
+  "homepage": "https://scholarium.securedme.ca",
+  "license": "MIT",
+  "keywords": [
+    "securedme",
+    "education",
+    "webauth",
+    "token-governor"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Scholarium Codex Adapter",
+    "shortDescription": "Scholarium classroom research adapter.",
+    "longDescription": "Repo-local Codex adapter for Scholarium. It keeps the app in pre-alpha, uses browser-authenticated OpenAI/Codex workflows, forbids copied secrets, and prepares future Token Governor and MCP integration.",
+    "developerName": "SecuredMe",
+    "category": "Education",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Adapter"
+    ],
+    "websiteURL": "https://scholarium.securedme.ca",
+    "defaultPrompt": [
+      "Open the Scholarium adapter context.",
+      "Check WebAuth readiness without secrets.",
+      "Plan a Token Governor handoff."
+    ]
+  },
+  "repository": "https://github.com/SeCuReDmE-main-dev/securedme-scholarium"
+}
