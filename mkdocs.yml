@@ -38,6 +38,7 @@ extra_css:
 - stylesheets/securedme-theme-toggle.css
 - stylesheets/securedme-accessibility.css
 extra_javascript:
+- javascripts/algoquest-qbit-adapter.js
 - javascripts/securedme-theme-toggle.js
 - javascripts/securedme-accessibility.js
 markdown_extensions:

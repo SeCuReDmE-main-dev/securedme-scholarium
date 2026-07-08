@@ -183,6 +183,54 @@
   box-shadow: inset 0 0 0 1px rgba(111, 66, 255, 0.12);
 }
 
+.se-algoquest-panel {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0 0 1.2rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--se-border);
+  border-left: 0.35rem solid var(--se-violet);
+  border-radius: 8px;
+  background: rgba(35, 184, 255, 0.08);
+}
+
+.se-algoquest-panel p {
+  margin: 0;
+}
+
+.se-algoquest-panel button {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.7rem;
+  border: 0;
+  border-radius: 6px;
+  color: var(--se-white);
+  background: var(--se-navy);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.se-algoquest-panel button:hover,
+.se-algoquest-panel button:focus {
+  background: var(--se-violet);
+}
+
+#scholarium-algoquest-status {
+  color: var(--se-navy);
+  font-size: 0.78rem;
+}
+
+[data-md-color-scheme="slate"] .se-algoquest-panel {
+  border-color: rgba(35, 184, 255, 0.24);
+  border-left-color: var(--se-blue);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-md-color-scheme="slate"] #scholarium-algoquest-status {
+  color: #dfe8ff;
+}
+
 .se-ribbon {
   display: flex;
   align-items: center;
