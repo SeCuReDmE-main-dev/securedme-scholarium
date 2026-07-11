@@ -210,7 +210,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   useEffect(() => {
     if (!session.displayName) { setAccountReady(null); return; }
     let active = true;
-    fetch("/api/account").then(async (response) => ({ ok: response.ok, payload: await response.json() as { account?: unknown } })).then(({ ok, payload }) => {
+    fetch("/api/v1/account").then(async (response) => ({ ok: response.ok, payload: await response.json() as { account?: unknown } })).then(({ ok, payload }) => {
       if (active) setAccountReady(ok && Boolean(payload.account));
     }).catch(() => { if (active) setAccountReady(false); });
     return () => { active = false; };
@@ -222,7 +222,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       setFeedLoading(true);
       const params = new URLSearchParams({ mode: feedMode });
       if (query.trim()) params.set("q", query.trim());
-      fetch(`/api/publications?${params.toString()}`)
+      fetch(`/api/v1/publications?${params.toString()}`)
         .then(async (response) => ({ ok: response.ok, payload: await response.json() as { publications?: ApiPublication[] } }))
         .then(({ ok, payload }) => {
           if (!active || !ok || !payload.publications) return;
@@ -243,7 +243,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   useEffect(() => {
     if (!session.displayName || !accountReady) return;
     let active = true;
-    fetch("/api/ranking-preferences")
+    fetch("/api/v1/ranking-preferences")
       .then(async (response) => ({ ok: response.ok, payload: await response.json() as { preference?: { diversityWeight: number; freshnessWeight: number; relevanceWeight: number } | null } }))
       .then(({ ok, payload }) => {
         if (!active || !ok || !payload.preference) return;
@@ -270,7 +270,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const prepareToolConnection = async (provider: typeof profileToolOptions[number]["id"], label: string) => {
     setConnectingTool(provider);
     try {
-      const response = await fetch("/api/integrations", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ provider }) });
+      const response = await fetch("/api/v1/integrations", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ provider }) });
       const payload = await response.json() as { error?: string; nextStep?: string };
       if (!response.ok) throw new Error(payload.error ?? "The connection could not be prepared.");
       setNotice(`${label}: connection prepared. ${payload.nextStep ?? "Review the requested access before continuing."}`);
@@ -284,7 +284,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const createAccount = async () => {
     setAccountSaving(true);
     try {
-      const response = await fetch("/api/onboarding", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ primaryRole: accountRole, ageBand: accountAgeBand, displayName: session.displayName }) });
+      const response = await fetch("/api/v1/onboarding", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ primaryRole: accountRole, ageBand: accountAgeBand, displayName: session.displayName }) });
       const payload = await response.json() as { error?: string };
       if (!response.ok) throw new Error(payload.error ?? "Your profile could not be created.");
       setAccountReady(true);
@@ -298,7 +298,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     if (!accountReady) return;
     setAccountSaving(true);
     try {
-      const response = await fetch("/api/profile-preferences", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ accentColor, badgeVisibility: badgeVisibility ? "public" : "private", colorScheme }) });
+      const response = await fetch("/api/v1/profile-preferences", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ accentColor, badgeVisibility: badgeVisibility ? "public" : "private", colorScheme }) });
       const payload = await response.json() as { error?: string };
       if (!response.ok) throw new Error(payload.error ?? "Your profile preferences could not be saved.");
       setProfileOpen(false);
@@ -335,7 +335,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     try {
       const type = ({ "Research note": "research_note", "White paper": "white_paper", "Project update": "project_update", "Short video": "short_video", "Teaching artifact": "teaching_artifact" } as Record<string, string>)[publicationType] ?? "research_note";
       const topicSlugs = draftTopics.split(",").map((topic) => topic.trim()).filter(Boolean);
-      const response = await fetch("/api/publications", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ abstract: draftBody.trim(), title: draftTitle.trim(), topicSlugs, type }) });
+      const response = await fetch("/api/v1/publications", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ abstract: draftBody.trim(), title: draftTitle.trim(), topicSlugs, type }) });
       const payload = await response.json() as { error?: string; publication?: { id: string; status: string; topicSlugs?: string[] } };
       if (!response.ok || !payload.publication) throw new Error(payload.error ?? "Your publication could not be created.");
       let uploadedArtifacts = 0;
@@ -343,7 +343,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         const artifactForm = new FormData();
         artifactForm.set("publicationId", payload.publication.id);
         artifactForm.set("file", file);
-        const artifactResponse = await fetch("/api/artifacts", { method: "POST", body: artifactForm });
+        const artifactResponse = await fetch("/api/v1/artifacts", { method: "POST", body: artifactForm });
         if (artifactResponse.ok) uploadedArtifacts += 1;
       }
     setPublications((current) => [
@@ -385,7 +385,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     if (publication.isPreview) { setDiscussionComments([]); return; }
     setDiscussionLoading(true);
     try {
-      const response = await fetch(`/api/publication-interactions?publicationId=${encodeURIComponent(publication.id)}`);
+      const response = await fetch(`/api/v1/publication-interactions?publicationId=${encodeURIComponent(publication.id)}`);
       const payload = await response.json() as { comments?: CommunityComment[]; error?: string };
       if (!response.ok) throw new Error(payload.error ?? "Discussion could not be loaded.");
       setDiscussionComments(payload.comments ?? []);
@@ -399,7 +399,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     if (publication.isPreview) { setNotice("Preview examples do not accept live reactions."); return; }
     if (!requireCommunityAccount()) return;
     try {
-      const response = await fetch("/api/publication-interactions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "reaction", kind: "insightful", publicationId: publication.id }) });
+      const response = await fetch("/api/v1/publication-interactions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "reaction", kind: "insightful", publicationId: publication.id }) });
       const payload = await response.json() as { error?: string };
       if (!response.ok) throw new Error(payload.error ?? "Reaction could not be saved.");
       setPublications((current) => current.map((item) => item.id === publication.id ? { ...item, reactions: item.reactions + 1 } : item));
@@ -413,7 +413,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     if (!requireCommunityAccount()) return;
     setDiscussionSaving(true);
     try {
-      const response = await fetch("/api/publication-interactions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "comment", body: discussionDraft.trim(), publicationId: discussionPublication.id }) });
+      const response = await fetch("/api/v1/publication-interactions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "comment", body: discussionDraft.trim(), publicationId: discussionPublication.id }) });
       const payload = await response.json() as { comment?: CommunityComment; error?: string };
       if (!response.ok || !payload.comment) throw new Error(payload.error ?? "Comment could not be posted.");
       setDiscussionComments((current) => [...current, payload.comment!]);
@@ -427,7 +427,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     if (!discussionPublication || discussionPublication.isPreview) { setNotice("Preview examples cannot be reported as live content."); return; }
     if (!requireCommunityAccount()) return;
     try {
-      const response = await fetch("/api/publication-interactions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "report", publicationId: discussionPublication.id, reason: "other" }) });
+      const response = await fetch("/api/v1/publication-interactions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "report", publicationId: discussionPublication.id, reason: "other" }) });
       const payload = await response.json() as { error?: string; message?: string };
       if (!response.ok) throw new Error(payload.error ?? "Report could not be sent.");
       setNotice(payload.message ?? "Report received. A human review case is open.");
@@ -450,7 +450,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     }
     setRankingSaving(true);
     try {
-      const response = await fetch("/api/ranking-preferences", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ diversityWeight: ranking.diversity, freshnessWeight: ranking.freshness, relevanceWeight: ranking.relevance }) });
+      const response = await fetch("/api/v1/ranking-preferences", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ diversityWeight: ranking.diversity, freshnessWeight: ranking.freshness, relevanceWeight: ranking.relevance }) });
       const payload = await response.json() as { error?: string };
       if (!response.ok) throw new Error(payload.error ?? "Discovery preferences could not be saved.");
       setNotice("Discovery preferences saved. Payment and contribution signals remain excluded.");
@@ -462,7 +462,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const followTopic = async (topic: string) => {
     if (!session.displayName || !accountReady) { setProfileOpen(true); setNotice("Create a Scholarium profile before following topics."); return; }
     try {
-      const response = await fetch("/api/topic-follows", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ topic }) });
+      const response = await fetch("/api/v1/topic-follows", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ topic }) });
       const payload = await response.json() as { error?: string; topic?: { label: string } };
       if (!response.ok) throw new Error(payload.error ?? "Topic could not be followed.");
       setNotice(`Following ${payload.topic?.label ?? topic}. This affects your future Following feed, never paid reach.`);
@@ -472,7 +472,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const buildFormalization = async () => {
     setFormalizationLoading(true);
     try {
-      const response = await fetch("/api/quanthor-formalization", {
+      const response = await fetch("/api/v1/quanthor-formalization", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ kind: formalizationKind, text: formalizationText, title: formalizationTitle }),
