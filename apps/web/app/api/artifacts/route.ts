@@ -9,6 +9,40 @@ function toHex(buffer: ArrayBuffer) {
   return Array.from(new Uint8Array(buffer), (byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
+function fileName(objectKey: string) {
+  return objectKey.split("/").at(-1)?.replace(/["\\\r\n]/gu, "_") || "scholarium-artifact";
+}
+
+async function publicPublication(publicationId: string) {
+  const db = await getDb();
+  const [publication] = await db.select({ id: publications.id }).from(publications).where(and(eq(publications.id, publicationId), eq(publications.visibility, "public"))).limit(1);
+  return { db, publication };
+}
+
+/** List active artifacts or download one artifact belonging to a public publication. */
+export async function GET(request: Request) {
+  try {
+    const url = new URL(request.url);
+    const publicationId = url.searchParams.get("publicationId");
+    const artifactId = url.searchParams.get("artifactId");
+    if (!publicationId) return Response.json({ error: "publicationId is required" }, { status: 400 });
+    const { db, publication } = await publicPublication(publicationId);
+    if (!publication) return Response.json({ error: "Public publication was not found" }, { status: 404 });
+    if (!artifactId) {
+      const rows = await db.select({ byteSize: artifacts.byteSize, contentType: artifacts.contentType, id: artifacts.id, objectKey: artifacts.objectKey, sha256: artifacts.sha256 }).from(artifacts).where(and(eq(artifacts.publicationId, publication.id), eq(artifacts.archiveStatus, "active")));
+      return Response.json({ artifacts: rows.map((artifact) => ({ byteSize: artifact.byteSize, contentType: artifact.contentType, downloadUrl: `/api/v1/artifacts?publicationId=${encodeURIComponent(publication.id)}&artifactId=${encodeURIComponent(artifact.id)}`, id: artifact.id, name: fileName(artifact.objectKey), sha256: artifact.sha256 })), publicationId: publication.id });
+    }
+    const [artifact] = await db.select({ byteSize: artifacts.byteSize, contentType: artifacts.contentType, objectKey: artifacts.objectKey }).from(artifacts).where(and(eq(artifacts.id, artifactId), eq(artifacts.publicationId, publication.id), eq(artifacts.archiveStatus, "active"))).limit(1);
+    if (!artifact) return Response.json({ error: "Active artifact was not found" }, { status: 404 });
+    const object = await (await getMediaStore()).get(artifact.objectKey);
+    if (!object) return Response.json({ error: "Artifact object was not found" }, { status: 404 });
+    return new Response(object.body, { headers: { "cache-control": "public, max-age=3600", "content-disposition": `attachment; filename="${fileName(artifact.objectKey)}"`, "content-length": String(artifact.byteSize), "content-type": artifact.contentType || object.httpMetadata?.contentType || "application/octet-stream", "x-content-type-options": "nosniff" } });
+  } catch (error) {
+    console.error("Artifact read failed", { message: error instanceof Error ? error.message : "Unknown error" });
+    return Response.json({ error: "Unable to read artifact" }, { status: 500 });
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const identity = await getPlatformIdentity();
