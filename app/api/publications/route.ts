@@ -1,7 +1,8 @@
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, topicFollows, topics, users } from "../../../db/schema";
+import { feedFeedback, publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, rankingPreferences, topicFollows, topics, users } from "../../../db/schema";
 import { createProvenanceReceipt } from "../../../lib/provenance";
+import { classifyPublication, rankPlithogenicFeed } from "../../../lib/plithogenic-feed";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
 import { publicationTypes } from "../../../lib/publication-types";
 import { normalizedTopicSlugs, topicLabel } from "../../../lib/topics";
@@ -68,7 +69,7 @@ export async function GET(request: Request) {
 
     const publicationIds = rows.map((publication) => publication.id);
     const assignedTopics = publicationIds.length === 0 ? [] : await db.select({ label: topics.label, publicationId: publicationTopics.publicationId, slug: topics.slug }).from(publicationTopics).innerJoin(topics, eq(publicationTopics.topicId, topics.id)).where(inArray(publicationTopics.publicationId, publicationIds));
-    const reactionRows = publicationIds.length === 0 ? [] : await db.select({ publicationId: publicationReactions.publicationId }).from(publicationReactions).where(inArray(publicationReactions.publicationId, publicationIds));
+    const reactionRows = publicationIds.length === 0 ? [] : await db.select({ publicationId: publicationReactions.publicationId, userId: publicationReactions.userId }).from(publicationReactions).where(inArray(publicationReactions.publicationId, publicationIds));
     const commentRows = publicationIds.length === 0 ? [] : await db.select({ publicationId: publicationComments.publicationId }).from(publicationComments).where(and(inArray(publicationComments.publicationId, publicationIds), eq(publicationComments.status, "visible")));
     const reactionsByPublication = new Map<string, number>();
     const commentsByPublication = new Map<string, number>();
@@ -80,29 +81,58 @@ export async function GET(request: Request) {
       topicsByPublication.set(topic.publicationId, [...(topicsByPublication.get(topic.publicationId) ?? []), topic.label]);
       topicIdsByPublication.set(topic.publicationId, [...(topicIdsByPublication.get(topic.publicationId) ?? []), topic.slug]);
     }
+    const identity = await getPlatformIdentity();
+    const viewer = identity ? await db.select({ id: users.id }).from(users).where(eq(users.id, identity.userId)).limit(1) : [];
+    const viewerId = viewer[0]?.id ?? null;
+    const [ranking, feedbackRows, followRows] = viewerId ? await Promise.all([
+      db.select().from(rankingPreferences).where(eq(rankingPreferences.userId, viewerId)).limit(1),
+      db.select({ preference: feedFeedback.preference, publicationId: feedFeedback.publicationId }).from(feedFeedback).where(eq(feedFeedback.userId, viewerId)),
+      db.select({ slug: topics.slug }).from(topicFollows).innerJoin(topics, eq(topicFollows.topicId, topics.id)).where(eq(topicFollows.userId, viewerId)),
+    ]) : [[], [], []] as const;
+    const favoriteIds = new Set(feedbackRows.filter((row) => row.preference === "favorite").map((row) => row.publicationId));
+    const lessLikeIds = new Set(feedbackRows.filter((row) => row.preference === "less_like").map((row) => row.publicationId));
+    const reactedIds = new Set(reactionRows.filter((row) => row.userId === viewerId).map((row) => row.publicationId));
+    const followedTopicSlugs = new Set(followRows.map((row) => row.slug));
+    const preference = ranking[0] ?? { diversityWeight: 66, freshnessWeight: 52, relevanceWeight: 78 };
     const enrichedRows = rows.map((publication) => ({ ...publication, comments: commentsByPublication.get(publication.id) ?? 0, reactions: reactionsByPublication.get(publication.id) ?? 0, topics: topicsByPublication.get(publication.id) ?? [] }));
+    const eligibleRows = enrichedRows.filter((publication) => !["quarantined", "removed"].includes(publication.status));
     const queryFiltered = query
-      ? enrichedRows.filter((publication) => `${publication.title} ${publication.abstract} ${publication.type} ${publication.author} ${publication.topics.join(" ")}`.toLowerCase().includes(query))
-      : enrichedRows;
+      ? eligibleRows.filter((publication) => `${publication.title} ${publication.abstract} ${publication.type} ${publication.author} ${publication.topics.join(" ")}`.toLowerCase().includes(query))
+      : eligibleRows;
     let statusFiltered = mode === "verified" ? queryFiltered.filter((publication) => publication.status === "verified") : queryFiltered;
     if (mode === "following") {
-      const identity = await getPlatformIdentity();
       if (!identity) return signInRequired();
-      const follows = await db.select({ slug: topics.slug }).from(topicFollows).innerJoin(topics, eq(topicFollows.topicId, topics.id)).where(eq(topicFollows.userId, identity.userId));
-      const followedSlugs = new Set(follows.map((topic) => topic.slug));
-      statusFiltered = queryFiltered.filter((publication) => (topicIdsByPublication.get(publication.id) ?? []).some((slug) => followedSlugs.has(slug)));
+      statusFiltered = queryFiltered.filter((publication) => (topicIdsByPublication.get(publication.id) ?? []).some((slug) => followedTopicSlugs.has(slug)));
     }
+    const ranked = mode === "discovery"
+      ? rankPlithogenicFeed(statusFiltered.map((publication) => ({
+        abstract: publication.abstract,
+        classification: classifyPublication(publication.type),
+        createdAt: publication.createdAt,
+        id: publication.id,
+        reactions: publication.reactions,
+        title: publication.title,
+        topicSlugs: topicIdsByPublication.get(publication.id) ?? [],
+        type: publication.type,
+        verificationStatus: publication.status,
+      })), { ...preference, favoriteIds, followedTopicSlugs, lessLikeIds, query, reactedIds })
+      : [];
+    const rankedById = new Map(ranked.map((publication) => [publication.id, publication]));
     const feed = mode === "discovery"
-      ? statusFiltered.map((publication) => ({ ...publication, discoveryScore: discoveryScore(publication, query) })).sort((a, b) => b.discoveryScore - a.discoveryScore)
-      : statusFiltered;
+      ? ranked.map((rankedPublication) => {
+        const publication = statusFiltered.find((item) => item.id === rankedPublication.id)!;
+        return { ...publication, feedSignal: { classification: rankedPublication.classification, reasons: rankedPublication.why, vector: rankedPublication.vector }, favorite: favoriteIds.has(publication.id) };
+      })
+      : statusFiltered.map((publication) => ({ ...publication, feedSignal: { classification: classifyPublication(publication.type), reasons: ["shown in your selected feed mode"], vector: rankedById.get(publication.id)?.vector ?? null }, favorite: favoriteIds.has(publication.id) }));
 
     return Response.json({
       publications: feed,
       ranking: {
         excludes: ["subscription tier", "contribution amount", "paid promotion"],
         mode,
-        version: "prealpha-v1",
-        uses: mode === "chronological" ? ["publication time"] : mode === "verified" ? ["public verification status", "publication time"] : mode === "following" ? ["topics explicitly followed by this account", "publication time"] : ["text relevance", "freshness", "provenance status"],
+        version: "plithogenic-explainable-v1",
+        uses: mode === "chronological" ? ["publication time"] : mode === "verified" ? ["public verification status", "publication time"] : mode === "following" ? ["hashtags explicitly followed by this account", "publication time"] : ["explicit favorites and reactions", "hashtag affinity", "text relevance", "freshness", "provenance status", "format diversity"],
+        doesNotDetermine: ["scientific truth", "a moderation decision", "a user's worth", "visibility purchased with money"],
       },
     });
   } catch (error) {

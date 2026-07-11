@@ -20,6 +20,9 @@ type Publication = {
   reactions: number;
   comments: number;
   kind: "paper" | "video" | "project";
+  classification?: string;
+  favorite?: boolean;
+  why?: string[];
   isPreview?: boolean;
 };
 type FormalizationPreview = {
@@ -39,6 +42,8 @@ const profileToolOptions = [
   { id: "securedme_blog", label: "SecuredMe Blog" },
   { id: "codex_openai", label: "Codex / OpenAI" },
   { id: "antigravity_gemini", label: "Antigravity / Gemini" },
+  { id: "youtube", label: "YouTube" },
+  { id: "tiktok", label: "TikTok" },
 ] as const;
 
 const initialPublications: Publication[] = [
@@ -100,6 +105,8 @@ type ApiPublication = {
   author: string;
   comments?: number;
   createdAt: string;
+  favorite?: boolean;
+  feedSignal?: { classification: string; reasons: string[] };
   id: string;
   reactions?: number;
   status: string;
@@ -134,6 +141,9 @@ const fromApiPublication = (publication: ApiPublication): Publication => ({
   reactions: publication.reactions ?? 0,
   comments: publication.comments ?? 0,
   kind: ["video", "short_video", "live_replay"].includes(publication.type) ? "video" : ["project_update", "school_project", "software_project", "git_tree"].includes(publication.type) ? "project" : "paper",
+  classification: publication.feedSignal?.classification,
+  favorite: publication.favorite,
+  why: publication.feedSignal?.reasons,
 });
 
 const navItems: Array<{ id: View; label: string; icon: string }> = [
@@ -155,6 +165,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [draftTitle, setDraftTitle] = useState("");
   const [draftBody, setDraftBody] = useState("");
   const [draftTopics, setDraftTopics] = useState("");
+  const [externalMediaUrl, setExternalMediaUrl] = useState("");
   const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
   const [publishing, setPublishing] = useState(false);
   const [ranking, setRanking] = useState({ relevance: 78, freshness: 52, diversity: 66 });
@@ -235,7 +246,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
 
   useEffect(() => {
     let active = true;
-    const timeout = window.setTimeout(() => {
+    const refresh = () => {
       setFeedLoading(true);
       const params = new URLSearchParams({ mode: feedMode });
       if (query.trim()) params.set("q", query.trim());
@@ -253,8 +264,10 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         })
         .catch(() => undefined)
         .finally(() => { if (active) setFeedLoading(false); });
-    }, query.trim() ? 220 : 0);
-    return () => { active = false; window.clearTimeout(timeout); };
+    };
+    const timeout = window.setTimeout(refresh, query.trim() ? 220 : 0);
+    const liveRefresh = window.setInterval(refresh, 30_000);
+    return () => { active = false; window.clearTimeout(timeout); window.clearInterval(liveRefresh); };
   }, [feedMode, query]);
 
   useEffect(() => {
@@ -380,6 +393,15 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         const artifactResponse = await fetch("/api/v1/artifacts", { method: "POST", body: artifactForm });
         if (artifactResponse.ok) uploadedArtifacts += 1;
       }
+      let linkedExternalMedia = false;
+      if (externalMediaUrl.trim()) {
+        const mediaResponse = await fetch("/api/v1/media-links", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ publicationId: payload.publication.id, url: externalMediaUrl.trim() }) });
+        if (!mediaResponse.ok) {
+          const mediaPayload = await mediaResponse.json() as { error?: string };
+          throw new Error(mediaPayload.error ?? "Publication was created, but its external media link could not be saved.");
+        }
+        linkedExternalMedia = true;
+      }
     setPublications((current) => [
       fromApiPublication({
         abstract: draftBody.trim(),
@@ -397,10 +419,11 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     setDraftTitle("");
     setDraftBody("");
     setDraftTopics("");
+    setExternalMediaUrl("");
     setAttachedFiles([]);
     setComposerOpen(false);
     trackLocalInsight("publicationDrafts");
-      setNotice(`Published. Your provenance receipt and safety scan are now processing.${artifactCount ? ` ${uploadedArtifacts} of ${artifactCount} artifact${artifactCount === 1 ? "" : "s"} uploaded.` : ""}`);
+      setNotice(`Published. Your provenance receipt and safety scan are now processing.${artifactCount ? ` ${uploadedArtifacts} of ${artifactCount} artifact${artifactCount === 1 ? "" : "s"} uploaded.` : ""}${linkedExternalMedia ? " External media reference linked without copying the video." : ""}`);
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "Your publication could not be created.");
     } finally { setPublishing(false); }
@@ -438,6 +461,19 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       if (!response.ok) throw new Error(payload.error ?? "Reaction could not be saved.");
       setPublications((current) => current.map((item) => item.id === publication.id ? { ...item, reactions: item.reactions + 1 } : item));
     } catch (error) { setNotice(error instanceof Error ? error.message : "Reaction could not be saved."); }
+  };
+
+  const setFeedPreference = async (publication: Publication, preference: "favorite" | "less_like" | "neutral") => {
+    if (publication.isPreview) { setNotice("Preview examples do not change a live feed."); return; }
+    if (!requireCommunityAccount()) return;
+    try {
+      const response = await fetch("/api/v1/feed-feedback", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ preference, publicationId: publication.id }) });
+      const payload = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Feed preference could not be saved.");
+      if (preference === "less_like") setPublications((current) => current.filter((item) => item.id !== publication.id));
+      else setPublications((current) => current.map((item) => item.id === publication.id ? { ...item, favorite: preference === "favorite" } : item));
+      setNotice(preference === "favorite" ? "Saved as a favorite. Your discovery feed will use this private signal." : preference === "less_like" ? "You will see less work like this. This is private and can be changed later." : "Feed preference removed.");
+    } catch (error) { setNotice(error instanceof Error ? error.message : "Feed preference could not be saved."); }
   };
 
   const addComment = async (event: FormEvent<HTMLFormElement>) => {
@@ -643,12 +679,15 @@ export function ScholariumClient({ session }: { session: { displayName: string |
                   <div className="publication-label"><span>{publication.type}</span>{publication.isPreview && <span className="status processing">PREVIEW EXAMPLE</span>}<span className={publication.status === "Verified" ? "status verified" : "status processing"}>{publication.status === "Verified" ? "✓ VERIFIED" : "◌ PROCESSING"}</span></div>
                   <h2>{publication.title}</h2>
                   <p>{publication.excerpt}</p>
+                  {publication.why?.length ? <p className="feed-signal"><strong>Why you see this:</strong> {publication.why.join(" · ")}</p> : null}
                   {publication.kind === "video" && <div className="video-preview"><span className="play">▶</span><span>03:42 · Sources and Git tree attached</span></div>}
                   <div className="topic-row">{publication.topics.map((topic) => <button type="button" key={topic} onClick={() => setQuery(topic)}>#{topic.replaceAll(" ", "")}</button>)}</div>
                 </div>
                 <div className="publication-footer">
                   <button type="button" onClick={() => reactToPublication(publication)}>✦ {publication.reactions}</button>
                   <button type="button" onClick={() => loadDiscussion(publication)}>◌ {publication.comments}</button>
+                  <button type="button" onClick={() => setFeedPreference(publication, publication.favorite ? "neutral" : "favorite")}>{publication.favorite ? "★ Favorite" : "☆ Favorite"}</button>
+                  <button type="button" onClick={() => setFeedPreference(publication, "less_like")}>Less like this</button>
                   <button type="button" onClick={startProject}>⌘ Start project</button>
                   <button type="button" onClick={() => setNotice("A contribution supports the project, never the feed rank.")}>♡ Support</button>
                 </div>
@@ -696,7 +735,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <label>Format<select value={publicationType} onChange={(event) => setPublicationType(event.target.value)}>{publicationTypeOptions.map((option) => <option value={option.value} key={option.value}>{option.label}</option>)}</select></label>
           <label>Title<input value={draftTitle} onChange={(event) => setDraftTitle(event.target.value)} placeholder="Give the work a clear, specific name" autoFocus /></label>
           <label>Context<textarea value={draftBody} onChange={(event) => setDraftBody(event.target.value)} placeholder="Explain what this is, who it helps, and how others can use it." rows={5} /></label>
-          <label>Topics (optional)<input value={draftTopics} onChange={(event) => setDraftTopics(event.target.value)} placeholder="Open science, climate systems, teaching" /></label>
+              <label>Topics (optional)<input value={draftTopics} onChange={(event) => setDraftTopics(event.target.value)} placeholder="Open science, climate systems, teaching" /></label>
+              <label>External video URL (optional)<input value={externalMediaUrl} onChange={(event) => setExternalMediaUrl(event.target.value)} placeholder="https://www.youtube.com/watch?v=... or TikTok video URL" /></label>
           <label>Attach evidence<input type="file" multiple accept=".pdf,.docx,.odt,.xlsx,.ods,.csv,.pptx,.odp,.epub,.zip,.txt,video/*" onChange={(event) => setAttachedFiles(Array.from(event.currentTarget.files ?? []))} /></label>
           {attachedFiles.length > 0 && <p className="attachment-summary">{attachedFiles.length} artifact{attachedFiles.length === 1 ? "" : "s"} ready for hashing and upload.</p>}
           <div className="composer-proof"><span>✓</span><p>A timestamped provenance receipt will be created. It records your Scholarium publication event; it does not replace copyright registration.</p></div>

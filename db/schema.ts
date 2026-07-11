@@ -212,3 +212,29 @@ export const rankingPreferences = sqliteTable("ranking_preferences", {
   personalized: integer("personalized", { mode: "boolean" }).notNull().default(true),
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
+
+export const feedFeedback = sqliteTable("feed_feedback", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").notNull().references(() => publications.id),
+  preference: text("preference").notNull(),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("feed_feedback_user_idx").on(table.userId),
+  index("feed_feedback_publication_idx").on(table.publicationId),
+  uniqueIndex("feed_feedback_user_publication_idx").on(table.userId, table.publicationId),
+]);
+
+export const externalMediaLinks = sqliteTable("external_media_links", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").notNull().references(() => publications.id),
+  provider: text("provider").notNull(),
+  externalId: text("external_id").notNull(),
+  canonicalUrl: text("canonical_url").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("external_media_links_publication_idx").on(table.publicationId),
+  index("external_media_links_user_idx").on(table.userId),
+  uniqueIndex("external_media_links_provider_external_idx").on(table.provider, table.externalId),
+]);
