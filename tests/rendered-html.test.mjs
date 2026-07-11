@@ -103,6 +103,17 @@ test("offers separate provider sign-in paths without automatic email account mer
   assert.match(paypal, /new Response\(null, \{ headers, status: 302 \}\)/);
 });
 
+test("applies one documented security baseline at the Worker boundary", async () => {
+  const worker = await readFile(new URL("../worker/index.ts", import.meta.url), "utf8");
+  assert.match(worker, /function withSecurityHeaders/);
+  assert.match(worker, /Content-Security-Policy/);
+  assert.match(worker, /frame-ancestors 'none'/);
+  assert.match(worker, /X-Content-Type-Options/);
+  assert.match(worker, /Strict-Transport-Security/);
+  assert.match(worker, /path\.startsWith\("\/api\/auth\/"\)/);
+  assert.match(worker, /Cache-Control", "no-store/);
+});
+
 test("keeps artifact and contributor-plan actions bound to the signed-in account", async () => {
   const artifacts = await readFile(new URL("../app/api/artifacts/route.ts", import.meta.url), "utf8");
   const subscription = await readFile(new URL("../app/api/verified-subscription/route.ts", import.meta.url), "utf8");
