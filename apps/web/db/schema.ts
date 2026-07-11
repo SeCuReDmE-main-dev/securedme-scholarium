@@ -182,6 +182,8 @@ export const publicationVersions = sqliteTable("publication_versions", {
   id: text("id").primaryKey(),
   publicationId: text("publication_id").notNull().references(() => publications.id),
   version: integer("version").notNull(),
+  title: text("title").notNull().default(""),
+  abstract: text("abstract").notNull().default(""),
   contentHash: text("content_hash").notNull(),
   provenanceReceipt: text("provenance_receipt").notNull(),
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),

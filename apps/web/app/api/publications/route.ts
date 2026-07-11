@@ -131,7 +131,7 @@ export async function POST(request: Request) {
     }
 
     const publicationId = crypto.randomUUID();
-    const receipt = await createProvenanceReceipt({ authorId, publicationId, title, abstract, type });
+    const receipt = await createProvenanceReceipt({ authorId, publicationId, title, abstract, type, version: 1 });
     const now = new Date().toISOString();
 
     await db.batch([
@@ -152,6 +152,8 @@ export async function POST(request: Request) {
         id: crypto.randomUUID(),
         provenanceReceipt: JSON.stringify(receipt),
         publicationId,
+        abstract,
+        title,
         version: 1,
       }),
     ]);

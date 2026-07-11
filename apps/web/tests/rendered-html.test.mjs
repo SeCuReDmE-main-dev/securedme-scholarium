@@ -167,6 +167,7 @@ test("sends authenticated publications and attached artifacts through the server
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
   const publicationTypes = await readFile(new URL("../lib/publication-types.ts", import.meta.url), "utf8");
+  const versions = await readFile(new URL("../app/api/publications/[publicationId]/versions/route.ts", import.meta.url), "utf8");
   assert.match(page, /fetch\("\/api\/v1\/publications"/);
   assert.match(page, /fetch\("\/api\/v1\/artifacts"/);
   assert.match(page, /Create your Scholarium profile before publishing your first work/);
@@ -175,6 +176,9 @@ test("sends authenticated publications and attached artifacts through the server
   assert.match(publicationTypes, /full_book/);
   assert.match(publicationTypes, /git_tree/);
   assert.match(publicationTypes, /media handoff pending/);
+  assert.match(versions, /baseVersion/);
+  assert.match(versions, /A newer publication version already exists/);
+  assert.match(versions, /provenanceReceipt/);
 });
 
 test("keeps community interactions account-bound, reportable, and limited in depth", async () => {

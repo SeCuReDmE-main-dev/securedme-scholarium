@@ -18,6 +18,7 @@ const contract = {
       get: { summary: "List public publications" },
       post: { summary: "Create a versioned publication and provenance receipt" },
     },
+    "/api/v1/publications/{publicationId}/versions": { get: { summary: "Read the immutable public version history" }, post: { summary: "Create a new author-owned publication version from the current version" } },
     "/api/v1/publication-interactions": {
       get: { summary: "Read public reactions and version-bound comments" },
       post: { summary: "Create an academic reaction, limited-depth comment, report, block, or mute" },
