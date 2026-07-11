@@ -1,0 +1,52 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import test from "node:test";
+
+async function render() {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  return worker.fetch(
+    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+}
+
+test("server-renders Scholarium instead of the starter shell", async () => {
+  const response = await render();
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+  const html = await response.text();
+  assert.match(html, /<title>Scholarium — Open knowledge, real momentum<\/title>/i);
+  assert.match(html, /Today’s signal/);
+  assert.match(html, /Free means discoverable/);
+  assert.match(html, /Open algorithm/);
+  assert.doesNotMatch(html, /Your site is taking shape|Codex is working|react-loading-skeleton/i);
+});
+
+test("keeps the anti-pay-to-rank contract in the user interface", async () => {
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  assert.match(page, /Paid tools never change reach, ranking, or your right to publish/);
+  assert.match(page, /Visibility is never for sale/);
+  assert.match(page, /contribution supports the project, never the feed rank/);
+  assert.match(page, /provenance receipt/);
+});
+
+test("keeps QuaNthoR educational and non-blocking", async () => {
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const contract = await readFile(new URL("../lib/quanthor-formalization.ts", import.meta.url), "utf8");
+  assert.match(page, /Educational, non-blocking, and author-led/);
+  assert.match(page, /Nothing here prevents you from publishing/);
+  assert.match(contract, /publicationGate: "none"/);
+  assert.match(contract, /not a verified proof/);
+});
+
+test("keeps behavior insights local and opt-in", async () => {
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const contract = await readFile(new URL("../lib/local-insights.ts", import.meta.url), "utf8");
+  assert.match(page, /Enable local-only activity insights on this device/);
+  assert.match(page, /Kept only in this browser/);
+  assert.match(contract, /device_local_only/);
+  assert.match(contract, /Datadog may receive platform-level reliability metadata only/);
+});
