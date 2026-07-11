@@ -75,7 +75,10 @@ function requestForCanonicalApi(request: Request): Request {
   const url = new URL(request.url);
   if (!url.pathname.startsWith("/api/v1/") || url.pathname.startsWith("/api/v1/auth/")) return request;
   url.pathname = `/api/${url.pathname.slice("/api/v1/".length)}`;
-  return new Request(url, request);
+  // Vinext's deployed fetch adapter resolves a string URL reliably. Passing a
+  // URL object with a Request init works in standards-compliant runtimes but
+  // did not preserve the rewritten pathname in the production adapter.
+  return new Request(url.toString(), request);
 }
 
 // Image security config. SVG sources with .svg extension auto-skip the

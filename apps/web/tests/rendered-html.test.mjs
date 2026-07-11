@@ -169,6 +169,7 @@ test("uses a canonical versioned API surface and retains a documented compatibil
   const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
   const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   assert.match(worker, /requestForCanonicalApi/);
+  assert.match(worker, /new Request\(url\.toString\(\), request\)/);
   assert.match(worker, /Deprecation/);
   assert.match(worker, /API-Version/);
   assert.match(openapi, /"\/api\/v1\/publications"/);
