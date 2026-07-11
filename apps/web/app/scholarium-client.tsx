@@ -1,6 +1,6 @@
 "use client";
 
-import { CSSProperties, FormEvent, useEffect, useMemo, useState } from "react";
+import { CSSProperties, FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { publicationTypeForFormalization, publicationTypeOptions } from "../lib/publication-types";
 
 type View = "signal" | "library" | "studio" | "formalize";
@@ -176,6 +176,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [feedMode, setFeedMode] = useState<FeedMode>("discovery");
   const [serverFeed, setServerFeed] = useState(false);
   const [feedLoading, setFeedLoading] = useState(false);
+  const [pendingLiveFeed, setPendingLiveFeed] = useState<Publication[] | null>(null);
+  const [liveUpdateCount, setLiveUpdateCount] = useState(0);
   const [composerOpen, setComposerOpen] = useState(false);
   const [publicationType, setPublicationType] = useState("research_article");
   const [draftTitle, setDraftTitle] = useState("");
@@ -212,6 +214,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [discussionDraft, setDiscussionDraft] = useState("");
   const [discussionLoading, setDiscussionLoading] = useState(false);
   const [discussionSaving, setDiscussionSaving] = useState(false);
+  const appliedFeedPublicationIds = useRef(new Set<string>());
   const profileInitials = (session.displayName ?? "Guest").split(/\s+/).map((word) => word[0]).join("").slice(0, 2).toUpperCase();
   const providerLabel = session.provider ? ({ chatgpt: "ChatGPT", github: "GitHub", google: "Google", paypal: "PayPal" } as const)[session.provider] : null;
 
@@ -269,6 +272,12 @@ export function ScholariumClient({ session }: { session: { displayName: string |
 
   useEffect(() => {
     let active = true;
+    let receivedInitialResponse = false;
+    const clearPendingUpdate = window.setTimeout(() => {
+      if (!active) return;
+      setPendingLiveFeed(null);
+      setLiveUpdateCount(0);
+    }, 0);
     const refresh = () => {
       setFeedLoading(true);
       const params = new URLSearchParams({ mode: feedMode });
@@ -278,9 +287,26 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         .then(({ ok, payload }) => {
           if (!active || !ok || !payload.publications) return;
           if (payload.publications.length || query.trim() || feedMode !== "discovery") {
-            setPublications(payload.publications.map(fromApiPublication));
+            const incoming = payload.publications.map(fromApiPublication);
+            if (receivedInitialResponse) {
+              const newCount = incoming.filter((publication) => !appliedFeedPublicationIds.current.has(publication.id)).length;
+              if (newCount > 0) {
+                setPendingLiveFeed(incoming);
+                setLiveUpdateCount(newCount);
+                return;
+              }
+            }
+            receivedInitialResponse = true;
+            appliedFeedPublicationIds.current = new Set(incoming.map((publication) => publication.id));
+            setPendingLiveFeed(null);
+            setLiveUpdateCount(0);
+            setPublications(incoming);
             setServerFeed(true);
           } else {
+            receivedInitialResponse = true;
+            appliedFeedPublicationIds.current = new Set();
+            setPendingLiveFeed(null);
+            setLiveUpdateCount(0);
             setServerFeed(false);
             setPublications(initialPublications);
           }
@@ -290,8 +316,17 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     };
     const timeout = window.setTimeout(refresh, query.trim() ? 220 : 0);
     const liveRefresh = window.setInterval(refresh, 30_000);
-    return () => { active = false; window.clearTimeout(timeout); window.clearInterval(liveRefresh); };
+    return () => { active = false; window.clearTimeout(clearPendingUpdate); window.clearTimeout(timeout); window.clearInterval(liveRefresh); };
   }, [feedMode, query]);
+
+  const showPendingLiveFeed = () => {
+    if (!pendingLiveFeed) return;
+    appliedFeedPublicationIds.current = new Set(pendingLiveFeed.map((publication) => publication.id));
+    setPublications(pendingLiveFeed);
+    setPendingLiveFeed(null);
+    setLiveUpdateCount(0);
+    setNotice("Your live feed is up to date.");
+  };
 
   useEffect(() => {
     if (view !== "library" || query.trim().length < 2) return;
@@ -447,8 +482,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         }
         linkedExternalMedia = true;
       }
-    setPublications((current) => [
-      fromApiPublication({
+    const newlyPublished = fromApiPublication({
         abstract: draftBody.trim(),
         author: session.displayName,
         createdAt: new Date().toISOString(),
@@ -457,9 +491,9 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         title: draftTitle.trim(),
         topics: payload.publication.topicSlugs,
         type,
-      }),
-      ...current,
-    ]);
+      });
+    appliedFeedPublicationIds.current.add(newlyPublished.id);
+    setPublications((current) => [newlyPublished, ...current]);
     const artifactCount = attachedFiles.length;
     setDraftTitle("");
     setDraftBody("");
@@ -733,6 +767,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <section className="feed" aria-label="Publication feed">
             {!serverFeed && publications.some((publication) => publication.isPreview) && <p className="feed-preview-note">Sample publications are shown while the public archive is empty. They are examples, not live activity or metrics.</p>}
             {serverFeed && <p className="feed-mode-note">{feedMode === "discovery" ? "Live discovery refreshes from public posts every 30 seconds. It uses three visible lanes: your explicit interest, your explicit satisfaction signals, and research context. It excludes subscriptions, contributions, global-like popularity, and paid promotion." : feedMode === "following" ? "Following refreshes from public work tagged with the topics or authors you explicitly follow." : feedMode === "verified" ? "Verified shows public work whose status is verified." : "Chronological shows public work by publication time."}{feedLoading ? " Refreshing…" : ""}</p>}
+            {liveUpdateCount > 0 && <div className="live-update-notice" aria-live="polite"><span>{liveUpdateCount} new public post{liveUpdateCount === 1 ? "" : "s"} available.</span><button type="button" onClick={showPendingLiveFeed}>Show new posts</button></div>}
             {filteredPublications.length === 0 ? (
               <div className="empty-state"><h2>No work matches that search.</h2><p>Try a topic, an author, or a broader scientific phrase.</p></div>
             ) : filteredPublications.map((publication) => (
