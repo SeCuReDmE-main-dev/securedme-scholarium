@@ -98,6 +98,8 @@ test("offers separate provider sign-in paths without automatic email account mer
   assert.match(github, /read:user user:email/);
   assert.match(paypal, /openid profile email/);
   assert.match(paypal, /external OAuth handoff/);
+  assert.match(paypal, /random CSRF nonce/);
+  assert.match(paypal, /The authenticated provider session remains encrypted separately/);
   assert.match(paypal, /new Response\(null, \{ headers, status: 302 \}\)/);
 });
 
