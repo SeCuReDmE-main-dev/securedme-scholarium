@@ -164,6 +164,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [badgeVisibility, setBadgeVisibility] = useState(true);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [bannerPreview, setBannerPreview] = useState<string | null>(null);
+  const [profileMediaSaving, setProfileMediaSaving] = useState<"avatar" | "banner" | null>(null);
   const [formalizationKind, setFormalizationKind] = useState("research_article");
   const [formalizationTitle, setFormalizationTitle] = useState("");
   const [formalizationText, setFormalizationText] = useState("");
@@ -215,6 +216,20 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     }).catch(() => { if (active) setAccountReady(false); });
     return () => { active = false; };
   }, [session.displayName]);
+
+  useEffect(() => {
+    if (!session.displayName || !accountReady) return;
+    let active = true;
+    const load = async (kind: "avatar" | "banner") => {
+      const response = await fetch(`/api/v1/profile-media?kind=${kind}`);
+      if (!response.ok || !active) return;
+      const url = URL.createObjectURL(await response.blob());
+      if (active) (kind === "avatar" ? setAvatarPreview : setBannerPreview)(url);
+    };
+    void load("avatar");
+    void load("banner");
+    return () => { active = false; };
+  }, [accountReady, session.displayName]);
 
   useEffect(() => {
     let active = true;
@@ -279,6 +294,23 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     } finally {
       setConnectingTool(null);
     }
+  };
+
+  const uploadProfileMedia = async (kind: "avatar" | "banner", file: File) => {
+    setProfileMediaSaving(kind);
+    try {
+      const form = new FormData();
+      form.set("kind", kind);
+      form.set("file", file);
+      const response = await fetch("/api/v1/profile-media", { body: form, method: "POST" });
+      const payload = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Profile media could not be saved.");
+      const preview = URL.createObjectURL(file);
+      (kind === "avatar" ? setAvatarPreview : setBannerPreview)(preview);
+      setNotice(`${kind === "avatar" ? "Profile picture" : "Profile banner"} saved.`);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Profile media could not be saved.");
+    } finally { setProfileMediaSaving(null); }
   };
 
   const createAccount = async () => {
@@ -687,17 +719,17 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           {accountReady === false && <section className="account-setup"><p className="eyebrow">FIRST, SET UP YOUR ACCOUNT</p><h3>How will you use Scholarium?</h3><p>Your role helps us apply the right safety and visibility defaults. It does not affect ranking.</p><label>Primary role<select value={accountRole} onChange={(event) => setAccountRole(event.target.value)}><option value="student">Student</option><option value="teacher">Teacher</option><option value="professional">Professional</option><option value="amateur">Independent learner</option><option value="reader">Reader</option><option value="supporter">Supporter</option></select></label><label>Age band<select value={accountAgeBand} onChange={(event) => setAccountAgeBand(event.target.value)}><option value="adult">Adult</option><option value="minor">Minor</option><option value="unknown">Prefer not to say</option></select></label><button className="publish-button" type="button" disabled={accountSaving} onClick={createAccount}>{accountSaving ? "Creating profile…" : "Create my Scholarium profile"}</button></section>}
           {accountReady === null && <p className="account-loading">Checking your connected profile…</p>}
           {accountReady && <><div className="profile-upload-grid">
-            <label>Profile picture<input type="file" accept="image/png,image/jpeg,image/webp" onChange={(event) => { const file = event.currentTarget.files?.[0]; if (file) setAvatarPreview(URL.createObjectURL(file)); }} /></label>
-            <label>Profile banner<input type="file" accept="image/png,image/jpeg,image/webp" onChange={(event) => { const file = event.currentTarget.files?.[0]; if (file) setBannerPreview(URL.createObjectURL(file)); }} /></label>
+            <label>Profile picture<input type="file" accept="image/png,image/jpeg,image/webp" disabled={profileMediaSaving !== null} onChange={(event) => { const file = event.currentTarget.files?.[0]; if (file) void uploadProfileMedia("avatar", file); }} />{profileMediaSaving === "avatar" && <small>Saving picture…</small>}</label>
+            <label>Profile banner<input type="file" accept="image/png,image/jpeg,image/webp" disabled={profileMediaSaving !== null} onChange={(event) => { const file = event.currentTarget.files?.[0]; if (file) void uploadProfileMedia("banner", file); }} />{profileMediaSaving === "banner" && <small>Saving banner…</small>}</label>
           </div>
           <fieldset className="profile-fieldset"><legend>Colour scheme</legend><div className="theme-options">{(["scholarium-dark", "scholarium-light", "midnight-code", "paper-library"] as ColorScheme[]).map((scheme) => <button className={colorScheme === scheme ? "theme-choice selected" : "theme-choice"} type="button" key={scheme} onClick={() => setColorScheme(scheme)}>{scheme.replaceAll("-", " ")}</button>)}</div></fieldset>
           <label>Accent colour<input type="color" value={accentColor} onChange={(event) => setAccentColor(event.target.value)} /></label>
-          <label className="toggle-label"><input type="checkbox" checked={badgeVisibility} onChange={(event) => setBadgeVisibility(event.target.checked)} /> Show earned badges on my profile</label>
-          <div className="badge-row">{badgeVisibility && <><span>Provenance ready</span><span>Open education</span></>}</div>
+          <label className="toggle-label"><input type="checkbox" checked={badgeVisibility} onChange={(event) => setBadgeVisibility(event.target.checked)} /> Make my ecosystem-maturity badge visible when earned</label>
+          <div className="badge-row">{badgeVisibility && <span>Recognition is contribution-based — never purchased</span>}</div>
           <label className="toggle-label"><input type="checkbox" checked={localInsightsEnabled} onChange={(event) => updateLocalInsights(event.target.checked)} /> Enable local-only activity insights on this device</label>
           <div className="local-insights-card"><strong>Private activity snapshot</strong>{localInsightsEnabled ? <span>{localInsightCounts.formalizationGuides} guide{localInsightCounts.formalizationGuides === 1 ? "" : "s"} created · {localInsightCounts.publicationDrafts} publication draft{localInsightCounts.publicationDrafts === 1 ? "" : "s"} started. Kept only in this browser.</span> : <span>Off by default. No activity snapshot is collected or sent anywhere.</span>}</div>
           <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}</button>)}</div></div>
-          <div className="composer-proof"><span>◌</span><p>Profile images stay local until you choose to save them to your account. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
+          <div className="composer-proof"><span>◌</span><p>Profile images upload only after you choose a file and remain private to your account until a future public-profile visibility control is approved. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
           <div className="composer-actions"><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" disabled={accountSaving} onClick={saveProfilePreferences}>{accountSaving ? "Saving…" : "Save preferences"}</button></div></>}</>}
         </section>
       </div>}

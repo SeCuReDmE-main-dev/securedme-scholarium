@@ -32,7 +32,7 @@ La règle de gouvernance reste `I -> I_system^S -> D_f -> dF -> i_fractal` : un 
 
 - La famille est cohérente : marine profond, bleu électrique, violet vif, or savant, hexagone/folio et réseau de nœuds.
 - Les PNG sont des **planches de conception**, pas des livrables de production : ils contiennent plusieurs tailles, labels et textes intégrés.
-- Les mentions **Premium**, **Premium Activation**, **Gold Mode** et **Tier 4** ne sont pas des textes produit autorisés pour Scholarium. Elles peuvent guider le traitement visuel de la reconnaissance, mais sont incompatibles avec l'invariant zéro pay-to-rank.
+- Les mentions **Premium**, **Premium Activation**, **Gold Mode** et **Tier 4** présentes dans les planches ne sont pas des offres payantes ni des textes de classement autorisés. Dans le produit, elles sont remplacées par la notion explicable de **maturité de l'écosystème** : une reconnaissance automatique de l'engagement réel, sans avantage de visibilité, prix ni capacité éditoriale.
 - La bannière web dark `web banner/2.png` est la meilleure direction candidate pour une campagne de découverte; `web banner/10.png` est la meilleure candidate claire. Leur texte devra être remplacé par le message validé de Scholarium.
 
 ## 3. Contrat de marque à appliquer
@@ -95,7 +95,7 @@ Les masters originaux restent dans un espace de design privé ou dans R2; le dé
 | --- | --- | --- | --- |
 | A. Décision de marque | choisir un mark dark, un mark light, une bannière dark, une bannière light; confirmer les mots interdits | audit des assets | fiche de sélection signée avec 4 fichiers sources et justification |
 | B. Masters de production | obtenir ou recréer un SVG de mark/wordmark; définir zone de protection, tailles minimales, variantes monochromes | A | exports nets à 16, 32, 48, 192 et 512 px; aucune planche composite utilisée comme logo |
-| C. Catalogue de badges | attribuer un nom, une condition, une icône, un texte alternatif et une variante claire/sombre à chaque badge | A | `badge-catalog.json` sans “premium”, prix ou avantage de classement |
+| C. Catalogue de badges | attribuer un nom, une condition, une icône, un texte alternatif et une variante claire/sombre à chaque badge | A | `badge-catalog.json` aligné sur `BADGE-MATURITY-SYSTEM.md`, sans prix ni avantage de classement |
 | D. Système de design | intégrer les tokens, composants `BrandMark`, `SuiteLockup`, `Badge`, `CampaignHero`; mesurer contraste WCAG AA | B, C | Story/catalogue rendu dans les thèmes clair, sombre et contraste élevé |
 | E. Landing et application | remplacer le mark temporaire, favicon, OpenGraph et hero; garder le produit lisible sans image décorative | D | captures desktop/tablette/mobile et poids initial respecté |
 | F. Vidéo et campagne | extraire poster, sous-titres et transcription du film; préparer les formats social | D | vidéo accessible avec poster, sous-titres et transcription publiable |
@@ -133,6 +133,8 @@ flowchart LR
 - bannière servant de texte indispensable à la compréhension d'une page;
 - vidéo sans sous-titres, poster et transcription;
 - export non licencié, source inconnue ou origine non documentée.
+
+Le mécanisme fonctionnel de progression et ses garde-fous sont définis dans [BADGE-MATURITY-SYSTEM.md](BADGE-MATURITY-SYSTEM.md). Il prévaut sur tout texte intégré aux planches de conception.
 
 ## 9. Prochaine décision utilisateur
 
