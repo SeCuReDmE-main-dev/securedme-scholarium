@@ -5,7 +5,7 @@ import { CSSProperties, FormEvent, useEffect, useMemo, useState } from "react";
 type View = "signal" | "library" | "studio" | "formalize";
 type ColorScheme = "scholarium-dark" | "scholarium-light" | "midnight-code" | "paper-library";
 type Publication = {
-  id: number;
+  id: string;
   author: string;
   role: string;
   avatar: string;
@@ -18,6 +18,7 @@ type Publication = {
   reactions: number;
   comments: number;
   kind: "paper" | "video" | "project";
+  isPreview?: boolean;
 };
 type FormalizationPreview = {
   label: string;
@@ -39,7 +40,7 @@ const profileToolOptions = [
 
 const initialPublications: Publication[] = [
   {
-    id: 1,
+    id: "preview-1",
     author: "Dr. Amina Rahman",
     role: "Researcher · Computational ecology",
     avatar: "AR",
@@ -53,9 +54,10 @@ const initialPublications: Publication[] = [
     reactions: 184,
     comments: 28,
     kind: "paper",
+    isPreview: true,
   },
   {
-    id: 2,
+    id: "preview-2",
     author: "Nora Vidal",
     role: "Teacher · Montréal science lab",
     avatar: "NV",
@@ -69,9 +71,10 @@ const initialPublications: Publication[] = [
     reactions: 96,
     comments: 17,
     kind: "project",
+    isPreview: true,
   },
   {
-    id: 3,
+    id: "preview-3",
     author: "Open Hardware Collective",
     role: "Maintainers · Community engineering",
     avatar: "OH",
@@ -85,8 +88,39 @@ const initialPublications: Publication[] = [
     reactions: 231,
     comments: 39,
     kind: "video",
+    isPreview: true,
   },
 ];
+
+type ApiPublication = {
+  abstract: string;
+  author: string;
+  createdAt: string;
+  id: string;
+  status: string;
+  title: string;
+  type: string;
+};
+
+const publicationLabel = (type: string) => type.replaceAll("_", " ").toUpperCase();
+
+const initialsFor = (name: string) => name.split(/\s+/).map((word) => word[0]).join("").slice(0, 2).toUpperCase() || "SC";
+
+const fromApiPublication = (publication: ApiPublication): Publication => ({
+  id: publication.id,
+  author: publication.author,
+  role: "Scholarium member",
+  avatar: initialsFor(publication.author),
+  type: publicationLabel(publication.type),
+  title: publication.title,
+  excerpt: publication.abstract,
+  topics: [publication.type.replaceAll("_", " "), "Open education"],
+  status: publication.status === "verified" ? "Verified" : "Processing",
+  hours: "Published",
+  reactions: 0,
+  comments: 0,
+  kind: publication.type === "short_video" ? "video" : publication.type === "project_update" ? "project" : "paper",
+});
 
 const navItems: Array<{ id: View; label: string; icon: string }> = [
   { id: "signal", label: "Signal", icon: "⌁" },
@@ -146,6 +180,18 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     }).catch(() => { if (active) setAccountReady(false); });
     return () => { active = false; };
   }, [session.displayName]);
+
+  useEffect(() => {
+    let active = true;
+    fetch("/api/publications")
+      .then(async (response) => ({ ok: response.ok, payload: await response.json() as { publications?: ApiPublication[] } }))
+      .then(({ ok, payload }) => {
+        if (!active || !ok || !payload.publications?.length) return;
+        setPublications(payload.publications.map(fromApiPublication));
+      })
+      .catch(() => undefined);
+    return () => { active = false; };
+  }, []);
 
   const updateLocalInsights = (enabled: boolean, counts = localInsightCounts) => {
     setLocalInsightsEnabled(enabled);
@@ -240,21 +286,15 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         if (artifactResponse.ok) uploadedArtifacts += 1;
       }
     setPublications((current) => [
-      {
-        id: Date.now(),
-        author: "You",
-        role: "Professional learner · Scholarium member",
-        avatar: "YO",
-        type: publicationType.toUpperCase(),
+      fromApiPublication({
+        abstract: draftBody.trim(),
+        author: session.displayName,
+        createdAt: new Date().toISOString(),
+        id: payload.publication.id,
+        status: payload.publication.status,
         title: draftTitle.trim(),
-        excerpt: draftBody.trim(),
-        topics: ["Your work", "Verification pending"],
-        status: "Processing",
-        hours: "now",
-        reactions: 0,
-        comments: 0,
-        kind: publicationType === "Short video" ? "video" : "paper",
-      },
+        type,
+      }),
       ...current,
     ]);
     const artifactCount = attachedFiles.length;
@@ -269,7 +309,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     } finally { setPublishing(false); }
   };
 
-  const reactToPublication = (id: number) => {
+  const reactToPublication = (id: string) => {
     setPublications((current) =>
       current.map((publication) =>
         publication.id === id ? { ...publication, reactions: publication.reactions + 1 } : publication,
@@ -410,6 +450,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           </section>
         ) : (
           <section className="feed" aria-label="Publication feed">
+            {publications.some((publication) => publication.isPreview) && <p className="feed-preview-note">Sample publications are shown while the public archive is empty. They are examples, not live activity or metrics.</p>}
             {filteredPublications.length === 0 ? (
               <div className="empty-state"><h2>No work matches that search.</h2><p>Try a topic, an author, or a broader scientific phrase.</p></div>
             ) : filteredPublications.map((publication) => (
@@ -420,7 +461,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
                   <button className="more-button" aria-label={`More options for ${publication.title}`} type="button">•••</button>
                 </div>
                 <div className="publication-content">
-                  <div className="publication-label"><span>{publication.type}</span><span className={publication.status === "Verified" ? "status verified" : "status processing"}>{publication.status === "Verified" ? "✓ VERIFIED" : "◌ PROCESSING"}</span></div>
+                  <div className="publication-label"><span>{publication.type}</span>{publication.isPreview && <span className="status processing">PREVIEW EXAMPLE</span>}<span className={publication.status === "Verified" ? "status verified" : "status processing"}>{publication.status === "Verified" ? "✓ VERIFIED" : "◌ PROCESSING"}</span></div>
                   <h2>{publication.title}</h2>
                   <p>{publication.excerpt}</p>
                   {publication.kind === "video" && <div className="video-preview"><span className="play">▶</span><span>03:42 · Sources and Git tree attached</span></div>}

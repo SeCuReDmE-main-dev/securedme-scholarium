@@ -13,15 +13,15 @@ async function render() {
   );
 }
 
-test("server-renders Scholarium instead of the starter shell", async () => {
+test("server-renders the Scholarium public landing page instead of the starter shell", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /<title>Scholarium — Open knowledge, real momentum<\/title>/i);
-  assert.match(html, /Today’s signal/);
-  assert.match(html, /Free means discoverable/);
-  assert.match(html, /Open algorithm/);
+  assert.match(html, /<title>Scholarium — The public commons for serious work<\/title>/i);
+  assert.match(html, /Make knowledge/);
+  assert.match(html, /0<\/b> paid reach controls/);
+  assert.match(html, /Your work is not a product to be ranked by price/);
   assert.doesNotMatch(html, /Your site is taking shape|Codex is working|react-loading-skeleton/i);
 });
 
@@ -62,7 +62,7 @@ test("binds account writes to the platform WebAuth identity", async () => {
 });
 
 test("shows the same WebAuth state that protects account writes", async () => {
-  const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const page = await readFile(new URL("../app/app/page.tsx", import.meta.url), "utf8");
   const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   assert.match(page, /getChatGPTUser/);
   assert.match(page, /chatGPTSignInPath/);
