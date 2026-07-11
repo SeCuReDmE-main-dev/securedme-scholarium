@@ -84,6 +84,7 @@ export const profilePreferences = sqliteTable("profile_preferences", {
   colorScheme: text("color_scheme").notNull().default("scholarium-dark"),
   accentColor: text("accent_color").notNull().default("#2157ee"),
   badgeVisibility: text("badge_visibility").notNull().default("public"),
+  profileVisibility: text("profile_visibility").notNull().default("private"),
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
 

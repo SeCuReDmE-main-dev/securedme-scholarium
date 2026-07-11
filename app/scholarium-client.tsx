@@ -22,9 +22,11 @@ type Publication = {
   comments: number;
   kind: "paper" | "video" | "project";
   classification?: string;
+  profileVisible?: boolean;
   scorecard?: { explicitSatisfaction: number; personalRelevance: number; researchContext: number } | null;
   favorite?: boolean;
   followingAuthor?: boolean;
+  profileVisible?: boolean;
   why?: string[];
   isPreview?: boolean;
 };
@@ -154,6 +156,7 @@ const fromApiPublication = (publication: ApiPublication): Publication => ({
   scorecard: publication.feedSignal?.scorecard,
   favorite: publication.favorite,
   followingAuthor: publication.followingAuthor,
+  profileVisible: publication.profileVisible,
   why: publication.feedSignal?.reasons,
 });
 
@@ -193,6 +196,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [colorScheme, setColorScheme] = useState<ColorScheme>("scholarium-dark");
   const [accentColor, setAccentColor] = useState("#2157ee");
   const [badgeVisibility, setBadgeVisibility] = useState(true);
+  const [publicProfileVisible, setPublicProfileVisible] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [bannerPreview, setBannerPreview] = useState<string | null>(null);
   const [profileMediaSaving, setProfileMediaSaving] = useState<"avatar" | "banner" | null>(null);
@@ -267,6 +271,22 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     };
     void load("avatar");
     void load("banner");
+    return () => { active = false; };
+  }, [accountReady, session.displayName]);
+
+  useEffect(() => {
+    if (!session.displayName || !accountReady) return;
+    let active = true;
+    fetch("/api/v1/profile-preferences")
+      .then(async (response) => ({ ok: response.ok, payload: await response.json() as { preference?: { accentColor?: string; badgeVisibility?: string; colorScheme?: ColorScheme; profileVisibility?: string } | null } }))
+      .then(({ ok, payload }) => {
+        if (!active || !ok || !payload.preference) return;
+        if (payload.preference.accentColor) setAccentColor(payload.preference.accentColor);
+        if (payload.preference.colorScheme) setColorScheme(payload.preference.colorScheme);
+        setBadgeVisibility(payload.preference.badgeVisibility !== "private");
+        setPublicProfileVisible(payload.preference.profileVisibility === "public");
+      })
+      .catch(() => undefined);
     return () => { active = false; };
   }, [accountReady, session.displayName]);
 
@@ -425,11 +445,11 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     if (!accountReady) return;
     setAccountSaving(true);
     try {
-      const response = await fetch("/api/v1/profile-preferences", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ accentColor, badgeVisibility: badgeVisibility ? "public" : "private", colorScheme }) });
+      const response = await fetch("/api/v1/profile-preferences", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ accentColor, badgeVisibility: badgeVisibility ? "public" : "private", colorScheme, profileVisibility: publicProfileVisible ? "public" : "private" }) });
       const payload = await response.json() as { error?: string };
       if (!response.ok) throw new Error(payload.error ?? "Your profile preferences could not be saved.");
       setProfileOpen(false);
-      setNotice("Profile preferences saved.");
+      setNotice(publicProfileVisible ? "Profile preferences saved. Your public profile can now show your chosen visuals and public work." : "Profile preferences saved. Your profile visuals remain private.");
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "Your profile preferences could not be saved.");
     } finally { setAccountSaving(false); }
@@ -789,8 +809,9 @@ export function ScholariumClient({ session }: { session: { displayName: string |
                 <div className="publication-footer">
                   <button type="button" onClick={() => reactToPublication(publication)}>✦ {publication.reactions}</button>
                   <button type="button" onClick={() => loadDiscussion(publication)}>◌ {publication.comments}</button>
-                  <button type="button" onClick={() => setFeedPreference(publication, publication.favorite ? "neutral" : "favorite")}>{publication.favorite ? "★ Favorite" : "☆ Favorite"}</button>
-                  {publication.authorPublicId && !publication.isPreview && <button type="button" onClick={() => followAuthor(publication)}>{publication.followingAuthor ? "Following author" : "Follow author"}</button>}
+                   <button type="button" onClick={() => setFeedPreference(publication, publication.favorite ? "neutral" : "favorite")}>{publication.favorite ? "★ Favorite" : "☆ Favorite"}</button>
+                   {publication.authorPublicId && publication.profileVisible && !publication.isPreview && <a className="publication-action-link" href={`/profile/${publication.authorPublicId}`}>View profile</a>}
+                   {publication.authorPublicId && !publication.isPreview && <button type="button" onClick={() => followAuthor(publication)}>{publication.followingAuthor ? "Following author" : "Follow author"}</button>}
                   <button type="button" onClick={() => setFeedPreference(publication, "less_like")}>Less like this</button>
                   <button type="button" onClick={startProject}>⌘ Start project</button>
                   <button type="button" onClick={() => setNotice("A contribution supports the project, never the feed rank.")}>♡ Support</button>
@@ -870,12 +891,13 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           </div>
           <fieldset className="profile-fieldset"><legend>Colour scheme</legend><div className="theme-options">{(["scholarium-dark", "scholarium-light", "midnight-code", "paper-library"] as ColorScheme[]).map((scheme) => <button className={colorScheme === scheme ? "theme-choice selected" : "theme-choice"} type="button" key={scheme} onClick={() => setColorScheme(scheme)}>{scheme.replaceAll("-", " ")}</button>)}</div></fieldset>
           <label>Accent colour<input type="color" value={accentColor} onChange={(event) => setAccentColor(event.target.value)} /></label>
-          <label className="toggle-label"><input type="checkbox" checked={badgeVisibility} onChange={(event) => setBadgeVisibility(event.target.checked)} /> Make my ecosystem-maturity badge visible when earned</label>
-          <div className="badge-row">{badgeVisibility && <span>Recognition is contribution-based — never purchased</span>}</div>
+           <label className="toggle-label"><input type="checkbox" checked={badgeVisibility} onChange={(event) => setBadgeVisibility(event.target.checked)} /> Make my ecosystem-maturity badge visible when earned</label>
+           <div className="badge-row">{badgeVisibility && <span>Recognition is contribution-based — never purchased</span>}</div>
+           <label className="toggle-label"><input type="checkbox" checked={publicProfileVisible} onChange={(event) => setPublicProfileVisible(event.target.checked)} /> Make my profile, chosen picture/banner, and public work viewable on Scholarium</label>
           <label className="toggle-label"><input type="checkbox" checked={localInsightsEnabled} onChange={(event) => updateLocalInsights(event.target.checked)} /> Enable local-only activity insights on this device</label>
           <div className="local-insights-card"><strong>Private activity snapshot</strong>{localInsightsEnabled ? <span>{localInsightCounts.formalizationGuides} guide{localInsightCounts.formalizationGuides === 1 ? "" : "s"} created · {localInsightCounts.publicationDrafts} publication draft{localInsightCounts.publicationDrafts === 1 ? "" : "s"} started. Kept only in this browser.</span> : <span>Off by default. No activity snapshot is collected or sent anywhere.</span>}</div>
           <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}</button>)}</div></div>
-          <div className="composer-proof"><span>◌</span><p>Profile images upload only after you choose a file and remain private to your account until a future public-profile visibility control is approved. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
+          <div className="composer-proof"><span>◌</span><p>Profile images upload only after you choose a file. They remain private unless you enable public profile visibility above; a public profile exposes only your chosen visuals and already-public work. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
           <div className="composer-actions"><a className="quiet-button auth-link" href="/api/v1/account/export">Export my data</a><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" disabled={accountSaving} onClick={saveProfilePreferences}>{accountSaving ? "Saving…" : "Save preferences"}</button></div></>}</>}
         </section>
       </div>}

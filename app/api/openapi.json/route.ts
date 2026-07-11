@@ -17,7 +17,9 @@ const contract = {
     "/api/v1/media-links": { get: { summary: "Read public external media links for a publication" }, post: { summary: "Link an author-owned YouTube or TikTok URL without copying the video" } },
     "/api/v1/webhooks/youtube": { get: { summary: "Verify a configured YouTube PubSubHubbub callback" }, post: { summary: "Record an HMAC-authenticated YouTube Atom update for a linked channel" } },
     "/api/v1/onboarding": { post: { summary: "Create a role-aware account" } },
-    "/api/v1/profile-media": { get: { summary: "Read private profile media" }, post: { summary: "Store a validated private avatar or profile banner" } },
+    "/api/v1/profile-media": { get: { summary: "Read private media or an owner-enabled public avatar/banner" }, post: { summary: "Store a validated private avatar or profile banner" } },
+    "/api/v1/profile-preferences": { get: { summary: "Read private profile appearance and visibility preferences" }, put: { summary: "Update profile appearance and explicit public-profile visibility" } },
+    "/api/v1/public-profiles/{publicId}": { get: { summary: "Read an owner-enabled public profile and already-public work" } },
     "/api/v1/publications": {
       get: { summary: "List public publications" },
       post: { summary: "Create a versioned publication and provenance receipt" },
