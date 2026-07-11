@@ -9,3 +9,4 @@ This repository uses the SecuredMe Education documentation shell with dark/light
 ## Scholarium architecture
 
 - [Explainable live-feed ranking](FEED-RANKING-ARCHITECTURE.md)
+- [External video and callback boundary](VIDEO-INTEGRATION-BOUNDARY.md)

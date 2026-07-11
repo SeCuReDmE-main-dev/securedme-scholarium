@@ -61,7 +61,7 @@ test("uses real public feed modes and stores discovery weights for the signed-in
   assert.match(feedModel, /Global likes and/);
   assert.match(feedModel, /feedScorecard/);
   assert.match(feedModel, /author for payment, identity, popularity/);
-  assert.match(publications, /plithogenic-explainable-v2/);
+  assert.match(publications, /plithogenic-explainable-v3/);
   assert.match(publications, /public eligibility is resolved before ranking/);
 });
 
@@ -243,6 +243,31 @@ test("keeps provider video callbacks minimal, authenticated, and fail-closed", a
   assert.match(webhook, /onConflictDoNothing/);
   assert.match(parser, /SHA-1/);
   assert.match(schema, /media_webhook_events/);
+});
+
+test("documents a private owner-only trace for verified YouTube callback deliveries", async () => {
+  const trace = await readFile(new URL("../app/api/media-webhook-events/route.ts", import.meta.url), "utf8");
+  const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  assert.match(trace, /getPlatformIdentity/);
+  assert.match(trace, /eq\(mediaWebhookEvents\.userId, user\.id\)/);
+  assert.match(trace, /The raw provider payload is never retained/);
+  assert.match(trace, /private, no-store/);
+  assert.match(openapi, /media-webhook-events/);
+  assert.match(client, /YouTube delivery trace/);
+  assert.match(client, /A prepared connection is not a linked channel or an active webhook/);
+});
+
+test("keeps the v3 discovery model explicit about what it adopts and rejects", async () => {
+  const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  assert.match(publications, /eligibility before ranking and format diversity/);
+  assert.match(publications, /engagement or viewing surveillance/);
+  assert.match(publications, /a single opaque feed/);
+  assert.match(client, /YouTube pattern/);
+  assert.match(client, /Meta pattern/);
+  assert.match(client, /Netflix pattern/);
+  assert.match(client, /never hidden watch time/);
 });
 
 test("offers an explainable public research search without paid or behavioural ranking", async () => {

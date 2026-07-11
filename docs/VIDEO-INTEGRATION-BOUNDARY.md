@@ -13,6 +13,8 @@ Public feed responses include only the provider name and canonical URL for a pub
 3. The callback extracts only the channel ID and video ID, hashes the received Atom payload, and stores the minimal delivery trace. It never archives the source video or raw feed.
 4. The channel must already be recorded as a `youtube_channel` external identity owned by a Scholarium account. Unknown channel notifications are rejected.
 
+The linked account can inspect its own last 20 minimal deliveries through `/api/v1/media-webhook-events?provider=youtube`. Each record contains only the callback time, provider event kind, channel ID, video ID, and recorded status. It does not return the raw Atom payload, a provider token, or another account’s trace.
+
 This reflects YouTube's documented channel-feed callback model: notifications cover uploads and title/description updates, with the Atom entry carrying video and channel IDs. [YouTube push notifications](https://developers.google.com/youtube/v3/guides/push_notifications)
 
 ## OAuth and publishing boundary

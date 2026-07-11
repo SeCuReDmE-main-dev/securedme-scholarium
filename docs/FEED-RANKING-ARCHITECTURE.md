@@ -4,7 +4,7 @@
 
 Scholarium uses a bounded, explainable plithogenic discovery score for public educational work. It learns from product principles published by YouTube, Meta, and Netflix; it does **not** copy their proprietary models, collect passive watch-time, or optimize for addiction.
 
-The public API identifies the implementation as `plithogenic-explainable-v2` and returns reasons and three score lanes for each discovery item.
+The public API identifies the implementation as `plithogenic-explainable-v3` and returns reasons, three score lanes, and the visible design principles used for each discovery item.
 
 ## Three lanes, then a guard
 
@@ -38,6 +38,16 @@ Netflix describes distinct recommendation surfaces rather than one universal mod
 - A Following mode uses only authors and hashtags explicitly selected by the signed-in account.
 - Favourites, reactions, and “less like this” are account-bound private signals. They neither change public reach nor become a social popularity score.
 - YouTube and TikTok links are external, author-owned URLs. Scholarium stores a canonical link rather than copying the video. The YouTube callback remains fail-closed until its verification secret is configured; see [VIDEO-INTEGRATION-BOUNDARY.md](VIDEO-INTEGRATION-BOUNDARY.md).
+
+## What is adapted — and what is refused
+
+| Publicly described pattern | Scholarium adaptation | Deliberately refused |
+| --- | --- | --- |
+| YouTube’s satisfaction-oriented signals | A person may privately favorite, react to, or reduce similar work. | Hidden watch time, inferred attention, global popularity, and a proprietary satisfaction model. |
+| Meta’s retrieval, eligibility, ranking, and diversity stages | Public eligibility and safety are resolved before an explainable three-lane score; formats are diversified after eligibility. | Social-graph prediction, ad optimization, creator popularity, and opaque neural ranking. |
+| Netflix’s distinct recommendation surfaces | Discovery, Following, Verified, and Chronological modes remain separate and a person can choose chronological order at any time. | A universal, uninspectable feed driven by broad behavioral history. |
+
+These are product-pattern comparisons, not a claim that Scholarium reproduces any private algorithm. The plithogenic vector expresses relevance and evidence context in the current feed, not a verdict on whether an idea is scientifically true.
 
 ## Operational guardrails
 

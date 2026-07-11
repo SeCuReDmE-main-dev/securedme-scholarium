@@ -144,12 +144,17 @@ export async function GET(request: Request) {
       ranking: {
         excludes: ["subscription tier", "contribution amount", "paid promotion"],
         mode,
-        version: "plithogenic-explainable-v2",
+        version: "plithogenic-explainable-v3",
         uses: mode === "chronological" ? ["publication time"] : mode === "verified" ? ["public verification status", "publication time"] : mode === "following" ? ["authors and hashtags explicitly followed by this account", "publication time"] : ["explicit satisfaction signals", "hashtag and text relevance", "research provenance context", "freshness", "format diversity"],
         lanes: mode === "discovery" ? [
           { name: "personal relevance", inputs: ["search text", "followed hashtags"], excludes: ["global popularity", "off-platform tracking"] },
           { name: "explicit satisfaction", inputs: ["your favorites", "your reactions"], excludes: ["passive dwell tracking", "other users' reactions"] },
           { name: "research context", inputs: ["publication provenance state", "structured hashtags"], excludes: ["claiming scientific truth", "automated viewpoint judging"] },
+        ] : [],
+        inspiration: mode === "discovery" ? [
+          { source: "YouTube", adapted: "your explicit satisfaction choices, never hidden watch-time", rejected: "engagement or viewing surveillance" },
+          { source: "Meta", adapted: "eligibility before ranking and format diversity", rejected: "social-graph prediction and global engagement targeting" },
+          { source: "Netflix", adapted: "separate discovery, following, verified, and chronological surfaces", rejected: "a single opaque feed" },
         ] : [],
         guardrails: ["public eligibility is resolved before ranking", "quarantined and removed work never enters discovery", "unverified work is labelled as such rather than declared false", "paid promotion is excluded"],
         doesNotDetermine: ["scientific truth", "a moderation decision", "a user's worth", "visibility purchased with money"],
