@@ -3,7 +3,7 @@ export type ProvenanceReceipt = {
   contentHash: string;
   issuedAt: string;
   receiptId: string;
-  version: 1;
+  version: number;
 };
 
 function toHex(buffer: ArrayBuffer) {
@@ -16,6 +16,7 @@ export async function createProvenanceReceipt(input: {
   title: string;
   abstract: string;
   type: string;
+  version: number;
 }): Promise<ProvenanceReceipt> {
   const canonical = JSON.stringify({
     abstract: input.abstract,
@@ -23,6 +24,7 @@ export async function createProvenanceReceipt(input: {
     publicationId: input.publicationId,
     title: input.title,
     type: input.type,
+    version: input.version,
   });
   const contentHash = toHex(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(canonical)));
 
@@ -31,6 +33,6 @@ export async function createProvenanceReceipt(input: {
     contentHash,
     issuedAt: new Date().toISOString(),
     receiptId: crypto.randomUUID(),
-    version: 1,
+    version: input.version,
   };
 }
