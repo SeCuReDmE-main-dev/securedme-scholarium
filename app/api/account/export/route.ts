@@ -2,6 +2,7 @@ import { eq, inArray } from "drizzle-orm";
 import { getDb } from "../../../../db";
 import {
   artifacts,
+  authorIdentifiers,
   collectionItems,
   collections,
   externalIdentities,
@@ -36,12 +37,13 @@ export async function GET() {
 
     const ownPublications = await db.select().from(publications).where(eq(publications.authorId, account.id));
     const publicationIds = ownPublications.map((publication) => publication.id);
-    const [roles, preferences, ranking, followedTopics, identities, connections, comments, reactions, boundaries, versions, files, publicationTopicRows, savedCollections, sourceLinks] = await Promise.all([
+    const [roles, preferences, ranking, followedTopics, identities, authorIds, connections, comments, reactions, boundaries, versions, files, publicationTopicRows, savedCollections, sourceLinks] = await Promise.all([
       db.select().from(roleAssignments).where(eq(roleAssignments.userId, account.id)),
       db.select().from(profilePreferences).where(eq(profilePreferences.userId, account.id)),
       db.select().from(rankingPreferences).where(eq(rankingPreferences.userId, account.id)),
       db.select({ label: topics.label, slug: topics.slug }).from(topicFollows).innerJoin(topics, eq(topicFollows.topicId, topics.id)).where(eq(topicFollows.userId, account.id)),
       db.select({ createdAt: externalIdentities.createdAt, displayName: externalIdentities.displayName, profileUrl: externalIdentities.profileUrl, provider: externalIdentities.provider, verifiedAt: externalIdentities.verifiedAt }).from(externalIdentities).where(eq(externalIdentities.userId, account.id)),
+      db.select({ canonicalUrl: authorIdentifiers.canonicalUrl, identifier: authorIdentifiers.identifier, scheme: authorIdentifiers.scheme, status: authorIdentifiers.status, updatedAt: authorIdentifiers.updatedAt }).from(authorIdentifiers).where(eq(authorIdentifiers.userId, account.id)),
       db.select({ expiresAt: integrationConnections.expiresAt, provider: integrationConnections.provider, scopes: integrationConnections.scopes, status: integrationConnections.status, updatedAt: integrationConnections.updatedAt }).from(integrationConnections).where(eq(integrationConnections.userId, account.id)),
       db.select().from(publicationComments).where(eq(publicationComments.authorId, account.id)),
       db.select().from(publicationReactions).where(eq(publicationReactions.userId, account.id)),
@@ -65,6 +67,7 @@ export async function GET() {
       rankingPreference: ranking[0] ?? null,
       followedTopics,
       externalIdentities: identities,
+      authorIdentifiers: authorIds,
       integrations: connections,
       publications: ownPublications,
       publicationTopics: publicationTopicRows,

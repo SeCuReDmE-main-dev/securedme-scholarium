@@ -114,6 +114,23 @@ test("keeps public profile visuals and public work behind explicit owner visibil
   assert.match(page, /does not reveal provider identities, email, private settings, or private media/);
 });
 
+test("keeps a manual ORCID claim private until an authenticated provider connection exists", async () => {
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const identifiers = await readFile(new URL("../app/api/author-identifiers/route.ts", import.meta.url), "utf8");
+  const guidance = await readFile(new URL("../app/api/orcid-guidance/route.ts", import.meta.url), "utf8");
+  const orcid = await readFile(new URL("../lib/orcid.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  assert.match(client, /ORCID iD \(optional\)/);
+  assert.match(client, /No DOI, ISBN, or ORCID yet\?/);
+  assert.match(client, /Create one free/);
+  assert.match(identifiers, /self-claimed ORCID iD/);
+  assert.match(identifiers, /private until an authenticated ORCID OAuth connection/);
+  assert.match(guidance, /https:\/\/orcid\.org\/register/);
+  assert.match(orcid, /MOD 11-2/);
+  assert.match(orcid, /\^\\d\{15\}\[\\dX\]\$/);
+  assert.match(schema, /author_identifiers/);
+});
+
 test("keeps QuaNthoR educational and non-blocking", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const contract = await readFile(new URL("../lib/quanthor-formalization.ts", import.meta.url), "utf8");

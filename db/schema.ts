@@ -67,6 +67,21 @@ export const externalIdentities = sqliteTable("external_identities", {
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 }, (table) => [index("external_identities_user_idx").on(table.userId), uniqueIndex("external_identities_provider_subject_idx").on(table.provider, table.externalId)]);
 
+/** A claimed identifier is private until its provider-authenticated workflow exists. */
+export const authorIdentifiers = sqliteTable("author_identifiers", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  scheme: text("scheme").notNull(),
+  identifier: text("identifier").notNull(),
+  canonicalUrl: text("canonical_url").notNull(),
+  status: text("status").notNull().default("claimed"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("author_identifiers_user_idx").on(table.userId),
+  uniqueIndex("author_identifiers_user_scheme_idx").on(table.userId, table.scheme),
+]);
+
 export const integrationConnections = sqliteTable("integration_connections", {
   id: text("id").primaryKey(),
   userId: text("user_id").notNull().references(() => users.id),

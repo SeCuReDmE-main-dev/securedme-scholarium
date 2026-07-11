@@ -8,6 +8,8 @@ const contract = {
   paths: {
     "/api/v1/account": { get: { summary: "Read the signed-in Scholarium account" } },
     "/api/v1/account/export": { get: { summary: "Download a private portable export of the signed-in account" } },
+    "/api/v1/author-identifiers": { get: { summary: "Read private author identifiers" }, put: { summary: "Save a checksum-validated self-claimed ORCID iD" }, delete: { summary: "Remove a private ORCID claim" } },
+    "/api/v1/orcid-guidance": { get: { summary: "Read free ORCID registration and authentication guidance" } },
     "/api/v1/collections": { get: { summary: "List private personal reading collections" }, post: { summary: "Create a private personal collection" }, delete: { summary: "Delete an owner-owned private collection" } },
     "/api/v1/collection-items": { get: { summary: "List saved public work inside one owner-owned collection" }, put: { summary: "Save eligible public work to a private reading list or collection" }, delete: { summary: "Remove one saved work item" } },
     "/api/v1/health": { get: { summary: "Read service health" } },
