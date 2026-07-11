@@ -3,7 +3,7 @@
 import { CSSProperties, FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { publicationTypeForFormalization, publicationTypeOptions } from "../lib/publication-types";
 
-type View = "signal" | "library" | "studio" | "formalize";
+type View = "signal" | "library" | "studio" | "formalize" | "saved";
 type FeedMode = "chronological" | "discovery" | "following" | "verified";
 type ColorScheme = "scholarium-dark" | "scholarium-light" | "midnight-code" | "paper-library";
 type Publication = {
@@ -22,8 +22,8 @@ type Publication = {
   comments: number;
   kind: "paper" | "video" | "project";
   classification?: string;
-  profileVisible?: boolean;
   scorecard?: { explicitSatisfaction: number; personalRelevance: number; researchContext: number } | null;
+  externalMedia?: Array<{ provider: "tiktok" | "youtube"; url: string }>;
   favorite?: boolean;
   followingAuthor?: boolean;
   profileVisible?: boolean;
@@ -41,6 +41,8 @@ type FormalizationPreview = {
   disclaimer: string;
 };
 type LocalInsightCounts = { formalizationGuides: number; publicationDrafts: number };
+type SavedCollection = { description: string | null; id: string; itemCount: number; kind: string; title: string };
+type SavedItem = { abstract: string; createdAt: string; id: string; publicationId: string; status: string; title: string; type: string };
 const profileToolOptions = [
   { id: "quanthor", label: "QuaNthoR" },
   { id: "synthia", label: "Synthia" },
@@ -114,6 +116,7 @@ type ApiPublication = {
   externalMedia?: Array<{ provider: "tiktok" | "youtube"; url: string }>;
   favorite?: boolean;
   followingAuthor?: boolean;
+  profileVisible?: boolean;
   feedSignal?: { classification: string; reasons: string[]; scorecard?: { explicitSatisfaction: number; personalRelevance: number; researchContext: number } | null };
   id: string;
   reactions?: number;
@@ -165,6 +168,7 @@ const navItems: Array<{ id: View; label: string; icon: string }> = [
   { id: "library", label: "Library", icon: "▤" },
   { id: "studio", label: "Studio", icon: "◉" },
   { id: "formalize", label: "Formalize", icon: "◇" },
+  { id: "saved", label: "Saved", icon: "▱" },
 ];
 
 export function ScholariumClient({ session }: { session: { displayName: string | null; provider: "chatgpt" | "google" | "github" | "paypal" | null; signInPath: string; googleSignInPath: string; githubSignInPath: string; paypalSignInPath: string; signOutPath: string } }) {
@@ -175,6 +179,12 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [libraryResults, setLibraryResults] = useState<LibrarySearchResult[]>([]);
   const [librarySearchLoading, setLibrarySearchLoading] = useState(false);
   const [librarySearchError, setLibrarySearchError] = useState<string | null>(null);
+  const [savedCollections, setSavedCollections] = useState<SavedCollection[]>([]);
+  const [savedItems, setSavedItems] = useState<SavedItem[]>([]);
+  const [savedLoading, setSavedLoading] = useState(false);
+  const [savedCollectionTitle, setSavedCollectionTitle] = useState("");
+  const [savedCollectionSaving, setSavedCollectionSaving] = useState(false);
+  const [selectedSavedCollectionId, setSelectedSavedCollectionId] = useState<string | null>(null);
   const [publications, setPublications] = useState(initialPublications);
   const [feedMode, setFeedMode] = useState<FeedMode>("discovery");
   const [serverFeed, setServerFeed] = useState(false);
@@ -369,6 +379,21 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     }, 220);
     return () => { active = false; window.clearTimeout(timer); };
   }, [libraryType, libraryVerified, query, view]);
+
+  useEffect(() => {
+    if (view !== "saved" || !selectedSavedCollectionId) return;
+    let active = true;
+    fetch(`/api/v1/collection-items?collectionId=${encodeURIComponent(selectedSavedCollectionId)}`)
+      .then(async (response) => ({ ok: response.ok, payload: await response.json() as { error?: string; items?: SavedItem[] } }))
+      .then(({ ok, payload }) => {
+        if (!active) return;
+        if (!ok) { setNotice(payload.error ?? "Saved work could not be loaded."); setSavedItems([]); return; }
+        setSavedItems(payload.items ?? []);
+      })
+      .catch(() => { if (active) setNotice("Saved work could not be loaded."); })
+      .finally(() => { if (active) setSavedLoading(false); });
+    return () => { active = false; };
+  }, [selectedSavedCollectionId, view]);
 
   useEffect(() => {
     if (!session.displayName || !accountReady) return;
@@ -654,6 +679,61 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     } catch (error) { setNotice(error instanceof Error ? error.message : "Author follow preference could not be saved."); }
   };
 
+  const openSaved = async () => {
+    if (!session.displayName || !accountReady) { setProfileOpen(true); setNotice("Create a Scholarium profile before using private saved collections."); return; }
+    setView("saved");
+    setSavedLoading(true);
+    try {
+      const response = await fetch("/api/v1/collections");
+      const payload = await response.json() as { collections?: SavedCollection[]; error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Saved collections could not be loaded.");
+      const available = payload.collections ?? [];
+      setSavedCollections(available);
+      setSelectedSavedCollectionId((current) => available.some((collection) => collection.id === current) ? current : available[0]?.id ?? null);
+      if (!available.length) setSavedItems([]);
+    } catch (error) { setNotice(error instanceof Error ? error.message : "Saved collections could not be loaded."); }
+    finally { setSavedLoading(false); }
+  };
+
+  const saveToReadingList = async (publication: Publication) => {
+    if (publication.isPreview) { setNotice("Preview examples cannot be saved to a live reading list."); return; }
+    if (!requireCommunityAccount()) return;
+    try {
+      const response = await fetch("/api/v1/collection-items", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ publicationId: publication.id }) });
+      const payload = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "This work could not be saved.");
+      setNotice("Saved to your private Reading list. It does not affect public reach or your discovery ranking.");
+    } catch (error) { setNotice(error instanceof Error ? error.message : "This work could not be saved."); }
+  };
+
+  const createSavedCollection = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!savedCollectionTitle.trim()) return;
+    setSavedCollectionSaving(true);
+    try {
+      const response = await fetch("/api/v1/collections", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ title: savedCollectionTitle.trim() }) });
+      const payload = await response.json() as { collection?: SavedCollection; error?: string };
+      if (!response.ok || !payload.collection) throw new Error(payload.error ?? "Collection could not be created.");
+      setSavedCollections((current) => [...current, payload.collection!]);
+      setSavedLoading(true);
+      setSelectedSavedCollectionId(payload.collection.id);
+      setSavedCollectionTitle("");
+      setNotice(`Created private collection: ${payload.collection.title}.`);
+    } catch (error) { setNotice(error instanceof Error ? error.message : "Collection could not be created."); }
+    finally { setSavedCollectionSaving(false); }
+  };
+
+  const removeSavedItem = async (item: SavedItem) => {
+    if (!selectedSavedCollectionId) return;
+    try {
+      const response = await fetch(`/api/v1/collection-items?collectionId=${encodeURIComponent(selectedSavedCollectionId)}&publicationId=${encodeURIComponent(item.publicationId)}`, { method: "DELETE" });
+      const payload = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Saved work could not be removed.");
+      setSavedItems((current) => current.filter((saved) => saved.publicationId !== item.publicationId));
+      setSavedCollections((current) => current.map((collection) => collection.id === selectedSavedCollectionId ? { ...collection, itemCount: Math.max(0, collection.itemCount - 1) } : collection));
+    } catch (error) { setNotice(error instanceof Error ? error.message : "Saved work could not be removed."); }
+  };
+
   const buildFormalization = async () => {
     setFormalizationLoading(true);
     try {
@@ -687,7 +767,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
             <button
               className={view === item.id ? "nav-item active" : "nav-item"}
               key={item.id}
-              onClick={() => setView(item.id)}
+              onClick={() => item.id === "saved" ? void openSaved() : setView(item.id)}
               type="button"
             >
               <span aria-hidden="true">{item.icon}</span>
@@ -696,9 +776,6 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           ))}
           <button className="nav-item" type="button" onClick={() => setNotice("Your learning circles will appear here.")}>
             <span aria-hidden="true">◌</span> Circles
-          </button>
-          <button className="nav-item" type="button" onClick={() => setNotice("Your saved reading list is empty.")}>
-            <span aria-hidden="true">▱</span> Saved
           </button>
         </nav>
 
@@ -718,7 +795,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         <header className="topbar">
           <div>
             <p className="eyebrow">OPEN SCIENCE / OPEN EDUCATION</p>
-            <h1>{view === "signal" ? "Today’s signal" : view === "library" ? "Your knowledge library" : view === "studio" ? "Creator studio" : "Formalize with QuaNthoR"}</h1>
+            <h1>{view === "signal" ? "Today’s signal" : view === "library" ? "Your knowledge library" : view === "studio" ? "Creator studio" : view === "saved" ? "Your saved library" : "Formalize with QuaNthoR"}</h1>
           </div>
           <button className="publish-button" type="button" onClick={() => setComposerOpen(true)}>Publish work <span>+</span></button>
         </header>
@@ -736,7 +813,14 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <button className={feedMode === "chronological" ? "feed-tab active" : "feed-tab"} type="button" onClick={() => setFeedMode("chronological")}>Chronological</button>
         </div>}
 
-        {view === "formalize" ? (
+        {view === "saved" ? (
+          <section className="saved-library" aria-label="Private saved collections">
+            <div className="library-search-heading"><div><p className="eyebrow">PRIVATE READING SPACE</p><h2>Keep work without changing its reach.</h2><p>Your saved collections are private, portable in your data export, and never used as a public popularity signal.</p></div></div>
+            <form className="saved-collection-form" onSubmit={createSavedCollection}><label>New private collection<input maxLength={80} onChange={(event) => setSavedCollectionTitle(event.target.value)} placeholder="e.g. Methods to read" value={savedCollectionTitle} /></label><button className="quiet-button" disabled={savedCollectionSaving} type="submit">{savedCollectionSaving ? "Creating…" : "Create collection"}</button></form>
+            {savedCollections.length > 0 && <div className="saved-collection-tabs" role="tablist" aria-label="Saved collections">{savedCollections.map((collection) => <button className={collection.id === selectedSavedCollectionId ? "active" : ""} key={collection.id} onClick={() => { setSavedLoading(true); setSelectedSavedCollectionId(collection.id); }} role="tab" type="button">{collection.title}<span>{collection.itemCount}</span></button>)}</div>}
+            {savedLoading ? <div className="empty-state"><h2>Loading saved work…</h2></div> : !savedCollections.length ? <div className="empty-state"><h2>Your reading space is ready.</h2><p>Use Save on a public publication to create your private Reading list, or create a named collection above.</p></div> : savedItems.length === 0 ? <div className="empty-state"><h2>No available work in this collection.</h2><p>Saved work stays here while it remains publicly available; add more from the Signal feed.</p></div> : <div className="saved-item-list">{savedItems.map((item) => <article key={item.publicationId}><div><span>{publicationLabel(item.type)}</span><span className={item.status === "verified" ? "status verified" : "status processing"}>{item.status === "verified" ? "✓ VERIFIED" : "◌ PROCESSING"}</span></div><h2>{item.title}</h2><p>{item.abstract}</p><footer><time dateTime={item.createdAt}>Saved {new Date(item.createdAt).toLocaleDateString()}</time><button type="button" onClick={() => removeSavedItem(item)}>Remove</button></footer></article>)}</div>}
+          </section>
+        ) : view === "formalize" ? (
           <section className="formalization-panel" aria-label="QuaNthoR formalization coach">
             <div className="formalization-hero">
               <p className="eyebrow">QUANTHOR / COACH MODE</p>
@@ -810,6 +894,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
                   <button type="button" onClick={() => reactToPublication(publication)}>✦ {publication.reactions}</button>
                   <button type="button" onClick={() => loadDiscussion(publication)}>◌ {publication.comments}</button>
                    <button type="button" onClick={() => setFeedPreference(publication, publication.favorite ? "neutral" : "favorite")}>{publication.favorite ? "★ Favorite" : "☆ Favorite"}</button>
+                   <button type="button" onClick={() => saveToReadingList(publication)}>▱ Save</button>
                    {publication.authorPublicId && publication.profileVisible && !publication.isPreview && <a className="publication-action-link" href={`/profile/${publication.authorPublicId}`}>View profile</a>}
                    {publication.authorPublicId && !publication.isPreview && <button type="button" onClick={() => followAuthor(publication)}>{publication.followingAuthor ? "Following author" : "Follow author"}</button>}
                   <button type="button" onClick={() => setFeedPreference(publication, "less_like")}>Less like this</button>

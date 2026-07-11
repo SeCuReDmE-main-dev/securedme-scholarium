@@ -261,6 +261,32 @@ export const feedFeedback = sqliteTable("feed_feedback", {
   uniqueIndex("feed_feedback_user_publication_idx").on(table.userId, table.publicationId),
 ]);
 
+/** Private personal organization; collection contents never enter feed ranking. */
+export const collections = sqliteTable("collections", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  title: text("title").notNull(),
+  description: text("description"),
+  kind: text("kind").notNull().default("collection"),
+  visibility: text("visibility").notNull().default("private"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("collections_user_idx").on(table.userId),
+  uniqueIndex("collections_user_title_idx").on(table.userId, table.title),
+]);
+
+export const collectionItems = sqliteTable("collection_items", {
+  id: text("id").primaryKey(),
+  collectionId: text("collection_id").notNull().references(() => collections.id),
+  publicationId: text("publication_id").notNull().references(() => publications.id),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("collection_items_collection_idx").on(table.collectionId),
+  index("collection_items_publication_idx").on(table.publicationId),
+  uniqueIndex("collection_items_unique_idx").on(table.collectionId, table.publicationId),
+]);
+
 export const externalMediaLinks = sqliteTable("external_media_links", {
   id: text("id").primaryKey(),
   userId: text("user_id").notNull().references(() => users.id),

@@ -77,6 +77,24 @@ test("uses opaque public profile identifiers for author following", async () => 
   assert.match(schema, /user_follows/);
 });
 
+test("keeps reading lists private and separate from discovery ranking", async () => {
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const collections = await readFile(new URL("../app/api/collections/route.ts", import.meta.url), "utf8");
+  const items = await readFile(new URL("../app/api/collection-items/route.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  const exportRoute = await readFile(new URL("../app/api/account/export/route.ts", import.meta.url), "utf8");
+  assert.match(client, /Your saved collections are private, portable in your data export/);
+  assert.match(client, /saveToReadingList/);
+  assert.match(client, /Show new posts/);
+  assert.match(collections, /cache-control": "private, no-store/);
+  assert.match(items, /Only currently public, eligible work can be saved/);
+  assert.match(items, /notInArray\(publications\.verificationStatus, \["quarantined", "removed"\]\)/);
+  assert.match(schema, /collection_items/);
+  assert.match(schema, /collections_user_title_idx/);
+  assert.match(exportRoute, /savedCollections/);
+  assert.match(exportRoute, /savedCollectionItems/);
+});
+
 test("keeps public profile visuals and public work behind explicit owner visibility", async () => {
   const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const media = await readFile(new URL("../app/api/profile-media/route.ts", import.meta.url), "utf8");
