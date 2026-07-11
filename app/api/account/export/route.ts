@@ -14,6 +14,7 @@ import {
   publications,
   publicationTopics,
   publicationVersions,
+  quantechRenderRequests,
   rankingPreferences,
   repositoryLinks,
   roleAssignments,
@@ -38,7 +39,7 @@ export async function GET() {
 
     const ownPublications = await db.select().from(publications).where(eq(publications.authorId, account.id));
     const publicationIds = ownPublications.map((publication) => publication.id);
-    const [roles, preferences, ranking, followedTopics, identities, authorIds, connections, comments, reactions, boundaries, versions, files, publicationTopicRows, savedCollections, sourceLinks, sourceRelationships] = await Promise.all([
+    const [roles, preferences, ranking, followedTopics, identities, authorIds, connections, comments, reactions, boundaries, versions, files, publicationTopicRows, savedCollections, sourceLinks, sourceRelationships, quantechRequests] = await Promise.all([
       db.select().from(roleAssignments).where(eq(roleAssignments.userId, account.id)),
       db.select().from(profilePreferences).where(eq(profilePreferences.userId, account.id)),
       db.select().from(rankingPreferences).where(eq(rankingPreferences.userId, account.id)),
@@ -55,6 +56,19 @@ export async function GET() {
       db.select().from(collections).where(eq(collections.userId, account.id)),
       publicationIds.length ? db.select({ canonicalUrl: repositoryLinks.canonicalUrl, createdAt: repositoryLinks.createdAt, provider: repositoryLinks.provider, publicationId: repositoryLinks.publicationId, repositoryPath: repositoryLinks.repositoryPath }).from(repositoryLinks).where(inArray(repositoryLinks.publicationId, publicationIds)) : Promise.resolve([]),
       publicationIds.length ? db.select().from(publicationRelationships).where(inArray(publicationRelationships.publicationId, publicationIds)) : Promise.resolve([]),
+      db.select({
+        aspect: quantechRenderRequests.aspect,
+        createdAt: quantechRenderRequests.createdAt,
+        entitlementStatus: quantechRenderRequests.entitlementStatus,
+        handoffUrl: quantechRenderRequests.handoffUrl,
+        id: quantechRenderRequests.id,
+        provider: quantechRenderRequests.provider,
+        qualityPreset: quantechRenderRequests.qualityPreset,
+        reviewMode: quantechRenderRequests.reviewMode,
+        scriptDigest: quantechRenderRequests.scriptDigest,
+        sourceUrlCount: quantechRenderRequests.sourceUrlCount,
+        status: quantechRenderRequests.status,
+      }).from(quantechRenderRequests).where(eq(quantechRenderRequests.userId, account.id)),
     ]);
     const collectionIds = savedCollections.map((collection) => collection.id);
     const savedCollectionItems = collectionIds.length ? await db.select().from(collectionItems).where(inArray(collectionItems.collectionId, collectionIds)) : [];
@@ -82,6 +96,7 @@ export async function GET() {
       savedCollectionItems,
       repositoryLinks: sourceLinks,
       publicationRelationships: sourceRelationships,
+      quantechRenderRequests: quantechRequests,
       excluded: [
         "provider session cookies and OAuth state",
         "integration token vault references and provider tokens",
@@ -89,6 +104,7 @@ export async function GET() {
         "identity-document and passkey verification references",
         "other members' private data",
         "binary R2 profile-media files",
+        "raw QuaNTecH scripts, media, provider credentials, and render internals",
       ],
     };
     const filenameDate = result.exportedAt.slice(0, 10);

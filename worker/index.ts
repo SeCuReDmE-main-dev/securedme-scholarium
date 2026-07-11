@@ -41,7 +41,7 @@ function withSecurityHeaders(request: Request, response: Response): Response {
     "style-src 'self' 'unsafe-inline'",
     "script-src 'self' 'unsafe-inline'",
     "connect-src 'self'",
-    "form-action 'self' https://www.sandbox.paypal.com https://www.paypal.com",
+    "form-action 'self' https://www.paypal.com",
   ].join("; "));
   headers.set("Permissions-Policy", "camera=(), geolocation=(), microphone=(), payment=()");
   headers.set("Referrer-Policy", "strict-origin-when-cross-origin");

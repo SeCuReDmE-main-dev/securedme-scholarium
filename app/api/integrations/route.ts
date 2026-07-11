@@ -6,8 +6,38 @@ import { getPlatformIdentity, signInRequired } from "../../../lib/platform-ident
 
 type ConnectionInput = { provider?: unknown };
 
-export function GET() {
-  return Response.json({ integrations: integrationCatalog });
+export async function GET() {
+  const identity = await getPlatformIdentity();
+  if (!identity) return Response.json({ integrations: integrationCatalog });
+  try {
+    const db = await getDb();
+    const [user] = await db.select({ id: users.id }).from(users).where(eq(users.id, identity.userId)).limit(1);
+    if (!user) return Response.json({ integrations: integrationCatalog, connections: [] }, { headers: { "cache-control": "private, no-store" } });
+
+    const connections = await db
+      .select({
+        expiresAt: integrationConnections.expiresAt,
+        provider: integrationConnections.provider,
+        scopes: integrationConnections.scopes,
+        status: integrationConnections.status,
+        updatedAt: integrationConnections.updatedAt,
+      })
+      .from(integrationConnections)
+      .where(eq(integrationConnections.userId, user.id));
+
+    return Response.json(
+      {
+        connections,
+        integrations: integrationCatalog.map((integration) => ({
+          ...integration,
+          connection: connections.find((connection) => connection.provider === integration.id) ?? null,
+        })),
+      },
+      { headers: { "cache-control": "private, no-store" } },
+    );
+  } catch (error) {
+    return Response.json({ error: error instanceof Error ? error.message : "Unable to load integrations" }, { status: 500 });
+  }
 }
 
 export async function POST(request: Request) {

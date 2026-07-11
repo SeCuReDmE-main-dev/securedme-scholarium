@@ -12,10 +12,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Scholarium — Turn knowledge into traceable evidence",
     description: "Open science, open education, provenance, and no paid ranking.",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Scholarium — Turn knowledge into traceable evidence." }],
+    images: [{ url: "/brand/campaigns/landing-hero-dark.png", width: 1672, height: 941, alt: "Scholarium dark hero banner from the canonical asset vault." }],
   },
-  twitter: { card: "summary_large_image", title: "Scholarium — Turn knowledge into traceable evidence.", images: ["/og.png"] },
-  icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
+  twitter: { card: "summary_large_image", title: "Scholarium — Turn knowledge into traceable evidence.", images: ["/brand/campaigns/landing-hero-dark.png"] },
+  icons: { icon: "/brand/identity/scholarium-logo-system.png", shortcut: "/brand/identity/scholarium-logo-system.png" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

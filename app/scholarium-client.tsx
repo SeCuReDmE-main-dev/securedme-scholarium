@@ -1,6 +1,7 @@
 "use client";
 
 import { CSSProperties, FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { quantechProviderSurface } from "../lib/quantech-render-request";
 import { publicationTypeForFormalization, publicationTypeOptions } from "../lib/publication-types";
 
 type View = "signal" | "library" | "studio" | "formalize" | "migration" | "saved";
@@ -45,7 +46,95 @@ type LocalInsightCounts = { formalizationGuides: number; publicationDrafts: numb
 type SavedCollection = { description: string | null; id: string; itemCount: number; kind: string; title: string };
 type SavedItem = { abstract: string; createdAt: string; id: string; publicationId: string; status: string; title: string; type: string };
 type MediaWebhookEvent = { channelId: string; eventType: string; receivedAt: string; status: string; videoId: string };
-type MediaProductionPlan = { aspect: "landscape" | "portrait" | "square"; deliverables: Array<{ name: string; specification: string }>; disclaimer: string; missing: string[]; qualityChecks: string[]; reviewBoundary: { codeProjectAi: string; videoPrism: string }; quality: { preset: "standard" | "high"; output: { width: number; height: number; videoBitrate: string; audioBitrate: string; videoCodec: string; audioCodec: string; pixelFormat: string; safeMarginPercent: number }; review: { mode: "none" | "local_videoprism"; status: string; provider: string; model: string | null; purpose: string; privacy: string; outputBoundary: string } }; status: "needs_input" | "ready_for_author_review"; title: string; useCase: string };
+type IntegrationConnection = { expiresAt: string | null; provider: string; scopes: string; status: string; updatedAt: string };
+type MediaProductionPlan = {
+  accessPolicy: {
+    provider: string;
+    integration: string;
+    freeCompletedRendersPerRollingWindow: number;
+    rollingWindowHours: number;
+    defaultPreset: "standard" | "high";
+    scholariumAccess: string;
+    bundledEntitlements: string;
+    enforcement: string;
+  };
+  aspect: "landscape" | "portrait" | "square";
+  deliverables: Array<{ name: string; specification: string }>;
+  disclaimer: string;
+  missing: string[];
+  qualityChecks: string[];
+  reviewBoundary: { codeProjectAi: string; videoPrism: string };
+  quality: {
+    preset: "standard" | "high";
+    output: {
+      width: number;
+      height: number;
+      videoBitrate: string;
+      audioBitrate: string;
+      videoCodec: string;
+      audioCodec: string;
+      pixelFormat: string;
+      safeMarginPercent: number;
+    };
+    review: {
+      mode: "none" | "local_videoprism";
+      status: string;
+      provider: string;
+      model: string | null;
+      purpose: string;
+      privacy: string;
+      outputBoundary: string;
+    };
+  };
+  status: "needs_input" | "ready_for_author_review";
+  studio: {
+    inspirationBoundary: string;
+    roles: string[];
+    defaultDurationMinutes: number;
+    pacing: Record<string, number>;
+    audioPolicy: string;
+    authorGate: string;
+  };
+  title: string;
+  useCase: string;
+};
+type QuantechRenderPreparation = {
+  requestId: string;
+  provider: "QuaNTecH-ViD";
+  status: "prepared";
+  handoffUrl: string;
+  entitlement: {
+    status: "scholarium_free_feature" | "bundle_not_connected";
+    allowed: true;
+    reason: string;
+    freeCompletedRendersPerRollingWindow: number;
+    rollingWindowHours: number;
+  };
+  payloadBoundary: {
+    transmits: string[];
+    excludes: string[];
+    scriptDigest: string;
+    sourceUrlCount: number;
+  };
+  reviewBoundary: {
+    localOnly: boolean;
+    note: string;
+  };
+  nextStep: string;
+};
+type QuantechRenderHistoryItem = {
+  aspect: MediaProductionPlan["aspect"];
+  createdAt: string;
+  entitlementStatus: string;
+  handoffUrl: string;
+  id: string;
+  provider: string;
+  qualityPreset: "standard" | "high";
+  reviewMode: "none" | "local_videoprism";
+  scriptDigest: string;
+  sourceUrlCount: number;
+  status: string;
+};
 type AcademiaMigrationItem = { id: string; sourceUrl: string; title: string; abstract: string; topicSlugs: string[]; type: string; selected: boolean; visibility: "private" | "public"; status: string; importedPublicationId?: string | null };
 type AcademiaMigration = { id: string; sourceProfileUrl: string; state: string; items: AcademiaMigrationItem[] };
 const profileToolOptions = [
@@ -56,6 +145,18 @@ const profileToolOptions = [
   { id: "antigravity_gemini", label: "Antigravity / Gemini" },
   { id: "youtube", label: "YouTube" },
   { id: "tiktok", label: "TikTok" },
+] as const;
+const educationToolIds = [
+  "orcid",
+  "github",
+  "zenodo",
+  "google_drive",
+  "youtube",
+  "quanthor",
+  "synthia",
+  "securedme_blog",
+  "codex_openai",
+  "antigravity_gemini",
 ] as const;
 
 const initialPublications: Publication[] = [
@@ -145,6 +246,21 @@ const publicationLabel = (type: string) => type.replaceAll("_", " ").toUpperCase
 
 const initialsFor = (name: string) => name.split(/\s+/).map((word) => word[0]).join("").slice(0, 2).toUpperCase() || "SC";
 
+const providerConnectionLabel = (status: string | undefined) => {
+  switch (status) {
+    case "pending_consent":
+      return "Prepared — consent pending";
+    case "connected":
+      return "Connected";
+    case "expired":
+      return "Expired";
+    case "revoked":
+      return "Revoked";
+    default:
+      return "Not prepared";
+  }
+};
+
 const fromApiPublication = (publication: ApiPublication): Publication => ({
   id: publication.id,
   author: publication.author,
@@ -230,15 +346,20 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [localInsightsEnabled, setLocalInsightsEnabled] = useState(false);
   const [localInsightCounts, setLocalInsightCounts] = useState<LocalInsightCounts>({ formalizationGuides: 0, publicationDrafts: 0 });
   const [connectingTool, setConnectingTool] = useState<string | null>(null);
+  const [integrationConnections, setIntegrationConnections] = useState<Record<string, IntegrationConnection>>({});
   const [mediaWebhookEvents, setMediaWebhookEvents] = useState<MediaWebhookEvent[]>([]);
   const [mediaWebhookTraceLoading, setMediaWebhookTraceLoading] = useState(false);
   const [mediaProductionTitle, setMediaProductionTitle] = useState("");
   const [mediaProductionScript, setMediaProductionScript] = useState("");
   const [mediaProductionAspect, setMediaProductionAspect] = useState<MediaProductionPlan["aspect"]>("landscape");
-  const [mediaProductionQuality, setMediaProductionQuality] = useState<"standard" | "high">("high");
+  const [mediaProductionQuality, setMediaProductionQuality] = useState<"standard" | "high">("standard");
   const [mediaProductionReviewMode, setMediaProductionReviewMode] = useState<"none" | "local_videoprism">("none");
   const [mediaProductionPlan, setMediaProductionPlan] = useState<MediaProductionPlan | null>(null);
   const [mediaProductionLoading, setMediaProductionLoading] = useState(false);
+  const [quantechPreparation, setQuantechPreparation] = useState<QuantechRenderPreparation | null>(null);
+  const [quantechPreparationLoading, setQuantechPreparationLoading] = useState(false);
+  const [quantechRequests, setQuantechRequests] = useState<QuantechRenderHistoryItem[]>([]);
+  const [quantechHistoryLoading, setQuantechHistoryLoading] = useState(false);
   const [paypalCheckoutLoading, setPaypalCheckoutLoading] = useState(false);
   const [academiaProfileUrl, setAcademiaProfileUrl] = useState("");
   const [academiaSourceLines, setAcademiaSourceLines] = useState("");
@@ -338,6 +459,26 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         if (payload.preference.colorScheme) setColorScheme(payload.preference.colorScheme);
         setBadgeVisibility(payload.preference.badgeVisibility !== "private");
         setPublicProfileVisible(payload.preference.profileVisibility === "public");
+      })
+      .catch(() => undefined);
+    return () => { active = false; };
+  }, [accountReady, session.displayName]);
+
+  useEffect(() => {
+    if (!session.displayName || !accountReady) return;
+    let active = true;
+    fetch("/api/v1/integrations")
+      .then(async (response) => ({
+        ok: response.ok,
+        payload: await response.json() as {
+          connections?: IntegrationConnection[];
+          integrations?: Array<{ connection?: IntegrationConnection | null; id: string }>;
+        },
+      }))
+      .then(({ ok, payload }) => {
+        if (!active || !ok) return;
+        const rows = payload.connections ?? payload.integrations?.flatMap((integration) => integration.connection ? [integration.connection] : []) ?? [];
+        setIntegrationConnections(Object.fromEntries(rows.map((connection) => [connection.provider, connection])));
       })
       .catch(() => undefined);
     return () => { active = false; };
@@ -471,6 +612,16 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       const response = await fetch("/api/v1/integrations", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ provider }) });
       const payload = await response.json() as { error?: string; nextStep?: string };
       if (!response.ok) throw new Error(payload.error ?? "The connection could not be prepared.");
+      setIntegrationConnections((current) => ({
+        ...current,
+        [provider]: {
+          expiresAt: null,
+          provider,
+          scopes: "[]",
+          status: "pending_consent",
+          updatedAt: new Date().toISOString(),
+        },
+      }));
       setNotice(`${label}: connection prepared. ${payload.nextStep ?? "Review the requested access before continuing."}`);
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "The connection could not be prepared.");
@@ -478,6 +629,17 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       setConnectingTool(null);
     }
   };
+
+  const quantechConnection = integrationConnections.quantech_vid;
+  const activeEducationToolCount = Math.min(
+    10,
+    Object.values(integrationConnections).filter((connection) =>
+      educationToolIds.includes(connection.provider as (typeof educationToolIds)[number]) &&
+      (connection.status === "pending_consent" || connection.status === "connected"),
+    ).length,
+  );
+  const badgeTheme = colorScheme === "scholarium-light" || colorScheme === "paper-library" ? "light" : "dark";
+  const activeEducationBadgeAsset = activeEducationToolCount > 0 ? `/brand/badges/${badgeTheme}/${activeEducationToolCount}.png` : null;
 
   const loadMediaWebhookTrace = async () => {
     setMediaWebhookTraceLoading(true);
@@ -500,11 +662,63 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       const payload = await response.json() as { error?: string; plan?: MediaProductionPlan };
       if (!response.ok || !payload.plan) throw new Error(payload.error ?? "The production brief could not be prepared.");
       setMediaProductionPlan(payload.plan);
+      setQuantechPreparation(null);
       trackLocalInsight("formalizationGuides");
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "The production brief could not be prepared.");
     } finally {
       setMediaProductionLoading(false);
+    }
+  };
+
+  const prepareQuantechHandoff = async () => {
+    setQuantechPreparationLoading(true);
+    try {
+      const response = await fetch("/api/v1/quantech-render-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          aspect: mediaProductionAspect,
+          qualityPreset: mediaProductionQuality,
+          reviewMode: mediaProductionReviewMode,
+          script: mediaProductionScript,
+          title: mediaProductionTitle,
+        }),
+      });
+      const payload = await response.json() as { error?: string; prepared?: QuantechRenderPreparation };
+      if (!response.ok || !payload.prepared) throw new Error(payload.error ?? "The QuaNTecH provider handoff could not be prepared.");
+      setQuantechPreparation(payload.prepared);
+      setQuantechRequests((current) => [{
+        aspect: mediaProductionAspect,
+        createdAt: new Date().toISOString(),
+        entitlementStatus: payload.prepared.entitlement.status,
+        handoffUrl: payload.prepared.handoffUrl,
+        id: payload.prepared.requestId,
+        provider: payload.prepared.provider,
+        qualityPreset: mediaProductionQuality,
+        reviewMode: mediaProductionReviewMode,
+        scriptDigest: payload.prepared.payloadBoundary.scriptDigest,
+        sourceUrlCount: payload.prepared.payloadBoundary.sourceUrlCount,
+        status: payload.prepared.status,
+      }, ...current.filter((request) => request.id !== payload.prepared?.requestId)].slice(0, 12));
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "The QuaNTecH provider handoff could not be prepared.");
+    } finally {
+      setQuantechPreparationLoading(false);
+    }
+  };
+
+  const loadQuantechHistory = async () => {
+    setQuantechHistoryLoading(true);
+    try {
+      const response = await fetch("/api/v1/quantech-render-request");
+      const payload = await response.json() as { error?: string; requests?: QuantechRenderHistoryItem[] };
+      if (!response.ok) throw new Error(payload.error ?? "The QuaNTecH request history could not be loaded.");
+      setQuantechRequests(payload.requests ?? []);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "The QuaNTecH request history could not be loaded.");
+    } finally {
+      setQuantechHistoryLoading(false);
     }
   };
 
@@ -909,7 +1123,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     <main className={`scholarium-shell theme-${colorScheme}`} style={{ "--blue": accentColor } as CSSProperties}>
       <aside className="left-rail" aria-label="Primary navigation">
         <a className="brand" href="#top" aria-label="Scholarium home">
-          <span className="brand-mark">S</span>
+          <span className="brand-mark"><img src="/brand/icons/scholarium-icon-pack-light.png" alt="" /></span>
           <span>scholarium</span>
         </a>
         <div className="suite-label">SECUREDME EDUCATION</div>
@@ -1030,12 +1244,13 @@ export function ScholariumClient({ session }: { session: { displayName: string |
               <div><p className="eyebrow">AUTHOR-LED PRODUCTION BRIEF</p><h3>Podcast to teaching video</h3><p>Nothing is uploaded, rendered, or shared while you prepare this brief.</p></div>
               <label>Working title<input value={mediaProductionTitle} onChange={(event) => setMediaProductionTitle(event.target.value)} placeholder="What should a learner understand?" /></label>
                <label>Format<select value={mediaProductionAspect} onChange={(event) => setMediaProductionAspect(event.target.value as MediaProductionPlan["aspect"])}><option value="landscape">Landscape lesson · 16:9</option><option value="portrait">Vertical explainer · 9:16</option><option value="square">Square audio-visual capsule · 1:1</option></select></label>
-               <label>Quality<select value={mediaProductionQuality} onChange={(event) => setMediaProductionQuality(event.target.value as "standard" | "high")}><option value="high">High · 1080p where supported</option><option value="standard">Standard · low-bandwidth delivery</option></select></label>
+               <label>Quality<select value={mediaProductionQuality} onChange={(event) => setMediaProductionQuality(event.target.value as "standard" | "high")}><option value="standard">Standard · free 720p default</option><option value="high">High · free 1080p option</option></select></label>
                <label>Optional local review<select value={mediaProductionReviewMode} onChange={(event) => setMediaProductionReviewMode(event.target.value as "none" | "local_videoprism")}><option value="none">Off — no media analysis</option><option value="local_videoprism">VideoPrism — semantic scene review</option></select></label>
               <label>Spoken script and source link<textarea value={mediaProductionScript} onChange={(event) => setMediaProductionScript(event.target.value)} placeholder="Write the spoken explanation in your voice, then add a source or evidence URL." rows={5} /></label>
-              <div className="studio-actions"><button className="quiet-button" type="button" onClick={() => { setMediaProductionPlan(null); setMediaProductionScript(""); setMediaProductionTitle(""); }}>Start over</button><button className="publish-button" disabled={mediaProductionLoading} type="button" onClick={buildMediaProductionPlan}>{mediaProductionLoading ? "Preparing…" : "Create production brief"}</button></div>
+              <div className="media-provider-note"><strong>Provider boundary:</strong> Scholarium prepares the brief and publication context. QuaNTecH-ViD remains a separate rendering service with its own allowance, support, and operational limits. <a href={quantechProviderSurface.officialUrl} rel="noreferrer noopener" target="_blank">Open QuaNTecH-ViD ↗</a> <a href={quantechProviderSurface.marketUrl} rel="noreferrer noopener" target="_blank">Chrome extension ↗</a></div>
+              <div className="studio-actions"><button className="quiet-button" type="button" onClick={() => { setMediaProductionPlan(null); setQuantechPreparation(null); setMediaProductionScript(""); setMediaProductionTitle(""); }}>Start over</button><button className="publish-button" disabled={mediaProductionLoading} type="button" onClick={buildMediaProductionPlan}>{mediaProductionLoading ? "Preparing…" : "Create production brief"}</button></div>
             </div>
-            {mediaProductionPlan && <section className="media-production-result" aria-live="polite"><div><p className="eyebrow">{mediaProductionPlan.status === "ready_for_author_review" ? "READY FOR AUTHOR REVIEW" : "A FEW HELPFUL STARTERS"}</p><h3>{mediaProductionPlan.title || "Your media plan"}</h3><p>{mediaProductionPlan.useCase}</p></div>{mediaProductionPlan.missing.length > 0 && <p className="formalization-missing">Add {mediaProductionPlan.missing.join(", ")}.</p>}<div className="media-deliverables">{mediaProductionPlan.deliverables.map((deliverable) => <article key={deliverable.name}><strong>{deliverable.name}</strong><span>{deliverable.specification}</span></article>)}</div><p className="media-review-boundary"><strong>Master profile:</strong> {mediaProductionPlan.quality.output.width} × {mediaProductionPlan.quality.output.height} · {mediaProductionPlan.quality.output.videoBitrate} video · {mediaProductionPlan.quality.output.audioBitrate} audio · {mediaProductionPlan.quality.output.pixelFormat}</p><ol>{mediaProductionPlan.qualityChecks.map((check) => <li key={check}>{check}</li>)}</ol><p className="media-review-boundary"><strong>Optional local review:</strong> {mediaProductionPlan.reviewBoundary.codeProjectAi} {mediaProductionPlan.reviewBoundary.videoPrism} {mediaProductionPlan.quality.review.status === "not_connected" ? "The VideoPrism adapter is prepared but not connected." : "No semantic review runs for this brief."}</p><p className="media-production-disclaimer">{mediaProductionPlan.disclaimer}</p><button className="quiet-button" type="button" onClick={() => { setPublicationType(mediaProductionAspect === "portrait" ? "short_video" : "video"); setDraftTitle(mediaProductionTitle); setDraftBody(mediaProductionScript); setComposerOpen(true); }}>Use in a publication</button></section>}
+            {mediaProductionPlan && <section className="media-production-result" aria-live="polite"><div><p className="eyebrow">{mediaProductionPlan.status === "ready_for_author_review" ? "READY FOR AUTHOR REVIEW" : "A FEW HELPFUL STARTERS"}</p><h3>{mediaProductionPlan.title || "Your media plan"}</h3><p>{mediaProductionPlan.useCase}</p></div>{mediaProductionPlan.missing.length > 0 && <p className="formalization-missing">Add {mediaProductionPlan.missing.join(", ")}.</p>}<div className="media-deliverables">{mediaProductionPlan.deliverables.map((deliverable) => <article key={deliverable.name}><strong>{deliverable.name}</strong><span>{deliverable.specification}</span></article>)}</div><p className="media-review-boundary"><strong>Master profile:</strong> {mediaProductionPlan.quality.output.width} × {mediaProductionPlan.quality.output.height} · {mediaProductionPlan.quality.output.videoBitrate} video · {mediaProductionPlan.quality.output.audioBitrate} audio · {mediaProductionPlan.quality.output.pixelFormat}</p><div className="media-provider-note"><strong>{mediaProductionPlan.accessPolicy.provider} in Scholarium:</strong> {mediaProductionPlan.accessPolicy.scholariumAccess} {mediaProductionPlan.accessPolicy.bundledEntitlements} {mediaProductionPlan.accessPolicy.enforcement}</div><div className="media-provider-note"><strong>Provider connection status:</strong> {providerConnectionLabel(quantechConnection?.status)}. {quantechConnection ? `Last updated ${new Date(quantechConnection.updatedAt).toLocaleString()}.` : "Prepare the provider connection before you leave Scholarium for rendering."} Provider sessions and entitlements stay with QuaNTecH-ViD.</div><div className="media-provider-note"><strong>Author gate:</strong> {mediaProductionPlan.studio.authorGate} <a href={quantechProviderSurface.officialUrl} rel="noreferrer noopener" target="_blank">Provider site ↗</a> <a href={quantechProviderSurface.marketUrl} rel="noreferrer noopener" target="_blank">Chrome extension ↗</a></div><ol>{mediaProductionPlan.qualityChecks.map((check) => <li key={check}>{check}</li>)}</ol><p className="media-review-boundary"><strong>Optional local review:</strong> {mediaProductionPlan.reviewBoundary.codeProjectAi} {mediaProductionPlan.reviewBoundary.videoPrism} {mediaProductionPlan.quality.review.status === "not_connected" ? "The VideoPrism adapter is prepared but not connected." : "No semantic review runs for this brief."}</p><p className="media-production-disclaimer">{mediaProductionPlan.disclaimer}</p><div className="studio-actions"><button className="quiet-button" type="button" onClick={() => { setPublicationType(mediaProductionAspect === "portrait" ? "short_video" : "video"); setDraftTitle(mediaProductionTitle); setDraftBody(mediaProductionScript); setComposerOpen(true); }}>Use in a publication</button><button className="quiet-button" type="button" disabled={connectingTool === "quantech_vid"} onClick={() => void prepareToolConnection("quantech_vid", "QuaNTecH-ViD")}>{connectingTool === "quantech_vid" ? "Preparing provider…" : "Prepare provider connection"}</button><button className="quiet-button" type="button" disabled={quantechHistoryLoading} onClick={loadQuantechHistory}>{quantechHistoryLoading ? "Loading history…" : "Refresh request history"}</button><button className="publish-button" type="button" disabled={quantechPreparationLoading} onClick={prepareQuantechHandoff}>{quantechPreparationLoading ? "Preparing handoff…" : "Prepare QuaNTecH handoff"}</button></div>{quantechPreparation && <div className="media-provider-note"><strong>Prepared provider handoff:</strong> {quantechPreparation.entitlement.reason} Minimal provider payload only: {quantechPreparation.payloadBoundary.transmits.join(", ")}. Never sent: {quantechPreparation.payloadBoundary.excludes.join(", ")}. Script digest {quantechPreparation.payloadBoundary.scriptDigest.slice(0, 16)}… · {quantechPreparation.payloadBoundary.sourceUrlCount} source link{quantechPreparation.payloadBoundary.sourceUrlCount === 1 ? "" : "s"}. <a href={quantechPreparation.handoffUrl} rel="noreferrer noopener" target="_blank">Open provider ↗</a></div>}<div className="media-provider-note quantech-history"><div><strong>Private QuaNTecH request history</strong><span>Owner-only handoff metadata. No raw script, media, provider token, ranking signal, or badge state is stored here.</span></div>{quantechRequests.length === 0 ? <p>No prepared handoffs loaded yet.</p> : <ul>{quantechRequests.map((request) => <li key={request.id}><span>{request.aspect} · {request.qualityPreset} · {request.status}</span><small>{new Date(request.createdAt).toLocaleString()} · digest {request.scriptDigest.slice(0, 16)}… · {request.sourceUrlCount} source link{request.sourceUrlCount === 1 ? "" : "s"}</small><a href={request.handoffUrl} rel="noreferrer noopener" target="_blank">Open ↗</a></li>)}</ul>}</div></section>}
             <div className="studio-grid">
               <article><span>01</span><h3>Short explainers</h3><p>Video lives apart from the research feed, with captions and sources.</p></article>
               <article><span>02</span><h3>Project Lives</h3><p>Present a method, answer questions, and preserve a replay as a citable artifact.</p></article>
@@ -1163,12 +1378,12 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <fieldset className="profile-fieldset"><legend>Colour scheme</legend><div className="theme-options">{(["scholarium-dark", "scholarium-light", "midnight-code", "paper-library"] as ColorScheme[]).map((scheme) => <button className={colorScheme === scheme ? "theme-choice selected" : "theme-choice"} type="button" key={scheme} onClick={() => setColorScheme(scheme)}>{scheme.replaceAll("-", " ")}</button>)}</div></fieldset>
           <label>Accent colour<input type="color" value={accentColor} onChange={(event) => setAccentColor(event.target.value)} /></label>
            <label className="toggle-label"><input type="checkbox" checked={badgeVisibility} onChange={(event) => setBadgeVisibility(event.target.checked)} /> Make my ecosystem-maturity badge visible when earned</label>
-           <div className="badge-row">{badgeVisibility && <span>Recognition is contribution-based — never purchased</span>}</div>
+           <div className="badge-row">{badgeVisibility && activeEducationBadgeAsset ? <><img className="ecosystem-badge" src={activeEducationBadgeAsset} alt={`Scholarium ecosystem badge for ${activeEducationToolCount} active tools.`} /><span>{activeEducationToolCount} active tool{activeEducationToolCount === 1 ? "" : "s"} · badge morphs with your Education-suite connections</span></> : badgeVisibility ? <span>Recognition is contribution-based — never purchased</span> : null}</div>
            <label className="toggle-label"><input type="checkbox" checked={publicProfileVisible} onChange={(event) => setPublicProfileVisible(event.target.checked)} /> Make my profile, chosen picture/banner, and public work viewable on Scholarium</label>
            <div className="orcid-panel"><strong>ORCID iD (optional)</strong><span>Use a free, persistent researcher identifier. A manually entered iD remains private and is never presented as authenticated.</span><div><input value={orcidInput} onChange={(event) => setOrcidInput(event.target.value)} placeholder="https://orcid.org/0000-0002-1825-0097" /><button className="quiet-button" disabled={orcidSaving} type="button" onClick={saveOrcid}>{orcidSaving ? "Saving…" : orcidInput.trim() ? "Save ORCID claim" : "Remove ORCID"}</button></div><small>{orcidStatus === "claimed" ? "Checksum valid — self-claimed, private until ORCID OAuth authentication." : "No ORCID saved yet."} <a href="https://orcid.org/register" rel="noreferrer noopener" target="_blank">Create one free ↗</a></small></div>
           <label className="toggle-label"><input type="checkbox" checked={localInsightsEnabled} onChange={(event) => updateLocalInsights(event.target.checked)} /> Enable local-only activity insights on this device</label>
           <div className="local-insights-card"><strong>Private activity snapshot</strong>{localInsightsEnabled ? <span>{localInsightCounts.formalizationGuides} guide{localInsightCounts.formalizationGuides === 1 ? "" : "s"} created · {localInsightCounts.publicationDrafts} publication draft{localInsightCounts.publicationDrafts === 1 ? "" : "s"} started. Kept only in this browser.</span> : <span>Off by default. No activity snapshot is collected or sent anywhere.</span>}</div>
-          <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}</button>)}<button className="quiet-button" type="button" onClick={() => { setProfileOpen(false); setView("migration"); }}>Academia.edu migration</button></div></div>
+          <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}{integrationConnections[tool.id] ? ` · ${providerConnectionLabel(integrationConnections[tool.id].status)}` : ""}</button>)}<button className="quiet-button" type="button" onClick={() => { setProfileOpen(false); setView("migration"); }}>Academia.edu migration</button></div></div>
           <div className="webhook-trace-card"><strong>YouTube delivery trace</strong><span>Visible only to you after a channel is linked and the signed callback is configured. Scholarium retains no raw Atom feed or provider token.</span><button className="quiet-button" type="button" disabled={mediaWebhookTraceLoading} onClick={loadMediaWebhookTrace}>{mediaWebhookTraceLoading ? "Loading trace…" : "View callback trace"}</button>{mediaWebhookEvents.length > 0 ? <ul>{mediaWebhookEvents.map((event) => <li key={`${event.videoId}-${event.receivedAt}`}>{event.eventType} · video {event.videoId} · {new Date(event.receivedAt).toLocaleString()} · {event.status}</li>)}</ul> : <small>No recorded callback yet. A prepared connection is not a linked channel or an active webhook.</small>}</div>
           <div className="webhook-trace-card"><strong>Verified contributor</strong><span>A fixed USD 0.99 contribution supports the service. It never affects your reach, ranking, moderation, or essential access. Checkout requires verified identity and passkey safeguards.</span><button className="quiet-button" type="button" disabled={paypalCheckoutLoading} onClick={startPayPalCheckout}>{paypalCheckoutLoading ? "Opening PayPal…" : "Continue with PayPal"}</button><small>Crypto checkout is not connected until a provider account, available assets, fees, regions, and verified webhook are approved. Scholarium never stores wallet private keys.</small></div>
           <div className="composer-proof"><span>◌</span><p>Profile images upload only after you choose a file. They remain private unless you enable public profile visibility above; a public profile exposes only your chosen visuals and already-public work. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
