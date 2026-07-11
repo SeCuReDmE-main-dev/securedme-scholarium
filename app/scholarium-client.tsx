@@ -3,7 +3,7 @@
 import { CSSProperties, FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { publicationTypeForFormalization, publicationTypeOptions } from "../lib/publication-types";
 
-type View = "signal" | "library" | "studio" | "formalize" | "saved";
+type View = "signal" | "library" | "studio" | "formalize" | "migration" | "saved";
 type FeedMode = "chronological" | "discovery" | "following" | "verified";
 type ColorScheme = "scholarium-dark" | "scholarium-light" | "midnight-code" | "paper-library";
 type Publication = {
@@ -46,6 +46,8 @@ type SavedCollection = { description: string | null; id: string; itemCount: numb
 type SavedItem = { abstract: string; createdAt: string; id: string; publicationId: string; status: string; title: string; type: string };
 type MediaWebhookEvent = { channelId: string; eventType: string; receivedAt: string; status: string; videoId: string };
 type MediaProductionPlan = { aspect: "landscape" | "portrait" | "square"; deliverables: Array<{ name: string; specification: string }>; disclaimer: string; missing: string[]; qualityChecks: string[]; reviewBoundary: { codeProjectAi: string; videoPrism: string }; status: "needs_input" | "ready_for_author_review"; title: string; useCase: string };
+type AcademiaMigrationItem = { id: string; sourceUrl: string; title: string; abstract: string; topicSlugs: string[]; type: string; selected: boolean; visibility: "private" | "public"; status: string; importedPublicationId?: string | null };
+type AcademiaMigration = { id: string; sourceProfileUrl: string; state: string; items: AcademiaMigrationItem[] };
 const profileToolOptions = [
   { id: "quanthor", label: "QuaNthoR" },
   { id: "synthia", label: "Synthia" },
@@ -174,6 +176,7 @@ const navItems: Array<{ id: View; label: string; icon: string }> = [
   { id: "studio", label: "Studio", icon: "◉" },
   { id: "formalize", label: "Formalize", icon: "◇" },
   { id: "saved", label: "Saved", icon: "▱" },
+  { id: "migration", label: "Migrate", icon: "⇆" },
 ];
 
 export function ScholariumClient({ session }: { session: { displayName: string | null; provider: "chatgpt" | "google" | "github" | "paypal" | null; signInPath: string; googleSignInPath: string; githubSignInPath: string; paypalSignInPath: string; signOutPath: string } }) {
@@ -234,6 +237,11 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [mediaProductionAspect, setMediaProductionAspect] = useState<MediaProductionPlan["aspect"]>("landscape");
   const [mediaProductionPlan, setMediaProductionPlan] = useState<MediaProductionPlan | null>(null);
   const [mediaProductionLoading, setMediaProductionLoading] = useState(false);
+  const [academiaProfileUrl, setAcademiaProfileUrl] = useState("");
+  const [academiaSourceLines, setAcademiaSourceLines] = useState("");
+  const [academiaOwnershipConfirmed, setAcademiaOwnershipConfirmed] = useState(false);
+  const [academiaMigration, setAcademiaMigration] = useState<AcademiaMigration | null>(null);
+  const [academiaMigrating, setAcademiaMigrating] = useState(false);
   const [accountReady, setAccountReady] = useState<boolean | null>(null);
   const [accountRole, setAccountRole] = useState("professional");
   const [accountAgeBand, setAccountAgeBand] = useState("adult");
@@ -495,6 +503,45 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     } finally {
       setMediaProductionLoading(false);
     }
+  };
+
+  const academiaItemsFromLines = () => academiaSourceLines.split("\n").map((line) => line.trim()).filter(Boolean).map((line) => {
+    const [title = "", abstract = "", sourceUrl = "", topics = ""] = line.split("|").map((part) => part.trim());
+    return { abstract, sourceUrl, title, topicSlugs: topics.split(",").map((topic) => topic.trim()).filter(Boolean), type: "research_article" };
+  });
+
+  const prepareAcademiaMigration = async () => {
+    if (!accountReady) { setProfileOpen(true); setNotice("Create your Scholarium profile before preparing an Academia migration."); return; }
+    setAcademiaMigrating(true);
+    try {
+      const response = await fetch("/api/v1/academia-migrations", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "draft", items: academiaItemsFromLines(), sourceOwnershipConfirmed: academiaOwnershipConfirmed, sourceProfileUrl: academiaProfileUrl }) });
+      const payload = await response.json() as { error?: string; migration?: { id: string } };
+      if (!response.ok || !payload.migration) throw new Error(payload.error ?? "The Academia migration draft could not be prepared.");
+      const drafts = await fetch("/api/v1/academia-migrations");
+      const draftPayload = await drafts.json() as { migrations?: AcademiaMigration[] };
+      const migration = (draftPayload.migrations ?? []).find((entry) => entry.id === payload.migration?.id) ?? null;
+      setAcademiaMigration(migration);
+      setNotice("Migration review created. Every item is private until you choose otherwise during final import.");
+    } catch (error) { setNotice(error instanceof Error ? error.message : "The Academia migration draft could not be prepared."); }
+    finally { setAcademiaMigrating(false); }
+  };
+
+  const updateAcademiaItem = (itemId: string, patch: Partial<Pick<AcademiaMigrationItem, "selected" | "visibility">>) => {
+    setAcademiaMigration((migration) => migration ? { ...migration, items: migration.items.map((item) => item.id === itemId ? { ...item, ...patch } : item) } : migration);
+  };
+
+  const importAcademiaSelection = async () => {
+    if (!academiaMigration) return;
+    setAcademiaMigrating(true);
+    try {
+      const response = await fetch("/api/v1/academia-migrations", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "commit", migrationId: academiaMigration.id, selections: academiaMigration.items.map((item) => ({ itemId: item.id, selected: item.selected && item.status === "pending", visibility: item.visibility })) }) });
+      const payload = await response.json() as { error?: string; imported?: Array<{ title: string; visibility: string }> };
+      if (!response.ok) throw new Error(payload.error ?? "The selected Academia publications could not be imported.");
+      setAcademiaMigration((migration) => migration ? { ...migration, state: "imported", items: migration.items.map((item) => item.selected ? { ...item, status: "imported" } : item) } : migration);
+      void loadPublications();
+      setNotice(`${payload.imported?.length ?? 0} publication(s) imported. Private remains the default; only your selected public items can enter public discovery.`);
+    } catch (error) { setNotice(error instanceof Error ? error.message : "The selected Academia publications could not be imported."); }
+    finally { setAcademiaMigrating(false); }
   };
 
   const uploadProfileMedia = async (kind: "avatar" | "banner", file: File) => {

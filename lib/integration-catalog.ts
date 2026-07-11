@@ -28,6 +28,13 @@ export const integrationCatalog = [
     writesExternalRecord: true,
   },
   {
+    id: "academia",
+    name: "Academia.edu migration",
+    purpose: "Create an owner-confirmed, browser-assisted import draft. Scholarium never receives an Academia password, session cookie, or provider token.",
+    scopes: [],
+    writesExternalRecord: false,
+  },
+  {
     id: "youtube",
     name: "YouTube",
     purpose: "Connect a user-authorized channel for share/export preparation and verified channel-update webhooks; Scholarium stores references, not a copied video library.",
