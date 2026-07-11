@@ -1,6 +1,7 @@
 import { and, eq } from "drizzle-orm";
 import { getDb } from "../../../db";
 import { externalMediaLinks, publications, users } from "../../../db/schema";
+import { accountAudience } from "../../../lib/account-audience";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
 
 type ExternalMedia = { canonicalUrl: string; externalId: string; provider: "tiktok" | "youtube" };
@@ -53,6 +54,10 @@ export async function POST(request: Request) {
     const db = await getDb();
     const [user] = await db.select({ id: users.id }).from(users).where(eq(users.id, identity.userId)).limit(1);
     if (!user) return Response.json({ error: "Create a Scholarium account before linking media" }, { status: 404 });
+    const audience = await accountAudience(db, user.id);
+    if (!audience.capabilities.canLinkExternalMedia) {
+      return Response.json({ error: "A guardian consent or verified school relationship is required before a minor account can link public external media." }, { status: 403 });
+    }
     const [publication] = await db.select({ id: publications.id }).from(publications).where(and(eq(publications.id, input.publicationId), eq(publications.authorId, user.id))).limit(1);
     if (!publication) return Response.json({ error: "Publication was not found or is not owned by this account" }, { status: 404 });
     await db.insert(externalMediaLinks).values({ canonicalUrl: media.canonicalUrl, createdAt: new Date().toISOString(), externalId: media.externalId, id: crypto.randomUUID(), provider: media.provider, publicationId: publication.id, userId: user.id }).onConflictDoUpdate({ target: [externalMediaLinks.provider, externalMediaLinks.externalId], set: { canonicalUrl: media.canonicalUrl, publicationId: publication.id, userId: user.id } });

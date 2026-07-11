@@ -204,8 +204,11 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     if (!stored) return;
     try {
       const parsed = JSON.parse(stored) as { enabled?: boolean; counts?: LocalInsightCounts };
-      setLocalInsightsEnabled(Boolean(parsed.enabled));
-      if (parsed.counts) setLocalInsightCounts(parsed.counts);
+      const timer = window.setTimeout(() => {
+        setLocalInsightsEnabled(Boolean(parsed.enabled));
+        if (parsed.counts) setLocalInsightCounts(parsed.counts);
+      }, 0);
+      return () => window.clearTimeout(timer);
     } catch { window.localStorage.removeItem("scholarium.local-insights.v1"); }
   }, []);
 
@@ -217,12 +220,16 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       google_not_configured: "Google login is being connected. Please use another sign-in option for now.",
       paypal_not_configured: "PayPal login is being connected in sandbox. Please use another sign-in option for now.",
     };
-    setNotice(messages[code] ?? "That sign-in could not be completed. No Scholarium profile changes were made.");
+    const timer = window.setTimeout(() => setNotice(messages[code] ?? "That sign-in could not be completed. No Scholarium profile changes were made."), 0);
     window.history.replaceState({}, "", window.location.pathname);
+    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    if (!session.displayName) { setAccountReady(null); return; }
+    if (!session.displayName) {
+      const timer = window.setTimeout(() => setAccountReady(null), 0);
+      return () => window.clearTimeout(timer);
+    }
     let active = true;
     fetch("/api/v1/account").then(async (response) => ({ ok: response.ok, payload: await response.json() as { account?: unknown } })).then(({ ok, payload }) => {
       if (active) setAccountReady(ok && Boolean(payload.account));

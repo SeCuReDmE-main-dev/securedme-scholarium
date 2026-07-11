@@ -1,6 +1,7 @@
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { getDb } from "../../../db";
 import { feedFeedback, publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, rankingPreferences, topicFollows, topics, users } from "../../../db/schema";
+import { accountAudience } from "../../../lib/account-audience";
 import { createProvenanceReceipt } from "../../../lib/provenance";
 import { classifyPublication, rankPlithogenicFeed } from "../../../lib/plithogenic-feed";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
@@ -33,16 +34,6 @@ function selectedFeedMode(value: string | null): FeedMode {
 
 function boundedQuery(value: string | null) {
   return value?.trim().slice(0, 160).toLowerCase() ?? "";
-}
-
-function discoveryScore(publication: { abstract: string; createdAt: string; status: string; title: string; type: string }, query: string) {
-  const words = query.split(/\s+/).filter(Boolean);
-  const haystack = `${publication.title} ${publication.abstract} ${publication.type}`.toLowerCase();
-  const textRelevance = words.length === 0 ? 0.45 : words.filter((word) => haystack.includes(word)).length / words.length;
-  const ageDays = Math.max(0, (Date.now() - new Date(publication.createdAt).getTime()) / 86_400_000);
-  const freshness = Math.max(0, 1 - ageDays / 30);
-  const provenance = publication.status === "verified" ? 1 : 0.45;
-  return textRelevance * 0.45 + freshness * 0.25 + provenance * 0.3;
 }
 
 export async function GET(request: Request) {
@@ -159,6 +150,8 @@ export async function POST(request: Request) {
     if (!author) {
       return Response.json({ error: "Author account was not found" }, { status: 404 });
     }
+    const audience = await accountAudience(db, author.id);
+    const visibility = audience.capabilities.canPublishPublicly ? "public" : "private";
 
     const publicationId = crypto.randomUUID();
     const receipt = await createProvenanceReceipt({ authorId, publicationId, title, abstract, type, version: 1 });
@@ -174,7 +167,7 @@ export async function POST(request: Request) {
         title,
         type,
         verificationStatus: "processing",
-        visibility: "public",
+        visibility,
       }),
       db.insert(publicationVersions).values({
         contentHash: receipt.contentHash,
@@ -194,7 +187,7 @@ export async function POST(request: Request) {
     }
 
     return Response.json({
-      publication: { abstract, authorId, id: publicationId, status: "processing", title, topicSlugs, type },
+      publication: { abstract, authorId, id: publicationId, status: "processing", title, topicSlugs, type, visibility },
       provenanceReceipt: receipt,
     }, { status: 201 });
   } catch (error) {

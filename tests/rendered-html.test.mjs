@@ -47,7 +47,7 @@ test("uses real public feed modes and stores discovery weights for the signed-in
   assert.match(page, /fetch\(`\/api\/v1\/publications\?\$\{params\.toString\(\)\}`\)/);
   assert.match(page, /fetch\("\/api\/v1\/ranking-preferences"/);
   assert.match(publications, /type FeedMode = "chronological" \| "discovery" \| "following" \| "verified"/);
-  assert.match(publications, /discoveryScore/);
+  assert.match(publications, /rankPlithogenicFeed/);
   assert.match(page, /setInterval\(refresh, 30_000\)/);
   assert.match(page, /feed-feedback/);
   assert.match(page, /Why you see this/);
@@ -190,6 +190,20 @@ test("sends authenticated publications and attached artifacts through the server
   assert.match(page, /External video URL/);
   assert.match(mediaLinks, /YouTube or TikTok/);
   assert.match(mediaLinks, /canonicalUrl/);
+});
+
+test("applies youth safeguards before public discovery or cross-platform media linking", async () => {
+  const policy = await readFile(new URL("../lib/audience-policy.ts", import.meta.url), "utf8");
+  const audience = await readFile(new URL("../lib/account-audience.ts", import.meta.url), "utf8");
+  const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
+  const mediaLinks = await readFile(new URL("../app/api/media-links/route.ts", import.meta.url), "utf8");
+  assert.match(policy, /canLinkExternalMedia: supervised/);
+  assert.match(policy, /canPublishPublicly: supervised/);
+  assert.match(audience, /does not return guardian identities or consent content/);
+  assert.match(publications, /accountAudience\(db, author\.id\)/);
+  assert.match(publications, /canPublishPublicly \? "public" : "private"/);
+  assert.match(mediaLinks, /canLinkExternalMedia/);
+  assert.match(mediaLinks, /guardian consent or verified school relationship/);
 });
 
 test("keeps community interactions account-bound, reportable, and limited in depth", async () => {
