@@ -41,8 +41,8 @@ test("uses real public feed modes and stores discovery weights for the signed-in
   const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
   assert.match(page, /setFeedMode\("verified"\)/);
   assert.match(page, /setFeedMode\("chronological"\)/);
-  assert.match(page, /fetch\(`\/api\/publications\?\$\{params\.toString\(\)\}`\)/);
-  assert.match(page, /fetch\("\/api\/ranking-preferences"/);
+  assert.match(page, /fetch\(`\/api\/v1\/publications\?\$\{params\.toString\(\)\}`\)/);
+  assert.match(page, /fetch\("\/api\/v1\/ranking-preferences"/);
   assert.match(publications, /type FeedMode = "chronological" \| "discovery" \| "following" \| "verified"/);
   assert.match(publications, /discoveryScore/);
 });
@@ -125,7 +125,7 @@ test("keeps artifact and contributor-plan actions bound to the signed-in account
 test("prepares profile tool connections through explicit consent", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const integrations = await readFile(new URL("../app/api/integrations/route.ts", import.meta.url), "utf8");
-  assert.match(page, /fetch\("\/api\/integrations"/);
+  assert.match(page, /fetch\("\/api\/v1\/integrations"/);
   assert.match(page, /Provider sessions and tokens stay with their provider/);
   assert.match(integrations, /pending_consent/);
   assert.match(integrations, /getPlatformIdentity/);
@@ -136,14 +136,14 @@ test("gives a connected person a role-aware Scholarium onboarding path", async (
   const account = await readFile(new URL("../app/api/account/route.ts", import.meta.url), "utf8");
   assert.match(page, /Create my Scholarium profile/);
   assert.match(page, /Your role helps us apply the right safety and visibility defaults/);
-  assert.match(page, /fetch\("\/api\/onboarding"/);
+  assert.match(page, /fetch\("\/api\/v1\/onboarding"/);
   assert.match(account, /getPlatformIdentity/);
 });
 
 test("sends authenticated publications and attached artifacts through the server contracts", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
-  assert.match(page, /fetch\("\/api\/publications"/);
-  assert.match(page, /fetch\("\/api\/artifacts"/);
+  assert.match(page, /fetch\("\/api\/v1\/publications"/);
+  assert.match(page, /fetch\("\/api\/v1\/artifacts"/);
   assert.match(page, /Create your Scholarium profile before publishing your first work/);
   assert.match(page, /provenance receipt and safety scan are now processing/);
 });
@@ -152,7 +152,7 @@ test("keeps community interactions account-bound, reportable, and limited in dep
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const interactions = await readFile(new URL("../app/api/publication-interactions/route.ts", import.meta.url), "utf8");
   const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
-  assert.match(page, /\/api\/publication-interactions/);
+  assert.match(page, /\/api\/v1\/publication-interactions/);
   assert.match(page, /VERSION-BOUND DISCUSSION/);
   assert.match(interactions, /getPlatformIdentity/);
   assert.match(interactions, /commentsLimitedToOneReplyDepth/);
@@ -162,4 +162,15 @@ test("keeps community interactions account-bound, reportable, and limited in dep
   assert.match(schema, /publication_comments/);
   assert.match(schema, /interaction_reports/);
   assert.match(schema, /user_boundaries/);
+});
+
+test("uses a canonical versioned API surface and retains a documented compatibility boundary", async () => {
+  const worker = await readFile(new URL("../worker/index.ts", import.meta.url), "utf8");
+  const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  assert.match(worker, /requestForCanonicalApi/);
+  assert.match(worker, /Deprecation/);
+  assert.match(worker, /API-Version/);
+  assert.match(openapi, /"\/api\/v1\/publications"/);
+  assert.match(client, /\/api\/v1\/publications/);
 });

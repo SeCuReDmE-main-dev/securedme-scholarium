@@ -28,6 +28,8 @@ interface ExecutionContext {
 function withSecurityHeaders(request: Request, response: Response): Response {
   const headers = new Headers(response.headers);
   const path = new URL(request.url).pathname;
+  const isVersionedApi = path.startsWith("/api/v1/");
+  const isLegacyDataApi = path.startsWith("/api/") && !isVersionedApi && !path.startsWith("/api/auth/");
 
   headers.set("Content-Security-Policy", [
     "default-src 'self'",
@@ -49,12 +51,31 @@ function withSecurityHeaders(request: Request, response: Response): Response {
   if (new URL(request.url).protocol === "https:") {
     headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
   }
-  if (path.startsWith("/api/auth/")) {
+  if (path.startsWith("/api/auth/") || path.startsWith("/api/v1/auth/")) {
     headers.set("Cache-Control", "no-store");
     headers.set("Pragma", "no-cache");
   }
+  if (isVersionedApi) headers.set("API-Version", "1");
+  if (isLegacyDataApi) {
+    headers.set("Deprecation", "true");
+    headers.set("Link", `<${path.replace(/^\/api\//u, "/api/v1/")}>; rel="successor-version"`);
+  }
 
   return new Response(response.body, { headers, status: response.status, statusText: response.statusText });
+}
+
+/**
+ * Resource APIs are publicly versioned at /api/v1. Existing unversioned
+ * routes remain a temporary compatibility surface so deployed clients are not
+ * broken while they move to v1. OAuth callbacks are deliberately excluded:
+ * providers store those URLs externally and changing them requires a separate
+ * provider-console review.
+ */
+function requestForCanonicalApi(request: Request): Request {
+  const url = new URL(request.url);
+  if (!url.pathname.startsWith("/api/v1/") || url.pathname.startsWith("/api/v1/auth/")) return request;
+  url.pathname = `/api/${url.pathname.slice("/api/v1/".length)}`;
+  return new Request(url, request);
 }
 
 // Image security config. SVG sources with .svg extension auto-skip the
@@ -79,7 +100,7 @@ const worker = {
       return withSecurityHeaders(request, response);
     }
 
-    return withSecurityHeaders(request, await handler.fetch(request, env, ctx));
+    return withSecurityHeaders(request, await handler.fetch(requestForCanonicalApi(request), env, ctx));
   },
 };
 
