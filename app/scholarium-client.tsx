@@ -390,7 +390,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       const type = publicationType;
       const topicSlugs = draftTopics.split(",").map((topic) => topic.trim()).filter(Boolean);
       const response = await fetch("/api/v1/publications", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ abstract: draftBody.trim(), title: draftTitle.trim(), topicSlugs, type }) });
-      const payload = await response.json() as { error?: string; publication?: { id: string; status: string; topicSlugs?: string[] } };
+      const payload = await response.json() as { error?: string; publication?: { id: string; status: string; topicSlugs?: string[]; visibility?: "private" | "public" } };
       if (!response.ok || !payload.publication) throw new Error(payload.error ?? "Your publication could not be created.");
       let uploadedArtifacts = 0;
       for (const file of attachedFiles) {
@@ -430,7 +430,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     setAttachedFiles([]);
     setComposerOpen(false);
     trackLocalInsight("publicationDrafts");
-      setNotice(`Published. Your provenance receipt and safety scan are now processing.${artifactCount ? ` ${uploadedArtifacts} of ${artifactCount} artifact${artifactCount === 1 ? "" : "s"} uploaded.` : ""}${linkedExternalMedia ? " External media reference linked without copying the video." : ""}`);
+      const audienceNotice = payload.publication.visibility === "private" ? " This publication is private until guardian consent or verified school supervision permits public discovery." : "";
+      setNotice(`Published. Your provenance receipt and safety scan are now processing.${artifactCount ? ` ${uploadedArtifacts} of ${artifactCount} artifact${artifactCount === 1 ? "" : "s"} uploaded.` : ""}${linkedExternalMedia ? " External media reference linked without copying the video." : ""}${audienceNotice}`);
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "Your publication could not be created.");
     } finally { setPublishing(false); }
