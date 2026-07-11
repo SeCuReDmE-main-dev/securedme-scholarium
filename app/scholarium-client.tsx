@@ -22,6 +22,7 @@ type Publication = {
   comments: number;
   kind: "paper" | "video" | "project";
   classification?: string;
+  scorecard?: { explicitSatisfaction: number; personalRelevance: number; researchContext: number } | null;
   favorite?: boolean;
   followingAuthor?: boolean;
   why?: string[];
@@ -110,7 +111,7 @@ type ApiPublication = {
   createdAt: string;
   favorite?: boolean;
   followingAuthor?: boolean;
-  feedSignal?: { classification: string; reasons: string[] };
+  feedSignal?: { classification: string; reasons: string[]; scorecard?: { explicitSatisfaction: number; personalRelevance: number; researchContext: number } | null };
   id: string;
   reactions?: number;
   status: string;
@@ -148,6 +149,7 @@ const fromApiPublication = (publication: ApiPublication): Publication => ({
   comments: publication.comments ?? 0,
   kind: ["video", "short_video", "live_replay"].includes(publication.type) ? "video" : ["project_update", "school_project", "software_project", "git_tree"].includes(publication.type) ? "project" : "paper",
   classification: publication.feedSignal?.classification,
+  scorecard: publication.feedSignal?.scorecard,
   favorite: publication.favorite,
   followingAuthor: publication.followingAuthor,
   why: publication.feedSignal?.reasons,
@@ -728,7 +730,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         ) : (
           <section className="feed" aria-label="Publication feed">
             {!serverFeed && publications.some((publication) => publication.isPreview) && <p className="feed-preview-note">Sample publications are shown while the public archive is empty. They are examples, not live activity or metrics.</p>}
-            {serverFeed && <p className="feed-mode-note">{feedMode === "discovery" ? "Discovery uses text relevance, freshness, and verification status. It excludes subscriptions, contributions, and paid promotion." : feedMode === "following" ? "Following shows public work tagged with the topics you explicitly follow." : feedMode === "verified" ? "Verified shows public work whose status is verified." : "Chronological shows public work by publication time."}{feedLoading ? " Refreshing…" : ""}</p>}
+            {serverFeed && <p className="feed-mode-note">{feedMode === "discovery" ? "Live discovery refreshes from public posts every 30 seconds. It uses three visible lanes: your explicit interest, your explicit satisfaction signals, and research context. It excludes subscriptions, contributions, global-like popularity, and paid promotion." : feedMode === "following" ? "Following refreshes from public work tagged with the topics or authors you explicitly follow." : feedMode === "verified" ? "Verified shows public work whose status is verified." : "Chronological shows public work by publication time."}{feedLoading ? " Refreshing…" : ""}</p>}
             {filteredPublications.length === 0 ? (
               <div className="empty-state"><h2>No work matches that search.</h2><p>Try a topic, an author, or a broader scientific phrase.</p></div>
             ) : filteredPublications.map((publication) => (
@@ -742,7 +744,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
                   <div className="publication-label"><span>{publication.type}</span>{publication.isPreview && <span className="status processing">PREVIEW EXAMPLE</span>}<span className={publication.status === "Verified" ? "status verified" : "status processing"}>{publication.status === "Verified" ? "✓ VERIFIED" : "◌ PROCESSING"}</span></div>
                   <h2>{publication.title}</h2>
                   <p>{publication.excerpt}</p>
-                  {publication.why?.length ? <p className="feed-signal"><strong>Why you see this:</strong> {publication.why.join(" · ")}</p> : null}
+                   {publication.why?.length ? <p className="feed-signal"><strong>Why you see this:</strong> {publication.why.join(" · ")}</p> : null}
+                   {publication.scorecard && <p className="feed-signal"><strong>Open score lanes:</strong> relevance {Math.round(publication.scorecard.personalRelevance * 100)}% · explicit satisfaction {Math.round(publication.scorecard.explicitSatisfaction * 100)}% · research context {Math.round(publication.scorecard.researchContext * 100)}%</p>}
                   {publication.kind === "video" && <div className="video-preview"><span className="play">▶</span><span>03:42 · Sources and Git tree attached</span></div>}
                   <div className="topic-row">{publication.topics.map((topic) => <button type="button" key={topic} onClick={() => setQuery(topic)}>#{topic.replaceAll(" ", "")}</button>)}</div>
                 </div>
@@ -789,7 +792,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
 
         <section className="transparency-card" id="how-ranking-works">
           <strong>Why you see work</strong>
-          <p>Topic fit, source quality, freshness, and diverse perspectives. Never payment.</p>
+          <p>Three visible lanes: relevance from your search and hashtags, satisfaction from actions you chose, and research context from provenance. A safety gate removes quarantined work before ranking. Never payment, global-like popularity, or passive viewing surveillance.</p>
         </section>
       </aside>
 

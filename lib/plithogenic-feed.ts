@@ -10,7 +10,6 @@ export type FeedCandidate = {
   classification: FeedClassification;
   createdAt: string;
   id: string;
-  reactions: number;
   title: string;
   topicSlugs: string[];
   type: string;
@@ -27,7 +26,17 @@ export type FeedPreferences = {
   relevanceWeight: number;
 };
 export type PlithogenicVector = { falsity: number; indeterminacy: number; truth: number };
-export type RankedCandidate = FeedCandidate & { score: number; vector: PlithogenicVector; why: string[] };
+/**
+ * Three independently explainable lanes. They borrow product principles from
+ * large-scale recommenders, not their private models: explicit satisfaction,
+ * personal relevance, and evidence context. No lane is a truth classifier.
+ */
+export type FeedScorecard = {
+  explicitSatisfaction: number;
+  personalRelevance: number;
+  researchContext: number;
+};
+export type RankedCandidate = FeedCandidate & { score: number; scorecard: FeedScorecard; vector: PlithogenicVector; why: string[] };
 
 export function classifyPublication(type: string): FeedClassification {
   if (["video", "short_video", "live_replay"].includes(type)) return "media";
@@ -52,20 +61,31 @@ function freshness(createdAt: string) {
 }
 
 /** A T/I/F vector expresses evidence confidence, not factual truth. */
-export function plithogenicVector(candidate: FeedCandidate, preferences: FeedPreferences): PlithogenicVector {
-  const topicAffinity = candidate.topicSlugs.some((slug) => preferences.followedTopicSlugs.has(slug)) ? 1 : 0;
-  const explicitAffinity = preferences.favoriteIds.has(candidate.id) ? 1 : preferences.reactedIds.has(candidate.id) ? 0.65 : 0;
-  const evidence = candidate.verificationStatus === "verified" ? 1 : candidate.verificationStatus === "processing" ? 0.55 : 0.25;
-  const relevance = textRelevance(candidate, preferences.query);
-  const engagement = clamp(Math.log1p(candidate.reactions) / Math.log(51));
-  const truth = clamp(relevance * 0.38 + topicAffinity * 0.20 + explicitAffinity * 0.16 + evidence * 0.20 + engagement * 0.06);
+export function plithogenicVector(candidate: FeedCandidate, preferences: FeedPreferences, scorecard = feedScorecard(candidate, preferences)): PlithogenicVector {
+  const { personalRelevance, explicitSatisfaction, researchContext } = scorecard;
+  const truth = clamp(personalRelevance * 0.52 + explicitSatisfaction * 0.13 + researchContext * 0.35);
   const indeterminacy = clamp((candidate.verificationStatus === "verified" ? 0.05 : 0.34) + (candidate.topicSlugs.length ? 0 : 0.18));
   const falsity = preferences.lessLikeIds.has(candidate.id) ? 1 : 0;
   return { falsity, indeterminacy, truth };
 }
 
+/**
+ * A research feed must not inherit an engagement race. Global likes and
+ * reactions are deliberately excluded: only this viewer's explicit actions
+ * can tune their private discovery experience.
+ */
+export function feedScorecard(candidate: FeedCandidate, preferences: FeedPreferences): FeedScorecard {
+  const topicAffinity = candidate.topicSlugs.some((slug) => preferences.followedTopicSlugs.has(slug)) ? 1 : 0;
+  const explicitSatisfaction = preferences.favoriteIds.has(candidate.id) ? 1 : preferences.reactedIds.has(candidate.id) ? 0.65 : 0;
+  const provenance = candidate.verificationStatus === "verified" ? 1 : candidate.verificationStatus === "processing" ? 0.55 : 0.25;
+  const personalRelevance = clamp(textRelevance(candidate, preferences.query) * 0.62 + topicAffinity * 0.38);
+  const researchContext = clamp(provenance * 0.88 + (candidate.topicSlugs.length ? 0.12 : 0));
+  return { explicitSatisfaction, personalRelevance, researchContext };
+}
+
 export function scoreCandidate(candidate: FeedCandidate, preferences: FeedPreferences): RankedCandidate {
-  const vector = plithogenicVector(candidate, preferences);
+  const scorecard = feedScorecard(candidate, preferences);
+  const vector = plithogenicVector(candidate, preferences, scorecard);
   const freshnessScore = freshness(candidate.createdAt);
   const relevanceWeight = normalizedWeight(preferences.relevanceWeight);
   const freshnessWeight = normalizedWeight(preferences.freshnessWeight);
@@ -78,7 +98,7 @@ export function scoreCandidate(candidate: FeedCandidate, preferences: FeedPrefer
     ...(candidate.verificationStatus === "verified" ? ["has a verified provenance state"] : candidate.verificationStatus === "processing" ? ["is awaiting verification"] : []),
     ...(freshnessScore > 0.7 ? ["recently published"] : []),
   ];
-  return { ...candidate, score, vector, why: why.length ? why : ["shown to preserve a diverse public research feed"] };
+  return { ...candidate, score, scorecard, vector, why: why.length ? why : ["shown to preserve a diverse public research feed"] };
 }
 
 /**
