@@ -45,6 +45,7 @@ type LocalInsightCounts = { formalizationGuides: number; publicationDrafts: numb
 type SavedCollection = { description: string | null; id: string; itemCount: number; kind: string; title: string };
 type SavedItem = { abstract: string; createdAt: string; id: string; publicationId: string; status: string; title: string; type: string };
 type MediaWebhookEvent = { channelId: string; eventType: string; receivedAt: string; status: string; videoId: string };
+type MediaProductionPlan = { aspect: "landscape" | "portrait" | "square"; deliverables: Array<{ name: string; specification: string }>; disclaimer: string; missing: string[]; qualityChecks: string[]; reviewBoundary: { codeProjectAi: string; videoPrism: string }; status: "needs_input" | "ready_for_author_review"; title: string; useCase: string };
 const profileToolOptions = [
   { id: "quanthor", label: "QuaNthoR" },
   { id: "synthia", label: "Synthia" },
@@ -228,6 +229,11 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [connectingTool, setConnectingTool] = useState<string | null>(null);
   const [mediaWebhookEvents, setMediaWebhookEvents] = useState<MediaWebhookEvent[]>([]);
   const [mediaWebhookTraceLoading, setMediaWebhookTraceLoading] = useState(false);
+  const [mediaProductionTitle, setMediaProductionTitle] = useState("");
+  const [mediaProductionScript, setMediaProductionScript] = useState("");
+  const [mediaProductionAspect, setMediaProductionAspect] = useState<MediaProductionPlan["aspect"]>("landscape");
+  const [mediaProductionPlan, setMediaProductionPlan] = useState<MediaProductionPlan | null>(null);
+  const [mediaProductionLoading, setMediaProductionLoading] = useState(false);
   const [accountReady, setAccountReady] = useState<boolean | null>(null);
   const [accountRole, setAccountRole] = useState("professional");
   const [accountAgeBand, setAccountAgeBand] = useState("adult");
@@ -473,6 +479,21 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       setNotice(error instanceof Error ? error.message : "The provider delivery trace could not be read.");
     } finally {
       setMediaWebhookTraceLoading(false);
+    }
+  };
+
+  const buildMediaProductionPlan = async () => {
+    setMediaProductionLoading(true);
+    try {
+      const response = await fetch("/api/v1/video-production-plan", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ aspect: mediaProductionAspect, script: mediaProductionScript, title: mediaProductionTitle }) });
+      const payload = await response.json() as { error?: string; plan?: MediaProductionPlan };
+      if (!response.ok || !payload.plan) throw new Error(payload.error ?? "The production brief could not be prepared.");
+      setMediaProductionPlan(payload.plan);
+      trackLocalInsight("formalizationGuides");
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "The production brief could not be prepared.");
+    } finally {
+      setMediaProductionLoading(false);
     }
   };
 
@@ -917,19 +938,27 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         ) : view === "studio" ? (
           <section className="studio-panel">
             <div className="studio-hero">
-              <p className="eyebrow">CREATE WITHOUT A PAYWALL</p>
-              <h2>Explain the work behind the work.</h2>
-              <p>Record a Short, plan a project Live, attach a report, or turn an existing publication into a clear teaching story.</p>
+              <p className="eyebrow">PODCAST & VIDEO STUDIO / CREATE WITHOUT A PAYWALL</p>
+              <h2>Make the explanation as clear as the work.</h2>
+              <p>Build a caption-first podcast or short-video brief, prepare a quality cover, and keep sources connected before you choose YouTube or TikTok.</p>
               <div className="studio-actions">
                 <button className="publish-button" type="button" onClick={() => setComposerOpen(true)}>Start a publication</button>
                 <button className="quiet-button" type="button" onClick={() => setNotice("Live planning is ready for your project and moderator settings.")}>Plan a Live</button>
               </div>
             </div>
+            <div className="media-production-form">
+              <div><p className="eyebrow">AUTHOR-LED PRODUCTION BRIEF</p><h3>Podcast to teaching video</h3><p>Nothing is uploaded, rendered, or shared while you prepare this brief.</p></div>
+              <label>Working title<input value={mediaProductionTitle} onChange={(event) => setMediaProductionTitle(event.target.value)} placeholder="What should a learner understand?" /></label>
+              <label>Format<select value={mediaProductionAspect} onChange={(event) => setMediaProductionAspect(event.target.value as MediaProductionPlan["aspect"])}><option value="landscape">Landscape lesson · 16:9</option><option value="portrait">Vertical explainer · 9:16</option><option value="square">Square audio-visual capsule · 1:1</option></select></label>
+              <label>Spoken script and source link<textarea value={mediaProductionScript} onChange={(event) => setMediaProductionScript(event.target.value)} placeholder="Write the spoken explanation in your voice, then add a source or evidence URL." rows={5} /></label>
+              <div className="studio-actions"><button className="quiet-button" type="button" onClick={() => { setMediaProductionPlan(null); setMediaProductionScript(""); setMediaProductionTitle(""); }}>Start over</button><button className="publish-button" disabled={mediaProductionLoading} type="button" onClick={buildMediaProductionPlan}>{mediaProductionLoading ? "Preparing…" : "Create production brief"}</button></div>
+            </div>
+            {mediaProductionPlan && <section className="media-production-result" aria-live="polite"><div><p className="eyebrow">{mediaProductionPlan.status === "ready_for_author_review" ? "READY FOR AUTHOR REVIEW" : "A FEW HELPFUL STARTERS"}</p><h3>{mediaProductionPlan.title || "Your media plan"}</h3><p>{mediaProductionPlan.useCase}</p></div>{mediaProductionPlan.missing.length > 0 && <p className="formalization-missing">Add {mediaProductionPlan.missing.join(", ")}.</p>}<div className="media-deliverables">{mediaProductionPlan.deliverables.map((deliverable) => <article key={deliverable.name}><strong>{deliverable.name}</strong><span>{deliverable.specification}</span></article>)}</div><ol>{mediaProductionPlan.qualityChecks.map((check) => <li key={check}>{check}</li>)}</ol><p className="media-review-boundary"><strong>Optional local review:</strong> {mediaProductionPlan.reviewBoundary.codeProjectAi} {mediaProductionPlan.reviewBoundary.videoPrism}</p><p className="media-production-disclaimer">{mediaProductionPlan.disclaimer}</p><button className="quiet-button" type="button" onClick={() => { setPublicationType(mediaProductionAspect === "portrait" ? "short_video" : "video"); setDraftTitle(mediaProductionTitle); setDraftBody(mediaProductionScript); setComposerOpen(true); }}>Use in a publication</button></section>}
             <div className="studio-grid">
               <article><span>01</span><h3>Short explainers</h3><p>Video lives apart from the research feed, with captions and sources.</p></article>
               <article><span>02</span><h3>Project Lives</h3><p>Present a method, answer questions, and preserve a replay as a citable artifact.</p></article>
-              <article><span>03</span><h3>Documents first</h3><p>Every video can connect directly to reports, books, slides, and datasets.</p></article>
-              <article><span>04</span><h3>Synthia workspace</h3><p>Plan an essay, podcast, or short-video outline with traceability prompts and a required human review.</p></article>
+              <article><span>03</span><h3>Quality cover</h3><p>Start from a high-resolution original and generate responsive web derivatives without enlarging weak imagery.</p></article>
+              <article><span>04</span><h3>Local review, by choice</h3><p>Future VideoPrism and YOLO checks can support script-to-scene review; neither identifies people nor decides truth.</p></article>
             </div>
           </section>
         ) : view === "library" ? (

@@ -33,6 +33,7 @@ const contract = {
     "/api/v1/publication-moderation": { get: { summary: "Read minimal automated moderation reason codes for an author-owned publication" } },
     "/api/v1/provenance/verify": { get: { summary: "Read a public provenance receipt for one public version" }, post: { summary: "Recalculate a public version hash without storing submitted content" } },
     "/api/v1/search": { get: { summary: "Search public research publications with explicit lexical reasons and filters" } },
+    "/api/v1/video-production-plan": { post: { summary: "Create an ephemeral, author-led podcast or video production brief without uploading media" } },
     "/api/v1/publications/{publicationId}/versions": { get: { summary: "Read the immutable public version history" }, post: { summary: "Create a new author-owned publication version from the current version" } },
     "/api/v1/publication-interactions": {
       get: { summary: "Read public reactions and version-bound comments" },

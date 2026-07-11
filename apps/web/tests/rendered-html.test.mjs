@@ -245,6 +245,22 @@ test("keeps provider video callbacks minimal, authenticated, and fail-closed", a
   assert.match(schema, /media_webhook_events/);
 });
 
+test("offers an author-led podcast and video production brief without uploading or publishing media", async () => {
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const route = await readFile(new URL("../app/api/video-production-plan/route.ts", import.meta.url), "utf8");
+  const plan = await readFile(new URL("../lib/media-production-plan.ts", import.meta.url), "utf8");
+  const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
+  assert.match(client, /PODCAST & VIDEO STUDIO/);
+  assert.match(client, /Nothing is uploaded, rendered, or shared/);
+  assert.match(client, /Future VideoPrism and YOLO checks/);
+  assert.match(route, /No video, image, transcript, identity information, or provider credential is uploaded/);
+  assert.match(route, /cache-control": "no-store/);
+  assert.match(plan, /1920 × 1080/);
+  assert.match(plan, /VideoPrism helps semantic review; it does not enhance pixels or determine truth/);
+  assert.match(plan, /not identity or biometric analysis/);
+  assert.match(openapi, /video-production-plan/);
+});
+
 test("documents a private owner-only trace for verified YouTube callback deliveries", async () => {
   const trace = await readFile(new URL("../app/api/media-webhook-events/route.ts", import.meta.url), "utf8");
   const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
