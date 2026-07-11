@@ -2,8 +2,9 @@ import { eq } from "drizzle-orm";
 import { getDb } from "../../../db";
 import { integrationConnections, users } from "../../../db/schema";
 import { getIntegration, integrationCatalog } from "../../../lib/integration-catalog";
+import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
 
-type ConnectionInput = { provider?: unknown; userId?: unknown };
+type ConnectionInput = { provider?: unknown };
 
 export function GET() {
   return Response.json({ integrations: integrationCatalog });
@@ -12,14 +13,16 @@ export function GET() {
 export async function POST(request: Request) {
   try {
     const input = (await request.json()) as ConnectionInput;
-    if (typeof input.userId !== "string" || !input.userId.trim() || typeof input.provider !== "string") {
-      return Response.json({ error: "userId and provider are required" }, { status: 400 });
+    const identity = await getPlatformIdentity();
+    if (!identity) return signInRequired();
+    if (typeof input.provider !== "string") {
+      return Response.json({ error: "provider is required" }, { status: 400 });
     }
     const integration = getIntegration(input.provider);
     if (!integration) return Response.json({ error: "Unsupported integration" }, { status: 400 });
 
     const db = await getDb();
-    const [user] = await db.select({ id: users.id }).from(users).where(eq(users.id, input.userId.trim())).limit(1);
+    const [user] = await db.select({ id: users.id }).from(users).where(eq(users.id, identity.userId)).limit(1);
     if (!user) return Response.json({ error: "User account was not found" }, { status: 404 });
 
     const updatedAt = new Date().toISOString();

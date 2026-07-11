@@ -1,8 +1,9 @@
 import { eq } from "drizzle-orm";
 import { getDb } from "../../../db";
 import { rankingPreferences, users } from "../../../db/schema";
+import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
 
-type RankingInput = { diversityWeight?: unknown; freshnessWeight?: unknown; relevanceWeight?: unknown; userId?: unknown };
+type RankingInput = { diversityWeight?: unknown; freshnessWeight?: unknown; relevanceWeight?: unknown };
 
 function boundedWeight(value: unknown, field: string) {
   if (!Number.isInteger(value) || (value as number) < 0 || (value as number) > 100) {
@@ -11,13 +12,13 @@ function boundedWeight(value: unknown, field: string) {
   return value as number;
 }
 
-export async function GET(request: Request) {
-  const userId = new URL(request.url).searchParams.get("userId")?.trim();
-  if (!userId) return Response.json({ error: "userId is required" }, { status: 400 });
+export async function GET() {
+  const identity = await getPlatformIdentity();
+  if (!identity) return signInRequired();
 
   try {
     const db = await getDb();
-    const [preference] = await db.select().from(rankingPreferences).where(eq(rankingPreferences.userId, userId)).limit(1);
+    const [preference] = await db.select().from(rankingPreferences).where(eq(rankingPreferences.userId, identity.userId)).limit(1);
     return Response.json({ preference: preference ?? null });
   } catch (error) {
     return Response.json({ error: error instanceof Error ? error.message : "Unable to load ranking preferences" }, { status: 500 });
@@ -27,10 +28,9 @@ export async function GET(request: Request) {
 export async function PUT(request: Request) {
   try {
     const input = (await request.json()) as RankingInput;
-    if (typeof input.userId !== "string" || !input.userId.trim()) {
-      return Response.json({ error: "userId is required" }, { status: 400 });
-    }
-    const userId = input.userId.trim();
+    const identity = await getPlatformIdentity();
+    if (!identity) return signInRequired();
+    const userId = identity.userId;
     const relevanceWeight = boundedWeight(input.relevanceWeight, "relevanceWeight");
     const freshnessWeight = boundedWeight(input.freshnessWeight, "freshnessWeight");
     const diversityWeight = boundedWeight(input.diversityWeight, "diversityWeight");

@@ -2,6 +2,7 @@ import { desc, eq } from "drizzle-orm";
 import { getDb } from "../../../db";
 import { publicationVersions, publications, users } from "../../../db/schema";
 import { createProvenanceReceipt } from "../../../lib/provenance";
+import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
 
 const publicationTypes = new Set([
   "research_note",
@@ -13,7 +14,6 @@ const publicationTypes = new Set([
 
 type PublicationInput = {
   abstract?: unknown;
-  authorId?: unknown;
   title?: unknown;
   type?: unknown;
 };
@@ -57,7 +57,9 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const input = (await request.json()) as PublicationInput;
-    const authorId = stringField(input.authorId, "authorId", 128);
+    const identity = await getPlatformIdentity();
+    if (!identity) return signInRequired();
+    const authorId = identity.userId;
     const type = stringField(input.type, "type", 64);
     const title = stringField(input.title, "title", 240);
     const abstract = stringField(input.abstract, "abstract", 12_000);

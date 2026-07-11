@@ -1,11 +1,12 @@
 import { eq } from "drizzle-orm";
 import { getDb } from "../../../db";
 import { rankingPreferences, roleAssignments, users } from "../../../db/schema";
+import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
 
 const supportedRoles = new Set(["student", "teacher", "professional", "amateur", "reader", "supporter"]);
 const supportedAgeBands = new Set(["adult", "minor", "unknown"]);
 
-type OnboardingInput = { ageBand?: unknown; displayName?: unknown; email?: unknown; primaryRole?: unknown; userId?: unknown };
+type OnboardingInput = { ageBand?: unknown; displayName?: unknown; primaryRole?: unknown };
 
 function requiredString(value: unknown, field: string, maximum: number) {
   if (typeof value !== "string" || !value.trim()) throw new Error(`${field} is required`);
@@ -17,9 +18,11 @@ function requiredString(value: unknown, field: string, maximum: number) {
 export async function POST(request: Request) {
   try {
     const input = (await request.json()) as OnboardingInput;
-    const userId = requiredString(input.userId, "userId", 128);
-    const email = requiredString(input.email, "email", 320).toLowerCase();
-    const displayName = requiredString(input.displayName, "displayName", 120);
+    const identity = await getPlatformIdentity();
+    if (!identity) return signInRequired();
+    const userId = identity.userId;
+    const email = identity.email;
+    const displayName = typeof input.displayName === "string" && input.displayName.trim() ? requiredString(input.displayName, "displayName", 120) : identity.displayName;
     const primaryRole = requiredString(input.primaryRole, "primaryRole", 32);
     const ageBand = requiredString(input.ageBand, "ageBand", 16);
     if (!supportedRoles.has(primaryRole) || !supportedAgeBands.has(ageBand)) {
