@@ -1,6 +1,6 @@
 import { desc, eq, inArray } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { publicationTopics, publicationVersions, publications, topics, users } from "../../../db/schema";
+import { publicationTopics, publicationVersions, publications, topicFollows, topics, users } from "../../../db/schema";
 import { createProvenanceReceipt } from "../../../lib/provenance";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
 import { normalizedTopicSlugs, topicLabel } from "../../../lib/topics";
@@ -31,10 +31,10 @@ function stringField(value: unknown, field: string, maximum: number) {
   return normalized;
 }
 
-type FeedMode = "chronological" | "discovery" | "verified";
+type FeedMode = "chronological" | "discovery" | "following" | "verified";
 
 function selectedFeedMode(value: string | null): FeedMode {
-  return value === "chronological" || value === "verified" ? value : "discovery";
+  return value === "chronological" || value === "following" || value === "verified" ? value : "discovery";
 }
 
 function boundedQuery(value: string | null) {
@@ -76,12 +76,23 @@ export async function GET(request: Request) {
     const publicationIds = rows.map((publication) => publication.id);
     const assignedTopics = publicationIds.length === 0 ? [] : await db.select({ label: topics.label, publicationId: publicationTopics.publicationId, slug: topics.slug }).from(publicationTopics).innerJoin(topics, eq(publicationTopics.topicId, topics.id)).where(inArray(publicationTopics.publicationId, publicationIds));
     const topicsByPublication = new Map<string, string[]>();
-    for (const topic of assignedTopics) topicsByPublication.set(topic.publicationId, [...(topicsByPublication.get(topic.publicationId) ?? []), topic.label]);
+    const topicIdsByPublication = new Map<string, string[]>();
+    for (const topic of assignedTopics) {
+      topicsByPublication.set(topic.publicationId, [...(topicsByPublication.get(topic.publicationId) ?? []), topic.label]);
+      topicIdsByPublication.set(topic.publicationId, [...(topicIdsByPublication.get(topic.publicationId) ?? []), topic.slug]);
+    }
     const enrichedRows = rows.map((publication) => ({ ...publication, topics: topicsByPublication.get(publication.id) ?? [] }));
     const queryFiltered = query
       ? enrichedRows.filter((publication) => `${publication.title} ${publication.abstract} ${publication.type} ${publication.author} ${publication.topics.join(" ")}`.toLowerCase().includes(query))
       : enrichedRows;
-    const statusFiltered = mode === "verified" ? queryFiltered.filter((publication) => publication.status === "verified") : queryFiltered;
+    let statusFiltered = mode === "verified" ? queryFiltered.filter((publication) => publication.status === "verified") : queryFiltered;
+    if (mode === "following") {
+      const identity = await getPlatformIdentity();
+      if (!identity) return signInRequired();
+      const follows = await db.select({ slug: topics.slug }).from(topicFollows).innerJoin(topics, eq(topicFollows.topicId, topics.id)).where(eq(topicFollows.userId, identity.userId));
+      const followedSlugs = new Set(follows.map((topic) => topic.slug));
+      statusFiltered = queryFiltered.filter((publication) => (topicIdsByPublication.get(publication.id) ?? []).some((slug) => followedSlugs.has(slug)));
+    }
     const feed = mode === "discovery"
       ? statusFiltered.map((publication) => ({ ...publication, discoveryScore: discoveryScore(publication, query) })).sort((a, b) => b.discoveryScore - a.discoveryScore)
       : statusFiltered;
@@ -92,7 +103,7 @@ export async function GET(request: Request) {
         excludes: ["subscription tier", "contribution amount", "paid promotion"],
         mode,
         version: "prealpha-v1",
-        uses: mode === "chronological" ? ["publication time"] : mode === "verified" ? ["public verification status", "publication time"] : ["text relevance", "freshness", "provenance status"],
+        uses: mode === "chronological" ? ["publication time"] : mode === "verified" ? ["public verification status", "publication time"] : mode === "following" ? ["topics explicitly followed by this account", "publication time"] : ["text relevance", "freshness", "provenance status"],
       },
     });
   } catch (error) {
