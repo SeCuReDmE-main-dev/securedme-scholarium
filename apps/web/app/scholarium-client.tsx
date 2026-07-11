@@ -114,6 +114,7 @@ type ApiPublication = {
   topics?: string[];
   type: string;
 };
+type LibrarySearchResult = ApiPublication & { reasons: string[]; score: number; topics: Array<{ label: string; slug: string }> };
 type CommunityComment = {
   author: string;
   authorId: string;
@@ -156,6 +157,11 @@ const navItems: Array<{ id: View; label: string; icon: string }> = [
 export function ScholariumClient({ session }: { session: { displayName: string | null; provider: "chatgpt" | "google" | "github" | "paypal" | null; signInPath: string; googleSignInPath: string; githubSignInPath: string; paypalSignInPath: string; signOutPath: string } }) {
   const [view, setView] = useState<View>("signal");
   const [query, setQuery] = useState("");
+  const [libraryType, setLibraryType] = useState("");
+  const [libraryVerified, setLibraryVerified] = useState(false);
+  const [libraryResults, setLibraryResults] = useState<LibrarySearchResult[]>([]);
+  const [librarySearchLoading, setLibrarySearchLoading] = useState(false);
+  const [librarySearchError, setLibrarySearchError] = useState<string | null>(null);
   const [publications, setPublications] = useState(initialPublications);
   const [feedMode, setFeedMode] = useState<FeedMode>("discovery");
   const [serverFeed, setServerFeed] = useState(false);
@@ -276,6 +282,28 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     const liveRefresh = window.setInterval(refresh, 30_000);
     return () => { active = false; window.clearTimeout(timeout); window.clearInterval(liveRefresh); };
   }, [feedMode, query]);
+
+  useEffect(() => {
+    if (view !== "library" || query.trim().length < 2) return;
+    let active = true;
+    const timer = window.setTimeout(() => {
+      setLibrarySearchLoading(true);
+      setLibrarySearchError(null);
+      const parameters = new URLSearchParams({ limit: "25", q: query.trim() });
+      if (libraryType) parameters.set("type", libraryType);
+      if (libraryVerified) parameters.set("verified", "true");
+      fetch(`/api/v1/search?${parameters.toString()}`)
+        .then(async (response) => ({ ok: response.ok, payload: await response.json() as { error?: string; results?: LibrarySearchResult[] } }))
+        .then(({ ok, payload }) => {
+          if (!active) return;
+          if (!ok) { setLibrarySearchError(payload.error ?? "The library search could not be completed."); return; }
+          setLibraryResults(payload.results ?? []);
+        })
+        .catch(() => { if (active) setLibrarySearchError("The library search could not be completed."); })
+        .finally(() => { if (active) setLibrarySearchLoading(false); });
+    }, 220);
+    return () => { active = false; window.clearTimeout(timer); };
+  }, [libraryType, libraryVerified, query, view]);
 
   useEffect(() => {
     if (!session.displayName || !accountReady) return;
@@ -620,11 +648,11 @@ export function ScholariumClient({ session }: { session: { displayName: string |
 
         <label className="search-box">
           <span aria-hidden="true">⌕</span>
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search research, people, projects, topics" />
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={view === "library" ? "Search titles, authors, abstracts, topics" : "Search research, people, projects, topics"} />
           <kbd>⌘ K</kbd>
         </label>
 
-        {view !== "formalize" && <div className="feed-tabs" role="tablist" aria-label="Feed options">
+        {view === "signal" && <div className="feed-tabs" role="tablist" aria-label="Feed options">
           <button className={feedMode === "discovery" ? "feed-tab active" : "feed-tab"} type="button" onClick={() => setFeedMode("discovery")}>Discover</button>
           <button className={feedMode === "following" ? "feed-tab active" : "feed-tab"} type="button" onClick={() => { if (!session.displayName || !accountReady) { setProfileOpen(true); setNotice("Create a profile before opening your Following feed."); return; } setFeedMode("following"); }}>Following</button>
           <button className={feedMode === "verified" ? "feed-tab active" : "feed-tab"} type="button" onClick={() => setFeedMode("verified")}>Verified</button>
@@ -671,6 +699,12 @@ export function ScholariumClient({ session }: { session: { displayName: string |
               <article><span>03</span><h3>Documents first</h3><p>Every video can connect directly to reports, books, slides, and datasets.</p></article>
               <article><span>04</span><h3>Synthia workspace</h3><p>Plan an essay, podcast, or short-video outline with traceability prompts and a required human review.</p></article>
             </div>
+          </section>
+        ) : view === "library" ? (
+          <section className="library-search" aria-label="Research library search">
+            <div className="library-search-heading"><div><p className="eyebrow">PUBLIC RESEARCH LIBRARY</p><h2>Search work, not popularity.</h2><p>Matches are explained from titles, topics, authors, formats, and abstracts. No paid or behavioural ranking.</p></div></div>
+            <div className="library-search-filters"><label>Format<select value={libraryType} onChange={(event) => setLibraryType(event.target.value)}><option value="">All formats</option>{publicationTypeOptions.map((option) => <option value={option.value} key={option.value}>{option.label}</option>)}</select></label><label className="toggle-label"><input type="checkbox" checked={libraryVerified} onChange={(event) => setLibraryVerified(event.target.checked)} /> Verified only</label></div>
+            {query.trim().length < 2 ? <div className="empty-state"><h2>Start with two characters.</h2><p>Try a field, author, title, format, or research topic.</p></div> : librarySearchLoading ? <div className="empty-state"><h2>Searching the public library…</h2></div> : librarySearchError ? <div className="empty-state"><h2>Search unavailable.</h2><p>{librarySearchError}</p></div> : libraryResults.length === 0 ? <div className="empty-state"><h2>No public work matches these filters.</h2><p>Broaden the phrase, choose another format, or clear Verified only.</p></div> : <div className="library-results">{libraryResults.map((result) => <article className="library-result" key={result.id}><div className="publication-label"><span>{publicationLabel(result.type)}</span><span className={result.status === "verified" ? "status verified" : "status processing"}>{result.status === "verified" ? "✓ VERIFIED" : "◌ PROCESSING"}</span></div><h2>{result.title}</h2><p>{result.abstract}</p><div className="library-result-meta"><strong>{result.author}</strong><span>Matched by {result.reasons.join(" · ")}</span></div><div className="topic-row">{result.topics.map((topic) => <button type="button" key={topic.slug} onClick={() => setQuery(topic.label)}>#{topic.label.replaceAll(" ", "")}</button>)}</div></article>)}</div>}
           </section>
         ) : (
           <section className="feed" aria-label="Publication feed">
