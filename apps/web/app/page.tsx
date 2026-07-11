@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Scholarium — The public commons for serious work",
-  description: "A free scientific and educational platform where work can be explained, attributed, discovered, and improved in public.",
+  title: "Scholarium — Turn knowledge into traceable evidence",
+  description: "A free scientific and educational platform for publishing work with context, attribution, provenance, and a durable knowledge trail.",
 };
 
 const githubUrl = "https://github.com/SeCuReDmE-main-dev/securedme-scholarium";
@@ -12,16 +12,16 @@ export default function Home() {
     <main className="landing-page">
       <header className="landing-nav">
         <a className="landing-brand" href="#top" aria-label="Scholarium home"><span>Ｓ</span>scholarium</a>
-        <nav aria-label="Landing navigation"><a href="#how-it-works">How it works</a><a href="#trust">Trust</a><a href="#builders">For builders</a></nav>
+        <nav aria-label="Landing navigation"><a href="#how-it-works">How it works</a><a href="#trust">Trust</a><a href="#organizations">For organizations</a></nav>
         <a className="landing-nav-cta" href="/app">Enter Scholarium <span>↗</span></a>
       </header>
 
       <section className="landing-hero" id="top">
         <div className="landing-hero-copy">
           <p className="landing-kicker">SECUREDME EDUCATION / PRE-ALPHA</p>
-          <h1>Make knowledge<br /><em>move forward.</em></h1>
-          <p className="landing-lede">A free social commons for research, learning, projects, books, and explainers — built for work that deserves context, credit, and a real community around it.</p>
-          <div className="landing-actions"><a className="landing-primary" href="/app">Explore the platform <span>→</span></a><a className="landing-secondary" href="#how-it-works">See the principles</a></div>
+          <h1>Turn knowledge into<br /><em>traceable evidence.</em></h1>
+          <p className="landing-lede">A free social commons for research, learning, and organizational work — built so publications, people, context, and provenance can remain connected.</p>
+          <div className="landing-actions"><a className="landing-primary" href="/app">Explore Scholarium <span>→</span></a><a className="landing-secondary" href="#how-it-works">See the workflow</a></div>
           <div className="landing-proof"><span><b>0</b> paid reach controls</span><span><b>10</b> verified platform contracts</span><span><b>12</b> protected app endpoints</span></div>
         </div>
         <div className="landing-signal" aria-label="Example of the Scholarium publication flow">
@@ -48,9 +48,9 @@ export default function Home() {
         <ul><li><b>01</b><span><strong>Identity with boundaries</strong> Sign in with ChatGPT protects account actions; profile verification never stores ID images or fingerprint data in Scholarium.</span></li><li><b>02</b><span><strong>Provenance first</strong> Publications receive a timestamped receipt. It records the platform event without pretending to replace copyright registration.</span></li><li><b>03</b><span><strong>Privacy that stays local</strong> Optional personal insights remain in the browser. Reliability monitoring is platform-level, never a per-user surveillance container.</span></li></ul>
       </section>
 
-      <section className="landing-builder" id="builders">
-        <div><p className="landing-kicker">OPEN BUILDING</p><h2>Learn from the platform while you help shape it.</h2><p>Scholarium is public-source, pre-alpha software. The repository documents the education-suite conventions, privacy boundaries, protected publication contracts, and the work still required before a broader launch.</p></div>
-        <div className="builder-card"><span>PUBLIC REPOSITORY</span><h3>SecuredMe Scholarium</h3><p>Explore the evolving application, roadmap signals, and verification-oriented implementation.</p><a href={githubUrl}>Open GitHub <b>↗</b></a><small>Snapshot: public source · 10 automated contracts passing · no paid ranking path.</small></div>
+      <section className="landing-builder" id="organizations">
+        <div><p className="landing-kicker">ORGANIZATIONAL CONTINUITY</p><h2>Build a research network, not another document archive.</h2><p>Use Scholarium to keep the context behind work visible: who contributed, what was published, and the provenance trail that helps the next team understand what came before.</p></div>
+        <div className="builder-card"><span>OPEN, VERIFIABLE BUILDING</span><h3>Make knowledge durable, reviewable, and useful.</h3><p>Explore the public-source application, its protected publication contracts, and the evidence-oriented work still required before a broader organizational rollout.</p><a href={githubUrl}>Review the platform <b>↗</b></a><small>Pre-alpha · public source · no paid ranking path · evidence before attention.</small></div>
       </section>
 
       <section className="landing-cta"><p className="landing-kicker">START WITH THE WORK</p><h2>Bring a question. Leave with a clearer next step.</h2><p>Explore the pre-alpha with your ChatGPT account, create a role-aware profile, and see how publishing, formalization, and attribution fit together.</p><a className="landing-primary" href="/app">Enter Scholarium <span>→</span></a></section>
