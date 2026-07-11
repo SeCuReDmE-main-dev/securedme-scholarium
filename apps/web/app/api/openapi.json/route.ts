@@ -6,6 +6,7 @@ const contract = {
     description: "Open contracts for the Scholarium scientific and educational community.",
   },
   paths: {
+    "/api/account": { get: { summary: "Read the signed-in Scholarium account" } },
     "/api/health": { get: { summary: "Read service health" } },
     "/api/artifacts": { post: { summary: "Upload a hashed scholarly artifact" } },
     "/api/integrations": { get: { summary: "List consent-first integrations" }, post: { summary: "Prepare an explicit provider consent flow" } },

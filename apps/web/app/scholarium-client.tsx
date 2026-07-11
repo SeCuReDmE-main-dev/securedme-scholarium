@@ -121,6 +121,10 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [localInsightsEnabled, setLocalInsightsEnabled] = useState(false);
   const [localInsightCounts, setLocalInsightCounts] = useState<LocalInsightCounts>({ formalizationGuides: 0, publicationDrafts: 0 });
   const [connectingTool, setConnectingTool] = useState<string | null>(null);
+  const [accountReady, setAccountReady] = useState<boolean | null>(null);
+  const [accountRole, setAccountRole] = useState("professional");
+  const [accountAgeBand, setAccountAgeBand] = useState("adult");
+  const [accountSaving, setAccountSaving] = useState(false);
   const profileInitials = (session.displayName ?? "Guest").split(/\s+/).map((word) => word[0]).join("").slice(0, 2).toUpperCase();
 
   useEffect(() => {
@@ -132,6 +136,15 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       if (parsed.counts) setLocalInsightCounts(parsed.counts);
     } catch { window.localStorage.removeItem("scholarium.local-insights.v1"); }
   }, []);
+
+  useEffect(() => {
+    if (!session.displayName) { setAccountReady(null); return; }
+    let active = true;
+    fetch("/api/account").then(async (response) => ({ ok: response.ok, payload: await response.json() as { account?: unknown } })).then(({ ok, payload }) => {
+      if (active) setAccountReady(ok && Boolean(payload.account));
+    }).catch(() => { if (active) setAccountReady(false); });
+    return () => { active = false; };
+  }, [session.displayName]);
 
   const updateLocalInsights = (enabled: boolean, counts = localInsightCounts) => {
     setLocalInsightsEnabled(enabled);
@@ -159,6 +172,33 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     } finally {
       setConnectingTool(null);
     }
+  };
+
+  const createAccount = async () => {
+    setAccountSaving(true);
+    try {
+      const response = await fetch("/api/onboarding", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ primaryRole: accountRole, ageBand: accountAgeBand, displayName: session.displayName }) });
+      const payload = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Your profile could not be created.");
+      setAccountReady(true);
+      setNotice("Your Scholarium profile is ready. You can now save preferences and prepare connections.");
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Your profile could not be created.");
+    } finally { setAccountSaving(false); }
+  };
+
+  const saveProfilePreferences = async () => {
+    if (!accountReady) return;
+    setAccountSaving(true);
+    try {
+      const response = await fetch("/api/profile-preferences", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ accentColor, badgeVisibility: badgeVisibility ? "public" : "private", colorScheme }) });
+      const payload = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Your profile preferences could not be saved.");
+      setProfileOpen(false);
+      setNotice("Profile preferences saved.");
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Your profile preferences could not be saved.");
+    } finally { setAccountSaving(false); }
   };
 
   const filteredPublications = useMemo(() => {
@@ -419,7 +459,9 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         <section className="composer profile-editor" aria-label="Profile customization">
           <div className="composer-header"><div><p className="eyebrow">YOUR PROFILE</p><h2>Make Scholarium yours</h2></div><button type="button" className="more-button" onClick={() => setProfileOpen(false)} aria-label="Close profile preferences">×</button></div>
           <div className="profile-banner-preview" style={bannerPreview ? { backgroundImage: `url(${bannerPreview})` } : undefined}><span className="avatar avatar-you profile-avatar-preview" style={avatarPreview ? { backgroundImage: `url(${avatarPreview})` } : undefined}>{avatarPreview ? "" : "JS"}</span></div>
-          <div className="profile-upload-grid">
+          {accountReady === false && <section className="account-setup"><p className="eyebrow">FIRST, SET UP YOUR ACCOUNT</p><h3>How will you use Scholarium?</h3><p>Your role helps us apply the right safety and visibility defaults. It does not affect ranking.</p><label>Primary role<select value={accountRole} onChange={(event) => setAccountRole(event.target.value)}><option value="student">Student</option><option value="teacher">Teacher</option><option value="professional">Professional</option><option value="amateur">Independent learner</option><option value="reader">Reader</option><option value="supporter">Supporter</option></select></label><label>Age band<select value={accountAgeBand} onChange={(event) => setAccountAgeBand(event.target.value)}><option value="adult">Adult</option><option value="minor">Minor</option><option value="unknown">Prefer not to say</option></select></label><button className="publish-button" type="button" disabled={accountSaving} onClick={createAccount}>{accountSaving ? "Creating profile…" : "Create my Scholarium profile"}</button></section>}
+          {accountReady === null && <p className="account-loading">Checking your connected profile…</p>}
+          {accountReady && <><div className="profile-upload-grid">
             <label>Profile picture<input type="file" accept="image/png,image/jpeg,image/webp" onChange={(event) => { const file = event.currentTarget.files?.[0]; if (file) setAvatarPreview(URL.createObjectURL(file)); }} /></label>
             <label>Profile banner<input type="file" accept="image/png,image/jpeg,image/webp" onChange={(event) => { const file = event.currentTarget.files?.[0]; if (file) setBannerPreview(URL.createObjectURL(file)); }} /></label>
           </div>
@@ -431,7 +473,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <div className="local-insights-card"><strong>Private activity snapshot</strong>{localInsightsEnabled ? <span>{localInsightCounts.formalizationGuides} guide{localInsightCounts.formalizationGuides === 1 ? "" : "s"} created · {localInsightCounts.publicationDrafts} publication draft{localInsightCounts.publicationDrafts === 1 ? "" : "s"} started. Kept only in this browser.</span> : <span>Off by default. No activity snapshot is collected or sent anywhere.</span>}</div>
           <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}</button>)}</div></div>
           <div className="composer-proof"><span>◌</span><p>Profile images stay local until you choose to save them to your account. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
-          <div className="composer-actions"><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" onClick={() => { setProfileOpen(false); setNotice("Profile preferences are ready to save when your authenticated account is connected."); }}>Save preferences</button></div>
+          <div className="composer-actions"><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" disabled={accountSaving} onClick={saveProfilePreferences}>{accountSaving ? "Saving…" : "Save preferences"}</button></div></>}
         </section>
       </div>}
 

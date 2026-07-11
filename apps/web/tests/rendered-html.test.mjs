@@ -86,3 +86,12 @@ test("prepares profile tool connections through explicit consent", async () => {
   assert.match(integrations, /pending_consent/);
   assert.match(integrations, /getPlatformIdentity/);
 });
+
+test("gives a connected person a role-aware Scholarium onboarding path", async () => {
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const account = await readFile(new URL("../app/api/account/route.ts", import.meta.url), "utf8");
+  assert.match(page, /Create my Scholarium profile/);
+  assert.match(page, /Your role helps us apply the right safety and visibility defaults/);
+  assert.match(page, /fetch\("\/api\/onboarding"/);
+  assert.match(account, /getPlatformIdentity/);
+});
