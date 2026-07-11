@@ -50,3 +50,13 @@ test("keeps behavior insights local and opt-in", async () => {
   assert.match(contract, /device_local_only/);
   assert.match(contract, /Datadog may receive platform-level reliability metadata only/);
 });
+
+test("binds account writes to the platform WebAuth identity", async () => {
+  const identity = await readFile(new URL("../lib/platform-identity.ts", import.meta.url), "utf8");
+  const onboarding = await readFile(new URL("../app/api/onboarding/route.ts", import.meta.url), "utf8");
+  const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
+  assert.match(identity, /getChatGPTUser/);
+  assert.match(identity, /Sign in with ChatGPT is required/);
+  assert.match(onboarding, /const userId = identity.userId/);
+  assert.match(publications, /const authorId = identity.userId/);
+});
