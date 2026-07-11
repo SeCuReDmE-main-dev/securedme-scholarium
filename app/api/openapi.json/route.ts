@@ -23,6 +23,7 @@ const contract = {
       post: { summary: "Create a versioned publication and provenance receipt" },
     },
     "/api/v1/publication-moderation": { get: { summary: "Read minimal automated moderation reason codes for an author-owned publication" } },
+    "/api/v1/search": { get: { summary: "Search public research publications with explicit lexical reasons and filters" } },
     "/api/v1/publications/{publicationId}/versions": { get: { summary: "Read the immutable public version history" }, post: { summary: "Create a new author-owned publication version from the current version" } },
     "/api/v1/publication-interactions": {
       get: { summary: "Read public reactions and version-bound comments" },

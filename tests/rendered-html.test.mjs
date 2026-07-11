@@ -160,6 +160,22 @@ test("keeps provider video callbacks minimal, authenticated, and fail-closed", a
   assert.match(schema, /media_webhook_events/);
 });
 
+test("offers an explainable public research search without paid or behavioural ranking", async () => {
+  const route = await readFile(new URL("../app/api/search/route.ts", import.meta.url), "utf8");
+  const engine = await readFile(new URL("../lib/publication-search.ts", import.meta.url), "utf8");
+  assert.match(route, /q must be between 2 and 160 characters/);
+  assert.match(route, /quarantined/);
+  assert.match(route, /private behavioural signals/);
+  assert.match(route, /lexical-research-v1/);
+  assert.match(engine, /not personalised/);
+  assert.match(engine, /exact title phrase/);
+  assert.match(engine, /topic term/);
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  assert.match(client, /\/api\/v1\/search/);
+  assert.match(client, /Search work, not popularity/);
+  assert.match(client, /Matched by/);
+});
+
 test("gives a connected person a role-aware Scholarium onboarding path", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const account = await readFile(new URL("../app/api/account/route.ts", import.meta.url), "utf8");
