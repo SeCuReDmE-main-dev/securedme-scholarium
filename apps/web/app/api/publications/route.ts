@@ -29,8 +29,31 @@ function stringField(value: unknown, field: string, maximum: number) {
   return normalized;
 }
 
-export async function GET() {
+type FeedMode = "chronological" | "discovery" | "verified";
+
+function selectedFeedMode(value: string | null): FeedMode {
+  return value === "chronological" || value === "verified" ? value : "discovery";
+}
+
+function boundedQuery(value: string | null) {
+  return value?.trim().slice(0, 160).toLowerCase() ?? "";
+}
+
+function discoveryScore(publication: { abstract: string; createdAt: string; status: string; title: string; type: string }, query: string) {
+  const words = query.split(/\s+/).filter(Boolean);
+  const haystack = `${publication.title} ${publication.abstract} ${publication.type}`.toLowerCase();
+  const textRelevance = words.length === 0 ? 0.45 : words.filter((word) => haystack.includes(word)).length / words.length;
+  const ageDays = Math.max(0, (Date.now() - new Date(publication.createdAt).getTime()) / 86_400_000);
+  const freshness = Math.max(0, 1 - ageDays / 30);
+  const provenance = publication.status === "verified" ? 1 : 0.45;
+  return textRelevance * 0.45 + freshness * 0.25 + provenance * 0.3;
+}
+
+export async function GET(request: Request) {
   try {
+    const requestUrl = new URL(request.url);
+    const mode = selectedFeedMode(requestUrl.searchParams.get("mode"));
+    const query = boundedQuery(requestUrl.searchParams.get("q"));
     const db = await getDb();
     const rows = await db
       .select({
@@ -46,9 +69,25 @@ export async function GET() {
       .innerJoin(users, eq(publications.authorId, users.id))
       .where(eq(publications.visibility, "public"))
       .orderBy(desc(publications.createdAt))
-      .limit(50);
+      .limit(100);
 
-    return Response.json({ publications: rows });
+    const queryFiltered = query
+      ? rows.filter((publication) => `${publication.title} ${publication.abstract} ${publication.type} ${publication.author}`.toLowerCase().includes(query))
+      : rows;
+    const statusFiltered = mode === "verified" ? queryFiltered.filter((publication) => publication.status === "verified") : queryFiltered;
+    const feed = mode === "discovery"
+      ? statusFiltered.map((publication) => ({ ...publication, discoveryScore: discoveryScore(publication, query) })).sort((a, b) => b.discoveryScore - a.discoveryScore)
+      : statusFiltered;
+
+    return Response.json({
+      publications: feed,
+      ranking: {
+        excludes: ["subscription tier", "contribution amount", "paid promotion"],
+        mode,
+        version: "prealpha-v1",
+        uses: mode === "chronological" ? ["publication time"] : mode === "verified" ? ["public verification status", "publication time"] : ["text relevance", "freshness", "provenance status"],
+      },
+    });
   } catch (error) {
     return Response.json({ error: error instanceof Error ? error.message : "Unable to load publications" }, { status: 500 });
   }

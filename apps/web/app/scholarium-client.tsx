@@ -3,6 +3,7 @@
 import { CSSProperties, FormEvent, useEffect, useMemo, useState } from "react";
 
 type View = "signal" | "library" | "studio" | "formalize";
+type FeedMode = "chronological" | "discovery" | "verified";
 type ColorScheme = "scholarium-dark" | "scholarium-light" | "midnight-code" | "paper-library";
 type Publication = {
   id: string;
@@ -133,6 +134,9 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [view, setView] = useState<View>("signal");
   const [query, setQuery] = useState("");
   const [publications, setPublications] = useState(initialPublications);
+  const [feedMode, setFeedMode] = useState<FeedMode>("discovery");
+  const [serverFeed, setServerFeed] = useState(false);
+  const [feedLoading, setFeedLoading] = useState(false);
   const [composerOpen, setComposerOpen] = useState(false);
   const [publicationType, setPublicationType] = useState("Research note");
   const [draftTitle, setDraftTitle] = useState("");
@@ -160,6 +164,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [accountRole, setAccountRole] = useState("professional");
   const [accountAgeBand, setAccountAgeBand] = useState("adult");
   const [accountSaving, setAccountSaving] = useState(false);
+  const [rankingSaving, setRankingSaving] = useState(false);
   const profileInitials = (session.displayName ?? "Guest").split(/\s+/).map((word) => word[0]).join("").slice(0, 2).toUpperCase();
 
   useEffect(() => {
@@ -183,15 +188,40 @@ export function ScholariumClient({ session }: { session: { displayName: string |
 
   useEffect(() => {
     let active = true;
-    fetch("/api/publications")
-      .then(async (response) => ({ ok: response.ok, payload: await response.json() as { publications?: ApiPublication[] } }))
+    const timeout = window.setTimeout(() => {
+      setFeedLoading(true);
+      const params = new URLSearchParams({ mode: feedMode });
+      if (query.trim()) params.set("q", query.trim());
+      fetch(`/api/publications?${params.toString()}`)
+        .then(async (response) => ({ ok: response.ok, payload: await response.json() as { publications?: ApiPublication[] } }))
+        .then(({ ok, payload }) => {
+          if (!active || !ok || !payload.publications) return;
+          if (payload.publications.length || query.trim() || feedMode !== "discovery") {
+            setPublications(payload.publications.map(fromApiPublication));
+            setServerFeed(true);
+          } else {
+            setServerFeed(false);
+            setPublications(initialPublications);
+          }
+        })
+        .catch(() => undefined)
+        .finally(() => { if (active) setFeedLoading(false); });
+    }, query.trim() ? 220 : 0);
+    return () => { active = false; window.clearTimeout(timeout); };
+  }, [feedMode, query]);
+
+  useEffect(() => {
+    if (!session.displayName || !accountReady) return;
+    let active = true;
+    fetch("/api/ranking-preferences")
+      .then(async (response) => ({ ok: response.ok, payload: await response.json() as { preference?: { diversityWeight: number; freshnessWeight: number; relevanceWeight: number } | null } }))
       .then(({ ok, payload }) => {
-        if (!active || !ok || !payload.publications?.length) return;
-        setPublications(payload.publications.map(fromApiPublication));
+        if (!active || !ok || !payload.preference) return;
+        setRanking({ diversity: payload.preference.diversityWeight, freshness: payload.preference.freshnessWeight, relevance: payload.preference.relevanceWeight });
       })
       .catch(() => undefined);
     return () => { active = false; };
-  }, []);
+  }, [accountReady, session.displayName]);
 
   const updateLocalInsights = (enabled: boolean, counts = localInsightCounts) => {
     setLocalInsightsEnabled(enabled);
@@ -325,6 +355,23 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     setRanking((current) => ({ ...current, [key]: value }));
   };
 
+  const saveRankingPreferences = async () => {
+    if (!session.displayName || !accountReady) {
+      setNotice("Create a Scholarium profile before saving discovery preferences.");
+      setProfileOpen(true);
+      return;
+    }
+    setRankingSaving(true);
+    try {
+      const response = await fetch("/api/ranking-preferences", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ diversityWeight: ranking.diversity, freshnessWeight: ranking.freshness, relevanceWeight: ranking.relevance }) });
+      const payload = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Discovery preferences could not be saved.");
+      setNotice("Discovery preferences saved. Payment and contribution signals remain excluded.");
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Discovery preferences could not be saved.");
+    } finally { setRankingSaving(false); }
+  };
+
   const buildFormalization = async () => {
     setFormalizationLoading(true);
     try {
@@ -401,10 +448,9 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         </label>
 
         {view !== "formalize" && <div className="feed-tabs" role="tablist" aria-label="Feed options">
-          <button className="feed-tab active" type="button">For you</button>
-          <button className="feed-tab" type="button" onClick={() => setNotice("Following will prioritize people and topics you choose.")}>Following</button>
-          <button className="feed-tab" type="button" onClick={() => setNotice("Verified shows work that completed safety and provenance checks.")}>Verified</button>
-          <button className="feed-tab" type="button" onClick={() => setNotice("Chronological removes personalization.")}>Chronological</button>
+          <button className={feedMode === "discovery" ? "feed-tab active" : "feed-tab"} type="button" onClick={() => setFeedMode("discovery")}>Discover</button>
+          <button className={feedMode === "verified" ? "feed-tab active" : "feed-tab"} type="button" onClick={() => setFeedMode("verified")}>Verified</button>
+          <button className={feedMode === "chronological" ? "feed-tab active" : "feed-tab"} type="button" onClick={() => setFeedMode("chronological")}>Chronological</button>
         </div>}
 
         {view === "formalize" ? (
@@ -450,7 +496,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           </section>
         ) : (
           <section className="feed" aria-label="Publication feed">
-            {publications.some((publication) => publication.isPreview) && <p className="feed-preview-note">Sample publications are shown while the public archive is empty. They are examples, not live activity or metrics.</p>}
+            {!serverFeed && publications.some((publication) => publication.isPreview) && <p className="feed-preview-note">Sample publications are shown while the public archive is empty. They are examples, not live activity or metrics.</p>}
+            {serverFeed && <p className="feed-mode-note">{feedMode === "discovery" ? "Discovery uses text relevance, freshness, and verification status. It excludes subscriptions, contributions, and paid promotion." : feedMode === "verified" ? "Verified shows public work whose status is verified." : "Chronological shows public work by publication time."}{feedLoading ? " Refreshing…" : ""}</p>}
             {filteredPublications.length === 0 ? (
               <div className="empty-state"><h2>No work matches that search.</h2><p>Try a topic, an author, or a broader scientific phrase.</p></div>
             ) : filteredPublications.map((publication) => (
@@ -483,12 +530,12 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         <section className="ranking-card">
           <div className="card-heading"><div><p className="eyebrow">YOUR DISCOVERY</p><h2>Open algorithm</h2></div><button type="button" onClick={() => setShowAdvanced((open) => !open)}>{showAdvanced ? "Close" : "Tune"}</button></div>
           <p>Visibility is never for sale. You control what this feed values.</p>
-          <div className="ranking-mode"><span className="mode-dot" />Balanced science <button type="button" onClick={() => setNotice("Chronological mode is available from the feed tabs.")}>Change</button></div>
+          <div className="ranking-mode"><span className="mode-dot" />{feedMode === "discovery" ? "Discovery" : feedMode === "verified" ? "Verified work" : "Chronological"}<button type="button" onClick={() => setFeedMode(feedMode === "chronological" ? "discovery" : "chronological")}>{feedMode === "chronological" ? "Use discovery" : "Use chronological"}</button></div>
           {showAdvanced && <div className="sliders">
             {(Object.keys(ranking) as Array<keyof typeof ranking>).map((key) => (
               <label key={key}><span>{key}<b>{ranking[key]}%</b></span><input type="range" min="0" max="100" value={ranking[key]} onChange={(event) => setRankingValue(key, Number(event.target.value))} /></label>
             ))}
-            <button className="quiet-button" type="button" onClick={() => setRanking({ relevance: 78, freshness: 52, diversity: 66 })}>Reset to balanced</button>
+            <div className="ranking-actions"><button className="quiet-button" type="button" onClick={() => setRanking({ relevance: 78, freshness: 52, diversity: 66 })}>Reset to balanced</button><button className="quiet-button" type="button" disabled={rankingSaving} onClick={saveRankingPreferences}>{rankingSaving ? "Saving…" : "Save preferences"}</button></div>
           </div>}
           <a href="#how-ranking-works">How this feed works →</a>
         </section>

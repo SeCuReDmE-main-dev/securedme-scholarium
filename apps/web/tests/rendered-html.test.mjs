@@ -27,10 +27,24 @@ test("server-renders the Scholarium public landing page instead of the starter s
 
 test("keeps the anti-pay-to-rank contract in the user interface", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
   assert.match(page, /Paid tools never change reach, ranking, or your right to publish/);
   assert.match(page, /Visibility is never for sale/);
   assert.match(page, /contribution supports the project, never the feed rank/);
   assert.match(page, /provenance receipt/);
+  assert.match(publications, /subscription tier/, "The feed API must state that subscriptions are excluded from ranking.");
+  assert.match(publications, /contribution amount/, "The feed API must state that contributions are excluded from ranking.");
+});
+
+test("uses real public feed modes and stores discovery weights for the signed-in account", async () => {
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
+  assert.match(page, /setFeedMode\("verified"\)/);
+  assert.match(page, /setFeedMode\("chronological"\)/);
+  assert.match(page, /fetch\(`\/api\/publications\?\$\{params\.toString\(\)\}`\)/);
+  assert.match(page, /fetch\("\/api\/ranking-preferences"/);
+  assert.match(publications, /type FeedMode = "chronological" \| "discovery" \| "verified"/);
+  assert.match(publications, /discoveryScore/);
 });
 
 test("keeps QuaNthoR educational and non-blocking", async () => {
