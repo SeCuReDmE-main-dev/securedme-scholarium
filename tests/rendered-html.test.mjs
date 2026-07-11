@@ -116,8 +116,15 @@ test("applies one documented security baseline at the Worker boundary", async ()
 
 test("keeps artifact and contributor-plan actions bound to the signed-in account", async () => {
   const artifacts = await readFile(new URL("../app/api/artifacts/route.ts", import.meta.url), "utf8");
+  const artifactValidation = await readFile(new URL("../lib/artifact-validation.ts", import.meta.url), "utf8");
   const subscription = await readFile(new URL("../app/api/verified-subscription/route.ts", import.meta.url), "utf8");
   assert.match(artifacts, /eq\(publications\.authorId, identity\.userId\)/);
+  assert.match(artifacts, /requestExceedsArtifactLimit/);
+  assert.match(artifacts, /validateArtifactFile/);
+  assert.match(artifacts, /artifacts\.sha256/);
+  assert.match(artifactValidation, /activeTextMarker/);
+  assert.match(artifactValidation, /hasExpectedSignature/);
+  assert.match(artifactValidation, /MAXIMUM_DIRECT_ARTIFACT_BYTES/);
   assert.match(subscription, /const userId = identity\.userId/);
   assert.doesNotMatch(subscription, /userId\?: unknown/);
 });
