@@ -275,6 +275,22 @@ test("offers an owner-confirmed Academia migration with private-by-default revie
   assert.match(robots, /disallow: \["\/api\/", "\/app"/);
 });
 
+test("records author-declared source relationships without turning attribution into a truth verdict", async () => {
+  const route = await readFile(new URL("../app/api/publication-relationships/route.ts", import.meta.url), "utf8");
+  const input = await readFile(new URL("../lib/publication-relationship.ts", import.meta.url), "utf8");
+  const academia = await readFile(new URL("../app/api/academia-migrations/route.ts", import.meta.url), "utf8");
+  const docs = await readFile(new URL("../../../docs/PUBLICATION-RELATIONSHIPS.md", import.meta.url), "utf8");
+  const accountExport = await readFile(new URL("../app/api/account/export/route.ts", import.meta.url), "utf8");
+  assert.match(route, /eq\(publications\.authorId, user\.id\)/);
+  assert.match(route, /eq\(publications\.visibility, "public"\)/);
+  assert.match(input, /derived_from/);
+  assert.match(input, /translation_of/);
+  assert.match(input, /Source URLs must use HTTPS/);
+  assert.match(academia, /imports_record_from/);
+  assert.match(accountExport, /publicationRelationships/);
+  assert.match(docs, /not an automated copyright ruling/);
+});
+
 test("keeps provider video callbacks minimal, authenticated, and fail-closed", async () => {
   const webhook = await readFile(new URL("../app/api/webhooks/youtube/route.ts", import.meta.url), "utf8");
   const parser = await readFile(new URL("../lib/youtube-webhook.ts", import.meta.url), "utf8");

@@ -1,6 +1,6 @@
 import { and, eq, inArray } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { academiaMigrationItems, academiaMigrations, moderationCases, publicationTopics, publicationVersions, publications, publicProfiles, topics, users } from "../../../db/schema";
+import { academiaMigrationItems, academiaMigrations, moderationCases, publicationRelationships, publicationTopics, publicationVersions, publications, publicProfiles, topics, users } from "../../../db/schema";
 import { academiaImportItems, academyProfileUrl, privateOrPublic } from "../../../lib/academia-migration";
 import { accountAudience } from "../../../lib/account-audience";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
@@ -80,6 +80,7 @@ export async function POST(request: Request) {
       await db.batch([
         db.insert(publications).values({ id: publicationId, authorId: account.user.id, type: item.type, title: item.title, abstract: item.abstract, visibility, verificationStatus: status, createdAt: now, publishedAt: now }),
         db.insert(publicationVersions).values({ id: crypto.randomUUID(), publicationId, version: 1, title: item.title, abstract: item.abstract, contentHash: receipt.contentHash, provenanceReceipt: JSON.stringify(receipt), createdAt: now }),
+        db.insert(publicationRelationships).values({ id: crypto.randomUUID(), userId: account.user.id, publicationId, relationType: "imports_record_from", sourceUrl: item.sourceUrl, sourceTitle: item.title, sourceLicense: null, declaration: "Imported by the account owner from an Academia.edu record; the source platform record remains authoritative for its own publication history.", createdAt: now }),
         db.update(academiaMigrationItems).set({ importedPublicationId: publicationId, selected: true, visibility, status: "imported", updatedAt: now }).where(eq(academiaMigrationItems.id, item.id)),
         ...(safety.action === "quarantine" && safety.reasonCode ? [db.insert(moderationCases).values({ id: crypto.randomUUID(), publicationId, source: "publication_secret_scan", reasonCode: safety.reasonCode, status: "open", createdAt: now })] : []),
       ]);
