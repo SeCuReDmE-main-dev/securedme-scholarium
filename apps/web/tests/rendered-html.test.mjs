@@ -77,3 +77,12 @@ test("keeps artifact and contributor-plan actions bound to the signed-in account
   assert.match(subscription, /const userId = identity\.userId/);
   assert.doesNotMatch(subscription, /userId\?: unknown/);
 });
+
+test("prepares profile tool connections through explicit consent", async () => {
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const integrations = await readFile(new URL("../app/api/integrations/route.ts", import.meta.url), "utf8");
+  assert.match(page, /fetch\("\/api\/integrations"/);
+  assert.match(page, /Provider sessions and tokens stay with their provider/);
+  assert.match(integrations, /pending_consent/);
+  assert.match(integrations, /getPlatformIdentity/);
+});
