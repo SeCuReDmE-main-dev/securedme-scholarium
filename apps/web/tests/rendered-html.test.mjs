@@ -97,6 +97,8 @@ test("offers separate provider sign-in paths without automatic email account mer
   assert.match(google, /code_challenge_method: "S256"/);
   assert.match(github, /read:user user:email/);
   assert.match(paypal, /openid profile email/);
+  assert.match(paypal, /external OAuth handoff/);
+  assert.match(paypal, /new Response\(null, \{ headers, status: 302 \}\)/);
 });
 
 test("keeps artifact and contributor-plan actions bound to the signed-in account", async () => {

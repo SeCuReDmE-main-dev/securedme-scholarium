@@ -6,14 +6,14 @@
 </p>
 
 <p align="center">
-  <a href="https://securedme-scholarium.jean-sebastien.chatgpt.site">Private pre-alpha preview</a> ·
-  <a href="https://scholarium.securedme.ca">Planned public domain</a> ·
+  <a href="https://www.scholarium.securedme.ca">Public pre-alpha</a> ·
+  <a href="https://www.scholarium.securedme.ca/privacy">Privacy</a> ·
   <a href="https://github.com/SeCuReDmE-main-dev/securedme-scholarium/issues">Feedback</a>
 </p>
 
 [![SecuredMe Education Suite public calendar](https://img.shields.io/badge/SecuredMe%20Education%20Suite-public%20calendar%20%7C%20alpha%20Aug%203%202026-5484ED?style=for-the-badge&logo=googlecalendar&logoColor=white)](https://calendrier.securedme.ca)
 
-**Attribution:** Jean-Sebastien Beaulieu · [ORCID 0009-0007-2904-0443](https://orcid.org/0009-0007-2904-0443) · [SecuredMe](https://securedme.ca) · [Scholarium](https://scholarium.securedme.ca)
+**Attribution:** Jean-Sebastien Beaulieu · [ORCID 0009-0007-2904-0443](https://orcid.org/0009-0007-2904-0443) · [SecuredMe](https://securedme.ca) · [Scholarium](https://www.scholarium.securedme.ca)
 
 <!-- SECUREDME-SUITE-BADGES:START -->
 [![Issues](https://img.shields.io/github/issues/SeCuReDmE-main-dev/securedme-scholarium?color=161B6A)](https://github.com/SeCuReDmE-main-dev/securedme-scholarium/issues)
@@ -32,7 +32,7 @@
 <!-- SECUREDME-STARTUP-SUPPORT:END -->
 
 > [!IMPORTANT]
-> **Pre-alpha / in development.** Scholarium is being built in public, but it is not yet a production social network. The preview is for product validation. Payment checkout, external OAuth redirects, public moderation operations, and the custom-domain DNS/SSL validation are still gated.
+> **Pre-alpha / in development.** Scholarium is being built in public, but it is not yet a production social network. The public preview is for product validation. PayPal sign-in is configured in sandbox; live provider review, payment checkout, public moderation operations, and youth-flow legal review remain gated.
 
 ## Why Scholarium exists
 
@@ -60,7 +60,7 @@ Scholarium is a professional, free-first social platform for people who learn, t
 | Files | Typed upload contract, SHA-256 hashing, and R2 metadata shape for supported documents, data files, archives, and video. |
 | QuaNthoR | A non-blocking formalization coach for articles, white papers, chapters, presentations, project briefs, videos, life-science protocols, and Mizar-proof handoff. |
 | Profiles | Avatar/banner preview, themes, accent colour, badges, local-only insight preference, and consent-first tool connections. |
-| Identity | Dispatch-owned ChatGPT WebAuth UI and server-side identity binding for onboarding, publishing, preferences, integrations, artifacts, and verified-contributor preparation. |
+| Identity | ChatGPT WebAuth plus separate Google, GitHub, and PayPal entry routes. Each provider identity remains separate until an explicit future account-linking flow is reviewed. PayPal is sandbox-configured; Google and GitHub await their own provider credentials. |
 | Integrations | Consent preparation contracts for ORCID, GitHub, Zenodo, Google Drive, QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, Antigravity/Gemini, and life-science discovery. |
 
 ## QuaNthoR in Scholarium
@@ -128,9 +128,9 @@ Community feedback is welcome through GitHub Issues. The maintained school-tool 
 
 ## Not yet launched
 
-- custom-domain DNS and SSL validation for `scholarium.securedme.ca`;
+- live PayPal provider review and launch credentials;
 - payment-provider checkout for the fixed 0.99 USD/month verified-contributor contribution;
-- provider OAuth redirects and token-vault implementation;
+- Google and GitHub provider credentials, redirect registration, and launch validation;
 - production moderation operation, appeals, and legal review for youth flows;
 - resumable uploads, malware scanning, document extraction, video transcoding, and Live infrastructure;
 - full external service execution for Drive, GitHub, email, calendar, contacts, DOI, and life-science sources.
