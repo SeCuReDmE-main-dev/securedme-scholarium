@@ -5,3 +5,7 @@
 ## Education Theme
 
 This repository uses the SecuredMe Education documentation shell with dark/light mode and the self-hosted accessibility console.
+
+## Scholarium architecture
+
+- [Explainable live-feed ranking](FEED-RANKING-ARCHITECTURE.md)

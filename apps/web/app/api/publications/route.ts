@@ -107,7 +107,6 @@ export async function GET(request: Request) {
         classification: classifyPublication(publication.type),
         createdAt: publication.createdAt,
         id: publication.id,
-        reactions: publication.reactions,
         title: publication.title,
         topicSlugs: topicIdsByPublication.get(publication.id) ?? [],
         type: publication.type,
@@ -122,17 +121,23 @@ export async function GET(request: Request) {
     const feed = mode === "discovery"
       ? ranked.map((rankedPublication) => {
         const publication = statusFiltered.find((item) => item.id === rankedPublication.id)!;
-        return publicFeedItem(publication, { feedSignal: { classification: rankedPublication.classification, reasons: rankedPublication.why, vector: rankedPublication.vector }, favorite: favoriteIds.has(publication.id) });
+        return publicFeedItem(publication, { feedSignal: { classification: rankedPublication.classification, reasons: rankedPublication.why, scorecard: rankedPublication.scorecard, vector: rankedPublication.vector }, favorite: favoriteIds.has(publication.id) });
       })
-      : statusFiltered.map((publication) => publicFeedItem(publication, { feedSignal: { classification: classifyPublication(publication.type), reasons: ["shown in your selected feed mode"], vector: rankedById.get(publication.id)?.vector ?? null }, favorite: favoriteIds.has(publication.id) }));
+      : statusFiltered.map((publication) => publicFeedItem(publication, { feedSignal: { classification: classifyPublication(publication.type), reasons: ["shown in your selected feed mode"], scorecard: rankedById.get(publication.id)?.scorecard ?? null, vector: rankedById.get(publication.id)?.vector ?? null }, favorite: favoriteIds.has(publication.id) }));
 
     return Response.json({
       publications: feed,
       ranking: {
         excludes: ["subscription tier", "contribution amount", "paid promotion"],
         mode,
-        version: "plithogenic-explainable-v1",
-        uses: mode === "chronological" ? ["publication time"] : mode === "verified" ? ["public verification status", "publication time"] : mode === "following" ? ["authors and hashtags explicitly followed by this account", "publication time"] : ["explicit favorites and reactions", "hashtag affinity", "text relevance", "freshness", "provenance status", "format diversity"],
+        version: "plithogenic-explainable-v2",
+        uses: mode === "chronological" ? ["publication time"] : mode === "verified" ? ["public verification status", "publication time"] : mode === "following" ? ["authors and hashtags explicitly followed by this account", "publication time"] : ["explicit satisfaction signals", "hashtag and text relevance", "research provenance context", "freshness", "format diversity"],
+        lanes: mode === "discovery" ? [
+          { name: "personal relevance", inputs: ["search text", "followed hashtags"], excludes: ["global popularity", "off-platform tracking"] },
+          { name: "explicit satisfaction", inputs: ["your favorites", "your reactions"], excludes: ["passive dwell tracking", "other users' reactions"] },
+          { name: "research context", inputs: ["publication provenance state", "structured hashtags"], excludes: ["claiming scientific truth", "automated viewpoint judging"] },
+        ] : [],
+        guardrails: ["public eligibility is resolved before ranking", "quarantined and removed work never enters discovery", "unverified work is labelled as such rather than declared false", "paid promotion is excluded"],
         doesNotDetermine: ["scientific truth", "a moderation decision", "a user's worth", "visibility purchased with money"],
       },
     });

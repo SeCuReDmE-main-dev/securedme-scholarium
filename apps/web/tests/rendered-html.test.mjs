@@ -51,10 +51,15 @@ test("uses real public feed modes and stores discovery weights for the signed-in
   assert.match(page, /setInterval\(refresh, 30_000\)/);
   assert.match(page, /feed-feedback/);
   assert.match(page, /Why you see this/);
+  assert.match(page, /Open score lanes/);
   assert.match(page, /Follow author/);
   assert.match(feedback, /favorite, less_like, or neutral/);
   assert.match(feedModel, /not a truth detector/);
+  assert.match(feedModel, /Global likes and/);
+  assert.match(feedModel, /feedScorecard/);
   assert.match(feedModel, /author for payment, identity, popularity/);
+  assert.match(publications, /plithogenic-explainable-v2/);
+  assert.match(publications, /public eligibility is resolved before ranking/);
 });
 
 test("uses opaque public profile identifiers for author following", async () => {
