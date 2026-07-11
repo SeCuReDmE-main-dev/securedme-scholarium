@@ -9,6 +9,7 @@ type ColorScheme = "scholarium-dark" | "scholarium-light" | "midnight-code" | "p
 type Publication = {
   id: string;
   author: string;
+  authorPublicId?: string | null;
   role: string;
   avatar: string;
   type: string;
@@ -22,6 +23,7 @@ type Publication = {
   kind: "paper" | "video" | "project";
   classification?: string;
   favorite?: boolean;
+  followingAuthor?: boolean;
   why?: string[];
   isPreview?: boolean;
 };
@@ -103,9 +105,11 @@ const initialPublications: Publication[] = [
 type ApiPublication = {
   abstract: string;
   author: string;
+  authorPublicId?: string | null;
   comments?: number;
   createdAt: string;
   favorite?: boolean;
+  followingAuthor?: boolean;
   feedSignal?: { classification: string; reasons: string[] };
   id: string;
   reactions?: number;
@@ -131,6 +135,7 @@ const initialsFor = (name: string) => name.split(/\s+/).map((word) => word[0]).j
 const fromApiPublication = (publication: ApiPublication): Publication => ({
   id: publication.id,
   author: publication.author,
+  authorPublicId: publication.authorPublicId,
   role: "Scholarium member",
   avatar: initialsFor(publication.author),
   type: publicationLabel(publication.type),
@@ -144,6 +149,7 @@ const fromApiPublication = (publication: ApiPublication): Publication => ({
   kind: ["video", "short_video", "live_replay"].includes(publication.type) ? "video" : ["project_update", "school_project", "software_project", "git_tree"].includes(publication.type) ? "project" : "paper",
   classification: publication.feedSignal?.classification,
   favorite: publication.favorite,
+  followingAuthor: publication.followingAuthor,
   why: publication.feedSignal?.reasons,
 });
 
@@ -577,6 +583,19 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     } catch (error) { setNotice(error instanceof Error ? error.message : "Topic could not be followed."); }
   };
 
+  const followAuthor = async (publication: Publication) => {
+    if (publication.isPreview || !publication.authorPublicId) return;
+    if (!session.displayName || !accountReady) { setProfileOpen(true); setNotice("Create a Scholarium profile before following authors."); return; }
+    try {
+      const method = publication.followingAuthor ? "DELETE" : "PUT";
+      const response = await fetch("/api/v1/user-follows", { method, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ publicProfileId: publication.authorPublicId }) });
+      const payload = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Author follow preference could not be saved.");
+      setPublications((current) => current.map((item) => item.authorPublicId === publication.authorPublicId ? { ...item, followingAuthor: !publication.followingAuthor } : item));
+      setNotice(publication.followingAuthor ? `Stopped following ${publication.author}.` : `Following ${publication.author}. Their public work now appears in Following.`);
+    } catch (error) { setNotice(error instanceof Error ? error.message : "Author follow preference could not be saved."); }
+  };
+
   const buildFormalization = async () => {
     setFormalizationLoading(true);
     try {
@@ -731,6 +750,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
                   <button type="button" onClick={() => reactToPublication(publication)}>✦ {publication.reactions}</button>
                   <button type="button" onClick={() => loadDiscussion(publication)}>◌ {publication.comments}</button>
                   <button type="button" onClick={() => setFeedPreference(publication, publication.favorite ? "neutral" : "favorite")}>{publication.favorite ? "★ Favorite" : "☆ Favorite"}</button>
+                  {publication.authorPublicId && !publication.isPreview && <button type="button" onClick={() => followAuthor(publication)}>{publication.followingAuthor ? "Following author" : "Follow author"}</button>}
                   <button type="button" onClick={() => setFeedPreference(publication, "less_like")}>Less like this</button>
                   <button type="button" onClick={startProject}>⌘ Start project</button>
                   <button type="button" onClick={() => setNotice("A contribution supports the project, never the feed rank.")}>♡ Support</button>

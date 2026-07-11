@@ -40,6 +40,7 @@ const contract = {
       put: { summary: "Follow a topic without affecting paid reach" },
       delete: { summary: "Stop following one topic" },
     },
+    "/api/v1/user-follows": { get: { summary: "List authors explicitly followed by the signed-in account" }, put: { summary: "Follow one public author without exposing provider identity" }, delete: { summary: "Stop following one public author" } },
   },
 };
 
