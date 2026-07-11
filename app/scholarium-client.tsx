@@ -24,6 +24,7 @@ type Publication = {
   classification?: string;
   scorecard?: { explicitSatisfaction: number; personalRelevance: number; researchContext: number } | null;
   externalMedia?: Array<{ provider: "tiktok" | "youtube"; url: string }>;
+  repositoryLinks?: Array<{ provider: "github" | "gitlab" | "sourceforge"; url: string }>;
   favorite?: boolean;
   followingAuthor?: boolean;
   profileVisible?: boolean;
@@ -120,6 +121,7 @@ type ApiPublication = {
   feedSignal?: { classification: string; reasons: string[]; scorecard?: { explicitSatisfaction: number; personalRelevance: number; researchContext: number } | null };
   id: string;
   reactions?: number;
+  repositoryLinks?: Array<{ provider: "github" | "gitlab" | "sourceforge"; url: string }>;
   status: string;
   title: string;
   topics?: string[];
@@ -154,6 +156,7 @@ const fromApiPublication = (publication: ApiPublication): Publication => ({
   reactions: publication.reactions ?? 0,
   comments: publication.comments ?? 0,
   externalMedia: publication.externalMedia ?? [],
+  repositoryLinks: publication.repositoryLinks ?? [],
   kind: ["video", "short_video", "live_replay"].includes(publication.type) ? "video" : ["project_update", "school_project", "software_project", "git_tree"].includes(publication.type) ? "project" : "paper",
   classification: publication.feedSignal?.classification,
   scorecard: publication.feedSignal?.scorecard,
@@ -197,6 +200,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [draftBody, setDraftBody] = useState("");
   const [draftTopics, setDraftTopics] = useState("");
   const [externalMediaUrl, setExternalMediaUrl] = useState("");
+  const [repositoryUrl, setRepositoryUrl] = useState("");
   const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
   const [publishing, setPublishing] = useState(false);
   const [ranking, setRanking] = useState({ relevance: 78, freshness: 52, diversity: 66 });
@@ -507,6 +511,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     try {
       const type = publicationType;
       const topicSlugs = draftTopics.split(",").map((topic) => topic.trim()).filter(Boolean);
+      const externalMediaReference = externalMediaUrl.trim();
+      const repositoryReference = repositoryUrl.trim();
       const response = await fetch("/api/v1/publications", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ abstract: draftBody.trim(), title: draftTitle.trim(), topicSlugs, type }) });
       const payload = await response.json() as { error?: string; moderation?: { message?: string; status: "quarantined" } | null; publication?: { id: string; status: string; topicSlugs?: string[]; visibility?: "private" | "public" } };
       if (!response.ok || !payload.publication) throw new Error(payload.error ?? "Your publication could not be created.");
@@ -519,15 +525,22 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         if (artifactResponse.ok) uploadedArtifacts += 1;
       }
       let linkedExternalMedia = false;
-      if (externalMediaUrl.trim() && payload.publication.status !== "quarantined") {
-        const mediaResponse = await fetch("/api/v1/media-links", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ publicationId: payload.publication.id, url: externalMediaUrl.trim() }) });
+      let linkedRepository: { provider: "github" | "gitlab" | "sourceforge"; url: string } | null = null;
+      if (externalMediaReference && payload.publication.status !== "quarantined") {
+        const mediaResponse = await fetch("/api/v1/media-links", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ publicationId: payload.publication.id, url: externalMediaReference }) });
         if (!mediaResponse.ok) {
           const mediaPayload = await mediaResponse.json() as { error?: string };
           throw new Error(mediaPayload.error ?? "Publication was created, but its external media link could not be saved.");
         }
         linkedExternalMedia = true;
       }
-    const newlyPublished = fromApiPublication({
+      if (repositoryReference && payload.publication.status !== "quarantined") {
+        const repositoryResponse = await fetch("/api/v1/repository-links", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ publicationId: payload.publication.id, url: repositoryReference }) });
+        const repositoryPayload = await repositoryResponse.json() as { error?: string; link?: { canonicalUrl: string; provider: "github" | "gitlab" | "sourceforge" } };
+        if (!repositoryResponse.ok || !repositoryPayload.link) throw new Error(repositoryPayload.error ?? "Publication was created, but its repository link could not be saved.");
+        linkedRepository = { provider: repositoryPayload.link.provider, url: repositoryPayload.link.canonicalUrl };
+      }
+      const newlyPublished = fromApiPublication({
         abstract: draftBody.trim(),
         author: session.displayName,
         createdAt: new Date().toISOString(),
@@ -536,6 +549,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         title: draftTitle.trim(),
         topics: payload.publication.topicSlugs,
         type,
+        repositoryLinks: linkedRepository ? [linkedRepository] : [],
       });
     appliedFeedPublicationIds.current.add(newlyPublished.id);
     setPublications((current) => [newlyPublished, ...current]);
@@ -544,13 +558,15 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     setDraftBody("");
     setDraftTopics("");
     setExternalMediaUrl("");
+    setRepositoryUrl("");
     setAttachedFiles([]);
     setComposerOpen(false);
     trackLocalInsight("publicationDrafts");
       const audienceNotice = payload.publication.visibility === "private" ? " This publication is private until guardian consent or verified school supervision permits public discovery." : "";
       const moderationNotice = payload.moderation?.status === "quarantined" ? ` ${payload.moderation.message ?? "This publication was saved privately for a safety review."}` : "";
-      const skippedMediaNotice = externalMediaUrl.trim() && payload.publication.status === "quarantined" ? " The external media link was not attached while this work is quarantined." : "";
-      setNotice(`Published. Your provenance receipt and safety scan are now processing.${artifactCount ? ` ${uploadedArtifacts} of ${artifactCount} artifact${artifactCount === 1 ? "" : "s"} uploaded.` : ""}${linkedExternalMedia ? " External media reference linked without copying the video." : ""}${audienceNotice}${moderationNotice}${skippedMediaNotice}`);
+      const skippedMediaNotice = externalMediaReference && payload.publication.status === "quarantined" ? " The external media link was not attached while this work is quarantined." : "";
+      const skippedRepositoryNotice = repositoryReference && payload.publication.status === "quarantined" ? " The repository link was not attached while this work is quarantined." : "";
+      setNotice(`Published. Your provenance receipt and safety scan are now processing.${artifactCount ? ` ${uploadedArtifacts} of ${artifactCount} artifact${artifactCount === 1 ? "" : "s"} uploaded.` : ""}${linkedExternalMedia ? " External media reference linked without copying the video." : ""}${linkedRepository ? " Source repository linked; code collaboration stays with its provider." : ""}${audienceNotice}${moderationNotice}${skippedMediaNotice}${skippedRepositoryNotice}`);
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "Your publication could not be created.");
     } finally { setPublishing(false); }
@@ -631,8 +647,13 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     } catch (error) { setNotice(error instanceof Error ? error.message : "Report could not be sent."); }
   };
 
-  const startProject = () => {
-    setNotice("Private-project setup will preserve the source license and attribution before creating anything.");
+  const startProject = (publication: Publication) => {
+    const repository = publication.repositoryLinks?.[0];
+    if (!repository) {
+      setNotice("This publication has no linked source repository yet. Scholarium never invents a code project or copies source code without an author-provided link.");
+      return;
+    }
+    setNotice(`Opening the attributed ${repository.provider} repository. Forking, private-project settings, and collaboration permissions stay with that provider.`);
   };
 
   const setRankingValue = (key: keyof typeof ranking, value: number) => {
@@ -887,7 +908,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
                   <p>{publication.excerpt}</p>
                    {publication.why?.length ? <p className="feed-signal"><strong>Why you see this:</strong> {publication.why.join(" · ")}</p> : null}
                    {publication.scorecard && <p className="feed-signal"><strong>Open score lanes:</strong> relevance {Math.round(publication.scorecard.personalRelevance * 100)}% · explicit satisfaction {Math.round(publication.scorecard.explicitSatisfaction * 100)}% · research context {Math.round(publication.scorecard.researchContext * 100)}%</p>}
-                  {publication.externalMedia?.length ? <div className="external-media-links" aria-label="Author-owned external video links">{publication.externalMedia.map((media) => <a href={media.url} key={media.url} rel="noreferrer noopener" target="_blank">{media.provider === "youtube" ? "▶ Open on YouTube" : "♪ Open on TikTok"} <span aria-hidden="true">↗</span></a>)}<span>Hosted by the author’s provider; Scholarium keeps the source link and research context.</span></div> : publication.kind === "video" && <div className="video-preview"><span className="play">▶</span><span>External video link can be attached with sources and Git tree context.</span></div>}
+                   {publication.externalMedia?.length ? <div className="external-media-links" aria-label="Author-owned external video links">{publication.externalMedia.map((media) => <a href={media.url} key={media.url} rel="noreferrer noopener" target="_blank">{media.provider === "youtube" ? "▶ Open on YouTube" : "♪ Open on TikTok"} <span aria-hidden="true">↗</span></a>)}<span>Hosted by the author’s provider; Scholarium keeps the source link and research context.</span></div> : publication.kind === "video" && <div className="video-preview"><span className="play">▶</span><span>External video link can be attached with sources and Git tree context.</span></div>}
+                   {publication.repositoryLinks?.length ? <div className="repository-links" aria-label="Attributed source repositories">{publication.repositoryLinks.map((repository) => <a href={repository.url} key={repository.url} rel="noreferrer noopener" target="_blank">{repository.provider === "github" ? "⌘ Open source on GitHub" : repository.provider === "gitlab" ? "⌘ Open source on GitLab" : "⌘ Open source on SourceForge"} <span aria-hidden="true">↗</span></a>)}<span>Code changes, forks, and permissions stay with the source provider.</span></div> : null}
                   <div className="topic-row">{publication.topics.map((topic) => <button type="button" key={topic} onClick={() => setQuery(topic)}>#{topic.replaceAll(" ", "")}</button>)}</div>
                 </div>
                 <div className="publication-footer">
@@ -898,7 +920,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
                    {publication.authorPublicId && publication.profileVisible && !publication.isPreview && <a className="publication-action-link" href={`/profile/${publication.authorPublicId}`}>View profile</a>}
                    {publication.authorPublicId && !publication.isPreview && <button type="button" onClick={() => followAuthor(publication)}>{publication.followingAuthor ? "Following author" : "Follow author"}</button>}
                   <button type="button" onClick={() => setFeedPreference(publication, "less_like")}>Less like this</button>
-                  <button type="button" onClick={startProject}>⌘ Start project</button>
+                  {publication.repositoryLinks?.[0] ? <a className="publication-action-link" href={publication.repositoryLinks[0].url} rel="noreferrer noopener" target="_blank" onClick={() => startProject(publication)}>⌘ Start project</a> : <button type="button" onClick={() => startProject(publication)}>⌘ Start project</button>}
                   <button type="button" onClick={() => setNotice("A contribution supports the project, never the feed rank.")}>♡ Support</button>
                 </div>
               </article>
@@ -946,7 +968,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <label>Title<input value={draftTitle} onChange={(event) => setDraftTitle(event.target.value)} placeholder="Give the work a clear, specific name" autoFocus /></label>
           <label>Context<textarea value={draftBody} onChange={(event) => setDraftBody(event.target.value)} placeholder="Explain what this is, who it helps, and how others can use it." rows={5} /></label>
               <label>Topics (optional)<input value={draftTopics} onChange={(event) => setDraftTopics(event.target.value)} placeholder="Open science, climate systems, teaching" /></label>
-              <label>External video URL (optional)<input value={externalMediaUrl} onChange={(event) => setExternalMediaUrl(event.target.value)} placeholder="https://www.youtube.com/watch?v=... or TikTok video URL" /></label>
+               <label>External video URL (optional)<input value={externalMediaUrl} onChange={(event) => setExternalMediaUrl(event.target.value)} placeholder="https://www.youtube.com/watch?v=... or TikTok video URL" /></label>
+               <label>Source repository URL (optional)<input value={repositoryUrl} onChange={(event) => setRepositoryUrl(event.target.value)} placeholder="https://github.com/owner/project" /></label>
           <label>Attach evidence<input type="file" multiple accept=".pdf,.docx,.odt,.xlsx,.ods,.csv,.pptx,.odp,.epub,.zip,.txt,video/*" onChange={(event) => setAttachedFiles(Array.from(event.currentTarget.files ?? []))} /></label>
           {attachedFiles.length > 0 && <p className="attachment-summary">{attachedFiles.length} artifact{attachedFiles.length === 1 ? "" : "s"} ready for hashing and upload.</p>}
           <div className="composer-proof"><span>✓</span><p>A timestamped provenance receipt will be created. It records your Scholarium publication event; it does not replace copyright registration.</p></div>
