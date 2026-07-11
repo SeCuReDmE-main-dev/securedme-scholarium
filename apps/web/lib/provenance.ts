@@ -10,14 +10,16 @@ function toHex(buffer: ArrayBuffer) {
   return Array.from(new Uint8Array(buffer), (byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
-export async function createProvenanceReceipt(input: {
+export type ProvenanceInput = {
   authorId: string;
   publicationId: string;
   title: string;
   abstract: string;
   type: string;
   version: number;
-}): Promise<ProvenanceReceipt> {
+};
+
+export async function provenanceContentHash(input: ProvenanceInput) {
   const canonical = JSON.stringify({
     abstract: input.abstract,
     authorId: input.authorId,
@@ -26,7 +28,11 @@ export async function createProvenanceReceipt(input: {
     type: input.type,
     version: input.version,
   });
-  const contentHash = toHex(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(canonical)));
+  return toHex(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(canonical)));
+}
+
+export async function createProvenanceReceipt(input: ProvenanceInput): Promise<ProvenanceReceipt> {
+  const contentHash = await provenanceContentHash(input);
 
   return {
     algorithm: "SHA-256",
