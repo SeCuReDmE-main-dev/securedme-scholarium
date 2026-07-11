@@ -151,6 +151,16 @@ test("keeps artifact and contributor-plan actions bound to the signed-in account
   assert.doesNotMatch(subscription, /userId\?: unknown/);
 });
 
+test("delivers only active artifacts for public publications through a safe download path", async () => {
+  const artifacts = await readFile(new URL("../app/api/artifacts/route.ts", import.meta.url), "utf8");
+  assert.match(artifacts, /List active artifacts or download one artifact belonging to a public publication/);
+  assert.match(artifacts, /eq\(publications\.visibility, "public"\)/);
+  assert.match(artifacts, /content-disposition/);
+  assert.match(artifacts, /x-content-type-options/);
+  assert.match(artifacts, /archiveStatus, "active"/);
+  assert.doesNotMatch(artifacts, /objectKey: artifact\.objectKey/);
+});
+
 test("prepares profile tool connections through explicit consent", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const integrations = await readFile(new URL("../app/api/integrations/route.ts", import.meta.url), "utf8");

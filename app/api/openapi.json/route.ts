@@ -9,7 +9,7 @@ const contract = {
     "/api/v1/account": { get: { summary: "Read the signed-in Scholarium account" } },
     "/api/v1/account/export": { get: { summary: "Download a private portable export of the signed-in account" } },
     "/api/v1/health": { get: { summary: "Read service health" } },
-    "/api/v1/artifacts": { post: { summary: "Upload a hashed scholarly artifact" } },
+    "/api/v1/artifacts": { get: { summary: "List or download active artifacts attached to a public publication" }, post: { summary: "Upload a hashed scholarly artifact" } },
     "/api/v1/feed-feedback": { put: { summary: "Save an explicit private favorite or less-like-this feed preference" } },
     "/api/v1/guardian-consents": { get: { summary: "Read private guardian consent records without exposing other identities" }, post: { summary: "Request scoped guardian consent" }, put: { summary: "Activate a pending guardian consent after guardian verification" }, delete: { summary: "Revoke a guardian consent" } },
     "/api/v1/integrations": { get: { summary: "List consent-first integrations" }, post: { summary: "Prepare an explicit provider consent flow" } },
