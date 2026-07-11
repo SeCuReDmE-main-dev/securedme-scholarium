@@ -125,6 +125,59 @@ export const topicFollows = sqliteTable("topic_follows", {
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 }, (table) => [index("topic_follows_user_idx").on(table.userId), index("topic_follows_topic_idx").on(table.topicId), uniqueIndex("topic_follows_unique_idx").on(table.userId, table.topicId)]);
 
+export const publicationReactions = sqliteTable("publication_reactions", {
+  id: text("id").primaryKey(),
+  publicationId: text("publication_id").notNull().references(() => publications.id),
+  userId: text("user_id").notNull().references(() => users.id),
+  kind: text("kind").notNull().default("insightful"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("publication_reactions_publication_idx").on(table.publicationId),
+  index("publication_reactions_user_idx").on(table.userId),
+  uniqueIndex("publication_reactions_unique_idx").on(table.publicationId, table.userId),
+]);
+
+export const publicationComments = sqliteTable("publication_comments", {
+  id: text("id").primaryKey(),
+  publicationId: text("publication_id").notNull().references(() => publications.id),
+  authorId: text("author_id").notNull().references(() => users.id),
+  parentCommentId: text("parent_comment_id").references(() => publicationComments.id),
+  body: text("body").notNull(),
+  status: text("status").notNull().default("visible"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("publication_comments_publication_idx").on(table.publicationId),
+  index("publication_comments_author_idx").on(table.authorId),
+  index("publication_comments_parent_idx").on(table.parentCommentId),
+]);
+
+export const interactionReports = sqliteTable("interaction_reports", {
+  id: text("id").primaryKey(),
+  reporterId: text("reporter_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").references(() => publications.id),
+  commentId: text("comment_id").references(() => publicationComments.id),
+  reason: text("reason").notNull(),
+  details: text("details"),
+  status: text("status").notNull().default("open"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("interaction_reports_reporter_idx").on(table.reporterId),
+  index("interaction_reports_publication_idx").on(table.publicationId),
+  index("interaction_reports_comment_idx").on(table.commentId),
+]);
+
+export const userBoundaries = sqliteTable("user_boundaries", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  targetUserId: text("target_user_id").notNull().references(() => users.id),
+  kind: text("kind").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("user_boundaries_user_idx").on(table.userId),
+  index("user_boundaries_target_idx").on(table.targetUserId),
+  uniqueIndex("user_boundaries_unique_idx").on(table.userId, table.targetUserId, table.kind),
+]);
+
 export const publicationVersions = sqliteTable("publication_versions", {
   id: text("id").primaryKey(),
   publicationId: text("publication_id").notNull().references(() => publications.id),

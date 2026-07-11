@@ -16,6 +16,11 @@ const contract = {
       get: { summary: "List public publications" },
       post: { summary: "Create a versioned publication and provenance receipt" },
     },
+    "/api/publication-interactions": {
+      get: { summary: "Read public reactions and version-bound comments" },
+      post: { summary: "Create an academic reaction, limited-depth comment, report, block, or mute" },
+      delete: { summary: "Remove the signed-in account's reaction" },
+    },
     "/api/quanthor-formalization": { get: { summary: "List educational formalization templates" }, post: { summary: "Create a non-blocking QuaNthoR outline" } },
     "/api/ranking-preferences": {
       get: { summary: "Read user-controlled ranking preferences" },

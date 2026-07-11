@@ -8,7 +8,7 @@ const instrumentSerif = Instrument_Serif({ variable: "--font-display", weight: "
 export const metadata: Metadata = {
   title: "Scholarium — The public commons for serious work",
   description: "A free scientific and educational platform where work can be explained, attributed, discovered, and improved in public.",
-  metadataBase: new URL("https://securedme-scholarium.jean-sebastien.chatgpt.site"),
+  metadataBase: new URL("https://www.scholarium.securedme.ca"),
   openGraph: {
     title: "Scholarium — The public commons for serious work",
     description: "Open science, open education, and no paid ranking.",
