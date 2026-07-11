@@ -205,6 +205,21 @@ test("sends authenticated publications and attached artifacts through the server
   assert.match(mediaLinks, /canonicalUrl/);
 });
 
+test("quarantines narrow credential-shaped publication content without judging scientific claims", async () => {
+  const publicationRoute = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
+  const moderationRoute = await readFile(new URL("../app/api/publication-moderation/route.ts", import.meta.url), "utf8");
+  const safety = await readFile(new URL("../lib/publication-safety.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  assert.match(safety, /does not/);
+  assert.match(safety, /scientific truth/);
+  assert.match(safety, /possible_private_key/);
+  assert.match(safety, /possible_api_secret/);
+  assert.match(publicationRoute, /safety\.action === "quarantine" \? "quarantined" : "processing"/);
+  assert.match(publicationRoute, /db\.insert\(moderationCases\)/);
+  assert.match(moderationRoute, /eq\(publications\.authorId, identity\.userId\)/);
+  assert.match(schema, /moderation_cases/);
+});
+
 test("applies youth safeguards before public discovery or cross-platform media linking", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const policy = await readFile(new URL("../lib/audience-policy.ts", import.meta.url), "utf8");

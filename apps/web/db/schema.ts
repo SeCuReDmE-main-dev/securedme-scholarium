@@ -189,6 +189,23 @@ export const publicationVersions = sqliteTable("publication_versions", {
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 }, (table) => [uniqueIndex("publication_versions_unique_idx").on(table.publicationId, table.version)]);
 
+/**
+ * Automated decisions retain a reason code, not a copied sensitive excerpt.
+ * A moderation decision is reviewable and never a claim about scientific truth.
+ */
+export const moderationCases = sqliteTable("moderation_cases", {
+  id: text("id").primaryKey(),
+  publicationId: text("publication_id").notNull().references(() => publications.id),
+  source: text("source").notNull(),
+  reasonCode: text("reason_code").notNull(),
+  status: text("status").notNull().default("open"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  resolvedAt: text("resolved_at"),
+}, (table) => [
+  index("moderation_cases_publication_idx").on(table.publicationId),
+  index("moderation_cases_status_idx").on(table.status),
+]);
+
 export const artifacts = sqliteTable("artifacts", {
   id: text("id").primaryKey(),
   publicationId: text("publication_id").notNull().references(() => publications.id),
