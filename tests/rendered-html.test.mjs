@@ -49,6 +49,9 @@ test("uses real public feed modes and stores discovery weights for the signed-in
   assert.match(publications, /type FeedMode = "chronological" \| "discovery" \| "following" \| "verified"/);
   assert.match(publications, /rankPlithogenicFeed/);
   assert.match(page, /setInterval\(refresh, 30_000\)/);
+  assert.match(page, /Show new posts/);
+  assert.match(page, /pendingLiveFeed/);
+  assert.match(page, /appliedFeedPublicationIds/);
   assert.match(page, /feed-feedback/);
   assert.match(page, /Why you see this/);
   assert.match(page, /Open score lanes/);
