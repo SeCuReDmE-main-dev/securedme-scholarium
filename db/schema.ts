@@ -91,6 +91,14 @@ export const subscriptions = sqliteTable("subscriptions", {
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 }, (table) => [index("subscriptions_user_idx").on(table.userId), uniqueIndex("subscriptions_user_plan_idx").on(table.userId, table.plan)]);
+
+export const topics = sqliteTable("topics", {
+  id: text("id").primaryKey(),
+  slug: text("slug").notNull(),
+  label: text("label").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [uniqueIndex("topics_slug_idx").on(table.slug)]);
+
 export const publications = sqliteTable("publications", {
   id: text("id").primaryKey(),
   authorId: text("author_id").notNull().references(() => users.id),
@@ -102,6 +110,20 @@ export const publications = sqliteTable("publications", {
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
   publishedAt: text("published_at"),
 }, (table) => [index("publications_author_idx").on(table.authorId), index("publications_status_idx").on(table.verificationStatus)]);
+
+export const publicationTopics = sqliteTable("publication_topics", {
+  id: text("id").primaryKey(),
+  publicationId: text("publication_id").notNull().references(() => publications.id),
+  topicId: text("topic_id").notNull().references(() => topics.id),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("publication_topics_publication_idx").on(table.publicationId), index("publication_topics_topic_idx").on(table.topicId), uniqueIndex("publication_topics_unique_idx").on(table.publicationId, table.topicId)]);
+
+export const topicFollows = sqliteTable("topic_follows", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  topicId: text("topic_id").notNull().references(() => topics.id),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("topic_follows_user_idx").on(table.userId), index("topic_follows_topic_idx").on(table.topicId), uniqueIndex("topic_follows_unique_idx").on(table.userId, table.topicId)]);
 
 export const publicationVersions = sqliteTable("publication_versions", {
   id: text("id").primaryKey(),
