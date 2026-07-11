@@ -301,6 +301,21 @@ export const externalMediaLinks = sqliteTable("external_media_links", {
   uniqueIndex("external_media_links_provider_external_idx").on(table.provider, table.externalId),
 ]);
 
+/** Canonical source links; code changes and forks remain at the source provider. */
+export const repositoryLinks = sqliteTable("repository_links", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").notNull().references(() => publications.id),
+  provider: text("provider").notNull(),
+  canonicalUrl: text("canonical_url").notNull(),
+  repositoryPath: text("repository_path").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("repository_links_publication_idx").on(table.publicationId),
+  index("repository_links_user_idx").on(table.userId),
+  uniqueIndex("repository_links_publication_provider_path_idx").on(table.publicationId, table.provider, table.repositoryPath),
+]);
+
 /**
  * Minimal delivery trace for provider webhooks. The raw provider payload is
  * deliberately not retained: Scholarium needs the event identity and a

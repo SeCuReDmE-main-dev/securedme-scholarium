@@ -13,6 +13,7 @@ import {
   publicationTopics,
   publicationVersions,
   rankingPreferences,
+  repositoryLinks,
   roleAssignments,
   topicFollows,
   topics,
@@ -35,7 +36,7 @@ export async function GET() {
 
     const ownPublications = await db.select().from(publications).where(eq(publications.authorId, account.id));
     const publicationIds = ownPublications.map((publication) => publication.id);
-    const [roles, preferences, ranking, followedTopics, identities, connections, comments, reactions, boundaries, versions, files, publicationTopicRows, savedCollections] = await Promise.all([
+    const [roles, preferences, ranking, followedTopics, identities, connections, comments, reactions, boundaries, versions, files, publicationTopicRows, savedCollections, sourceLinks] = await Promise.all([
       db.select().from(roleAssignments).where(eq(roleAssignments.userId, account.id)),
       db.select().from(profilePreferences).where(eq(profilePreferences.userId, account.id)),
       db.select().from(rankingPreferences).where(eq(rankingPreferences.userId, account.id)),
@@ -49,6 +50,7 @@ export async function GET() {
       publicationIds.length ? db.select({ archiveStatus: artifacts.archiveStatus, byteSize: artifacts.byteSize, contentType: artifacts.contentType, createdAt: artifacts.createdAt, publicationId: artifacts.publicationId, sha256: artifacts.sha256 }).from(artifacts).where(inArray(artifacts.publicationId, publicationIds)) : Promise.resolve([]),
       publicationIds.length ? db.select({ publicationId: publicationTopics.publicationId, topic: topics.slug }).from(publicationTopics).innerJoin(topics, eq(publicationTopics.topicId, topics.id)).where(inArray(publicationTopics.publicationId, publicationIds)) : Promise.resolve([]),
       db.select().from(collections).where(eq(collections.userId, account.id)),
+      publicationIds.length ? db.select({ canonicalUrl: repositoryLinks.canonicalUrl, createdAt: repositoryLinks.createdAt, provider: repositoryLinks.provider, publicationId: repositoryLinks.publicationId, repositoryPath: repositoryLinks.repositoryPath }).from(repositoryLinks).where(inArray(repositoryLinks.publicationId, publicationIds)) : Promise.resolve([]),
     ]);
     const collectionIds = savedCollections.map((collection) => collection.id);
     const savedCollectionItems = collectionIds.length ? await db.select().from(collectionItems).where(inArray(collectionItems.collectionId, collectionIds)) : [];
@@ -73,6 +75,7 @@ export async function GET() {
       boundaries,
       savedCollections,
       savedCollectionItems,
+      repositoryLinks: sourceLinks,
       excluded: [
         "provider session cookies and OAuth state",
         "integration token vault references and provider tokens",

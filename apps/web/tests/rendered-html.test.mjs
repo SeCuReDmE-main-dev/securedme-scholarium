@@ -272,6 +272,7 @@ test("sends authenticated publications and attached artifacts through the server
   const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
   const publicationTypes = await readFile(new URL("../lib/publication-types.ts", import.meta.url), "utf8");
   const mediaLinks = await readFile(new URL("../app/api/media-links/route.ts", import.meta.url), "utf8");
+  const repositoryLinks = await readFile(new URL("../app/api/repository-links/route.ts", import.meta.url), "utf8");
   const versions = await readFile(new URL("../app/api/publications/[publicationId]/versions/route.ts", import.meta.url), "utf8");
   assert.match(page, /fetch\("\/api\/v1\/publications"/);
   assert.match(page, /fetch\("\/api\/v1\/artifacts"/);
@@ -285,11 +286,18 @@ test("sends authenticated publications and attached artifacts through the server
   assert.match(versions, /A newer publication version already exists/);
   assert.match(versions, /provenanceReceipt/);
   assert.match(page, /External video URL/);
+  assert.match(page, /Source repository URL/);
   assert.match(page, /Open on YouTube/);
+  assert.match(page, /Open source on GitHub/);
+  assert.match(page, /code changes, forks, and permissions stay with the source provider/i);
   assert.match(page, /Hosted by the author’s provider/);
   assert.match(mediaLinks, /YouTube or TikTok/);
   assert.match(mediaLinks, /canonicalUrl/);
+  assert.match(repositoryLinks, /GitHub, GitLab, or SourceForge/);
+  assert.match(repositoryLinks, /canonicalRepositoryLink/);
+  assert.match(repositoryLinks, /accountAudience/);
   assert.match(publications, /externalMediaLinks/);
+  assert.match(publications, /repositoryLinks/);
   assert.match(publications, /externalMedia: mediaByPublication/);
 });
 
