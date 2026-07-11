@@ -1,6 +1,7 @@
 "use client";
 
 import { CSSProperties, FormEvent, useEffect, useMemo, useState } from "react";
+import { publicationTypeForFormalization, publicationTypeOptions } from "../lib/publication-types";
 
 type View = "signal" | "library" | "studio" | "formalize";
 type FeedMode = "chronological" | "discovery" | "following" | "verified";
@@ -22,6 +23,7 @@ type Publication = {
   isPreview?: boolean;
 };
 type FormalizationPreview = {
+  kind: string;
   label: string;
   status: "needs_input" | "structured_draft";
   sections: Array<{ id: string; label: string; guidance: string; required: boolean }>;
@@ -131,7 +133,7 @@ const fromApiPublication = (publication: ApiPublication): Publication => ({
   hours: "Published",
   reactions: publication.reactions ?? 0,
   comments: publication.comments ?? 0,
-  kind: publication.type === "short_video" ? "video" : publication.type === "project_update" ? "project" : "paper",
+  kind: ["video", "short_video", "live_replay"].includes(publication.type) ? "video" : ["project_update", "school_project", "software_project", "git_tree"].includes(publication.type) ? "project" : "paper",
 });
 
 const navItems: Array<{ id: View; label: string; icon: string }> = [
@@ -149,7 +151,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [serverFeed, setServerFeed] = useState(false);
   const [feedLoading, setFeedLoading] = useState(false);
   const [composerOpen, setComposerOpen] = useState(false);
-  const [publicationType, setPublicationType] = useState("Research note");
+  const [publicationType, setPublicationType] = useState("research_article");
   const [draftTitle, setDraftTitle] = useState("");
   const [draftBody, setDraftBody] = useState("");
   const [draftTopics, setDraftTopics] = useState("");
@@ -365,7 +367,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     }
     setPublishing(true);
     try {
-      const type = ({ "Research note": "research_note", "White paper": "white_paper", "Project update": "project_update", "Short video": "short_video", "Teaching artifact": "teaching_artifact" } as Record<string, string>)[publicationType] ?? "research_note";
+      const type = publicationType;
       const topicSlugs = draftTopics.split(",").map((topic) => topic.trim()).filter(Boolean);
       const response = await fetch("/api/v1/publications", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ abstract: draftBody.trim(), title: draftTitle.trim(), topicSlugs, type }) });
       const payload = await response.json() as { error?: string; publication?: { id: string; status: string; topicSlugs?: string[] } };
@@ -598,7 +600,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
               <div className="formalization-actions"><button className="quiet-button" type="button" onClick={() => { setFormalization(null); setFormalizationText(""); setFormalizationTitle(""); }}>Start over</button><button className="publish-button" type="button" onClick={buildFormalization} disabled={formalizationLoading}>{formalizationLoading ? "Building guide…" : "Create a gentle guide"}</button></div>
             </div>
             {formalization && <div className="formalization-result" role="status">
-              <div className="card-heading"><div><p className="eyebrow">{formalization.status === "structured_draft" ? "YOUR OUTLINE" : "A FEW HELPFUL STARTERS"}</p><h2>{formalization.label}</h2></div><button type="button" onClick={() => { setPublicationType(formalization.label); setDraftTitle(formalizationTitle); setDraftBody(formalizationText); setComposerOpen(true); }}>Use in a post</button></div>
+              <div className="card-heading"><div><p className="eyebrow">{formalization.status === "structured_draft" ? "YOUR OUTLINE" : "A FEW HELPFUL STARTERS"}</p><h2>{formalization.label}</h2></div><button type="button" onClick={() => { setPublicationType(publicationTypeForFormalization(formalization.kind)); setDraftTitle(formalizationTitle); setDraftBody(formalizationText); setComposerOpen(true); }}>Use in a post</button></div>
               <p>{formalization.disclaimer}</p>
               {formalization.missing.length > 0 && <p className="formalization-missing">Optional next additions: {formalization.missing.join(", ")}.</p>}
               <ol>{formalization.sections.map((section) => <li key={section.id}><strong>{section.label}</strong><span>{section.guidance}</span></li>)}</ol>
@@ -691,7 +693,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       {composerOpen && <div className="modal-backdrop" role="presentation">
         <form className="composer" onSubmit={publishDraft}>
           <div className="composer-header"><div><p className="eyebrow">NEW PUBLICATION</p><h2>Share work with context</h2></div><button type="button" className="more-button" onClick={() => setComposerOpen(false)} aria-label="Close composer">×</button></div>
-          <label>Format<select value={publicationType} onChange={(event) => setPublicationType(event.target.value)}><option>Research note</option><option>White paper</option><option>Project update</option><option>Short video</option><option>Teaching artifact</option></select></label>
+          <label>Format<select value={publicationType} onChange={(event) => setPublicationType(event.target.value)}>{publicationTypeOptions.map((option) => <option value={option.value} key={option.value}>{option.label}</option>)}</select></label>
           <label>Title<input value={draftTitle} onChange={(event) => setDraftTitle(event.target.value)} placeholder="Give the work a clear, specific name" autoFocus /></label>
           <label>Context<textarea value={draftBody} onChange={(event) => setDraftBody(event.target.value)} placeholder="Explain what this is, who it helps, and how others can use it." rows={5} /></label>
           <label>Topics (optional)<input value={draftTopics} onChange={(event) => setDraftTopics(event.target.value)} placeholder="Open science, climate systems, teaching" /></label>

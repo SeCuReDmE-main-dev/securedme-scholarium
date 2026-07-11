@@ -3,15 +3,8 @@ import { getDb } from "../../../db";
 import { publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, topicFollows, topics, users } from "../../../db/schema";
 import { createProvenanceReceipt } from "../../../lib/provenance";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
+import { publicationTypes } from "../../../lib/publication-types";
 import { normalizedTopicSlugs, topicLabel } from "../../../lib/topics";
-
-const publicationTypes = new Set([
-  "research_note",
-  "white_paper",
-  "project_update",
-  "short_video",
-  "teaching_artifact",
-]);
 
 type PublicationInput = {
   abstract?: unknown;
