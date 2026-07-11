@@ -95,3 +95,11 @@ test("gives a connected person a role-aware Scholarium onboarding path", async (
   assert.match(page, /fetch\("\/api\/onboarding"/);
   assert.match(account, /getPlatformIdentity/);
 });
+
+test("sends authenticated publications and attached artifacts through the server contracts", async () => {
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  assert.match(page, /fetch\("\/api\/publications"/);
+  assert.match(page, /fetch\("\/api\/artifacts"/);
+  assert.match(page, /Create your Scholarium profile before publishing your first work/);
+  assert.match(page, /provenance receipt and safety scan are now processing/);
+});
