@@ -18,8 +18,9 @@ test("server-renders the Scholarium public landing page instead of the starter s
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /<title>Scholarium — The public commons for serious work<\/title>/i);
-  assert.match(html, /Make knowledge/);
+  assert.match(html, /<title>Scholarium — Turn knowledge into traceable evidence<\/title>/i);
+  assert.match(html, /Turn knowledge into/);
+  assert.match(html, /traceable evidence/);
   assert.match(html, /0<\/b> paid reach controls/);
   assert.match(html, /Your work is not a product to be ranked by price/);
   assert.doesNotMatch(html, /Your site is taking shape|Codex is working|react-loading-skeleton/i);
