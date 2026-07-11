@@ -29,6 +29,13 @@ type FormalizationPreview = {
   disclaimer: string;
 };
 type LocalInsightCounts = { formalizationGuides: number; publicationDrafts: number };
+const profileToolOptions = [
+  { id: "quanthor", label: "QuaNthoR" },
+  { id: "synthia", label: "Synthia" },
+  { id: "securedme_blog", label: "SecuredMe Blog" },
+  { id: "codex_openai", label: "Codex / OpenAI" },
+  { id: "antigravity_gemini", label: "Antigravity / Gemini" },
+] as const;
 
 const initialPublications: Publication[] = [
   {
@@ -113,6 +120,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [formalizationLoading, setFormalizationLoading] = useState(false);
   const [localInsightsEnabled, setLocalInsightsEnabled] = useState(false);
   const [localInsightCounts, setLocalInsightCounts] = useState<LocalInsightCounts>({ formalizationGuides: 0, publicationDrafts: 0 });
+  const [connectingTool, setConnectingTool] = useState<string | null>(null);
   const profileInitials = (session.displayName ?? "Guest").split(/\s+/).map((word) => word[0]).join("").slice(0, 2).toUpperCase();
 
   useEffect(() => {
@@ -137,6 +145,20 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       window.localStorage.setItem("scholarium.local-insights.v1", JSON.stringify({ enabled: true, counts }));
       return counts;
     });
+  };
+
+  const prepareToolConnection = async (provider: typeof profileToolOptions[number]["id"], label: string) => {
+    setConnectingTool(provider);
+    try {
+      const response = await fetch("/api/integrations", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ provider }) });
+      const payload = await response.json() as { error?: string; nextStep?: string };
+      if (!response.ok) throw new Error(payload.error ?? "The connection could not be prepared.");
+      setNotice(`${label}: connection prepared. ${payload.nextStep ?? "Review the requested access before continuing."}`);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "The connection could not be prepared.");
+    } finally {
+      setConnectingTool(null);
+    }
   };
 
   const filteredPublications = useMemo(() => {
@@ -407,7 +429,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <div className="badge-row">{badgeVisibility && <><span>Provenance ready</span><span>Open education</span></>}</div>
           <label className="toggle-label"><input type="checkbox" checked={localInsightsEnabled} onChange={(event) => updateLocalInsights(event.target.checked)} /> Enable local-only activity insights on this device</label>
           <div className="local-insights-card"><strong>Private activity snapshot</strong>{localInsightsEnabled ? <span>{localInsightCounts.formalizationGuides} guide{localInsightCounts.formalizationGuides === 1 ? "" : "s"} created · {localInsightCounts.publicationDrafts} publication draft{localInsightCounts.publicationDrafts === 1 ? "" : "s"} started. Kept only in this browser.</span> : <span>Off by default. No activity snapshot is collected or sent anywhere.</span>}</div>
-          <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><button className="quiet-button" type="button" onClick={() => { setProfileOpen(false); setView("formalize"); }}>Open QuaNthoR</button></div>
+          <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}</button>)}</div></div>
           <div className="composer-proof"><span>◌</span><p>Profile images stay local until you choose to save them to your account. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
           <div className="composer-actions"><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" onClick={() => { setProfileOpen(false); setNotice("Profile preferences are ready to save when your authenticated account is connected."); }}>Save preferences</button></div>
         </section>
