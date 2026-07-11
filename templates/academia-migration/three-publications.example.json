@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Synthetic publication one",
+    "abstract": "Fixture record used to rehearse the private review flow.",
+    "sourceUrl": "https://www.academia.edu/works/00000001",
+    "type": "article",
+    "topicSlugs": ["education", "open-research"]
+  },
+  {
+    "title": "Synthetic publication two",
+    "abstract": "Fixture record used to verify item-by-item visibility choices.",
+    "sourceUrl": "https://www.academia.edu/works/00000002",
+    "type": "report",
+    "topicSlugs": ["science", "methods"]
+  },
+  {
+    "title": "Synthetic publication three",
+    "abstract": "Fixture record used to verify a mixed three-item import.",
+    "sourceUrl": "https://www.academia.edu/works/00000003",
+    "type": "white_paper",
+    "topicSlugs": ["open-source", "education"]
+  }
+]
