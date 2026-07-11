@@ -237,6 +237,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [mediaProductionAspect, setMediaProductionAspect] = useState<MediaProductionPlan["aspect"]>("landscape");
   const [mediaProductionPlan, setMediaProductionPlan] = useState<MediaProductionPlan | null>(null);
   const [mediaProductionLoading, setMediaProductionLoading] = useState(false);
+  const [paypalCheckoutLoading, setPaypalCheckoutLoading] = useState(false);
   const [academiaProfileUrl, setAcademiaProfileUrl] = useState("");
   const [academiaSourceLines, setAcademiaSourceLines] = useState("");
   const [academiaOwnershipConfirmed, setAcademiaOwnershipConfirmed] = useState(false);
@@ -503,6 +504,16 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     } finally {
       setMediaProductionLoading(false);
     }
+  };
+
+  const startPayPalCheckout = async () => {
+    setPaypalCheckoutLoading(true);
+    try {
+      const response = await fetch("/api/v1/payments/paypal/order", { method: "POST" });
+      const payload = await response.json() as { approveUrl?: string; error?: string };
+      if (!response.ok || !payload.approveUrl) throw new Error(payload.error ?? "PayPal checkout could not be started.");
+      window.location.assign(payload.approveUrl);
+    } catch (error) { setNotice(error instanceof Error ? error.message : "PayPal checkout could not be started."); setPaypalCheckoutLoading(false); }
   };
 
   const academiaItemsFromLines = () => academiaSourceLines.split("\n").map((line) => line.trim()).filter(Boolean).map((line) => {
@@ -1155,6 +1166,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <div className="local-insights-card"><strong>Private activity snapshot</strong>{localInsightsEnabled ? <span>{localInsightCounts.formalizationGuides} guide{localInsightCounts.formalizationGuides === 1 ? "" : "s"} created · {localInsightCounts.publicationDrafts} publication draft{localInsightCounts.publicationDrafts === 1 ? "" : "s"} started. Kept only in this browser.</span> : <span>Off by default. No activity snapshot is collected or sent anywhere.</span>}</div>
           <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}</button>)}<button className="quiet-button" type="button" onClick={() => { setProfileOpen(false); setView("migration"); }}>Academia.edu migration</button></div></div>
           <div className="webhook-trace-card"><strong>YouTube delivery trace</strong><span>Visible only to you after a channel is linked and the signed callback is configured. Scholarium retains no raw Atom feed or provider token.</span><button className="quiet-button" type="button" disabled={mediaWebhookTraceLoading} onClick={loadMediaWebhookTrace}>{mediaWebhookTraceLoading ? "Loading trace…" : "View callback trace"}</button>{mediaWebhookEvents.length > 0 ? <ul>{mediaWebhookEvents.map((event) => <li key={`${event.videoId}-${event.receivedAt}`}>{event.eventType} · video {event.videoId} · {new Date(event.receivedAt).toLocaleString()} · {event.status}</li>)}</ul> : <small>No recorded callback yet. A prepared connection is not a linked channel or an active webhook.</small>}</div>
+          <div className="webhook-trace-card"><strong>Verified contributor</strong><span>A fixed USD 0.99 contribution supports the service. It never affects your reach, ranking, moderation, or essential access. Checkout requires verified identity and passkey safeguards.</span><button className="quiet-button" type="button" disabled={paypalCheckoutLoading} onClick={startPayPalCheckout}>{paypalCheckoutLoading ? "Opening PayPal…" : "Continue with PayPal"}</button><small>Crypto checkout is not connected until a provider account, available assets, fees, regions, and verified webhook are approved. Scholarium never stores wallet private keys.</small></div>
           <div className="composer-proof"><span>◌</span><p>Profile images upload only after you choose a file. They remain private unless you enable public profile visibility above; a public profile exposes only your chosen visuals and already-public work. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
           <div className="composer-actions"><a className="quiet-button auth-link" href="/api/v1/account/export">Export my data</a><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" disabled={accountSaving} onClick={saveProfilePreferences}>{accountSaving ? "Saving…" : "Save preferences"}</button></div></>}</>}
         </section>

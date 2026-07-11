@@ -157,6 +157,25 @@ export const subscriptions = sqliteTable("subscriptions", {
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 }, (table) => [index("subscriptions_user_idx").on(table.userId), uniqueIndex("subscriptions_user_plan_idx").on(table.userId, table.plan)]);
 
+/** Minimal payment ledger: no card, wallet, or raw provider payload is retained. */
+export const paymentReceipts = sqliteTable("payment_receipts", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  provider: text("provider").notNull(),
+  providerOrderId: text("provider_order_id").notNull(),
+  providerCaptureId: text("provider_capture_id"),
+  amountCents: integer("amount_cents").notNull(),
+  currency: text("currency").notNull(),
+  status: text("status").notNull().default("created"),
+  providerEventId: text("provider_event_id"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("payment_receipts_user_idx").on(table.userId),
+  uniqueIndex("payment_receipts_provider_order_idx").on(table.provider, table.providerOrderId),
+  uniqueIndex("payment_receipts_provider_event_idx").on(table.provider, table.providerEventId),
+]);
+
 export const topics = sqliteTable("topics", {
   id: text("id").primaryKey(),
   slug: text("slug").notNull(),

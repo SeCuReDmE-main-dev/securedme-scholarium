@@ -22,6 +22,8 @@ const contract = {
     "/api/v1/local-insights": { get: { summary: "Read the device-local-only privacy analytics contract" } },
     "/api/v1/media-links": { get: { summary: "Read public external media links for a publication" }, post: { summary: "Link an author-owned YouTube or TikTok URL without copying the video" } },
     "/api/v1/media-webhook-events": { get: { summary: "Read the signed-in owner's minimal YouTube callback delivery trace" } },
+    "/api/v1/payments/paypal/order": { get: { summary: "Read the PayPal checkout capability without credentials" }, post: { summary: "Create a fixed verified-contributor PayPal order" } },
+    "/api/v1/webhooks/paypal": { post: { summary: "Verify and reconcile a minimal PayPal payment notification" } },
     "/api/v1/repository-links": { get: { summary: "Read public attributed source-repository links for a publication" }, post: { summary: "Link an author-owned GitHub, GitLab, or SourceForge repository without copying code" } },
     "/api/v1/webhooks/youtube": { get: { summary: "Verify a configured YouTube PubSubHubbub callback" }, post: { summary: "Record an HMAC-authenticated YouTube Atom update for a linked channel" } },
     "/api/v1/onboarding": { post: { summary: "Create a role-aware account" } },
