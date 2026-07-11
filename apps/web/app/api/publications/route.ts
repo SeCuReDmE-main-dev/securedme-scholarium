@@ -1,6 +1,6 @@
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { externalMediaLinks, feedFeedback, moderationCases, publicProfiles, publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, rankingPreferences, topicFollows, topics, userFollows, users } from "../../../db/schema";
+import { externalMediaLinks, feedFeedback, moderationCases, profilePreferences, publicProfiles, publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, rankingPreferences, topicFollows, topics, userFollows, users } from "../../../db/schema";
 import { accountAudience } from "../../../lib/account-audience";
 import { createProvenanceReceipt } from "../../../lib/provenance";
 import { classifyPublication, rankPlithogenicFeed } from "../../../lib/plithogenic-feed";
@@ -49,6 +49,7 @@ export async function GET(request: Request) {
         author: users.displayName,
         authorId: publications.authorId,
         authorPublicId: publicProfiles.publicId,
+        profileVisibility: profilePreferences.profileVisibility,
         createdAt: publications.createdAt,
         id: publications.id,
         status: publications.verificationStatus,
@@ -58,6 +59,7 @@ export async function GET(request: Request) {
       .from(publications)
       .innerJoin(users, eq(publications.authorId, users.id))
       .leftJoin(publicProfiles, eq(publicProfiles.userId, publications.authorId))
+      .leftJoin(profilePreferences, eq(profilePreferences.userId, publications.authorId))
       .where(eq(publications.visibility, "public"))
       .orderBy(desc(publications.createdAt))
       .limit(100);
@@ -122,8 +124,8 @@ export async function GET(request: Request) {
       : [];
     const rankedById = new Map(ranked.map((publication) => [publication.id, publication]));
     const publicFeedItem = (publication: typeof statusFiltered[number], additional: Record<string, unknown>) => {
-      const { authorId, ...publicPublication } = publication;
-      return { ...publicPublication, ...additional, followingAuthor: followedAuthorIds.has(authorId) };
+      const { authorId, profileVisibility, ...publicPublication } = publication;
+      return { ...publicPublication, ...additional, followingAuthor: followedAuthorIds.has(authorId), profileVisible: profileVisibility === "public" };
     };
     const feed = mode === "discovery"
       ? ranked.map((rankedPublication) => {

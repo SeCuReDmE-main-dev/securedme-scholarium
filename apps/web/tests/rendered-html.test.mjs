@@ -77,6 +77,25 @@ test("uses opaque public profile identifiers for author following", async () => 
   assert.match(schema, /user_follows/);
 });
 
+test("keeps public profile visuals and public work behind explicit owner visibility", async () => {
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const media = await readFile(new URL("../app/api/profile-media/route.ts", import.meta.url), "utf8");
+  const profile = await readFile(new URL("../app/api/public-profiles/[publicId]/route.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  const page = await readFile(new URL("../app/profile/[publicId]/public-profile-client.tsx", import.meta.url), "utf8");
+  assert.match(client, /Make my profile, chosen picture\/banner, and public work viewable/);
+  assert.match(client, /profileVisibility: publicProfileVisible \? "public" : "private"/);
+  assert.match(media, /publicProfileId/);
+  assert.match(media, /preferences\?\.profileVisibility !== "public"/);
+  assert.match(media, /accountAudience/);
+  assert.match(media, /public, max-age=300/);
+  assert.match(profile, /profile\.profileVisibility !== "public"/);
+  assert.match(profile, /accountAudience/);
+  assert.match(profile, /notInArray\(publications\.verificationStatus, \["quarantined", "removed"\]\)/);
+  assert.match(schema, /profile_visibility/);
+  assert.match(page, /does not reveal provider identities, email, private settings, or private media/);
+});
+
 test("keeps QuaNthoR educational and non-blocking", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const contract = await readFile(new URL("../lib/quanthor-formalization.ts", import.meta.url), "utf8");
