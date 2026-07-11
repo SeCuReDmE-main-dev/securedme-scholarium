@@ -26,6 +26,7 @@ La règle de gouvernance reste `I -> I_system^S -> D_f -> dF -> i_fractal` : un 
 | `icon asset pack/1.png` et `10.png` | planches dark/light de marque et tailles produit | système d'icônes, favicon, app icon | sélectionner une variante canonique, puis produire des exports dédiés |
 | `badge/dark/1..10.png`, `badge/light/1..10.png` | 20 planches de badges 1254×1254 | reconnaissance de contribution et de parcours | convertir en catalogue sémantique; jamais en statut payant |
 | `web banner/1..10.png` | 10 compositions 1672×941 | campagne, landing, OpenGraph et social | retenir 1 direction dark et 1 direction light; décliner à partir d'un layout source |
+| `b2b banner hook/1.png` | planche verticale dark 1122×1402 avec 10 strips numérotés | bibliothèque de messages B2B provenance/confiance | master de contenu uniquement; découper et recomposer les strips validés, ne jamais publier la planche entière comme hero |
 | `video/Architecting_the_AI-Resilient_Research_Commons.mp4` | film de 66 MB | teaser Studio / recherche | stocker hors bundle, créer vignette, sous-titres et transcription avant publication |
 
 ### Constats qui influencent la décision
@@ -34,6 +35,7 @@ La règle de gouvernance reste `I -> I_system^S -> D_f -> dF -> i_fractal` : un 
 - Les PNG sont des **planches de conception**, pas des livrables de production : ils contiennent plusieurs tailles, labels et textes intégrés.
 - Les mentions **Premium**, **Premium Activation**, **Gold Mode** et **Tier 4** présentes dans les planches ne sont pas des offres payantes ni des textes de classement autorisés. Dans le produit, elles sont remplacées par la notion explicable de **maturité de l'écosystème** : une reconnaissance automatique de l'engagement réel, sans avantage de visibilité, prix ni capacité éditoriale.
 - La bannière web dark `web banner/2.png` est la meilleure direction candidate pour une campagne de découverte; `web banner/10.png` est la meilleure candidate claire. Leur texte devra être remplacé par le message validé de Scholarium.
+- La planche `b2b banner hook/1.png` apporte une direction cohérente pour les campagnes B2B : fond marine, bleu/violet, or de confiance et pictogrammes par thème. Ses dix lignes sont des **hooks éditoriaux**, pas des capacités produit garanties; leur catalogue est tenu dans `MARKETING-MESSAGING.md`.
 
 ## 3. Contrat de marque à appliquer
 
