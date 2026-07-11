@@ -232,6 +232,28 @@ test("prepares profile tool connections through explicit consent", async () => {
   assert.match(integrations, /getPlatformIdentity/);
 });
 
+test("keeps PayPal checkout server-side, receipt-bound, and independent from discovery", async () => {
+  const order = await readFile(new URL("../app/api/payments/paypal/order/route.ts", import.meta.url), "utf8");
+  const returnRoute = await readFile(new URL("../app/api/payments/paypal/return/route.ts", import.meta.url), "utf8");
+  const webhook = await readFile(new URL("../app/api/webhooks/paypal/route.ts", import.meta.url), "utf8");
+  const checkout = await readFile(new URL("../lib/paypal-checkout.ts", import.meta.url), "utf8");
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const crypto = await readFile(new URL("../lib/crypto-payment-contract.ts", import.meta.url), "utf8");
+  assert.match(order, /profileVerifications/);
+  assert.match(order, /createVerifiedContributorOrder/);
+  assert.match(order, /paymentReceipts/);
+  assert.match(returnRoute, /capturePayPalOrder/);
+  assert.match(returnRoute, /status: "active"/);
+  assert.match(webhook, /verifyPayPalWebhook/);
+  assert.match(webhook, /PAYMENT.CAPTURE.COMPLETED/);
+  assert.match(checkout, /verify-webhook-signature/);
+  assert.match(checkout, /PAYPAL_CHECKOUT_WEBHOOK_ID/);
+  assert.match(client, /Continue with PayPal/);
+  assert.match(client, /never affects your reach, ranking, moderation/);
+  assert.match(crypto, /provider_controlled/);
+  assert.match(crypto, /not_connected/);
+});
+
 test("offers an owner-confirmed Academia migration with private-by-default review and no account bypass", async () => {
   const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const route = await readFile(new URL("../app/api/academia-migrations/route.ts", import.meta.url), "utf8");
