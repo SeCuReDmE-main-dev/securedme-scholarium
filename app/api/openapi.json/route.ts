@@ -11,6 +11,7 @@ const contract = {
     "/api/v1/author-identifiers": { get: { summary: "Read private author identifiers" }, put: { summary: "Save a checksum-validated self-claimed ORCID iD" }, delete: { summary: "Remove a private ORCID claim" } },
     "/api/v1/orcid-guidance": { get: { summary: "Read free ORCID registration and authentication guidance" } },
     "/api/v1/collections": { get: { summary: "List private personal reading collections" }, post: { summary: "Create a private personal collection" }, delete: { summary: "Delete an owner-owned private collection" } },
+    "/api/v1/developer-seed": { get: { summary: "Read the public Scholarium Seed Protocol manifest without secrets or a ranking formula" } },
     "/api/v1/collection-items": { get: { summary: "List saved public work inside one owner-owned collection" }, put: { summary: "Save eligible public work to a private reading list or collection" }, delete: { summary: "Remove one saved work item" } },
     "/api/v1/health": { get: { summary: "Read service health" } },
     "/api/v1/artifacts": { get: { summary: "List or download active artifacts attached to a public publication" }, post: { summary: "Upload a hashed scholarly artifact" } },
