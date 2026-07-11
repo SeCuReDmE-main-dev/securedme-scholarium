@@ -43,7 +43,7 @@ test("uses real public feed modes and stores discovery weights for the signed-in
   assert.match(page, /setFeedMode\("chronological"\)/);
   assert.match(page, /fetch\(`\/api\/publications\?\$\{params\.toString\(\)\}`\)/);
   assert.match(page, /fetch\("\/api\/ranking-preferences"/);
-  assert.match(publications, /type FeedMode = "chronological" \| "discovery" \| "verified"/);
+  assert.match(publications, /type FeedMode = "chronological" \| "discovery" \| "following" \| "verified"/);
   assert.match(publications, /discoveryScore/);
 });
 

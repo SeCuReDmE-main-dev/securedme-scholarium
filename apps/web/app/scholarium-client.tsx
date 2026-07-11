@@ -3,7 +3,7 @@
 import { CSSProperties, FormEvent, useEffect, useMemo, useState } from "react";
 
 type View = "signal" | "library" | "studio" | "formalize";
-type FeedMode = "chronological" | "discovery" | "verified";
+type FeedMode = "chronological" | "discovery" | "following" | "verified";
 type ColorScheme = "scholarium-dark" | "scholarium-light" | "midnight-code" | "paper-library";
 type Publication = {
   id: string;
@@ -464,6 +464,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
 
         {view !== "formalize" && <div className="feed-tabs" role="tablist" aria-label="Feed options">
           <button className={feedMode === "discovery" ? "feed-tab active" : "feed-tab"} type="button" onClick={() => setFeedMode("discovery")}>Discover</button>
+          <button className={feedMode === "following" ? "feed-tab active" : "feed-tab"} type="button" onClick={() => { if (!session.displayName || !accountReady) { setProfileOpen(true); setNotice("Create a profile before opening your Following feed."); return; } setFeedMode("following"); }}>Following</button>
           <button className={feedMode === "verified" ? "feed-tab active" : "feed-tab"} type="button" onClick={() => setFeedMode("verified")}>Verified</button>
           <button className={feedMode === "chronological" ? "feed-tab active" : "feed-tab"} type="button" onClick={() => setFeedMode("chronological")}>Chronological</button>
         </div>}
@@ -512,7 +513,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         ) : (
           <section className="feed" aria-label="Publication feed">
             {!serverFeed && publications.some((publication) => publication.isPreview) && <p className="feed-preview-note">Sample publications are shown while the public archive is empty. They are examples, not live activity or metrics.</p>}
-            {serverFeed && <p className="feed-mode-note">{feedMode === "discovery" ? "Discovery uses text relevance, freshness, and verification status. It excludes subscriptions, contributions, and paid promotion." : feedMode === "verified" ? "Verified shows public work whose status is verified." : "Chronological shows public work by publication time."}{feedLoading ? " Refreshing…" : ""}</p>}
+            {serverFeed && <p className="feed-mode-note">{feedMode === "discovery" ? "Discovery uses text relevance, freshness, and verification status. It excludes subscriptions, contributions, and paid promotion." : feedMode === "following" ? "Following shows public work tagged with the topics you explicitly follow." : feedMode === "verified" ? "Verified shows public work whose status is verified." : "Chronological shows public work by publication time."}{feedLoading ? " Refreshing…" : ""}</p>}
             {filteredPublications.length === 0 ? (
               <div className="empty-state"><h2>No work matches that search.</h2><p>Try a topic, an author, or a broader scientific phrase.</p></div>
             ) : filteredPublications.map((publication) => (
