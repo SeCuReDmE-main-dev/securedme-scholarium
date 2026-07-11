@@ -28,6 +28,20 @@ export const integrationCatalog = [
     writesExternalRecord: true,
   },
   {
+    id: "youtube",
+    name: "YouTube",
+    purpose: "Connect a user-authorized channel for share/export preparation and verified channel-update webhooks; Scholarium stores references, not a copied video library.",
+    scopes: ["https://www.googleapis.com/auth/youtube.readonly", "https://www.googleapis.com/auth/youtube.upload"],
+    writesExternalRecord: true,
+  },
+  {
+    id: "tiktok",
+    name: "TikTok",
+    purpose: "Prepare a user-confirmed Direct Post handoff. The provider controls visibility and posting settings; unaudited clients remain private by provider policy.",
+    scopes: ["video.publish"],
+    writesExternalRecord: true,
+  },
+  {
     id: "quanthor",
     name: "QuaNthoR",
     purpose: "Prepare a formalization plan and send an author-approved Mizar draft to a separately verified proof workflow.",

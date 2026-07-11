@@ -29,7 +29,6 @@ test("server-renders the Scholarium public landing page instead of the starter s
 test("keeps the anti-pay-to-rank contract in the user interface", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
-  const publicationTypes = await readFile(new URL("../lib/publication-types.ts", import.meta.url), "utf8");
   assert.match(page, /Paid tools never change reach, ranking, or your right to publish/);
   assert.match(page, /Visibility is never for sale/);
   assert.match(page, /contribution supports the project, never the feed rank/);
@@ -41,12 +40,20 @@ test("keeps the anti-pay-to-rank contract in the user interface", async () => {
 test("uses real public feed modes and stores discovery weights for the signed-in account", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
+  const feedback = await readFile(new URL("../app/api/feed-feedback/route.ts", import.meta.url), "utf8");
+  const feedModel = await readFile(new URL("../lib/plithogenic-feed.ts", import.meta.url), "utf8");
   assert.match(page, /setFeedMode\("verified"\)/);
   assert.match(page, /setFeedMode\("chronological"\)/);
   assert.match(page, /fetch\(`\/api\/v1\/publications\?\$\{params\.toString\(\)\}`\)/);
   assert.match(page, /fetch\("\/api\/v1\/ranking-preferences"/);
   assert.match(publications, /type FeedMode = "chronological" \| "discovery" \| "following" \| "verified"/);
   assert.match(publications, /discoveryScore/);
+  assert.match(page, /setInterval\(refresh, 30_000\)/);
+  assert.match(page, /feed-feedback/);
+  assert.match(page, /Why you see this/);
+  assert.match(feedback, /favorite, less_like, or neutral/);
+  assert.match(feedModel, /not a truth detector/);
+  assert.match(feedModel, /author for payment, identity, popularity/);
 });
 
 test("keeps QuaNthoR educational and non-blocking", async () => {
@@ -167,6 +174,7 @@ test("sends authenticated publications and attached artifacts through the server
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
   const publicationTypes = await readFile(new URL("../lib/publication-types.ts", import.meta.url), "utf8");
+  const mediaLinks = await readFile(new URL("../app/api/media-links/route.ts", import.meta.url), "utf8");
   const versions = await readFile(new URL("../app/api/publications/[publicationId]/versions/route.ts", import.meta.url), "utf8");
   assert.match(page, /fetch\("\/api\/v1\/publications"/);
   assert.match(page, /fetch\("\/api\/v1\/artifacts"/);
@@ -179,6 +187,9 @@ test("sends authenticated publications and attached artifacts through the server
   assert.match(versions, /baseVersion/);
   assert.match(versions, /A newer publication version already exists/);
   assert.match(versions, /provenanceReceipt/);
+  assert.match(page, /External video URL/);
+  assert.match(mediaLinks, /YouTube or TikTok/);
+  assert.match(mediaLinks, /canonicalUrl/);
 });
 
 test("keeps community interactions account-bound, reportable, and limited in depth", async () => {
