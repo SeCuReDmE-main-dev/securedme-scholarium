@@ -158,6 +158,24 @@ const educationToolIds = [
   "codex_openai",
   "antigravity_gemini",
 ] as const;
+const suiteThemeAssets: Record<ColorScheme, { banner: string; logo: string }> = {
+  "scholarium-dark": {
+    banner: "/brand/education/securedme-education-banner-dark-thin.png",
+    logo: "/brand/education/securedme-education-logo-dark.png",
+  },
+  "scholarium-light": {
+    banner: "/brand/education/securedme-education-banner-light-thin.png",
+    logo: "/brand/education/securedme-education-logo-light.png",
+  },
+  "midnight-code": {
+    banner: "/brand/education/securedme-education-banner-dark-thin.png",
+    logo: "/brand/education/securedme-education-logo-dark.png",
+  },
+  "paper-library": {
+    banner: "/brand/education/securedme-education-banner-light-thin.png",
+    logo: "/brand/education/securedme-education-logo-light.png",
+  },
+};
 
 const initialPublications: Publication[] = [
   {
@@ -640,6 +658,9 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   );
   const badgeTheme = colorScheme === "scholarium-light" || colorScheme === "paper-library" ? "light" : "dark";
   const activeEducationBadgeAsset = activeEducationToolCount > 0 ? `/brand/badges/${badgeTheme}/${activeEducationToolCount}.png` : null;
+  const activeEducationIconStage = Math.min(Math.max(activeEducationToolCount, 1), 10);
+  const activeEducationIconAsset = `/brand/icons/${activeEducationIconStage}.png`;
+  const currentSuiteAssets = suiteThemeAssets[colorScheme];
 
   const loadMediaWebhookTrace = async () => {
     setMediaWebhookTraceLoading(true);
@@ -1123,10 +1144,11 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     <main className={`scholarium-shell theme-${colorScheme}`} style={{ "--blue": accentColor } as CSSProperties}>
       <aside className="left-rail" aria-label="Primary navigation">
         <a className="brand" href="#top" aria-label="Scholarium home">
-          <span className="brand-mark"><img src="/brand/icons/scholarium-icon-pack-light.png" alt="" /></span>
+          <span className="brand-mark"><img src={activeEducationIconAsset} alt="" /></span>
           <span>scholarium</span>
         </a>
         <div className="suite-label">SECUREDME EDUCATION</div>
+        <img className="suite-strip-mark" src={currentSuiteAssets.banner} alt="SecuredMe Education suite banner." />
 
         <nav className="main-nav">
           {navItems.map((item) => (
@@ -1162,6 +1184,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <div>
             <p className="eyebrow">OPEN SCIENCE / OPEN EDUCATION</p>
             <h1>{view === "signal" ? "Today’s signal" : view === "library" ? "Your knowledge library" : view === "studio" ? "Creator studio" : view === "saved" ? "Your saved library" : view === "migration" ? "Bring your work with you" : "Formalize with QuaNthoR"}</h1>
+            <img className="topbar-suite-logo" src={currentSuiteAssets.logo} alt="SecuredMe Education suite identity sheet." />
           </div>
           <button className="publish-button" type="button" onClick={() => setComposerOpen(true)}>Publish work <span>+</span></button>
         </header>
