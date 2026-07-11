@@ -44,6 +44,7 @@ type FormalizationPreview = {
 type LocalInsightCounts = { formalizationGuides: number; publicationDrafts: number };
 type SavedCollection = { description: string | null; id: string; itemCount: number; kind: string; title: string };
 type SavedItem = { abstract: string; createdAt: string; id: string; publicationId: string; status: string; title: string; type: string };
+type MediaWebhookEvent = { channelId: string; eventType: string; receivedAt: string; status: string; videoId: string };
 const profileToolOptions = [
   { id: "quanthor", label: "QuaNthoR" },
   { id: "synthia", label: "Synthia" },
@@ -225,6 +226,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [localInsightsEnabled, setLocalInsightsEnabled] = useState(false);
   const [localInsightCounts, setLocalInsightCounts] = useState<LocalInsightCounts>({ formalizationGuides: 0, publicationDrafts: 0 });
   const [connectingTool, setConnectingTool] = useState<string | null>(null);
+  const [mediaWebhookEvents, setMediaWebhookEvents] = useState<MediaWebhookEvent[]>([]);
+  const [mediaWebhookTraceLoading, setMediaWebhookTraceLoading] = useState(false);
   const [accountReady, setAccountReady] = useState<boolean | null>(null);
   const [accountRole, setAccountRole] = useState("professional");
   const [accountAgeBand, setAccountAgeBand] = useState("adult");
@@ -456,6 +459,20 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       setNotice(error instanceof Error ? error.message : "The connection could not be prepared.");
     } finally {
       setConnectingTool(null);
+    }
+  };
+
+  const loadMediaWebhookTrace = async () => {
+    setMediaWebhookTraceLoading(true);
+    try {
+      const response = await fetch("/api/v1/media-webhook-events?provider=youtube");
+      const payload = await response.json() as { error?: string; events?: MediaWebhookEvent[] };
+      if (!response.ok) throw new Error(payload.error ?? "The provider delivery trace could not be read.");
+      setMediaWebhookEvents(payload.events ?? []);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "The provider delivery trace could not be read.");
+    } finally {
+      setMediaWebhookTraceLoading(false);
     }
   };
 
@@ -991,6 +1008,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         <section className="transparency-card" id="how-ranking-works">
           <strong>Why you see work</strong>
           <p>Three visible lanes: relevance from your search and hashtags, satisfaction from actions you chose, and research context from provenance. A safety gate removes quarantined work before ranking. Never payment, global-like popularity, or passive viewing surveillance.</p>
+          <ul className="algorithm-sources"><li><strong>YouTube pattern:</strong> your deliberate satisfaction choices, never hidden watch time.</li><li><strong>Meta pattern:</strong> eligibility first, then relevance and format diversity — never social-graph prediction.</li><li><strong>Netflix pattern:</strong> separate Discovery, Following, Verified, and Chronological views — never one opaque feed.</li></ul>
         </section>
       </aside>
 
@@ -1040,6 +1058,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <label className="toggle-label"><input type="checkbox" checked={localInsightsEnabled} onChange={(event) => updateLocalInsights(event.target.checked)} /> Enable local-only activity insights on this device</label>
           <div className="local-insights-card"><strong>Private activity snapshot</strong>{localInsightsEnabled ? <span>{localInsightCounts.formalizationGuides} guide{localInsightCounts.formalizationGuides === 1 ? "" : "s"} created · {localInsightCounts.publicationDrafts} publication draft{localInsightCounts.publicationDrafts === 1 ? "" : "s"} started. Kept only in this browser.</span> : <span>Off by default. No activity snapshot is collected or sent anywhere.</span>}</div>
           <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}</button>)}</div></div>
+          <div className="webhook-trace-card"><strong>YouTube delivery trace</strong><span>Visible only to you after a channel is linked and the signed callback is configured. Scholarium retains no raw Atom feed or provider token.</span><button className="quiet-button" type="button" disabled={mediaWebhookTraceLoading} onClick={loadMediaWebhookTrace}>{mediaWebhookTraceLoading ? "Loading trace…" : "View callback trace"}</button>{mediaWebhookEvents.length > 0 ? <ul>{mediaWebhookEvents.map((event) => <li key={`${event.videoId}-${event.receivedAt}`}>{event.eventType} · video {event.videoId} · {new Date(event.receivedAt).toLocaleString()} · {event.status}</li>)}</ul> : <small>No recorded callback yet. A prepared connection is not a linked channel or an active webhook.</small>}</div>
           <div className="composer-proof"><span>◌</span><p>Profile images upload only after you choose a file. They remain private unless you enable public profile visibility above; a public profile exposes only your chosen visuals and already-public work. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
           <div className="composer-actions"><a className="quiet-button auth-link" href="/api/v1/account/export">Export my data</a><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" disabled={accountSaving} onClick={saveProfilePreferences}>{accountSaving ? "Saving…" : "Save preferences"}</button></div></>}</>}
         </section>
