@@ -21,6 +21,11 @@ const contract = {
       get: { summary: "Read user-controlled ranking preferences" },
       put: { summary: "Update bounded ranking weights" },
     },
+    "/api/topic-follows": {
+      get: { summary: "List the signed-in account's followed topics" },
+      put: { summary: "Follow a topic without affecting paid reach" },
+      delete: { summary: "Stop following one topic" },
+    },
   },
 };
 

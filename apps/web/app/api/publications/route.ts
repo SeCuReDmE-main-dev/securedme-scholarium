@@ -1,8 +1,9 @@
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, inArray } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { publicationVersions, publications, users } from "../../../db/schema";
+import { publicationTopics, publicationVersions, publications, topics, users } from "../../../db/schema";
 import { createProvenanceReceipt } from "../../../lib/provenance";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
+import { normalizedTopicSlugs, topicLabel } from "../../../lib/topics";
 
 const publicationTypes = new Set([
   "research_note",
@@ -16,6 +17,7 @@ type PublicationInput = {
   abstract?: unknown;
   title?: unknown;
   type?: unknown;
+  topicSlugs?: unknown;
 };
 
 function stringField(value: unknown, field: string, maximum: number) {
@@ -71,9 +73,14 @@ export async function GET(request: Request) {
       .orderBy(desc(publications.createdAt))
       .limit(100);
 
+    const publicationIds = rows.map((publication) => publication.id);
+    const assignedTopics = publicationIds.length === 0 ? [] : await db.select({ label: topics.label, publicationId: publicationTopics.publicationId, slug: topics.slug }).from(publicationTopics).innerJoin(topics, eq(publicationTopics.topicId, topics.id)).where(inArray(publicationTopics.publicationId, publicationIds));
+    const topicsByPublication = new Map<string, string[]>();
+    for (const topic of assignedTopics) topicsByPublication.set(topic.publicationId, [...(topicsByPublication.get(topic.publicationId) ?? []), topic.label]);
+    const enrichedRows = rows.map((publication) => ({ ...publication, topics: topicsByPublication.get(publication.id) ?? [] }));
     const queryFiltered = query
-      ? rows.filter((publication) => `${publication.title} ${publication.abstract} ${publication.type} ${publication.author}`.toLowerCase().includes(query))
-      : rows;
+      ? enrichedRows.filter((publication) => `${publication.title} ${publication.abstract} ${publication.type} ${publication.author} ${publication.topics.join(" ")}`.toLowerCase().includes(query))
+      : enrichedRows;
     const statusFiltered = mode === "verified" ? queryFiltered.filter((publication) => publication.status === "verified") : queryFiltered;
     const feed = mode === "discovery"
       ? statusFiltered.map((publication) => ({ ...publication, discoveryScore: discoveryScore(publication, query) })).sort((a, b) => b.discoveryScore - a.discoveryScore)
@@ -100,6 +107,7 @@ export async function POST(request: Request) {
     if (!identity) return signInRequired();
     const authorId = identity.userId;
     const type = stringField(input.type, "type", 64);
+    const topicSlugs = normalizedTopicSlugs(input.topicSlugs);
     const title = stringField(input.title, "title", 240);
     const abstract = stringField(input.abstract, "abstract", 12_000);
     if (!publicationTypes.has(type)) {
@@ -137,9 +145,14 @@ export async function POST(request: Request) {
         version: 1,
       }),
     ]);
+    if (topicSlugs.length) {
+      await db.batch(topicSlugs.map((slug) => db.insert(topics).values({ id: crypto.randomUUID(), label: topicLabel(slug), slug }).onConflictDoNothing()));
+      const createdTopics = await db.select({ id: topics.id }).from(topics).where(inArray(topics.slug, topicSlugs));
+      if (createdTopics.length) await db.batch(createdTopics.map((topic) => db.insert(publicationTopics).values({ id: crypto.randomUUID(), publicationId, topicId: topic.id }).onConflictDoNothing()));
+    }
 
     return Response.json({
-      publication: { abstract, authorId, id: publicationId, status: "processing", title, type },
+      publication: { abstract, authorId, id: publicationId, status: "processing", title, topicSlugs, type },
       provenanceReceipt: receipt,
     }, { status: 201 });
   } catch (error) {

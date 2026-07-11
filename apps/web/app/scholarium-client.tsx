@@ -100,6 +100,7 @@ type ApiPublication = {
   id: string;
   status: string;
   title: string;
+  topics?: string[];
   type: string;
 };
 
@@ -115,7 +116,7 @@ const fromApiPublication = (publication: ApiPublication): Publication => ({
   type: publicationLabel(publication.type),
   title: publication.title,
   excerpt: publication.abstract,
-  topics: [publication.type.replaceAll("_", " "), "Open education"],
+  topics: publication.topics?.length ? publication.topics : [publication.type.replaceAll("_", " "), "Open education"],
   status: publication.status === "verified" ? "Verified" : "Processing",
   hours: "Published",
   reactions: 0,
@@ -141,6 +142,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [publicationType, setPublicationType] = useState("Research note");
   const [draftTitle, setDraftTitle] = useState("");
   const [draftBody, setDraftBody] = useState("");
+  const [draftTopics, setDraftTopics] = useState("");
   const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
   const [publishing, setPublishing] = useState(false);
   const [ranking, setRanking] = useState({ relevance: 78, freshness: 52, diversity: 66 });
@@ -304,8 +306,9 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     setPublishing(true);
     try {
       const type = ({ "Research note": "research_note", "White paper": "white_paper", "Project update": "project_update", "Short video": "short_video", "Teaching artifact": "teaching_artifact" } as Record<string, string>)[publicationType] ?? "research_note";
-      const response = await fetch("/api/publications", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ abstract: draftBody.trim(), title: draftTitle.trim(), type }) });
-      const payload = await response.json() as { error?: string; publication?: { id: string; status: string } };
+      const topicSlugs = draftTopics.split(",").map((topic) => topic.trim()).filter(Boolean);
+      const response = await fetch("/api/publications", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ abstract: draftBody.trim(), title: draftTitle.trim(), topicSlugs, type }) });
+      const payload = await response.json() as { error?: string; publication?: { id: string; status: string; topicSlugs?: string[] } };
       if (!response.ok || !payload.publication) throw new Error(payload.error ?? "Your publication could not be created.");
       let uploadedArtifacts = 0;
       for (const file of attachedFiles) {
@@ -323,6 +326,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         id: payload.publication.id,
         status: payload.publication.status,
         title: draftTitle.trim(),
+        topics: payload.publication.topicSlugs,
         type,
       }),
       ...current,
@@ -330,6 +334,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     const artifactCount = attachedFiles.length;
     setDraftTitle("");
     setDraftBody("");
+    setDraftTopics("");
     setAttachedFiles([]);
     setComposerOpen(false);
     trackLocalInsight("publicationDrafts");
@@ -370,6 +375,16 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "Discovery preferences could not be saved.");
     } finally { setRankingSaving(false); }
+  };
+
+  const followTopic = async (topic: string) => {
+    if (!session.displayName || !accountReady) { setProfileOpen(true); setNotice("Create a Scholarium profile before following topics."); return; }
+    try {
+      const response = await fetch("/api/topic-follows", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ topic }) });
+      const payload = await response.json() as { error?: string; topic?: { label: string } };
+      if (!response.ok) throw new Error(payload.error ?? "Topic could not be followed.");
+      setNotice(`Following ${payload.topic?.label ?? topic}. This affects your future Following feed, never paid reach.`);
+    } catch (error) { setNotice(error instanceof Error ? error.message : "Topic could not be followed."); }
   };
 
   const buildFormalization = async () => {
@@ -541,8 +556,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         </section>
 
         <section className="topics-card">
-          <div className="card-heading"><h2>Topics you follow</h2><button type="button" onClick={() => setNotice("Topic editing is part of your profile preferences.")}>Edit</button></div>
-          <div className="followed-topics"><button>#OpenScience</button><button>#QuantumEducation</button><button>#ClimateSystems</button><button>#CommunityCode</button></div>
+          <div className="card-heading"><h2>Topics to follow</h2><button type="button" onClick={() => setNotice("Following a topic will shape the future Following feed. It never changes anyone’s reach.")}>How it works</button></div>
+          <div className="followed-topics"><button type="button" onClick={() => followTopic("open-science")}>#OpenScience</button><button type="button" onClick={() => followTopic("quantum-education")}>#QuantumEducation</button><button type="button" onClick={() => followTopic("climate-systems")}>#ClimateSystems</button><button type="button" onClick={() => followTopic("community-code")}>#CommunityCode</button></div>
         </section>
 
         <section className="project-card">
@@ -564,6 +579,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <label>Format<select value={publicationType} onChange={(event) => setPublicationType(event.target.value)}><option>Research note</option><option>White paper</option><option>Project update</option><option>Short video</option><option>Teaching artifact</option></select></label>
           <label>Title<input value={draftTitle} onChange={(event) => setDraftTitle(event.target.value)} placeholder="Give the work a clear, specific name" autoFocus /></label>
           <label>Context<textarea value={draftBody} onChange={(event) => setDraftBody(event.target.value)} placeholder="Explain what this is, who it helps, and how others can use it." rows={5} /></label>
+          <label>Topics (optional)<input value={draftTopics} onChange={(event) => setDraftTopics(event.target.value)} placeholder="Open science, climate systems, teaching" /></label>
           <label>Attach evidence<input type="file" multiple accept=".pdf,.docx,.odt,.xlsx,.ods,.csv,.pptx,.odp,.epub,.zip,.txt,video/*" onChange={(event) => setAttachedFiles(Array.from(event.currentTarget.files ?? []))} /></label>
           {attachedFiles.length > 0 && <p className="attachment-summary">{attachedFiles.length} artifact{attachedFiles.length === 1 ? "" : "s"} ready for hashing and upload.</p>}
           <div className="composer-proof"><span>✓</span><p>A timestamped provenance receipt will be created. It records your Scholarium publication event; it does not replace copyright registration.</p></div>
