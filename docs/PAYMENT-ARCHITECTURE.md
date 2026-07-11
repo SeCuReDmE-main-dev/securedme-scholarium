@@ -9,7 +9,7 @@ Scholarium's payment path is separate from its feed and publication rights: a pa
 3. The return route captures the approved order server-side and stores only the provider order/capture IDs, amount, currency, status and timestamps.
 4. The PayPal webhook independently verifies its signature through PayPal's verification API, then reconciles the same minimal receipt.
 
-The live configuration must provide `PAYPAL_CHECKOUT_CLIENT_ID`, `PAYPAL_CHECKOUT_CLIENT_SECRET`, `PAYPAL_CHECKOUT_MODE` (`sandbox` first, then `live`) and `PAYPAL_CHECKOUT_WEBHOOK_ID`. A dedicated checkout REST app is preferred; the implementation may use the existing login app only for sandbox continuity. No client secret, wallet key, card data, or raw webhook body is stored.
+Production checkout is fail-closed and requires a dedicated live REST app: `PAYPAL_CHECKOUT_CLIENT_ID`, `PAYPAL_CHECKOUT_CLIENT_SECRET`, `PAYPAL_CHECKOUT_MODE=live`, and `PAYPAL_CHECKOUT_WEBHOOK_ID`. Login credentials are never reused for checkout. No client secret, wallet key, card data, or raw webhook body is stored. QuaNTecH-ViD is an independent product and does not use this Scholarium payment boundary.
 
 Register the deployed endpoint `/api/v1/webhooks/paypal` for `PAYMENT.CAPTURE.COMPLETED`, `PAYMENT.CAPTURE.PENDING`, and `PAYMENT.CAPTURE.DENIED`. Do not activate a real recurring billing claim until a PayPal subscription product, billing webhook and cancellation workflow are separately implemented and verified.
 

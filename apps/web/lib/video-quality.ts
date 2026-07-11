@@ -31,7 +31,7 @@ const profiles: Record<MediaAspect, Record<MediaQualityPreset, OutputProfile>> =
  */
 export function createVideoQualityContract(input: { aspect?: MediaAspect; qualityPreset?: MediaQualityPreset; reviewMode?: MediaReviewMode }) {
   const aspect = input.aspect ?? "landscape";
-  const qualityPreset = input.qualityPreset ?? "high";
+  const qualityPreset = input.qualityPreset ?? "standard";
   const reviewMode = input.reviewMode ?? "none";
   const output = profiles[aspect][qualityPreset];
 

@@ -228,7 +228,10 @@ test("prepares profile tool connections through explicit consent", async () => {
   const integrations = await readFile(new URL("../app/api/integrations/route.ts", import.meta.url), "utf8");
   assert.match(page, /fetch\("\/api\/v1\/integrations"/);
   assert.match(page, /Provider sessions and tokens stay with their provider/);
+  assert.match(page, /Prepared — consent pending/);
   assert.match(integrations, /pending_consent/);
+  assert.match(integrations, /cache-control": "private, no-store/);
+  assert.match(integrations, /connection: connections\.find/);
   assert.match(integrations, /getPlatformIdentity/);
 });
 
@@ -328,17 +331,36 @@ test("ships a developer seed contract without exposing a certified-engine formul
 test("offers an author-led podcast and video production brief without uploading or publishing media", async () => {
   const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const route = await readFile(new URL("../app/api/video-production-plan/route.ts", import.meta.url), "utf8");
+  const handoff = await readFile(new URL("../app/api/quantech-render-request/route.ts", import.meta.url), "utf8");
+  const integrationsRoute = await readFile(new URL("../app/api/integrations/route.ts", import.meta.url), "utf8");
+  const integrations = await readFile(new URL("../lib/integration-catalog.ts", import.meta.url), "utf8");
   const plan = await readFile(new URL("../lib/media-production-plan.ts", import.meta.url), "utf8");
   const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
+  const exportRoute = await readFile(new URL("../app/api/account/export/route.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
   assert.match(client, /PODCAST & VIDEO STUDIO/);
   assert.match(client, /Nothing is uploaded, rendered, or shared/);
   assert.match(client, /Future VideoPrism and YOLO checks/);
+  assert.match(client, /Minimal provider payload only/);
+  assert.match(client, /Private QuaNTecH request history/);
+  assert.match(client, /Chrome extension ↗/);
+  assert.match(client, /Prepare provider connection/);
+  assert.match(client, /Provider connection status:/);
   assert.match(route, /No video, image, transcript, identity information, or provider credential is uploaded/);
+  assert.match(handoff, /minimal provider handoff contract/);
+  assert.match(handoff, /Create your Scholarium profile before preparing a QuaNTecH handoff/);
+  assert.match(handoff, /private, no-store/);
+  assert.match(integrationsRoute, /integrations: integrationCatalog\.map/);
+  assert.match(integrations, /id: "quantech_vid"/);
   assert.match(route, /cache-control": "no-store/);
   assert.match(plan, /1920 × 1080/);
   assert.match(plan, /VideoPrism helps semantic review; it does not enhance pixels or determine truth/);
   assert.match(plan, /not identity or biometric analysis/);
+  assert.match(schema, /quantech_render_requests/);
+  assert.match(exportRoute, /quantechRenderRequests/);
   assert.match(openapi, /video-production-plan/);
+  assert.match(openapi, /quantech-render-request/);
+  assert.match(openapi, /handoff history without raw scripts/);
 });
 
 test("documents a private owner-only trace for verified YouTube callback deliveries", async () => {
@@ -403,6 +425,8 @@ test("keeps a private, portable account-data export separate from provider secre
   assert.match(exportRoute, /securedme-scholarium-account-export\/v1/);
   assert.match(exportRoute, /private, no-store/);
   assert.match(exportRoute, /integration token vault references and provider tokens/);
+  assert.match(exportRoute, /quantechRenderRequests/);
+  assert.match(exportRoute, /raw QuaNTecH scripts, media, provider credentials, and render internals/);
 });
 
 test("sends authenticated publications and attached artifacts through the server contracts", async () => {

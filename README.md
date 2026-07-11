@@ -32,7 +32,7 @@
 <!-- SECUREDME-STARTUP-SUPPORT:END -->
 
 > [!IMPORTANT]
-> **Pre-alpha / in development.** Scholarium is being built in public, but it is not yet a production social network. The public preview is for product validation. PayPal sign-in is configured in sandbox; live provider review, payment checkout, public moderation operations, and youth-flow legal review remain gated.
+> **Pre-alpha / in development.** Scholarium is being built in public, but it is not yet a production social network. The public preview is for product validation. PayPal checkout now fails closed unless dedicated live credentials and a live webhook ID are configured; provider review, public moderation operations, and youth-flow legal review remain gated.
 
 ## Why Scholarium exists
 

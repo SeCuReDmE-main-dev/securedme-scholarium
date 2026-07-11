@@ -42,6 +42,13 @@ export const integrationCatalog = [
     writesExternalRecord: true,
   },
   {
+    id: "quantech_vid",
+    name: "QuaNTecH-ViD",
+    purpose: "Prepare an explicit provider connection for optional higher render limits and extension-assisted podcast-to-video work. Scholarium sends only the user-approved context needed for a provider handoff.",
+    scopes: ["provider.handoff", "provider.entitlement.read"],
+    writesExternalRecord: true,
+  },
+  {
     id: "tiktok",
     name: "TikTok",
     purpose: "Prepare a user-confirmed Direct Post handoff. The provider controls visibility and posting settings; unaudited clients remain private by provider policy.",

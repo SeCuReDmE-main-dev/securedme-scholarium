@@ -418,3 +418,22 @@ export const mediaWebhookEvents = sqliteTable("media_webhook_events", {
   index("media_webhook_events_subject_idx").on(table.provider, table.externalSubjectId),
   uniqueIndex("media_webhook_events_delivery_idx").on(table.provider, table.externalEventId, table.payloadHash),
 ]);
+
+/** Private provider handoff ledger. It stores request metadata, never raw scripts or media. */
+export const quantechRenderRequests = sqliteTable("quantech_render_requests", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  provider: text("provider").notNull().default("QuaNTecH-ViD"),
+  status: text("status").notNull().default("prepared"),
+  aspect: text("aspect").notNull(),
+  qualityPreset: text("quality_preset").notNull(),
+  reviewMode: text("review_mode").notNull().default("none"),
+  entitlementStatus: text("entitlement_status").notNull(),
+  scriptDigest: text("script_digest").notNull(),
+  sourceUrlCount: integer("source_url_count").notNull().default(0),
+  handoffUrl: text("handoff_url").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("quantech_render_requests_user_idx").on(table.userId),
+  index("quantech_render_requests_created_idx").on(table.createdAt),
+]);

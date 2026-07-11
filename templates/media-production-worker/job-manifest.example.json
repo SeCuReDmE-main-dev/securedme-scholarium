@@ -1,0 +1,42 @@
+{
+  "schema": "scholarium-media-job/v1",
+  "jobId": "synthetic-job-0001",
+  "expiresAt": "2030-01-01T00:00:00.000Z",
+  "nonce": "synthetic-nonce-rotate-per-job",
+  "source": {
+    "kind": "local_path",
+    "path": "C:/path/approved-by-author/audio-or-video-input"
+  },
+  "quality": {
+    "aspect": "landscape",
+    "preset": "high",
+    "output": {
+      "width": 1920,
+      "height": 1080,
+      "videoBitrate": "5000k",
+      "audioBitrate": "192k",
+      "videoCodec": "libx264",
+      "audioCodec": "aac",
+      "pixelFormat": "yuv420p",
+      "safeMarginPercent": 10
+    },
+    "review": {
+      "mode": "none",
+      "status": "disabled",
+      "privacy": "not_applicable"
+    }
+  },
+  "accessPolicy": {
+    "billing": "free",
+    "completedRendersPerRollingWindow": 3,
+    "rollingWindowHours": 24,
+    "defaultPreset": "standard",
+    "paidPriority": false
+  },
+  "consent": {
+    "ownerConfirmed": true,
+    "localReviewConfirmed": false,
+    "providerHandoffConfirmed": false
+  },
+  "signature": "replace-with-expiring-server-signature"
+}

@@ -1,6 +1,6 @@
 import { VERIFIED_CONTRIBUTOR_MONTHLY_CENTS } from "./verified-subscription";
 
-type PayPalConfig = { clientId: string; clientSecret: string; mode: "live" | "sandbox"; webhookId: string | null };
+type PayPalConfig = { clientId: string; clientSecret: string; mode: "live"; webhookId: string };
 type PayPalOrder = { id?: string; links?: Array<{ href?: string; rel?: string }>; status?: string };
 
 async function runtimeValue(name: string) {
@@ -10,18 +10,15 @@ async function runtimeValue(name: string) {
 }
 
 export async function paypalCheckoutConfig() {
-  const [checkoutId, checkoutSecret, loginId, loginSecret, modeValue, webhookId] = await Promise.all([
+  const [checkoutId, checkoutSecret, modeValue, webhookId] = await Promise.all([
     runtimeValue("PAYPAL_CHECKOUT_CLIENT_ID"), runtimeValue("PAYPAL_CHECKOUT_CLIENT_SECRET"),
-    runtimeValue("PAYPAL_LOGIN_CLIENT_ID"), runtimeValue("PAYPAL_LOGIN_CLIENT_SECRET"),
     runtimeValue("PAYPAL_CHECKOUT_MODE"), runtimeValue("PAYPAL_CHECKOUT_WEBHOOK_ID"),
   ]);
-  const mode = modeValue === "live" || modeValue === "sandbox" ? modeValue : "sandbox";
-  const clientId = checkoutId ?? loginId;
-  const clientSecret = checkoutSecret ?? loginSecret;
-  return clientId && clientSecret ? { clientId, clientSecret, mode, webhookId } satisfies PayPalConfig : null;
+  if (modeValue !== "live" || !checkoutId || !checkoutSecret || !webhookId) return null;
+  return { clientId: checkoutId, clientSecret: checkoutSecret, mode: "live", webhookId } satisfies PayPalConfig;
 }
 
-function apiBase(config: PayPalConfig) { return config.mode === "live" ? "https://api-m.paypal.com" : "https://api-m.sandbox.paypal.com"; }
+function apiBase(_config: PayPalConfig) { return "https://api-m.paypal.com"; }
 
 async function accessToken(config: PayPalConfig) {
   const response = await fetch(`${apiBase(config)}/v1/oauth2/token`, { method: "POST", headers: { authorization: `Basic ${btoa(`${config.clientId}:${config.clientSecret}`)}`, "content-type": "application/x-www-form-urlencoded" }, body: "grant_type=client_credentials" });
@@ -59,4 +56,4 @@ export async function verifyPayPalWebhook(config: PayPalConfig, headers: Headers
   return response.ok && result.verification_status === "SUCCESS";
 }
 
-export function paypalCheckoutPublicConfig(config: PayPalConfig | null) { return { configured: Boolean(config), mode: config?.mode ?? "sandbox", provider: "paypal", priceCents: VERIFIED_CONTRIBUTOR_MONTHLY_CENTS, currency: "USD" }; }
+export function paypalCheckoutPublicConfig(config: PayPalConfig | null) { return { configured: Boolean(config), mode: "live", provider: "paypal", priceCents: VERIFIED_CONTRIBUTOR_MONTHLY_CENTS, currency: "USD" }; }
