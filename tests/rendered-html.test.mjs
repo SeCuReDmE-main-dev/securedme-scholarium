@@ -69,3 +69,11 @@ test("shows the same WebAuth state that protects account writes", async () => {
   assert.match(client, /Connected with ChatGPT/);
   assert.match(client, /session\.signOutPath/);
 });
+
+test("keeps artifact and contributor-plan actions bound to the signed-in account", async () => {
+  const artifacts = await readFile(new URL("../app/api/artifacts/route.ts", import.meta.url), "utf8");
+  const subscription = await readFile(new URL("../app/api/verified-subscription/route.ts", import.meta.url), "utf8");
+  assert.match(artifacts, /eq\(publications\.authorId, identity\.userId\)/);
+  assert.match(subscription, /const userId = identity\.userId/);
+  assert.doesNotMatch(subscription, /userId\?: unknown/);
+});

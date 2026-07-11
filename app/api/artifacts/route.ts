@@ -1,7 +1,8 @@
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { getDb } from "../../../db";
 import { artifacts, publications } from "../../../db/schema";
 import { getMediaStore } from "../../../lib/media-store";
+import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
 
 const acceptedTypes = new Set([
   "application/epub+zip",
@@ -28,6 +29,8 @@ function toHex(buffer: ArrayBuffer) {
 
 export async function POST(request: Request) {
   try {
+    const identity = await getPlatformIdentity();
+    if (!identity) return signInRequired();
     const formData = await request.formData();
     const publicationId = formData.get("publicationId");
     const file = formData.get("file");
@@ -45,8 +48,8 @@ export async function POST(request: Request) {
     }
 
     const db = await getDb();
-    const [publication] = await db.select({ id: publications.id }).from(publications).where(eq(publications.id, publicationId.trim())).limit(1);
-    if (!publication) return Response.json({ error: "Publication was not found" }, { status: 404 });
+    const [publication] = await db.select({ id: publications.id }).from(publications).where(and(eq(publications.id, publicationId.trim()), eq(publications.authorId, identity.userId))).limit(1);
+    if (!publication) return Response.json({ error: "Publication was not found or is not owned by this account" }, { status: 404 });
 
     const bytes = await file.arrayBuffer();
     const artifactId = crypto.randomUUID();
