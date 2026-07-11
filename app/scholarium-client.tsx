@@ -104,6 +104,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [draftTitle, setDraftTitle] = useState("");
   const [draftBody, setDraftBody] = useState("");
   const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
+  const [publishing, setPublishing] = useState(false);
   const [ranking, setRanking] = useState({ relevance: 78, freshness: 52, diversity: 66 });
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
@@ -212,9 +213,32 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     );
   }, [publications, query]);
 
-  const publishDraft = (event: FormEvent<HTMLFormElement>) => {
+  const publishDraft = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!draftTitle.trim() || !draftBody.trim()) return;
+    if (!session.displayName) {
+      window.location.assign(session.signInPath);
+      return;
+    }
+    if (!accountReady) {
+      setProfileOpen(true);
+      setNotice("Create your Scholarium profile before publishing your first work.");
+      return;
+    }
+    setPublishing(true);
+    try {
+      const type = ({ "Research note": "research_note", "White paper": "white_paper", "Project update": "project_update", "Short video": "short_video", "Teaching artifact": "teaching_artifact" } as Record<string, string>)[publicationType] ?? "research_note";
+      const response = await fetch("/api/publications", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ abstract: draftBody.trim(), title: draftTitle.trim(), type }) });
+      const payload = await response.json() as { error?: string; publication?: { id: string; status: string } };
+      if (!response.ok || !payload.publication) throw new Error(payload.error ?? "Your publication could not be created.");
+      let uploadedArtifacts = 0;
+      for (const file of attachedFiles) {
+        const artifactForm = new FormData();
+        artifactForm.set("publicationId", payload.publication.id);
+        artifactForm.set("file", file);
+        const artifactResponse = await fetch("/api/artifacts", { method: "POST", body: artifactForm });
+        if (artifactResponse.ok) uploadedArtifacts += 1;
+      }
     setPublications((current) => [
       {
         id: Date.now(),
@@ -239,7 +263,10 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     setAttachedFiles([]);
     setComposerOpen(false);
     trackLocalInsight("publicationDrafts");
-    setNotice(`Published. Your provenance receipt, safety scan${artifactCount ? `, and ${artifactCount} artifact${artifactCount === 1 ? "" : "s"}` : ""} are now processing.`);
+      setNotice(`Published. Your provenance receipt and safety scan are now processing.${artifactCount ? ` ${uploadedArtifacts} of ${artifactCount} artifact${artifactCount === 1 ? "" : "s"} uploaded.` : ""}`);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Your publication could not be created.");
+    } finally { setPublishing(false); }
   };
 
   const reactToPublication = (id: number) => {
@@ -452,7 +479,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <label>Attach evidence<input type="file" multiple accept=".pdf,.docx,.odt,.xlsx,.ods,.csv,.pptx,.odp,.epub,.zip,.txt,video/*" onChange={(event) => setAttachedFiles(Array.from(event.currentTarget.files ?? []))} /></label>
           {attachedFiles.length > 0 && <p className="attachment-summary">{attachedFiles.length} artifact{attachedFiles.length === 1 ? "" : "s"} ready for hashing and upload.</p>}
           <div className="composer-proof"><span>✓</span><p>A timestamped provenance receipt will be created. It records your Scholarium publication event; it does not replace copyright registration.</p></div>
-          <div className="composer-actions"><button className="quiet-button" type="button" onClick={() => setComposerOpen(false)}>Save draft</button><button className="publish-button" type="submit">Publish now</button></div>
+          <div className="composer-actions"><button className="quiet-button" type="button" onClick={() => setComposerOpen(false)}>Save draft</button><button className="publish-button" type="submit" disabled={publishing}>{publishing ? "Publishing…" : "Publish now"}</button></div>
         </form>
       </div>}
       {profileOpen && <div className="modal-backdrop" role="presentation">
