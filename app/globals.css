@@ -97,3 +97,34 @@ h1,h2,h3,p { margin:0; }.topbar h1 { margin-top:5px; font:400 42px/.95 var(--fon
 .builder-card a{border-top-color:rgba(255,255,255,.12)}
 .builder-card a b{color:var(--gold)}
 @media(max-width:760px){.ecosystem-badge{width:60px;height:60px}}
+.landing-brand img{width:2.5rem;height:2.5rem;border-radius:.75rem;object-fit:cover;object-position:left center;border:1px solid rgba(255,255,255,.12);box-shadow:0 12px 24px rgba(3,8,24,.35)}
+.landing-brand span{text-transform:lowercase}
+.landing-brand-system,.asset-gallery-section{display:grid;gap:1.5rem;margin:0 auto;width:min(1180px,calc(100% - 2rem))}
+.landing-brand-system{padding:1rem 0 0}
+.landing-brand-system-copy{display:grid;gap:1rem}
+.tier-button-row{display:flex;flex-wrap:wrap;gap:.75rem}
+.tier-button{display:inline-flex;align-items:center;justify-content:center;min-width:8rem;padding:.85rem 1.25rem;border-radius:999px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(255,255,255,.1);box-shadow:0 18px 36px rgba(3,8,24,.16)}
+.tier-button-free{background:linear-gradient(135deg,#1a73ff,#23b8ff);color:#f8fbff}
+.tier-button-pro{background:linear-gradient(135deg,#00a7a7,#24d6cf);color:#f8fbff}
+.tier-button-education{background:linear-gradient(135deg,#1c46e7,#7a41ff);color:#f8fbff}
+.tier-button-enterprise{background:linear-gradient(135deg,#131722,#f3be2f);color:#fff8dc}
+.tier-button-premium{background:linear-gradient(135deg,#1b1408,#d7a129 45%,#fff4d8);color:#2f2105}
+.identity-system-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:1rem}
+.identity-panel,.asset-card{background:linear-gradient(180deg,rgba(10,15,34,.94),rgba(16,23,47,.88));border:1px solid rgba(255,255,255,.08);border-radius:1.5rem;padding:1rem;box-shadow:0 24px 48px rgba(3,8,24,.24)}
+.identity-panel span,.badge-ladder>span,.asset-card figcaption{display:block;color:rgba(255,255,255,.78);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.identity-panel img,.asset-card img{width:100%;border-radius:1rem;display:block}
+.identity-panel-feature img{min-height:20rem;object-fit:cover}
+.identity-thumb-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin-top:.9rem}
+.identity-thumb-grid-wide{grid-template-columns:1fr}
+.asset-gallery-heading{display:grid;gap:.5rem}
+.asset-gallery{display:grid;gap:1rem}
+.asset-gallery-banners{grid-template-columns:repeat(2,minmax(0,1fr))}
+.asset-gallery-icons{grid-template-columns:repeat(3,minmax(0,1fr))}
+.asset-gallery-badges{grid-template-columns:repeat(5,minmax(0,1fr))}
+.asset-card{display:grid;gap:.75rem}
+.asset-card-banner img{aspect-ratio:16/7;object-fit:cover}
+.asset-card-badge img{aspect-ratio:1;object-fit:contain;background:radial-gradient(circle at top,rgba(111,66,255,.12),rgba(16,23,47,.35));padding:.4rem}
+.badge-ladder-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.badge-ladder{display:grid;gap:.9rem;background:linear-gradient(180deg,rgba(10,15,34,.78),rgba(10,15,34,.52));border:1px solid rgba(255,255,255,.08);border-radius:1.5rem;padding:1rem}
+@media(max-width:1080px){.identity-system-grid,.badge-ladder-grid,.asset-gallery-banners,.asset-gallery-icons{grid-template-columns:1fr}.asset-gallery-badges{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){.tier-button{min-width:unset;flex:1 1 9rem}.asset-gallery-badges{grid-template-columns:repeat(2,minmax(0,1fr))}.landing-brand img{width:2.15rem;height:2.15rem}}
