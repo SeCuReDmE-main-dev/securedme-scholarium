@@ -9,6 +9,24 @@ export const users = sqliteTable("users", {
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 }, (table) => [uniqueIndex("users_email_idx").on(table.email)]);
 
+/** Opaque public handle: provider identity values are never exposed in feeds. */
+export const publicProfiles = sqliteTable("public_profiles", {
+  userId: text("user_id").primaryKey().references(() => users.id),
+  publicId: text("public_id").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [uniqueIndex("public_profiles_public_id_idx").on(table.publicId)]);
+
+export const userFollows = sqliteTable("user_follows", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  targetUserId: text("target_user_id").notNull().references(() => users.id),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("user_follows_user_idx").on(table.userId),
+  index("user_follows_target_idx").on(table.targetUserId),
+  uniqueIndex("user_follows_unique_idx").on(table.userId, table.targetUserId),
+]);
+
 export const organizations = sqliteTable("organizations", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),

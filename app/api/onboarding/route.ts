@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { rankingPreferences, roleAssignments, users } from "../../../db/schema";
+import { publicProfiles, rankingPreferences, roleAssignments, users } from "../../../db/schema";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
 
 const supportedRoles = new Set(["student", "teacher", "professional", "amateur", "reader", "supporter"]);
@@ -35,6 +35,7 @@ export async function POST(request: Request) {
 
     await db.batch([
       db.insert(users).values({ displayName, email, id: userId, primaryRole }),
+      db.insert(publicProfiles).values({ publicId: crypto.randomUUID(), userId }),
       db.insert(roleAssignments).values({ ageBand, id: crypto.randomUUID(), role: primaryRole, userId }),
       db.insert(rankingPreferences).values({ userId }),
     ]);

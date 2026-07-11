@@ -51,9 +51,22 @@ test("uses real public feed modes and stores discovery weights for the signed-in
   assert.match(page, /setInterval\(refresh, 30_000\)/);
   assert.match(page, /feed-feedback/);
   assert.match(page, /Why you see this/);
+  assert.match(page, /Follow author/);
   assert.match(feedback, /favorite, less_like, or neutral/);
   assert.match(feedModel, /not a truth detector/);
   assert.match(feedModel, /author for payment, identity, popularity/);
+});
+
+test("uses opaque public profile identifiers for author following", async () => {
+  const follows = await readFile(new URL("../app/api/user-follows/route.ts", import.meta.url), "utf8");
+  const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  assert.match(follows, /You cannot follow yourself/);
+  assert.match(follows, /publicProfileId/);
+  assert.match(publications, /authors and hashtags explicitly followed by this account/);
+  assert.match(publications, /followingAuthor/);
+  assert.match(schema, /public_profiles/);
+  assert.match(schema, /user_follows/);
 });
 
 test("keeps QuaNthoR educational and non-blocking", async () => {

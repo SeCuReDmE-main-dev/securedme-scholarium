@@ -1,6 +1,6 @@
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { feedFeedback, moderationCases, publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, rankingPreferences, topicFollows, topics, users } from "../../../db/schema";
+import { feedFeedback, moderationCases, publicProfiles, publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, rankingPreferences, topicFollows, topics, userFollows, users } from "../../../db/schema";
 import { accountAudience } from "../../../lib/account-audience";
 import { createProvenanceReceipt } from "../../../lib/provenance";
 import { classifyPublication, rankPlithogenicFeed } from "../../../lib/plithogenic-feed";
@@ -47,6 +47,8 @@ export async function GET(request: Request) {
       .select({
         abstract: publications.abstract,
         author: users.displayName,
+        authorId: publications.authorId,
+        authorPublicId: publicProfiles.publicId,
         createdAt: publications.createdAt,
         id: publications.id,
         status: publications.verificationStatus,
@@ -55,6 +57,7 @@ export async function GET(request: Request) {
       })
       .from(publications)
       .innerJoin(users, eq(publications.authorId, users.id))
+      .leftJoin(publicProfiles, eq(publicProfiles.userId, publications.authorId))
       .where(eq(publications.visibility, "public"))
       .orderBy(desc(publications.createdAt))
       .limit(100);
@@ -76,15 +79,17 @@ export async function GET(request: Request) {
     const identity = await getPlatformIdentity();
     const viewer = identity ? await db.select({ id: users.id }).from(users).where(eq(users.id, identity.userId)).limit(1) : [];
     const viewerId = viewer[0]?.id ?? null;
-    const [ranking, feedbackRows, followRows] = viewerId ? await Promise.all([
+    const [ranking, feedbackRows, followRows, authorFollowRows] = viewerId ? await Promise.all([
       db.select().from(rankingPreferences).where(eq(rankingPreferences.userId, viewerId)).limit(1),
       db.select({ preference: feedFeedback.preference, publicationId: feedFeedback.publicationId }).from(feedFeedback).where(eq(feedFeedback.userId, viewerId)),
       db.select({ slug: topics.slug }).from(topicFollows).innerJoin(topics, eq(topicFollows.topicId, topics.id)).where(eq(topicFollows.userId, viewerId)),
-    ]) : [[], [], []] as const;
+      db.select({ targetUserId: userFollows.targetUserId }).from(userFollows).where(eq(userFollows.userId, viewerId)),
+    ]) : [[], [], [], []] as const;
     const favoriteIds = new Set(feedbackRows.filter((row) => row.preference === "favorite").map((row) => row.publicationId));
     const lessLikeIds = new Set(feedbackRows.filter((row) => row.preference === "less_like").map((row) => row.publicationId));
     const reactedIds = new Set(reactionRows.filter((row) => row.userId === viewerId).map((row) => row.publicationId));
     const followedTopicSlugs = new Set(followRows.map((row) => row.slug));
+    const followedAuthorIds = new Set(authorFollowRows.map((row) => row.targetUserId));
     const preference = ranking[0] ?? { diversityWeight: 66, freshnessWeight: 52, relevanceWeight: 78 };
     const enrichedRows = rows.map((publication) => ({ ...publication, comments: commentsByPublication.get(publication.id) ?? 0, reactions: reactionsByPublication.get(publication.id) ?? 0, topics: topicsByPublication.get(publication.id) ?? [] }));
     const eligibleRows = enrichedRows.filter((publication) => !["quarantined", "removed"].includes(publication.status));
@@ -94,7 +99,7 @@ export async function GET(request: Request) {
     let statusFiltered = mode === "verified" ? queryFiltered.filter((publication) => publication.status === "verified") : queryFiltered;
     if (mode === "following") {
       if (!identity) return signInRequired();
-      statusFiltered = queryFiltered.filter((publication) => (topicIdsByPublication.get(publication.id) ?? []).some((slug) => followedTopicSlugs.has(slug)));
+      statusFiltered = queryFiltered.filter((publication) => followedAuthorIds.has(publication.authorId) || (topicIdsByPublication.get(publication.id) ?? []).some((slug) => followedTopicSlugs.has(slug)));
     }
     const ranked = mode === "discovery"
       ? rankPlithogenicFeed(statusFiltered.map((publication) => ({
@@ -110,12 +115,16 @@ export async function GET(request: Request) {
       })), { ...preference, favoriteIds, followedTopicSlugs, lessLikeIds, query, reactedIds })
       : [];
     const rankedById = new Map(ranked.map((publication) => [publication.id, publication]));
+    const publicFeedItem = (publication: typeof statusFiltered[number], additional: Record<string, unknown>) => {
+      const { authorId, ...publicPublication } = publication;
+      return { ...publicPublication, ...additional, followingAuthor: followedAuthorIds.has(authorId) };
+    };
     const feed = mode === "discovery"
       ? ranked.map((rankedPublication) => {
         const publication = statusFiltered.find((item) => item.id === rankedPublication.id)!;
-        return { ...publication, feedSignal: { classification: rankedPublication.classification, reasons: rankedPublication.why, vector: rankedPublication.vector }, favorite: favoriteIds.has(publication.id) };
+        return publicFeedItem(publication, { feedSignal: { classification: rankedPublication.classification, reasons: rankedPublication.why, vector: rankedPublication.vector }, favorite: favoriteIds.has(publication.id) });
       })
-      : statusFiltered.map((publication) => ({ ...publication, feedSignal: { classification: classifyPublication(publication.type), reasons: ["shown in your selected feed mode"], vector: rankedById.get(publication.id)?.vector ?? null }, favorite: favoriteIds.has(publication.id) }));
+      : statusFiltered.map((publication) => publicFeedItem(publication, { feedSignal: { classification: classifyPublication(publication.type), reasons: ["shown in your selected feed mode"], vector: rankedById.get(publication.id)?.vector ?? null }, favorite: favoriteIds.has(publication.id) }));
 
     return Response.json({
       publications: feed,
@@ -123,7 +132,7 @@ export async function GET(request: Request) {
         excludes: ["subscription tier", "contribution amount", "paid promotion"],
         mode,
         version: "plithogenic-explainable-v1",
-        uses: mode === "chronological" ? ["publication time"] : mode === "verified" ? ["public verification status", "publication time"] : mode === "following" ? ["hashtags explicitly followed by this account", "publication time"] : ["explicit favorites and reactions", "hashtag affinity", "text relevance", "freshness", "provenance status", "format diversity"],
+        uses: mode === "chronological" ? ["publication time"] : mode === "verified" ? ["public verification status", "publication time"] : mode === "following" ? ["authors and hashtags explicitly followed by this account", "publication time"] : ["explicit favorites and reactions", "hashtag affinity", "text relevance", "freshness", "provenance status", "format diversity"],
         doesNotDetermine: ["scientific truth", "a moderation decision", "a user's worth", "visibility purchased with money"],
       },
     });
@@ -151,6 +160,7 @@ export async function POST(request: Request) {
     if (!author) {
       return Response.json({ error: "Author account was not found" }, { status: 404 });
     }
+    await db.insert(publicProfiles).values({ publicId: crypto.randomUUID(), userId: author.id }).onConflictDoNothing();
     const audience = await accountAudience(db, author.id);
     const safety = publicationSafetyDecision({ abstract, title });
     const visibility = safety.action === "quarantine" ? "private" : audience.capabilities.canPublishPublicly ? "public" : "private";
