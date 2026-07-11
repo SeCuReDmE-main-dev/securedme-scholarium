@@ -1,7 +1,7 @@
 import { and, eq } from "drizzle-orm";
 import type { DrizzleD1Database } from "drizzle-orm/d1";
 import { guardianConsents, organizations, roleAssignments } from "../db/schema";
-import { minorCapabilities, type AgeBand, type GuardianConsentStatus } from "./audience-policy";
+import { minorCapabilities, parseGuardianConsentScopes, type AgeBand, type GuardianConsentStatus } from "./audience-policy";
 
 type Database = DrizzleD1Database<typeof import("../db/schema")>;
 
@@ -21,21 +21,23 @@ export async function accountAudience(db: Database, userId: string) {
     .where(and(eq(roleAssignments.userId, userId), eq(roleAssignments.status, "active")))
     .limit(1);
   const ageBand = (assignment?.ageBand === "adult" || assignment?.ageBand === "minor" ? assignment.ageBand : "unknown") as AgeBand;
-  const [consent] = await db
-    .select({ expiresAt: guardianConsents.expiresAt })
+  const consentRows = await db
+    .select({ expiresAt: guardianConsents.expiresAt, scope: guardianConsents.scope })
     .from(guardianConsents)
     .where(and(eq(guardianConsents.minorUserId, userId), eq(guardianConsents.status, "active")))
-    .limit(1);
+    ;
   const [organization] = assignment?.organizationId
     ? await db.select({ verificationStatus: organizations.verificationStatus }).from(organizations).where(eq(organizations.id, assignment.organizationId)).limit(1)
     : [];
-  const guardianConsent: GuardianConsentStatus = consent && consentIsCurrent(consent) ? "active" : "none";
+  const guardianScopes = [...new Set(consentRows.filter(consentIsCurrent).flatMap((consent) => parseGuardianConsentScopes(consent.scope)))];
+  const guardianConsent: GuardianConsentStatus = guardianScopes.length > 0 ? "active" : "none";
   const organizationVerified = organization?.verificationStatus === "verified";
 
   return {
     ageBand,
     guardianConsent,
+    guardianScopes,
     organizationVerified,
-    capabilities: minorCapabilities({ ageBand, guardianConsent, organizationVerified }),
+    capabilities: minorCapabilities({ ageBand, guardianConsent, guardianScopes, organizationVerified }),
   };
 }

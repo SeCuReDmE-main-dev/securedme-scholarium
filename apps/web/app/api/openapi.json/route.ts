@@ -11,6 +11,7 @@ const contract = {
     "/api/v1/health": { get: { summary: "Read service health" } },
     "/api/v1/artifacts": { post: { summary: "Upload a hashed scholarly artifact" } },
     "/api/v1/feed-feedback": { put: { summary: "Save an explicit private favorite or less-like-this feed preference" } },
+    "/api/v1/guardian-consents": { get: { summary: "Read private guardian consent records without exposing other identities" }, post: { summary: "Request scoped guardian consent" }, put: { summary: "Activate a pending guardian consent after guardian verification" }, delete: { summary: "Revoke a guardian consent" } },
     "/api/v1/integrations": { get: { summary: "List consent-first integrations" }, post: { summary: "Prepare an explicit provider consent flow" } },
     "/api/v1/local-insights": { get: { summary: "Read the device-local-only privacy analytics contract" } },
     "/api/v1/media-links": { get: { summary: "Read public external media links for a publication" }, post: { summary: "Link an author-owned YouTube or TikTok URL without copying the video" } },
