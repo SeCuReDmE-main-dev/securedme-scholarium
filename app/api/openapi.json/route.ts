@@ -12,6 +12,7 @@ const contract = {
     "/api/v1/integrations": { get: { summary: "List consent-first integrations" }, post: { summary: "Prepare an explicit provider consent flow" } },
     "/api/v1/local-insights": { get: { summary: "Read the device-local-only privacy analytics contract" } },
     "/api/v1/onboarding": { post: { summary: "Create a role-aware account" } },
+    "/api/v1/profile-media": { get: { summary: "Read private profile media" }, post: { summary: "Store a validated private avatar or profile banner" } },
     "/api/v1/publications": {
       get: { summary: "List public publications" },
       post: { summary: "Create a versioned publication and provenance receipt" },
