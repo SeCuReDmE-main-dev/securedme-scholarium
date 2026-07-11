@@ -661,6 +661,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const activeEducationIconStage = Math.min(Math.max(activeEducationToolCount, 1), 10);
   const activeEducationIconAsset = `/brand/icons/${activeEducationIconStage}.png`;
   const currentSuiteAssets = suiteThemeAssets[colorScheme];
+  const currentCampaignBanner = `/brand/campaigns/web/${activeEducationIconStage}.png`;
 
   const loadMediaWebhookTrace = async () => {
     setMediaWebhookTraceLoading(true);
@@ -1208,6 +1209,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
               <p className="eyebrow">OWNER-CONFIRMED IMPORT</p>
               <h2>Move selected Academia.edu publications into Scholarium</h2>
               <p>Use this only for a profile you own or are explicitly authorized to import. Scholarium never asks for or stores an Academia password, cookie, or provider token. Nothing is copied until you review it.</p>
+              <div className="feature-brand-strip"><img src={currentSuiteAssets.banner} alt="SecuredMe Education suite banner." /></div>
               {!academiaMigration ? <>
                 <label>Your Academia.edu profile URL<input value={academiaProfileUrl} onChange={(event) => setAcademiaProfileUrl(event.target.value)} placeholder="https://independent.academia.edu/YourProfile" /></label>
                 <label>Selected publication metadata<textarea value={academiaSourceLines} onChange={(event) => setAcademiaSourceLines(event.target.value)} rows={7} placeholder={"One publication per line:\nTitle | short abstract | https://www.academia.edu/… | topic one, topic two"} /></label>
@@ -1235,6 +1237,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
               <p className="eyebrow">QUANTHOR / COACH MODE</p>
               <h2>Make the structure clear. Keep your voice.</h2>
               <p>Choose a format, describe the work in your own words, and get an adaptable outline. Nothing here prevents you from publishing.</p>
+              <div className="feature-brand-cluster"><img className="feature-brand-icon" src={activeEducationIconAsset} alt="Current Scholarium tool-stage icon." /><img className="feature-brand-banner" src={currentSuiteAssets.banner} alt="SecuredMe Education suite banner." /></div>
               <div className="formalization-promise"><span>◇</span><strong>Educational, non-blocking, and author-led.</strong><span>Suggestions make formats easier to recognize across Scholarium; they never decide whether your work deserves to exist.</span></div>
             </div>
             <div className="formalization-form">
@@ -1258,6 +1261,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
               <p className="eyebrow">PODCAST & VIDEO STUDIO / CREATE WITHOUT A PAYWALL</p>
               <h2>Make the explanation as clear as the work.</h2>
               <p>Build a caption-first podcast or short-video brief, prepare a quality cover, and keep sources connected before you choose YouTube or TikTok.</p>
+              <div className="feature-brand-cluster"><img className="feature-brand-icon" src={activeEducationIconAsset} alt="Current Scholarium tool-stage icon." /><img className="feature-brand-banner" src={currentCampaignBanner} alt="Current Scholarium campaign banner." /></div>
               <div className="studio-actions">
                 <button className="publish-button" type="button" onClick={() => setComposerOpen(true)}>Start a publication</button>
                 <button className="quiet-button" type="button" onClick={() => setNotice("Live planning is ready for your project and moderator settings.")}>Plan a Live</button>
@@ -1391,6 +1395,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         <section className="composer profile-editor" aria-label="Profile customization">
           <div className="composer-header"><div><p className="eyebrow">YOUR PROFILE</p><h2>Make Scholarium yours</h2></div><button type="button" className="more-button" onClick={() => setProfileOpen(false)} aria-label="Close profile preferences">×</button></div>
           <div className="profile-banner-preview" style={bannerPreview ? { backgroundImage: `url(${bannerPreview})` } : undefined}><span className="avatar avatar-you profile-avatar-preview" style={avatarPreview ? { backgroundImage: `url(${avatarPreview})` } : undefined}>{avatarPreview ? "" : "JS"}</span></div>
+          <div className="profile-brand-gallery"><img src={currentSuiteAssets.logo} alt="SecuredMe Education suite identity sheet." /><img src={activeEducationIconAsset} alt="Current Scholarium tool-stage icon." />{activeEducationBadgeAsset ? <img src={activeEducationBadgeAsset} alt={`Current ecosystem badge stage ${activeEducationToolCount}.`} /> : <img src={currentCampaignBanner} alt="Current Scholarium campaign banner." />}</div>
           {!session.displayName ? <section className="account-setup identity-entry"><p className="eyebrow">SIGN IN WITH BOUNDARIES</p><h3>Choose the identity you want to use</h3><p>Each provider creates a separate Scholarium identity until you explicitly request a future account link. Only basic verified identity data is used; provider tokens are never stored as profile data.</p><div className="identity-entry-grid"><a className="quiet-button auth-link" href={session.signInPath}>Continue with ChatGPT</a><a className="quiet-button auth-link" href={session.googleSignInPath}>Continue with Google</a><a className="quiet-button auth-link" href={session.githubSignInPath}>Continue with GitHub</a><a className="quiet-button auth-link" href={session.paypalSignInPath}>Continue with PayPal</a></div></section> : <>
           {accountReady === false && <section className="account-setup"><p className="eyebrow">FIRST, SET UP YOUR ACCOUNT</p><h3>How will you use Scholarium?</h3><p>Your role helps us apply the right safety and visibility defaults. It does not affect ranking.</p><label>Primary role<select value={accountRole} onChange={(event) => setAccountRole(event.target.value)}><option value="student">Student</option><option value="teacher">Teacher</option><option value="professional">Professional</option><option value="amateur">Independent learner</option><option value="reader">Reader</option><option value="supporter">Supporter</option></select></label><label>Age band<select value={accountAgeBand} onChange={(event) => setAccountAgeBand(event.target.value)}><option value="adult">Adult</option><option value="minor">Minor</option><option value="unknown">Prefer not to say</option></select></label><button className="publish-button" type="button" disabled={accountSaving} onClick={createAccount}>{accountSaving ? "Creating profile…" : "Create my Scholarium profile"}</button></section>}
           {accountReady === null && <p className="account-loading">Checking your connected profile…</p>}
