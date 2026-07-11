@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `artifacts_publication_sha256_idx` ON `artifacts` (`publication_id`,`sha256`);

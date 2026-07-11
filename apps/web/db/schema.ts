@@ -196,7 +196,11 @@ export const artifacts = sqliteTable("artifacts", {
   sha256: text("sha256").notNull(),
   archiveStatus: text("archive_status").notNull().default("active"),
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
-}, (table) => [index("artifacts_publication_idx").on(table.publicationId), uniqueIndex("artifacts_object_key_idx").on(table.objectKey)]);
+}, (table) => [
+  index("artifacts_publication_idx").on(table.publicationId),
+  uniqueIndex("artifacts_object_key_idx").on(table.objectKey),
+  uniqueIndex("artifacts_publication_sha256_idx").on(table.publicationId, table.sha256),
+]);
 
 export const rankingPreferences = sqliteTable("ranking_preferences", {
   userId: text("user_id").primaryKey().references(() => users.id),
