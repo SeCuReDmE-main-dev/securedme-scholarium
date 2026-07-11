@@ -14,9 +14,6 @@ export async function GET() {
     const db = await getDb();
     const [user] = await db.select({ id: users.id }).from(users).where(eq(users.id, identity.userId)).limit(1);
     if (!user) return Response.json({ error: "User account was not found" }, { status: 404 });
-    if (profileVisibility === "public" && !(await accountAudience(db, user.id)).capabilities.canPublishPublicly) {
-      return Response.json({ error: "A guardian consent or verified school relationship is required before a minor account can make a public profile visible." }, { status: 403 });
-    }
     const [preference] = await db.select().from(profilePreferences).where(eq(profilePreferences.userId, user.id)).limit(1);
     return Response.json({ preference: preference ?? null }, { headers: { "cache-control": "private, no-store" } });
   } catch (error) {
@@ -39,6 +36,9 @@ export async function PUT(request: Request) {
     const db = await getDb();
     const [user] = await db.select({ id: users.id }).from(users).where(eq(users.id, identity.userId)).limit(1);
     if (!user) return Response.json({ error: "User account was not found" }, { status: 404 });
+    if (profileVisibility === "public" && !(await accountAudience(db, user.id)).capabilities.canPublishPublicly) {
+      return Response.json({ error: "A guardian consent or verified school relationship is required before a minor account can make a public profile visible." }, { status: 403 });
+    }
     const updatedAt = new Date().toISOString();
     await db.insert(profilePreferences).values({ accentColor, badgeVisibility, colorScheme: input.colorScheme, profileVisibility, updatedAt, userId: user.id }).onConflictDoUpdate({
       target: profilePreferences.userId,

@@ -232,6 +232,27 @@ test("prepares profile tool connections through explicit consent", async () => {
   assert.match(integrations, /getPlatformIdentity/);
 });
 
+test("offers an owner-confirmed Academia migration with private-by-default review and no account bypass", async () => {
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const route = await readFile(new URL("../app/api/academia-migrations/route.ts", import.meta.url), "utf8");
+  const boundary = await readFile(new URL("../../../docs/ACADEMIA-MIGRATION.md", import.meta.url), "utf8");
+  const robots = await readFile(new URL("../app/robots.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  assert.match(client, /OWNER-CONFIRMED IMPORT/);
+  assert.match(client, /Every item starts private/);
+  assert.match(client, /\/api\/v1\/academia-migrations/);
+  assert.match(route, /sourceOwnershipConfirmed !== true/);
+  assert.match(route, /visibility: "private"/);
+  assert.match(route, /getPlatformIdentity/);
+  assert.match(route, /accountAudience/);
+  assert.match(route, /sourceProfileUrl/);
+  assert.match(schema, /academia_migrations/);
+  assert.match(schema, /academia_migration_items/);
+  assert.match(boundary, /not a bulk scraping tool/);
+  assert.match(boundary, /not a WebAuth bypass/);
+  assert.match(robots, /disallow: \["\/api\/", "\/app"/);
+});
+
 test("keeps provider video callbacks minimal, authenticated, and fail-closed", async () => {
   const webhook = await readFile(new URL("../app/api/webhooks/youtube/route.ts", import.meta.url), "utf8");
   const parser = await readFile(new URL("../lib/youtube-webhook.ts", import.meta.url), "utf8");
