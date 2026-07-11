@@ -92,6 +92,37 @@ export const integrationConnections = sqliteTable("integration_connections", {
   expiresAt: text("expires_at"),
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 }, (table) => [index("integration_connections_user_idx").on(table.userId), uniqueIndex("integration_connections_provider_idx").on(table.userId, table.provider)]);
+
+/**
+ * A migration is an owner-confirmed import plan, never a copied provider
+ * session. Source URLs and item metadata remain private to the account owner.
+ */
+export const academiaMigrations = sqliteTable("academia_migrations", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  sourceProfileUrl: text("source_profile_url").notNull(),
+  ownershipConfirmedAt: text("ownership_confirmed_at").notNull(),
+  state: text("state").notNull().default("review"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("academia_migrations_user_idx").on(table.userId)]);
+
+/** Items are reviewed independently so an import never silently changes reach. */
+export const academiaMigrationItems = sqliteTable("academia_migration_items", {
+  id: text("id").primaryKey(),
+  migrationId: text("migration_id").notNull().references(() => academiaMigrations.id),
+  sourceUrl: text("source_url").notNull(),
+  title: text("title").notNull(),
+  abstract: text("abstract").notNull().default(""),
+  type: text("type").notNull().default("research_article"),
+  topicSlugs: text("topic_slugs").notNull().default("[]"),
+  selected: integer("selected", { mode: "boolean" }).notNull().default(true),
+  visibility: text("visibility").notNull().default("private"),
+  status: text("status").notNull().default("pending"),
+  importedPublicationId: text("imported_publication_id").references(() => publications.id),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("academia_migration_items_migration_idx").on(table.migrationId), uniqueIndex("academia_migration_items_source_idx").on(table.migrationId, table.sourceUrl)]);
 export const profilePreferences = sqliteTable("profile_preferences", {
   userId: text("user_id").primaryKey().references(() => users.id),
   avatarObjectKey: text("avatar_object_key"),
