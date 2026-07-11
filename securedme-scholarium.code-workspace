@@ -3,6 +3,9 @@
     {
       "name": "SecuredMe Scholarium — public repository",
       "path": "."
+    },
+    {
+      "path": "../algoquest-ams-discovry-labs-module-"
     }
   ],
   "settings": {
