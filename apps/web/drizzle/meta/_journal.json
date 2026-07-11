@@ -36,6 +36,13 @@
       "when": 1783761504054,
       "tag": "0004_useful_oracle",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1783762813043,
+      "tag": "0005_magical_carmella_unuscione",
+      "breakpoints": true
     }
   ]
 }

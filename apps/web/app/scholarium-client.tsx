@@ -96,12 +96,22 @@ const initialPublications: Publication[] = [
 type ApiPublication = {
   abstract: string;
   author: string;
+  comments?: number;
   createdAt: string;
   id: string;
+  reactions?: number;
   status: string;
   title: string;
   topics?: string[];
   type: string;
+};
+type CommunityComment = {
+  author: string;
+  authorId: string;
+  body: string;
+  createdAt: string;
+  id: string;
+  parentCommentId: string | null;
 };
 
 const publicationLabel = (type: string) => type.replaceAll("_", " ").toUpperCase();
@@ -119,8 +129,8 @@ const fromApiPublication = (publication: ApiPublication): Publication => ({
   topics: publication.topics?.length ? publication.topics : [publication.type.replaceAll("_", " "), "Open education"],
   status: publication.status === "verified" ? "Verified" : "Processing",
   hours: "Published",
-  reactions: 0,
-  comments: 0,
+  reactions: publication.reactions ?? 0,
+  comments: publication.comments ?? 0,
   kind: publication.type === "short_video" ? "video" : publication.type === "project_update" ? "project" : "paper",
 });
 
@@ -131,7 +141,7 @@ const navItems: Array<{ id: View; label: string; icon: string }> = [
   { id: "formalize", label: "Formalize", icon: "◇" },
 ];
 
-export function ScholariumClient({ session }: { session: { displayName: string | null; signInPath: string; signOutPath: string } }) {
+export function ScholariumClient({ session }: { session: { displayName: string | null; provider: "chatgpt" | "google" | "github" | "paypal" | null; signInPath: string; googleSignInPath: string; githubSignInPath: string; paypalSignInPath: string; signOutPath: string } }) {
   const [view, setView] = useState<View>("signal");
   const [query, setQuery] = useState("");
   const [publications, setPublications] = useState(initialPublications);
@@ -167,7 +177,13 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [accountAgeBand, setAccountAgeBand] = useState("adult");
   const [accountSaving, setAccountSaving] = useState(false);
   const [rankingSaving, setRankingSaving] = useState(false);
+  const [discussionPublication, setDiscussionPublication] = useState<Publication | null>(null);
+  const [discussionComments, setDiscussionComments] = useState<CommunityComment[]>([]);
+  const [discussionDraft, setDiscussionDraft] = useState("");
+  const [discussionLoading, setDiscussionLoading] = useState(false);
+  const [discussionSaving, setDiscussionSaving] = useState(false);
   const profileInitials = (session.displayName ?? "Guest").split(/\s+/).map((word) => word[0]).join("").slice(0, 2).toUpperCase();
+  const providerLabel = session.provider ? ({ chatgpt: "ChatGPT", github: "GitHub", google: "Google", paypal: "PayPal" } as const)[session.provider] : null;
 
   useEffect(() => {
     const stored = window.localStorage.getItem("scholarium.local-insights.v1");
@@ -177,6 +193,18 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       setLocalInsightsEnabled(Boolean(parsed.enabled));
       if (parsed.counts) setLocalInsightCounts(parsed.counts);
     } catch { window.localStorage.removeItem("scholarium.local-insights.v1"); }
+  }, []);
+
+  useEffect(() => {
+    const code = new URLSearchParams(window.location.search).get("auth_error");
+    if (!code) return;
+    const messages: Record<string, string> = {
+      github_not_configured: "GitHub login is being connected. Please use another sign-in option for now.",
+      google_not_configured: "Google login is being connected. Please use another sign-in option for now.",
+      paypal_not_configured: "PayPal login is being connected in sandbox. Please use another sign-in option for now.",
+    };
+    setNotice(messages[code] ?? "That sign-in could not be completed. No Scholarium profile changes were made.");
+    window.history.replaceState({}, "", window.location.pathname);
   }, []);
 
   useEffect(() => {
@@ -344,12 +372,66 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     } finally { setPublishing(false); }
   };
 
-  const reactToPublication = (id: string) => {
-    setPublications((current) =>
-      current.map((publication) =>
-        publication.id === id ? { ...publication, reactions: publication.reactions + 1 } : publication,
-      ),
-    );
+  const requireCommunityAccount = () => {
+    if (session.displayName && accountReady) return true;
+    setProfileOpen(true);
+    setNotice("Create a Scholarium profile before participating in community discussions.");
+    return false;
+  };
+
+  const loadDiscussion = async (publication: Publication) => {
+    setDiscussionPublication(publication);
+    setDiscussionDraft("");
+    if (publication.isPreview) { setDiscussionComments([]); return; }
+    setDiscussionLoading(true);
+    try {
+      const response = await fetch(`/api/publication-interactions?publicationId=${encodeURIComponent(publication.id)}`);
+      const payload = await response.json() as { comments?: CommunityComment[]; error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Discussion could not be loaded.");
+      setDiscussionComments(payload.comments ?? []);
+    } catch (error) {
+      setDiscussionComments([]);
+      setNotice(error instanceof Error ? error.message : "Discussion could not be loaded.");
+    } finally { setDiscussionLoading(false); }
+  };
+
+  const reactToPublication = async (publication: Publication) => {
+    if (publication.isPreview) { setNotice("Preview examples do not accept live reactions."); return; }
+    if (!requireCommunityAccount()) return;
+    try {
+      const response = await fetch("/api/publication-interactions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "reaction", kind: "insightful", publicationId: publication.id }) });
+      const payload = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Reaction could not be saved.");
+      setPublications((current) => current.map((item) => item.id === publication.id ? { ...item, reactions: item.reactions + 1 } : item));
+    } catch (error) { setNotice(error instanceof Error ? error.message : "Reaction could not be saved."); }
+  };
+
+  const addComment = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!discussionPublication || !discussionDraft.trim()) return;
+    if (discussionPublication.isPreview) { setNotice("Preview examples do not accept live comments."); return; }
+    if (!requireCommunityAccount()) return;
+    setDiscussionSaving(true);
+    try {
+      const response = await fetch("/api/publication-interactions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "comment", body: discussionDraft.trim(), publicationId: discussionPublication.id }) });
+      const payload = await response.json() as { comment?: CommunityComment; error?: string };
+      if (!response.ok || !payload.comment) throw new Error(payload.error ?? "Comment could not be posted.");
+      setDiscussionComments((current) => [...current, payload.comment!]);
+      setPublications((current) => current.map((item) => item.id === discussionPublication.id ? { ...item, comments: item.comments + 1 } : item));
+      setDiscussionDraft("");
+    } catch (error) { setNotice(error instanceof Error ? error.message : "Comment could not be posted."); }
+    finally { setDiscussionSaving(false); }
+  };
+
+  const reportDiscussionPublication = async () => {
+    if (!discussionPublication || discussionPublication.isPreview) { setNotice("Preview examples cannot be reported as live content."); return; }
+    if (!requireCommunityAccount()) return;
+    try {
+      const response = await fetch("/api/publication-interactions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "report", publicationId: discussionPublication.id, reason: "other" }) });
+      const payload = await response.json() as { error?: string; message?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Report could not be sent.");
+      setNotice(payload.message ?? "Report received. A human review case is open.");
+    } catch (error) { setNotice(error instanceof Error ? error.message : "Report could not be sent."); }
   };
 
   const startProject = () => {
@@ -439,9 +521,9 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <strong>Free means discoverable.</strong>
           <span>Paid tools never change reach, ranking, or your right to publish.</span>
         </div>
-        <button className="profile-switcher" type="button" onClick={() => session.displayName ? setProfileOpen(true) : window.location.assign(session.signInPath)}>
+        <button className="profile-switcher" type="button" onClick={() => setProfileOpen(true)}>
           <span className="avatar avatar-you" style={avatarPreview ? { backgroundImage: `url(${avatarPreview})` } : undefined}>{avatarPreview ? "" : profileInitials}</span>
-          <span><b>{session.displayName ?? "Sign in"}</b><small>{session.displayName ? "Connected with ChatGPT" : "Use your ChatGPT account"}</small></span>
+          <span><b>{session.displayName ?? "Sign in"}</b><small>{session.displayName ? session.provider === "chatgpt" ? "Connected with ChatGPT" : `Connected with ${providerLabel}` : "Choose an identity provider"}</small></span>
           <span aria-hidden="true">⌄</span>
         </button>
       </aside>
@@ -531,8 +613,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
                   <div className="topic-row">{publication.topics.map((topic) => <button type="button" key={topic} onClick={() => setQuery(topic)}>#{topic.replaceAll(" ", "")}</button>)}</div>
                 </div>
                 <div className="publication-footer">
-                  <button type="button" onClick={() => reactToPublication(publication.id)}>✦ {publication.reactions}</button>
-                  <button type="button" onClick={() => setNotice("Thoughtful comments and citations will stay connected to this version.")}>◌ {publication.comments}</button>
+                  <button type="button" onClick={() => reactToPublication(publication)}>✦ {publication.reactions}</button>
+                  <button type="button" onClick={() => loadDiscussion(publication)}>◌ {publication.comments}</button>
                   <button type="button" onClick={startProject}>⌘ Start project</button>
                   <button type="button" onClick={() => setNotice("A contribution supports the project, never the feed rank.")}>♡ Support</button>
                 </div>
@@ -557,7 +639,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         </section>
 
         <section className="topics-card">
-          <div className="card-heading"><h2>Topics to follow</h2><button type="button" onClick={() => setNotice("Following a topic will shape the future Following feed. It never changes anyone’s reach.")}>How it works</button></div>
+          <div className="card-heading"><h2>Topics to follow</h2><button type="button" onClick={() => setNotice("Following a topic shapes your Following feed. It never changes anyone’s reach.")}>How it works</button></div>
           <div className="followed-topics"><button type="button" onClick={() => followTopic("open-science")}>#OpenScience</button><button type="button" onClick={() => followTopic("quantum-education")}>#QuantumEducation</button><button type="button" onClick={() => followTopic("climate-systems")}>#ClimateSystems</button><button type="button" onClick={() => followTopic("community-code")}>#CommunityCode</button></div>
         </section>
 
@@ -587,10 +669,21 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <div className="composer-actions"><button className="quiet-button" type="button" onClick={() => setComposerOpen(false)}>Save draft</button><button className="publish-button" type="submit" disabled={publishing}>{publishing ? "Publishing…" : "Publish now"}</button></div>
         </form>
       </div>}
+      {discussionPublication && <div className="modal-backdrop" role="presentation">
+        <section className="composer discussion-panel" aria-label={`Discussion for ${discussionPublication.title}`}>
+          <div className="composer-header"><div><p className="eyebrow">VERSION-BOUND DISCUSSION</p><h2>{discussionPublication.title}</h2></div><button type="button" className="more-button" onClick={() => setDiscussionPublication(null)} aria-label="Close discussion">×</button></div>
+          <p className="discussion-intro">Comments stay connected to this public publication version. Threads stop after one reply level, and reports open a traceable human-review case.</p>
+          {discussionPublication.isPreview ? <p className="feed-preview-note">This is a sample publication. It has no live discussion.</p> : <>
+            <div className="discussion-comments" aria-live="polite">{discussionLoading ? <p>Loading discussion…</p> : discussionComments.length === 0 ? <p>No public comments yet. Be specific, constructive, and cite sources when useful.</p> : discussionComments.map((comment) => <article key={comment.id} className={comment.parentCommentId ? "discussion-comment reply" : "discussion-comment"}><strong>{comment.author}</strong><span>{new Date(comment.createdAt).toLocaleString()}</span><p>{comment.body}</p></article>)}</div>
+            <form className="discussion-form" onSubmit={addComment}><label>Contribute a constructive comment<textarea value={discussionDraft} maxLength={1200} onChange={(event) => setDiscussionDraft(event.target.value)} placeholder="What does this work clarify, challenge, or invite others to test?" rows={4} /></label><div className="composer-actions"><button className="quiet-button" type="button" onClick={reportDiscussionPublication}>Report this work</button><button className="publish-button" type="submit" disabled={discussionSaving}>{discussionSaving ? "Posting…" : "Post comment"}</button></div></form>
+          </>}
+        </section>
+      </div>}
       {profileOpen && <div className="modal-backdrop" role="presentation">
         <section className="composer profile-editor" aria-label="Profile customization">
           <div className="composer-header"><div><p className="eyebrow">YOUR PROFILE</p><h2>Make Scholarium yours</h2></div><button type="button" className="more-button" onClick={() => setProfileOpen(false)} aria-label="Close profile preferences">×</button></div>
           <div className="profile-banner-preview" style={bannerPreview ? { backgroundImage: `url(${bannerPreview})` } : undefined}><span className="avatar avatar-you profile-avatar-preview" style={avatarPreview ? { backgroundImage: `url(${avatarPreview})` } : undefined}>{avatarPreview ? "" : "JS"}</span></div>
+          {!session.displayName ? <section className="account-setup identity-entry"><p className="eyebrow">SIGN IN WITH BOUNDARIES</p><h3>Choose the identity you want to use</h3><p>Each provider creates a separate Scholarium identity until you explicitly request a future account link. Only basic verified identity data is used; provider tokens are never stored as profile data.</p><div className="identity-entry-grid"><a className="quiet-button auth-link" href={session.signInPath}>Continue with ChatGPT</a><a className="quiet-button auth-link" href={session.googleSignInPath}>Continue with Google</a><a className="quiet-button auth-link" href={session.githubSignInPath}>Continue with GitHub</a><a className="quiet-button auth-link" href={session.paypalSignInPath}>Continue with PayPal</a></div></section> : <>
           {accountReady === false && <section className="account-setup"><p className="eyebrow">FIRST, SET UP YOUR ACCOUNT</p><h3>How will you use Scholarium?</h3><p>Your role helps us apply the right safety and visibility defaults. It does not affect ranking.</p><label>Primary role<select value={accountRole} onChange={(event) => setAccountRole(event.target.value)}><option value="student">Student</option><option value="teacher">Teacher</option><option value="professional">Professional</option><option value="amateur">Independent learner</option><option value="reader">Reader</option><option value="supporter">Supporter</option></select></label><label>Age band<select value={accountAgeBand} onChange={(event) => setAccountAgeBand(event.target.value)}><option value="adult">Adult</option><option value="minor">Minor</option><option value="unknown">Prefer not to say</option></select></label><button className="publish-button" type="button" disabled={accountSaving} onClick={createAccount}>{accountSaving ? "Creating profile…" : "Create my Scholarium profile"}</button></section>}
           {accountReady === null && <p className="account-loading">Checking your connected profile…</p>}
           {accountReady && <><div className="profile-upload-grid">
@@ -605,7 +698,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <div className="local-insights-card"><strong>Private activity snapshot</strong>{localInsightsEnabled ? <span>{localInsightCounts.formalizationGuides} guide{localInsightCounts.formalizationGuides === 1 ? "" : "s"} created · {localInsightCounts.publicationDrafts} publication draft{localInsightCounts.publicationDrafts === 1 ? "" : "s"} started. Kept only in this browser.</span> : <span>Off by default. No activity snapshot is collected or sent anywhere.</span>}</div>
           <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}</button>)}</div></div>
           <div className="composer-proof"><span>◌</span><p>Profile images stay local until you choose to save them to your account. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
-          <div className="composer-actions"><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" disabled={accountSaving} onClick={saveProfilePreferences}>{accountSaving ? "Saving…" : "Save preferences"}</button></div></>}
+          <div className="composer-actions"><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" disabled={accountSaving} onClick={saveProfilePreferences}>{accountSaving ? "Saving…" : "Save preferences"}</button></div></>}</>}
         </section>
       </div>}
 

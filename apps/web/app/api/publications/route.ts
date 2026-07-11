@@ -1,6 +1,6 @@
-import { desc, eq, inArray } from "drizzle-orm";
+import { and, desc, eq, inArray } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { publicationTopics, publicationVersions, publications, topicFollows, topics, users } from "../../../db/schema";
+import { publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, topicFollows, topics, users } from "../../../db/schema";
 import { createProvenanceReceipt } from "../../../lib/provenance";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
 import { normalizedTopicSlugs, topicLabel } from "../../../lib/topics";
@@ -75,13 +75,19 @@ export async function GET(request: Request) {
 
     const publicationIds = rows.map((publication) => publication.id);
     const assignedTopics = publicationIds.length === 0 ? [] : await db.select({ label: topics.label, publicationId: publicationTopics.publicationId, slug: topics.slug }).from(publicationTopics).innerJoin(topics, eq(publicationTopics.topicId, topics.id)).where(inArray(publicationTopics.publicationId, publicationIds));
+    const reactionRows = publicationIds.length === 0 ? [] : await db.select({ publicationId: publicationReactions.publicationId }).from(publicationReactions).where(inArray(publicationReactions.publicationId, publicationIds));
+    const commentRows = publicationIds.length === 0 ? [] : await db.select({ publicationId: publicationComments.publicationId }).from(publicationComments).where(and(inArray(publicationComments.publicationId, publicationIds), eq(publicationComments.status, "visible")));
+    const reactionsByPublication = new Map<string, number>();
+    const commentsByPublication = new Map<string, number>();
+    for (const reaction of reactionRows) reactionsByPublication.set(reaction.publicationId, (reactionsByPublication.get(reaction.publicationId) ?? 0) + 1);
+    for (const comment of commentRows) commentsByPublication.set(comment.publicationId, (commentsByPublication.get(comment.publicationId) ?? 0) + 1);
     const topicsByPublication = new Map<string, string[]>();
     const topicIdsByPublication = new Map<string, string[]>();
     for (const topic of assignedTopics) {
       topicsByPublication.set(topic.publicationId, [...(topicsByPublication.get(topic.publicationId) ?? []), topic.label]);
       topicIdsByPublication.set(topic.publicationId, [...(topicIdsByPublication.get(topic.publicationId) ?? []), topic.slug]);
     }
-    const enrichedRows = rows.map((publication) => ({ ...publication, topics: topicsByPublication.get(publication.id) ?? [] }));
+    const enrichedRows = rows.map((publication) => ({ ...publication, comments: commentsByPublication.get(publication.id) ?? 0, reactions: reactionsByPublication.get(publication.id) ?? 0, topics: topicsByPublication.get(publication.id) ?? [] }));
     const queryFiltered = query
       ? enrichedRows.filter((publication) => `${publication.title} ${publication.abstract} ${publication.type} ${publication.author} ${publication.topics.join(" ")}`.toLowerCase().includes(query))
       : enrichedRows;

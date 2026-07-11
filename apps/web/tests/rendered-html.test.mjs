@@ -70,7 +70,7 @@ test("binds account writes to the platform WebAuth identity", async () => {
   const onboarding = await readFile(new URL("../app/api/onboarding/route.ts", import.meta.url), "utf8");
   const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
   assert.match(identity, /getChatGPTUser/);
-  assert.match(identity, /Sign in with ChatGPT is required/);
+  assert.match(identity, /supported identity provider/);
   assert.match(onboarding, /const userId = identity.userId/);
   assert.match(publications, /const authorId = identity.userId/);
 });
@@ -78,10 +78,25 @@ test("binds account writes to the platform WebAuth identity", async () => {
 test("shows the same WebAuth state that protects account writes", async () => {
   const page = await readFile(new URL("../app/app/page.tsx", import.meta.url), "utf8");
   const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
-  assert.match(page, /getChatGPTUser/);
+  assert.match(page, /getPlatformIdentity/);
   assert.match(page, /chatGPTSignInPath/);
   assert.match(client, /Connected with ChatGPT/);
   assert.match(client, /session\.signOutPath/);
+});
+
+test("offers separate provider sign-in paths without automatic email account merging", async () => {
+  const identity = await readFile(new URL("../lib/platform-identity.ts", import.meta.url), "utf8");
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const google = await readFile(new URL("../lib/google-oauth.ts", import.meta.url), "utf8");
+  const github = await readFile(new URL("../lib/github-oauth.ts", import.meta.url), "utf8");
+  const paypal = await readFile(new URL("../lib/paypal-oauth.ts", import.meta.url), "utf8");
+  assert.match(client, /Continue with Google/);
+  assert.match(client, /Continue with GitHub/);
+  assert.match(client, /Continue with PayPal/);
+  assert.match(identity, /Matching email addresses are never auto-merged/);
+  assert.match(google, /code_challenge_method: "S256"/);
+  assert.match(github, /read:user user:email/);
+  assert.match(paypal, /openid profile email/);
 });
 
 test("keeps artifact and contributor-plan actions bound to the signed-in account", async () => {
@@ -116,4 +131,20 @@ test("sends authenticated publications and attached artifacts through the server
   assert.match(page, /fetch\("\/api\/artifacts"/);
   assert.match(page, /Create your Scholarium profile before publishing your first work/);
   assert.match(page, /provenance receipt and safety scan are now processing/);
+});
+
+test("keeps community interactions account-bound, reportable, and limited in depth", async () => {
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const interactions = await readFile(new URL("../app/api/publication-interactions/route.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  assert.match(page, /\/api\/publication-interactions/);
+  assert.match(page, /VERSION-BOUND DISCUSSION/);
+  assert.match(interactions, /getPlatformIdentity/);
+  assert.match(interactions, /commentsLimitedToOneReplyDepth/);
+  assert.match(interactions, /reportsCreateHumanReviewCase/);
+  assert.match(interactions, /Scholarium limits comment threads to one reply level/);
+  assert.match(schema, /publication_reactions/);
+  assert.match(schema, /publication_comments/);
+  assert.match(schema, /interaction_reports/);
+  assert.match(schema, /user_boundaries/);
 });
