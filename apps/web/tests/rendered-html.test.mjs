@@ -245,8 +245,12 @@ test("sends authenticated publications and attached artifacts through the server
   assert.match(versions, /A newer publication version already exists/);
   assert.match(versions, /provenanceReceipt/);
   assert.match(page, /External video URL/);
+  assert.match(page, /Open on YouTube/);
+  assert.match(page, /Hosted by the author’s provider/);
   assert.match(mediaLinks, /YouTube or TikTok/);
   assert.match(mediaLinks, /canonicalUrl/);
+  assert.match(publications, /externalMediaLinks/);
+  assert.match(publications, /externalMedia: mediaByPublication/);
 });
 
 test("quarantines narrow credential-shaped publication content without judging scientific claims", async () => {

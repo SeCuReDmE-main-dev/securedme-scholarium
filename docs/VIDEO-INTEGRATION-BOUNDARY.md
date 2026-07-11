@@ -2,6 +2,8 @@
 
 Scholarium supports external video as an attributed reference before it supports video copying or autonomous posting. A YouTube or TikTok URL remains external, attached to an author-owned Scholarium publication, and is subject to the same youth-audience policy as the publication.
 
+Public feed responses include only the provider name and canonical URL for a public publication. The publication card opens that link in a separate tab with `noopener` and `noreferrer`; it never embeds a provider token, proxies the video, or presents a third-party view count as a Scholarium ranking signal.
+
 ## YouTube webhook trace
 
 `/api/v1/webhooks/youtube` implements the provider-facing PubSubHubbub callback contract:

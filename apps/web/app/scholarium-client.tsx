@@ -109,6 +109,7 @@ type ApiPublication = {
   authorPublicId?: string | null;
   comments?: number;
   createdAt: string;
+  externalMedia?: Array<{ provider: "tiktok" | "youtube"; url: string }>;
   favorite?: boolean;
   followingAuthor?: boolean;
   feedSignal?: { classification: string; reasons: string[]; scorecard?: { explicitSatisfaction: number; personalRelevance: number; researchContext: number } | null };
@@ -147,6 +148,7 @@ const fromApiPublication = (publication: ApiPublication): Publication => ({
   hours: "Published",
   reactions: publication.reactions ?? 0,
   comments: publication.comments ?? 0,
+  externalMedia: publication.externalMedia ?? [],
   kind: ["video", "short_video", "live_replay"].includes(publication.type) ? "video" : ["project_update", "school_project", "software_project", "git_tree"].includes(publication.type) ? "project" : "paper",
   classification: publication.feedSignal?.classification,
   scorecard: publication.feedSignal?.scorecard,
@@ -746,7 +748,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
                   <p>{publication.excerpt}</p>
                    {publication.why?.length ? <p className="feed-signal"><strong>Why you see this:</strong> {publication.why.join(" · ")}</p> : null}
                    {publication.scorecard && <p className="feed-signal"><strong>Open score lanes:</strong> relevance {Math.round(publication.scorecard.personalRelevance * 100)}% · explicit satisfaction {Math.round(publication.scorecard.explicitSatisfaction * 100)}% · research context {Math.round(publication.scorecard.researchContext * 100)}%</p>}
-                  {publication.kind === "video" && <div className="video-preview"><span className="play">▶</span><span>03:42 · Sources and Git tree attached</span></div>}
+                  {publication.externalMedia?.length ? <div className="external-media-links" aria-label="Author-owned external video links">{publication.externalMedia.map((media) => <a href={media.url} key={media.url} rel="noreferrer noopener" target="_blank">{media.provider === "youtube" ? "▶ Open on YouTube" : "♪ Open on TikTok"} <span aria-hidden="true">↗</span></a>)}<span>Hosted by the author’s provider; Scholarium keeps the source link and research context.</span></div> : publication.kind === "video" && <div className="video-preview"><span className="play">▶</span><span>External video link can be attached with sources and Git tree context.</span></div>}
                   <div className="topic-row">{publication.topics.map((topic) => <button type="button" key={topic} onClick={() => setQuery(topic)}>#{topic.replaceAll(" ", "")}</button>)}</div>
                 </div>
                 <div className="publication-footer">
