@@ -60,3 +60,12 @@ test("binds account writes to the platform WebAuth identity", async () => {
   assert.match(onboarding, /const userId = identity.userId/);
   assert.match(publications, /const authorId = identity.userId/);
 });
+
+test("shows the same WebAuth state that protects account writes", async () => {
+  const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  assert.match(page, /getChatGPTUser/);
+  assert.match(page, /chatGPTSignInPath/);
+  assert.match(client, /Connected with ChatGPT/);
+  assert.match(client, /session\.signOutPath/);
+});
