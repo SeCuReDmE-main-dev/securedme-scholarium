@@ -390,7 +390,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       const type = publicationType;
       const topicSlugs = draftTopics.split(",").map((topic) => topic.trim()).filter(Boolean);
       const response = await fetch("/api/v1/publications", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ abstract: draftBody.trim(), title: draftTitle.trim(), topicSlugs, type }) });
-      const payload = await response.json() as { error?: string; publication?: { id: string; status: string; topicSlugs?: string[]; visibility?: "private" | "public" } };
+      const payload = await response.json() as { error?: string; moderation?: { message?: string; status: "quarantined" } | null; publication?: { id: string; status: string; topicSlugs?: string[]; visibility?: "private" | "public" } };
       if (!response.ok || !payload.publication) throw new Error(payload.error ?? "Your publication could not be created.");
       let uploadedArtifacts = 0;
       for (const file of attachedFiles) {
@@ -401,7 +401,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         if (artifactResponse.ok) uploadedArtifacts += 1;
       }
       let linkedExternalMedia = false;
-      if (externalMediaUrl.trim()) {
+      if (externalMediaUrl.trim() && payload.publication.status !== "quarantined") {
         const mediaResponse = await fetch("/api/v1/media-links", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ publicationId: payload.publication.id, url: externalMediaUrl.trim() }) });
         if (!mediaResponse.ok) {
           const mediaPayload = await mediaResponse.json() as { error?: string };
@@ -431,7 +431,9 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     setComposerOpen(false);
     trackLocalInsight("publicationDrafts");
       const audienceNotice = payload.publication.visibility === "private" ? " This publication is private until guardian consent or verified school supervision permits public discovery." : "";
-      setNotice(`Published. Your provenance receipt and safety scan are now processing.${artifactCount ? ` ${uploadedArtifacts} of ${artifactCount} artifact${artifactCount === 1 ? "" : "s"} uploaded.` : ""}${linkedExternalMedia ? " External media reference linked without copying the video." : ""}${audienceNotice}`);
+      const moderationNotice = payload.moderation?.status === "quarantined" ? ` ${payload.moderation.message ?? "This publication was saved privately for a safety review."}` : "";
+      const skippedMediaNotice = externalMediaUrl.trim() && payload.publication.status === "quarantined" ? " The external media link was not attached while this work is quarantined." : "";
+      setNotice(`Published. Your provenance receipt and safety scan are now processing.${artifactCount ? ` ${uploadedArtifacts} of ${artifactCount} artifact${artifactCount === 1 ? "" : "s"} uploaded.` : ""}${linkedExternalMedia ? " External media reference linked without copying the video." : ""}${audienceNotice}${moderationNotice}${skippedMediaNotice}`);
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "Your publication could not be created.");
     } finally { setPublishing(false); }

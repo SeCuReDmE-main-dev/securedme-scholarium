@@ -1,11 +1,12 @@
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { feedFeedback, publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, rankingPreferences, topicFollows, topics, users } from "../../../db/schema";
+import { feedFeedback, moderationCases, publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, rankingPreferences, topicFollows, topics, users } from "../../../db/schema";
 import { accountAudience } from "../../../lib/account-audience";
 import { createProvenanceReceipt } from "../../../lib/provenance";
 import { classifyPublication, rankPlithogenicFeed } from "../../../lib/plithogenic-feed";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
 import { publicationTypes } from "../../../lib/publication-types";
+import { publicationSafetyDecision } from "../../../lib/publication-safety";
 import { normalizedTopicSlugs, topicLabel } from "../../../lib/topics";
 
 type PublicationInput = {
@@ -151,7 +152,9 @@ export async function POST(request: Request) {
       return Response.json({ error: "Author account was not found" }, { status: 404 });
     }
     const audience = await accountAudience(db, author.id);
-    const visibility = audience.capabilities.canPublishPublicly ? "public" : "private";
+    const safety = publicationSafetyDecision({ abstract, title });
+    const visibility = safety.action === "quarantine" ? "private" : audience.capabilities.canPublishPublicly ? "public" : "private";
+    const verificationStatus = safety.action === "quarantine" ? "quarantined" : "processing";
 
     const publicationId = crypto.randomUUID();
     const receipt = await createProvenanceReceipt({ authorId, publicationId, title, abstract, type, version: 1 });
@@ -166,7 +169,7 @@ export async function POST(request: Request) {
         publishedAt: now,
         title,
         type,
-        verificationStatus: "processing",
+        verificationStatus,
         visibility,
       }),
       db.insert(publicationVersions).values({
@@ -179,6 +182,7 @@ export async function POST(request: Request) {
         title,
         version: 1,
       }),
+      ...(safety.action === "quarantine" && safety.reasonCode ? [db.insert(moderationCases).values({ createdAt: now, id: crypto.randomUUID(), publicationId, reasonCode: safety.reasonCode, source: "publication_secret_scan", status: "open" })] : []),
     ]);
     if (topicSlugs.length) {
       await db.batch(topicSlugs.map((slug) => db.insert(topics).values({ id: crypto.randomUUID(), label: topicLabel(slug), slug }).onConflictDoNothing()));
@@ -187,7 +191,8 @@ export async function POST(request: Request) {
     }
 
     return Response.json({
-      publication: { abstract, authorId, id: publicationId, status: "processing", title, topicSlugs, type, visibility },
+      moderation: safety.action === "quarantine" ? { message: safety.authorMessage, status: "quarantined" } : null,
+      publication: { abstract, authorId, id: publicationId, status: verificationStatus, title, topicSlugs, type, visibility },
       provenanceReceipt: receipt,
     }, { status: 201 });
   } catch (error) {
