@@ -249,6 +249,16 @@ test("quarantines narrow credential-shaped publication content without judging s
   assert.match(schema, /moderation_cases/);
 });
 
+test("verifies a public provenance version without exposing the author account identifier", async () => {
+  const provenance = await readFile(new URL("../lib/provenance.ts", import.meta.url), "utf8");
+  const verifier = await readFile(new URL("../app/api/provenance/verify/route.ts", import.meta.url), "utf8");
+  assert.match(provenance, /provenanceContentHash/);
+  assert.match(verifier, /Recalculate a supplied public version without persisting the submitted content/);
+  assert.match(verifier, /eq\(publications\.visibility, "public"\)/);
+  assert.match(verifier, /computedHash === stored\.version\.contentHash/);
+  assert.match(verifier, /excludes provider identity and author account ID/);
+});
+
 test("applies youth safeguards before public discovery or cross-platform media linking", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const policy = await readFile(new URL("../lib/audience-policy.ts", import.meta.url), "utf8");
