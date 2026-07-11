@@ -1,6 +1,6 @@
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { feedFeedback, moderationCases, publicProfiles, publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, rankingPreferences, topicFollows, topics, userFollows, users } from "../../../db/schema";
+import { externalMediaLinks, feedFeedback, moderationCases, publicProfiles, publicationComments, publicationReactions, publicationTopics, publicationVersions, publications, rankingPreferences, topicFollows, topics, userFollows, users } from "../../../db/schema";
 import { accountAudience } from "../../../lib/account-audience";
 import { createProvenanceReceipt } from "../../../lib/provenance";
 import { classifyPublication, rankPlithogenicFeed } from "../../../lib/plithogenic-feed";
@@ -64,17 +64,24 @@ export async function GET(request: Request) {
 
     const publicationIds = rows.map((publication) => publication.id);
     const assignedTopics = publicationIds.length === 0 ? [] : await db.select({ label: topics.label, publicationId: publicationTopics.publicationId, slug: topics.slug }).from(publicationTopics).innerJoin(topics, eq(publicationTopics.topicId, topics.id)).where(inArray(publicationTopics.publicationId, publicationIds));
-    const reactionRows = publicationIds.length === 0 ? [] : await db.select({ publicationId: publicationReactions.publicationId, userId: publicationReactions.userId }).from(publicationReactions).where(inArray(publicationReactions.publicationId, publicationIds));
-    const commentRows = publicationIds.length === 0 ? [] : await db.select({ publicationId: publicationComments.publicationId }).from(publicationComments).where(and(inArray(publicationComments.publicationId, publicationIds), eq(publicationComments.status, "visible")));
+    const [reactionRows, commentRows, mediaRows] = publicationIds.length === 0 ? [[], [], []] as const : await Promise.all([
+      db.select({ publicationId: publicationReactions.publicationId, userId: publicationReactions.userId }).from(publicationReactions).where(inArray(publicationReactions.publicationId, publicationIds)),
+      db.select({ publicationId: publicationComments.publicationId }).from(publicationComments).where(and(inArray(publicationComments.publicationId, publicationIds), eq(publicationComments.status, "visible"))),
+      db.select({ canonicalUrl: externalMediaLinks.canonicalUrl, provider: externalMediaLinks.provider, publicationId: externalMediaLinks.publicationId }).from(externalMediaLinks).where(inArray(externalMediaLinks.publicationId, publicationIds)),
+    ]);
     const reactionsByPublication = new Map<string, number>();
     const commentsByPublication = new Map<string, number>();
     for (const reaction of reactionRows) reactionsByPublication.set(reaction.publicationId, (reactionsByPublication.get(reaction.publicationId) ?? 0) + 1);
     for (const comment of commentRows) commentsByPublication.set(comment.publicationId, (commentsByPublication.get(comment.publicationId) ?? 0) + 1);
     const topicsByPublication = new Map<string, string[]>();
+    const mediaByPublication = new Map<string, Array<{ provider: string; url: string }>>();
     const topicIdsByPublication = new Map<string, string[]>();
     for (const topic of assignedTopics) {
       topicsByPublication.set(topic.publicationId, [...(topicsByPublication.get(topic.publicationId) ?? []), topic.label]);
       topicIdsByPublication.set(topic.publicationId, [...(topicIdsByPublication.get(topic.publicationId) ?? []), topic.slug]);
+    }
+    for (const media of mediaRows) {
+      mediaByPublication.set(media.publicationId, [...(mediaByPublication.get(media.publicationId) ?? []), { provider: media.provider, url: media.canonicalUrl }]);
     }
     const identity = await getPlatformIdentity();
     const viewer = identity ? await db.select({ id: users.id }).from(users).where(eq(users.id, identity.userId)).limit(1) : [];
@@ -91,7 +98,7 @@ export async function GET(request: Request) {
     const followedTopicSlugs = new Set(followRows.map((row) => row.slug));
     const followedAuthorIds = new Set(authorFollowRows.map((row) => row.targetUserId));
     const preference = ranking[0] ?? { diversityWeight: 66, freshnessWeight: 52, relevanceWeight: 78 };
-    const enrichedRows = rows.map((publication) => ({ ...publication, comments: commentsByPublication.get(publication.id) ?? 0, reactions: reactionsByPublication.get(publication.id) ?? 0, topics: topicsByPublication.get(publication.id) ?? [] }));
+    const enrichedRows = rows.map((publication) => ({ ...publication, comments: commentsByPublication.get(publication.id) ?? 0, externalMedia: mediaByPublication.get(publication.id) ?? [], reactions: reactionsByPublication.get(publication.id) ?? 0, topics: topicsByPublication.get(publication.id) ?? [] }));
     const eligibleRows = enrichedRows.filter((publication) => !["quarantined", "removed"].includes(publication.status));
     const queryFiltered = query
       ? eligibleRows.filter((publication) => `${publication.title} ${publication.abstract} ${publication.type} ${publication.author} ${publication.topics.join(" ")}`.toLowerCase().includes(query))
