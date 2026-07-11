@@ -15,6 +15,7 @@ const contract = {
     "/api/v1/integrations": { get: { summary: "List consent-first integrations" }, post: { summary: "Prepare an explicit provider consent flow" } },
     "/api/v1/local-insights": { get: { summary: "Read the device-local-only privacy analytics contract" } },
     "/api/v1/media-links": { get: { summary: "Read public external media links for a publication" }, post: { summary: "Link an author-owned YouTube or TikTok URL without copying the video" } },
+    "/api/v1/webhooks/youtube": { get: { summary: "Verify a configured YouTube PubSubHubbub callback" }, post: { summary: "Record an HMAC-authenticated YouTube Atom update for a linked channel" } },
     "/api/v1/onboarding": { post: { summary: "Create a role-aware account" } },
     "/api/v1/profile-media": { get: { summary: "Read private profile media" }, post: { summary: "Store a validated private avatar or profile banner" } },
     "/api/v1/publications": {
