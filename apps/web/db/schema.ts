@@ -238,3 +238,24 @@ export const externalMediaLinks = sqliteTable("external_media_links", {
   index("external_media_links_user_idx").on(table.userId),
   uniqueIndex("external_media_links_provider_external_idx").on(table.provider, table.externalId),
 ]);
+
+/**
+ * Minimal delivery trace for provider webhooks. The raw provider payload is
+ * deliberately not retained: Scholarium needs the event identity and a
+ * tamper-evident hash, not a copied third-party content archive.
+ */
+export const mediaWebhookEvents = sqliteTable("media_webhook_events", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  provider: text("provider").notNull(),
+  externalEventId: text("external_event_id").notNull(),
+  externalSubjectId: text("external_subject_id").notNull(),
+  eventType: text("event_type").notNull(),
+  payloadHash: text("payload_hash").notNull(),
+  deliveryStatus: text("delivery_status").notNull().default("recorded"),
+  receivedAt: text("received_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("media_webhook_events_user_idx").on(table.userId),
+  index("media_webhook_events_subject_idx").on(table.provider, table.externalSubjectId),
+  uniqueIndex("media_webhook_events_delivery_idx").on(table.provider, table.externalEventId, table.payloadHash),
+]);

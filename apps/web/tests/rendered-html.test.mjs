@@ -147,6 +147,19 @@ test("prepares profile tool connections through explicit consent", async () => {
   assert.match(integrations, /getPlatformIdentity/);
 });
 
+test("keeps provider video callbacks minimal, authenticated, and fail-closed", async () => {
+  const webhook = await readFile(new URL("../app/api/webhooks/youtube/route.ts", import.meta.url), "utf8");
+  const parser = await readFile(new URL("../lib/youtube-webhook.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  assert.match(webhook, /YOUTUBE_WEBHOOK_VERIFY_TOKEN/);
+  assert.match(webhook, /validYouTubeWebhookSignature/);
+  assert.match(webhook, /x-hub-signature/);
+  assert.match(webhook, /YouTube channel is not linked to a Scholarium account/);
+  assert.match(webhook, /onConflictDoNothing/);
+  assert.match(parser, /SHA-1/);
+  assert.match(schema, /media_webhook_events/);
+});
+
 test("gives a connected person a role-aware Scholarium onboarding path", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const account = await readFile(new URL("../app/api/account/route.ts", import.meta.url), "utf8");
