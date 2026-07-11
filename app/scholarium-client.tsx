@@ -88,7 +88,7 @@ const navItems: Array<{ id: View; label: string; icon: string }> = [
   { id: "formalize", label: "Formalize", icon: "◇" },
 ];
 
-export function ScholariumClient() {
+export function ScholariumClient({ session }: { session: { displayName: string | null; signInPath: string; signOutPath: string } }) {
   const [view, setView] = useState<View>("signal");
   const [query, setQuery] = useState("");
   const [publications, setPublications] = useState(initialPublications);
@@ -113,6 +113,7 @@ export function ScholariumClient() {
   const [formalizationLoading, setFormalizationLoading] = useState(false);
   const [localInsightsEnabled, setLocalInsightsEnabled] = useState(false);
   const [localInsightCounts, setLocalInsightCounts] = useState<LocalInsightCounts>({ formalizationGuides: 0, publicationDrafts: 0 });
+  const profileInitials = (session.displayName ?? "Guest").split(/\s+/).map((word) => word[0]).join("").slice(0, 2).toUpperCase();
 
   useEffect(() => {
     const stored = window.localStorage.getItem("scholarium.local-insights.v1");
@@ -247,9 +248,9 @@ export function ScholariumClient() {
           <strong>Free means discoverable.</strong>
           <span>Paid tools never change reach, ranking, or your right to publish.</span>
         </div>
-        <button className="profile-switcher" type="button" onClick={() => setProfileOpen(true)}>
-          <span className="avatar avatar-you" style={avatarPreview ? { backgroundImage: `url(${avatarPreview})` } : undefined}>{avatarPreview ? "" : "JS"}</span>
-          <span><b>Jean-Sebastien</b><small>Professional profile</small></span>
+        <button className="profile-switcher" type="button" onClick={() => session.displayName ? setProfileOpen(true) : window.location.assign(session.signInPath)}>
+          <span className="avatar avatar-you" style={avatarPreview ? { backgroundImage: `url(${avatarPreview})` } : undefined}>{avatarPreview ? "" : profileInitials}</span>
+          <span><b>{session.displayName ?? "Sign in"}</b><small>{session.displayName ? "Connected with ChatGPT" : "Use your ChatGPT account"}</small></span>
           <span aria-hidden="true">⌄</span>
         </button>
       </aside>
@@ -408,7 +409,7 @@ export function ScholariumClient() {
           <div className="local-insights-card"><strong>Private activity snapshot</strong>{localInsightsEnabled ? <span>{localInsightCounts.formalizationGuides} guide{localInsightCounts.formalizationGuides === 1 ? "" : "s"} created · {localInsightCounts.publicationDrafts} publication draft{localInsightCounts.publicationDrafts === 1 ? "" : "s"} started. Kept only in this browser.</span> : <span>Off by default. No activity snapshot is collected or sent anywhere.</span>}</div>
           <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><button className="quiet-button" type="button" onClick={() => { setProfileOpen(false); setView("formalize"); }}>Open QuaNthoR</button></div>
           <div className="composer-proof"><span>◌</span><p>Profile images stay local until you choose to save them to your account. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
-          <div className="composer-actions"><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" onClick={() => { setProfileOpen(false); setNotice("Profile preferences are ready to save when your authenticated account is connected."); }}>Save preferences</button></div>
+          <div className="composer-actions"><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" onClick={() => { setProfileOpen(false); setNotice("Profile preferences are ready to save when your authenticated account is connected."); }}>Save preferences</button></div>
         </section>
       </div>}
 
