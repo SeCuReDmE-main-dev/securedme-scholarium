@@ -381,6 +381,23 @@ export const repositoryLinks = sqliteTable("repository_links", {
   uniqueIndex("repository_links_publication_provider_path_idx").on(table.publicationId, table.provider, table.repositoryPath),
 ]);
 
+/** Author-declared source relationship; it records attribution, not a truth or ownership verdict. */
+export const publicationRelationships = sqliteTable("publication_relationships", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").notNull().references(() => publications.id),
+  relationType: text("relation_type").notNull(),
+  sourceUrl: text("source_url").notNull(),
+  sourceTitle: text("source_title"),
+  sourceLicense: text("source_license"),
+  declaration: text("declaration").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("publication_relationships_publication_idx").on(table.publicationId),
+  index("publication_relationships_user_idx").on(table.userId),
+  uniqueIndex("publication_relationships_source_idx").on(table.publicationId, table.relationType, table.sourceUrl),
+]);
+
 /**
  * Minimal delivery trace for provider webhooks. The raw provider payload is
  * deliberately not retained: Scholarium needs the event identity and a
