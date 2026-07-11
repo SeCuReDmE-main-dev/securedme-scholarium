@@ -29,6 +29,7 @@ test("server-renders the Scholarium public landing page instead of the starter s
 test("keeps the anti-pay-to-rank contract in the user interface", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
+  const publicationTypes = await readFile(new URL("../lib/publication-types.ts", import.meta.url), "utf8");
   assert.match(page, /Paid tools never change reach, ranking, or your right to publish/);
   assert.match(page, /Visibility is never for sale/);
   assert.match(page, /contribution supports the project, never the feed rank/);
@@ -164,10 +165,16 @@ test("keeps a private, portable account-data export separate from provider secre
 
 test("sends authenticated publications and attached artifacts through the server contracts", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const publications = await readFile(new URL("../app/api/publications/route.ts", import.meta.url), "utf8");
+  const publicationTypes = await readFile(new URL("../lib/publication-types.ts", import.meta.url), "utf8");
   assert.match(page, /fetch\("\/api\/v1\/publications"/);
   assert.match(page, /fetch\("\/api\/v1\/artifacts"/);
   assert.match(page, /Create your Scholarium profile before publishing your first work/);
   assert.match(page, /provenance receipt and safety scan are now processing/);
+  assert.match(publications, /publicationTypes/);
+  assert.match(publicationTypes, /full_book/);
+  assert.match(publicationTypes, /git_tree/);
+  assert.match(publicationTypes, /media handoff pending/);
 });
 
 test("keeps community interactions account-bound, reportable, and limited in depth", async () => {
