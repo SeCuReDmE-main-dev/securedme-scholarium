@@ -1,0 +1,28 @@
+{
+  "folders": [
+    {
+      "name": "Scholarium platform repository",
+      "path": "."
+    },
+    {
+      "name": "Scholarium application — active code",
+      "path": "apps/web"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "apps/web/.vinext": true,
+      "apps/web/.wrangler": true,
+      "apps/web/node_modules": true,
+      "apps/web/dist": true,
+      "apps/web/work": true
+    },
+    "search.exclude": {
+      "apps/web/.vinext": true,
+      "apps/web/.wrangler": true,
+      "apps/web/node_modules": true,
+      "apps/web/dist": true,
+      "apps/web/work": true
+    }
+  }
+}
