@@ -211,6 +211,9 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [accentColor, setAccentColor] = useState("#2157ee");
   const [badgeVisibility, setBadgeVisibility] = useState(true);
   const [publicProfileVisible, setPublicProfileVisible] = useState(false);
+  const [orcidInput, setOrcidInput] = useState("");
+  const [orcidStatus, setOrcidStatus] = useState<"claimed" | "none">("none");
+  const [orcidSaving, setOrcidSaving] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [bannerPreview, setBannerPreview] = useState<string | null>(null);
   const [profileMediaSaving, setProfileMediaSaving] = useState<"avatar" | "banner" | null>(null);
@@ -285,6 +288,22 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     };
     void load("avatar");
     void load("banner");
+    return () => { active = false; };
+  }, [accountReady, session.displayName]);
+
+  useEffect(() => {
+    if (!session.displayName || !accountReady) return;
+    let active = true;
+    fetch("/api/v1/author-identifiers")
+      .then(async (response) => ({ ok: response.ok, payload: await response.json() as { identifiers?: Array<{ canonicalUrl: string; scheme: string; status: "claimed" | "authenticated" }> } }))
+      .then(({ ok, payload }) => {
+        if (!active || !ok) return;
+        const orcid = payload.identifiers?.find((identifier) => identifier.scheme === "orcid");
+        if (!orcid) return;
+        setOrcidInput(orcid.canonicalUrl);
+        setOrcidStatus(orcid.status === "authenticated" ? "claimed" : orcid.status);
+      })
+      .catch(() => undefined);
     return () => { active = false; };
   }, [accountReady, session.displayName]);
 
@@ -482,6 +501,20 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "Your profile preferences could not be saved.");
     } finally { setAccountSaving(false); }
+  };
+
+  const saveOrcid = async () => {
+    if (!accountReady) return;
+    setOrcidSaving(true);
+    try {
+      const method = orcidInput.trim() ? "PUT" : "DELETE";
+      const response = await fetch("/api/v1/author-identifiers", method === "PUT" ? { method, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ orcid: orcidInput.trim() }) } : { method });
+      const payload = await response.json() as { error?: string; identifier?: { canonicalUrl: string; status: "claimed" } };
+      if (!response.ok) throw new Error(payload.error ?? "ORCID iD could not be saved.");
+      if (method === "DELETE") { setOrcidStatus("none"); setNotice("ORCID claim removed from this account."); }
+      else { setOrcidInput(payload.identifier?.canonicalUrl ?? orcidInput); setOrcidStatus("claimed"); setNotice("ORCID iD saved as a private self-claim. It is not displayed as authenticated until ORCID OAuth is connected."); }
+    } catch (error) { setNotice(error instanceof Error ? error.message : "ORCID iD could not be saved."); }
+    finally { setOrcidSaving(false); }
   };
 
   const filteredPublications = useMemo(() => {
@@ -972,7 +1005,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
                <label>Source repository URL (optional)<input value={repositoryUrl} onChange={(event) => setRepositoryUrl(event.target.value)} placeholder="https://github.com/owner/project" /></label>
           <label>Attach evidence<input type="file" multiple accept=".pdf,.docx,.odt,.xlsx,.ods,.csv,.pptx,.odp,.epub,.zip,.txt,video/*" onChange={(event) => setAttachedFiles(Array.from(event.currentTarget.files ?? []))} /></label>
           {attachedFiles.length > 0 && <p className="attachment-summary">{attachedFiles.length} artifact{attachedFiles.length === 1 ? "" : "s"} ready for hashing and upload.</p>}
-          <div className="composer-proof"><span>✓</span><p>A timestamped provenance receipt will be created. It records your Scholarium publication event; it does not replace copyright registration.</p></div>
+           <div className="composer-proof"><span>✓</span><p>A timestamped provenance receipt will be created. It records your Scholarium publication event; it does not replace copyright registration.</p></div>
+           <p className="author-identity-prompt">No DOI, ISBN, or ORCID yet? You can still publish. Add a free ORCID claim from your profile when you are ready; it remains private until authenticated through ORCID.</p>
           <div className="composer-actions"><button className="quiet-button" type="button" onClick={() => setComposerOpen(false)}>Save draft</button><button className="publish-button" type="submit" disabled={publishing}>{publishing ? "Publishing…" : "Publish now"}</button></div>
         </form>
       </div>}
@@ -1002,6 +1036,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
            <label className="toggle-label"><input type="checkbox" checked={badgeVisibility} onChange={(event) => setBadgeVisibility(event.target.checked)} /> Make my ecosystem-maturity badge visible when earned</label>
            <div className="badge-row">{badgeVisibility && <span>Recognition is contribution-based — never purchased</span>}</div>
            <label className="toggle-label"><input type="checkbox" checked={publicProfileVisible} onChange={(event) => setPublicProfileVisible(event.target.checked)} /> Make my profile, chosen picture/banner, and public work viewable on Scholarium</label>
+           <div className="orcid-panel"><strong>ORCID iD (optional)</strong><span>Use a free, persistent researcher identifier. A manually entered iD remains private and is never presented as authenticated.</span><div><input value={orcidInput} onChange={(event) => setOrcidInput(event.target.value)} placeholder="https://orcid.org/0000-0002-1825-0097" /><button className="quiet-button" disabled={orcidSaving} type="button" onClick={saveOrcid}>{orcidSaving ? "Saving…" : orcidInput.trim() ? "Save ORCID claim" : "Remove ORCID"}</button></div><small>{orcidStatus === "claimed" ? "Checksum valid — self-claimed, private until ORCID OAuth authentication." : "No ORCID saved yet."} <a href="https://orcid.org/register" rel="noreferrer noopener" target="_blank">Create one free ↗</a></small></div>
           <label className="toggle-label"><input type="checkbox" checked={localInsightsEnabled} onChange={(event) => updateLocalInsights(event.target.checked)} /> Enable local-only activity insights on this device</label>
           <div className="local-insights-card"><strong>Private activity snapshot</strong>{localInsightsEnabled ? <span>{localInsightCounts.formalizationGuides} guide{localInsightCounts.formalizationGuides === 1 ? "" : "s"} created · {localInsightCounts.publicationDrafts} publication draft{localInsightCounts.publicationDrafts === 1 ? "" : "s"} started. Kept only in this browser.</span> : <span>Off by default. No activity snapshot is collected or sent anywhere.</span>}</div>
           <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}</button>)}</div></div>
