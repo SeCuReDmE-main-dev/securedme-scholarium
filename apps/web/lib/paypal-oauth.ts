@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { safeRelativeReturnPath } from "../app/chatgpt-auth";
-import { createProviderSessionCookie, getScholariumSessionSecret, sealOAuthValue, secureCookie, unsealOAuthValue } from "./google-oauth";
+import { createProviderSessionCookie, getScholariumSessionSecret, secureCookie } from "./google-oauth";
 
 const OAUTH_COOKIE = "__Host-scholarium-paypal-oauth";
 type PayPalConfig = {
@@ -65,6 +65,31 @@ function externalRedirect(url: URL, cookie: string) {
   return new Response(null, { headers, status: 302 });
 }
 
+/**
+ * The PayPal authorization transaction contains only a random CSRF nonce,
+ * expiry, and a server-sanitized relative return path. Keeping it in a
+ * __Host-, HttpOnly, SameSite=Lax cookie binds the callback to the initiating
+ * browser without putting any access token or identity data in the cookie.
+ * The authenticated provider session remains encrypted separately.
+ */
+function encodeState(state: State) {
+  return btoa(JSON.stringify(state)).replaceAll("+", "-").replaceAll("/", "_").replace(/=+$/u, "");
+}
+
+function decodeState(value: string): State | null {
+  try {
+    const padded = `${value.replaceAll("-", "+").replaceAll("_", "/")}${"=".repeat((4 - value.length % 4) % 4)}`;
+    const parsed = JSON.parse(atob(padded)) as Partial<State>;
+    return typeof parsed.state === "string" && typeof parsed.returnTo === "string" && typeof parsed.expiresAt === "number" ? {
+      expiresAt: parsed.expiresAt,
+      returnTo: safeRelativeReturnPath(parsed.returnTo),
+      state: parsed.state,
+    } : null;
+  } catch {
+    return null;
+  }
+}
+
 export async function paypalStartResponse(request: Request) {
   const settings = await getPayPalConfig();
   if (!settings) return Response.redirect(new URL("/app?auth_error=paypal_not_configured", request.url), 302);
@@ -73,7 +98,7 @@ export async function paypalStartResponse(request: Request) {
   const saved: State = { expiresAt: Date.now() + 10 * 60_000, returnTo: safeRelativeReturnPath(requestUrl.searchParams.get("return_to") ?? "/app"), state };
   const authorizationUrl = new URL(paypalRedirect(settings, "/connect"));
   authorizationUrl.search = new URLSearchParams({ client_id: settings.clientId, flowEntry: "static", redirect_uri: settings.redirectUri, response_type: "code", scope: "openid profile email", state }).toString();
-  const stateCookie = secureCookie(`${OAUTH_COOKIE}=${await sealOAuthValue(saved, settings.sessionSecret)}`, 600);
+  const stateCookie = secureCookie(`${OAUTH_COOKIE}=${encodeState(saved)}`, 600);
   return externalRedirect(authorizationUrl, stateCookie);
 }
 
@@ -82,7 +107,7 @@ export async function paypalCallbackResponse(request: Request) {
   if (!settings) return Response.redirect(new URL("/app?auth_error=paypal_not_configured", request.url), 302);
   const requestUrl = new URL(request.url);
   const encodedState = (await cookies()).get(OAUTH_COOKIE)?.value;
-  const saved = encodedState ? await unsealOAuthValue<State>(encodedState, settings.sessionSecret) : null;
+  const saved = encodedState ? decodeState(encodedState) : null;
   const state = requestUrl.searchParams.get("state");
   const code = requestUrl.searchParams.get("code");
   const clear = secureCookie(`${OAUTH_COOKIE}=`, 0);
