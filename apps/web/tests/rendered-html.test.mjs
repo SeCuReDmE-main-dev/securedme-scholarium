@@ -152,6 +152,15 @@ test("gives a connected person a role-aware Scholarium onboarding path", async (
   assert.match(media, /private, no-store/);
 });
 
+test("keeps a private, portable account-data export separate from provider secrets", async () => {
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const exportRoute = await readFile(new URL("../app/api/account/export/route.ts", import.meta.url), "utf8");
+  assert.match(page, /Export my data/);
+  assert.match(exportRoute, /securedme-scholarium-account-export\/v1/);
+  assert.match(exportRoute, /private, no-store/);
+  assert.match(exportRoute, /integration token vault references and provider tokens/);
+});
+
 test("sends authenticated publications and attached artifacts through the server contracts", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   assert.match(page, /fetch\("\/api\/v1\/publications"/);
