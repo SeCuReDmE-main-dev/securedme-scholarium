@@ -1,0 +1,13 @@
+{
+  "protocol": "scholarium-seed/v1",
+  "default_view": "chronological",
+  "certified_engine": "not_provisioned",
+  "required_invariants": [
+    "eligibility-before-ranking",
+    "explicit-private-preferences-only",
+    "no-paid-reach",
+    "no-passive-viewing-surveillance",
+    "explainable-response-reasons",
+    "chronological-escape-hatch"
+  ]
+}

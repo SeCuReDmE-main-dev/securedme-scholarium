@@ -245,6 +245,27 @@ test("keeps provider video callbacks minimal, authenticated, and fail-closed", a
   assert.match(schema, /media_webhook_events/);
 });
 
+test("ships a developer seed contract without exposing a certified-engine formula or credentials", async () => {
+  const manifest = await readFile(new URL("../lib/developer-seed.ts", import.meta.url), "utf8");
+  const route = await readFile(new URL("../app/api/developer-seed/route.ts", import.meta.url), "utf8");
+  const seedContract = await readFile(new URL("../../../templates/scholarium-seed/src/discovery-contract.ts", import.meta.url), "utf8");
+  const seedClient = await readFile(new URL("../../../templates/scholarium-seed/src/protected-engine-client.ts", import.meta.url), "utf8");
+  const seedReadme = await readFile(new URL("../../../templates/scholarium-seed/README.md", import.meta.url), "utf8");
+  const docs = await readFile(new URL("../../../docs/DEVELOPER-SEED-PROTOCOL.md", import.meta.url), "utf8");
+  assert.match(manifest, /not_provisioned/);
+  assert.match(manifest, /cannot be represented as a trade secret/);
+  assert.match(route, /developerSeedManifest/);
+  assert.match(route, /public, max-age=3600/);
+  assert.match(seedContract, /scholarium-seed\/v1/);
+  assert.match(seedClient, /x-seed-signature/);
+  assert.match(seedClient, /crypto\.subtle\.verify/);
+  assert.match(seedClient, /invalid or expired/);
+  assert.match(seedClient, /keep chronological discovery active/);
+  assert.doesNotMatch(seedClient, /rankPlithogenicFeed/);
+  assert.match(seedReadme, /Never transmit publication files, private comments, raw watch time/);
+  assert.match(docs, /No engine endpoint, key, registration, or certification mark is active/);
+});
+
 test("offers an author-led podcast and video production brief without uploading or publishing media", async () => {
   const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const route = await readFile(new URL("../app/api/video-production-plan/route.ts", import.meta.url), "utf8");

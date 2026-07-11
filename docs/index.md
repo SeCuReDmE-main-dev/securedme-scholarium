@@ -11,3 +11,4 @@ This repository uses the SecuredMe Education documentation shell with dark/light
 - [Explainable live-feed ranking](FEED-RANKING-ARCHITECTURE.md)
 - [External video and callback boundary](VIDEO-INTEGRATION-BOUNDARY.md)
 - [Podcast & Video Studio boundary](PODCAST-VIDEO-STUDIO.md)
+- [Developer Seed Protocol](DEVELOPER-SEED-PROTOCOL.md)
