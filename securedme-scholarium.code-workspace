@@ -1,12 +1,8 @@
 {
   "folders": [
     {
-      "name": "Scholarium platform repository",
+      "name": "SecuredMe Scholarium — public repository",
       "path": "."
-    },
-    {
-      "name": "Scholarium application — active code",
-      "path": "apps/web"
     }
   ],
   "settings": {
