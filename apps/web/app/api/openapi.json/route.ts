@@ -15,6 +15,7 @@ const contract = {
     "/api/v1/collection-items": { get: { summary: "List saved public work inside one owner-owned collection" }, put: { summary: "Save eligible public work to a private reading list or collection" }, delete: { summary: "Remove one saved work item" } },
     "/api/v1/health": { get: { summary: "Read service health" } },
     "/api/v1/artifacts": { get: { summary: "List or download active artifacts attached to a public publication" }, post: { summary: "Upload a hashed scholarly artifact" } },
+    "/api/v1/academia-migrations": { get: { summary: "Read private owner-confirmed Academia.edu migration drafts" }, post: { summary: "Create a private review draft or import selected owner-confirmed items" } },
     "/api/v1/feed-feedback": { put: { summary: "Save an explicit private favorite or less-like-this feed preference" } },
     "/api/v1/guardian-consents": { get: { summary: "Read private guardian consent records without exposing other identities" }, post: { summary: "Request scoped guardian consent" }, put: { summary: "Activate a pending guardian consent after guardian verification" }, delete: { summary: "Revoke a guardian consent" } },
     "/api/v1/integrations": { get: { summary: "List consent-first integrations" }, post: { summary: "Prepare an explicit provider consent flow" } },
