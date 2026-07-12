@@ -158,6 +158,15 @@ type FundingCampaign = {
   status: string;
   title: string;
 };
+type ScientificDepositRequest = {
+  createdAt: string;
+  doi: string | null;
+  id: string;
+  license: string;
+  provider: string;
+  status: string;
+  title: string;
+};
 type AcademiaMigrationItem = { id: string; sourceUrl: string; title: string; abstract: string; topicSlugs: string[]; type: string; selected: boolean; visibility: "private" | "public"; status: string; importedPublicationId?: string | null };
 type AcademiaMigration = { id: string; sourceProfileUrl: string; state: string; items: AcademiaMigrationItem[] };
 type AccessibilityPreference = { keyboardFirst: boolean; reducedMotion: boolean; screenReaderOptimized: boolean };
@@ -448,6 +457,13 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [fundingDeadlineAt, setFundingDeadlineAt] = useState("");
   const [fundingPublicProgress, setFundingPublicProgress] = useState(false);
   const [fundingLoading, setFundingLoading] = useState(false);
+  const [scientificDeposits, setScientificDeposits] = useState<ScientificDepositRequest[]>([]);
+  const [depositTitle, setDepositTitle] = useState("");
+  const [depositLicense, setDepositLicense] = useState("cc-by-4.0");
+  const [depositCoauthors, setDepositCoauthors] = useState("");
+  const [depositReferences, setDepositReferences] = useState("");
+  const [depositDoiNote, setDepositDoiNote] = useState("");
+  const [depositLoading, setDepositLoading] = useState(false);
   const [paypalCheckoutLoading, setPaypalCheckoutLoading] = useState(false);
   const [academiaProfileUrl, setAcademiaProfileUrl] = useState("");
   const [academiaSourceLines, setAcademiaSourceLines] = useState("");
@@ -947,6 +963,44 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       setNotice(error instanceof Error ? error.message : "Funding campaign could not be prepared.");
     } finally {
       setFundingLoading(false);
+    }
+  };
+
+  const loadScientificDeposits = async () => {
+    setDepositLoading(true);
+    try {
+      const response = await fetch("/api/v1/scientific-deposits");
+      const payload = await response.json() as { error?: string; requests?: ScientificDepositRequest[] };
+      if (!response.ok) throw new Error(payload.error ?? "Scientific deposit drafts could not be loaded.");
+      setScientificDeposits(payload.requests ?? []);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Scientific deposit drafts could not be loaded.");
+    } finally {
+      setDepositLoading(false);
+    }
+  };
+
+  const createScientificDeposit = async () => {
+    if (!accountReady) { setProfileOpen(true); setNotice("Create your Scholarium profile before preparing a DOI or Zenodo deposit."); return; }
+    setDepositLoading(true);
+    try {
+      const response = await fetch("/api/v1/scientific-deposits", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ coauthors: depositCoauthors, doiNote: depositDoiNote, license: depositLicense, provider: "zenodo", references: depositReferences, title: depositTitle }),
+      });
+      const payload = await response.json() as { deposit?: ScientificDepositRequest; error?: string };
+      if (!response.ok || !payload.deposit) throw new Error(payload.error ?? "Scientific deposit draft could not be prepared.");
+      setScientificDeposits((current) => [payload.deposit!, ...current.filter((deposit) => deposit.id !== payload.deposit?.id)].slice(0, 8));
+      setDepositTitle("");
+      setDepositCoauthors("");
+      setDepositReferences("");
+      setDepositDoiNote("");
+      setNotice("Zenodo/DOI draft prepared. No DOI was reserved and nothing was published.");
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Scientific deposit draft could not be prepared.");
+    } finally {
+      setDepositLoading(false);
     }
   };
 
@@ -1685,6 +1739,19 @@ export function ScholariumClient({ session }: { session: { displayName: string |
            <div className="badge-row">{badgeVisibility && activeEducationBadgeAsset ? <><img className="ecosystem-badge" src={activeEducationBadgeAsset} alt={`Scholarium ecosystem badge for ${activeEducationToolCount} active tools.`} /><span>{activeEducationToolCount} active tool{activeEducationToolCount === 1 ? "" : "s"} · badge morphs with your Education-suite connections</span></> : badgeVisibility ? <span>Recognition is contribution-based — never purchased</span> : null}</div>
            <label className="toggle-label"><input type="checkbox" checked={publicProfileVisible} onChange={(event) => setPublicProfileVisible(event.target.checked)} /> Make my profile, chosen picture/banner, and public work viewable on Scholarium</label>
            <div className="orcid-panel"><strong>ORCID iD (optional)</strong><span>Use a free, persistent researcher identifier. A manually entered iD remains private and is never presented as authenticated.</span><div><input value={orcidInput} onChange={(event) => setOrcidInput(event.target.value)} placeholder="https://orcid.org/0000-0002-1825-0097" /><button className="quiet-button" disabled={orcidSaving} type="button" onClick={saveOrcid}>{orcidSaving ? "Saving…" : orcidInput.trim() ? "Save ORCID claim" : "Remove ORCID"}</button></div><small>{orcidStatus === "claimed" ? "Checksum valid — self-claimed, private until ORCID OAuth authentication." : "No ORCID saved yet."} <a href="https://orcid.org/register" rel="noreferrer noopener" target="_blank">Create one free ↗</a></small></div>
+          <section className="scientific-deposit-card" aria-label="Zenodo and DOI preparation">
+            <div><strong>Zenodo / DOI draft</strong><span>Prepare the metadata review before a repository deposit. No DOI is reserved, no file is sent, and no publication is made until OAuth plus irreversible confirmation exist.</span></div>
+            <div className="deposit-form-grid">
+              <label>Deposit title<input value={depositTitle} onChange={(event) => setDepositTitle(event.target.value)} placeholder="Dataset and teaching notes for..." /></label>
+              <label>License<select value={depositLicense} onChange={(event) => setDepositLicense(event.target.value)}><option value="cc-by-4.0">CC BY 4.0</option><option value="cc0-1.0">CC0 1.0</option><option value="mit">MIT</option><option value="gpl-3.0">GPL 3.0</option><option value="all-rights-reserved">All rights reserved</option></select></label>
+            </div>
+            <label>Coauthors and affiliations<input value={depositCoauthors} onChange={(event) => setDepositCoauthors(event.target.value)} placeholder="Names, ORCID iDs, affiliations to review" /></label>
+            <label>References or related identifiers<textarea value={depositReferences} onChange={(event) => setDepositReferences(event.target.value)} rows={3} placeholder="DOI, ISBN, arXiv, source URLs, upstream license notes" /></label>
+            <label>DOI note<input value={depositDoiNote} onChange={(event) => setDepositDoiNote(event.target.value)} placeholder="Why/when a DOI should be reserved" /></label>
+            <small>Scholarium keeps this private draft only. It preserves license, coauthor notes, and source relationships for review; it does not claim ownership or scientific truth.</small>
+            <div className="studio-actions"><button className="quiet-button" type="button" disabled={depositLoading} onClick={loadScientificDeposits}>{depositLoading ? "Loading…" : "Refresh deposit drafts"}</button><button className="publish-button" type="button" disabled={depositLoading || !depositTitle.trim()} onClick={createScientificDeposit}>{depositLoading ? "Saving…" : "Prepare Zenodo draft"}</button></div>
+            {scientificDeposits.length > 0 && <ul>{scientificDeposits.map((deposit) => <li key={deposit.id}><span>{deposit.title} · {deposit.provider} · {deposit.license} · {deposit.status}</span><small>{deposit.doi ? `DOI ${deposit.doi}` : "No DOI reserved yet."} Created {new Date(deposit.createdAt).toLocaleDateString()}.</small></li>)}</ul>}
+          </section>
           <label className="toggle-label"><input type="checkbox" checked={localInsightsEnabled} onChange={(event) => updateLocalInsights(event.target.checked)} /> Enable local-only activity insights on this device</label>
           <div className="local-insights-card"><strong>Private activity snapshot</strong>{localInsightsEnabled ? <span>{localInsightCounts.formalizationGuides} guide{localInsightCounts.formalizationGuides === 1 ? "" : "s"} created · {localInsightCounts.publicationDrafts} publication draft{localInsightCounts.publicationDrafts === 1 ? "" : "s"} started. Kept only in this browser.</span> : <span>Off by default. No activity snapshot is collected or sent anywhere.</span>}</div>
           <section className="reader-preferences-card" aria-label="Reader comfort, notification, and translation preferences">

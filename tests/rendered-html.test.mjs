@@ -172,6 +172,29 @@ test("keeps a manual ORCID claim private until an authenticated provider connect
   assert.match(schema, /author_identifiers/);
 });
 
+test("prepares Zenodo and DOI drafts without external publication or DOI claims", async () => {
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const route = await readFile(new URL("../app/api/scientific-deposits/route.ts", import.meta.url), "utf8");
+  const policy = await readFile(new URL("../lib/scientific-deposit-policy.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  const migration = await readFile(new URL("../drizzle/0025_scientific_deposit_requests.sql", import.meta.url), "utf8");
+  const exportRoute = await readFile(new URL("../app/api/account/export/route.ts", import.meta.url), "utf8");
+  const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
+  assert.match(schema, /scientific_deposit_requests/);
+  assert.match(migration, /CREATE TABLE `scientific_deposit_requests`/);
+  assert.match(route, /getPlatformIdentity/);
+  assert.match(route, /eq\(publications\.authorId, account\.user\.id\)/);
+  assert.match(policy, /does not call Zenodo, reserve a DOI, publish a record, or assert legal ownership/);
+  assert.match(policy, /Zenodo OAuth token/);
+  assert.match(policy, /irreversible confirmation/);
+  assert.match(client, /Zenodo \/ DOI draft/);
+  assert.match(client, /fetch\(\"\/api\/v1\/scientific-deposits\"/);
+  assert.match(client, /createScientificDeposit/);
+  assert.match(client, /No DOI is reserved, no file is sent, and no publication is made/);
+  assert.match(exportRoute, /scientificDepositRequests: depositRows/);
+  assert.match(openapi, /scientific-deposits/);
+});
+
 test("keeps QuaNthoR educational and non-blocking", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const contract = await readFile(new URL("../lib/quanthor-formalization.ts", import.meta.url), "utf8");
