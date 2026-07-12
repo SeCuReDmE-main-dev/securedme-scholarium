@@ -140,6 +140,16 @@ type AcademiaMigration = { id: string; sourceProfileUrl: string; state: string; 
 type AccessibilityPreference = { keyboardFirst: boolean; reducedMotion: boolean; screenReaderOptimized: boolean };
 type NotificationPreference = { channels: string[]; digestCadence: "off" | "daily" | "weekly"; topicAlerts: boolean; moderationAlerts: boolean };
 type TranslationPreference = { allowPublicationTranslation: boolean; glossaryTerms: string[]; interfaceLanguage: string; showOriginalFirst: boolean };
+type ArchiveManifest = {
+  id: string;
+  provider: string;
+  providerPath: string;
+  objectCount: number;
+  status: string;
+  restoreRequestedAt: string | null;
+  resyncRequestedAt: string | null;
+  updatedAt: string;
+};
 const profileToolOptions = [
   { id: "quanthor", label: "QuaNthoR" },
   { id: "synthia", label: "Synthia" },
@@ -365,6 +375,12 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [allowPublicationTranslation, setAllowPublicationTranslation] = useState(false);
   const [glossaryTermsInput, setGlossaryTermsInput] = useState("");
   const [readerPreferencesSaving, setReaderPreferencesSaving] = useState(false);
+  const [archiveManifests, setArchiveManifests] = useState<ArchiveManifest[]>([]);
+  const [archiveProvider, setArchiveProvider] = useState("google_drive");
+  const [archivePath, setArchivePath] = useState("");
+  const [archiveObjectCount, setArchiveObjectCount] = useState(0);
+  const [archiveLoading, setArchiveLoading] = useState(false);
+  const [archiveSaving, setArchiveSaving] = useState(false);
   const [orcidInput, setOrcidInput] = useState("");
   const [orcidStatus, setOrcidStatus] = useState<"claimed" | "none">("none");
   const [orcidSaving, setOrcidSaving] = useState(false);
@@ -524,6 +540,21 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         setGlossaryTermsInput(translations.payload.preference.glossaryTerms.join(", "));
       }
     }).catch(() => undefined);
+    return () => { active = false; };
+  }, [accountReady, session.displayName]);
+
+  useEffect(() => {
+    if (!session.displayName || !accountReady) return;
+    let active = true;
+    setArchiveLoading(true);
+    fetch("/api/v1/archive-manifests")
+      .then(async (response) => ({ ok: response.ok, payload: await response.json() as { manifests?: ArchiveManifest[] } }))
+      .then(({ ok, payload }) => {
+        if (!active || !ok) return;
+        setArchiveManifests(payload.manifests ?? []);
+      })
+      .catch(() => undefined)
+      .finally(() => { if (active) setArchiveLoading(false); });
     return () => { active = false; };
   }, [accountReady, session.displayName]);
 
@@ -902,6 +933,39 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       }
     } finally {
       setReaderPreferencesSaving(false);
+    }
+  };
+
+  const createArchiveManifest = async () => {
+    if (!accountReady) return;
+    setArchiveSaving(true);
+    try {
+      const response = await fetch("/api/v1/archive-manifests", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ provider: archiveProvider, providerPath: archivePath, objectCount: archiveObjectCount }) });
+      const payload = await response.json() as { error?: string; manifest?: ArchiveManifest };
+      if (!response.ok) throw new Error(payload.error ?? "Archive manifest could not be saved.");
+      if (payload.manifest) setArchiveManifests((items) => [payload.manifest!, ...items.filter((item) => item.id !== payload.manifest!.id)]);
+      setArchivePath("");
+      setArchiveObjectCount(0);
+      setNotice("Archive manifest saved. Restore and resync remain explicit owner actions.");
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Archive manifest could not be saved.");
+    } finally {
+      setArchiveSaving(false);
+    }
+  };
+
+  const requestArchiveAction = async (manifest: ArchiveManifest, action: "restore" | "resync") => {
+    setArchiveSaving(true);
+    try {
+      const response = await fetch("/api/v1/archive-manifests", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: manifest.id, action }) });
+      const payload = await response.json() as { error?: string; requestedAt?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Archive request could not be recorded.");
+      setArchiveManifests((items) => items.map((item) => item.id === manifest.id ? { ...item, status: `${action}_requested`, restoreRequestedAt: action === "restore" ? payload.requestedAt ?? new Date().toISOString() : item.restoreRequestedAt, resyncRequestedAt: action === "resync" ? payload.requestedAt ?? new Date().toISOString() : item.resyncRequestedAt } : item));
+      setNotice(`${action === "restore" ? "Restore" : "Resync"} request recorded. No provider token or file bytes were sent.`);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Archive request could not be recorded.");
+    } finally {
+      setArchiveSaving(false);
     }
   };
 
@@ -1503,6 +1567,17 @@ export function ScholariumClient({ session }: { session: { displayName: string |
             <small>Original publications remain canonical. Formulas, citations, identifiers, and provenance receipts are protected from automatic rewriting.</small>
           </section>
           <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}{integrationConnections[tool.id] ? ` · ${providerConnectionLabel(integrationConnections[tool.id].status)}` : ""}</button>)}<button className="quiet-button" type="button" onClick={() => { setProfileOpen(false); setView("migration"); }}>Academia.edu migration</button></div></div>
+          <section className="archive-continuity-card" aria-label="Archive continuity">
+            <div><strong>Archive continuity</strong><span>Register where your originals are backed up. Scholarium stores the manifest only: no Drive token, local credential, private key, or file bytes.</span></div>
+            <div className="archive-form-grid">
+              <label>Provider<select value={archiveProvider} onChange={(event) => setArchiveProvider(event.target.value)}><option value="google_drive">Google Drive</option><option value="microsoft_drive">Microsoft Drive</option><option value="local_sync">Local sync</option><option value="r2_cold">Cold R2</option></select></label>
+              <label>Archive path<input value={archivePath} onChange={(event) => setArchivePath(event.target.value)} placeholder="/Scholarium/archives/project-name" /></label>
+              <label>Objects<input type="number" min={0} max={10000} value={archiveObjectCount} onChange={(event) => setArchiveObjectCount(Number(event.target.value))} /></label>
+              <button className="quiet-button" type="button" disabled={archiveSaving || !archivePath.trim()} onClick={createArchiveManifest}>{archiveSaving ? "Saving…" : "Save manifest"}</button>
+            </div>
+            {archiveLoading ? <small>Loading archive manifests…</small> : archiveManifests.length === 0 ? <small>No archive manifest yet. Public metadata and provenance can remain visible even if an original file becomes unavailable.</small> : <ul>{archiveManifests.map((manifest) => <li key={manifest.id}><span>{manifest.provider.replaceAll("_", " ")} · {manifest.providerPath} · {manifest.objectCount} object{manifest.objectCount === 1 ? "" : "s"} · {manifest.status}</span><div><button className="quiet-button" type="button" disabled={archiveSaving} onClick={() => requestArchiveAction(manifest, "resync")}>Request resync</button><button className="quiet-button" type="button" disabled={archiveSaving} onClick={() => requestArchiveAction(manifest, "restore")}>Request restore</button></div></li>)}</ul>}
+            <small>Restore and resync do not delete R2 objects or bypass safety, moderation, or provenance checks.</small>
+          </section>
           <div className="webhook-trace-card"><strong>YouTube delivery trace</strong><span>Visible only to you after a channel is linked and the signed callback is configured. Scholarium retains no raw Atom feed or provider token.</span><button className="quiet-button" type="button" disabled={mediaWebhookTraceLoading} onClick={loadMediaWebhookTrace}>{mediaWebhookTraceLoading ? "Loading trace…" : "View callback trace"}</button>{mediaWebhookEvents.length > 0 ? <ul>{mediaWebhookEvents.map((event) => <li key={`${event.videoId}-${event.receivedAt}`}>{event.eventType} · video {event.videoId} · {new Date(event.receivedAt).toLocaleString()} · {event.status}</li>)}</ul> : <small>No recorded callback yet. A prepared connection is not a linked channel or an active webhook.</small>}</div>
           <div className="webhook-trace-card"><strong>Verified contributor</strong><span>A fixed USD 0.99 contribution supports the service. It never affects your reach, ranking, moderation, or essential access. Checkout requires verified identity and passkey safeguards.</span><button className="quiet-button" type="button" disabled={paypalCheckoutLoading} onClick={startPayPalCheckout}>{paypalCheckoutLoading ? "Opening PayPal…" : "Continue with PayPal"}</button><small>Crypto checkout is not connected until a provider account, available assets, fees, regions, and verified webhook are approved. Scholarium never stores wallet private keys.</small></div>
           <div className="composer-proof"><span>◌</span><p>Profile images upload only after you choose a file. They remain private unless you enable public profile visibility above; a public profile exposes only your chosen visuals and already-public work. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>

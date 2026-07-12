@@ -318,6 +318,7 @@ test("records owner-only archive manifests without provider secrets or unsafe re
   const exportRoute = await readFile(new URL("../app/api/account/export/route.ts", import.meta.url), "utf8");
   const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
   const docs = await readFile(new URL("../../../docs/ARCHIVE-RESTORE-BOUNDARY.md", import.meta.url), "utf8");
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   assert.match(route, /getPlatformIdentity/);
   assert.match(route, /eq\(archiveManifests\.userId, account\.user\.id\)/);
   assert.match(route, /restore_requested/);
@@ -331,6 +332,13 @@ test("records owner-only archive manifests without provider secrets or unsafe re
   assert.match(exportRoute, /archiveManifests: archiveRows/);
   assert.match(openapi, /archive-manifests/);
   assert.match(docs, /Actual provider workers remain a later implementation phase/);
+  assert.match(page, /Archive continuity/);
+  assert.match(page, /fetch\(\"\/api\/v1\/archive-manifests\"/);
+  assert.match(page, /createArchiveManifest/);
+  assert.match(page, /requestArchiveAction/);
+  assert.match(page, /Request resync/);
+  assert.match(page, /Request restore/);
+  assert.match(page, /no Drive token, local credential, private key, or file bytes/);
 });
 
 test("prepares profile tool connections through explicit consent", async () => {
