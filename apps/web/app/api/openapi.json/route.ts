@@ -30,6 +30,7 @@ const contract = {
     "/api/v1/media-webhook-events": { get: { summary: "Read the signed-in owner's minimal YouTube callback delivery trace" } },
     "/api/v1/payments/paypal/order": { get: { summary: "Read the PayPal checkout capability without credentials" }, post: { summary: "Create a fixed verified-contributor PayPal order" } },
     "/api/v1/payments/paypal/return": { get: { summary: "Capture one approved PayPal order server-side and redirect the signed-in contributor back to the app" } },
+    "/api/v1/project-starter": { get: { summary: "Read private project starter requests" }, post: { summary: "Prepare a provider-gated private project from an attributed source repository without writing to the maintainer repository" } },
     "/api/v1/quantech-render-request": {
       get: { summary: "List the signed-in author's private QuaNTecH-ViD handoff history without raw scripts, media, or provider secrets" },
       post: { summary: "Prepare a minimal QuaNTecH-ViD provider handoff without uploading media or forwarding raw script text" },
