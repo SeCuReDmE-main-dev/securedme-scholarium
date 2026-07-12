@@ -147,6 +147,17 @@ type LiveSessionPlan = {
   title: string;
   youthMode: string;
 };
+type FundingCampaign = {
+  beneficiaryStatus: string;
+  createdAt: string;
+  currency: string;
+  deadlineAt: string | null;
+  goalCents: number;
+  id: string;
+  publicProgress: boolean;
+  status: string;
+  title: string;
+};
 type AcademiaMigrationItem = { id: string; sourceUrl: string; title: string; abstract: string; topicSlugs: string[]; type: string; selected: boolean; visibility: "private" | "public"; status: string; importedPublicationId?: string | null };
 type AcademiaMigration = { id: string; sourceProfileUrl: string; state: string; items: AcademiaMigrationItem[] };
 type AccessibilityPreference = { keyboardFirst: boolean; reducedMotion: boolean; screenReaderOptimized: boolean };
@@ -429,6 +440,14 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [liveReplayConsent, setLiveReplayConsent] = useState(false);
   const [liveSessions, setLiveSessions] = useState<LiveSessionPlan[]>([]);
   const [livePlanningLoading, setLivePlanningLoading] = useState(false);
+  const [fundingCampaigns, setFundingCampaigns] = useState<FundingCampaign[]>([]);
+  const [fundingTitle, setFundingTitle] = useState("");
+  const [fundingPurpose, setFundingPurpose] = useState("");
+  const [fundingGoalCents, setFundingGoalCents] = useState(5000);
+  const [fundingCurrency, setFundingCurrency] = useState("USD");
+  const [fundingDeadlineAt, setFundingDeadlineAt] = useState("");
+  const [fundingPublicProgress, setFundingPublicProgress] = useState(false);
+  const [fundingLoading, setFundingLoading] = useState(false);
   const [paypalCheckoutLoading, setPaypalCheckoutLoading] = useState(false);
   const [academiaProfileUrl, setAcademiaProfileUrl] = useState("");
   const [academiaSourceLines, setAcademiaSourceLines] = useState("");
@@ -882,6 +901,52 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       setNotice(error instanceof Error ? error.message : "The Live session could not be planned.");
     } finally {
       setLivePlanningLoading(false);
+    }
+  };
+
+  const loadFundingCampaigns = async () => {
+    setFundingLoading(true);
+    try {
+      const response = await fetch("/api/v1/funding-campaigns");
+      const payload = await response.json() as { campaigns?: FundingCampaign[]; error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Funding campaigns could not be loaded.");
+      setFundingCampaigns(payload.campaigns ?? []);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Funding campaigns could not be loaded.");
+    } finally {
+      setFundingLoading(false);
+    }
+  };
+
+  const createFundingCampaign = async () => {
+    if (!accountReady) { setProfileOpen(true); setNotice("Create your Scholarium profile before preparing a funding campaign."); return; }
+    setFundingLoading(true);
+    try {
+      const response = await fetch("/api/v1/funding-campaigns", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          currency: fundingCurrency,
+          deadlineAt: fundingDeadlineAt,
+          goalCents: fundingGoalCents,
+          publicProgress: fundingPublicProgress,
+          purpose: fundingPurpose,
+          title: fundingTitle,
+        }),
+      });
+      const payload = await response.json() as { campaign?: FundingCampaign; error?: string };
+      if (!response.ok || !payload.campaign) throw new Error(payload.error ?? "Funding campaign could not be prepared.");
+      setFundingCampaigns((current) => [payload.campaign!, ...current.filter((campaign) => campaign.id !== payload.campaign?.id)].slice(0, 8));
+      setFundingTitle("");
+      setFundingPurpose("");
+      setFundingGoalCents(5000);
+      setFundingDeadlineAt("");
+      setFundingPublicProgress(false);
+      setNotice("Funding campaign prepared. Provider/KYC setup is still required before funds can move.");
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Funding campaign could not be prepared.");
+    } finally {
+      setFundingLoading(false);
     }
   };
 
@@ -1658,6 +1723,20 @@ export function ScholariumClient({ session }: { session: { displayName: string |
             <small>Restore and resync do not delete R2 objects or bypass safety, moderation, or provenance checks.</small>
           </section>
           <div className="webhook-trace-card"><strong>YouTube delivery trace</strong><span>Visible only to you after a channel is linked and the signed callback is configured. Scholarium retains no raw Atom feed or provider token.</span><button className="quiet-button" type="button" disabled={mediaWebhookTraceLoading} onClick={loadMediaWebhookTrace}>{mediaWebhookTraceLoading ? "Loading trace…" : "View callback trace"}</button>{mediaWebhookEvents.length > 0 ? <ul>{mediaWebhookEvents.map((event) => <li key={`${event.videoId}-${event.receivedAt}`}>{event.eventType} · video {event.videoId} · {new Date(event.receivedAt).toLocaleString()} · {event.status}</li>)}</ul> : <small>No recorded callback yet. A prepared connection is not a linked channel or an active webhook.</small>}</div>
+          <section className="funding-campaign-card" aria-label="Funding campaign preparation">
+            <div><strong>Funding campaign</strong><span>Prepare a campaign without storing funds. Provider onboarding, KYC, refunds, disputes, crypto, and territory approval remain launch-gated.</span></div>
+            <div className="funding-form-grid">
+              <label>Campaign title<input value={fundingTitle} onChange={(event) => setFundingTitle(event.target.value)} placeholder="Open lab instrument parts" /></label>
+              <label>Goal cents<input type="number" min={100} max={10000000} value={fundingGoalCents} onChange={(event) => setFundingGoalCents(Number(event.target.value))} /></label>
+              <label>Currency<select value={fundingCurrency} onChange={(event) => setFundingCurrency(event.target.value)}><option value="USD">USD</option><option value="CAD">CAD</option><option value="EUR">EUR</option></select></label>
+              <label>Deadline<input type="date" value={fundingDeadlineAt} onChange={(event) => setFundingDeadlineAt(event.target.value)} /></label>
+            </div>
+            <label>Purpose<textarea value={fundingPurpose} onChange={(event) => setFundingPurpose(event.target.value)} rows={3} placeholder="Explain the work, beneficiary, and how funds will be used." /></label>
+            <label className="toggle-label"><input type="checkbox" checked={fundingPublicProgress} onChange={(event) => setFundingPublicProgress(event.target.checked)} /> Allow public progress display after provider verification</label>
+            <small>Campaign status, goals, contribution counts, and contribution amounts are excluded from discovery ranking. Minor accounts cannot use this flow without a reviewed supervised path.</small>
+            <div className="studio-actions"><button className="quiet-button" type="button" disabled={fundingLoading} onClick={loadFundingCampaigns}>{fundingLoading ? "Loading…" : "Refresh campaigns"}</button><button className="publish-button" type="button" disabled={fundingLoading || !fundingTitle.trim()} onClick={createFundingCampaign}>{fundingLoading ? "Saving…" : "Prepare campaign"}</button></div>
+            {fundingCampaigns.length > 0 && <ul>{fundingCampaigns.map((campaign) => <li key={campaign.id}><span>{campaign.title} · {(campaign.goalCents / 100).toLocaleString(undefined, { currency: campaign.currency, style: "currency" })} · {campaign.status}</span><small>{campaign.beneficiaryStatus.replaceAll("_", " ")} · public progress {campaign.publicProgress ? "enabled by owner" : "off"}</small></li>)}</ul>}
+          </section>
           <div className="webhook-trace-card"><strong>Verified contributor</strong><span>A fixed USD 0.99 contribution supports the service. It never affects your reach, ranking, moderation, or essential access. Checkout requires verified identity and passkey safeguards.</span><button className="quiet-button" type="button" disabled={paypalCheckoutLoading} onClick={startPayPalCheckout}>{paypalCheckoutLoading ? "Opening PayPal…" : "Continue with PayPal"}</button><small>Crypto checkout is not connected until a provider account, available assets, fees, regions, and verified webhook are approved. Scholarium never stores wallet private keys.</small></div>
           <div className="composer-proof"><span>◌</span><p>Profile images upload only after you choose a file. They remain private unless you enable public profile visibility above; a public profile exposes only your chosen visuals and already-public work. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
           <div className="composer-actions"><a className="quiet-button auth-link" href="/api/v1/account/export">Export my data</a><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" disabled={accountSaving || readerPreferencesSaving} onClick={saveProfilePreferences}>{accountSaving || readerPreferencesSaving ? "Saving…" : "Save preferences"}</button></div></>}</>}

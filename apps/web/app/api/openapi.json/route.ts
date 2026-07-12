@@ -21,6 +21,7 @@ const contract = {
     "/api/v1/artifacts": { get: { summary: "List or download active artifacts attached to a public publication" }, post: { summary: "Upload a hashed scholarly artifact" } },
     "/api/v1/academia-migrations": { get: { summary: "Read private owner-confirmed Academia.edu migration drafts" }, post: { summary: "Create a private review draft or import selected owner-confirmed items" } },
     "/api/v1/feed-feedback": { put: { summary: "Save an explicit private favorite or less-like-this feed preference" } },
+    "/api/v1/funding-campaigns": { get: { summary: "Read owner funding campaign drafts and provider-setup state" }, post: { summary: "Create a campaign or provider-bound contribution intent without storing funds" } },
     "/api/v1/guardian-consents": { get: { summary: "Read private guardian consent records without exposing other identities" }, post: { summary: "Request scoped guardian consent" }, put: { summary: "Activate a pending guardian consent after guardian verification" }, delete: { summary: "Revoke a guardian consent" } },
     "/api/v1/integrations": { get: { summary: "List consent-first integrations" }, post: { summary: "Prepare an explicit provider consent flow" } },
     "/api/v1/local-insights": { get: { summary: "Read the device-local-only privacy analytics contract" } },

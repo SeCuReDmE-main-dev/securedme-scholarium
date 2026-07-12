@@ -475,6 +475,43 @@ export const liveSessions = sqliteTable("live_sessions", {
   index("live_sessions_scheduled_idx").on(table.scheduledAt),
 ]);
 
+/** Funding campaign intent. Money is handled by approved payment providers, not retained by Scholarium. */
+export const fundingCampaigns = sqliteTable("funding_campaigns", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").references(() => publications.id),
+  title: text("title").notNull(),
+  purpose: text("purpose").notNull().default(""),
+  goalCents: integer("goal_cents").notNull(),
+  currency: text("currency").notNull().default("USD"),
+  deadlineAt: text("deadline_at"),
+  beneficiaryStatus: text("beneficiary_status").notNull().default("verification_required"),
+  publicProgress: integer("public_progress", { mode: "boolean" }).notNull().default(false),
+  status: text("status").notNull().default("draft"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("funding_campaigns_user_idx").on(table.userId),
+  index("funding_campaigns_publication_idx").on(table.publicationId),
+  index("funding_campaigns_status_idx").on(table.status),
+]);
+
+/** Minimal contribution intent. It is a receipt boundary, not a stored wallet, card, or escrow record. */
+export const contributionIntents = sqliteTable("contribution_intents", {
+  id: text("id").primaryKey(),
+  campaignId: text("campaign_id").notNull().references(() => fundingCampaigns.id),
+  contributorId: text("contributor_id").notNull().references(() => users.id),
+  amountCents: integer("amount_cents").notNull(),
+  currency: text("currency").notNull().default("USD"),
+  provider: text("provider").notNull(),
+  status: text("status").notNull().default("provider_setup_required"),
+  anonymous: integer("anonymous", { mode: "boolean" }).notNull().default(false),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("contribution_intents_campaign_idx").on(table.campaignId),
+  index("contribution_intents_contributor_idx").on(table.contributorId),
+]);
+
 /** Owner-only external archive manifest. It stores status, not provider tokens or copied file bytes. */
 export const archiveManifests = sqliteTable("archive_manifests", {
   id: text("id").primaryKey(),
