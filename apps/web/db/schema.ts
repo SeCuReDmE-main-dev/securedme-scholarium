@@ -512,6 +512,27 @@ export const contributionIntents = sqliteTable("contribution_intents", {
   index("contribution_intents_contributor_idx").on(table.contributorId),
 ]);
 
+/** Private DOI/deposit preparation. It does not reserve a DOI or publish to a repository. */
+export const scientificDepositRequests = sqliteTable("scientific_deposit_requests", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").references(() => publications.id),
+  provider: text("provider").notNull().default("zenodo"),
+  title: text("title").notNull(),
+  license: text("license").notNull().default("cc-by-4.0"),
+  metadata: text("metadata").notNull().default("{}"),
+  status: text("status").notNull().default("draft"),
+  irreversibleConfirmedAt: text("irreversible_confirmed_at"),
+  providerDraftRef: text("provider_draft_ref"),
+  doi: text("doi"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("scientific_deposit_requests_user_idx").on(table.userId),
+  index("scientific_deposit_requests_publication_idx").on(table.publicationId),
+  index("scientific_deposit_requests_provider_idx").on(table.provider),
+]);
+
 /** Owner-only external archive manifest. It stores status, not provider tokens or copied file bytes. */
 export const archiveManifests = sqliteTable("archive_manifests", {
   id: text("id").primaryKey(),
