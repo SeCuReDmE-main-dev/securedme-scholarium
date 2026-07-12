@@ -10,6 +10,7 @@ const contract = {
     "/api/v1/openapi.json": { get: { summary: "Read the canonical OpenAPI contract for the current public API version" } },
     "/api/v1/account": { get: { summary: "Read the signed-in Scholarium account" } },
     "/api/v1/account/export": { get: { summary: "Download a private portable export of the signed-in account" } },
+    "/api/v1/accessibility-preferences": { get: { summary: "Read prepared private accessibility preferences" }, put: { summary: "Validate keyboard, motion, and screen-reader preferences before durable persistence" } },
     "/api/v1/author-identifiers": { get: { summary: "Read private author identifiers" }, put: { summary: "Save a checksum-validated self-claimed ORCID iD" }, delete: { summary: "Remove a private ORCID claim" } },
     "/api/v1/orcid-guidance": { get: { summary: "Read free ORCID registration and authentication guidance" } },
     "/api/v1/collections": { get: { summary: "List private personal reading collections" }, post: { summary: "Create a private personal collection" }, delete: { summary: "Delete an owner-owned private collection" } },
@@ -33,6 +34,7 @@ const contract = {
     "/api/v1/webhooks/paypal": { post: { summary: "Verify and reconcile a minimal PayPal payment notification" } },
     "/api/v1/repository-links": { get: { summary: "Read public attributed source-repository links for a publication" }, post: { summary: "Link an author-owned GitHub, GitLab, or SourceForge repository without copying code" } },
     "/api/v1/webhooks/youtube": { get: { summary: "Verify a configured YouTube PubSubHubbub callback" }, post: { summary: "Record an HMAC-authenticated YouTube Atom update for a linked channel" } },
+    "/api/v1/notification-preferences": { get: { summary: "Read prepared private notification preferences" }, put: { summary: "Validate digest, topic, moderation, and channel preferences before durable persistence" } },
     "/api/v1/onboarding": { post: { summary: "Create a role-aware account" } },
     "/api/v1/profile-media": { get: { summary: "Read private media or an owner-enabled public avatar/banner" }, post: { summary: "Store a validated private avatar or profile banner" } },
     "/api/v1/profile-preferences": { get: { summary: "Read private profile appearance and visibility preferences" }, put: { summary: "Update profile appearance and explicit public-profile visibility" } },
@@ -62,6 +64,7 @@ const contract = {
       put: { summary: "Follow a topic without affecting paid reach" },
       delete: { summary: "Stop following one topic" },
     },
+    "/api/v1/translation-preferences": { get: { summary: "Read prepared private language and translation preferences" }, put: { summary: "Validate original-canonical translation preferences and glossary terms before durable persistence" } },
     "/api/v1/user-follows": { get: { summary: "List authors explicitly followed by the signed-in account" }, put: { summary: "Follow one public author without exposing provider identity" }, delete: { summary: "Stop following one public author" } },
     "/api/v1/verified-subscription": {
       get: { summary: "Read the fixed-price verified contributor plan and its zero-ranking-effect contract" },

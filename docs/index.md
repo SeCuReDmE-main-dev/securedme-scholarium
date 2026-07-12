@@ -13,3 +13,4 @@ This repository uses the SecuredMe Education documentation shell with dark/light
 - [External video and callback boundary](VIDEO-INTEGRATION-BOUNDARY.md)
 - [Podcast & Video Studio boundary](PODCAST-VIDEO-STUDIO.md)
 - [Developer Seed Protocol](DEVELOPER-SEED-PROTOCOL.md)
+- [Reader preferences](READER-PREFERENCES.md)
