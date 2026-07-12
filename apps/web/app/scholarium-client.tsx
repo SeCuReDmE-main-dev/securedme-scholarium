@@ -137,6 +137,9 @@ type QuantechRenderHistoryItem = {
 };
 type AcademiaMigrationItem = { id: string; sourceUrl: string; title: string; abstract: string; topicSlugs: string[]; type: string; selected: boolean; visibility: "private" | "public"; status: string; importedPublicationId?: string | null };
 type AcademiaMigration = { id: string; sourceProfileUrl: string; state: string; items: AcademiaMigrationItem[] };
+type AccessibilityPreference = { keyboardFirst: boolean; reducedMotion: boolean; screenReaderOptimized: boolean };
+type NotificationPreference = { channels: string[]; digestCadence: "off" | "daily" | "weekly"; topicAlerts: boolean; moderationAlerts: boolean };
+type TranslationPreference = { allowPublicationTranslation: boolean; glossaryTerms: string[]; interfaceLanguage: string; showOriginalFirst: boolean };
 const profileToolOptions = [
   { id: "quanthor", label: "QuaNthoR" },
   { id: "synthia", label: "Synthia" },
@@ -350,6 +353,18 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [accentColor, setAccentColor] = useState("#2157ee");
   const [badgeVisibility, setBadgeVisibility] = useState(true);
   const [publicProfileVisible, setPublicProfileVisible] = useState(false);
+  const [keyboardFirst, setKeyboardFirst] = useState(true);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [screenReaderOptimized, setScreenReaderOptimized] = useState(false);
+  const [notificationEmail, setNotificationEmail] = useState(false);
+  const [digestCadence, setDigestCadence] = useState<NotificationPreference["digestCadence"]>("off");
+  const [topicAlerts, setTopicAlerts] = useState(true);
+  const [moderationAlerts, setModerationAlerts] = useState(true);
+  const [interfaceLanguage, setInterfaceLanguage] = useState("en");
+  const [showOriginalFirst, setShowOriginalFirst] = useState(true);
+  const [allowPublicationTranslation, setAllowPublicationTranslation] = useState(false);
+  const [glossaryTermsInput, setGlossaryTermsInput] = useState("");
+  const [readerPreferencesSaving, setReaderPreferencesSaving] = useState(false);
   const [orcidInput, setOrcidInput] = useState("");
   const [orcidStatus, setOrcidStatus] = useState<"claimed" | "none">("none");
   const [orcidSaving, setOrcidSaving] = useState(false);
@@ -479,6 +494,36 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         setPublicProfileVisible(payload.preference.profileVisibility === "public");
       })
       .catch(() => undefined);
+    return () => { active = false; };
+  }, [accountReady, session.displayName]);
+
+  useEffect(() => {
+    if (!session.displayName || !accountReady) return;
+    let active = true;
+    Promise.all([
+      fetch("/api/v1/accessibility-preferences").then(async (response) => ({ ok: response.ok, payload: await response.json() as { preference?: AccessibilityPreference } })),
+      fetch("/api/v1/notification-preferences").then(async (response) => ({ ok: response.ok, payload: await response.json() as { preference?: NotificationPreference } })),
+      fetch("/api/v1/translation-preferences").then(async (response) => ({ ok: response.ok, payload: await response.json() as { preference?: TranslationPreference } })),
+    ]).then(([accessibility, notifications, translations]) => {
+      if (!active) return;
+      if (accessibility.ok && accessibility.payload.preference) {
+        setKeyboardFirst(accessibility.payload.preference.keyboardFirst);
+        setReducedMotion(accessibility.payload.preference.reducedMotion);
+        setScreenReaderOptimized(accessibility.payload.preference.screenReaderOptimized);
+      }
+      if (notifications.ok && notifications.payload.preference) {
+        setNotificationEmail(notifications.payload.preference.channels.includes("email"));
+        setDigestCadence(notifications.payload.preference.digestCadence);
+        setTopicAlerts(notifications.payload.preference.topicAlerts);
+        setModerationAlerts(notifications.payload.preference.moderationAlerts);
+      }
+      if (translations.ok && translations.payload.preference) {
+        setInterfaceLanguage(translations.payload.preference.interfaceLanguage);
+        setShowOriginalFirst(translations.payload.preference.showOriginalFirst);
+        setAllowPublicationTranslation(translations.payload.preference.allowPublicationTranslation);
+        setGlossaryTermsInput(translations.payload.preference.glossaryTerms.join(", "));
+      }
+    }).catch(() => undefined);
     return () => { active = false; };
   }, [accountReady, session.displayName]);
 
@@ -830,11 +875,34 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       const response = await fetch("/api/v1/profile-preferences", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ accentColor, badgeVisibility: badgeVisibility ? "public" : "private", colorScheme, profileVisibility: publicProfileVisible ? "public" : "private" }) });
       const payload = await response.json() as { error?: string };
       if (!response.ok) throw new Error(payload.error ?? "Your profile preferences could not be saved.");
+      await saveReaderPreferences();
       setProfileOpen(false);
       setNotice(publicProfileVisible ? "Profile preferences saved. Your public profile can now show your chosen visuals and public work." : "Profile preferences saved. Your profile visuals remain private.");
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "Your profile preferences could not be saved.");
     } finally { setAccountSaving(false); }
+  };
+
+  const saveReaderPreferences = async () => {
+    if (!accountReady) return;
+    setReaderPreferencesSaving(true);
+    try {
+      const glossaryTerms = glossaryTermsInput.split(",").map((term) => term.trim()).filter(Boolean);
+      const channels = ["in_app", ...(notificationEmail ? ["email"] : [])];
+      const requests = [
+        fetch("/api/v1/accessibility-preferences", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ keyboardFirst, reducedMotion, screenReaderOptimized }) }),
+        fetch("/api/v1/notification-preferences", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ channels, digestCadence, topicAlerts, moderationAlerts }) }),
+        fetch("/api/v1/translation-preferences", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ allowPublicationTranslation, glossaryTerms, interfaceLanguage, showOriginalFirst }) }),
+      ];
+      const responses = await Promise.all(requests);
+      const failed = responses.find((response) => !response.ok);
+      if (failed) {
+        const payload = await failed.json() as { error?: string };
+        throw new Error(payload.error ?? "Reader preferences could not be saved.");
+      }
+    } finally {
+      setReaderPreferencesSaving(false);
+    }
   };
 
   const saveOrcid = async () => {
@@ -1411,11 +1479,34 @@ export function ScholariumClient({ session }: { session: { displayName: string |
            <div className="orcid-panel"><strong>ORCID iD (optional)</strong><span>Use a free, persistent researcher identifier. A manually entered iD remains private and is never presented as authenticated.</span><div><input value={orcidInput} onChange={(event) => setOrcidInput(event.target.value)} placeholder="https://orcid.org/0000-0002-1825-0097" /><button className="quiet-button" disabled={orcidSaving} type="button" onClick={saveOrcid}>{orcidSaving ? "Saving…" : orcidInput.trim() ? "Save ORCID claim" : "Remove ORCID"}</button></div><small>{orcidStatus === "claimed" ? "Checksum valid — self-claimed, private until ORCID OAuth authentication." : "No ORCID saved yet."} <a href="https://orcid.org/register" rel="noreferrer noopener" target="_blank">Create one free ↗</a></small></div>
           <label className="toggle-label"><input type="checkbox" checked={localInsightsEnabled} onChange={(event) => updateLocalInsights(event.target.checked)} /> Enable local-only activity insights on this device</label>
           <div className="local-insights-card"><strong>Private activity snapshot</strong>{localInsightsEnabled ? <span>{localInsightCounts.formalizationGuides} guide{localInsightCounts.formalizationGuides === 1 ? "" : "s"} created · {localInsightCounts.publicationDrafts} publication draft{localInsightCounts.publicationDrafts === 1 ? "" : "s"} started. Kept only in this browser.</span> : <span>Off by default. No activity snapshot is collected or sent anywhere.</span>}</div>
+          <section className="reader-preferences-card" aria-label="Reader comfort, notification, and translation preferences">
+            <div><strong>Reader comfort</strong><span>Saved privately to your account. These settings help access and comprehension; they never influence ranking.</span></div>
+            <div className="reader-preference-grid">
+              <fieldset className="profile-fieldset"><legend>Accessibility</legend>
+                <label className="toggle-label"><input type="checkbox" checked={keyboardFirst} onChange={(event) => setKeyboardFirst(event.target.checked)} /> Prefer keyboard-first navigation</label>
+                <label className="toggle-label"><input type="checkbox" checked={reducedMotion} onChange={(event) => setReducedMotion(event.target.checked)} /> Reduce non-essential motion</label>
+                <label className="toggle-label"><input type="checkbox" checked={screenReaderOptimized} onChange={(event) => setScreenReaderOptimized(event.target.checked)} /> Optimize labels for screen readers</label>
+              </fieldset>
+              <fieldset className="profile-fieldset"><legend>Notifications</legend>
+                <label>Digest cadence<select value={digestCadence} onChange={(event) => setDigestCadence(event.target.value as NotificationPreference["digestCadence"])}><option value="off">Off</option><option value="daily">Daily</option><option value="weekly">Weekly</option></select></label>
+                <label className="toggle-label"><input type="checkbox" checked={topicAlerts} onChange={(event) => setTopicAlerts(event.target.checked)} /> Topic alerts for followed hashtags</label>
+                <label className="toggle-label"><input type="checkbox" checked={moderationAlerts} onChange={(event) => setModerationAlerts(event.target.checked)} /> Moderation and archive alerts</label>
+                <label className="toggle-label"><input type="checkbox" checked={notificationEmail} onChange={(event) => setNotificationEmail(event.target.checked)} /> Also allow email delivery</label>
+              </fieldset>
+              <fieldset className="profile-fieldset"><legend>Language and translation</legend>
+                <label>Interface language<select value={interfaceLanguage} onChange={(event) => setInterfaceLanguage(event.target.value)}><option value="en">English</option><option value="fr">Français</option><option value="es">Español</option><option value="pt">Português</option><option value="de">Deutsch</option></select></label>
+                <label className="toggle-label"><input type="checkbox" checked={showOriginalFirst} onChange={(event) => setShowOriginalFirst(event.target.checked)} /> Show original publication first</label>
+                <label className="toggle-label"><input type="checkbox" checked={allowPublicationTranslation} onChange={(event) => setAllowPublicationTranslation(event.target.checked)} /> Allow automatic translation when clearly labeled</label>
+                <label>Scientific glossary terms<input value={glossaryTermsInput} onChange={(event) => setGlossaryTermsInput(event.target.value)} placeholder="neutrosophy, plithogenic set, ORCID" /></label>
+              </fieldset>
+            </div>
+            <small>Original publications remain canonical. Formulas, citations, identifiers, and provenance receipts are protected from automatic rewriting.</small>
+          </section>
           <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}{integrationConnections[tool.id] ? ` · ${providerConnectionLabel(integrationConnections[tool.id].status)}` : ""}</button>)}<button className="quiet-button" type="button" onClick={() => { setProfileOpen(false); setView("migration"); }}>Academia.edu migration</button></div></div>
           <div className="webhook-trace-card"><strong>YouTube delivery trace</strong><span>Visible only to you after a channel is linked and the signed callback is configured. Scholarium retains no raw Atom feed or provider token.</span><button className="quiet-button" type="button" disabled={mediaWebhookTraceLoading} onClick={loadMediaWebhookTrace}>{mediaWebhookTraceLoading ? "Loading trace…" : "View callback trace"}</button>{mediaWebhookEvents.length > 0 ? <ul>{mediaWebhookEvents.map((event) => <li key={`${event.videoId}-${event.receivedAt}`}>{event.eventType} · video {event.videoId} · {new Date(event.receivedAt).toLocaleString()} · {event.status}</li>)}</ul> : <small>No recorded callback yet. A prepared connection is not a linked channel or an active webhook.</small>}</div>
           <div className="webhook-trace-card"><strong>Verified contributor</strong><span>A fixed USD 0.99 contribution supports the service. It never affects your reach, ranking, moderation, or essential access. Checkout requires verified identity and passkey safeguards.</span><button className="quiet-button" type="button" disabled={paypalCheckoutLoading} onClick={startPayPalCheckout}>{paypalCheckoutLoading ? "Opening PayPal…" : "Continue with PayPal"}</button><small>Crypto checkout is not connected until a provider account, available assets, fees, regions, and verified webhook are approved. Scholarium never stores wallet private keys.</small></div>
           <div className="composer-proof"><span>◌</span><p>Profile images upload only after you choose a file. They remain private unless you enable public profile visibility above; a public profile exposes only your chosen visuals and already-public work. Identity verification uses a document provider and a passkey: Scholarium never stores ID images or fingerprint data.</p></div>
-          <div className="composer-actions"><a className="quiet-button auth-link" href="/api/v1/account/export">Export my data</a><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" disabled={accountSaving} onClick={saveProfilePreferences}>{accountSaving ? "Saving…" : "Save preferences"}</button></div></>}</>}
+          <div className="composer-actions"><a className="quiet-button auth-link" href="/api/v1/account/export">Export my data</a><a className="quiet-button auth-link" href={session.signOutPath}>Sign out</a><button className="quiet-button" type="button" onClick={() => setProfileOpen(false)}>Cancel</button><button className="publish-button" type="button" disabled={accountSaving || readerPreferencesSaving} onClick={saveProfilePreferences}>{accountSaving || readerPreferencesSaving ? "Saving…" : "Save preferences"}</button></div></>}</>}
         </section>
       </div>}
 

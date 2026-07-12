@@ -194,6 +194,7 @@ test("prepares reader accessibility, notification, and translation preferences w
   const accessibility = await readFile(new URL("../app/api/accessibility-preferences/route.ts", import.meta.url), "utf8");
   const notifications = await readFile(new URL("../app/api/notification-preferences/route.ts", import.meta.url), "utf8");
   const translations = await readFile(new URL("../app/api/translation-preferences/route.ts", import.meta.url), "utf8");
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const contract = await readFile(new URL("../lib/reader-preferences.ts", import.meta.url), "utf8");
   const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
   const onboarding = await readFile(new URL("../app/api/onboarding/route.ts", import.meta.url), "utf8");
@@ -216,6 +217,15 @@ test("prepares reader accessibility, notification, and translation preferences w
   assert.match(contract, /topic notifications are opt-in and never feed-ranking signals/);
   assert.match(contract, /original publication remains canonical/);
   assert.match(contract, /formulas/);
+  assert.match(page, /Reader comfort/);
+  assert.match(page, /fetch\(\"\/api\/v1\/accessibility-preferences\"/);
+  assert.match(page, /fetch\(\"\/api\/v1\/notification-preferences\"/);
+  assert.match(page, /fetch\(\"\/api\/v1\/translation-preferences\"/);
+  assert.match(page, /setKeyboardFirst/);
+  assert.match(page, /setDigestCadence/);
+  assert.match(page, /setInterfaceLanguage/);
+  assert.match(page, /saveReaderPreferences/);
+  assert.match(page, /Original publications remain canonical/);
   assert.match(schema, /reader_preferences/);
   assert.match(schema, /notification_channels/);
   assert.match(onboarding, /readerPreferenceInsert\(userId\)/);
