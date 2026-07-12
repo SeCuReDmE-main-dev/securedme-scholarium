@@ -24,6 +24,7 @@ const contract = {
     "/api/v1/guardian-consents": { get: { summary: "Read private guardian consent records without exposing other identities" }, post: { summary: "Request scoped guardian consent" }, put: { summary: "Activate a pending guardian consent after guardian verification" }, delete: { summary: "Revoke a guardian consent" } },
     "/api/v1/integrations": { get: { summary: "List consent-first integrations" }, post: { summary: "Prepare an explicit provider consent flow" } },
     "/api/v1/local-insights": { get: { summary: "Read the device-local-only privacy analytics contract" } },
+    "/api/v1/live-sessions": { get: { summary: "Read owner-only educational Live plans" }, post: { summary: "Plan an educational Live without stream keys or raw chat" } },
     "/api/v1/media-links": { get: { summary: "Read public external media links for a publication" }, post: { summary: "Link an author-owned YouTube or TikTok URL without copying the video" } },
     "/api/v1/media-webhook-events": { get: { summary: "Read the signed-in owner's minimal YouTube callback delivery trace" } },
     "/api/v1/payments/paypal/order": { get: { summary: "Read the PayPal checkout capability without credentials" }, post: { summary: "Create a fixed verified-contributor PayPal order" } },

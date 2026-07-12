@@ -454,6 +454,27 @@ export const quantechRenderRequests = sqliteTable("quantech_render_requests", {
   index("quantech_render_requests_created_idx").on(table.createdAt),
 ]);
 
+/** Educational Live planning ledger. It stores schedule and safety state, never stream keys or raw chat. */
+export const liveSessions = sqliteTable("live_sessions", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").references(() => publications.id),
+  title: text("title").notNull(),
+  agenda: text("agenda").notNull().default(""),
+  scheduledAt: text("scheduled_at").notNull(),
+  audienceMode: text("audience_mode").notNull().default("public_review"),
+  moderatorPlan: text("moderator_plan").notNull().default("author_moderated"),
+  youthMode: text("youth_mode").notNull().default("restricted_until_consent"),
+  status: text("status").notNull().default("planned"),
+  replayConsent: integer("replay_consent", { mode: "boolean" }).notNull().default(false),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("live_sessions_user_idx").on(table.userId),
+  index("live_sessions_publication_idx").on(table.publicationId),
+  index("live_sessions_scheduled_idx").on(table.scheduledAt),
+]);
+
 /** Owner-only external archive manifest. It stores status, not provider tokens or copied file bytes. */
 export const archiveManifests = sqliteTable("archive_manifests", {
   id: text("id").primaryKey(),
