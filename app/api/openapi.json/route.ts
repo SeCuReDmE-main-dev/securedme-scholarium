@@ -10,6 +10,7 @@ const contract = {
     "/api/v1/openapi.json": { get: { summary: "Read the canonical OpenAPI contract for the current public API version" } },
     "/api/v1/account": { get: { summary: "Read the signed-in Scholarium account" } },
     "/api/v1/account/export": { get: { summary: "Download a private portable export of the signed-in account" } },
+    "/api/v1/archive-manifests": { get: { summary: "Read owner-only archive manifests" }, post: { summary: "Register an owner-controlled external archive location without secrets" }, put: { summary: "Request archive restore or resynchronization" } },
     "/api/v1/accessibility-preferences": { get: { summary: "Read persisted private accessibility preferences" }, put: { summary: "Persist keyboard, motion, and screen-reader preferences" } },
     "/api/v1/author-identifiers": { get: { summary: "Read private author identifiers" }, put: { summary: "Save a checksum-validated self-claimed ORCID iD" }, delete: { summary: "Remove a private ORCID claim" } },
     "/api/v1/orcid-guidance": { get: { summary: "Read free ORCID registration and authentication guidance" } },

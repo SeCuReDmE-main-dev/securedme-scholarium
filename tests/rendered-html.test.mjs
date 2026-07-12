@@ -310,6 +310,29 @@ test("delivers only active artifacts for public publications through a safe down
   assert.doesNotMatch(artifacts, /objectKey: artifact\.objectKey/);
 });
 
+test("records owner-only archive manifests without provider secrets or unsafe restore shortcuts", async () => {
+  const route = await readFile(new URL("../app/api/archive-manifests/route.ts", import.meta.url), "utf8");
+  const policy = await readFile(new URL("../lib/archive-manifest.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  const migration = await readFile(new URL("../drizzle/0022_archive_manifests.sql", import.meta.url), "utf8");
+  const exportRoute = await readFile(new URL("../app/api/account/export/route.ts", import.meta.url), "utf8");
+  const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
+  const docs = await readFile(new URL("../../../docs/ARCHIVE-RESTORE-BOUNDARY.md", import.meta.url), "utf8");
+  assert.match(route, /getPlatformIdentity/);
+  assert.match(route, /eq\(archiveManifests\.userId, account\.user\.id\)/);
+  assert.match(route, /restore_requested/);
+  assert.match(route, /resync_requested/);
+  assert.match(route, /private, no-store/);
+  assert.match(policy, /stores no Drive token/);
+  assert.match(policy, /do not delete R2 objects/);
+  assert.match(policy, /token\|secret\|password\|private/);
+  assert.match(schema, /archive_manifests/);
+  assert.match(migration, /CREATE TABLE `archive_manifests`/);
+  assert.match(exportRoute, /archiveManifests: archiveRows/);
+  assert.match(openapi, /archive-manifests/);
+  assert.match(docs, /Actual provider workers remain a later implementation phase/);
+});
+
 test("prepares profile tool connections through explicit consent", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const integrations = await readFile(new URL("../app/api/integrations/route.ts", import.meta.url), "utf8");

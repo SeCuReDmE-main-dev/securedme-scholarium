@@ -2,6 +2,7 @@ import { eq, inArray } from "drizzle-orm";
 import { getDb } from "../../../../db";
 import {
   artifacts,
+  archiveManifests,
   authorIdentifiers,
   collectionItems,
   collections,
@@ -40,7 +41,7 @@ export async function GET() {
 
     const ownPublications = await db.select().from(publications).where(eq(publications.authorId, account.id));
     const publicationIds = ownPublications.map((publication) => publication.id);
-    const [roles, preferences, readerPreferenceRows, ranking, followedTopics, identities, authorIds, connections, comments, reactions, boundaries, versions, files, publicationTopicRows, savedCollections, sourceLinks, sourceRelationships, quantechRequests] = await Promise.all([
+    const [roles, preferences, readerPreferenceRows, ranking, followedTopics, identities, authorIds, connections, comments, reactions, boundaries, versions, files, archiveRows, publicationTopicRows, savedCollections, sourceLinks, sourceRelationships, quantechRequests] = await Promise.all([
       db.select().from(roleAssignments).where(eq(roleAssignments.userId, account.id)),
       db.select().from(profilePreferences).where(eq(profilePreferences.userId, account.id)),
       db.select().from(readerPreferences).where(eq(readerPreferences.userId, account.id)),
@@ -54,6 +55,7 @@ export async function GET() {
       db.select({ createdAt: userBoundaries.createdAt, kind: userBoundaries.kind, targetUserId: userBoundaries.targetUserId }).from(userBoundaries).where(eq(userBoundaries.userId, account.id)),
       publicationIds.length ? db.select().from(publicationVersions).where(inArray(publicationVersions.publicationId, publicationIds)) : Promise.resolve([]),
       publicationIds.length ? db.select({ archiveStatus: artifacts.archiveStatus, byteSize: artifacts.byteSize, contentType: artifacts.contentType, createdAt: artifacts.createdAt, publicationId: artifacts.publicationId, sha256: artifacts.sha256 }).from(artifacts).where(inArray(artifacts.publicationId, publicationIds)) : Promise.resolve([]),
+      db.select().from(archiveManifests).where(eq(archiveManifests.userId, account.id)),
       publicationIds.length ? db.select({ publicationId: publicationTopics.publicationId, topic: topics.slug }).from(publicationTopics).innerJoin(topics, eq(publicationTopics.topicId, topics.id)).where(inArray(publicationTopics.publicationId, publicationIds)) : Promise.resolve([]),
       db.select().from(collections).where(eq(collections.userId, account.id)),
       publicationIds.length ? db.select({ canonicalUrl: repositoryLinks.canonicalUrl, createdAt: repositoryLinks.createdAt, provider: repositoryLinks.provider, publicationId: repositoryLinks.publicationId, repositoryPath: repositoryLinks.repositoryPath }).from(repositoryLinks).where(inArray(repositoryLinks.publicationId, publicationIds)) : Promise.resolve([]),
@@ -92,6 +94,7 @@ export async function GET() {
       publicationTopics: publicationTopicRows,
       publicationVersions: versions,
       artifacts: files,
+      archiveManifests: archiveRows,
       comments,
       reactions,
       boundaries,
