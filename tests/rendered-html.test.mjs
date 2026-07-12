@@ -655,6 +655,33 @@ test("plans educational Lives without exposing stream keys, raw chat, or youth b
   assert.match(openapi, /live-sessions/);
 });
 
+test("prepares funding campaigns without custody, minor bypass, or ranking influence", async () => {
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const route = await readFile(new URL("../app/api/funding-campaigns/route.ts", import.meta.url), "utf8");
+  const policy = await readFile(new URL("../lib/funding-policy.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  const migration = await readFile(new URL("../drizzle/0024_funding_campaigns.sql", import.meta.url), "utf8");
+  const exportRoute = await readFile(new URL("../app/api/account/export/route.ts", import.meta.url), "utf8");
+  const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
+  assert.match(schema, /funding_campaigns/);
+  assert.match(schema, /contribution_intents/);
+  assert.match(migration, /CREATE TABLE `funding_campaigns`/);
+  assert.match(migration, /CREATE TABLE `contribution_intents`/);
+  assert.match(route, /getPlatformIdentity/);
+  assert.match(route, /accountAudience/);
+  assert.match(route, /ageBand === "minor"/);
+  assert.match(route, /eq\(publications\.authorId, account\.user\.id\)/);
+  assert.match(policy, /never stores card data, wallet private keys, or directly holds user funds/);
+  assert.match(policy, /excluded from discovery ranking/);
+  assert.match(policy, /Provider onboarding, capture, refund, dispute, and territory approval remain launch-gated/);
+  assert.match(page, /Funding campaign/);
+  assert.match(page, /fetch\(\"\/api\/v1\/funding-campaigns\"/);
+  assert.match(page, /createFundingCampaign/);
+  assert.match(page, /Campaign status, goals, contribution counts, and contribution amounts are excluded from discovery ranking/);
+  assert.match(exportRoute, /fundingCampaigns: fundingRows/);
+  assert.match(openapi, /funding-campaigns/);
+});
+
 test("keeps community interactions account-bound, reportable, and limited in depth", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const interactions = await readFile(new URL("../app/api/publication-interactions/route.ts", import.meta.url), "utf8");
