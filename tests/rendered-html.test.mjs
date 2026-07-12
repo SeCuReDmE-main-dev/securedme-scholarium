@@ -23,6 +23,9 @@ test("server-renders the Scholarium public landing page instead of the starter s
   assert.match(html, /traceable evidence/);
   assert.match(html, /0<\/b> paid reach controls/);
   assert.match(html, /Your work is not a product to be ranked by price/);
+  assert.match(html, /SecuredMe root/);
+  assert.match(html, /SecuredMe public root/);
+  assert.match(html, /https:\/\/securedme\.ca/);
   assert.doesNotMatch(html, /Your site is taking shape|Codex is working|react-loading-skeleton/i);
 });
 
@@ -529,10 +532,15 @@ test("uses a canonical versioned API surface and retains a documented compatibil
   const worker = await readFile(new URL("../worker/index.ts", import.meta.url), "utf8");
   const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
   const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const docs = await readFile(new URL("../../../docs/API-VERSIONING.md", import.meta.url), "utf8");
+  const paypalOrder = await readFile(new URL("../app/api/payments/paypal/order/route.ts", import.meta.url), "utf8");
   assert.match(worker, /requestForCanonicalApi/);
   assert.match(worker, /new Request\(url\.toString\(\), request\)/);
   assert.match(worker, /Deprecation/);
   assert.match(worker, /API-Version/);
+  assert.match(openapi, /"\/api\/v1\/openapi\.json"/);
   assert.match(openapi, /"\/api\/v1\/publications"/);
   assert.match(client, /\/api\/v1\/publications/);
+  assert.match(docs, /\/api\/v1\/openapi\.json/);
+  assert.match(paypalOrder, /\/api\/v1\/payments\/paypal\/return/);
 });

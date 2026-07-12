@@ -2,10 +2,12 @@ const contract = {
   openapi: "3.1.0",
   info: {
     title: "Scholarium API",
-    version: "0.1.0",
-    description: "Open contracts for the Scholarium scientific and educational community.",
+    version: "1.0.0",
+    description: "Canonical /api/v1 contracts for the Scholarium scientific and educational community. Legacy unversioned resource routes remain temporary compatibility aliases only.",
   },
+  servers: [{ url: "/" }],
   paths: {
+    "/api/v1/openapi.json": { get: { summary: "Read the canonical OpenAPI contract for the current public API version" } },
     "/api/v1/account": { get: { summary: "Read the signed-in Scholarium account" } },
     "/api/v1/account/export": { get: { summary: "Download a private portable export of the signed-in account" } },
     "/api/v1/author-identifiers": { get: { summary: "Read private author identifiers" }, put: { summary: "Save a checksum-validated self-claimed ORCID iD" }, delete: { summary: "Remove a private ORCID claim" } },

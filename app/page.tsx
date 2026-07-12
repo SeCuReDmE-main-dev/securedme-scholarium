@@ -6,6 +6,7 @@ export const metadata: Metadata = {
 };
 
 const githubUrl = "https://github.com/SeCuReDmE-main-dev/securedme-scholarium";
+const securedmeRootUrl = "https://securedme.ca";
 const heroBannerPath = "/brand/campaigns/landing-hero-dark.png";
 const logoSystemPath = "/brand/identity/scholarium-logo-system.png";
 const iconPackDarkPath = "/brand/icons/scholarium-icon-pack-dark.png";
@@ -24,7 +25,7 @@ export default function Home() {
     <main className="landing-page">
       <header className="landing-nav">
         <a className="landing-brand" href="#top" aria-label="Scholarium home"><img src={navBrandMarkPath} alt="" /><span>scholarium</span></a>
-        <nav aria-label="Landing navigation"><a href="#how-it-works">How it works</a><a href="#trust">Trust</a><a href="#organizations">For organizations</a></nav>
+        <nav aria-label="Landing navigation"><a href={securedmeRootUrl}>SecuredMe root</a><a href="#how-it-works">How it works</a><a href="#trust">Trust</a><a href="#organizations">For organizations</a></nav>
         <a className="landing-nav-cta" href="/app">Enter Scholarium <span>↗</span></a>
       </header>
 
@@ -33,11 +34,12 @@ export default function Home() {
           <p className="landing-kicker">SECUREDME EDUCATION / PRE-ALPHA</p>
           <h1>Turn knowledge into<br /><em>traceable evidence.</em></h1>
           <p className="landing-lede">A free social commons for research, learning, and organizational work — built so publications, people, context, and provenance can remain connected.</p>
+          <p className="landing-bridge-copy">Scholarium is the live research-and-learning commons inside the broader <a href={securedmeRootUrl}>SecuredMe public root</a>.</p>
           <div className="landing-brand-panels">
             <img className="landing-brand-board" src={logoSystemPath} alt="Scholarium logo system board from the canonical asset vault." />
             <img className="landing-suite-strip" src={suiteBannerPath} alt="SecuredMe Education suite banner used as the Scholarium endorsement strip." />
           </div>
-          <div className="landing-actions"><a className="landing-primary" href="/app">Explore Scholarium <span>→</span></a><a className="landing-secondary" href="#how-it-works">See the workflow</a></div>
+          <div className="landing-actions"><a className="landing-primary" href="/app">Explore Scholarium <span>→</span></a><a className="landing-secondary" href={securedmeRootUrl}>Back to SecuredMe root</a><a className="landing-secondary" href="#how-it-works">See the workflow</a></div>
           <div className="landing-proof"><span><b>0</b> paid reach controls</span><span><b>10</b> verified platform contracts</span><span><b>12</b> protected app endpoints</span></div>
         </div>
         <div className="landing-visual-stack">
@@ -70,6 +72,18 @@ export default function Home() {
       <section className="landing-builder" id="organizations">
         <div><p className="landing-kicker">ORGANIZATIONAL CONTINUITY</p><h2>Build a research network, not another document archive.</h2><p>Use Scholarium to keep the context behind work visible: who contributed, what was published, and the provenance trail that helps the next team understand what came before.</p></div>
         <div className="builder-card"><span>OPEN, VERIFIABLE BUILDING</span><h3>Make knowledge durable, reviewable, and useful.</h3><p>Explore the public-source application, its protected publication contracts, and the evidence-oriented work still required before a broader organizational rollout.</p><img className="builder-brand-board" src={iconPackDarkPath} alt="Scholarium icon asset system board used as a reference panel for the product identity." /><a href={`${githubUrl}/blob/main/docs/DEVELOPER-SEED-PROTOCOL.md`}>Read the Seed Protocol <b>↗</b></a><small>Pre-alpha · public source · no paid ranking path · evidence before attention.</small></div>
+      </section>
+
+      <section className="landing-suite-bridge">
+        <div className="landing-suite-bridge-copy">
+          <p className="landing-kicker">SECUREDME ROOT ↔ SCHOLARIUM</p>
+          <h2>The suite root and the research commons now point at each other clearly.</h2>
+          <p>Use SecuredMe for the suite map, service surfaces, and broader positioning. Use Scholarium when you need the active publishing, discovery, formalization, and learning commons.</p>
+        </div>
+        <div className="landing-suite-bridge-actions">
+          <a className="landing-primary" href={securedmeRootUrl}>Open SecuredMe root <span>→</span></a>
+          <a className="landing-secondary" href="/app">Open Scholarium app</a>
+        </div>
       </section>
 
       <section className="landing-brand-system" id="brand-system">
@@ -168,7 +182,7 @@ export default function Home() {
 
       <section className="landing-cta"><p className="landing-kicker">START WITH THE WORK</p><h2>Bring a question. Leave with a clearer next step.</h2><p>Explore the pre-alpha with your ChatGPT account, create a role-aware profile, and see how publishing, formalization, and attribution fit together.</p><a className="landing-primary" href="/app">Enter Scholarium <span>→</span></a></section>
 
-      <footer className="landing-footer"><a className="landing-brand" href="#top"><img src={navBrandMarkPath} alt="" /><span>scholarium</span></a><p>Part of SecuredMe Education. Open learning needs open paths.</p><a href={githubUrl}>Public source ↗</a></footer>
+      <footer className="landing-footer"><a className="landing-brand" href="#top"><img src={navBrandMarkPath} alt="" /><span>scholarium</span></a><p>Part of SecuredMe Education. Open learning needs open paths.</p><div className="landing-footer-links"><a href={securedmeRootUrl}>SecuredMe root ↗</a><a href={githubUrl}>Public source ↗</a></div></footer>
     </main>
   );
 }
