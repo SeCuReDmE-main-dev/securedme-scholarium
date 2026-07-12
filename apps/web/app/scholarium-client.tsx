@@ -160,20 +160,20 @@ const educationToolIds = [
 ] as const;
 const suiteThemeAssets: Record<ColorScheme, { banner: string; logo: string }> = {
   "scholarium-dark": {
-    banner: "/brand/education/securedme-education-banner-dark-thin.png",
-    logo: "/brand/education/securedme-education-logo-dark.png",
+    banner: "/brand/education/securedme-education-banner-dark-thin.webp",
+    logo: "/brand/education/securedme-education-logo-dark.webp",
   },
   "scholarium-light": {
-    banner: "/brand/education/securedme-education-banner-light-thin.png",
-    logo: "/brand/education/securedme-education-logo-light.png",
+    banner: "/brand/education/securedme-education-banner-light-thin.webp",
+    logo: "/brand/education/securedme-education-logo-light.webp",
   },
   "midnight-code": {
-    banner: "/brand/education/securedme-education-banner-dark-thin.png",
-    logo: "/brand/education/securedme-education-logo-dark.png",
+    banner: "/brand/education/securedme-education-banner-dark-thin.webp",
+    logo: "/brand/education/securedme-education-logo-dark.webp",
   },
   "paper-library": {
-    banner: "/brand/education/securedme-education-banner-light-thin.png",
-    logo: "/brand/education/securedme-education-logo-light.png",
+    banner: "/brand/education/securedme-education-banner-light-thin.webp",
+    logo: "/brand/education/securedme-education-logo-light.webp",
   },
 };
 
@@ -657,11 +657,11 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     ).length,
   );
   const badgeTheme = colorScheme === "scholarium-light" || colorScheme === "paper-library" ? "light" : "dark";
-  const activeEducationBadgeAsset = activeEducationToolCount > 0 ? `/brand/badges/${badgeTheme}/${activeEducationToolCount}.png` : null;
+  const activeEducationBadgeAsset = activeEducationToolCount > 0 ? `/brand/badges/${badgeTheme}/${activeEducationToolCount}.webp` : null;
   const activeEducationIconStage = Math.min(Math.max(activeEducationToolCount, 1), 10);
-  const activeEducationIconAsset = `/brand/icons/${activeEducationIconStage}.png`;
+  const activeEducationIconAsset = `/brand/icons/${activeEducationIconStage}.webp`;
   const currentSuiteAssets = suiteThemeAssets[colorScheme];
-  const currentCampaignBanner = `/brand/campaigns/web/${activeEducationIconStage}.png`;
+  const currentCampaignBanner = `/brand/campaigns/web/${activeEducationIconStage}.webp`;
 
   const loadMediaWebhookTrace = async () => {
     setMediaWebhookTraceLoading(true);

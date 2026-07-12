@@ -7,19 +7,19 @@ export const metadata: Metadata = {
 
 const githubUrl = "https://github.com/SeCuReDmE-main-dev/securedme-scholarium";
 const securedmeRootUrl = "https://securedme.ca";
-const heroBannerPath = "/brand/campaigns/landing-hero-dark.png";
-const logoSystemPath = "/brand/identity/scholarium-logo-system.png";
-const iconPackDarkPath = "/brand/icons/scholarium-icon-pack-dark.png";
-const suiteBannerPath = "/brand/education/securedme-education-banner-dark-thin.png";
-const navBrandMarkPath = "/brand/logos/final/1.png";
-const navBadgePreviewPaths = ["/brand/badges/dark/1.png", "/brand/badges/dark/4.png", "/brand/badges/dark/10.png"];
-const webBannerPaths = Array.from({ length: 10 }, (_, index) => `/brand/campaigns/web/${index + 1}.png`);
-const badgeDarkPaths = Array.from({ length: 10 }, (_, index) => `/brand/badges/dark/${index + 1}.png`);
-const badgeLightPaths = Array.from({ length: 10 }, (_, index) => `/brand/badges/light/${index + 1}.png`);
-const iconPackPaths = Array.from({ length: 10 }, (_, index) => `/brand/icons/${index + 1}.png`);
-const b2bHookPaths = Array.from({ length: 2 }, (_, index) => `/brand/b2b-hooks/${index + 1}.png`);
-const logoDraftPaths = Array.from({ length: 2 }, (_, index) => `/brand/logos/draft/${index + 1}.png`);
-const finalLogoPath = "/brand/logos/final/1.png";
+const heroBannerPath = "/brand/campaigns/landing-hero-dark.webp";
+const logoSystemPath = "/brand/identity/scholarium-logo-system.webp";
+const iconPackDarkPath = "/brand/icons/scholarium-icon-pack-dark.webp";
+const suiteBannerPath = "/brand/education/securedme-education-banner-dark-thin.webp";
+const navBrandMarkPath = "/brand/logos/final/1.webp";
+const navBadgePreviewPaths = ["/brand/badges/dark/1.webp", "/brand/badges/dark/4.webp", "/brand/badges/dark/10.webp"];
+const webBannerPaths = Array.from({ length: 10 }, (_, index) => `/brand/campaigns/web/${index + 1}.webp`);
+const badgeDarkPaths = Array.from({ length: 10 }, (_, index) => `/brand/badges/dark/${index + 1}.webp`);
+const badgeLightPaths = Array.from({ length: 10 }, (_, index) => `/brand/badges/light/${index + 1}.webp`);
+const iconPackPaths = Array.from({ length: 10 }, (_, index) => `/brand/icons/${index + 1}.webp`);
+const b2bHookPaths = Array.from({ length: 2 }, (_, index) => `/brand/b2b-hooks/${index + 1}.webp`);
+const logoDraftPaths = Array.from({ length: 2 }, (_, index) => `/brand/logos/draft/${index + 1}.webp`);
+const finalLogoPath = "/brand/logos/final/1.webp";
 
 export default function Home() {
   return (
