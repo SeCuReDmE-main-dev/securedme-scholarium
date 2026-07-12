@@ -114,6 +114,8 @@ npm test
 
 The suite builds the Worker-compatible application and checks the rendered product contract: anti-pay-to-rank, provenance, QuaNthoR's non-blocking role, local-only insights, WebAuth binding, and consent-first profile connections.
 
+The canonical public resource API lives under `/api/v1`, with the schema published at `/api/v1/openapi.json`. Existing unversioned resource routes are compatibility aliases only during pre-alpha migration. See [docs/API-VERSIONING.md](docs/API-VERSIONING.md).
+
 To regenerate Drizzle SQL after a schema change:
 
 ```powershell
