@@ -190,6 +190,29 @@ test("keeps behavior insights local and opt-in", async () => {
   assert.match(contract, /Datadog may receive platform-level reliability metadata only/);
 });
 
+test("prepares reader accessibility, notification, and translation preferences without ranking leakage", async () => {
+  const accessibility = await readFile(new URL("../app/api/accessibility-preferences/route.ts", import.meta.url), "utf8");
+  const notifications = await readFile(new URL("../app/api/notification-preferences/route.ts", import.meta.url), "utf8");
+  const translations = await readFile(new URL("../app/api/translation-preferences/route.ts", import.meta.url), "utf8");
+  const contract = await readFile(new URL("../lib/reader-preferences.ts", import.meta.url), "utf8");
+  const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
+  const docs = await readFile(new URL("../../../docs/READER-PREFERENCES.md", import.meta.url), "utf8");
+  assert.match(accessibility, /getPlatformIdentity/);
+  assert.match(accessibility, /private, no-store/);
+  assert.match(notifications, /getPlatformIdentity/);
+  assert.match(notifications, /private, no-store/);
+  assert.match(translations, /getPlatformIdentity/);
+  assert.match(translations, /private, no-store/);
+  assert.match(contract, /prepared_for_persistence/);
+  assert.match(contract, /topic notifications are opt-in and never feed-ranking signals/);
+  assert.match(contract, /original publication remains canonical/);
+  assert.match(contract, /formulas/);
+  assert.match(openapi, /accessibility-preferences/);
+  assert.match(openapi, /notification-preferences/);
+  assert.match(openapi, /translation-preferences/);
+  assert.match(docs, /without pretending that the durable database migration is complete/);
+});
+
 test("binds account writes to the platform WebAuth identity", async () => {
   const identity = await readFile(new URL("../lib/platform-identity.ts", import.meta.url), "utf8");
   const onboarding = await readFile(new URL("../app/api/onboarding/route.ts", import.meta.url), "utf8");
