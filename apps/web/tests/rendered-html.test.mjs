@@ -630,6 +630,31 @@ test("applies youth safeguards before public discovery or cross-platform media l
   assert.match(page, /guardian consent or verified school supervision permits public discovery/);
 });
 
+test("plans educational Lives without exposing stream keys, raw chat, or youth bypasses", async () => {
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const route = await readFile(new URL("../app/api/live-sessions/route.ts", import.meta.url), "utf8");
+  const policy = await readFile(new URL("../lib/live-session-policy.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  const migration = await readFile(new URL("../drizzle/0023_live_sessions.sql", import.meta.url), "utf8");
+  const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
+  assert.match(schema, /live_sessions/);
+  assert.match(migration, /CREATE TABLE `live_sessions`/);
+  assert.match(route, /getPlatformIdentity/);
+  assert.match(route, /accountAudience/);
+  assert.match(route, /canJoinLive/);
+  assert.match(route, /eq\(publications\.authorId, account\.user\.id\)/);
+  assert.match(policy, /stream key/);
+  assert.match(policy, /raw chat transcript/);
+  assert.match(policy, /viewer identity list/);
+  assert.match(policy, /provider credential/);
+  assert.match(policy, /RTMPS\/SRT keys, real-time chat, polls, recording, and replay publication remain separate launch-gated services/);
+  assert.match(page, /Educational Live planning/);
+  assert.match(page, /fetch\(\"\/api\/v1\/live-sessions\"/);
+  assert.match(page, /createLiveSession/);
+  assert.match(page, /no stream key, raw chat, viewer list, provider token, or biometric signal is stored here/);
+  assert.match(openapi, /live-sessions/);
+});
+
 test("keeps community interactions account-bound, reportable, and limited in depth", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const interactions = await readFile(new URL("../app/api/publication-interactions/route.ts", import.meta.url), "utf8");

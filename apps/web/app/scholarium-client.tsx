@@ -135,6 +135,18 @@ type QuantechRenderHistoryItem = {
   sourceUrlCount: number;
   status: string;
 };
+type LiveSessionPlan = {
+  agenda: string;
+  audienceMode: string;
+  createdAt: string;
+  id: string;
+  moderatorPlan: string;
+  replayConsent: boolean;
+  scheduledAt: string;
+  status: string;
+  title: string;
+  youthMode: string;
+};
 type AcademiaMigrationItem = { id: string; sourceUrl: string; title: string; abstract: string; topicSlugs: string[]; type: string; selected: boolean; visibility: "private" | "public"; status: string; importedPublicationId?: string | null };
 type AcademiaMigration = { id: string; sourceProfileUrl: string; state: string; items: AcademiaMigrationItem[] };
 type AccessibilityPreference = { keyboardFirst: boolean; reducedMotion: boolean; screenReaderOptimized: boolean };
@@ -409,6 +421,14 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [quantechPreparationLoading, setQuantechPreparationLoading] = useState(false);
   const [quantechRequests, setQuantechRequests] = useState<QuantechRenderHistoryItem[]>([]);
   const [quantechHistoryLoading, setQuantechHistoryLoading] = useState(false);
+  const [liveTitle, setLiveTitle] = useState("");
+  const [liveAgenda, setLiveAgenda] = useState("");
+  const [liveScheduledAt, setLiveScheduledAt] = useState("");
+  const [liveAudienceMode, setLiveAudienceMode] = useState("public_review");
+  const [liveModeratorPlan, setLiveModeratorPlan] = useState("author_moderated");
+  const [liveReplayConsent, setLiveReplayConsent] = useState(false);
+  const [liveSessions, setLiveSessions] = useState<LiveSessionPlan[]>([]);
+  const [livePlanningLoading, setLivePlanningLoading] = useState(false);
   const [paypalCheckoutLoading, setPaypalCheckoutLoading] = useState(false);
   const [academiaProfileUrl, setAcademiaProfileUrl] = useState("");
   const [academiaSourceLines, setAcademiaSourceLines] = useState("");
@@ -817,6 +837,51 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       setNotice(error instanceof Error ? error.message : "The QuaNTecH request history could not be loaded.");
     } finally {
       setQuantechHistoryLoading(false);
+    }
+  };
+
+  const loadLiveSessions = async () => {
+    setLivePlanningLoading(true);
+    try {
+      const response = await fetch("/api/v1/live-sessions");
+      const payload = await response.json() as { error?: string; sessions?: LiveSessionPlan[] };
+      if (!response.ok) throw new Error(payload.error ?? "Live planning history could not be loaded.");
+      setLiveSessions(payload.sessions ?? []);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Live planning history could not be loaded.");
+    } finally {
+      setLivePlanningLoading(false);
+    }
+  };
+
+  const createLiveSession = async () => {
+    if (!accountReady) { setProfileOpen(true); setNotice("Create your Scholarium profile before planning a Live."); return; }
+    setLivePlanningLoading(true);
+    try {
+      const response = await fetch("/api/v1/live-sessions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          agenda: liveAgenda,
+          audienceMode: liveAudienceMode,
+          moderatorPlan: liveModeratorPlan,
+          replayConsent: liveReplayConsent,
+          scheduledAt: liveScheduledAt,
+          title: liveTitle,
+        }),
+      });
+      const payload = await response.json() as { error?: string; session?: LiveSessionPlan };
+      if (!response.ok || !payload.session) throw new Error(payload.error ?? "The Live session could not be planned.");
+      setLiveSessions((current) => [payload.session!, ...current.filter((session) => session.id !== payload.session?.id)].slice(0, 8));
+      setNotice("Live plan saved. Stream keys, chat, polls, and recording stay launch-gated.");
+      setLiveTitle("");
+      setLiveAgenda("");
+      setLiveScheduledAt("");
+      setLiveReplayConsent(false);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "The Live session could not be planned.");
+    } finally {
+      setLivePlanningLoading(false);
     }
   };
 
@@ -1396,9 +1461,23 @@ export function ScholariumClient({ session }: { session: { displayName: string |
               <div className="feature-brand-cluster"><img className="feature-brand-icon" src={activeEducationIconAsset} alt="Current Scholarium tool-stage icon." /><img className="feature-brand-banner" src={currentCampaignBanner} alt="Current Scholarium campaign banner." /></div>
               <div className="studio-actions">
                 <button className="publish-button" type="button" onClick={() => setComposerOpen(true)}>Start a publication</button>
-                <button className="quiet-button" type="button" onClick={() => setNotice("Live planning is ready for your project and moderator settings.")}>Plan a Live</button>
+                <button className="quiet-button" type="button" disabled={livePlanningLoading} onClick={loadLiveSessions}>{livePlanningLoading ? "Loading Lives…" : "Load Live plans"}</button>
               </div>
             </div>
+            <section className="live-planning-card" aria-label="Educational Live planning">
+              <div><p className="eyebrow">LIVE / PLANNING CONTRACT</p><h3>Plan an educational Live without exposing stream keys.</h3><p>Use this to define schedule, agenda, moderator model, youth restrictions, and replay consent. Real RTMPS/SRT keys, chat, polls, recording, and replay publication remain launch-gated.</p></div>
+              <div className="live-planning-grid">
+                <label>Live title<input value={liveTitle} onChange={(event) => setLiveTitle(event.target.value)} placeholder="e.g. Method walkthrough and questions" /></label>
+                <label>Schedule<input type="datetime-local" value={liveScheduledAt} onChange={(event) => setLiveScheduledAt(event.target.value)} /></label>
+                <label>Audience<select value={liveAudienceMode} onChange={(event) => setLiveAudienceMode(event.target.value)}><option value="public_review">Public review room</option><option value="classroom">Classroom / school context</option><option value="private_rehearsal">Private rehearsal</option></select></label>
+                <label>Moderation<select value={liveModeratorPlan} onChange={(event) => setLiveModeratorPlan(event.target.value)}><option value="author_moderated">Author moderated</option><option value="teacher_moderated">Teacher moderated</option><option value="organization_moderated">Organization moderated</option></select></label>
+              </div>
+              <label>Agenda<textarea value={liveAgenda} onChange={(event) => setLiveAgenda(event.target.value)} rows={4} placeholder="List learning goals, speaker order, project demo, questions, and documents to prepare." /></label>
+              <label className="toggle-label"><input type="checkbox" checked={liveReplayConsent} onChange={(event) => setLiveReplayConsent(event.target.checked)} /> Author consents to prepare a replay publication after review.</label>
+              <p className="media-review-boundary"><strong>Safety boundary:</strong> questions are moderated before public display; minors require guardian or verified school consent for public Lives; no stream key, raw chat, viewer list, provider token, or biometric signal is stored here.</p>
+              <div className="studio-actions"><button className="quiet-button" type="button" onClick={loadLiveSessions} disabled={livePlanningLoading}>{livePlanningLoading ? "Loading…" : "Refresh Live plans"}</button><button className="publish-button" type="button" onClick={createLiveSession} disabled={livePlanningLoading || !liveTitle.trim() || !liveScheduledAt}>{livePlanningLoading ? "Saving…" : "Save Live plan"}</button></div>
+              {liveSessions.length > 0 && <div className="live-plan-list">{liveSessions.map((session) => <article key={session.id}><strong>{session.title}</strong><span>{new Date(session.scheduledAt).toLocaleString()} · {session.audienceMode.replaceAll("_", " ")} · {session.moderatorPlan.replaceAll("_", " ")} · {session.status}</span><small>{session.replayConsent ? "Replay review prepared after author consent." : "Replay is off until explicit author consent."} Youth mode: {session.youthMode.replaceAll("_", " ")}.</small></article>)}</div>}
+            </section>
             <div className="media-production-form">
               <div><p className="eyebrow">AUTHOR-LED PRODUCTION BRIEF</p><h3>Podcast to teaching video</h3><p>Nothing is uploaded, rendered, or shared while you prepare this brief.</p></div>
               <label>Working title<input value={mediaProductionTitle} onChange={(event) => setMediaProductionTitle(event.target.value)} placeholder="What should a learner understand?" /></label>
