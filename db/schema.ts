@@ -134,6 +134,22 @@ export const profilePreferences = sqliteTable("profile_preferences", {
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
 
+export const readerPreferences = sqliteTable("reader_preferences", {
+  userId: text("user_id").primaryKey().references(() => users.id),
+  keyboardFirst: integer("keyboard_first", { mode: "boolean" }).notNull().default(true),
+  reducedMotion: integer("reduced_motion", { mode: "boolean" }).notNull().default(false),
+  screenReaderOptimized: integer("screen_reader_optimized", { mode: "boolean" }).notNull().default(false),
+  notificationChannels: text("notification_channels").notNull().default("[\"in_app\"]"),
+  digestCadence: text("digest_cadence").notNull().default("off"),
+  topicAlerts: integer("topic_alerts", { mode: "boolean" }).notNull().default(true),
+  moderationAlerts: integer("moderation_alerts", { mode: "boolean" }).notNull().default(true),
+  interfaceLanguage: text("interface_language").notNull().default("en"),
+  showOriginalFirst: integer("show_original_first", { mode: "boolean" }).notNull().default(true),
+  allowPublicationTranslation: integer("allow_publication_translation", { mode: "boolean" }).notNull().default(false),
+  glossaryTerms: text("glossary_terms").notNull().default("[]"),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+});
+
 export const profileVerifications = sqliteTable("profile_verifications", {
   id: text("id").primaryKey(),
   userId: text("user_id").notNull().references(() => users.id),

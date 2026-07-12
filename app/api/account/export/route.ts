@@ -16,6 +16,7 @@ import {
   publicationVersions,
   quantechRenderRequests,
   rankingPreferences,
+  readerPreferences,
   repositoryLinks,
   roleAssignments,
   topicFollows,
@@ -39,9 +40,10 @@ export async function GET() {
 
     const ownPublications = await db.select().from(publications).where(eq(publications.authorId, account.id));
     const publicationIds = ownPublications.map((publication) => publication.id);
-    const [roles, preferences, ranking, followedTopics, identities, authorIds, connections, comments, reactions, boundaries, versions, files, publicationTopicRows, savedCollections, sourceLinks, sourceRelationships, quantechRequests] = await Promise.all([
+    const [roles, preferences, readerPreferenceRows, ranking, followedTopics, identities, authorIds, connections, comments, reactions, boundaries, versions, files, publicationTopicRows, savedCollections, sourceLinks, sourceRelationships, quantechRequests] = await Promise.all([
       db.select().from(roleAssignments).where(eq(roleAssignments.userId, account.id)),
       db.select().from(profilePreferences).where(eq(profilePreferences.userId, account.id)),
+      db.select().from(readerPreferences).where(eq(readerPreferences.userId, account.id)),
       db.select().from(rankingPreferences).where(eq(rankingPreferences.userId, account.id)),
       db.select({ label: topics.label, slug: topics.slug }).from(topicFollows).innerJoin(topics, eq(topicFollows.topicId, topics.id)).where(eq(topicFollows.userId, account.id)),
       db.select({ createdAt: externalIdentities.createdAt, displayName: externalIdentities.displayName, profileUrl: externalIdentities.profileUrl, provider: externalIdentities.provider, verifiedAt: externalIdentities.verifiedAt }).from(externalIdentities).where(eq(externalIdentities.userId, account.id)),
@@ -80,6 +82,7 @@ export async function GET() {
       identity: { email: identity.email, provider: identity.provider },
       roles,
       preferences: preferences[0] ?? null,
+      readerPreferences: readerPreferenceRows[0] ?? null,
       rankingPreference: ranking[0] ?? null,
       followedTopics,
       externalIdentities: identities,

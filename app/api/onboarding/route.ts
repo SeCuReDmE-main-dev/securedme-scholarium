@@ -1,7 +1,8 @@
 import { eq } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { publicProfiles, rankingPreferences, roleAssignments, users } from "../../../db/schema";
+import { publicProfiles, rankingPreferences, readerPreferences, roleAssignments, users } from "../../../db/schema";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
+import { readerPreferenceInsert } from "../../../lib/reader-preferences";
 
 const supportedRoles = new Set(["student", "teacher", "professional", "amateur", "reader", "supporter"]);
 const supportedAgeBands = new Set(["adult", "minor", "unknown"]);
@@ -38,6 +39,7 @@ export async function POST(request: Request) {
       db.insert(publicProfiles).values({ publicId: crypto.randomUUID(), userId }),
       db.insert(roleAssignments).values({ ageBand, id: crypto.randomUUID(), role: primaryRole, userId }),
       db.insert(rankingPreferences).values({ userId }),
+      db.insert(readerPreferences).values(readerPreferenceInsert(userId)),
     ]);
 
     return Response.json({

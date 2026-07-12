@@ -53,7 +53,7 @@ function normalizedGlossaryTerms(value: unknown) {
 
 export function accessibilityPreferenceContract(input: AccessibilityPreferenceInput = {}) {
   return {
-    status: "prepared_for_persistence",
+    status: "persisted",
     keyboardFirst: booleanWithDefault(input.keyboardFirst, true),
     reducedMotion: booleanWithDefault(input.reducedMotion, false),
     screenReaderOptimized: booleanWithDefault(input.screenReaderOptimized, false),
@@ -62,14 +62,14 @@ export function accessibilityPreferenceContract(input: AccessibilityPreferenceIn
       "reduced motion disables non-essential animation",
       "screen-reader mode keeps semantic labels visible to assistive technology",
     ],
-    persistenceBoundary: "validated contract only until the next reader_preferences schema migration",
+    persistenceBoundary: "durably stored in reader_preferences and portable in account export",
   };
 }
 
 export function notificationPreferenceContract(input: NotificationPreferenceInput = {}) {
   const channels = normalizedChannels(input.channels);
   return {
-    status: "prepared_for_persistence",
+    status: "persisted",
     channels: channels.length > 0 ? channels : ["in_app"],
     digestCadence: boundedString(input.digestCadence, "off", supportedDigestCadences),
     topicAlerts: booleanWithDefault(input.topicAlerts, true),
@@ -79,19 +79,71 @@ export function notificationPreferenceContract(input: NotificationPreferenceInpu
       "moderation and archive alerts stay account-bound",
       "email delivery is disabled unless the user explicitly selects email",
     ],
-    persistenceBoundary: "validated contract only until the next reader_preferences schema migration",
+    persistenceBoundary: "durably stored in reader_preferences and portable in account export",
   };
 }
 
 export function translationPreferenceContract(input: TranslationPreferenceInput = {}) {
   return {
-    status: "prepared_for_persistence",
+    status: "persisted",
     interfaceLanguage: boundedString(input.interfaceLanguage, "en", supportedInterfaceLanguages),
     showOriginalFirst: booleanWithDefault(input.showOriginalFirst, true),
     allowPublicationTranslation: booleanWithDefault(input.allowPublicationTranslation, false),
     glossaryTerms: normalizedGlossaryTerms(input.glossaryTerms),
     canonicalOriginalPolicy: "the original publication remains canonical and every automatic translation must be labeled",
     protectedContent: ["formulas", "citations", "identifiers", "provenance receipts"],
-    persistenceBoundary: "validated contract only until the next reader_preferences schema migration",
+    persistenceBoundary: "durably stored in reader_preferences and portable in account export",
   };
+}
+
+export function readerPreferenceInsert(userId: string) {
+  const accessibility = accessibilityPreferenceContract();
+  const notifications = notificationPreferenceContract();
+  const translations = translationPreferenceContract();
+  return {
+    allowPublicationTranslation: translations.allowPublicationTranslation,
+    digestCadence: notifications.digestCadence,
+    glossaryTerms: JSON.stringify(translations.glossaryTerms),
+    interfaceLanguage: translations.interfaceLanguage,
+    keyboardFirst: accessibility.keyboardFirst,
+    moderationAlerts: notifications.moderationAlerts,
+    notificationChannels: JSON.stringify(notifications.channels),
+    reducedMotion: accessibility.reducedMotion,
+    screenReaderOptimized: accessibility.screenReaderOptimized,
+    showOriginalFirst: translations.showOriginalFirst,
+    topicAlerts: notifications.topicAlerts,
+    userId,
+  };
+}
+
+export function accessibilityPreferenceFromRow(row: { keyboardFirst: boolean; reducedMotion: boolean; screenReaderOptimized: boolean } | null | undefined) {
+  return accessibilityPreferenceContract(row ?? {});
+}
+
+export function notificationPreferenceFromRow(row: { digestCadence: string; moderationAlerts: boolean; notificationChannels: string; topicAlerts: boolean } | null | undefined) {
+  return notificationPreferenceContract({
+    channels: safeJsonArray(row?.notificationChannels, ["in_app"]),
+    digestCadence: row?.digestCadence,
+    moderationAlerts: row?.moderationAlerts,
+    topicAlerts: row?.topicAlerts,
+  });
+}
+
+export function translationPreferenceFromRow(row: { allowPublicationTranslation: boolean; glossaryTerms: string; interfaceLanguage: string; showOriginalFirst: boolean } | null | undefined) {
+  return translationPreferenceContract({
+    allowPublicationTranslation: row?.allowPublicationTranslation,
+    glossaryTerms: safeJsonArray(row?.glossaryTerms, []),
+    interfaceLanguage: row?.interfaceLanguage,
+    showOriginalFirst: row?.showOriginalFirst,
+  });
+}
+
+function safeJsonArray(value: string | null | undefined, fallback: string[]) {
+  if (!value) return fallback;
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed) ? parsed : fallback;
+  } catch {
+    return fallback;
+  }
 }
