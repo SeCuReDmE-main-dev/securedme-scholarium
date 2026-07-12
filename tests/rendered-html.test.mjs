@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 import test from "node:test";
 
 async function render() {
@@ -11,6 +13,42 @@ async function render() {
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
     { waitUntil() {}, passThroughOnException() {} },
   );
+}
+
+async function listApiRouteFiles(dir) {
+  const dirPath = typeof dir === "string" ? dir : fileURLToPath(dir);
+  const entries = await readdir(dirPath, { withFileTypes: true });
+  const nested = await Promise.all(entries.map(async (entry) => {
+    const full = path.join(dirPath, entry.name);
+    if (entry.isDirectory()) return listApiRouteFiles(full);
+    return entry.isFile() && entry.name === "route.ts" ? [full] : [];
+  }));
+  return nested.flat();
+}
+
+function toVersionedContractPath(rootDir, routeFile) {
+  const relative = path.relative(rootDir, path.dirname(routeFile)).split(path.sep).join("/");
+  const templated = relative.replace(/\[([^\]]+)\]/g, "{$1}");
+  return `/api/v1/${templated}`;
+}
+
+function exportedRouteMethods(routeSource) {
+  return [...routeSource.matchAll(/export\s+(?:async\s+)?function\s+(GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD)\s*\(/g)]
+    .map((match) => match[1].toLowerCase())
+    .sort();
+}
+
+function documentedOpenApiMethods(openapiSource, route) {
+  const routeMarker = `"${route}":`;
+  const start = openapiSource.indexOf(routeMarker);
+  if (start === -1) return [];
+  const nextRoute = openapiSource.indexOf('\n    "/api/v1/', start + routeMarker.length);
+  const contractEnd = openapiSource.indexOf("\n  },\n};", start + routeMarker.length);
+  const end = nextRoute === -1 ? contractEnd : (contractEnd === -1 ? nextRoute : Math.min(nextRoute, contractEnd));
+  const block = openapiSource.slice(start, end === -1 ? undefined : end);
+  return [...block.matchAll(/\b(get|post|put|delete|patch|options|head)\b\s*:/g)]
+    .map((match) => match[1])
+    .sort();
 }
 
 test("server-renders the Scholarium public landing page instead of the starter shell", async () => {
@@ -245,13 +283,16 @@ test("keeps PayPal checkout server-side, receipt-bound, and independent from dis
   const checkout = await readFile(new URL("../lib/paypal-checkout.ts", import.meta.url), "utf8");
   const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const crypto = await readFile(new URL("../lib/crypto-payment-contract.ts", import.meta.url), "utf8");
+  const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
   assert.match(order, /profileVerifications/);
   assert.match(order, /createVerifiedContributorOrder/);
   assert.match(order, /paymentReceipts/);
+  assert.match(order, /\/api\/v1\/payments\/paypal\/return/);
   assert.match(returnRoute, /capturePayPalOrder/);
   assert.match(returnRoute, /status: "active"/);
   assert.match(webhook, /verifyPayPalWebhook/);
   assert.match(webhook, /PAYMENT.CAPTURE.COMPLETED/);
+  assert.match(openapi, /"\/api\/v1\/payments\/paypal\/return"/);
   assert.match(checkout, /verify-webhook-signature/);
   assert.match(checkout, /PAYPAL_CHECKOUT_WEBHOOK_ID/);
   assert.match(client, /Continue with PayPal/);
@@ -534,13 +575,55 @@ test("uses a canonical versioned API surface and retains a documented compatibil
   const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const docs = await readFile(new URL("../../../docs/API-VERSIONING.md", import.meta.url), "utf8");
   const paypalOrder = await readFile(new URL("../app/api/payments/paypal/order/route.ts", import.meta.url), "utf8");
+  const subscription = await readFile(new URL("../app/api/verified-subscription/route.ts", import.meta.url), "utf8");
   assert.match(worker, /requestForCanonicalApi/);
   assert.match(worker, /new Request\(url\.toString\(\), request\)/);
   assert.match(worker, /Deprecation/);
   assert.match(worker, /API-Version/);
   assert.match(openapi, /"\/api\/v1\/openapi\.json"/);
   assert.match(openapi, /"\/api\/v1\/publications"/);
+  assert.match(openapi, /"\/api\/v1\/verified-subscription"/);
   assert.match(client, /\/api\/v1\/publications/);
   assert.match(docs, /\/api\/v1\/openapi\.json/);
+  assert.match(docs, /\/api\/v1\/verified-subscription/);
   assert.match(paypalOrder, /\/api\/v1\/payments\/paypal\/return/);
+  assert.match(subscription, /rankingEffect: "none"/);
+});
+
+test("keeps every non-auth route in the canonical OpenAPI v1 contract", async () => {
+  const apiRoot = new URL("../app/api/", import.meta.url);
+  const routeFiles = await listApiRouteFiles(apiRoot);
+  const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
+  const documented = new Set([...openapi.matchAll(/"(\/api\/v1[^"]+)"/g)].map((match) => match[1]));
+  const apiRootPath = fileURLToPath(apiRoot);
+
+  const requiredRoutes = routeFiles
+    .map((file) => path.resolve(file))
+    .filter((file) => !file.includes(`${path.sep}auth${path.sep}`))
+    .map((file) => toVersionedContractPath(apiRootPath, file))
+    .sort();
+
+  const missing = requiredRoutes.filter((route) => !documented.has(route));
+  assert.deepEqual(missing, []);
+});
+
+test("keeps every non-auth route method aligned with the canonical OpenAPI v1 contract", async () => {
+  const apiRoot = new URL("../app/api/", import.meta.url);
+  const routeFiles = await listApiRouteFiles(apiRoot);
+  const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
+  const apiRootPath = fileURLToPath(apiRoot);
+
+  const mismatches = [];
+
+  for (const routeFile of routeFiles.map((file) => path.resolve(file)).filter((file) => !file.includes(`${path.sep}auth${path.sep}`))) {
+    const route = toVersionedContractPath(apiRootPath, routeFile);
+    const source = await readFile(routeFile, "utf8");
+    const implemented = exportedRouteMethods(source);
+    const documented = documentedOpenApiMethods(openapi, route);
+    if (implemented.join(",") !== documented.join(",")) {
+      mismatches.push({ documented, implemented, route });
+    }
+  }
+
+  assert.deepEqual(mismatches, []);
 });

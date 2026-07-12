@@ -25,6 +25,7 @@ const contract = {
     "/api/v1/media-links": { get: { summary: "Read public external media links for a publication" }, post: { summary: "Link an author-owned YouTube or TikTok URL without copying the video" } },
     "/api/v1/media-webhook-events": { get: { summary: "Read the signed-in owner's minimal YouTube callback delivery trace" } },
     "/api/v1/payments/paypal/order": { get: { summary: "Read the PayPal checkout capability without credentials" }, post: { summary: "Create a fixed verified-contributor PayPal order" } },
+    "/api/v1/payments/paypal/return": { get: { summary: "Capture one approved PayPal order server-side and redirect the signed-in contributor back to the app" } },
     "/api/v1/quantech-render-request": {
       get: { summary: "List the signed-in author's private QuaNTecH-ViD handoff history without raw scripts, media, or provider secrets" },
       post: { summary: "Prepare a minimal QuaNTecH-ViD provider handoff without uploading media or forwarding raw script text" },
@@ -62,6 +63,10 @@ const contract = {
       delete: { summary: "Stop following one topic" },
     },
     "/api/v1/user-follows": { get: { summary: "List authors explicitly followed by the signed-in account" }, put: { summary: "Follow one public author without exposing provider identity" }, delete: { summary: "Stop following one public author" } },
+    "/api/v1/verified-subscription": {
+      get: { summary: "Read the fixed-price verified contributor plan and its zero-ranking-effect contract" },
+      post: { summary: "Prepare a verified contributor subscription state after identity and passkey verification" },
+    },
   },
 };
 

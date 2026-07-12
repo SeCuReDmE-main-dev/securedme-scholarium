@@ -11,7 +11,8 @@ const heroBannerPath = "/brand/campaigns/landing-hero-dark.png";
 const logoSystemPath = "/brand/identity/scholarium-logo-system.png";
 const iconPackDarkPath = "/brand/icons/scholarium-icon-pack-dark.png";
 const suiteBannerPath = "/brand/education/securedme-education-banner-dark-thin.png";
-const navBrandMarkPath = "/brand/icons/1.png";
+const navBrandMarkPath = "/brand/logos/final/1.png";
+const navBadgePreviewPaths = ["/brand/badges/dark/1.png", "/brand/badges/dark/4.png", "/brand/badges/dark/10.png"];
 const webBannerPaths = Array.from({ length: 10 }, (_, index) => `/brand/campaigns/web/${index + 1}.png`);
 const badgeDarkPaths = Array.from({ length: 10 }, (_, index) => `/brand/badges/dark/${index + 1}.png`);
 const badgeLightPaths = Array.from({ length: 10 }, (_, index) => `/brand/badges/light/${index + 1}.png`);
@@ -24,7 +25,7 @@ export default function Home() {
   return (
     <main className="landing-page">
       <header className="landing-nav">
-        <a className="landing-brand" href="#top" aria-label="Scholarium home"><img src={navBrandMarkPath} alt="" /><span>scholarium</span></a>
+        <a className="landing-brand" href="#top" aria-label="Scholarium home"><img src={navBrandMarkPath} alt="Scholarium official logo." /><span>scholarium</span></a>
         <nav aria-label="Landing navigation"><a href={securedmeRootUrl}>SecuredMe root</a><a href="#how-it-works">How it works</a><a href="#trust">Trust</a><a href="#organizations">For organizations</a></nav>
         <a className="landing-nav-cta" href="/app">Enter Scholarium <span>↗</span></a>
       </header>
@@ -38,6 +39,9 @@ export default function Home() {
           <div className="landing-brand-panels">
             <img className="landing-brand-board" src={logoSystemPath} alt="Scholarium logo system board from the canonical asset vault." />
             <img className="landing-suite-strip" src={suiteBannerPath} alt="SecuredMe Education suite banner used as the Scholarium endorsement strip." />
+            <div className="landing-top-badges" aria-label="Scholarium badge progression preview">
+              {navBadgePreviewPaths.map((path, index) => <img key={path} src={path} alt={`Scholarium badge preview stage ${index + 1}.`} />)}
+            </div>
           </div>
           <div className="landing-actions"><a className="landing-primary" href="/app">Explore Scholarium <span>→</span></a><a className="landing-secondary" href={securedmeRootUrl}>Back to SecuredMe root</a><a className="landing-secondary" href="#how-it-works">See the workflow</a></div>
           <div className="landing-proof"><span><b>0</b> paid reach controls</span><span><b>10</b> verified platform contracts</span><span><b>12</b> protected app endpoints</span></div>
