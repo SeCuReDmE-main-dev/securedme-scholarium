@@ -8,6 +8,7 @@ This repository uses the SecuredMe Education documentation shell with dark/light
 
 ## Scholarium architecture
 
+- [API coverage matrix](API-COVERAGE-MATRIX.md)
 - [Explainable live-feed ranking](FEED-RANKING-ARCHITECTURE.md)
 - [External video and callback boundary](VIDEO-INTEGRATION-BOUNDARY.md)
 - [Podcast & Video Studio boundary](PODCAST-VIDEO-STUDIO.md)

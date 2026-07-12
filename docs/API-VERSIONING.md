@@ -14,6 +14,8 @@ Existing unversioned resource paths under `/api/*` remain temporarily available 
 
 `/api/auth/*` remains an unversioned identity handoff boundary while PayPal and other providers hold those callback URLs in their provider consoles. It is excluded from the resource API compatibility rule and is protected with `Cache-Control: no-store`.
 
+Provider-independent product routes such as `/api/v1/verified-subscription`, `/api/v1/payments/paypal/order`, `/api/v1/payments/paypal/return`, and the signed webhook handlers remain part of the canonical versioned resource contract even when they end in redirects or provider callbacks.
+
 ## Change rule
 
 A breaking resource change requires a new `/api/vN` surface, OpenAPI update, migration note, compatibility window, and contract test. A breaking OAuth callback change requires a provider-console update and a separate login-path validation.

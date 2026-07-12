@@ -61,6 +61,7 @@ Scholarium is a professional, free-first social platform for people who learn, t
 | QuaNthoR | A non-blocking formalization coach for articles, white papers, chapters, presentations, project briefs, videos, life-science protocols, and Mizar-proof handoff. |
 | Profiles | Avatar/banner preview, themes, accent colour, badges, local-only insight preference, and consent-first tool connections. |
 | Identity | ChatGPT WebAuth plus separate Google, GitHub, and PayPal entry routes. Each provider identity remains separate until an explicit future account-linking flow is reviewed. PayPal is sandbox-configured; Google and GitHub await their own provider credentials. |
+| Verified contribution | Fixed-price verified contributor plan metadata, verification-gated preparation, server-side PayPal order creation, and server-side capture return path with no ranking effect. |
 | Integrations | Consent preparation contracts for ORCID, GitHub, Zenodo, Google Drive, QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, Antigravity/Gemini, and life-science discovery. |
 
 ## QuaNthoR in Scholarium
