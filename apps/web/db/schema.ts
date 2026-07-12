@@ -453,3 +453,23 @@ export const quantechRenderRequests = sqliteTable("quantech_render_requests", {
   index("quantech_render_requests_user_idx").on(table.userId),
   index("quantech_render_requests_created_idx").on(table.createdAt),
 ]);
+
+/** Owner-only external archive manifest. It stores status, not provider tokens or copied file bytes. */
+export const archiveManifests = sqliteTable("archive_manifests", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").references(() => publications.id),
+  provider: text("provider").notNull(),
+  providerPath: text("provider_path").notNull(),
+  objectCount: integer("object_count").notNull().default(0),
+  status: text("status").notNull().default("planned"),
+  lastVerifiedAt: text("last_verified_at"),
+  restoreRequestedAt: text("restore_requested_at"),
+  resyncRequestedAt: text("resync_requested_at"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("archive_manifests_user_idx").on(table.userId),
+  index("archive_manifests_publication_idx").on(table.publicationId),
+  uniqueIndex("archive_manifests_provider_path_idx").on(table.userId, table.provider, table.providerPath),
+]);
