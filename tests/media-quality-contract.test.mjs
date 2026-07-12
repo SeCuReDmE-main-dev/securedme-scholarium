@@ -1,0 +1,30 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import test from "node:test";
+
+test("media production exposes a free high-quality contract and an opt-in local VideoPrism adapter", async () => {
+  const quality = await readFile(new URL("../lib/video-quality.ts", import.meta.url), "utf8");
+  const plan = await readFile(new URL("../lib/media-production-plan.ts", import.meta.url), "utf8");
+  const route = await readFile(new URL("../app/api/video-production-plan/route.ts", import.meta.url), "utf8");
+  const handoff = await readFile(new URL("../app/api/quantech-render-request/route.ts", import.meta.url), "utf8");
+  const contract = await readFile(new URL("../lib/quantech-render-request.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  assert.match(quality, /1920, height: 1080/);
+  assert.match(quality, /videoBitrate: "5000k"/);
+  assert.match(quality, /videoprism_lvt_public_v1_base/);
+  assert.match(quality, /outputBoundary/);
+  assert.match(plan, /createVideoQualityContract/);
+  assert.match(route, /reviewMode must be none or local_videoprism/);
+  assert.match(handoff, /No raw script, file, token, or ranking state is forwarded/);
+  assert.match(handoff, /signInRequired/);
+  assert.match(handoff, /orderBy\(desc\(quantechRenderRequests\.createdAt\)\)/);
+  assert.match(handoff, /limit\(12\)/);
+  assert.match(schema, /quantech_render_requests/);
+  assert.match(contract, /raw script text/);
+  assert.match(contract, /ranking weights/);
+  assert.match(contract, /marketUrl: "https:\/\/chromewebstore\.google\.com\/detail\/hkdelebkhegbiohndnckbmkjhfbnfehd"/);
+  assert.match(client, /VideoPrism — semantic scene review/);
+  assert.match(client, /adapter is prepared but not connected/);
+  assert.match(client, /Prepare QuaNTecH handoff/);
+});

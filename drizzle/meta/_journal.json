@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1783753461695,
+      "tag": "0000_wet_triton",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1783754503914,
+      "tag": "0001_nappy_shadowcat",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1783755269470,
+      "tag": "0002_redundant_masked_marvel",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1783755711788,
+      "tag": "0003_wise_lady_deathstrike",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1783761504054,
+      "tag": "0004_useful_oracle",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1783762813043,
+      "tag": "0005_magical_carmella_unuscione",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1783772234769,
+      "tag": "0006_stiff_marten_broadcloak",
+      "breakpoints": true
+    }
+  ]
+}
