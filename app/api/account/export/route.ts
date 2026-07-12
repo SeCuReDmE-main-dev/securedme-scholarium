@@ -16,6 +16,7 @@ import {
   publications,
   publicationTopics,
   publicationVersions,
+  projectStarterRequests,
   quantechRenderRequests,
   rankingPreferences,
   readerPreferences,
@@ -43,7 +44,7 @@ export async function GET() {
 
     const ownPublications = await db.select().from(publications).where(eq(publications.authorId, account.id));
     const publicationIds = ownPublications.map((publication) => publication.id);
-    const [roles, preferences, readerPreferenceRows, ranking, followedTopics, identities, authorIds, connections, comments, reactions, boundaries, versions, files, archiveRows, fundingRows, depositRows, publicationTopicRows, savedCollections, sourceLinks, sourceRelationships, quantechRequests] = await Promise.all([
+    const [roles, preferences, readerPreferenceRows, ranking, followedTopics, identities, authorIds, connections, comments, reactions, boundaries, versions, files, archiveRows, fundingRows, depositRows, projectStarterRows, publicationTopicRows, savedCollections, sourceLinks, sourceRelationships, quantechRequests] = await Promise.all([
       db.select().from(roleAssignments).where(eq(roleAssignments.userId, account.id)),
       db.select().from(profilePreferences).where(eq(profilePreferences.userId, account.id)),
       db.select().from(readerPreferences).where(eq(readerPreferences.userId, account.id)),
@@ -60,6 +61,7 @@ export async function GET() {
       db.select().from(archiveManifests).where(eq(archiveManifests.userId, account.id)),
       db.select().from(fundingCampaigns).where(eq(fundingCampaigns.userId, account.id)),
       db.select().from(scientificDepositRequests).where(eq(scientificDepositRequests.userId, account.id)),
+      db.select().from(projectStarterRequests).where(eq(projectStarterRequests.userId, account.id)),
       publicationIds.length ? db.select({ publicationId: publicationTopics.publicationId, topic: topics.slug }).from(publicationTopics).innerJoin(topics, eq(publicationTopics.topicId, topics.id)).where(inArray(publicationTopics.publicationId, publicationIds)) : Promise.resolve([]),
       db.select().from(collections).where(eq(collections.userId, account.id)),
       publicationIds.length ? db.select({ canonicalUrl: repositoryLinks.canonicalUrl, createdAt: repositoryLinks.createdAt, provider: repositoryLinks.provider, publicationId: repositoryLinks.publicationId, repositoryPath: repositoryLinks.repositoryPath }).from(repositoryLinks).where(inArray(repositoryLinks.publicationId, publicationIds)) : Promise.resolve([]),
@@ -101,6 +103,7 @@ export async function GET() {
       archiveManifests: archiveRows,
       fundingCampaigns: fundingRows,
       scientificDepositRequests: depositRows,
+      projectStarterRequests: projectStarterRows,
       comments,
       reactions,
       boundaries,
@@ -117,6 +120,7 @@ export async function GET() {
         "other members' private data",
         "binary R2 profile-media files",
         "raw QuaNTecH scripts, media, provider credentials, and render internals",
+        "GitHub, GitLab, or SourceForge OAuth tokens and private repository credentials",
       ],
     };
     const filenameDate = result.exportedAt.slice(0, 10);

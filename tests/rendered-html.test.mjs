@@ -705,6 +705,33 @@ test("prepares funding campaigns without custody, minor bypass, or ranking influ
   assert.match(openapi, /funding-campaigns/);
 });
 
+test("prepares private project starters without maintainer writes or unreviewed source copying", async () => {
+  const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
+  const route = await readFile(new URL("../app/api/project-starter/route.ts", import.meta.url), "utf8");
+  const policy = await readFile(new URL("../lib/project-starter-policy.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  const migration = await readFile(new URL("../drizzle/0026_project_starter_requests.sql", import.meta.url), "utf8");
+  const exportRoute = await readFile(new URL("../app/api/account/export/route.ts", import.meta.url), "utf8");
+  const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
+  assert.match(schema, /project_starter_requests/);
+  assert.match(migration, /CREATE TABLE `project_starter_requests`/);
+  assert.match(route, /getPlatformIdentity/);
+  assert.match(route, /source repository must first be attributed/);
+  assert.match(route, /provider_auth_required/);
+  assert.match(policy, /GitHub App installation is required/);
+  assert.match(policy, /source maintainer repository is never written to/);
+  assert.match(policy, /LICENSE/);
+  assert.match(policy, /NOTICE/);
+  assert.match(policy, /SCHOLARIUM_PROVENANCE\.json/);
+  assert.match(page, /Start private project/);
+  assert.match(page, /fetch\(\"\/api\/v1\/project-starter\"/);
+  assert.match(page, /GitHub App\/OAuth approval is still required/);
+  assert.match(page, /never writes to the maintainer repository/);
+  assert.match(exportRoute, /projectStarterRequests: projectStarterRows/);
+  assert.match(exportRoute, /private repository credentials/);
+  assert.match(openapi, /project-starter/);
+});
+
 test("keeps community interactions account-bound, reportable, and limited in depth", async () => {
   const page = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const interactions = await readFile(new URL("../app/api/publication-interactions/route.ts", import.meta.url), "utf8");

@@ -135,6 +135,19 @@ type QuantechRenderHistoryItem = {
   sourceUrlCount: number;
   status: string;
 };
+type ProjectStarterRequest = {
+  createdAt: string;
+  id: string;
+  licenseStatus: string;
+  provenanceManifestStatus: string;
+  sourceProvider: string;
+  sourceRepositoryPath: string;
+  sourceRepositoryUrl: string;
+  status: string;
+  targetProvider: string;
+  targetRepositoryName: string;
+  targetVisibility: string;
+};
 type LiveSessionPlan = {
   agenda: string;
   audienceMode: string;
@@ -458,6 +471,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [fundingPublicProgress, setFundingPublicProgress] = useState(false);
   const [fundingLoading, setFundingLoading] = useState(false);
   const [scientificDeposits, setScientificDeposits] = useState<ScientificDepositRequest[]>([]);
+  const [projectStarterRequests, setProjectStarterRequests] = useState<ProjectStarterRequest[]>([]);
+  const [projectStarterLoading, setProjectStarterLoading] = useState(false);
   const [depositTitle, setDepositTitle] = useState("");
   const [depositLicense, setDepositLicense] = useState("cc-by-4.0");
   const [depositCoauthors, setDepositCoauthors] = useState("");
@@ -1330,13 +1345,43 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     } catch (error) { setNotice(error instanceof Error ? error.message : "Report could not be sent."); }
   };
 
-  const startProject = (publication: Publication) => {
+  const loadProjectStarterRequests = async () => {
+    setProjectStarterLoading(true);
+    try {
+      const response = await fetch("/api/v1/project-starter");
+      const payload = await response.json() as { error?: string; requests?: ProjectStarterRequest[] };
+      if (!response.ok) throw new Error(payload.error ?? "Project starter requests could not be loaded.");
+      setProjectStarterRequests(payload.requests ?? []);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Project starter requests could not be loaded.");
+    } finally {
+      setProjectStarterLoading(false);
+    }
+  };
+
+  const startProject = async (publication: Publication) => {
     const repository = publication.repositoryLinks?.[0];
     if (!repository) {
       setNotice("This publication has no linked source repository yet. Scholarium never invents a code project or copies source code without an author-provided link.");
       return;
     }
-    setNotice(`Opening the attributed ${repository.provider} repository. Forking, private-project settings, and collaboration permissions stay with that provider.`);
+    if (!accountReady) { setProfileOpen(true); setNotice("Create your Scholarium profile before preparing a private project starter."); return; }
+    setProjectStarterLoading(true);
+    try {
+      const response = await fetch("/api/v1/project-starter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ publicationId: publication.id, sourceRepositoryUrl: repository.url }),
+      });
+      const payload = await response.json() as { error?: string; request?: ProjectStarterRequest };
+      if (!response.ok || !payload.request) throw new Error(payload.error ?? "Project starter could not be prepared.");
+      setProjectStarterRequests((current) => [payload.request!, ...current.filter((item) => item.id !== payload.request?.id)].slice(0, 8));
+      setNotice("Private project starter prepared. GitHub App/OAuth approval is still required; Scholarium will add LICENSE, NOTICE, upstream URL, and a provenance manifest before any copy worker runs.");
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Project starter could not be prepared.");
+    } finally {
+      setProjectStarterLoading(false);
+    }
   };
 
   const setRankingValue = (key: keyof typeof ranking, value: number) => {
@@ -1653,7 +1698,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
                    {publication.authorPublicId && publication.profileVisible && !publication.isPreview && <a className="publication-action-link" href={`/profile/${publication.authorPublicId}`}>View profile</a>}
                    {publication.authorPublicId && !publication.isPreview && <button type="button" onClick={() => followAuthor(publication)}>{publication.followingAuthor ? "Following author" : "Follow author"}</button>}
                   <button type="button" onClick={() => setFeedPreference(publication, "less_like")}>Less like this</button>
-                  {publication.repositoryLinks?.[0] ? <a className="publication-action-link" href={publication.repositoryLinks[0].url} rel="noreferrer noopener" target="_blank" onClick={() => startProject(publication)}>⌘ Start project</a> : <button type="button" onClick={() => startProject(publication)}>⌘ Start project</button>}
+                  {publication.repositoryLinks?.[0] ? <button type="button" disabled={projectStarterLoading} onClick={() => startProject(publication)}>⌘ Start private project</button> : <button type="button" onClick={() => startProject(publication)}>⌘ Start project</button>}
                   <button type="button" onClick={() => setNotice("A contribution supports the project, never the feed rank.")}>♡ Support</button>
                 </div>
               </article>
@@ -1778,6 +1823,12 @@ export function ScholariumClient({ session }: { session: { displayName: string |
             <small>Original publications remain canonical. Formulas, citations, identifiers, and provenance receipts are protected from automatic rewriting.</small>
           </section>
           <div className="profile-tools"><strong>Attach your learning tools</strong><span>QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, and Antigravity/Gemini are consent-first profile connections. Provider sessions and tokens stay with their provider.</span><div className="tool-actions">{profileToolOptions.map((tool) => <button className="quiet-button" type="button" key={tool.id} disabled={connectingTool !== null} onClick={() => tool.id === "quanthor" ? (setProfileOpen(false), setView("formalize")) : prepareToolConnection(tool.id, tool.label)}>{connectingTool === tool.id ? "Preparing…" : tool.label}{integrationConnections[tool.id] ? ` · ${providerConnectionLabel(integrationConnections[tool.id].status)}` : ""}</button>)}<button className="quiet-button" type="button" onClick={() => { setProfileOpen(false); setView("migration"); }}>Academia.edu migration</button></div></div>
+          <section className="project-starter-card" aria-label="Private project starter requests">
+            <div><strong>Private project starter</strong><span>Prepare a GitHub-ready private workspace from an attributed source repository. Scholarium records the request only; provider OAuth is required before any private repo is created.</span></div>
+            <button className="quiet-button" type="button" disabled={projectStarterLoading} onClick={loadProjectStarterRequests}>{projectStarterLoading ? "Loading…" : "Refresh project starters"}</button>
+            {projectStarterRequests.length > 0 ? <ul>{projectStarterRequests.map((request) => <li key={request.id}><span>{request.targetProvider}/{request.targetRepositoryName} · {request.targetVisibility} · {request.status.replaceAll("_", " ")}</span><small>Source {request.sourceProvider}: {request.sourceRepositoryPath}. LICENSE, NOTICE, upstream URL, and SCHOLARIUM_PROVENANCE.json are required before copy.</small></li>)}</ul> : <small>No project starter request yet. Use “Start private project” on a publication with an attributed repository.</small>}
+            <small>This flow never writes to the maintainer repository and never uses payment, subscription, or popularity to change project visibility.</small>
+          </section>
           <section className="archive-continuity-card" aria-label="Archive continuity">
             <div><strong>Archive continuity</strong><span>Register where your originals are backed up. Scholarium stores the manifest only: no Drive token, local credential, private key, or file bytes.</span></div>
             <div className="archive-form-grid">

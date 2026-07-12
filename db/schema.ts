@@ -397,6 +397,32 @@ export const repositoryLinks = sqliteTable("repository_links", {
   uniqueIndex("repository_links_publication_provider_path_idx").on(table.publicationId, table.provider, table.repositoryPath),
 ]);
 
+/**
+ * Owner-only private project starter. It prepares a safe Git provider action,
+ * but never writes to the source maintainer repository and never copies code
+ * until a provider-authenticated export worker is approved.
+ */
+export const projectStarterRequests = sqliteTable("project_starter_requests", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").notNull().references(() => publications.id),
+  sourceProvider: text("source_provider").notNull(),
+  sourceRepositoryUrl: text("source_repository_url").notNull(),
+  sourceRepositoryPath: text("source_repository_path").notNull(),
+  targetProvider: text("target_provider").notNull().default("github"),
+  targetVisibility: text("target_visibility").notNull().default("private"),
+  targetRepositoryName: text("target_repository_name").notNull(),
+  licenseStatus: text("license_status").notNull().default("requires_review"),
+  provenanceManifestStatus: text("provenance_manifest_status").notNull().default("required"),
+  status: text("status").notNull().default("provider_auth_required"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("project_starter_requests_user_idx").on(table.userId),
+  index("project_starter_requests_publication_idx").on(table.publicationId),
+  uniqueIndex("project_starter_requests_unique_idx").on(table.userId, table.publicationId, table.sourceProvider, table.sourceRepositoryPath),
+]);
+
 /** Author-declared source relationship; it records attribution, not a truth or ownership verdict. */
 export const publicationRelationships = sqliteTable("publication_relationships", {
   id: text("id").primaryKey(),
