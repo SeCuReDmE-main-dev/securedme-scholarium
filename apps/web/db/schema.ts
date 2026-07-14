@@ -94,6 +94,46 @@ export const integrationConnections = sqliteTable("integration_connections", {
 }, (table) => [index("integration_connections_user_idx").on(table.userId), uniqueIndex("integration_connections_provider_idx").on(table.userId, table.provider)]);
 
 /**
+ * A durable record of the account owner's explicit provider-scope decision.
+ * It deliberately stores neither OAuth tokens nor provider session material.
+ */
+export const providerConsents = sqliteTable("provider_consents", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  provider: text("provider").notNull(),
+  scopes: text("scopes").notNull().default("[]"),
+  consentVersion: text("consent_version").notNull().default("v1"),
+  status: text("status").notNull().default("granted"),
+  grantedAt: text("granted_at"),
+  revokedAt: text("revoked_at"),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("provider_consents_user_idx").on(table.userId),
+  uniqueIndex("provider_consents_user_provider_idx").on(table.userId, table.provider),
+]);
+
+/**
+ * A private, minimal handoff ledger for provider-owned WebAuth workflows.
+ * The provider authenticates the user; Scholarium stores no raw prompts,
+ * provider tokens, or opaque session identifiers.
+ */
+export const webauthHandoffRequests = sqliteTable("webauth_handoff_requests", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  provider: text("provider").notNull(),
+  purpose: text("purpose").notNull(),
+  contextKind: text("context_kind").notNull().default("none"),
+  contextReference: text("context_reference"),
+  status: text("status").notNull().default("provider_auth_required"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("webauth_handoff_requests_user_idx").on(table.userId),
+  index("webauth_handoff_requests_provider_idx").on(table.provider),
+  index("webauth_handoff_requests_created_idx").on(table.createdAt),
+]);
+
+/**
  * A migration is an owner-confirmed import plan, never a copied provider
  * session. Source URLs and item metadata remain private to the account owner.
  */
@@ -133,6 +173,49 @@ export const profilePreferences = sqliteTable("profile_preferences", {
   profileVisibility: text("profile_visibility").notNull().default("private"),
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
+
+/** Author-controlled CV-style material. Public visibility is opt-in per section. */
+export const profileSections = sqliteTable("profile_sections", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  sectionKind: text("section_kind").notNull(),
+  title: text("title").notNull(),
+  body: text("body").notNull().default(""),
+  visibility: text("visibility").notNull().default("private"),
+  displayOrder: integer("display_order").notNull().default(0),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("profile_sections_user_idx").on(table.userId),
+  index("profile_sections_user_visibility_idx").on(table.userId, table.visibility),
+]);
+
+/** Private alerts are explicit subscriptions, never inferred from passive reading behavior. */
+export const searchAlerts = sqliteTable("search_alerts", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  label: text("label").notNull(),
+  query: text("query").notNull().default(""),
+  topicSlugs: text("topic_slugs").notNull().default("[]"),
+  cadence: text("cadence").notNull().default("weekly"),
+  status: text("status").notNull().default("active"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("search_alerts_user_idx").on(table.userId)]);
+
+/** Citation-monitoring preference only; external citation counts remain source-verified work. */
+export const citationAlerts = sqliteTable("citation_alerts", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").notNull().references(() => publications.id),
+  status: text("status").notNull().default("active"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("citation_alerts_user_idx").on(table.userId),
+  index("citation_alerts_publication_idx").on(table.publicationId),
+  uniqueIndex("citation_alerts_user_publication_idx").on(table.userId, table.publicationId),
+]);
 
 export const readerPreferences = sqliteTable("reader_preferences", {
   userId: text("user_id").primaryKey().references(() => users.id),

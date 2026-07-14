@@ -157,6 +157,18 @@ Do not fake Google Scholar affiliation. Scholarium should expose compliant pages
 
 ## Recommended Next Tranches
 
+## Implemented foundation slice
+
+The first scholarly-discovery and Academia-parity slice is now implemented locally:
+
+- public `/publication/{publicationId}` pages emit canonical and `citation_*` metadata;
+- `robots.txt`, `/sitemap.xml`, and `/sitemap-publications.xml` expose only owner-enabled public work;
+- `/api/v1/scholar-indexing-status` reports crawl prerequisites without claiming third-party indexing;
+- provider capabilities, explicit consent records, and consent-gated Codex/Antigravity WebAuth handoff records are available;
+- author-controlled profile sections, transparent first-party author metrics, and explicit private search/citation alert preferences are available.
+
+Still launch-gated: external citation-source verification, alert delivery workers, DOI/ORCID-authenticated metadata rendering, public full-text artifact availability, organization/lab pages, and bulk account exports from third-party providers.
+
 1. Scholarly indexing contract
 
 Create public publication pages, metadata renderer, robots/sitemap, and tests that assert `citation_*` tags for scholarly publication types.

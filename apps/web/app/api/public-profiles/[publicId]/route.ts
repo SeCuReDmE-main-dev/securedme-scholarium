@@ -1,6 +1,6 @@
 import { and, desc, eq, notInArray } from "drizzle-orm";
 import { getDb } from "../../../../db";
-import { profilePreferences, profileVerifications, publicProfiles, publications, users } from "../../../../db/schema";
+import { profilePreferences, profileSections, profileVerifications, publicProfiles, publications, users } from "../../../../db/schema";
 import { accountAudience } from "../../../../lib/account-audience";
 
 /**
@@ -32,7 +32,10 @@ export async function GET(_request: Request, { params }: { params: Promise<{ pub
       .where(eq(publicProfiles.publicId, publicId))
       .limit(1);
     if (!profile || profile.profileVisibility !== "public" || !(await accountAudience(db, profile.userId)).capabilities.canPublishPublicly) return Response.json({ error: "Public profile was not found" }, { status: 404 });
-    const work = await db.select({ abstract: publications.abstract, createdAt: publications.createdAt, id: publications.id, status: publications.verificationStatus, title: publications.title, type: publications.type }).from(publications).where(and(eq(publications.authorId, profile.userId), eq(publications.visibility, "public"), notInArray(publications.verificationStatus, ["quarantined", "removed"]))).orderBy(desc(publications.createdAt)).limit(24);
+    const [work, sections] = await Promise.all([
+      db.select({ abstract: publications.abstract, createdAt: publications.createdAt, id: publications.id, status: publications.verificationStatus, title: publications.title, type: publications.type }).from(publications).where(and(eq(publications.authorId, profile.userId), eq(publications.visibility, "public"), notInArray(publications.verificationStatus, ["quarantined", "removed"]))).orderBy(desc(publications.createdAt)).limit(24),
+      db.select({ body: profileSections.body, displayOrder: profileSections.displayOrder, id: profileSections.id, sectionKind: profileSections.sectionKind, title: profileSections.title }).from(profileSections).where(and(eq(profileSections.userId, profile.userId), eq(profileSections.visibility, "public"))).orderBy(profileSections.displayOrder, profileSections.createdAt),
+    ]);
     return Response.json({
       profile: {
         accentColor: profile.accentColor,
@@ -45,6 +48,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ pub
         publicId: profile.publicId,
       },
       publications: work,
+      sections,
     }, { headers: { "cache-control": "public, max-age=60" } });
   } catch (error) {
     return Response.json({ error: error instanceof Error ? error.message : "Unable to load public profile" }, { status: 500 });

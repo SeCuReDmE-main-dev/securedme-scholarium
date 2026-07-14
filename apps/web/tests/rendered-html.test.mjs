@@ -806,3 +806,47 @@ test("keeps every non-auth route method aligned with the canonical OpenAPI v1 co
 
   assert.deepEqual(mismatches, []);
 });
+
+test("keeps WebAuth handoffs consent-gated and scholarly discovery free of false external-index claims", async () => {
+  const capabilities = await readFile(new URL("../app/api/provider-capabilities/route.ts", import.meta.url), "utf8");
+  const consents = await readFile(new URL("../app/api/provider-consents/route.ts", import.meta.url), "utf8");
+  const handoffs = await readFile(new URL("../app/api/webauth-handoff-requests/route.ts", import.meta.url), "utf8");
+  const scholarStatus = await readFile(new URL("../app/api/scholar-indexing-status/route.ts", import.meta.url), "utf8");
+  const publicationPage = await readFile(new URL("../app/publication/[publicationId]/page.tsx", import.meta.url), "utf8");
+  const robots = await readFile(new URL("../app/robots.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  assert.match(capabilities, /providerCapabilities/);
+  assert.match(consents, /providerConsents/);
+  assert.match(consents, /providerConsents\.provider/);
+  assert.match(handoffs, /isOfficialWebAuthProvider/);
+  assert.match(handoffs, /Record explicit provider consent/);
+  assert.match(handoffs, /no raw prompt, provider token, or provider session/i);
+  assert.match(scholarStatus, /externalIndexingClaim: "none"/);
+  assert.match(scholarStatus, /not expose a general publisher submission API/);
+  assert.match(publicationPage, /citation_title/);
+  assert.match(publicationPage, /citation_author/);
+  assert.match(robots, /"\/publication\/"/);
+  assert.match(schema, /provider_consents/);
+  assert.match(schema, /webauth_handoff_requests/);
+});
+
+test("keeps academic profile context and alerts owner-controlled and excludes behavioural metrics", async () => {
+  const profileSections = await readFile(new URL("../app/api/profile-sections/route.ts", import.meta.url), "utf8");
+  const alerts = await readFile(new URL("../app/api/search-alerts/route.ts", import.meta.url), "utf8");
+  const citationAlerts = await readFile(new URL("../app/api/citation-alerts/route.ts", import.meta.url), "utf8");
+  const metrics = await readFile(new URL("../app/api/author-metrics/route.ts", import.meta.url), "utf8");
+  const schema = await readFile(new URL("../db/schema.ts", import.meta.url), "utf8");
+  const profile = await readFile(new URL("../app/api/public-profiles/[publicId]/route.ts", import.meta.url), "utf8");
+  assert.match(profileSections, /profileSections/);
+  assert.match(profileSections, /visibility must be public or private/);
+  assert.match(profileSections, /accountAudience/);
+  assert.match(alerts, /explicit private subscriptions/);
+  assert.match(citationAlerts, /Only an author can enable a citation alert/);
+  assert.match(metrics, /passive readership/);
+  assert.match(metrics, /third-party citation counts/);
+  assert.match(metrics, /accountAudience/);
+  assert.match(profile, /profileSections/);
+  assert.match(schema, /profile_sections/);
+  assert.match(schema, /search_alerts/);
+  assert.match(schema, /citation_alerts/);
+});

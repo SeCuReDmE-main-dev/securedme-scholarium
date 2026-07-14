@@ -17,6 +17,8 @@ This matrix records the current canonical `/api/v1` resource surface for Scholar
 | `/api/v1/account/export` | `GET` | yes | [ACCOUNT-DATA-RIGHTS.md](ACCOUNT-DATA-RIGHTS.md) |
 | `/api/v1/artifacts` | `GET`, `POST` | yes | [ARTIFACT-ACCESS-BOUNDARY.md](ARTIFACT-ACCESS-BOUNDARY.md) |
 | `/api/v1/author-identifiers` | `GET`, `PUT`, `DELETE` | yes | [AUTHOR-IDENTIFIERS.md](AUTHOR-IDENTIFIERS.md) |
+| `/api/v1/author-metrics` | `GET` | yes | [ACADEMIC-PROFILE-AND-ALERTS.md](ACADEMIC-PROFILE-AND-ALERTS.md) |
+| `/api/v1/citation-alerts` | `GET`, `POST`, `DELETE` | yes | [ACADEMIC-PROFILE-AND-ALERTS.md](ACADEMIC-PROFILE-AND-ALERTS.md) |
 | `/api/v1/collection-items` | `GET`, `PUT`, `DELETE` | yes | [PERSONAL-COLLECTIONS.md](PERSONAL-COLLECTIONS.md) |
 | `/api/v1/collections` | `GET`, `POST`, `DELETE` | yes | [PERSONAL-COLLECTIONS.md](PERSONAL-COLLECTIONS.md) |
 | `/api/v1/developer-seed` | `GET` | yes | [DEVELOPER-SEED-PROTOCOL.md](DEVELOPER-SEED-PROTOCOL.md) |
@@ -34,6 +36,9 @@ This matrix records the current canonical `/api/v1` resource surface for Scholar
 | `/api/v1/payments/paypal/return` | `GET` | yes | [PAYMENT-ARCHITECTURE.md](PAYMENT-ARCHITECTURE.md) |
 | `/api/v1/profile-media` | `GET`, `POST` | yes | [PROFILE-MEDIA.md](PROFILE-MEDIA.md) |
 | `/api/v1/profile-preferences` | `GET`, `PUT` | yes | [PROFILE-MEDIA.md](PROFILE-MEDIA.md) |
+| `/api/v1/profile-sections` | `GET`, `POST`, `PUT`, `DELETE` | yes | [ACADEMIC-PROFILE-AND-ALERTS.md](ACADEMIC-PROFILE-AND-ALERTS.md) |
+| `/api/v1/provider-capabilities` | `GET` | yes | [WEBAUTH-AND-SCHOLAR-DISCOVERY.md](WEBAUTH-AND-SCHOLAR-DISCOVERY.md) |
+| `/api/v1/provider-consents` | `GET`, `PUT`, `DELETE` | yes | [WEBAUTH-AND-SCHOLAR-DISCOVERY.md](WEBAUTH-AND-SCHOLAR-DISCOVERY.md) |
 | `/api/v1/provenance/verify` | `GET`, `POST` | yes | [PROVENANCE-VERIFICATION.md](PROVENANCE-VERIFICATION.md) |
 | `/api/v1/public-profiles/{publicId}` | `GET` | yes | [AUTHOR-FOLLOWING-BOUNDARY.md](AUTHOR-FOLLOWING-BOUNDARY.md) |
 | `/api/v1/publication-interactions` | `GET`, `POST`, `DELETE` | yes | [PUBLICATION-SAFETY-BOUNDARY.md](PUBLICATION-SAFETY-BOUNDARY.md) |
@@ -46,10 +51,13 @@ This matrix records the current canonical `/api/v1` resource surface for Scholar
 | `/api/v1/ranking-preferences` | `GET`, `PUT` | yes | [FEED-RANKING-ARCHITECTURE.md](FEED-RANKING-ARCHITECTURE.md) |
 | `/api/v1/repository-links` | `GET`, `POST` | yes | [CODE-COLLABORATION-BOUNDARY.md](CODE-COLLABORATION-BOUNDARY.md) |
 | `/api/v1/search` | `GET` | yes | [RESEARCH-SEARCH-BOUNDARY.md](RESEARCH-SEARCH-BOUNDARY.md) |
+| `/api/v1/search-alerts` | `GET`, `POST`, `DELETE` | yes | [ACADEMIC-PROFILE-AND-ALERTS.md](ACADEMIC-PROFILE-AND-ALERTS.md) |
+| `/api/v1/scholar-indexing-status` | `GET` | yes | [WEBAUTH-AND-SCHOLAR-DISCOVERY.md](WEBAUTH-AND-SCHOLAR-DISCOVERY.md) |
 | `/api/v1/topic-follows` | `GET`, `PUT`, `DELETE` | yes | [FEED-RANKING-ARCHITECTURE.md](FEED-RANKING-ARCHITECTURE.md) |
 | `/api/v1/user-follows` | `GET`, `PUT`, `DELETE` | yes | [AUTHOR-FOLLOWING-BOUNDARY.md](AUTHOR-FOLLOWING-BOUNDARY.md) |
 | `/api/v1/verified-subscription` | `GET`, `POST` | yes | [PAYMENT-ARCHITECTURE.md](PAYMENT-ARCHITECTURE.md) |
 | `/api/v1/video-production-plan` | `POST` | yes | [MEDIA-PRODUCTION-INTEGRATION.md](MEDIA-PRODUCTION-INTEGRATION.md) |
+| `/api/v1/webauth-handoff-requests` | `GET`, `POST` | yes | [WEBAUTH-AND-SCHOLAR-DISCOVERY.md](WEBAUTH-AND-SCHOLAR-DISCOVERY.md) |
 | `/api/v1/webhooks/paypal` | `POST` | yes | [PAYMENT-ARCHITECTURE.md](PAYMENT-ARCHITECTURE.md) |
 | `/api/v1/webhooks/youtube` | `GET`, `POST` | yes | [VIDEO-INTEGRATION-BOUNDARY.md](VIDEO-INTEGRATION-BOUNDARY.md) |
 
