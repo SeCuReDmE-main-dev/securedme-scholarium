@@ -1,0 +1,47 @@
+{
+  "slug": "securedme-scholarium-scholarium-auth-and-academia-edu-gap-ana-compare-scholarium-publication-auth-and-migration-academia",
+  "title": "Scholarium vs Academia.edu Auth and Publication Benchmark",
+  "timestamp": "2026-07-14T09:20:56Z",
+  "objective": "Compare Scholarium publication auth and migration architecture against Academia.edu",
+  "primary_subject": "Scholarium auth and Academia.edu gap analysis",
+  "comparators": [
+    "Academia.edu"
+  ],
+  "task_intent": "Assess current Scholarium auth maturity, Google/OpenAI entry parity, Codex/Antigravity WebAuth architecture, and Academia.edu feature gaps",
+  "product_hypothesis": "Scholarium can differentiate with proof-first publication, transparent ranking, provider-gated project starters, and Education-suite handoffs",
+  "benchmark_lens": "product-trust-workflow",
+  "repo_summary": [
+    "OpenAI ChatGPT identity uses platform headers",
+    "Google OAuth uses PKCE/state encrypted cookies",
+    "Provider sessions do not auto-merge emails",
+    "Integrations are pending-consent records, not full provider OAuth handoffs",
+    "Project starter is provider-gated and provenance-first"
+  ],
+  "research_questions": [
+    "What auth and publishing capabilities are already present?",
+    "What is weaker in Google/Antigravity than OpenAI/Codex?",
+    "What does Academia.edu provide that Scholarium lacks?",
+    "Which differentiators should be architected next?"
+  ],
+  "competitor_candidates": [
+    "Academia.edu"
+  ],
+  "selected_benchmark_targets": [
+    "auth entry parity",
+    "profile publication workflow",
+    "migration import workflow",
+    "analytics and readership",
+    "scientific provenance"
+  ],
+  "source_index": [
+    "local repo apps/web auth routes",
+    "local repo integration catalog",
+    "Academia.edu official support and product pages"
+  ],
+  "next_steps": [
+    "Add provider capability registry",
+    "Add Google/Antigravity WebAuth handoff contracts",
+    "Add Academia parity queue",
+    "Add analytics/readership benchmark harness"
+  ]
+}

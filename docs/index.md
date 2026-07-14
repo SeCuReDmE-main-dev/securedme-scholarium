@@ -15,3 +15,4 @@ This repository uses the SecuredMe Education documentation shell with dark/light
 - [Podcast & Video Studio boundary](PODCAST-VIDEO-STUDIO.md)
 - [Developer Seed Protocol](DEVELOPER-SEED-PROTOCOL.md)
 - [Reader preferences](READER-PREFERENCES.md)
+- [Scholar indexing and Academia gap](SCHOLAR-INDEXING-AND-ACADEMIA-GAP.md)

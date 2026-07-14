@@ -1,0 +1,24 @@
+{
+  "codebase_root": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium",
+  "updated_at": "2026-07-14T09:20:56Z",
+  "benchmarks": [
+    {
+      "slug": "securedme-scholarium-scholarium-auth-and-academia-edu-gap-ana-compare-scholarium-publication-auth-and-migration-academia",
+      "title": "Scholarium vs Academia.edu Auth and Publication Benchmark",
+      "created_at": "2026-07-14T09:20:56Z",
+      "updated_at": "2026-07-14T09:20:56Z",
+      "status": "active",
+      "objective": "Compare Scholarium publication auth and migration architecture against Academia.edu",
+      "product_hypothesis": "Scholarium can differentiate with proof-first publication, transparent ranking, provider-gated project starters, and Education-suite handoffs",
+      "primary_subject": "Scholarium auth and Academia.edu gap analysis",
+      "comparators": [
+        "Academia.edu"
+      ],
+      "current_report_path": ".benchmark\\benchmarks\\securedme-scholarium-scholarium-auth-and-academia-edu-gap-ana-compare-scholarium-publication-auth-and-migration-academia\\current\\report.md",
+      "current_memory_path": ".benchmark\\benchmarks\\securedme-scholarium-scholarium-auth-and-academia-edu-gap-ana-compare-scholarium-publication-auth-and-migration-academia\\memory.md",
+      "validity_status": "partial",
+      "execution_status": "research-only",
+      "latest_history_path": ".benchmark\\benchmarks\\securedme-scholarium-scholarium-auth-and-academia-edu-gap-ana-compare-scholarium-publication-auth-and-migration-academia\\history\\2026-07-14T09-20-56Z"
+    }
+  ]
+}
