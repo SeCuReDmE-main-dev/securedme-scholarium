@@ -14,21 +14,24 @@ type PublicProfile = {
   publicId: string;
 };
 type PublicWork = { abstract: string; createdAt: string; id: string; status: string; title: string; type: string };
+type PublicSection = { body: string; displayOrder: number; id: string; sectionKind: string; title: string };
 
 export function PublicProfileClient({ publicId }: { publicId: string }) {
   const [profile, setProfile] = useState<PublicProfile | null>(null);
   const [work, setWork] = useState<PublicWork[]>([]);
+  const [sections, setSections] = useState<PublicSection[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let active = true;
     fetch(`/api/v1/public-profiles/${encodeURIComponent(publicId)}`)
-      .then(async (response) => ({ ok: response.ok, payload: await response.json() as { error?: string; profile?: PublicProfile; publications?: PublicWork[] } }))
+      .then(async (response) => ({ ok: response.ok, payload: await response.json() as { error?: string; profile?: PublicProfile; publications?: PublicWork[]; sections?: PublicSection[] } }))
       .then(({ ok, payload }) => {
         if (!active) return;
         if (!ok || !payload.profile) { setError(payload.error ?? "This public profile is unavailable."); return; }
         setProfile(payload.profile);
         setWork(payload.publications ?? []);
+        setSections(payload.sections ?? []);
       })
       .catch(() => { if (active) setError("This public profile could not be loaded."); });
     return () => { active = false; };
@@ -49,9 +52,10 @@ export function PublicProfileClient({ publicId }: { publicId: string }) {
           <div><p className="eyebrow">SCHOLARIUM PUBLIC PROFILE</p><h1>{profile.displayName}</h1><p>{profile.primaryRole.replaceAll("_", " ")}</p>{profile.badge.visible && <span className="public-profile-badge">✓ {profile.badge.label}</span>}</div>
         </div>
       </header>
+      {sections.length > 0 && <section className="public-profile-work" aria-label={`${profile.displayName} public profile details`}><div><p className="eyebrow">PROFILE DETAILS</p><h2>Author-chosen context.</h2></div><div className="public-profile-work-grid">{sections.map((section) => <article key={section.id}><span>{section.sectionKind.replaceAll("_", " ").toUpperCase()}</span><h3>{section.title}</h3><p>{section.body}</p></article>)}</div></section>}
       <section className="public-profile-work" aria-label={`${profile.displayName} public work`}>
         <div><p className="eyebrow">PUBLIC WORK</p><h2>Traceable work shared with the learning commons.</h2></div>
-        {work.length === 0 ? <p className="public-profile-empty-work">No public work has been published yet.</p> : <div className="public-profile-work-grid">{work.map((publication) => <article key={publication.id}><div><span>{publication.type.replaceAll("_", " ").toUpperCase()}</span><span className={publication.status === "verified" ? "status verified" : "status processing"}>{publication.status === "verified" ? "✓ VERIFIED" : "◌ PROCESSING"}</span></div><h3>{publication.title}</h3><p>{publication.abstract}</p><time dateTime={publication.createdAt}>Published {new Date(publication.createdAt).toLocaleDateString()}</time></article>)}</div>}
+        {work.length === 0 ? <p className="public-profile-empty-work">No public work has been published yet.</p> : <div className="public-profile-work-grid">{work.map((publication) => <article key={publication.id}><div><span>{publication.type.replaceAll("_", " ").toUpperCase()}</span><span className={publication.status === "verified" ? "status verified" : "status processing"}>{publication.status === "verified" ? "✓ VERIFIED" : "◌ PROCESSING"}</span></div><h3><Link href={`/publication/${encodeURIComponent(publication.id)}`}>{publication.title}</Link></h3><p>{publication.abstract}</p><time dateTime={publication.createdAt}>Published {new Date(publication.createdAt).toLocaleDateString()}</time></article>)}</div>}
       </section>
       <p className="public-profile-boundary">This page contains only information its owner chose to make public. It does not reveal provider identities, email, private settings, or private media.</p>
     </section>
