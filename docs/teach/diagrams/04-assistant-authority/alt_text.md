@@ -1,0 +1,1 @@
+Assistant boundary map showing learner control of a private assistant, consent validation, an idempotent assistant exchange, teacher support, aggregate generation, administrative support, and explicit denial of raw graph, raw answer, diagnostic-label, and small-cohort access.

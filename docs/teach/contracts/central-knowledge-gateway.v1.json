@@ -1,0 +1,94 @@
+{
+  "schema": "scholarium.central-knowledge-gateway.v1",
+  "memory_model": "central_only",
+  "plugin_local_memory_forbidden": true,
+  "partitions": [
+    "approved",
+    "preparation",
+    "quarantine"
+  ],
+  "graph": {
+    "model": "finite_attributed_multigraph",
+    "matrices": [
+      "adjacency",
+      "oriented_incidence",
+      "degree",
+      "laplacian"
+    ],
+    "eulerian_analysis": [
+      "connected_components",
+      "odd_degree_vertices",
+      "trail_status",
+      "circuit_status"
+    ]
+  },
+  "hilbert_location": {
+    "schema": "scholarium.hilbert-location.v1",
+    "required": [
+      "basis_id",
+      "algorithm_version",
+      "dimension",
+      "normalization",
+      "source_node_ids",
+      "vector",
+      "norm",
+      "projection_digest",
+      "uncertainty"
+    ],
+    "finite_values_only": true,
+    "replayable_ordering_required": true
+  },
+  "routing": {
+    "classifier": "Synthia",
+    "retrieval": "HippoRAG",
+    "record_index": "MemoryLake.index_records",
+    "generation": [
+      "Codex/OpenAI",
+      "Antigravity/Gemini"
+    ]
+  },
+  "hipporag_runtime": {
+    "mode": "retrieval_only",
+    "schema": "synthia.hipporag-retrieval.v1",
+    "allowed_methods": [
+      "retrieve_dpr"
+    ],
+    "prohibited_methods": [
+      "rag_qa",
+      "rag_qa_dpr",
+      "qa",
+      "generate"
+    ],
+    "production_partition": "approved",
+    "retrieval_profile": "hipporag_dpr_only",
+    "generation_owner": "Codex/OpenAI or Antigravity/Gemini"
+  },
+  "retrieval_benchmark": {
+    "schema": "synthia.education-retrieval-benchmark.v1",
+    "comparison": [
+      "memory_lake_only",
+      "hipporag_dpr_compatible_adapter"
+    ],
+    "required_metrics": [
+      "precision_at_k",
+      "recall_at_k",
+      "provenance_coverage",
+      "suppression_leakage",
+      "reconstruction_recovery"
+    ],
+    "synthetic_data_only_before_efvp": true,
+    "full_hipporag_graph_claim_forbidden": true
+  },
+  "authority": [
+    "traceability_support",
+    "classification_support",
+    "retrieval_support"
+  ],
+  "prohibited": [
+    "autonomous_grading",
+    "diagnosis",
+    "discipline",
+    "hidden_surveillance",
+    "cross_tenant_reconstruction"
+  ]
+}

@@ -61,6 +61,13 @@ markdown_extensions:
 plugins:
 - search
 nav:
+- Scholarium Teach:
+  - Vision and Idea Registry: teach/IDEA_REGISTRY.md
+  - Architecture: teach/ARCHITECTURE.md
+  - Privacy and EFVP: teach/PRIVACY_EFVP.md
+  - Risk Register: teach/RISK_REGISTER.md
+  - Evidence Register: teach/EVIDENCE_REGISTER.md
+  - Plan 163 Actions: teach/PLAN_163_ACTIONS.md
 - Home: index.md
 - Accessibility:
   - Edge User Console: accessibility/edge-user-console.md

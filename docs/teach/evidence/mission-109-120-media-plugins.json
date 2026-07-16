@@ -1,0 +1,136 @@
+{
+  "schema": "scholarium.execution-evidence.v1",
+  "evidenceId": "mission-109-120-media-plugins",
+  "generatedAt": "2026-07-15T21:01:43.8761765Z",
+  "dataClass": "synthetic_education_only",
+  "actions": ["109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120"],
+  "activatedSkills": [
+    "CeLeBrUm_Strategic_Decomposition_Mastery",
+    "RagGgE_Interface_and_Contract_Validation",
+    "RagGgE_Technical_Risk_Assessment",
+    "synthia-adapter:synthia-session",
+    "quantech-vid-operator:quantech-vid-operator",
+    "plugin-creator",
+    "life-science-research:research-router-skill",
+    "book-publication-lab:professional-book-architect"
+  ],
+  "media": {
+    "sourceKinds": ["lesson", "thread", "project", "growth_story"],
+    "videoLimit": { "dailyCount": 3, "maximumMinutes": 5 },
+    "podcastLimit": { "dailyCount": 5, "maximumMinutes": 30 },
+    "effectivePolicy": "minimum_of_scholarium_and_provider",
+    "explicitGenerationActionRequired": true,
+    "separatePublicationConfirmationRequired": true,
+    "automaticPublication": false,
+    "signedManifestSchema": "scholarium.quantech-media-job.v1",
+    "signature": "hmac-sha256",
+    "maximumLifetimeSeconds": 900,
+    "loopbackEndpoint": "http://127.0.0.1:7476"
+  },
+  "quantechLiveProof": {
+    "healthStatus": "ok",
+    "providerVersion": "2.0.0",
+    "loopback": true,
+    "projectSlug": "synthia-scientific-memory",
+    "projectDurationSeconds": 45,
+    "receiptSchema": "scholarium.quantech-worker-receipt.v1",
+    "receiptStatus": "validated",
+    "renderSubmitted": false,
+    "publicationPerformed": false,
+    "replayRejected": true,
+    "tamperRejected": true,
+    "repositoryTestsPassed": 9,
+    "repositoryTestsFailed": 0,
+    "adapterTestsPassed": 2,
+    "adapterTestsFailed": 0
+  },
+  "educationPlugins": {
+    "count": 6,
+    "ids": [
+      "scholarium-lesson",
+      "scholarium-reminder",
+      "scholarium-accessibility",
+      "scholarium-source",
+      "scholarium-portfolio",
+      "scholarium-teacher-report"
+    ],
+    "manifestSchema": "scholarium.education-plugin-gate5.v1",
+    "sha256IntegrityPassed": 6,
+    "stateless": true,
+    "localMemoryFiles": 0,
+    "memoryModel": "central_gateway_only",
+    "allowedCallers": ["Codex/OpenAI", "Antigravity/Gemini"],
+    "starterFilesPerPlugin": ["AGENTS.md", "SOUL.md", "USER.md"],
+    "hilbertAndEulerContractPresent": true
+  },
+  "lifeScience": {
+    "routerSchema": "scholarium.life-science-route.v1",
+    "routingPolicy": "smallest_specialized_primary_source_set",
+    "authenticatedRoute": "/api/teach/life-science/router",
+    "automaticExecutionAuthorized": false,
+    "clinicalAuthorityClaimed": false,
+    "promptBook": "docs/teach/LIFE_SCIENCE_40_PROMPT_BOOK.md",
+    "promptCount": 40,
+    "eachPromptHasObjective": true,
+    "eachPromptHasStarter": true,
+    "eachPromptHasEvidence": true,
+    "eachPromptHasHumanReviewGate": true
+  },
+  "centralGraph": {
+    "pluginLocalMemoryForbidden": true,
+    "gateway": "scholarium.central-knowledge-gateway.v1",
+    "classification": "Synthia",
+    "indexing": "MemoryLake",
+    "retrieval": "HippoRAG retrieval-only",
+    "matrices": ["adjacency", "oriented_incidence", "degree", "laplacian"],
+    "eulerianAnalysis": true,
+    "hilbertLocationReplayable": true,
+    "hierarchies": [
+      "I -> I_system^S -> H_lex -> G_lex -> I_lexicon",
+      "I -> I_system^S -> D_f -> dF -> i_fractal"
+    ]
+  },
+  "synthiaValidation": {
+    "command": "python -m synthia_core.cli lexicon classify --text <g10-term-set> --domain education",
+    "matchedTermCount": 0,
+    "promotionPerformed": false,
+    "classificationFamily": "I_system^S",
+    "hierarchy": "I -> I_system^S -> H_lex -> G_lex -> I_lexicon",
+    "interpretation": "No new G10 vocabulary was admitted. Versioned product contracts remain the source of runtime behavior, and Synthia claims no autonomous taxonomy authority."
+  },
+  "persistenceAndLifecycle": {
+    "migrationsApplied": 33,
+    "latestMigration": "0032_teach_media_worker.sql",
+    "teachTableCount": 19,
+    "publicationConfirmationTablePresent": true,
+    "signedManifestColumnsPresent": true,
+    "duplicatePublicationConfirmationRejected": true,
+    "accountExportExtended": true,
+    "accountDeletionExtended": true
+  },
+  "runtimeProbe": {
+    "baseUrl": "http://localhost:5173",
+    "signedOutProtectedPaths": [
+      "/api/teach/media",
+      "/api/teach/media/publication",
+      "/api/teach/life-science/router"
+    ],
+    "signedOutStatus": 401,
+    "realIdentityUsed": false,
+    "realStudentDataUsed": false
+  },
+  "repositoryValidation": {
+    "command": "npm test",
+    "build": "passed",
+    "testsPassed": 84,
+    "testsFailed": 0,
+    "lintErrors": 0,
+    "lintWarnings": 30,
+    "diffCheck": "passed_with_line_ending_notices"
+  },
+  "gate": {
+    "id": "G10",
+    "status": "passed",
+    "reason": "Media requests are explicit, sourced, quota-bounded, signed, short-lived, replay-resistant and independently confirmed before publication; six stateless education plugins pass Gate5 integrity; Life Science routing and forty formative prompts preserve provenance and human review."
+  }
+}

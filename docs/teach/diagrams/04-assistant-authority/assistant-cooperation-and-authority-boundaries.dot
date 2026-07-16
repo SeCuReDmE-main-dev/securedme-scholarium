@@ -1,0 +1,27 @@
+digraph ScholariumAssistants {
+  graph [rankdir=TB, bgcolor="#F7F8FC", pad="0.25", nodesep="0.46", ranksep="0.54", fontname="Arial"];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=11, margin="0.14,0.10", color="#D9E0EF", fillcolor="#FFFFFF", fontcolor="#10172F"];
+  edge [color="#63708A", penwidth=1.2, arrowsize=0.7, fontname="Arial", fontsize=9, fontcolor="#44506A"];
+
+  learner [label="Learner", fillcolor="#EAF9FF", color="#23B8FF"];
+  learner_ai [label="Private learner assistant\nowner graph + objectives + preferences", fillcolor="#EEF3FF", color="#2157EE"];
+  consent [label="Purpose + sharing consent\nactive enrollment + expiry"];
+  exchange [label="scholarium.assistant-exchange.v1\nidempotent projection + receipt", fillcolor="#F2EEFF", color="#6F42FF"];
+  teacher_ai [label="Teacher assistant\ncourse-authorized summary only"];
+  teacher [label="Authorized educator", fillcolor="#EAF9FF", color="#23B8FF"];
+  aggregate [label="Organization aggregate\nminimum cohort: 10"];
+  admin_ai [label="Administrative assistant\naggregates only"];
+  admin [label="Authorized administrator", fillcolor="#EAF9FF", color="#23B8FF"];
+  deny [label="Denied: raw answers, private graph,\ndiagnostic labels, small cohorts", fillcolor="#FFF0F0", color="#C85151"];
+
+  learner -> learner_ai [label="controls"];
+  { rank=same; teacher; aggregate; }
+  learner_ai -> consent [label="requests projection"];
+  consent -> exchange [label="valid"];
+  exchange -> teacher_ai;
+  teacher_ai -> teacher [label="bounded support"];
+  teacher_ai -> aggregate [label="de-identified contribution"];
+  aggregate -> admin_ai -> admin;
+  consent -> deny [label="invalid or expired", color="#C85151"];
+  learner_ai -> deny [style=dashed, label="never exports raw graph"];
+}

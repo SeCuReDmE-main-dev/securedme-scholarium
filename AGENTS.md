@@ -19,3 +19,14 @@ This is an official SecuredMe school-tool repository. Preserve the education-fir
 - Keep publication, citation, and repository claims source-linked and non-authoritative unless validated.
 
 Private modified copies are not a maintainer support obligation unless reviewed through PR.
+
+## Execution Resume State
+
+- `docs/teach/EXECUTION_STATE.json` is the authoritative resume pointer for the
+  163-action Scholarium Teach program.
+- Resume from `activeAction`; do not infer the resume point from the oldest
+  incomplete row in `ACTION_MATRIX.csv`.
+- A historical evidence debt can open a bounded audit, but it must never move
+  `executionFrontier` backward or restart completed mission bundles.
+- Advance the frontier only after recording a direct evidence artifact. Keep a
+  blocked action visible and continue independent actions in the same gate.

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "c2b6209663ad4865",
+  "title": "Gate5 and Transitional Security Boundary",
+  "engine": "graphviz",
+  "profile": "technical-architecture",
+  "qa_status": "render-ready",
+  "source_path": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium\\docs\\teach\\diagrams\\05-security-boundary\\gate5-and-transitional-security-boundary.dot",
+  "markdown_path": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium\\docs\\teach\\diagrams\\05-security-boundary\\gate5-and-transitional-security-boundary.md",
+  "caption_path": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium\\docs\\teach\\diagrams\\05-security-boundary\\caption.md",
+  "alt_text_path": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium\\docs\\teach\\diagrams\\05-security-boundary\\alt_text.md",
+  "rendered": {
+    "svg": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium\\docs\\teach\\diagrams\\05-security-boundary\\gate5-and-transitional-security-boundary.svg",
+    "png": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium\\docs\\teach\\diagrams\\05-security-boundary\\gate5-and-transitional-security-boundary.png"
+  },
+  "render_messages": {
+    "svg": "rendered",
+    "png": "rendered"
+  },
+  "tool_versions": {
+    "mmdc": "11.16.0",
+    "dot": "dot - graphviz version 15.1.0 (20260618.0150)"
+  },
+  "warnings": [],
+  "errors": []
+}

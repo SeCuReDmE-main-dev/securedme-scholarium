@@ -1,0 +1,1 @@
+Data lifecycle from purpose and consent to raw private interaction, observation, algorithmic hypothesis, bounded recommendation, human decision, and correction, alongside private learner, teacher, school, and commission projections.

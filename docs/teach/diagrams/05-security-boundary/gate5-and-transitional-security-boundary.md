@@ -1,0 +1,37 @@
+# Gate5 and Transitional Security Boundary
+
+![Security flow from browser TLS and authenticated sessions through role, tenant, consent, pseudonymization, Gate5 verification, isolated workers, canonical receipts, Bouncy Castle signing, threat evidence, technical-only Datadog metrics, and the geometry crypto wall.](gate5-and-transitional-security-boundary.svg)
+
+Caption: Figure 5. Gate5 fails closed before worker execution, Bouncy Castle signs content-free terminal receipt digests, and quasicrystal or Hilbert values remain structurally useful but cryptographically inert.
+
+```dot
+digraph ScholariumSecurity {
+  graph [rankdir=TB, bgcolor="#F7F8FC", pad="0.25", nodesep="0.46", ranksep="0.54", fontname="Arial"];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=11, margin="0.14,0.10", color="#D9E0EF", fillcolor="#FFFFFF", fontcolor="#10172F"];
+  edge [color="#63708A", penwidth=1.2, arrowsize=0.7, fontname="Arial", fontsize=9, fontcolor="#44506A"];
+
+  browser [label="Browser\nTLS + authenticated session"];
+  consent [label="Role + tenant + purpose consent"];
+  pseudo [label="Keyed pseudonymization\nminimum envelope"];
+  gate5 [label="Gate5 admission\nschema + signature + manifest + quota\nexpiry + nonce + revocation", fillcolor="#EEF3FF", color="#2157EE"];
+  deny [label="Fail closed before execution", fillcolor="#FFF0F0", color="#C85151"];
+  worker [label="Isolated private worker\nbounded process, network, files and time", fillcolor="#F2EEFF", color="#6F42FF"];
+  receipt [label="Canonical terminal receipt\nno learner content"];
+  bc [label="Bouncy Castle sidecar\nEd25519 signs receipt digest", fillcolor="#FFF8E6", color="#FFC857"];
+  audit [label="Replay, tamper, diff, recovery\nand interoperability evidence"];
+  logs [label="Datadog\ntechnical metadata only"];
+  geometry [label="Quasicrystal and Hilbert values\nstructural locators only"];
+  crypto_wall [label="Crypto wall\nnever KDF, AAD, key, vault or auth secret", fillcolor="#EAF9FF", color="#23B8FF"];
+
+  browser -> consent -> pseudo -> gate5;
+  { rank=same; deny; worker; logs; }
+  gate5 -> deny [label="invalid"];
+  gate5 -> worker [label="admitted"];
+  worker -> receipt -> bc;
+  bc -> audit [label="signed receipt"];
+  gate5 -> logs [label="status and latency"];
+  worker -> logs [label="technical outcome"];
+  geometry -> crypto_wall;
+  crypto_wall -> gate5 [style=dashed, label="proof metadata only"];
+}
+```

@@ -1,0 +1,20 @@
+{
+  "schema": "scholarium.gate5-adapter-registry.v1",
+  "transport": "durable_private_worker_outbox",
+  "active": {
+    "synthia": { "capability": "classification_trace", "authority": "traceability_support" },
+    "memory-lake": { "capability": "index_records", "method": "index_records" },
+    "hipporag": { "capability": "retrieve_dpr", "generation": "forbidden" },
+    "fnp-qnn": { "capability": "evaluate_pseudonymous_carrier", "hierarchy": "I -> I_system^S -> D_f -> dF -> i_fractal" },
+    "quantech-vid": { "capability": "render_confirmed_manifest", "raw_identity": "forbidden" }
+  },
+  "research_gated": {
+    "tenebris": { "capability": "ephemeral_processing", "memory_admission": "complete_destruction_receipt_only" }
+  },
+  "terminal_receipt": {
+    "schema": "scholarium.bc-ed25519-receipt.v1",
+    "algorithm": "Ed25519",
+    "provider": "BouncyCastle.Cryptography/2.6.2",
+    "unsigned_acceptance": "forbidden"
+  }
+}
