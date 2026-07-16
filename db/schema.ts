@@ -874,6 +874,49 @@ export const teachInterventionPreferences = sqliteTable("teach_intervention_pref
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
 
+/** Break-glass requests are temporary, dual-approved, single-use, and audit-only. */
+export const teachExceptionalAccessRequests = sqliteTable("teach_exceptional_access_requests", {
+  id: text("id").primaryKey(),
+  requesterUserId: text("requester_user_id").notNull().references(() => users.id),
+  subjectUserId: text("subject_user_id").notNull().references(() => users.id),
+  organizationId: text("organization_id").notNull().references(() => organizations.id),
+  scope: text("scope").notNull(),
+  justification: text("justification").notNull(),
+  incidentReference: text("incident_reference").notNull(),
+  status: text("status").notNull().default("pending_approvals"),
+  expiresAt: text("expires_at").notNull(),
+  approvedAt: text("approved_at"),
+  deniedAt: text("denied_at"),
+  usedAt: text("used_at"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("teach_exceptional_access_requester_idx").on(table.requesterUserId, table.createdAt),
+  index("teach_exceptional_access_subject_idx").on(table.subjectUserId, table.createdAt),
+  index("teach_exceptional_access_status_idx").on(table.organizationId, table.status, table.expiresAt),
+]);
+
+export const teachExceptionalAccessApprovals = sqliteTable("teach_exceptional_access_approvals", {
+  id: text("id").primaryKey(),
+  requestId: text("request_id").notNull().references(() => teachExceptionalAccessRequests.id),
+  approverUserId: text("approver_user_id").notNull().references(() => users.id),
+  decision: text("decision").notNull(),
+  rationale: text("rationale").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("teach_exceptional_access_approval_request_idx").on(table.requestId, table.createdAt),
+  uniqueIndex("teach_exceptional_access_approval_actor_idx").on(table.requestId, table.approverUserId),
+]);
+
+export const teachExceptionalAccessAuditEvents = sqliteTable("teach_exceptional_access_audit_events", {
+  id: text("id").primaryKey(),
+  requestId: text("request_id").notNull().references(() => teachExceptionalAccessRequests.id),
+  actorUserId: text("actor_user_id").notNull().references(() => users.id),
+  eventType: text("event_type").notNull(),
+  eventDigest: text("event_digest").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_exceptional_access_audit_request_idx").on(table.requestId, table.createdAt)]);
+
 export const growthStories = sqliteTable("growth_stories", {
   id: text("id").primaryKey(),
   userId: text("user_id").notNull().references(() => users.id),
