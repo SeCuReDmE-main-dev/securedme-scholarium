@@ -1,0 +1,41 @@
+{
+  "schema": "scholarium.teach-recovery-closeout.v1",
+  "recordedAt": "2026-07-16T06:35:00Z",
+  "programState": {
+    "completed": 161,
+    "blocked": 2,
+    "total": 163,
+    "percent": 98.77,
+    "blockedActions": [48, 157]
+  },
+  "deliverables": [
+    {
+      "path": "docs/teach/deliverables/recovery/Scholarium_Teach_Recovery_Master.md",
+      "sha256": "2ECBDF32E063AA80EFA8DD5F048EA83B281678D839C6BBE50BED590F29CD2CEE"
+    },
+    {
+      "path": "docs/teach/deliverables/recovery/Scholarium_Teach_Recovery_Master.docx",
+      "sha256": "6D8E37F0AEF28AE7AE679BA432A3A447684C442202E5BFECB07D24D39482C9C5"
+    },
+    {
+      "path": "docs/teach/deliverables/recovery/Scholarium_Teach_Recovery_Master.pdf",
+      "sha256": "DEEF11D5F70ED04D4E25D53B74585F88603F9450B17AE31EA4F690AD9827673B",
+      "pages": 26,
+      "visualInspection": "passed"
+    }
+  ],
+  "coverage": {
+    "actionsRepresentedExactlyOnce": 163,
+    "ideasRepresented": 45,
+    "sourceCards": 125
+  },
+  "validation": {
+    "productionBuild": "passed",
+    "fullNodeTests": "118/118 passed",
+    "focusedCloseoutTests": "12/12 passed",
+    "eslint": "0 errors, 20 pre-existing warnings",
+    "productionSmoke": "landing, app, Teach, API health and Spanish lesson returned HTTP 200",
+    "gitDiffCheck": "passed"
+  },
+  "authorityBoundary": "This closeout records implementation and evidence. It does not replace qualified Loi 25 review or interactive VS Code tunnel authentication."
+}
