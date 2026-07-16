@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholarium | Neumorphic Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#003fc6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#e0e4ff",
+                      "surface-variant": "#dce1ff",
+                      "outline": "#747687",
+                      "surface-tint": "#0f4ee6",
+                      "on-tertiary-fixed-variant": "#4a00d4",
+                      "on-tertiary-fixed": "#1d0061",
+                      "on-secondary-container": "#004462",
+                      "inverse-surface": "#292f48",
+                      "tertiary-container": "#6b3cfb",
+                      "on-error-container": "#93000a",
+                      "surface": "#F4F1E8",
+                      "on-background": "#131a32",
+                      "surface-dim": "#d2d9f9",
+                      "on-surface-variant": "#434655",
+                      "surface-container-highest": "#dce1ff",
+                      "on-primary": "#ffffff",
+                      "stewardship-gold": "#FFC857",
+                      "on-primary-fixed": "#001551",
+                      "on-secondary-fixed": "#001e2e",
+                      "tertiary-fixed-dim": "#cbbeff",
+                      "surface-soft": "#EEF3FF",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c3c5d8",
+                      "inverse-primary": "#b7c4ff",
+                      "error-container": "#ffdad6",
+                      "secondary": "#00658f",
+                      "on-tertiary-container": "#e9e1ff",
+                      "secondary-container": "#1eb6fd",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f3f2ff",
+                      "tertiary": "#520ee3",
+                      "secondary-fixed-dim": "#87ceff",
+                      "on-primary-fixed-variant": "#0039b5",
+                      "formalization-violet": "#6F42FF",
+                      "primary-container": "#2157ee",
+                      "surface-container": "#ebedff",
+                      "navy-ink": "#0B1230",
+                      "tertiary-fixed": "#e6deff",
+                      "night-bg": "#080D1C",
+                      "on-secondary-fixed-variant": "#004c6d",
+                      "secondary-fixed": "#c8e6ff",
+                      "background": "#F4F1E8",
+                      "on-tertiary": "#ffffff",
+                      "paper-cool": "#F7F8FC",
+                      "surface-bright": "#faf8ff",
+                      "surface-container-high": "#e4e7ff",
+                      "on-surface": "#131a32",
+                      "inverse-on-surface": "#eff0ff",
+                      "on-secondary": "#ffffff",
+                      "paper-warm": "#F4F1E8",
+                      "provenance-cyan": "#23B8FF",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "primary-fixed": "#dce1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.5rem",
+                      "xl": "1.5rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-v-rhythm-sm": "80px",
+                      "margin-desktop": "80px",
+                      "section-v-rhythm-lg": "140px",
+                      "margin-mobile": "16px",
+                      "container-max-width": "1180px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "hero-lg": ["Instrument Serif"],
+                      "headline-h2": ["Instrument Serif"],
+                      "headline-h3": ["Geist"],
+                      "metadata-micro": ["Geist"],
+                      "hero-lg-mobile": ["Instrument Serif"],
+                      "body-lg": ["Geist"],
+                      "label-caps": ["Geist"],
+                      "headline-h1": ["Instrument Serif"],
+                      "headline-h1-mobile": ["Instrument Serif"],
+                      "body-md": ["Geist"]
+              },
+              "fontSize": {
+                      "hero-lg": ["6.4rem", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "headline-h2": ["3.5rem", {"lineHeight": "1.3", "fontWeight": "400"}],
+                      "headline-h3": ["2rem", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "metadata-micro": ["0.625rem", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "hero-lg-mobile": ["3.8rem", {"lineHeight": "1.1", "fontWeight": "400"}],
+                      "body-lg": ["1.075rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["0.75rem", {"lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                      "headline-h1": ["4.4rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "headline-h1-mobile": ["2.8rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "body-md": ["0.9375rem", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F4F1E8;
+            color: #131a32;
+        }
+        .sch-paper-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+        /* Neumorphic Foundations */
+        .neu-flat {
+            background: #F4F1E8;
+            box-shadow: 12px 12px 24px #d0cdc5, -12px -12px 24px #ffffff;
+        }
+        .neu-raised {
+            background: #F4F1E8;
+            box-shadow: 6px 6px 12px #d0cdc5, -6px -6px 12px #ffffff;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+        .neu-inset {
+            background: #F4F1E8;
+            box-shadow: inset 6px 6px 12px #d0cdc5, inset -6px -6px 12px #ffffff;
+        }
+        .neu-pressed {
+            box-shadow: inset 2px 2px 5px #d0cdc5, inset -2px -2px 5px #ffffff;
+        }
+        /* Metallic Inlays */
+        .gold-inlay {
+            background: linear-gradient(135deg, #FFC857 0%, #D4A017 100%);
+            box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2), 1px 1px 1px rgba(255,255,255,0.3);
+            color: #10172F;
+        }
+        .gold-text-inlay {
+            color: #D4A017;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+        }
+        /* Mastery Dial */
+        .mastery-dial {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: #F4F1E8;
+            box-shadow: 20px 20px 60px #d0cdc5, -20px -20px 60px #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .dial-inner {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: #F4F1E8;
+            box-shadow: inset 10px 10px 20px #d0cdc5, inset -10px -10px 20px #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dial-knob {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #F4F1E8;
+            box-shadow: 4px 4px 10px #d0cdc5, -4px -4px 10px #ffffff;
+            transform: rotate(45deg);
+        }
+        .text-gradient-brand {
+            background: linear-gradient(135deg, #003fc6 0%, #6F42FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased overflow-x-hidden sch-paper-texture">
+<!-- Header -->
+<header class="bg-[#F4F1E8]/80 backdrop-blur-md font-body-md text-body-md top-0 sticky z-50 border-b border-white/20">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max-width mx-auto w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 flex items-center justify-center neu-raised rounded-lg rotate-12">
+<span class="text-primary font-bold -rotate-12">S</span>
+</div>
+<div class="font-headline-h3 text-xl tracking-tight text-navy-ink font-bold ml-2">SCHOLARIUM</div>
+</div>
+<nav class="hidden lg:flex items-center gap-8 bg-[#F4F1E8] px-6 py-2 rounded-full neu-inset">
+<a class="text-primary font-bold text-sm" href="#">Product</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Archive</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Trust</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Public</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="gold-inlay font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-widest transition-transform hover:scale-105 active:neu-pressed">Enter Archive</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-sm md:py-section-v-rhythm-lg grid lg:grid-cols-2 gap-20 items-center">
+<div class="flex flex-col gap-8">
+<div class="neu-inset px-4 py-1.5 rounded-full inline-flex self-start items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-stewardship-gold"></span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Pre-Alpha System 0.4.2</span>
+</div>
+<h1 class="font-hero-lg-mobile text-hero-lg-mobile md:font-hero-lg md:text-hero-lg text-navy-ink leading-tight">
+                Turn <span class="gold-text-inlay italic">knowledge</span> into <span class="gold-text-inlay italic">tactile</span> evidence.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg leading-relaxed opacity-80">
+                A physical-first social commons for deep research. Built so context and provenance are etched into every publication.
+            </p>
+<div class="flex flex-col sm:flex-row gap-6 pt-4">
+<button class="neu-raised font-bold px-8 py-4 rounded-xl text-navy-ink hover:neu-flat transition-all flex justify-center items-center gap-3">
+<span class="material-symbols-outlined text-primary">menu_book</span>
+                    Open the Library
+                </button>
+<button class="neu-inset border border-white/40 text-on-surface-variant font-bold px-8 py-4 rounded-xl transition-all">
+                    View Workflow
+                </button>
+</div>
+</div>
+<!-- Hero Visual: Neumorphic Mastery Dial -->
+<div class="flex justify-center items-center">
+<div class="mastery-dial">
+<div class="dial-inner">
+<div class="dial-knob flex items-center justify-center relative">
+<div class="absolute -top-1 w-2 h-2 bg-stewardship-gold rounded-full"></div>
+</div>
+</div>
+<!-- Status Indicators -->
+<div class="absolute top-10 left-10 neu-raised w-12 h-12 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div class="absolute bottom-10 right-10 neu-raised w-12 h-12 rounded-lg flex items-center justify-center text-stewardship-gold">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<div class="absolute bottom-1/2 right-4 neu-inset px-2 py-1 rounded text-[10px] font-mono text-outline uppercase">Mastery 08</div>
+</div>
+</div>
+</section>
+<!-- Content Sections as Tactile Objects -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-sm">
+<div class="grid md:grid-cols-3 gap-12">
+<!-- Object 1 -->
+<div class="neu-raised p-8 rounded-2xl flex flex-col items-start group">
+<div class="w-14 h-14 neu-inset rounded-xl flex items-center justify-center mb-8 text-primary group-hover:neu-raised transition-all">
+<span class="material-symbols-outlined">auto_stories</span>
+</div>
+<h3 class="font-headline-h3 text-xl mb-4 text-navy-ink">Deep Context</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Archive source trails that survive the digital noise. Knowledge etched in silicon.</p>
+<button class="mt-auto text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                    Examine <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</button>
+</div>
+<!-- Object 2 -->
+<div class="neu-flat p-8 rounded-2xl flex flex-col items-start group">
+<div class="w-14 h-14 neu-inset rounded-xl flex items-center justify-center mb-8 text-formalization-violet group-hover:neu-raised transition-all">
+<span class="material-symbols-outlined">architecture</span>
+</div>
+<h3 class="font-headline-h3 text-xl mb-4 text-navy-ink">Form &amp; Rigor</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Structured templates that act as physical guides for the inquisitive mind.</p>
+<button class="mt-auto text-xs font-bold uppercase tracking-widest text-formalization-violet flex items-center gap-2">
+                    Templates <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</button>
+</div>
+<!-- Object 3 -->
+<div class="neu-raised p-8 rounded-2xl flex flex-col items-start group">
+<div class="w-14 h-14 gold-inlay rounded-xl flex items-center justify-center mb-8">
+<span class="material-symbols-outlined">fingerprint</span>
+</div>
+<h3 class="font-headline-h3 text-xl mb-4 text-navy-ink">Human Origin</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Authorship backed by verified provenance. A legacy for the human thinker.</p>
+<button class="mt-auto text-xs font-bold uppercase tracking-widest text-stewardship-gold flex items-center gap-2">
+                    Principles <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Trust Log: Inset Panel -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-lg">
+<div class="neu-flat rounded-3xl p-1 md:p-4">
+<div class="bg-navy-ink rounded-[2rem] p-12 text-white relative overflow-hidden">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-headline-h2 text-white mb-8">Permanence by Design</h2>
+<div class="space-y-10">
+<div class="flex gap-6">
+<div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-provenance-cyan">lock</span>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-2">Sovereign Vault</h4>
+<p class="text-white/60 text-sm">Your research stays local by default. Encrypted, private, and owned by you.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-stewardship-gold">history_edu</span>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-2">Immutable Handoff</h4>
+<p class="text-white/60 text-sm">Every edit creates a versioned link in a permanent chain of stewardship.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="neu-inset bg-navy-ink border border-white/10 p-8 rounded-2xl">
+<div class="flex justify-between items-center mb-6">
+<span class="text-[10px] font-mono text-white/40 tracking-[0.2em] uppercase">Archive Log #8821</span>
+<div class="w-3 h-3 rounded-full bg-provenance-cyan animate-pulse"></div>
+</div>
+<div class="space-y-4 font-mono text-[11px] text-provenance-cyan/70">
+<div class="flex justify-between border-b border-white/5 pb-2">
+<span>RECORD_ID: 0x2A...FE82</span>
+<span class="text-stewardship-gold">COMMITTED</span>
+</div>
+<div class="flex justify-between border-b border-white/5 pb-2">
+<span>BLOCK_HEIGHT: 12,901,442</span>
+<span>2024.05.21</span>
+</div>
+<p class="pt-4 text-white/50 leading-relaxed italic">
+                                "The archive is not merely a place of storage, but a living engine of human verification."
+                            </p>
+</div>
+<div class="mt-10 h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary via-formalization-violet to-stewardship-gold w-3/4"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Artifact: Physical Card -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-sm">
+<div class="neu-raised rounded-3xl overflow-hidden grid md:grid-cols-12 border border-white/40">
+<div class="md:col-span-8 p-12 bg-[#F4F1E8]">
+<div class="flex gap-4 mb-8">
+<span class="neu-inset px-3 py-1 rounded text-[10px] font-bold text-primary">MS_PROTO_V4</span>
+<span class="neu-inset px-3 py-1 rounded text-[10px] font-bold text-outline">SECUREDME_ETCHED</span>
+</div>
+<h3 class="font-headline-h2 text-4xl mb-6 text-navy-ink">The Impact of Distributed Consensus on Academic Peer Review</h3>
+<p class="text-on-surface-variant mb-12 max-w-2xl leading-relaxed">A formal inquiry into the mechanics of decentralized authorship and the preservation of intellectual provenance within high-stakes research environments.</p>
+<div class="flex gap-12">
+<div>
+<div class="text-[10px] uppercase font-bold text-outline mb-1">Steward</div>
+<div class="text-sm font-bold text-navy-ink">Dr. Vance</div>
+</div>
+<div>
+<div class="text-[10px] uppercase font-bold text-outline mb-1">Receipt</div>
+<div class="text-sm font-mono text-primary">0x7F4...B91</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 neu-inset p-12 flex flex-col justify-between">
+<div>
+<div class="text-[10px] font-bold text-outline uppercase tracking-widest mb-6">Verification Level</div>
+<div class="neu-raised p-6 rounded-2xl flex items-center gap-4 bg-white/20">
+<div class="w-12 h-12 gold-inlay rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white">verified_user</span>
+</div>
+<div>
+<div class="text-xs font-bold text-navy-ink">Level 12 Scholar</div>
+<div class="text-[10px] text-stewardship-gold font-bold">GOLD STEWARD</div>
+</div>
+</div>
+</div>
+<button class="neu-raised w-full py-4 rounded-xl text-sm font-bold text-navy-ink hover:neu-flat transition-all">
+                    Unlock Full Metadata
+                </button>
+</div>
+</div>
+</section>
+<!-- Final CTA: The Heavy Press -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-lg text-center">
+<div class="neu-inset p-1 rounded-[3rem] inline-block">
+<div class="neu-flat rounded-[2.8rem] px-16 py-20">
+<h2 class="font-headline-h1 text-navy-ink mb-8">Etch your <span class="gold-text-inlay italic">legacy of thought.</span></h2>
+<div class="flex flex-col sm:flex-row justify-center gap-8">
+<button class="gold-inlay font-bold px-12 py-5 rounded-2xl text-lg hover:scale-105 active:neu-pressed transition-all">
+                        Begin Research
+                    </button>
+<button class="neu-raised font-bold px-12 py-5 rounded-2xl text-lg text-navy-ink hover:neu-flat active:neu-pressed transition-all">
+                        Join Community
+                    </button>
+</div>
+<div class="mt-12 flex flex-col items-center gap-2">
+<div class="w-1 h-12 bg-gradient-to-b from-transparent via-outline-variant to-transparent opacity-30"></div>
+<span class="text-[10px] font-mono text-outline uppercase tracking-[0.3em]">System: scholarium-v0.4-phys-alpha</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-navy-ink text-white/80 py-20 border-t border-white/5">
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-gutter mb-20">
+<div class="col-span-2 md:col-span-1 flex flex-col gap-6">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded border border-white/20 flex items-center justify-center">
+<span class="text-sm font-bold">S</span>
+</div>
+<span class="font-bold tracking-tight">SCHOLARIUM</span>
+</div>
+<p class="text-xs leading-relaxed opacity-50 max-w-xs font-mono">NEUMORPHIC ARCHIVE CORE. PROPERTY OF SECUREDME EDUCATION, INC.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-[10px] font-bold uppercase tracking-widest text-stewardship-gold">Infrastructure</h5>
+<a class="text-sm hover:text-white transition-colors" href="#">Library Root</a>
+<a class="text-sm hover:text-white transition-colors" href="#">Protocol</a>
+<a class="text-sm hover:text-white transition-colors" href="#">Vaults</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-[10px] font-bold uppercase tracking-widest text-stewardship-gold">Scholarly</h5>
+<a class="text-sm hover:text-white transition-colors" href="#">Stewardship</a>
+<a class="text-sm hover:text-white transition-colors" href="#">Peer Review</a>
+<a class="text-sm hover:text-white transition-colors" href="#">Templates</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-[10px] font-bold uppercase tracking-widest text-stewardship-gold">Trust</h5>
+<a class="text-sm hover:text-white transition-colors" href="#">Provenance</a>
+<a class="text-sm hover:text-white transition-colors" href="#">Identity</a>
+<a class="text-sm hover:text-white transition-colors" href="#">Ethics</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-[10px] font-bold uppercase tracking-widest text-stewardship-gold">Public</h5>
+<a class="text-sm hover:text-white transition-colors" href="#">Open Source</a>
+<a class="text-sm hover:text-white transition-colors" href="#">Roadmap</a>
+<a class="text-sm hover:text-white transition-colors" href="#">Receipts</a>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-[9px] font-mono opacity-30">
+                © 2024 SECUREDME EDUCATION. PHYSICAL DIGITAL ASSETS RESERVED.
+            </div>
+<div class="flex gap-8 text-[9px] font-bold uppercase tracking-[0.2em] opacity-40">
+<a href="#">Legal</a>
+<a href="#">Privacy</a>
+<a href="#">Sovereignty</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

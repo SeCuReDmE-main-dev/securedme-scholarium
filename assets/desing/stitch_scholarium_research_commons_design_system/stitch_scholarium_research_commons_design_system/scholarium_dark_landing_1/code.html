@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholarium - Evidence Commons</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#0039b5",
+                        "surface-container-highest": "#dce1ff",
+                        "inverse-on-surface": "#eff0ff",
+                        "primary-fixed": "#dce1ff",
+                        "on-primary-fixed": "#001551",
+                        "outline": "#747687",
+                        "secondary": "#00658f",
+                        "on-tertiary-container": "#e9e1ff",
+                        "on-surface": "#131a32",
+                        "surface-soft": "#EEF3FF",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#e6deff",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "provenance-cyan": "#23B8FF",
+                        "on-secondary-fixed": "#001e2e",
+                        "paper-cool": "#F7F8FC",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "secondary-fixed": "#c8e6ff",
+                        "secondary-container": "#1eb6fd",
+                        "on-secondary-container": "#004462",
+                        "on-secondary-fixed-variant": "#004c6d",
+                        "on-surface-variant": "#434655",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#faf8ff",
+                        "inverse-surface": "#292f48",
+                        "on-error": "#ffffff",
+                        "paper-warm": "#F4F1E8",
+                        "navy-ink": "#0B1230",
+                        "inverse-primary": "#b7c4ff",
+                        "surface-tint": "#0f4ee6",
+                        "on-tertiary-fixed": "#1d0061",
+                        "surface-dim": "#d2d9f9",
+                        "on-primary-container": "#e0e4ff",
+                        "surface-bright": "#faf8ff",
+                        "formalization-violet": "#6F42FF",
+                        "surface-container": "#ebedff",
+                        "on-secondary": "#ffffff",
+                        "primary": "#003fc6",
+                        "stewardship-gold": "#FFC857",
+                        "primary-container": "#2157ee",
+                        "on-background": "#131a32",
+                        "tertiary-container": "#6b3cfb",
+                        "outline-variant": "#c3c5d8",
+                        "surface-variant": "#dce1ff",
+                        "on-tertiary-fixed-variant": "#4a00d4",
+                        "tertiary-fixed-dim": "#cbbeff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "tertiary": "#520ee3",
+                        "surface-container-low": "#f3f2ff",
+                        "secondary-fixed-dim": "#87ceff",
+                        "night-bg": "#080D1C",
+                        "surface-container-high": "#e4e7ff",
+                        "background": "#faf8ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-v-rhythm-lg": "140px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "section-v-rhythm-sm": "80px",
+                        "container-max-width": "1180px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Geist"],
+                        "headline-h2": ["Instrument Serif"],
+                        "headline-h3": ["Geist"],
+                        "hero-lg-mobile": ["Instrument Serif"],
+                        "label-caps": ["Geist"],
+                        "headline-h1": ["Instrument Serif"],
+                        "hero-lg": ["Instrument Serif"],
+                        "body-md": ["Geist"],
+                        "headline-h1-mobile": ["Instrument Serif"],
+                        "metadata-micro": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["1.075rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-h2": ["3.5rem", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "headline-h3": ["2rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "hero-lg-mobile": ["3.8rem", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600" }],
+                        "headline-h1": ["4.4rem", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "hero-lg": ["6.4rem", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-h1-mobile": ["2.8rem", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "metadata-micro": ["0.625rem", { "lineHeight": "1.2", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+        /* Fallback for Geist if not available locally, assuming a similar sans-serif */
+        @font-face {
+            font-family: 'Geist';
+            src: local('Inter'), local('Helvetica Neue'), local('Arial');
+            /* In a real scenario, you'd load the actual Geist font files */
+        }
+
+        body {
+            background-color: theme('colors.night-bg');
+            color: theme('colors.surface-bright');
+        }
+
+        /* Subtle grid background for dark theme */
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .dark-panel {
+            background-color: rgba(17, 27, 61, 0.4); /* Slightly lighter navy */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .provenance-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, theme('colors.provenance-cyan'), transparent);
+        }
+
+        /* Receipt animation */
+        @keyframes stamp-fade {
+            0% { opacity: 0; transform: scale(1.1) rotate(-5deg); }
+            50% { opacity: 1; transform: scale(0.95) rotate(-2deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+        .stamp-animate {
+            animation: stamp-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden selection:bg-provenance-cyan/30 selection:text-surface-bright">
+<!-- 1. Header (TopAppBar) -->
+<header class="bg-surface/90 dark:bg-night-bg/90 backdrop-blur-md font-body-md text-body-md docked full-width top-0 sticky z-50 border-b border-outline-variant/30 dark:border-outline/20 flat no shadows flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max-width mx-auto">
+<div class="flex items-center gap-12">
+<a class="font-headline-h3 text-headline-h3 tracking-tight text-on-surface dark:text-surface-bright" href="#">SCHOLARIUM</a>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan transition-colors" href="#">Product</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan transition-colors" href="#">How it works</a>
+<a class="text-primary dark:text-provenance-cyan font-bold border-b-2 border-primary dark:border-provenance-cyan pb-1" href="#">Trust</a> <!-- Assuming Home/Landing acts as Trust context -->
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan transition-colors" href="#">Organizations</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan transition-colors" href="#">Public source</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4 text-on-surface-variant dark:text-outline-variant">
+<span class="material-symbols-outlined hover:text-primary dark:hover:text-provenance-cyan cursor-pointer transition-colors" data-icon="settings">settings</span>
+<span class="material-symbols-outlined hover:text-primary dark:hover:text-provenance-cyan cursor-pointer transition-colors" data-icon="visibility">visibility</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-body-md px-6 py-2 rounded transition-colors text-primary dark:text-primary-fixed-dim">Enter Scholarium</button>
+</div>
+</header>
+<main class="relative">
+<div class="absolute inset-0 bg-grid-pattern -z-10 pointer-events-none"></div>
+<!-- 2. Hero -->
+<section class="py-section-v-rhythm-lg px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto flex flex-col items-center text-center">
+<h1 class="font-hero-lg-mobile md:font-hero-lg text-hero-lg-mobile md:text-hero-lg text-surface-bright mb-8 max-w-4xl mx-auto leading-tight">
+                The Public Ledger for <br/><span class="text-provenance-cyan">Verified Knowledge.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-outline-variant max-w-2xl mx-auto mb-12">
+                Scholarium provides an immutable, transparent infrastructure for publishing, reviewing, and citing institutional research.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center w-full max-w-md mx-auto">
+<button class="bg-primary text-on-primary font-body-md px-8 py-3 rounded hover:bg-primary-container transition-colors w-full sm:w-auto">Start Publishing</button>
+<button class="border border-outline/30 text-surface-bright font-body-md px-8 py-3 rounded hover:bg-surface-container-highest/10 transition-colors w-full sm:w-auto">Explore Network</button>
+</div>
+</section>
+<div class="provenance-line max-w-4xl mx-auto opacity-30 my-8"></div>
+<!-- 3. Editorial Promise -->
+<section class="py-section-v-rhythm-sm px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-headline-h2 text-headline-h2 mb-6">A return to structural integrity.</h2>
+<p class="font-body-lg text-body-lg text-outline-variant mb-6">
+                        We are rebuilding the foundations of scholarly communication. No opaque algorithms, no predatory models. Just clean, durable evidence supported by a transparent web of trust.
+                    </p>
+<a class="font-body-md text-body-md text-provenance-cyan hover:text-surface-bright transition-colors flex items-center gap-2" href="#">
+                        Read our manifesto <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="dark-panel rounded-lg p-8 relative overflow-hidden h-96 flex items-center justify-center border-l-4 border-l-formalization-violet">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity" data-alt="A macro shot of a vintage printing press striking paper, lit by cool, analytical studio lighting. Deep navy shadows and crisp white highlights. The image conveys mechanical precision, history, and the durable recording of information." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD6pJ4upiMvb0bClTcTbGYHR0dP1sv1L9DZhbcRWKtb4cKbDnsG24GJT8cD_K3HWUcBPgck2Kdu9upB0NlVM82pSj-gbUa-82BxMtzDQdmM75IzYIFCC89SVUXchA1tNCA5DYkZzMgTsRgpC3lnbICoC8rt0jU2YfShMbdPuwTrx3cZPIduPxAbC_lUDCPG-WVRytFqhf_iMrvSpc5SOS5CChWdYbF6VvpUS-et5CNo02gXvf07xjAl')"></div>
+<div class="relative z-10 text-center">
+<span class="material-symbols-outlined text-6xl text-formalization-violet mb-4 opacity-80" data-weight="fill">account_balance</span>
+<p class="font-label-caps text-label-caps text-outline-variant tracking-widest uppercase">Institutional Archive</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Three-Part Workflow -->
+<section class="py-section-v-rhythm-lg px-margin-mobile md:px-margin-desktop bg-navy-ink/50 border-y border-outline/10">
+<div class="max-w-container-max-width mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Step 1 -->
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-full border border-outline/30 flex items-center justify-center text-provenance-cyan font-headline-h3 text-headline-h3">1</div>
+<h3 class="font-headline-h3 text-headline-h3">Draft &amp; Assert</h3>
+<p class="font-body-md text-body-md text-outline-variant">Compose in a structured environment designed for rigorous claims. Every assertion is cryptographically signed at origin.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-full border border-outline/30 flex items-center justify-center text-formalization-violet font-headline-h3 text-headline-h3">2</div>
+<h3 class="font-headline-h3 text-headline-h3">Open Peer Review</h3>
+<p class="font-body-md text-body-md text-outline-variant">Engage in transparent, version-controlled dialogue. Reviewers build reputation through constructive critique, visibly linked to the work.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-full border border-outline/30 flex items-center justify-center text-stewardship-gold font-headline-h3 text-headline-h3">3</div>
+<h3 class="font-headline-h3 text-headline-h3">Durable Publication</h3>
+<p class="font-body-md text-body-md text-outline-variant">Mint a permanent, citable artifact on the public ledger. Immune to link rot and institutional volatility.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Publication Artifact Demo (Provenance Receipt) -->
+<section class="py-section-v-rhythm-sm px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-h2 text-headline-h2 mb-4">The Provenance Receipt</h2>
+<p class="font-body-lg text-body-lg text-outline-variant max-w-2xl mx-auto">A digital certificate of authenticity, ensuring the lineage of every claim.</p>
+</div>
+<div class="max-w-3xl mx-auto dark-panel rounded-xl p-8 border border-stewardship-gold/30 shadow-[0_0_40px_rgba(255,200,87,0.05)] relative overflow-hidden" id="receipt-container">
+<div class="absolute top-0 right-0 w-32 h-32 bg-stewardship-gold/5 rounded-bl-full pointer-events-none"></div>
+<div class="flex justify-between items-start border-b border-outline/20 pb-6 mb-6">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-stewardship-gold text-xl" data-weight="fill">verified</span>
+<span class="font-label-caps text-label-caps text-stewardship-gold uppercase tracking-wider">Immutable Record</span>
+</div>
+<h4 class="font-headline-h3 text-headline-h3">Analysis of Global Trade Networks</h4>
+<p class="font-body-md text-body-md text-outline-variant mt-1">Dr. Elena Rostova • Institute of Economic Dynamics</p>
+</div>
+<div class="text-right">
+<div class="font-metadata-micro text-metadata-micro text-outline-variant uppercase mb-1">Receipt ID</div>
+<div class="font-mono text-sm text-surface-bright bg-surface/5 px-2 py-1 rounded">0x8F9...3A2B</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8 mb-8">
+<div>
+<div class="font-metadata-micro text-metadata-micro text-outline-variant uppercase mb-2">Timestamp</div>
+<div class="font-body-md text-body-md text-surface-bright">2024-10-27 14:32:01 UTC</div>
+</div>
+<div>
+<div class="font-metadata-micro text-metadata-micro text-outline-variant uppercase mb-2">Network State</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-provenance-cyan"></div>
+<span class="font-body-md text-body-md text-surface-bright">Finalized &amp; Distributed</span>
+</div>
+</div>
+</div>
+<div class="bg-night-bg/80 border border-outline/10 rounded p-4 flex items-center justify-between">
+<span class="font-body-md text-body-md text-outline-variant">Cryptographic Hash</span>
+<span class="font-mono text-xs text-outline-variant truncate max-w-[200px]">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+<button class="material-symbols-outlined text-outline-variant hover:text-surface-bright text-sm transition-colors">content_copy</button>
+</div>
+</div>
+</section>
+</main>
+<!-- 11. Footer -->
+<footer class="bg-surface dark:bg-night-bg font-body-md text-body-md text-on-surface dark:text-surface-bright full-width border-t border-outline-variant dark:border-outline/30 flat no shadows grid grid-cols-2 md:grid-cols-5 gap-gutter py-section-v-rhythm-sm px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto transition-colors duration-200 ease-in-out">
+<div class="col-span-2 md:col-span-2 flex flex-col justify-between">
+<span class="font-headline-h3 text-headline-h3 text-on-surface dark:text-surface-bright mb-4">SCHOLARIUM</span>
+<p class="font-body-md text-body-md text-outline-variant">© 2024 SecuredMe Education, Inc. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-label-caps text-outline-variant uppercase mb-2">Platform</span>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan underline decoration-1 underline-offset-4" href="#">Product</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan underline decoration-1 underline-offset-4" href="#">Publishing</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-label-caps text-outline-variant uppercase mb-2">Resources</span>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan underline decoration-1 underline-offset-4" href="#">Trust</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan underline decoration-1 underline-offset-4" href="#">Developers</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-label-caps text-outline-variant uppercase mb-2">Company</span>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan underline decoration-1 underline-offset-4" href="#">Legal</a>
+</div>
+</footer>
+<script>
+        // Simple intersection observer to trigger receipt animation on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const receipt = document.getElementById('receipt-container');
+            if(!receipt) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('stamp-animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            observer.observe(receipt);
+        });
+    </script>
+</body></html>

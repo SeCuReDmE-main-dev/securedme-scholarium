@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/static/Geist-Medium.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Brutalist Ledger Grid Overlay */
+        .grid-overlay {
+            background-size: calc((100% - (3 * 16px)) / 4 + 16px) 100%;
+            background-image: linear-gradient(to right, transparent calc(100% - 1px), #DFE4EF 1px);
+            pointer-events: none;
+        }
+        /* Custom scrollbar for a cleaner ledger look */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #faf8ff; }
+        ::-webkit-scrollbar-thumb { background: #0B1230; }
+
+        .brutalist-border {
+            border: 1px solid #131a32;
+        }
+        .paper-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "surface-dim": "#d2d9f9",
+                "tertiary": "#520ee3",
+                "paper-cool": "#F7F8FC",
+                "on-primary": "#ffffff",
+                "primary-fixed": "#dce1ff",
+                "on-error": "#ffffff",
+                "on-error-container": "#93000a",
+                "inverse-surface": "#292f48",
+                "surface-container": "#ebedff",
+                "navy-ink": "#0B1230",
+                "provenance-cyan": "#23B8FF",
+                "outline-variant": "#c3c5d8",
+                "secondary-container": "#1eb6fd",
+                "secondary": "#00658f",
+                "error": "#ba1a1a",
+                "tertiary-container": "#6b3cfb",
+                "primary-container": "#2157ee",
+                "on-secondary-fixed-variant": "#004c6d",
+                "background": "#faf8ff",
+                "stewardship-gold": "#FFC857",
+                "surface-container-highest": "#dce1ff",
+                "on-surface": "#131a32",
+                "surface-bright": "#faf8ff",
+                "formalization-violet": "#6F42FF",
+                "on-tertiary-fixed-variant": "#4a00d4",
+                "night-bg": "#080D1C",
+                "surface-variant": "#dce1ff",
+                "on-surface-variant": "#434655",
+                "outline": "#747687",
+                "surface-container-low": "#f3f2ff",
+                "secondary-fixed": "#c8e6ff",
+                "on-secondary-fixed": "#001e2e",
+                "inverse-on-surface": "#eff0ff",
+                "tertiary-fixed-dim": "#cbbeff",
+                "on-primary-container": "#e0e4ff",
+                "tertiary-fixed": "#e6deff",
+                "primary": "#003fc6",
+                "on-background": "#131a32",
+                "on-primary-fixed": "#001551",
+                "primary-fixed-dim": "#b7c4ff",
+                "inverse-primary": "#b7c4ff",
+                "surface-container-high": "#e4e7ff",
+                "on-tertiary-fixed": "#1d0061",
+                "on-secondary-container": "#004462",
+                "on-tertiary": "#ffffff",
+                "on-primary-fixed-variant": "#0039b5",
+                "surface": "#faf8ff",
+                "surface-tint": "#0f4ee6",
+                "on-tertiary-container": "#e9e1ff",
+                "error-container": "#ffdad6",
+                "secondary-fixed-dim": "#87ceff",
+                "on-secondary": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "paper-warm": "#F4F1E8",
+                "surface-soft": "#EEF3FF"
+              },
+              "borderRadius": {
+                "DEFAULT": "0px",
+                "lg": "0px",
+                "xl": "0px",
+                "full": "9999px"
+              },
+              "spacing": {
+                "margin-mobile": "16px",
+                "section-v-rhythm-sm": "48px",
+                "section-v-rhythm-lg": "80px",
+                "margin-desktop": "80px",
+                "container-max-width": "1180px",
+                "gutter": "16px"
+              },
+              "fontFamily": {
+                "body-md": ["Geist"],
+                "headline-h3": ["Geist"],
+                "metadata-micro": ["Geist"],
+                "headline-h2": ["Instrument Serif"],
+                "headline-h1-mobile": ["Instrument Serif"],
+                "label-caps": ["Geist"],
+                "body-lg": ["Geist"],
+                "hero-lg": ["Instrument Serif"],
+                "headline-h1": ["Instrument Serif"],
+                "hero-lg-mobile": ["Instrument Serif"]
+              },
+              "fontSize": {
+                "body-md": ["0.9375rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "headline-h3": ["1.5rem", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "metadata-micro": ["0.625rem", {"lineHeight": "1.2", "fontWeight": "500"}],
+                "headline-h2": ["2.8rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                "headline-h1-mobile": ["2.8rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                "label-caps": ["0.75rem", {"lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                "body-lg": ["1rem", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "hero-lg-mobile": ["3.2rem", {"lineHeight": "1.1", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-stewardship-gold selection:text-navy-ink overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 sticky z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30">
+<nav class="flex justify-between items-center px-margin-mobile py-4 max-w-container-max-width mx-auto">
+<span class="font-headline-h3 text-headline-h3 tracking-tight text-on-surface">SCHOLARIUM</span>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-on-surface-variant">visibility</span>
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</div>
+</nav>
+</header>
+<main class="relative">
+<!-- Grid lines overlay for mobile (4 columns) -->
+<div class="fixed inset-0 grid-overlay opacity-20 z-0"></div>
+<!-- Hero Section -->
+<section class="relative z-10 px-margin-mobile pt-12 pb-section-v-rhythm-sm">
+<div class="flex flex-col gap-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 border border-on-surface w-fit">
+<span class="w-2 h-2 bg-secondary animate-pulse"></span>
+<span class="font-label-caps text-label-caps uppercase">System Status: Integrity Nominal</span>
+</div>
+<h1 class="font-hero-lg-mobile text-hero-lg-mobile leading-[1] text-navy-ink">
+                    The machine <br/> never forgets <br/> <span class="italic text-primary">provenance.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[90%]">
+                    A brutalist ledger for institutional memory. Every fact anchored, every source verified, every change permanent.
+                </p>
+<div class="flex flex-col gap-3 pt-4">
+<button class="bg-navy-ink text-on-primary font-label-caps py-4 px-6 text-center border-2 border-navy-ink active:scale-95 transition-transform">
+                        ENTER SCHOLARIUM
+                    </button>
+<button class="border-2 border-navy-ink text-navy-ink font-label-caps py-4 px-6 text-center hover:bg-surface-container-low transition-colors">
+                        VIEW PROTOCOL
+                    </button>
+</div>
+</div>
+</section>
+<!-- Cryptographic Pulse (Visual Anchor) -->
+<section class="px-margin-mobile pb-section-v-rhythm-sm">
+<div class="border-2 border-navy-ink p-4 bg-surface-container-lowest relative overflow-hidden">
+<div class="flex justify-between items-start mb-8">
+<span class="font-label-caps text-label-caps">LATEST_BLOCK: 0x8F2A...9C1</span>
+<span class="font-label-caps text-label-caps text-secondary">ACTIVE</span>
+</div>
+<div class="h-32 w-full relative">
+<!-- Placeholder for dynamic visualization -->
+<div class="absolute inset-0 flex items-end gap-1">
+<div class="bg-navy-ink/10 w-full h-[20%]"></div>
+<div class="bg-navy-ink/20 w-full h-[40%]"></div>
+<div class="bg-navy-ink/40 w-full h-[70%]"></div>
+<div class="bg-navy-ink/60 w-full h-[50%]"></div>
+<div class="bg-navy-ink/80 w-full h-[90%]"></div>
+<div class="bg-primary w-full h-[100%]"></div>
+<div class="bg-navy-ink/70 w-full h-[60%]"></div>
+<div class="bg-navy-ink/30 w-full h-[30%]"></div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-navy-ink flex justify-between">
+<div class="flex flex-col">
+<span class="font-metadata-micro text-metadata-micro text-outline uppercase">Uptime</span>
+<span class="font-body-md text-body-md font-bold">99.9997%</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-metadata-micro text-metadata-micro text-outline uppercase">Latency</span>
+<span class="font-body-md text-body-md font-bold">14ms</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Stacking Principles -->
+<section class="bg-navy-ink text-on-primary px-margin-mobile py-section-v-rhythm-sm space-y-12">
+<h2 class="font-headline-h2 text-headline-h2 leading-none">The Core Principles</h2>
+<div class="space-y-8">
+<!-- Principle 1 -->
+<div class="border-l-4 border-stewardship-gold pl-6 space-y-3">
+<span class="font-label-caps text-stewardship-gold">01</span>
+<h3 class="font-headline-h3 text-headline-h3">Immutable Anchoring</h3>
+<p class="font-body-md text-surface-dim">Every educational record is cryptographically signed and hashed. Once committed, it cannot be altered without detection.</p>
+</div>
+<!-- Principle 2 -->
+<div class="border-l-4 border-provenance-cyan pl-6 space-y-3">
+<span class="font-label-caps text-provenance-cyan">02</span>
+<h3 class="font-headline-h3 text-headline-h3">Source Radicalism</h3>
+<p class="font-body-md text-surface-dim">We don't trust citations. We point directly to the raw data blocks, ensuring zero-knowledge verification of truth.</p>
+</div>
+<!-- Principle 3 -->
+<div class="border-l-4 border-formalization-violet pl-6 space-y-3">
+<span class="font-label-caps text-formalization-violet">03</span>
+<h3 class="font-headline-h3 text-headline-h3">Durable Stewardship</h3>
+<p class="font-body-md text-surface-dim">Technology decays; ledgers endure. Scholarium is built on archival-grade protocols designed for decadal survival.</p>
+</div>
+</div>
+</section>
+<!-- Workflow Cards (Boxed) -->
+<section class="px-margin-mobile py-section-v-rhythm-lg space-y-8">
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-primary">THE PROCESS</span>
+<h2 class="font-headline-h2 text-headline-h2 text-navy-ink">Evidence Workflow</h2>
+</div>
+<div class="space-y-6">
+<!-- Card 1 -->
+<div class="border-2 border-navy-ink p-6 bg-white shadow-[4px_4px_0px_0px_#131a32]">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center mb-6 border border-navy-ink">
+<span class="material-symbols-outlined text-navy-ink" data-icon="upload_file">upload_file</span>
+</div>
+<h4 class="font-headline-h3 text-[1.25rem] mb-2">1. Ingest Data</h4>
+<p class="font-body-md text-on-surface-variant mb-6">Upload raw JSON, PDF, or scholarly metadata directly into the validation funnel.</p>
+<div class="h-1 bg-surface-container overflow-hidden">
+<div class="h-full bg-navy-ink w-1/3"></div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="border-2 border-navy-ink p-6 bg-white shadow-[4px_4px_0px_0px_#131a32]">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center mb-6 border border-navy-ink">
+<span class="material-symbols-outlined text-navy-ink" data-icon="verified_user">verified_user</span>
+</div>
+<h4 class="font-headline-h3 text-[1.25rem] mb-2">2. Verify Provenance</h4>
+<p class="font-body-md text-on-surface-variant mb-6">Automated checks ensure the signature matches the originating institution's public key.</p>
+<div class="h-1 bg-surface-container overflow-hidden">
+<div class="h-full bg-navy-ink w-2/3"></div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="border-2 border-navy-ink p-6 bg-white shadow-[4px_4px_0px_0px_#131a32]">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center mb-6 border border-navy-ink">
+<span class="material-symbols-outlined text-navy-ink" data-icon="terminal">terminal</span>
+</div>
+<h4 class="font-headline-h3 text-[1.25rem] mb-2">3. Permanent Commit</h4>
+<p class="font-body-md text-on-surface-variant mb-6">The entry is finalized and stamped with a stewardship seal of durability.</p>
+<div class="h-1 bg-surface-container overflow-hidden">
+<div class="h-full bg-navy-ink w-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Image Callout -->
+<section class="px-margin-mobile pb-section-v-rhythm-lg">
+<div class="border-2 border-navy-ink overflow-hidden group">
+<div class="h-64 relative">
+<img class="w-full h-full object-cover grayscale brightness-90 hover:scale-105 transition-transform duration-700" data-alt="A high-contrast monochrome photograph of a brutalist concrete building with sharp geometric shadows. The lighting is harsh and direct, creating deep blacks and bright whites. The composition is low-angle, emphasizing institutional strength and monumental permanence, aligning with the scholarly and technological brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEq0HCNW3aXmGNr1Ap1lub6KHEM14Z4IZDe9jXUTkGOMp0apdym9wiwU7HDBHkqFr_Kd9wr5di6idMCkDesGavd_NWknKfqXLvFwtlNYoMP5y4BGsAAtj3Ja5tZek6Wtn5SyxhWk2no81VaEn_2TpuuK_MNE9KTPatMlQBFFeSVWX7eWrGAwpvVW-j9ndW8WKWaTdbjZZvLuhAFP4qAV--kLn6KBxNQHJOlqFWRw7HMRAgrCQjkgL1"/>
+<div class="absolute inset-0 bg-navy-ink/10 mix-blend-multiply"></div>
+<div class="absolute bottom-4 left-4 bg-white px-3 py-1 border border-navy-ink">
+<span class="font-label-caps text-[0.65rem]">ARCHIVE_LOC: 52.5200° N</span>
+</div>
+</div>
+<div class="p-6 bg-white">
+<h3 class="font-headline-h2 text-[2rem] mb-4">Built for Longevity</h3>
+<p class="font-body-md text-on-surface-variant">Scholarium is housed in sovereign data centers that prioritize physical security and power redundancy.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="full-width bg-surface border-t border-outline-variant">
+<div class="px-margin-mobile py-section-v-rhythm-sm space-y-12 max-w-container-max-width mx-auto">
+<div class="space-y-6">
+<span class="font-headline-h3 text-headline-h3 text-on-surface">SCHOLARIUM</span>
+<p class="font-body-md text-on-surface-variant">Securing the world's academic record through cryptographic stewardship.</p>
+</div>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-label-caps text-outline uppercase">Resources</span>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Product</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Publishing</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Trust</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-label-caps text-outline uppercase">Legal</span>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Developers</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Legal</a>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/30">
+<p class="font-metadata-micro text-metadata-micro text-outline-variant uppercase">© 2024 SecuredMe Education, Inc. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<!-- Bottom Navigation Shell (Mobile) -->
+<div class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] w-[calc(100%-32px)] max-w-sm">
+<div class="bg-navy-ink text-on-primary rounded-full px-6 py-4 flex justify-between items-center shadow-2xl border border-white/10">
+<button class="flex flex-col items-center gap-1 text-stewardship-gold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-metadata-micro text-[10px] uppercase">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/60 hover:text-white transition-colors">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-metadata-micro text-[10px] uppercase">Explore</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/60 hover:text-white transition-colors">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-metadata-micro text-[10px] uppercase">Ledger</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-white/60 hover:text-white transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-metadata-micro text-[10px] uppercase">Profile</span>
+</button>
+</div>
+</div>
+<script>
+        // Simple scroll reveal interaction for cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.border-2').forEach(card => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(20px)";
+            card.style.transition = "all 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+            observer.observe(card);
+        });
+    </script>
+</body></html>

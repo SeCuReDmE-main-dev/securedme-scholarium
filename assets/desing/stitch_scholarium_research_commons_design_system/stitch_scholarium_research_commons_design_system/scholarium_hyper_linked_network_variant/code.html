@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholarium | Hyper-Linked Node Graph</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#003fc6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#e0e4ff",
+                      "surface-variant": "#dce1ff",
+                      "outline": "#747687",
+                      "surface-tint": "#0f4ee6",
+                      "on-tertiary-fixed-variant": "#4a00d4",
+                      "on-tertiary-fixed": "#1d0061",
+                      "on-secondary-container": "#004462",
+                      "inverse-surface": "#292f48",
+                      "tertiary-container": "#6b3cfb",
+                      "on-error-container": "#93000a",
+                      "surface": "#faf8ff",
+                      "on-background": "#131a32",
+                      "surface-dim": "#d2d9f9",
+                      "on-surface-variant": "#434655",
+                      "surface-container-highest": "#dce1ff",
+                      "on-primary": "#ffffff",
+                      "stewardship-gold": "#FFC857",
+                      "on-primary-fixed": "#001551",
+                      "on-secondary-fixed": "#001e2e",
+                      "tertiary-fixed-dim": "#cbbeff",
+                      "surface-soft": "#EEF3FF",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c3c5d8",
+                      "inverse-primary": "#b7c4ff",
+                      "error-container": "#ffdad6",
+                      "secondary": "#00658f",
+                      "on-tertiary-container": "#e9e1ff",
+                      "secondary-container": "#1eb6fd",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f3f2ff",
+                      "tertiary": "#520ee3",
+                      "secondary-fixed-dim": "#87ceff",
+                      "on-primary-fixed-variant": "#0039b5",
+                      "formalization-violet": "#6F42FF",
+                      "primary-container": "#2157ee",
+                      "surface-container": "#ebedff",
+                      "navy-ink": "#0B1230",
+                      "tertiary-fixed": "#e6deff",
+                      "night-bg": "#080D1C",
+                      "on-secondary-fixed-variant": "#004c6d",
+                      "secondary-fixed": "#c8e6ff",
+                      "background": "#faf8ff",
+                      "on-tertiary": "#ffffff",
+                      "paper-cool": "#F7F8FC",
+                      "surface-bright": "#faf8ff",
+                      "surface-container-high": "#e4e7ff",
+                      "on-surface": "#131a32",
+                      "inverse-on-surface": "#eff0ff",
+                      "on-secondary": "#ffffff",
+                      "paper-warm": "#F4F1E8",
+                      "provenance-cyan": "#23B8FF",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "primary-fixed": "#dce1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "section-v-rhythm-sm": "80px",
+                      "margin-desktop": "80px",
+                      "section-v-rhythm-lg": "140px",
+                      "margin-mobile": "16px",
+                      "container-max-width": "1180px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "hero-lg": ["Instrument Serif"],
+                      "headline-h2": ["Instrument Serif"],
+                      "headline-h3": ["Geist"],
+                      "metadata-micro": ["Geist"],
+                      "hero-lg-mobile": ["Instrument Serif"],
+                      "body-lg": ["Geist"],
+                      "label-caps": ["Geist"],
+                      "headline-h1": ["Instrument Serif"],
+                      "headline-h1-mobile": ["Instrument Serif"],
+                      "body-md": ["Geist"]
+              },
+              "fontSize": {
+                      "hero-lg": ["6.4rem", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "headline-h2": ["3.5rem", {"lineHeight": "1.3", "fontWeight": "400"}],
+                      "headline-h3": ["2rem", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "metadata-micro": ["0.625rem", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "hero-lg-mobile": ["3.8rem", {"lineHeight": "1.1", "fontWeight": "400"}],
+                      "body-lg": ["1.075rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["0.75rem", {"lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                      "headline-h1": ["4.4rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "headline-h1-mobile": ["2.8rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "body-md": ["0.9375rem", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #0B1230;
+            color: #faf8ff;
+            overflow: hidden; /* Disable standard scrolling */
+        }
+
+        .archival-space {
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(35, 184, 255, 0.05) 0%, transparent 70%),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 60px 60px, 60px 60px;
+            z-index: -1;
+        }
+
+        .node-canvas {
+            position: absolute;
+            width: 5000px;
+            height: 5000px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .node {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px border rgba(255, 255, 255, 0.1);
+            border-radius: 2rem;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .node:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(35, 184, 255, 0.4);
+            box-shadow: 0 0 40px rgba(35, 184, 255, 0.1);
+        }
+
+        .node.active {
+            transform: scale(1.1);
+            border-color: #23B8FF;
+            box-shadow: 0 0 60px rgba(35, 184, 255, 0.2);
+            z-index: 50;
+        }
+
+        .connection-line {
+            position: absolute;
+            z-index: -1;
+            pointer-events: none;
+            stroke-width: 1.5;
+            stroke-dasharray: 5 5;
+            animation: flow 20s linear infinite;
+        }
+
+        @keyframes flow {
+            from { stroke-dashoffset: 100; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        .text-gradient-brand {
+            background: linear-gradient(135deg, #23B8FF 0%, #6F42FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Nav HUD */
+        .hud {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(11, 18, 48, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            display: flex;
+            gap: 2rem;
+            z-index: 100;
+        }
+
+        .hud-btn {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .hud-btn.active {
+            color: #FFC857;
+        }
+
+        .node-label {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            font-family: 'Geist', sans-serif;
+            font-weight: 700;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: #23B8FF;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased sch-paper-texture">
+<!-- Global Background Elements -->
+<div class="archival-space"></div>
+<!-- Top Header HUD -->
+<header class="fixed top-0 left-0 w-full z-[100] px-8 py-6 flex justify-between items-center pointer-events-none">
+<div class="flex items-center gap-3 pointer-events-auto">
+<div class="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary to-formalization-violet rounded-sm rotate-45 overflow-hidden">
+<span class="text-white font-bold -rotate-45">S</span>
+</div>
+<div class="font-headline-h3 text-xl tracking-tight text-white font-bold">SCHOLARIUM</div>
+</div>
+<div class="flex items-center gap-6 pointer-events-auto">
+<span class="text-[10px] font-mono text-white/40">SYSTEM_STATUS: PRE_ALPHA_STABLE</span>
+<button class="bg-stewardship-gold text-navy-ink font-bold px-4 py-2 rounded text-xs uppercase tracking-widest transition-transform hover:scale-105">Enter Console</button>
+</div>
+</header>
+<!-- Interactive Node Map Canvas -->
+<div class="node-canvas" id="canvas">
+<!-- Connection Lines Layer (SVG) -->
+<svg class="absolute inset-0 w-full h-full" id="connections">
+<!-- Central Hub to Hero -->
+<path class="connection-line stroke-provenance-cyan" d="M2500,2500 L2500,2000" fill="none"></path>
+<!-- Hero to Workflow -->
+<path class="connection-line stroke-formalization-violet" d="M2500,2000 L3000,1800" fill="none"></path>
+<!-- Workflow to Artifact -->
+<path class="connection-line stroke-provenance-cyan" d="M3000,1800 L3400,2200" fill="none"></path>
+<!-- Hero to Trust -->
+<path class="connection-line stroke-stewardship-gold" d="M2500,2000 L2000,1800" fill="none"></path>
+<!-- Trust to Ecosystem -->
+<path class="connection-line stroke-formalization-violet" d="M2000,1800 L1600,2200" fill="none"></path>
+<!-- Central Hub to Final CTA -->
+<path class="connection-line stroke-stewardship-gold" d="M2500,2500 L2500,3100" fill="none"></path>
+</svg>
+<!-- Nodes -->
+<!-- Central Hub Node -->
+<div class="node active p-12 w-[600px]" id="node-hero" style="top: 2500px; left: 2500px; transform: translate(-50%, -50%);">
+<div class="node-label">NODE_00: GENESIS</div>
+<div class="flex flex-col gap-6">
+<div class="font-label-caps text-[10px] text-provenance-cyan uppercase tracking-widest flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-provenance-cyan animate-pulse"></span>
+                    SECUREDME EDUCATION / RESEARCH COMMONS
+                </div>
+<h1 class="font-hero-lg text-5xl text-white leading-tight">
+                    Turn <span class="text-stewardship-gold italic">knowledge</span> into <span class="text-stewardship-gold italic">traceable</span> evidence.
+                </h1>
+<p class="font-body-md text-white/60 max-w-md">
+                    A free social commons for research, learning, and organizational work — where publications and provenance remain permanently connected.
+                </p>
+<div class="flex gap-4">
+<button class="bg-stewardship-gold text-navy-ink font-bold px-6 py-3 rounded text-sm transition-all hover:scale-105">Explore Network</button>
+<button class="border border-white/20 text-white font-bold px-6 py-3 rounded text-sm hover:bg-white/5">View Protocol</button>
+</div>
+</div>
+</div>
+<!-- Workflow Node -->
+<div class="node p-10 w-[450px]" id="node-workflow" style="top: 1800px; left: 3000px; transform: translate(-50%, -50%);">
+<div class="node-label">NODE_01: WORKFLOW</div>
+<h2 class="font-headline-h2 text-3xl mb-6 text-white">Three-Part Rigor</h2>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 shrink-0 bg-provenance-cyan/20 rounded flex items-center justify-center text-provenance-cyan">
+<span class="material-symbols-outlined text-xl">share</span>
+</div>
+<div>
+<div class="text-sm font-bold text-white">Deep Context</div>
+<p class="text-xs text-white/40">Source trails that survive the feed.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 shrink-0 bg-formalization-violet/20 rounded flex items-center justify-center text-formalization-violet">
+<span class="material-symbols-outlined text-xl">account_tree</span>
+</div>
+<div>
+<div class="text-sm font-bold text-white">Structured Learning</div>
+<p class="text-xs text-white/40">Guided rigor without stifling voice.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Artifact Node -->
+<div class="node p-8 w-[500px]" id="node-artifact" style="top: 2200px; left: 3400px; transform: translate(-50%, -50%);">
+<div class="node-label">NODE_02: THE_ARTIFACT</div>
+<div class="bg-navy-ink/50 rounded-xl p-6 border border-white/10">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[9px] text-white/30 font-mono">DRAFT v4.2 // RESEARCH</span>
+<span class="px-1.5 py-0.5 bg-stewardship-gold text-navy-ink text-[8px] font-bold rounded">VERIFIED</span>
+</div>
+<h3 class="font-headline-h3 text-lg text-white mb-2 leading-tight">The Impact of Distributed Consensus on Academic Peer Review</h3>
+<div class="flex items-center gap-4 mt-6">
+<div class="flex flex-col">
+<span class="text-[8px] text-white/40 uppercase">Author</span>
+<span class="text-[10px] text-white font-bold">Dr. E. Vance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[8px] text-white/40 uppercase">Provenance ID</span>
+<span class="text-[10px] text-provenance-cyan font-mono">0x7F4A...B991</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Trust Node -->
+<div class="node p-10 w-[450px]" id="node-trust" style="top: 1800px; left: 2000px; transform: translate(-50%, -50%);">
+<div class="node-label">NODE_03: TRUST_CORE</div>
+<h2 class="font-headline-h2 text-3xl mb-8 text-white leading-none">Trust by Design</h2>
+<div class="space-y-6">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-stewardship-gold">fingerprint</span>
+<p class="text-xs text-white/60 leading-relaxed"><strong class="text-white block">Sovereign Identity</strong> Your data stays local by default. Privacy with boundaries.</p>
+</div>
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-provenance-cyan">history_edu</span>
+<p class="text-xs text-white/60 leading-relaxed"><strong class="text-white block">Provenance Receipting</strong> Every claim is linked to its verifiable source chain.</p>
+</div>
+</div>
+</div>
+<!-- Ecosystem Node -->
+<div class="node p-8 w-[400px]" id="node-ecosystem" style="top: 2200px; left: 1600px; transform: translate(-50%, -50%);">
+<div class="node-label">NODE_04: THE_SUITE</div>
+<p class="text-[11px] text-white/40 mb-6 uppercase tracking-wider font-bold">SecuredMe Root Components</p>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 bg-white/5 border border-white/10 rounded-lg flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-lg text-primary mb-1">shield</span>
+<span class="text-[9px] font-bold text-white uppercase">Privacy Vault</span>
+</div>
+<div class="p-3 bg-white/5 border border-white/10 rounded-lg flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-lg text-formalization-violet mb-1">auto_awesome</span>
+<span class="text-[9px] font-bold text-white uppercase">Coach</span>
+</div>
+</div>
+</div>
+<!-- Final CTA Node -->
+<div class="node p-12 w-[600px] text-center" id="node-cta" style="top: 3100px; left: 2500px; transform: translate(-50%, -50%);">
+<div class="node-label">NODE_99: LEGACY_TARGET</div>
+<h2 class="font-headline-h1-mobile text-4xl text-white mb-6">Build your <span class="text-stewardship-gold italic">legacy of knowledge.</span></h2>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-stewardship-gold text-navy-ink font-bold px-10 py-4 rounded-full text-sm">Start Research</button>
+<button class="bg-white/10 text-white font-bold px-10 py-4 rounded-full text-sm hover:bg-white/20 border border-white/20">Join Community</button>
+</div>
+<div class="mt-8 font-mono text-[9px] text-white/20">Current Hash: scholarium-v0.4.2-alpha_6f9a2</div>
+</div>
+</div>
+<!-- Navigation HUD -->
+<nav class="hud">
+<button class="hud-btn active" onclick="zoomTo('hero')">Genesis</button>
+<button class="hud-btn" onclick="zoomTo('workflow')">Workflow</button>
+<button class="hud-btn" onclick="zoomTo('artifact')">Artifacts</button>
+<button class="hud-btn" onclick="zoomTo('trust')">Trust</button>
+<button class="hud-btn" onclick="zoomTo('ecosystem')">SecuredMe</button>
+<button class="hud-btn" onclick="zoomTo('cta')">Engage</button>
+</nav>
+<!-- Pre-Alpha Floating Alert -->
+<div class="fixed bottom-6 right-6 z-[100] bg-error-container/10 backdrop-blur-md border border-error/20 p-4 rounded-xl max-w-xs">
+<div class="flex items-center gap-2 mb-2 text-error text-[10px] font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">warning</span>
+            Pre-Alpha Environment
+        </div>
+<p class="text-[10px] text-white/40 leading-tight">Live research environment. Personal data stored local-first by default.</p>
+</div>
+<script>
+        const canvas = document.getElementById('canvas');
+        const nodes = {
+            'hero': { x: 2500, y: 2500, element: document.getElementById('node-hero') },
+            'workflow': { x: 3000, y: 1800, element: document.getElementById('node-workflow') },
+            'artifact': { x: 3400, y: 2200, element: document.getElementById('node-artifact') },
+            'trust': { x: 2000, y: 1800, element: document.getElementById('node-trust') },
+            'ecosystem': { x: 1600, y: 2200, element: document.getElementById('node-ecosystem') },
+            'cta': { x: 2500, y: 3100, element: document.getElementById('node-cta') }
+        };
+
+        function zoomTo(nodeId) {
+            const node = nodes[nodeId];
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            // Calculate center of node relative to the 5000px canvas
+            const translateX = 2500 - node.x;
+            const translateY = 2500 - node.y;
+
+            // Apply transform to center the node in the screen
+            canvas.style.transform = `translate(calc(-50% + ${translateX}px), calc(-50% + ${translateY}px))`;
+
+            // Update UI
+            document.querySelectorAll('.node').forEach(n => n.classList.remove('active'));
+            node.element.classList.add('active');
+
+            document.querySelectorAll('.hud-btn').forEach(b => {
+                b.classList.toggle('active', b.getAttribute('onclick').includes(`'${nodeId}'`));
+            });
+        }
+
+        // Handle clicks on nodes themselves
+        Object.keys(nodes).forEach(id => {
+            nodes[id].element.addEventListener('click', (e) => {
+                e.stopPropagation();
+                zoomTo(id);
+            });
+        });
+
+        // Optional: Simple scroll listener to change nodes
+        let currentIdx = 0;
+        const nodeKeys = Object.keys(nodes);
+        window.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaY) < 50) return;
+            if (e.deltaY > 0) {
+                currentIdx = Math.min(nodeKeys.length - 1, currentIdx + 1);
+            } else {
+                currentIdx = Math.max(0, currentIdx - 1);
+            }
+            zoomTo(nodeKeys[currentIdx]);
+        }, { passive: true });
+
+    </script>
+</body></html>
