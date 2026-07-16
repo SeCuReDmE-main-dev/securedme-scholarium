@@ -1,0 +1,507 @@
+{
+  "authorityBoundary": "Graph membership is a traceability state, not approval of a scientific, legal, or pedagogical claim.",
+  "category": "mastery_retrieval",
+  "edges": [
+    {
+      "id": "edge:source-229febf3edbbee936047:0",
+      "predicate": "classified_in",
+      "source": "source-229febf3edbbee936047",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-229febf3edbbee936047:1",
+      "predicate": "issued_by",
+      "source": "source-229febf3edbbee936047",
+      "status": "metadata_supported",
+      "target": "authority:73076fc2ff9a7b36"
+    },
+    {
+      "id": "edge:source-229febf3edbbee936047:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-229febf3edbbee936047",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mastery"
+    },
+    {
+      "id": "edge:source-38ddd36506cf595a7daa:0",
+      "predicate": "classified_in",
+      "source": "source-38ddd36506cf595a7daa",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-38ddd36506cf595a7daa:1",
+      "predicate": "issued_by",
+      "source": "source-38ddd36506cf595a7daa",
+      "status": "metadata_supported",
+      "target": "authority:a38466a51d291c7a"
+    },
+    {
+      "id": "edge:source-38ddd36506cf595a7daa:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-38ddd36506cf595a7daa",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:recall"
+    },
+    {
+      "id": "edge:source-60a09981ec36aadf72d4:0",
+      "predicate": "classified_in",
+      "source": "source-60a09981ec36aadf72d4",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-60a09981ec36aadf72d4:1",
+      "predicate": "issued_by",
+      "source": "source-60a09981ec36aadf72d4",
+      "status": "metadata_supported",
+      "target": "authority:0f370ed855810269"
+    },
+    {
+      "id": "edge:source-60a09981ec36aadf72d4:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-60a09981ec36aadf72d4",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mastery"
+    },
+    {
+      "id": "edge:source-60c02b98a089a47ba191:0",
+      "predicate": "classified_in",
+      "source": "source-60c02b98a089a47ba191",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-60c02b98a089a47ba191:1",
+      "predicate": "issued_by",
+      "source": "source-60c02b98a089a47ba191",
+      "status": "metadata_supported",
+      "target": "authority:fe3fcf150dffc3ed"
+    },
+    {
+      "id": "edge:source-60c02b98a089a47ba191:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-60c02b98a089a47ba191",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:retrieval"
+    },
+    {
+      "id": "edge:source-61b635777b596dd3eb19:0",
+      "predicate": "classified_in",
+      "source": "source-61b635777b596dd3eb19",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-61b635777b596dd3eb19:1",
+      "predicate": "issued_by",
+      "source": "source-61b635777b596dd3eb19",
+      "status": "metadata_supported",
+      "target": "authority:a6ac555a2bc5f528"
+    },
+    {
+      "id": "edge:source-61b635777b596dd3eb19:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-61b635777b596dd3eb19",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mastery"
+    },
+    {
+      "id": "edge:source-70ed4fde80980fb73e47:0",
+      "predicate": "classified_in",
+      "source": "source-70ed4fde80980fb73e47",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-70ed4fde80980fb73e47:1",
+      "predicate": "issued_by",
+      "source": "source-70ed4fde80980fb73e47",
+      "status": "metadata_supported",
+      "target": "authority:db19aec5cb929a18"
+    },
+    {
+      "id": "edge:source-70ed4fde80980fb73e47:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-70ed4fde80980fb73e47",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mastery"
+    },
+    {
+      "id": "edge:source-7414a2defcec83a1b7db:0",
+      "predicate": "classified_in",
+      "source": "source-7414a2defcec83a1b7db",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-7414a2defcec83a1b7db:1",
+      "predicate": "issued_by",
+      "source": "source-7414a2defcec83a1b7db",
+      "status": "metadata_supported",
+      "target": "authority:a6ba9cfcac121b16"
+    },
+    {
+      "id": "edge:source-7414a2defcec83a1b7db:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-7414a2defcec83a1b7db",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mastery"
+    },
+    {
+      "id": "edge:source-75d0b173f74c25945eb8:0",
+      "predicate": "classified_in",
+      "source": "source-75d0b173f74c25945eb8",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-75d0b173f74c25945eb8:1",
+      "predicate": "issued_by",
+      "source": "source-75d0b173f74c25945eb8",
+      "status": "metadata_supported",
+      "target": "authority:38c667f456c2cb2b"
+    },
+    {
+      "id": "edge:source-75d0b173f74c25945eb8:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-75d0b173f74c25945eb8",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mastery"
+    },
+    {
+      "id": "edge:source-a7511666296da4bbb251:0",
+      "predicate": "classified_in",
+      "source": "source-a7511666296da4bbb251",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-a7511666296da4bbb251:1",
+      "predicate": "issued_by",
+      "source": "source-a7511666296da4bbb251",
+      "status": "metadata_supported",
+      "target": "authority:db1479fc7ab66fe5"
+    },
+    {
+      "id": "edge:source-a7511666296da4bbb251:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-a7511666296da4bbb251",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mastery"
+    },
+    {
+      "id": "edge:source-cb7400a88bbbd8c70974:0",
+      "predicate": "classified_in",
+      "source": "source-cb7400a88bbbd8c70974",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-cb7400a88bbbd8c70974:1",
+      "predicate": "issued_by",
+      "source": "source-cb7400a88bbbd8c70974",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-cb7400a88bbbd8c70974:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-cb7400a88bbbd8c70974",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:assessment"
+    },
+    {
+      "id": "edge:source-d59905c913a4704ec6eb:0",
+      "predicate": "classified_in",
+      "source": "source-d59905c913a4704ec6eb",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-d59905c913a4704ec6eb:1",
+      "predicate": "issued_by",
+      "source": "source-d59905c913a4704ec6eb",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-d59905c913a4704ec6eb:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-d59905c913a4704ec6eb",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:assessment"
+    },
+    {
+      "id": "edge:source-dbd978d36c3f7dbcb372:0",
+      "predicate": "classified_in",
+      "source": "source-dbd978d36c3f7dbcb372",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-dbd978d36c3f7dbcb372:1",
+      "predicate": "issued_by",
+      "source": "source-dbd978d36c3f7dbcb372",
+      "status": "metadata_supported",
+      "target": "authority:df38fa483ae1f77a"
+    },
+    {
+      "id": "edge:source-dbd978d36c3f7dbcb372:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-dbd978d36c3f7dbcb372",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mastery"
+    },
+    {
+      "id": "edge:source-e50a157b40c331099bba:0",
+      "predicate": "classified_in",
+      "source": "source-e50a157b40c331099bba",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-e50a157b40c331099bba:1",
+      "predicate": "issued_by",
+      "source": "source-e50a157b40c331099bba",
+      "status": "metadata_supported",
+      "target": "authority:a4dbf6e8706fa4dd"
+    },
+    {
+      "id": "edge:source-e50a157b40c331099bba:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-e50a157b40c331099bba",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mastery"
+    },
+    {
+      "id": "edge:source-e9a8d81c7bb4fffb6846:0",
+      "predicate": "classified_in",
+      "source": "source-e9a8d81c7bb4fffb6846",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-e9a8d81c7bb4fffb6846:1",
+      "predicate": "issued_by",
+      "source": "source-e9a8d81c7bb4fffb6846",
+      "status": "metadata_supported",
+      "target": "authority:206b7cc7aab4f2fc"
+    },
+    {
+      "id": "edge:source-e9a8d81c7bb4fffb6846:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-e9a8d81c7bb4fffb6846",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mastery"
+    },
+    {
+      "id": "edge:source-ef1acea30d89dcd7d243:0",
+      "predicate": "classified_in",
+      "source": "source-ef1acea30d89dcd7d243",
+      "status": "metadata_supported",
+      "target": "category:mastery_retrieval"
+    },
+    {
+      "id": "edge:source-ef1acea30d89dcd7d243:1",
+      "predicate": "issued_by",
+      "source": "source-ef1acea30d89dcd7d243",
+      "status": "metadata_supported",
+      "target": "authority:a38466a51d291c7a"
+    },
+    {
+      "id": "edge:source-ef1acea30d89dcd7d243:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-ef1acea30d89dcd7d243",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:retrieval"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "authority:099ecbe5d380e7f5",
+      "label": "SAGE Publications",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:0f370ed855810269",
+      "label": "Universitas Hamzanwadi",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:206b7cc7aab4f2fc",
+      "label": "Wiley",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:38c667f456c2cb2b",
+      "label": "University Library System, University of Pittsburgh",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:73076fc2ff9a7b36",
+      "label": "Universitas Yudharta Pasuruan",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:a38466a51d291c7a",
+      "label": "Elsevier BV",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:a4dbf6e8706fa4dd",
+      "label": "Ovid Technologies (Wolters Kluwer Health)",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:a6ac555a2bc5f528",
+      "label": "Radinka Jaya Utama Publisher",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:a6ba9cfcac121b16",
+      "label": "MDPI AG",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:db1479fc7ab66fe5",
+      "label": "Liberal of Arts, Thammasat University",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:db19aec5cb929a18",
+      "label": "Tikrit University",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:df38fa483ae1f77a",
+      "label": "Springer Science and Business Media LLC",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:fe3fcf150dffc3ed",
+      "label": "Medknow",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "category:mastery_retrieval",
+      "label": "mastery_retrieval",
+      "type": "education_category"
+    },
+    {
+      "id": "concept:assessment",
+      "label": "assessment",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:mastery",
+      "label": "mastery",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:recall",
+      "label": "recall",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:retrieval",
+      "label": "retrieval",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "source-229febf3edbbee936047",
+      "label": "Optimizing Wordwall Media in Arabic Language Learning: An Experimental Study on Mastery of Ismiyyah and Fi'liyah Sentences",
+      "type": "source"
+    },
+    {
+      "id": "source-38ddd36506cf595a7daa",
+      "label": "Adaptive spaced-repetition training, working memory, and long-term recall: A quasi-experimental study in university students",
+      "type": "source"
+    },
+    {
+      "id": "source-60a09981ec36aadf72d4",
+      "label": "Enhancing English Speaking Skills through Learning Media and Discourse Marker Mastery: A Quasi-Experimental Study",
+      "type": "source"
+    },
+    {
+      "id": "source-60c02b98a089a47ba191",
+      "label": "Impact of spaced repetition learning model on long term memory retrieval of neuroanatomy among 1styear medical students",
+      "type": "source"
+    },
+    {
+      "id": "source-61b635777b596dd3eb19",
+      "label": "Arabic Scrambled Card Games for Vocabulary Mastery: An Experimental Study at The New College, Chennai",
+      "type": "source"
+    },
+    {
+      "id": "source-70ed4fde80980fb73e47",
+      "label": "The Effect of Using Spaced Learning Repetition Method on Iraqi Islamic School Students' Achievement in English Language",
+      "type": "source"
+    },
+    {
+      "id": "source-7414a2defcec83a1b7db",
+      "label": "Enhancing Problem Solving Skills and Concept Mastery Through the INSPIRE Learning Model: A Quasi-Experimental Study on Environmental Change Learning",
+      "type": "source"
+    },
+    {
+      "id": "source-75d0b173f74c25945eb8",
+      "label": "The Effect of Spaced Repetition Learning Through Anki on Medical Board Exam Performance",
+      "type": "source"
+    },
+    {
+      "id": "source-a7511666296da4bbb251",
+      "label": "Effects of Song Inclusion on Vocabulary Learning and Mastery: A Case Study of the Affective Filter in Higher Education Students",
+      "type": "source"
+    },
+    {
+      "id": "source-cb7400a88bbbd8c70974",
+      "label": "Formative Assessment Using Direct Behavior Ratings: Evaluating Intervention Effects of Daily Behavior Report Cards",
+      "type": "source"
+    },
+    {
+      "id": "source-d59905c913a4704ec6eb",
+      "label": "Assessment and Intervention: Promoting Successful Transitions for College Students with ADHD",
+      "type": "source"
+    },
+    {
+      "id": "source-dbd978d36c3f7dbcb372",
+      "label": "Mastery learning in CS1: a longitudinal study during and post-pandemic",
+      "type": "source"
+    },
+    {
+      "id": "source-e50a157b40c331099bba",
+      "label": "The effects of team-based and mastery-based learning on the student’s clinical competence and the results of clinical evaluation: A quasi-experimental study among operating room nursing students",
+      "type": "source"
+    },
+    {
+      "id": "source-e9a8d81c7bb4fffb6846",
+      "label": "Effectiveness of spaced repetition learning using a mobile flashcard application among dental students: A randomized controlled trial",
+      "type": "source"
+    },
+    {
+      "id": "source-ef1acea30d89dcd7d243",
+      "label": "Supporting the self-regulated use of retrieval practice: A higher education classroom experiment",
+      "type": "source"
+    }
+  ],
+  "partition": "preparation",
+  "schema": "synthia.education.graph-shard.v1",
+  "sourceCardIds": [
+    "source-229febf3edbbee936047",
+    "source-38ddd36506cf595a7daa",
+    "source-60a09981ec36aadf72d4",
+    "source-60c02b98a089a47ba191",
+    "source-61b635777b596dd3eb19",
+    "source-70ed4fde80980fb73e47",
+    "source-7414a2defcec83a1b7db",
+    "source-75d0b173f74c25945eb8",
+    "source-a7511666296da4bbb251",
+    "source-cb7400a88bbbd8c70974",
+    "source-d59905c913a4704ec6eb",
+    "source-dbd978d36c3f7dbcb372",
+    "source-e50a157b40c331099bba",
+    "source-e9a8d81c7bb4fffb6846",
+    "source-ef1acea30d89dcd7d243"
+  ]
+}

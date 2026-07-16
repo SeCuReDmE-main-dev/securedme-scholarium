@@ -1,0 +1,489 @@
+{
+  "authorityBoundary": "Graph membership is a traceability state, not approval of a scientific, legal, or pedagogical claim.",
+  "category": "strengths_motivation",
+  "edges": [
+    {
+      "id": "edge:source-14da3ba7bb9280e3dc9f:0",
+      "predicate": "classified_in",
+      "source": "source-14da3ba7bb9280e3dc9f",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-14da3ba7bb9280e3dc9f:1",
+      "predicate": "issued_by",
+      "source": "source-14da3ba7bb9280e3dc9f",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-14da3ba7bb9280e3dc9f:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-14da3ba7bb9280e3dc9f",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:agency"
+    },
+    {
+      "id": "edge:source-2632ac9006b13bcfeceb:0",
+      "predicate": "classified_in",
+      "source": "source-2632ac9006b13bcfeceb",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-2632ac9006b13bcfeceb:1",
+      "predicate": "issued_by",
+      "source": "source-2632ac9006b13bcfeceb",
+      "status": "metadata_supported",
+      "target": "authority:7dca914a04f1d4b7"
+    },
+    {
+      "id": "edge:source-2632ac9006b13bcfeceb:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-2632ac9006b13bcfeceb",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:self-determination"
+    },
+    {
+      "id": "edge:source-308237a7f5490770bf35:0",
+      "predicate": "classified_in",
+      "source": "source-308237a7f5490770bf35",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-308237a7f5490770bf35:1",
+      "predicate": "issued_by",
+      "source": "source-308237a7f5490770bf35",
+      "status": "metadata_supported",
+      "target": "authority:7dca914a04f1d4b7"
+    },
+    {
+      "id": "edge:source-308237a7f5490770bf35:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-308237a7f5490770bf35",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mindset"
+    },
+    {
+      "id": "edge:source-5ad1177ec86ce4799d7b:0",
+      "predicate": "classified_in",
+      "source": "source-5ad1177ec86ce4799d7b",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-5ad1177ec86ce4799d7b:1",
+      "predicate": "issued_by",
+      "source": "source-5ad1177ec86ce4799d7b",
+      "status": "metadata_supported",
+      "target": "authority:206b7cc7aab4f2fc"
+    },
+    {
+      "id": "edge:source-5ad1177ec86ce4799d7b:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-5ad1177ec86ce4799d7b",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mindset"
+    },
+    {
+      "id": "edge:source-856bdfa2646f2901aa39:0",
+      "predicate": "classified_in",
+      "source": "source-856bdfa2646f2901aa39",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-856bdfa2646f2901aa39:1",
+      "predicate": "issued_by",
+      "source": "source-856bdfa2646f2901aa39",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-856bdfa2646f2901aa39:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-856bdfa2646f2901aa39",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:strength"
+    },
+    {
+      "id": "edge:source-8872adaa9dfedd7358da:0",
+      "predicate": "classified_in",
+      "source": "source-8872adaa9dfedd7358da",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-8872adaa9dfedd7358da:1",
+      "predicate": "issued_by",
+      "source": "source-8872adaa9dfedd7358da",
+      "status": "metadata_supported",
+      "target": "authority:a38466a51d291c7a"
+    },
+    {
+      "id": "edge:source-8872adaa9dfedd7358da:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-8872adaa9dfedd7358da",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:strength"
+    },
+    {
+      "id": "edge:source-9f0962138454d44825c0:0",
+      "predicate": "classified_in",
+      "source": "source-9f0962138454d44825c0",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-9f0962138454d44825c0:1",
+      "predicate": "issued_by",
+      "source": "source-9f0962138454d44825c0",
+      "status": "metadata_supported",
+      "target": "authority:7493dd4badd5c324"
+    },
+    {
+      "id": "edge:source-9f0962138454d44825c0:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-9f0962138454d44825c0",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:strength"
+    },
+    {
+      "id": "edge:source-a991c8a9468ae6f9d0c6:0",
+      "predicate": "classified_in",
+      "source": "source-a991c8a9468ae6f9d0c6",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-a991c8a9468ae6f9d0c6:1",
+      "predicate": "issued_by",
+      "source": "source-a991c8a9468ae6f9d0c6",
+      "status": "metadata_supported",
+      "target": "authority:7dca914a04f1d4b7"
+    },
+    {
+      "id": "edge:source-a991c8a9468ae6f9d0c6:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-a991c8a9468ae6f9d0c6",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mindset"
+    },
+    {
+      "id": "edge:source-ae62e52a9f9b2f999aa9:0",
+      "predicate": "classified_in",
+      "source": "source-ae62e52a9f9b2f999aa9",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-ae62e52a9f9b2f999aa9:1",
+      "predicate": "issued_by",
+      "source": "source-ae62e52a9f9b2f999aa9",
+      "status": "metadata_supported",
+      "target": "authority:a38466a51d291c7a"
+    },
+    {
+      "id": "edge:source-ae62e52a9f9b2f999aa9:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-ae62e52a9f9b2f999aa9",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:motivation"
+    },
+    {
+      "id": "edge:source-ae62e52a9f9b2f999aa9:3",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-ae62e52a9f9b2f999aa9",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:self-determination"
+    },
+    {
+      "id": "edge:source-b699842d4551a5ebc4e7:0",
+      "predicate": "classified_in",
+      "source": "source-b699842d4551a5ebc4e7",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-b699842d4551a5ebc4e7:1",
+      "predicate": "issued_by",
+      "source": "source-b699842d4551a5ebc4e7",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-b699842d4551a5ebc4e7:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-b699842d4551a5ebc4e7",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:strength"
+    },
+    {
+      "id": "edge:source-c84e2511630df1143eb9:0",
+      "predicate": "classified_in",
+      "source": "source-c84e2511630df1143eb9",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-c84e2511630df1143eb9:1",
+      "predicate": "issued_by",
+      "source": "source-c84e2511630df1143eb9",
+      "status": "metadata_supported",
+      "target": "authority:a38466a51d291c7a"
+    },
+    {
+      "id": "edge:source-c84e2511630df1143eb9:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-c84e2511630df1143eb9",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:agency"
+    },
+    {
+      "id": "edge:source-c908c9e74916fa61d1f7:0",
+      "predicate": "classified_in",
+      "source": "source-c908c9e74916fa61d1f7",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-c908c9e74916fa61d1f7:1",
+      "predicate": "issued_by",
+      "source": "source-c908c9e74916fa61d1f7",
+      "status": "metadata_supported",
+      "target": "authority:e8abc7f833f2cd37"
+    },
+    {
+      "id": "edge:source-c908c9e74916fa61d1f7:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-c908c9e74916fa61d1f7",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:agency"
+    },
+    {
+      "id": "edge:source-e34c424bdbc5c445d302:0",
+      "predicate": "classified_in",
+      "source": "source-e34c424bdbc5c445d302",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-e34c424bdbc5c445d302:1",
+      "predicate": "issued_by",
+      "source": "source-e34c424bdbc5c445d302",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-e34c424bdbc5c445d302:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-e34c424bdbc5c445d302",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mindset"
+    },
+    {
+      "id": "edge:source-e6078ebba614a8ea77e0:0",
+      "predicate": "classified_in",
+      "source": "source-e6078ebba614a8ea77e0",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-e6078ebba614a8ea77e0:1",
+      "predicate": "issued_by",
+      "source": "source-e6078ebba614a8ea77e0",
+      "status": "metadata_supported",
+      "target": "authority:a38466a51d291c7a"
+    },
+    {
+      "id": "edge:source-e6078ebba614a8ea77e0:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-e6078ebba614a8ea77e0",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mindset"
+    },
+    {
+      "id": "edge:source-f4d2ccadf1dc0a8cb5ea:0",
+      "predicate": "classified_in",
+      "source": "source-f4d2ccadf1dc0a8cb5ea",
+      "status": "metadata_supported",
+      "target": "category:strengths_motivation"
+    },
+    {
+      "id": "edge:source-f4d2ccadf1dc0a8cb5ea:1",
+      "predicate": "issued_by",
+      "source": "source-f4d2ccadf1dc0a8cb5ea",
+      "status": "metadata_supported",
+      "target": "authority:0cc90383754c7057"
+    },
+    {
+      "id": "edge:source-f4d2ccadf1dc0a8cb5ea:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-f4d2ccadf1dc0a8cb5ea",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:mindset"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "authority:099ecbe5d380e7f5",
+      "label": "SAGE Publications",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:0cc90383754c7057",
+      "label": "rScroll",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:206b7cc7aab4f2fc",
+      "label": "Wiley",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:7493dd4badd5c324",
+      "label": "Cambridge University Press (CUP)",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:7dca914a04f1d4b7",
+      "label": "Frontiers Media SA",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:a38466a51d291c7a",
+      "label": "Elsevier BV",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:e8abc7f833f2cd37",
+      "label": "Informa UK Limited",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "category:strengths_motivation",
+      "label": "strengths_motivation",
+      "type": "education_category"
+    },
+    {
+      "id": "concept:agency",
+      "label": "agency",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:mindset",
+      "label": "mindset",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:motivation",
+      "label": "motivation",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:self-determination",
+      "label": "self-determination",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:strength",
+      "label": "strength",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "source-14da3ba7bb9280e3dc9f",
+      "label": "Supporting Student Agency in Communication Intervention: Alternatives to Spelling to Communicate and Other Unproven Fads",
+      "type": "source"
+    },
+    {
+      "id": "source-2632ac9006b13bcfeceb",
+      "label": "Characterizing Middle School Students' Physical Literacy Development: A Self-Determination Theory-Based Pilot Intervention in Physical Education",
+      "type": "source"
+    },
+    {
+      "id": "source-308237a7f5490770bf35",
+      "label": "Effects of positive education intervention on growth mindset and resilience among boarding middle school adolescents in China: a randomized controlled trial",
+      "type": "source"
+    },
+    {
+      "id": "source-5ad1177ec86ce4799d7b",
+      "label": "The effect of a short computerized growth mindset intervention with implementation intentions on French students entering university",
+      "type": "source"
+    },
+    {
+      "id": "source-856bdfa2646f2901aa39",
+      "label": "Strengths-Based Cognitive Behavioral Therapy: A Longitudinal Randomized Controlled Trial in Students",
+      "type": "source"
+    },
+    {
+      "id": "source-8872adaa9dfedd7358da",
+      "label": "Randomized trial of a resilience intervention on resilience, behavioral strengths and difficulties of mainstreamed adolescent students with hearing loss",
+      "type": "source"
+    },
+    {
+      "id": "source-9f0962138454d44825c0",
+      "label": "A Pilot Evaluation of a Strengths-Based CBT Intervention Module with College Students",
+      "type": "source"
+    },
+    {
+      "id": "source-a991c8a9468ae6f9d0c6",
+      "label": "The Effect of a Computerized Growth-Mindset Intervention on Teaching Students’ Mindset and Cognitive Stress Appraisal",
+      "type": "source"
+    },
+    {
+      "id": "source-ae62e52a9f9b2f999aa9",
+      "label": "Fostering autonomous motivation in first-year college students: A self-determination theory-based online intervention",
+      "type": "source"
+    },
+    {
+      "id": "source-b699842d4551a5ebc4e7",
+      "label": "Testing the Effectiveness of a Strengths-Based Intervention Targeting All 24 Strengths: Results From a Randomized Controlled Trial",
+      "type": "source"
+    },
+    {
+      "id": "source-c84e2511630df1143eb9",
+      "label": "Fostering language student teachers’ transformative agency for embracing GenAI: A formative intervention",
+      "type": "source"
+    },
+    {
+      "id": "source-c908c9e74916fa61d1f7",
+      "label": "University student agency in genre-sensitive writing: a longitudinal mixed-methods multi-case study of teacher and GenAI feedback",
+      "type": "source"
+    },
+    {
+      "id": "source-e34c424bdbc5c445d302",
+      "label": "Impact of a Growth Mindset Intervention on Academic Performance of Students at Two Urban High Schools",
+      "type": "source"
+    },
+    {
+      "id": "source-e6078ebba614a8ea77e0",
+      "label": "A light-touch mindset intervention benefits the growth mindsets of pre-service teachers and their struggling students",
+      "type": "source"
+    },
+    {
+      "id": "source-f4d2ccadf1dc0a8cb5ea",
+      "label": "Effects of a Growth Mindset Intervention on Ninth Grade Students’ Self-Perception of AP Enrollment Likelihood",
+      "type": "source"
+    }
+  ],
+  "partition": "preparation",
+  "schema": "synthia.education.graph-shard.v1",
+  "sourceCardIds": [
+    "source-14da3ba7bb9280e3dc9f",
+    "source-2632ac9006b13bcfeceb",
+    "source-308237a7f5490770bf35",
+    "source-5ad1177ec86ce4799d7b",
+    "source-856bdfa2646f2901aa39",
+    "source-8872adaa9dfedd7358da",
+    "source-9f0962138454d44825c0",
+    "source-a991c8a9468ae6f9d0c6",
+    "source-ae62e52a9f9b2f999aa9",
+    "source-b699842d4551a5ebc4e7",
+    "source-c84e2511630df1143eb9",
+    "source-c908c9e74916fa61d1f7",
+    "source-e34c424bdbc5c445d302",
+    "source-e6078ebba614a8ea77e0",
+    "source-f4d2ccadf1dc0a8cb5ea"
+  ]
+}
