@@ -15,9 +15,8 @@ export const metadata: Metadata = {
     images: [{ url: "/brand/campaigns/landing-hero-dark.webp", width: 1672, height: 941, alt: "Scholarium dark hero banner from the canonical asset vault." }],
   },
   twitter: { card: "summary_large_image", title: "Scholarium — Turn knowledge into traceable evidence.", images: ["/brand/campaigns/landing-hero-dark.webp"] },
-  icons: { icon: "/brand/identity/scholarium-logo-system.webp", shortcut: "/brand/identity/scholarium-logo-system.webp" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={`${geist.variable} ${instrumentSerif.variable}`}>{children}</body></html>;
+  return <html lang="en"><head><link rel="icon" href="/favicon.svg" type="image/svg+xml" /></head><body className={`${geist.variable} ${instrumentSerif.variable}`}>{children}</body></html>;
 }

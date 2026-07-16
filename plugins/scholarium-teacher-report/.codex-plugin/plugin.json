@@ -1,0 +1,18 @@
+{
+  "name": "scholarium-teacher-report",
+  "version": "0.1.0",
+  "description": "Prepare bounded teacher reports without raw private transcripts.",
+  "author": {
+    "name": "SecuredMe Education"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Scholarium Teacher Report",
+    "shortDescription": "Prepare bounded teacher reports without raw private transcripts.",
+    "longDescription": "Prepare bounded teacher reports without raw private transcripts. Stateless by design: durable graph and memory operations go through the central Scholarium gateway.",
+    "developerName": "SecuredMe Education",
+    "category": "Education",
+    "capabilities": ["education", "central-knowledge-gateway", "human-review"],
+    "defaultPrompt": "Prepare one teacher report separating observation, inference and human decision."
+  }
+}

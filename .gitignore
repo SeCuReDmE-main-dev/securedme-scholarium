@@ -10,6 +10,9 @@ coverage/
 *.tmp
 .DS_Store
 Thumbs.db
+*.pyc
+__pycache__/
+.pytest_cache/
 secrets/
 credentials/
 tokens/
@@ -17,3 +20,16 @@ raw_emails/
 attachments/
 *.pdf
 site/
+
+# Local validation and tool outputs
+apps/web/.playwright-cli/
+apps/web/output/
+apps/web/tsconfig.tsbuildinfo
+adapters/**/bin/
+adapters/**/obj/
+
+# Preserve local design handoff sources without committing installer debris or
+# a duplicate archive of the extracted Stitch package.
+assets/desing/ChatGPT Installer.exe
+assets/desing/Microsoft.Services.Store.winmd
+assets/desing/**/*.zip

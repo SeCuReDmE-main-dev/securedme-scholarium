@@ -362,13 +362,21 @@ const fromApiPublication = (publication: ApiPublication): Publication => ({
   why: publication.feedSignal?.reasons,
 });
 
-const navItems: Array<{ id: View; label: string; icon: string }> = [
+const suiteNavItems: Array<{ label: string; icon: string; href?: string; id?: View }> = [
   { id: "signal", label: "Signal", icon: "⌁" },
-  { id: "library", label: "Library", icon: "▤" },
+  { href: "/teach", label: "Teach", icon: "◈" },
+  { href: "/teach#cours", label: "AlgoQuest", icon: "◇" },
+  { href: "/teach#cours", label: "Cours", icon: "▤" },
+  { href: "/teach#projects", label: "Projets", icon: "▱" },
+  { href: "/teach#circles", label: "Cercles", icon: "◌" },
   { id: "studio", label: "Studio", icon: "◉" },
-  { id: "formalize", label: "Formalize", icon: "◇" },
-  { id: "saved", label: "Saved", icon: "▱" },
-  { id: "migration", label: "Migrate", icon: "⇆" },
+  { href: "/teach#statistics", label: "Statistiques", icon: "⌁" },
+];
+const toolNavItems: Array<{ id: View; label: string; icon: string }> = [
+  { id: "library", label: "Bibliotheque", icon: "▤" },
+  { id: "saved", label: "Enregistres", icon: "▱" },
+  { id: "migration", label: "Migration", icon: "⇆" },
+  { id: "formalize", label: "QuaNthoR", icon: "◇" },
 ];
 
 export function ScholariumClient({ session }: { session: { displayName: string | null; provider: "chatgpt" | "google" | "github" | "paypal" | null; signInPath: string; googleSignInPath: string; githubSignInPath: string; paypalSignInPath: string; signOutPath: string } }) {
@@ -424,7 +432,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [archiveProvider, setArchiveProvider] = useState("google_drive");
   const [archivePath, setArchivePath] = useState("");
   const [archiveObjectCount, setArchiveObjectCount] = useState(0);
-  const [archiveLoading, setArchiveLoading] = useState(false);
+  const [archiveLoading, setArchiveLoading] = useState(true);
   const [archiveSaving, setArchiveSaving] = useState(false);
   const [orcidInput, setOrcidInput] = useState("");
   const [orcidStatus, setOrcidStatus] = useState<"claimed" | "none">("none");
@@ -616,7 +624,6 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   useEffect(() => {
     if (!session.displayName || !accountReady) return;
     let active = true;
-    setArchiveLoading(true);
     fetch("/api/v1/archive-manifests")
       .then(async (response) => ({ ok: response.ok, payload: await response.json() as { manifests?: ArchiveManifest[] } }))
       .then(({ ok, payload }) => {
@@ -1513,20 +1520,11 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         <img className="suite-strip-mark" src={currentSuiteAssets.banner} alt="SecuredMe Education suite banner." />
 
         <nav className="main-nav">
-          {navItems.map((item) => (
-            <button
-              className={view === item.id ? "nav-item active" : "nav-item"}
-              key={item.id}
-              onClick={() => item.id === "saved" ? void openSaved() : setView(item.id)}
-              type="button"
-            >
-              <span aria-hidden="true">{item.icon}</span>
-              {item.label}
-            </button>
-          ))}
-          <button className="nav-item" type="button" onClick={() => setNotice("Your learning circles will appear here.")}>
-            <span aria-hidden="true">◌</span> Circles
-          </button>
+          {suiteNavItems.map((item) => item.href
+            ? <a className="nav-item" href={item.href} key={`${item.label}-${item.href}`}><span aria-hidden="true">{item.icon}</span>{item.label}</a>
+            : <button className={view === item.id ? "nav-item active" : "nav-item"} key={item.label} onClick={() => setView(item.id!)} type="button"><span aria-hidden="true">{item.icon}</span>{item.label}</button>)}
+          <span className="nav-section-label">Outils</span>
+          {toolNavItems.map((item) => <button className={view === item.id ? "nav-item active" : "nav-item"} key={item.id} onClick={() => item.id === "saved" ? void openSaved() : setView(item.id)} type="button"><span aria-hidden="true">{item.icon}</span>{item.label}</button>)}
         </nav>
 
         <div className="rail-note">

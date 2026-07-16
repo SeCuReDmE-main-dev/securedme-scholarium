@@ -1,0 +1,19 @@
+{
+  "schema": "scholarium.education-plugin-gate5.v1",
+  "plugin_id": "scholarium-source",
+  "version": "0.1.0",
+  "stateless": true,
+  "memory_model": "central_gateway_only",
+  "allowed_callers": ["Codex/OpenAI", "Antigravity/Gemini"],
+  "entry_skill": "skills/scholarium-source/SKILL.md",
+  "permissions": ["central_gateway.submit", "central_gateway.read_own_receipt"],
+  "prohibited": ["plugin_local_memory", "raw_student_tokens", "unsourced_claims", "generative_rag_answer"],
+  "required_contracts": ["scholarium.central-knowledge-gateway.v1", "synthia.education.source-card.v1"],
+  "integrity": { "algorithm": "sha256", "files": [
+    { "path": "AGENTS.md", "sha256": "ed32e314be8432c9bf3fd0b80a3bad778ee8adc33b704d342d3eecb25d81d6bc" },
+    { "path": "SOUL.md", "sha256": "8af3e6d1471edb3d7856540eeb4d9bae56000c3f8201a47c9ab7b0b946822b60" },
+    { "path": "USER.md", "sha256": "5ec64bc628741921993162330fd50f16fe8fadb72fb82110cf8be6adafcf7e82" },
+    { "path": ".codex-plugin/plugin.json", "sha256": "df42bb07bdcecfba872deb10cfe835188e728ebab54c1b9ffde00339672fc25f" },
+    { "path": "skills/scholarium-source/SKILL.md", "sha256": "8dd0a97042369bbb6f8b4911df67602a4c2565ea96c09679d675e0c2801d3570" }
+  ] }
+}

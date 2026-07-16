@@ -1,0 +1,18 @@
+{
+  "name": "scholarium-portfolio",
+  "version": "0.1.0",
+  "description": "Create contestable growth stories from real evidence.",
+  "author": {
+    "name": "SecuredMe Education"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Scholarium Portfolio",
+    "shortDescription": "Create contestable growth stories from real evidence.",
+    "longDescription": "Create contestable growth stories from real evidence. Stateless by design: durable graph and memory operations go through the central Scholarium gateway.",
+    "developerName": "SecuredMe Education",
+    "category": "Education",
+    "capabilities": ["education", "central-knowledge-gateway", "human-review"],
+    "defaultPrompt": "Create one honest, evidence-bound and learner-controlled growth story."
+  }
+}

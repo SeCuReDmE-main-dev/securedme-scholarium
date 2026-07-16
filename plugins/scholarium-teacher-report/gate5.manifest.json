@@ -1,0 +1,19 @@
+{
+  "schema": "scholarium.education-plugin-gate5.v1",
+  "plugin_id": "scholarium-teacher-report",
+  "version": "0.1.0",
+  "stateless": true,
+  "memory_model": "central_gateway_only",
+  "allowed_callers": ["Codex/OpenAI", "Antigravity/Gemini"],
+  "entry_skill": "skills/scholarium-teacher-report/SKILL.md",
+  "permissions": ["central_gateway.submit", "central_gateway.read_own_receipt"],
+  "prohibited": ["plugin_local_memory", "raw_student_transcript", "autonomous_discipline", "cross_tenant_report"],
+  "required_contracts": ["scholarium.central-knowledge-gateway.v1", "scholarium.teacher-summary.v1"],
+  "integrity": { "algorithm": "sha256", "files": [
+    { "path": "AGENTS.md", "sha256": "d7fc18c3233e5ecff37f7b52943599e03000ec1076d395eb50d8527157c9a3cc" },
+    { "path": "SOUL.md", "sha256": "a57bf6ac929e2d432af3e66ddc83dbc4dda3b918cb7d6522881bd94129ed1f28" },
+    { "path": "USER.md", "sha256": "54791a84149ca0bce72bef15fa7a4382dac0469e051ae1846e75b311e408707b" },
+    { "path": ".codex-plugin/plugin.json", "sha256": "1474afbdfde856254aed4e1a26566ce1d813fe4e741e37ebe3831ed3c3308482" },
+    { "path": "skills/scholarium-teacher-report/SKILL.md", "sha256": "c3ab7632008d88c0d02b99883c281fef2491b86a587cd06f8882b3b5148b8850" }
+  ] }
+}
