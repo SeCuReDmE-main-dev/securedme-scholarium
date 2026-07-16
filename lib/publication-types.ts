@@ -15,6 +15,7 @@ export const publicationTypeOptions = [
   { value: "live_replay", label: "Live / replay record (media handoff pending)" },
   { value: "teaching_artifact", label: "Teaching artifact" },
   { value: "project_update", label: "Project update" },
+  { value: "growth_story", label: "Growth story" },
 ] as const;
 
 export type PublicationType = (typeof publicationTypeOptions)[number]["value"];

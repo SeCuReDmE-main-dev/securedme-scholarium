@@ -59,10 +59,11 @@ test("server-renders the Scholarium public landing page instead of the starter s
   assert.match(html, /<title>Scholarium — Turn knowledge into traceable evidence<\/title>/i);
   assert.match(html, /Turn knowledge into/);
   assert.match(html, /traceable evidence/);
-  assert.match(html, /0<\/b> paid reach controls/);
+  assert.match(html, /No pay-to-rank/);
+  assert.match(html, /Discovery stays free from paid influence/);
   assert.match(html, /Your work is not a product to be ranked by price/);
   assert.match(html, /SecuredMe root/);
-  assert.match(html, /SecuredMe public root/);
+  assert.match(html, /View public source/);
   assert.match(html, /https:\/\/securedme\.ca/);
   assert.doesNotMatch(html, /Your site is taking shape|Codex is working|react-loading-skeleton/i);
 });
