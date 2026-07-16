@@ -18,6 +18,7 @@ button { cursor:pointer; }
 .nav-item span { font-size:20px; width:20px; text-align:center; }
 .nav-item:hover,.nav-item.active { color:var(--ink); background:#e8eeff; }
 .nav-item.active { color:var(--blue); }
+.nav-section-label { margin:16px 12px 5px; color:var(--muted); font-size:9px; font-weight:800; text-transform:uppercase; }
 .rail-note { margin-top:auto; padding:16px; border:1px solid #cbd7ff; background:#eef2ff; border-radius:8px; display:grid; gap:7px; font-size:12px; line-height:1.45; color:#53607c; }
 .rail-note strong { color:var(--ink); }
 .profile-switcher { margin-top:16px; border:0; border-top:1px solid var(--line); background:transparent; padding:16px 0 0; display:flex; align-items:center; gap:9px; text-align:left; color:var(--ink); }

@@ -38,8 +38,8 @@ function boundedQuery(value: string | null) {
 }
 
 export async function GET(request: Request) {
+  const requestUrl = new URL(request.url);
   try {
-    const requestUrl = new URL(request.url);
     const mode = selectedFeedMode(requestUrl.searchParams.get("mode"));
     const query = boundedQuery(requestUrl.searchParams.get("q"));
     const db = await getDb();
@@ -161,7 +161,20 @@ export async function GET(request: Request) {
       },
     });
   } catch (error) {
-    return Response.json({ error: error instanceof Error ? error.message : "Unable to load publications" }, { status: 500 });
+    const message = error instanceof Error ? error.message : "Unable to load publications";
+    const localHost = requestUrl.hostname === "localhost" || requestUrl.hostname === "127.0.0.1" || requestUrl.hostname === "[::1]";
+    if (localHost && message.includes("Cloudflare D1 binding `DB` is unavailable")) {
+      return Response.json({
+        publications: [],
+        ranking: {
+          mode: selectedFeedMode(requestUrl.searchParams.get("mode")),
+          status: "local_preview_no_d1",
+          unavailableReason: "Cloudflare D1 is not bound to the local Vinext server.",
+          version: "plithogenic-explainable-v3",
+        },
+      }, { headers: { "cache-control": "no-store" } });
+    }
+    return Response.json({ error: message }, { status: 500 });
   }
 }
 

@@ -9,8 +9,9 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: ["/", "/profile/"],
+      allow: ["/", "/profile/", "/publication/", "/sitemap-publications.xml"],
       disallow: ["/api/", "/app", "/privacy", "/terms"],
     },
+    sitemap: "https://www.scholarium.securedme.ca/sitemap.xml",
   };
 }

@@ -94,6 +94,46 @@ export const integrationConnections = sqliteTable("integration_connections", {
 }, (table) => [index("integration_connections_user_idx").on(table.userId), uniqueIndex("integration_connections_provider_idx").on(table.userId, table.provider)]);
 
 /**
+ * A durable record of the account owner's explicit provider-scope decision.
+ * It deliberately stores neither OAuth tokens nor provider session material.
+ */
+export const providerConsents = sqliteTable("provider_consents", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  provider: text("provider").notNull(),
+  scopes: text("scopes").notNull().default("[]"),
+  consentVersion: text("consent_version").notNull().default("v1"),
+  status: text("status").notNull().default("granted"),
+  grantedAt: text("granted_at"),
+  revokedAt: text("revoked_at"),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("provider_consents_user_idx").on(table.userId),
+  uniqueIndex("provider_consents_user_provider_idx").on(table.userId, table.provider),
+]);
+
+/**
+ * A private, minimal handoff ledger for provider-owned WebAuth workflows.
+ * The provider authenticates the user; Scholarium stores no raw prompts,
+ * provider tokens, or opaque session identifiers.
+ */
+export const webauthHandoffRequests = sqliteTable("webauth_handoff_requests", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  provider: text("provider").notNull(),
+  purpose: text("purpose").notNull(),
+  contextKind: text("context_kind").notNull().default("none"),
+  contextReference: text("context_reference"),
+  status: text("status").notNull().default("provider_auth_required"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("webauth_handoff_requests_user_idx").on(table.userId),
+  index("webauth_handoff_requests_provider_idx").on(table.provider),
+  index("webauth_handoff_requests_created_idx").on(table.createdAt),
+]);
+
+/**
  * A migration is an owner-confirmed import plan, never a copied provider
  * session. Source URLs and item metadata remain private to the account owner.
  */
@@ -133,6 +173,49 @@ export const profilePreferences = sqliteTable("profile_preferences", {
   profileVisibility: text("profile_visibility").notNull().default("private"),
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
+
+/** Author-controlled CV-style material. Public visibility is opt-in per section. */
+export const profileSections = sqliteTable("profile_sections", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  sectionKind: text("section_kind").notNull(),
+  title: text("title").notNull(),
+  body: text("body").notNull().default(""),
+  visibility: text("visibility").notNull().default("private"),
+  displayOrder: integer("display_order").notNull().default(0),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("profile_sections_user_idx").on(table.userId),
+  index("profile_sections_user_visibility_idx").on(table.userId, table.visibility),
+]);
+
+/** Private alerts are explicit subscriptions, never inferred from passive reading behavior. */
+export const searchAlerts = sqliteTable("search_alerts", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  label: text("label").notNull(),
+  query: text("query").notNull().default(""),
+  topicSlugs: text("topic_slugs").notNull().default("[]"),
+  cadence: text("cadence").notNull().default("weekly"),
+  status: text("status").notNull().default("active"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("search_alerts_user_idx").on(table.userId)]);
+
+/** Citation-monitoring preference only; external citation counts remain source-verified work. */
+export const citationAlerts = sqliteTable("citation_alerts", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").notNull().references(() => publications.id),
+  status: text("status").notNull().default("active"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("citation_alerts_user_idx").on(table.userId),
+  index("citation_alerts_publication_idx").on(table.publicationId),
+  uniqueIndex("citation_alerts_user_publication_idx").on(table.userId, table.publicationId),
+]);
 
 export const readerPreferences = sqliteTable("reader_preferences", {
   userId: text("user_id").primaryKey().references(() => users.id),
@@ -578,3 +661,389 @@ export const archiveManifests = sqliteTable("archive_manifests", {
   index("archive_manifests_publication_idx").on(table.publicationId),
   uniqueIndex("archive_manifests_provider_path_idx").on(table.userId, table.provider, table.providerPath),
 ]);
+
+/** Teach remains a domain of the existing Scholarium identity and organization model. */
+export const teachCourses = sqliteTable("teach_courses", {
+  id: text("id").primaryKey(),
+  organizationId: text("organization_id").references(() => organizations.id),
+  ownerId: text("owner_id").notNull().references(() => users.id),
+  title: text("title").notNull(),
+  subject: text("subject").notNull(),
+  locale: text("locale").notNull().default("fr"),
+  status: text("status").notNull().default("draft"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_courses_owner_idx").on(table.ownerId), index("teach_courses_org_idx").on(table.organizationId)]);
+
+export const teachEnrollments = sqliteTable("teach_enrollments", {
+  id: text("id").primaryKey(),
+  courseId: text("course_id").notNull().references(() => teachCourses.id),
+  userId: text("user_id").notNull().references(() => users.id),
+  role: text("role").notNull(),
+  status: text("status").notNull().default("active"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  revokedAt: text("revoked_at"),
+}, (table) => [index("teach_enrollments_course_idx").on(table.courseId), index("teach_enrollments_user_idx").on(table.userId), uniqueIndex("teach_enrollments_unique_idx").on(table.courseId, table.userId, table.role)]);
+
+export const teachModules = sqliteTable("teach_modules", {
+  id: text("id").primaryKey(),
+  courseId: text("course_id").notNull().references(() => teachCourses.id),
+  title: text("title").notNull(),
+  position: integer("position").notNull().default(0),
+  status: text("status").notNull().default("draft"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_modules_course_idx").on(table.courseId)]);
+
+export const teachLessons = sqliteTable("teach_lessons", {
+  id: text("id").primaryKey(),
+  courseId: text("course_id").notNull().references(() => teachCourses.id),
+  moduleId: text("module_id").notNull().references(() => teachModules.id),
+  title: text("title").notNull(),
+  position: integer("position").notNull().default(0),
+  durationMinutes: integer("duration_minutes").notNull().default(60),
+  status: text("status").notNull().default("draft"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_lessons_course_idx").on(table.courseId), index("teach_lessons_module_idx").on(table.moduleId)]);
+
+export const learningObjectives = sqliteTable("learning_objectives", {
+  id: text("id").primaryKey(),
+  lessonId: text("lesson_id").notNull().references(() => teachLessons.id),
+  notion: text("notion").notNull(),
+  prompt: text("prompt").notNull(),
+  targetAnswer: text("target_answer").notNull(),
+  translation: text("translation").notNull().default(""),
+  phoneticHelp: text("phonetic_help").notNull().default(""),
+  position: integer("position").notNull().default(0),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("learning_objectives_lesson_idx").on(table.lessonId)]);
+
+export const learningQuestions = sqliteTable("learning_questions", {
+  id: text("id").primaryKey(),
+  objectiveId: text("objective_id").notNull().references(() => learningObjectives.id),
+  prompt: text("prompt").notNull(),
+  contextKey: text("context_key").notNull(),
+  kind: text("kind").notNull().default("primary"),
+  position: integer("position").notNull().default(0),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("learning_questions_objective_idx").on(table.objectiveId)]);
+
+export const learningHints = sqliteTable("learning_hints", {
+  id: text("id").primaryKey(),
+  objectiveId: text("objective_id").notNull().references(() => learningObjectives.id),
+  assistanceLevel: text("assistance_level").notNull(),
+  content: text("content").notNull(),
+  position: integer("position").notNull().default(0),
+  exposesTarget: integer("exposes_target", { mode: "boolean" }).notNull().default(false),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("learning_hints_objective_idx").on(table.objectiveId)]);
+
+/** Attempts hold bounded learning evidence, never a hidden emotional or clinical profile. */
+export const learningAttempts = sqliteTable("learning_attempts", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  objectiveId: text("objective_id").notNull().references(() => learningObjectives.id),
+  questionId: text("question_id").notNull().references(() => learningQuestions.id),
+  submittedQuestionId: text("submitted_question_id").notNull(),
+  answer: text("answer").notNull(),
+  assistanceLevel: text("assistance_level").notNull(),
+  answerMatches: integer("answer_matches", { mode: "boolean" }).notNull().default(false),
+  contextMatched: integer("context_matched", { mode: "boolean" }).notNull().default(false),
+  delayedRecall: integer("delayed_recall", { mode: "boolean" }).notNull().default(false),
+  restartedWithoutConfusion: integer("restarted_without_confusion", { mode: "boolean" }).notNull().default(false),
+  transferDemonstrated: integer("transfer_demonstrated", { mode: "boolean" }).notNull().default(false),
+  errorCode: text("error_code").notNull().default("none"),
+  confusionCode: text("confusion_code").notNull().default("none"),
+  recallDelaySeconds: integer("recall_delay_seconds").notNull().default(0),
+  responseTimeMs: integer("response_time_ms").notNull().default(0),
+  resultingState: text("resulting_state").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("learning_attempts_user_idx").on(table.userId), index("learning_attempts_objective_idx").on(table.objectiveId), index("learning_attempts_question_idx").on(table.questionId)]);
+
+export const learningReminders = sqliteTable("learning_reminders", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  objectiveId: text("objective_id").notNull().references(() => learningObjectives.id),
+  attemptId: text("attempt_id").notNull().references(() => learningAttempts.id),
+  cadence: text("cadence").notNull(),
+  dueAt: text("due_at").notNull(),
+  status: text("status").notNull().default("scheduled"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  completedAt: text("completed_at"),
+}, (table) => [index("learning_reminders_user_due_idx").on(table.userId, table.dueAt), index("learning_reminders_objective_idx").on(table.objectiveId)]);
+
+export const teachCheckpoints = sqliteTable("teach_checkpoints", {
+  userId: text("user_id").primaryKey().references(() => users.id),
+  lessonId: text("lesson_id").notNull().references(() => teachLessons.id),
+  objectiveId: text("objective_id").references(() => learningObjectives.id),
+  questionId: text("question_id").references(() => learningQuestions.id),
+  masteryState: text("mastery_state").notNull().default("new"),
+  assistanceLevel: text("assistance_level").notNull().default("wait"),
+  phase: text("phase").notNull().default("attempt"),
+  sessionElapsedSeconds: integer("session_elapsed_seconds").notNull().default(0),
+  nextReviewAt: text("next_review_at"),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+});
+
+export const strengthObservations = sqliteTable("strength_observations", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  category: text("category").notNull(),
+  statement: text("statement").notNull(),
+  evidence: text("evidence").notNull(),
+  contradiction: text("contradiction").notNull().default(""),
+  learnerCorrection: text("learner_correction").notNull().default(""),
+  confidenceBasisPoints: integer("confidence_basis_points").notNull().default(0),
+  sourceKind: text("source_kind").notNull(),
+  status: text("status").notNull().default("pending_student_review"),
+  expiresAt: text("expires_at"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("strength_observations_user_idx").on(table.userId), index("strength_observations_status_idx").on(table.status)]);
+
+export const algoquestLearningEvents = sqliteTable("algoquest_learning_events", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  eventType: text("event_type").notNull(),
+  artifactRef: text("artifact_ref").notNull(),
+  purpose: text("purpose").notNull(),
+  payload: text("payload").notNull().default("{}"),
+  idempotencyKey: text("idempotency_key").notNull(),
+  status: text("status").notNull().default("pending"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("algoquest_events_user_idx").on(table.userId), uniqueIndex("algoquest_events_idempotency_idx").on(table.userId, table.idempotencyKey)]);
+
+/** The personal assistant graph is private to its owner; other assistants receive projections only. */
+export const teachAssistantGraphRecords = sqliteTable("teach_assistant_graph_records", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  recordKind: text("record_kind").notNull(),
+  subjectRef: text("subject_ref").notNull(),
+  summary: text("summary").notNull(),
+  provenanceRef: text("provenance_ref").notNull(),
+  status: text("status").notNull().default("active"),
+  expiresAt: text("expires_at"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_assistant_graph_user_idx").on(table.userId), index("teach_assistant_graph_status_idx").on(table.userId, table.status)]);
+
+/** Cross-assistant records contain bounded projections and an auditable receipt, never the private graph. */
+export const teachAssistantExchanges = sqliteTable("teach_assistant_exchanges", {
+  id: text("id").primaryKey(),
+  senderUserId: text("sender_user_id").notNull().references(() => users.id),
+  recipientUserId: text("recipient_user_id").notNull().references(() => users.id),
+  courseId: text("course_id").notNull().references(() => teachCourses.id),
+  senderRole: text("sender_role").notNull(),
+  recipientRole: text("recipient_role").notNull(),
+  purpose: text("purpose").notNull(),
+  projection: text("projection").notNull(),
+  consentReceiptId: text("consent_receipt_id").notNull(),
+  idempotencyKey: text("idempotency_key").notNull(),
+  expiresAt: text("expires_at").notNull(),
+  status: text("status").notNull().default("prepared"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  receivedAt: text("received_at"),
+}, (table) => [
+  index("teach_assistant_exchange_sender_idx").on(table.senderUserId, table.createdAt),
+  index("teach_assistant_exchange_recipient_idx").on(table.recipientUserId, table.expiresAt),
+  uniqueIndex("teach_assistant_exchange_idempotency_idx").on(table.senderUserId, table.idempotencyKey),
+]);
+
+export const teachWeeklyObjectives = sqliteTable("teach_weekly_objectives", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  title: text("title").notNull(),
+  subject: text("subject").notNull(),
+  schoolYear: text("school_year").notNull(),
+  weekStart: text("week_start").notNull(),
+  targetDate: text("target_date").notNull(),
+  status: text("status").notNull().default("planned"),
+  evidenceRefs: text("evidence_refs").notNull().default("[]"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_weekly_objectives_user_week_idx").on(table.userId, table.weekStart)]);
+
+export const teachInterventionPreferences = sqliteTable("teach_intervention_preferences", {
+  userId: text("user_id").primaryKey().references(() => users.id),
+  frequency: text("frequency").notNull().default("off"),
+  contexts: text("contexts").notNull().default("[]"),
+  quietMode: integer("quiet_mode", { mode: "boolean" }).notNull().default(true),
+  quietUntil: text("quiet_until"),
+  maxDailyInterventions: integer("max_daily_interventions").notNull().default(0),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+});
+
+export const growthStories = sqliteTable("growth_stories", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  publicationId: text("publication_id").references(() => publications.id),
+  domain: text("domain").notNull(),
+  title: text("title").notNull(),
+  context: text("context").notNull().default(""),
+  reflection: text("reflection").notNull(),
+  originalExpression: text("original_expression").notNull().default(""),
+  suggestedReframe: text("suggested_reframe").notNull().default(""),
+  reframeChoice: text("reframe_choice").notNull().default("keep_original"),
+  evidenceRef: text("evidence_ref").notNull().default(""),
+  evidenceKind: text("evidence_kind").notNull().default("other"),
+  evidenceStatus: text("evidence_status").notNull().default("self_reported"),
+  visibility: text("visibility").notNull().default("private"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("growth_stories_user_idx").on(table.userId), index("growth_stories_publication_idx").on(table.publicationId)]);
+
+export const teachProjectThreads = sqliteTable("teach_project_threads", {
+  id: text("id").primaryKey(),
+  ownerUserId: text("owner_user_id").notNull().references(() => users.id),
+  circleId: text("circle_id"),
+  title: text("title").notNull(),
+  summary: text("summary").notNull(),
+  status: text("status").notNull().default("active"),
+  visibility: text("visibility").notNull().default("private"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_project_threads_owner_idx").on(table.ownerUserId, table.updatedAt), index("teach_project_threads_circle_idx").on(table.circleId)]);
+
+export const teachProjectEntries = sqliteTable("teach_project_entries", {
+  id: text("id").primaryKey(),
+  projectId: text("project_id").notNull().references(() => teachProjectThreads.id),
+  contributorUserId: text("contributor_user_id").notNull().references(() => users.id),
+  kind: text("kind").notNull(),
+  label: text("label").notNull(),
+  reflection: text("reflection").notNull().default(""),
+  reference: text("reference").notNull().default(""),
+  status: text("status").notNull().default("active"),
+  occurredAt: text("occurred_at").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_project_entries_project_idx").on(table.projectId, table.occurredAt), index("teach_project_entries_contributor_idx").on(table.contributorUserId)]);
+
+export const teachCircles = sqliteTable("teach_circles", {
+  id: text("id").primaryKey(),
+  ownerUserId: text("owner_user_id").notNull().references(() => users.id),
+  organizationId: text("organization_id").references(() => organizations.id),
+  courseId: text("course_id").references(() => teachCourses.id),
+  kind: text("kind").notNull(),
+  title: text("title").notNull(),
+  purpose: text("purpose").notNull(),
+  visibility: text("visibility").notNull().default("private"),
+  membershipMode: text("membership_mode").notNull().default("invite_only"),
+  status: text("status").notNull().default("active"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_circles_owner_idx").on(table.ownerUserId), index("teach_circles_organization_idx").on(table.organizationId)]);
+
+export const teachCircleMemberships = sqliteTable("teach_circle_memberships", {
+  id: text("id").primaryKey(),
+  circleId: text("circle_id").notNull().references(() => teachCircles.id),
+  userId: text("user_id").notNull().references(() => users.id),
+  role: text("role").notNull().default("member"),
+  status: text("status").notNull().default("active"),
+  joinedAt: text("joined_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_circle_memberships_user_idx").on(table.userId), uniqueIndex("teach_circle_memberships_unique_idx").on(table.circleId, table.userId)]);
+
+export const teachRecognitions = sqliteTable("teach_recognitions", {
+  id: text("id").primaryKey(),
+  issuerUserId: text("issuer_user_id").notNull().references(() => users.id),
+  recipientUserId: text("recipient_user_id").notNull().references(() => users.id),
+  circleId: text("circle_id").references(() => teachCircles.id),
+  category: text("category").notNull(),
+  statement: text("statement").notNull(),
+  context: text("context").notNull().default(""),
+  evidenceRef: text("evidence_ref").notNull(),
+  status: text("status").notNull().default("pending_recipient_review"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  reviewedAt: text("reviewed_at"),
+}, (table) => [index("teach_recognitions_recipient_idx").on(table.recipientUserId, table.createdAt), index("teach_recognitions_circle_idx").on(table.circleId)]);
+
+export const teachRecaps = sqliteTable("teach_recaps", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  period: text("period").notNull(),
+  periodStart: text("period_start").notNull(),
+  periodEnd: text("period_end").notNull(),
+  payload: text("payload").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_recaps_user_period_idx").on(table.userId, table.period, table.periodStart), uniqueIndex("teach_recaps_unique_idx").on(table.userId, table.period, table.periodStart, table.periodEnd)]);
+
+export const teachOrganizationScopes = sqliteTable("teach_organization_scopes", {
+  id: text("id").primaryKey(),
+  parentOrganizationId: text("parent_organization_id").notNull().references(() => organizations.id),
+  childOrganizationId: text("child_organization_id").notNull().references(() => organizations.id),
+  kind: text("kind").notNull().default("commission_school"),
+  status: text("status").notNull().default("active"),
+  validFrom: text("valid_from").notNull(),
+  validUntil: text("valid_until"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_organization_scopes_parent_idx").on(table.parentOrganizationId), uniqueIndex("teach_organization_scopes_unique_idx").on(table.parentOrganizationId, table.childOrganizationId, table.kind)]);
+
+export const teachMediaRequests = sqliteTable("teach_media_requests", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  kind: text("kind").notNull(),
+  sourceRef: text("source_ref").notNull(),
+  sourceKind: text("source_kind").notNull().default("lesson"),
+  sourceTitle: text("source_title").notNull().default(""),
+  sourceContextDigest: text("source_context_digest").notNull().default(""),
+  evidenceRefs: text("evidence_refs").notNull().default("[]"),
+  sourceIds: text("source_ids").notNull().default("[]"),
+  scriptDigest: text("script_digest").notNull().default(""),
+  providerLimitSource: text("provider_limit_source").notNull().default("scholarium_conservative_fallback"),
+  durationMinutes: integer("duration_minutes").notNull(),
+  manifestExpiresAt: text("manifest_expires_at"),
+  manifestDigest: text("manifest_digest").notNull().default(""),
+  status: text("status").notNull().default("prepared"),
+  requestedDay: text("requested_day").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_media_requests_quota_idx").on(table.userId, table.kind, table.requestedDay)]);
+
+export const teachMediaPublicationConfirmations = sqliteTable("teach_media_publication_confirmations", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  mediaRequestId: text("media_request_id").notNull().references(() => teachMediaRequests.id),
+  destination: text("destination").notNull(),
+  artifactDigest: text("artifact_digest").notNull(),
+  status: text("status").notNull().default("confirmed"),
+  confirmedAt: text("confirmed_at").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("teach_media_publication_user_idx").on(table.userId, table.createdAt),
+  uniqueIndex("teach_media_publication_once_idx").on(table.mediaRequestId, table.destination, table.artifactDigest),
+]);
+
+/** Durable Gate5 outbox. The stored envelope is pseudonymized before insertion. */
+export const teachGate5Jobs = sqliteTable("teach_gate5_jobs", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  target: text("target").notNull(),
+  capability: text("capability").notNull(),
+  requestDigest: text("request_digest").notNull(),
+  idempotencyKey: text("idempotency_key").notNull(),
+  nonce: text("nonce").notNull(),
+  envelope: text("envelope").notNull(),
+  status: text("status").notNull().default("pending"),
+  receiptDigest: text("receipt_digest").notNull().default(""),
+  receiptSignature: text("receipt_signature").notNull().default(""),
+  receiptKeyFingerprint: text("receipt_key_fingerprint").notNull().default(""),
+  expiresAt: text("expires_at").notNull(),
+  completedAt: text("completed_at"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("teach_gate5_jobs_target_status_idx").on(table.target, table.status, table.expiresAt),
+  index("teach_gate5_jobs_user_idx").on(table.userId, table.createdAt),
+  uniqueIndex("teach_gate5_jobs_idempotency_idx").on(table.userId, table.idempotencyKey),
+  uniqueIndex("teach_gate5_jobs_nonce_idx").on(table.target, table.nonce),
+]);
+
+/** Purpose consent is separate from provider authorization and can be revoked independently. */
+export const teachPurposeConsents = sqliteTable("teach_purpose_consents", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  purpose: text("purpose").notNull(),
+  status: text("status").notNull().default("granted"),
+  consentVersion: text("consent_version").notNull().default("teach-v1"),
+  expiresAt: text("expires_at"),
+  grantedAt: text("granted_at").notNull(),
+  revokedAt: text("revoked_at"),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_consents_user_idx").on(table.userId), uniqueIndex("teach_consents_purpose_idx").on(table.userId, table.purpose)]);
