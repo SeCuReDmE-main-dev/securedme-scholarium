@@ -1,10 +1,10 @@
 {
   "schema": "scholarium.teach-execution-state.v1",
   "plan": "scholarium-teach-163-actions",
-  "updatedAt": "2026-07-16T02:27:00Z",
+  "updatedAt": "2026-07-16T02:52:17Z",
   "executionFrontier": 156,
   "activeGate": "G14",
-  "activeAction": 162,
+  "activeAction": 157,
   "activeRange": {
     "from": 157,
     "to": 163
@@ -43,13 +43,28 @@
   ],
   "blockers": [
     {
+      "action": 48,
+      "code": "external_legal_review_required",
+      "effect": "Real-student pilots remain prohibited; synthetic data only until qualified Loi 25 review and a separate France/EU gate are signed.",
+      "rewindsExecution": false
+    },
+    {
       "action": 157,
       "code": "vscode_tunnel_authentication_required",
       "effect": "Remote tunnel is disconnected; local VS Code remains usable.",
       "rewindsExecution": false
     }
   ],
-  "completedIndependentActions": [158, 159, 160, 161],
+  "completedIndependentActions": [158, 159, 160, 161, 162, 163],
+  "programCompletion": {
+    "completed": 151,
+    "blocked": 2,
+    "planned": 9,
+    "inProgress": 1,
+    "total": 163,
+    "percent": 92.64,
+    "honestHundredPercentClaimAllowed": false
+  },
   "operationalCorrections": [
     {
       "id": "datadog-visible-task-disabled",
@@ -57,5 +72,5 @@
       "detail": "The interactive per-minute PowerShell task was stopped and disabled. It must not be re-enabled in an interactive user session."
     }
   ],
-  "nextIndependentActions": [162, 163]
+  "nextIndependentActions": []
 }

@@ -14,6 +14,6 @@
     { "path": "SOUL.md", "sha256": "77352c493e8b9fe83dfe60bd3ec1b9427d9195f69a9676423678a5e69091b3ea" },
     { "path": "USER.md", "sha256": "b94f42fe11785325dcf39f107186144c12b1b01b1112323880176f91bb9435bb" },
     { "path": ".codex-plugin/plugin.json", "sha256": "a8632ed1db132e1d3d8c49af9f144a6031e741a788238e3c948e9b8e245f850a" },
-    { "path": "skills/scholarium-portfolio/SKILL.md", "sha256": "61251bd6e4724fc48d1349630e2887b20fcf696ed4bc845b29fc693e47cf168a" }
+    { "path": "skills/scholarium-portfolio/SKILL.md", "sha256": "ad7214ada6bec6ad9553367fe13ad8502e83b47ae47472503c51c65aad1b4310" }
   ] }
 }

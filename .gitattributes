@@ -8,3 +8,4 @@
 *.php text
 *.css text
 *.js text
+plugins/**/skills/**/SKILL.md text eol=lf
