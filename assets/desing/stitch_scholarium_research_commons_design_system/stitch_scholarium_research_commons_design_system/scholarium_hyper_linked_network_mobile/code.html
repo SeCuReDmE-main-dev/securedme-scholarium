@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SCHOLARIUM | Hyper-Linked Network</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .node-line {
+            background: linear-gradient(to bottom, var(--sch-cyan) 0%, var(--sch-violet) 100%);
+            width: 2px;
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+        .node-pulse {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+        .glass-card {
+            background: rgba(250, 248, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(195, 197, 216, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#d2d9f9",
+                      "tertiary": "#520ee3",
+                      "paper-cool": "#F7F8FC",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#dce1ff",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "inverse-surface": "#292f48",
+                      "surface-container": "#ebedff",
+                      "navy-ink": "#0B1230",
+                      "provenance-cyan": "#23B8FF",
+                      "outline-variant": "#c3c5d8",
+                      "secondary-container": "#1eb6fd",
+                      "secondary": "#00658f",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#6b3cfb",
+                      "primary-container": "#2157ee",
+                      "on-secondary-fixed-variant": "#004c6d",
+                      "background": "#faf8ff",
+                      "stewardship-gold": "#FFC857",
+                      "surface-container-highest": "#dce1ff",
+                      "on-surface": "#131a32",
+                      "surface-bright": "#faf8ff",
+                      "formalization-violet": "#6F42FF",
+                      "on-tertiary-fixed-variant": "#4a00d4",
+                      "night-bg": "#080D1C",
+                      "surface-variant": "#dce1ff",
+                      "on-surface-variant": "#434655",
+                      "outline": "#747687",
+                      "surface-container-low": "#f3f2ff",
+                      "secondary-fixed": "#c8e6ff",
+                      "on-secondary-fixed": "#001e2e",
+                      "inverse-on-surface": "#eff0ff",
+                      "tertiary-fixed-dim": "#cbbeff",
+                      "on-primary-container": "#e0e4ff",
+                      "tertiary-fixed": "#e6deff",
+                      "primary": "#003fc6",
+                      "on-background": "#131a32",
+                      "on-primary-fixed": "#001551",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "inverse-primary": "#b7c4ff",
+                      "surface-container-high": "#e4e7ff",
+                      "on-tertiary-fixed": "#1d0061",
+                      "on-secondary-container": "#004462",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#0039b5",
+                      "surface": "#faf8ff",
+                      "surface-tint": "#0f4ee6",
+                      "on-tertiary-container": "#e9e1ff",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#87ceff",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "paper-warm": "#F4F1E8",
+                      "surface-soft": "#EEF3FF"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "section-v-rhythm-sm": "80px",
+                      "section-v-rhythm-lg": "140px",
+                      "margin-desktop": "80px",
+                      "container-max-width": "1180px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Geist"],
+                      "headline-h3": ["Geist"],
+                      "metadata-micro": ["Geist"],
+                      "headline-h2": ["Instrument Serif"],
+                      "headline-h1-mobile": ["Instrument Serif"],
+                      "label-caps": ["Geist"],
+                      "body-lg": ["Geist"],
+                      "hero-lg": ["Instrument Serif"],
+                      "headline-h1": ["Instrument Serif"],
+                      "hero-lg-mobile": ["Instrument Serif"]
+              },
+              "fontSize": {
+                      "body-md": ["0.9375rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-h3": ["2rem", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "metadata-micro": ["0.625rem", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "headline-h2": ["3.5rem", {"lineHeight": "1.3", "fontWeight": "400"}],
+                      "headline-h1-mobile": ["2.8rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "label-caps": ["0.75rem", {"lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                      "body-lg": ["1.075rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "hero-lg": ["6.4rem", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "headline-h1": ["4.4rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "hero-lg-mobile": ["3.8rem", {"lineHeight": "1.1", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-provenance-cyan/30">
+<!-- TopAppBar from JSON -->
+<header class="bg-surface/90 dark:bg-night-bg/90 backdrop-blur-md font-body-md text-body-md docked full-width top-0 sticky z-50 border-b border-outline-variant/30 dark:border-outline/20 transition-all duration-200">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max-width mx-auto">
+<h1 class="font-headline-h3 text-headline-h3 tracking-tight text-on-surface dark:text-surface-bright">SCHOLARIUM</h1>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full">visibility</button>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 font-bold text-label-caps rounded-lg active:scale-95 transition-all">Enter Scholarium</button>
+</div>
+</div>
+</header>
+<main class="relative overflow-hidden">
+<!-- Persistent Provenance Line -->
+<div class="node-line ml-4 md:ml-20 opacity-20"></div>
+<!-- Section 1: Genesis Node (Hero) -->
+<section class="relative min-h-[90vh] flex flex-col justify-center px-margin-mobile py-section-v-rhythm-sm overflow-hidden" id="genesis">
+<div class="absolute inset-0 z-0 opacity-40">
+
+</div>
+<div class="relative z-10 pl-12">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-4 h-4 rounded-full bg-provenance-cyan shadow-[0_0_15px_rgba(35,184,255,0.8)] node-pulse"></div>
+<span class="font-label-caps text-provenance-cyan uppercase tracking-widest">Genesis Node · 001</span>
+</div>
+<h1 class="font-hero-lg-mobile text-hero-lg-mobile md:font-hero-lg md:text-hero-lg leading-tight mb-8">
+                    The Archive <br/><span class="italic text-primary">is Breathing.</span>
+</h1>
+<p class="font-body-lg text-body-lg max-w-md text-on-surface-variant mb-10">
+                    A hyper-linked network of human knowledge, secured by immutable provenance and curated by the collective.
+                </p>
+<div class="flex flex-col gap-4">
+<button class="flex items-center justify-between bg-navy-ink text-white p-5 rounded-xl group transition-all active:scale-95">
+<span class="font-headline-h3 text-[1.2rem]">Explore Network</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Node 2: Publication Graph -->
+<section class="relative px-margin-mobile py-section-v-rhythm-sm" id="publishing">
+<div class="pl-12">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-3 h-3 rounded-full border-2 border-formalization-violet bg-background"></div>
+<span class="font-label-caps text-formalization-violet">Verification Layer · 002</span>
+</div>
+<h2 class="font-headline-h2 text-headline-h1-mobile mb-12">Institutional Trust, <br/>Decentralized Scale.</h2>
+<!-- Bento Layout for Mobile -->
+<div class="grid grid-cols-1 gap-gutter">
+<!-- Publication Card -->
+<div class="glass-card p-6 rounded-xl space-y-4">
+<div class="flex justify-between items-start">
+<span class="bg-stewardship-gold/20 text-on-surface px-2 py-1 rounded text-metadata-micro uppercase">Peer Reviewed</span>
+<span class="text-outline text-metadata-micro">ID: 882-QX</span>
+</div>
+<h3 class="font-headline-h3 text-[1.5rem] leading-snug">The Ethics of Generative Cognition in Shared Spaces</h3>
+<div class="flex flex-wrap gap-2">
+<span class="border border-outline-variant px-2 py-1 rounded text-metadata-micro">CC BY-SA 4.0</span>
+<span class="border border-outline-variant px-2 py-1 rounded text-metadata-micro text-provenance-cyan">Verified Provenance</span>
+</div>
+<div class="pt-4 border-t border-outline-variant/30 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a scholar with soft, warm lighting against a neutral grey background. The style is minimalist and editorial, capturing a sense of intellectual seriousness and human warmth, consistent with a high-end research institution aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvL0rvJjGFajvzRwQ3PK4KI1p1Yb9D6vj5Bs7QqPAa8hin2KGSbn0e31PMhk7XKRSEFmAVL1iS2OR4z2dfNtsKdtwFXjrCMA1CLytQBifBbooEaJ0MyvUAwsAKIwmvRPnEYatfB3JFxMUwz9svwmpYQdwFdkcLj7mGNRVrE3z3wP840-ta5qBQ1RL9ABb0hXbTAMPPfQB-ep_BCoVyBKls-2ryeIh7kU5uCD9wnm47shCVjQ9B_s7x"/>
+</div>
+<div>
+<p class="text-label-caps">Dr. Elias Thorne</p>
+<p class="text-metadata-micro text-outline">Oxford Research Collective</p>
+</div>
+</div>
+</div>
+<!-- Small Meta Cards -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary mb-2">account_tree</span>
+<p class="font-headline-h3 text-[1rem]">1.2k Nodes</p>
+<p class="text-metadata-micro text-outline">Connected Research</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/20">
+<span class="material-symbols-outlined text-stewardship-gold mb-2">verified</span>
+<p class="font-headline-h3 text-[1rem]">Immutable</p>
+<p class="text-metadata-micro text-outline">Signature Hash</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Node 3: The Connection Matrix -->
+<section class="relative px-margin-mobile py-section-v-rhythm-sm" id="network">
+<div class="pl-12">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-3 h-3 rounded-full border-2 border-provenance-cyan bg-background"></div>
+<span class="font-label-caps text-provenance-cyan">Connection Hub · 003</span>
+</div>
+<div class="relative h-[400px] w-full rounded-2xl overflow-hidden mb-8 border border-outline-variant/30 shadow-xl">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A macro-view of a complex network of glowing cyan and violet lines forming a three-dimensional web. The background is a deep navy-ink space, with subtle paper-warm highlights that create a sense of tactile depth. The visual style is highly precise and technical, reminiscent of an archival ledger's structural grid translated into a digital cosmic map." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxfIQN8M2pWMpYUmbs_XQJydFSusCcV-7Jup1bWgjiB5jnp7GKScP_Vg7-CpEhqtt9Fn1PoiR_kj9ANQXhTQhfgQvCmA5-pT8DggRkBfJJAJlnOYMkWlEV-yEkvPHCbDi9CZk6SFob70bFQzSiSIoZA7I-6fRAuzieWoajW9I__omT9kCqpjBtu236Spwrz5AmllElwjE9Vzp9mkqIA7sJcD8Y6JU-yb9I7yM2YsynAgkTb9d7NNpX')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-navy-ink/80 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6">
+<h3 class="text-white font-headline-h3 text-[1.4rem] mb-2">Mapping Intellectual Lineage</h3>
+<p class="text-white/70 text-body-md">Every citation forms a permanent link in the global graph.</p>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 shrink-0 flex items-center justify-center rounded-lg bg-surface-soft border border-outline-variant/40">
+<span class="material-symbols-outlined text-primary">hub</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Semantic Anchoring</h4>
+<p class="text-on-surface-variant text-body-md">Links are not just URLs; they are cryptographic assertions of relevance.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 shrink-0 flex items-center justify-center rounded-lg bg-surface-soft border border-outline-variant/40">
+<span class="material-symbols-outlined text-formalization-violet">history_edu</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Living Lineage</h4>
+<p class="text-on-surface-variant text-body-md">Track the evolution of an idea from first principles to contemporary application.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Node 4: Provenance Receipt (Stewardship Gold) -->
+<section class="relative px-margin-mobile py-section-v-rhythm-sm bg-paper-warm/30" id="trust">
+<div class="pl-12">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-3 h-3 rounded-full bg-stewardship-gold"></div>
+<span class="font-label-caps text-stewardship-gold">Finality Layer · 004</span>
+</div>
+<div class="bg-white p-8 rounded-sm border border-stewardship-gold/30 shadow-sm relative overflow-hidden">
+<!-- Decorative Receipt Teeth -->
+<div class="absolute top-0 left-0 right-0 flex justify-between px-2 -mt-1">
+<div class="w-3 h-3 bg-paper-warm rounded-full"></div>
+<div class="w-3 h-3 bg-paper-warm rounded-full"></div>
+<div class="w-3 h-3 bg-paper-warm rounded-full"></div>
+<div class="w-3 h-3 bg-paper-warm rounded-full"></div>
+</div>
+<div class="flex justify-between items-center mb-8">
+<span class="material-symbols-outlined text-stewardship-gold scale-150" data-weight="fill">verified_user</span>
+<span class="font-label-caps text-outline">SECUREDME SYSTEM</span>
+</div>
+<h2 class="font-headline-h2 text-headline-h1-mobile mb-4">The Durable Record</h2>
+<p class="text-body-md text-on-surface-variant mb-8">
+                        Scholarium artifacts are preserved in a durable state, resistant to digital decay and institutional entropy.
+                    </p>
+<div class="space-y-3 font-mono text-[0.7rem] text-on-surface-variant uppercase tracking-tighter">
+<div class="flex justify-between border-b border-dashed border-outline-variant pb-1">
+<span>Hash Depth</span>
+<span>256-Bit Cryptographic</span>
+</div>
+<div class="flex justify-between border-b border-dashed border-outline-variant pb-1">
+<span>Timestamp</span>
+<span>2024.11.08.09:42:11</span>
+</div>
+<div class="flex justify-between border-b border-dashed border-outline-variant pb-1">
+<span>Status</span>
+<span class="text-primary font-bold">Anchored</span>
+</div>
+</div>
+<button class="w-full mt-10 py-4 border-2 border-navy-ink font-bold text-label-caps hover:bg-navy-ink hover:text-white transition-all active:scale-95">
+                        Verify Authenticity
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer from JSON -->
+<footer class="bg-surface dark:bg-night-bg border-t border-outline-variant dark:border-outline/30 font-body-md text-body-md">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-gutter py-section-v-rhythm-sm px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<div class="col-span-2 space-y-4">
+<h2 class="font-headline-h3 text-headline-h3 text-on-surface dark:text-surface-bright">SCHOLARIUM</h2>
+<p class="text-on-surface-variant dark:text-outline-variant max-w-xs">Restoring the public library as the heart of a digital civilization.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-primary">Network</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">Product</a></li>
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">Publishing</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-primary">Trust</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">Legal</a></li>
+<li><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">Trust</a></li>
+</ul>
+</div>
+<div class="col-span-2 md:col-span-5 pt-8 mt-8 border-t border-outline-variant/30 text-metadata-micro text-outline">
+                © 2024 SecuredMe Education, Inc. All rights reserved.
+            </div>
+</div>
+</footer>
+<!-- Fixed Jump-to-Node Control (Mobile Floating) -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] flex items-center bg-navy-ink rounded-full px-4 py-3 shadow-2xl gap-6 border border-white/10">
+<a class="text-provenance-cyan flex flex-col items-center" href="#genesis">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trip_origin</span>
+</a>
+<a class="text-white/40 flex flex-col items-center hover:text-white transition-colors" href="#publishing">
+<span class="material-symbols-outlined">library_books</span>
+</a>
+<a class="text-white/40 flex flex-col items-center hover:text-white transition-colors" href="#network">
+<span class="material-symbols-outlined">account_tree</span>
+</a>
+<a class="text-white/40 flex flex-col items-center hover:text-white transition-colors" href="#trust">
+<span class="material-symbols-outlined">verified</span>
+</a>
+</nav>
+<script>
+        // Smooth provenance line growth on scroll
+        window.addEventListener('scroll', () => {
+            const line = document.querySelector('.node-line');
+            const scrolled = window.scrollY;
+            const height = document.documentElement.scrollHeight - window.innerHeight;
+            const percentage = (scrolled / height) * 100;
+            line.style.height = `${percentage}%`;
+            line.style.opacity = Math.min(0.2 + (percentage / 200), 0.6);
+        });
+
+        // Intersection Observer for highlighting active node in jump-nav
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        const observerOptions = {
+            root: null,
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        const icon = link.querySelector('.material-symbols-outlined');
+                        if (link.getAttribute('href').substring(1) === id) {
+                            link.classList.remove('text-white/40');
+                            link.classList.add('text-provenance-cyan');
+                            icon.style.fontVariationSettings = "'FILL' 1";
+                        } else {
+                            link.classList.add('text-white/40');
+                            link.classList.remove('text-provenance-cyan');
+                            icon.style.fontVariationSettings = "'FILL' 0";
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body></html>

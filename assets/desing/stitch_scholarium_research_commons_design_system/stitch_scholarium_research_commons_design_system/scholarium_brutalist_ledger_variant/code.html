@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholarium | Brutalist Evidence Commons</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&amp;family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#000000",
+                      "on-primary": "#FFFFFF",
+                      "provenance-blue": "#003fc6",
+                      "outline": "#000000",
+                      "surface": "#FFFFFF",
+                      "background": "#FFFFFF",
+                      "navy-ink": "#000000",
+              },
+              "borderRadius": {
+                      "DEFAULT": "0",
+                      "lg": "0",
+                      "xl": "0",
+                      "full": "0"
+              },
+              "spacing": {
+                      "section-v-rhythm-sm": "80px",
+                      "margin-desktop": "80px",
+                      "section-v-rhythm-lg": "140px",
+                      "margin-mobile": "16px",
+                      "container-max-width": "1280px",
+                      "gutter": "0"
+              },
+              "fontFamily": {
+                      "hero-lg": ["Instrument Serif", "serif"],
+                      "headline-h1": ["Instrument Serif", "serif"],
+                      "headline-h2": ["Instrument Serif", "serif"],
+                      "headline-h3": ["Instrument Serif", "serif"],
+                      "body-md": ["Geist Mono", "monospace"],
+                      "mono": ["Geist Mono", "monospace"]
+              },
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #FFFFFF;
+            color: #000000;
+            /* Visible 12-column grid background for debugging feel */
+            background-image:
+                linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: calc(100% / 12) 100%;
+        }
+        .brutalist-border {
+            border: 2px solid #000000;
+        }
+        .brutalist-border-thin {
+            border: 1px solid #000000;
+        }
+        .debug-text {
+            font-family: 'Geist Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .highlight-blue {
+            color: #003fc6;
+        }
+        .bg-highlight-blue {
+            background-color: #003fc6;
+        }
+        /* Strict Grid Container */
+        .grid-12 {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased overflow-x-hidden">
+<!-- Header -->
+<header class="bg-white border-b-2 border-black sticky top-0 z-50">
+<div class="grid-12 max-w-container-max-width mx-auto w-full border-x-2 border-black">
+<div class="col-span-4 md:col-span-3 border-r-2 border-black p-4 flex items-center gap-2">
+<div class="w-6 h-6 bg-black flex items-center justify-center">
+<span class="text-white font-bold text-xs">S</span>
+</div>
+<div class="font-bold text-lg tracking-tighter debug-text">SCHOLARIUM_v0.4.2</div>
+</div>
+<nav class="hidden md:flex col-span-6 border-r-2 border-black items-center px-6 gap-8 text-[10px] debug-text font-bold">
+<a class="underline decoration-2 underline-offset-4" href="#">01_PRODUCT</a>
+<a class="hover:underline" href="#">02_WORKFLOW</a>
+<a class="hover:underline" href="#">03_TRUST</a>
+<a class="hover:underline" href="#">04_ORG</a>
+</nav>
+<div class="col-span-8 md:col-span-3 p-4 flex items-center justify-end">
+<button class="bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-provenance-blue transition-colors">
+                ENTER_SYSTEM
+            </button>
+</div>
+</div>
+</header>
+<main class="border-x-2 border-black max-w-container-max-width mx-auto min-h-screen">
+<!-- Hero Section -->
+<section class="grid-12 border-b-2 border-black">
+<div class="col-span-12 lg:col-span-7 p-8 md:p-16 border-r-0 lg:border-r-2 border-black">
+<div class="debug-text text-[10px] mb-8 flex items-center gap-2">
+<span class="w-2 h-2 bg-provenance-blue"></span>
+                STATUS: PRE-ALPHA_BUILD // SECUREDME_EDUCATION
+            </div>
+<h1 class="font-headline-h1 text-6xl md:text-8xl leading-[0.9] mb-12 italic font-bold">
+                TURN KNOWLEDGE INTO <span class="highlight-blue underline">TRACEABLE</span> EVIDENCE.
+            </h1>
+<p class="text-lg max-w-xl mb-12 leading-tight">
+                SOCIAL COMMONS FOR RESEARCH AND LEARNING. BUILT SO PUBLICATIONS, PEOPLE, CONTEXT, AND PROVENANCE REMAIN CONNECTED. RAW LEDGER ARCHITECTURE.
+            </p>
+<div class="flex flex-col sm:flex-row gap-0">
+<button class="bg-black text-white px-10 py-5 text-sm font-bold uppercase border-2 border-black hover:bg-provenance-blue flex items-center gap-4">
+                    EXPLORE_COMMONS <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="bg-white text-black px-10 py-5 text-sm font-bold uppercase border-y-2 border-x-0 sm:border-y-0 sm:border-l-0 border-black hover:bg-gray-100">
+                    VIEW_SOURCE
+                </button>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-5 p-8 flex flex-col justify-center bg-gray-50">
+<div class="brutalist-border p-6 bg-white space-y-8">
+<div class="debug-text text-[10px] border-b border-black pb-2">DEBUG: MASTERY_SEQUENCE_VISUALIZER</div>
+<div class="flex items-end gap-2 overflow-hidden">
+<div class="w-1/4 h-8 brutalist-border-thin bg-gray-200"></div>
+<div class="w-1/4 h-16 brutalist-border-thin bg-gray-400"></div>
+<div class="w-1/4 h-24 brutalist-border-thin bg-gray-600"></div>
+<div class="w-1/4 h-32 brutalist-border bg-provenance-blue flex items-center justify-center text-white">
+<span class="material-symbols-outlined">verified</span>
+</div>
+</div>
+<div class="font-mono text-[10px] space-y-1">
+<div class="flex justify-between"><span>PROVENANCE_ID:</span> <span class="highlight-blue">0x7F4A...B991</span></div>
+<div class="flex justify-between"><span>TIMESTAMP:</span> <span>2024.05.12.08:22</span></div>
+<div class="flex justify-between"><span>AUTH_SIG:</span> <span>VERIFIED</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Manifesto / Product Promise -->
+<section class="grid-12 border-b-2 border-black text-center py-20 bg-black text-white">
+<div class="col-span-12 px-8">
+<h2 class="font-headline-h2 text-5xl md:text-7xl mb-8 leading-tight max-w-5xl mx-auto">
+                A PLATFORM THAT RESPECTS THE WORK AND THE LEARNER.
+            </h2>
+<p class="font-mono text-sm uppercase tracking-widest max-w-2xl mx-auto text-gray-400">
+                TRANSITIONING FROM FRAGMENTED NOTES TO VERIFIABLE, DEEPLY CITED PUBLICATIONS DESIGNED FOR RIGOROUS REVIEW AND LASTING ARCHIVAL.
+            </p>
+</div>
+</section>
+<!-- 12-Column Structured Workflow -->
+<section class="grid-12 border-b-2 border-black">
+<div class="col-span-12 md:col-span-4 border-b-2 md:border-b-0 md:border-r-2 border-black p-8 hover:bg-gray-50 group">
+<div class="debug-text text-xs mb-4 text-provenance-blue">01_TRANSPARENCY</div>
+<h3 class="font-headline-h3 text-4xl mb-6 font-bold group-hover:italic">SHARE MORE THAN A POST.</h3>
+<p class="text-sm leading-tight mb-8">PUBLISH DEEP CONTEXT AND SOURCE TRAILS THAT SURVIVE THE INITIAL FEED ENCOUNTER. TRACEABLE BY DEFAULT.</p>
+<div class="pt-4 border-t border-black flex justify-between items-center">
+<span class="debug-text text-[10px]">READ_MORE</span>
+<span class="material-symbols-outlined text-sm">arrow_outward</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 border-b-2 md:border-b-0 md:border-r-2 border-black p-8 hover:bg-gray-50 group">
+<div class="debug-text text-xs mb-4 text-provenance-blue">02_FORMALIZATION</div>
+<h3 class="font-headline-h3 text-4xl mb-6 font-bold group-hover:italic">MAKE FORM A TOOL.</h3>
+<p class="text-sm leading-tight mb-8">USE STRUCTURED TEMPLATES THAT GUIDE YOU TOWARD RIGOR WITHOUT STIFLING YOUR UNIQUE VOICE. DEBUGGED SCHOLARSHIP.</p>
+<div class="pt-4 border-t border-black flex justify-between items-center">
+<span class="debug-text text-[10px]">TEMPLATES_LIST</span>
+<span class="material-symbols-outlined text-sm">arrow_outward</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 p-8 hover:bg-gray-50 group">
+<div class="debug-text text-xs mb-4 text-provenance-blue">03_STEWARDSHIP</div>
+<h3 class="font-headline-h3 text-4xl mb-6 font-bold group-hover:italic">KEEP IT HUMAN.</h3>
+<p class="text-sm leading-tight mb-8">PROVENANCE-BACKED AUTHORSHIP THAT VALUES THE THINKER OVER THE ALGORITHMIC METRIC. NO BLACK BOXES.</p>
+<div class="pt-4 border-t border-black flex justify-between items-center">
+<span class="debug-text text-[10px]">TRUST_PROTOCOL</span>
+<span class="material-symbols-outlined text-sm">arrow_outward</span>
+</div>
+</div>
+</section>
+<!-- Trust Section (Grid View) -->
+<section class="grid-12 border-b-2 border-black bg-white">
+<div class="col-span-12 lg:col-span-6 p-8 md:p-16 border-b-2 lg:border-b-0 lg:border-r-2 border-black">
+<h2 class="font-headline-h2 text-6xl mb-12 uppercase font-black">TRUST BY_DESIGN</h2>
+<div class="space-y-12">
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-4xl">fingerprint</span>
+<div>
+<h4 class="debug-text font-bold mb-2">IDENTITY_BOUNDARIES</h4>
+<p class="text-sm leading-tight">YOUR DATA BELONGS TO YOU. WE PROVIDE THE LEDGER, YOU PROVIDE THE CONSENT. PRIVACY LOCAL BY DEFAULT.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-4xl">history_edu</span>
+<div>
+<h4 class="debug-text font-bold mb-2">PROVENANCE_FIRST</h4>
+<p class="text-sm leading-tight">EVERY CLAIM IS LINKED TO ITS SOURCE. TRACE THE EVOLUTION OF AN IDEA FROM FRAGMENT TO PEER-REVIEWED PUBLICATION.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-6 p-8 bg-gray-50 font-mono text-[11px]">
+<div class="brutalist-border bg-black text-provenance-blue p-6 h-full">
+<div class="flex justify-between border-b border-provenance-blue pb-4 mb-4">
+<span>SYS_LOG :: INTERNAL_RECEIPT</span>
+<span class="text-white">STABLE_v0.4.2</span>
+</div>
+<div class="space-y-2 opacity-80">
+<div class="flex justify-between"><span>TRANS_ID:</span> <span>0x9321...FF21</span></div>
+<div class="flex justify-between"><span>BLOCK_REF:</span> <span>8,442,109</span></div>
+<div class="flex justify-between"><span>SIG_STATUS:</span> <span class="text-white">VERIFIED_HUMAN</span></div>
+</div>
+<div class="mt-12 text-white text-base font-sans italic leading-tight">
+                    "THE IMPACT OF DISTRIBUTED CONSENSUS ON ACADEMIC PEER REVIEW IS NOT MERELY TECHNICAL, BUT SOCIAL."
+                </div>
+<div class="mt-8 border-t border-provenance-blue pt-4">
+<div class="w-full h-8 flex gap-1">
+<div class="flex-1 bg-provenance-blue"></div>
+<div class="flex-1 bg-white"></div>
+<div class="flex-1 bg-provenance-blue"></div>
+<div class="flex-1 bg-white"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Artifact Demo -->
+<section class="p-8 md:p-16 border-b-2 border-black">
+<div class="brutalist-border bg-white">
+<div class="grid-12">
+<div class="col-span-12 md:col-span-8 p-8 border-b-2 md:border-b-0 md:border-r-2 border-black">
+<div class="flex justify-between items-start mb-12">
+<div class="debug-text text-[10px]">OBJECT: RESEARCH_ARTIFACT // v4.2</div>
+<div class="debug-text text-[10px] brutalist-border-thin px-2 bg-black text-white">PRIVATE_SCOPE</div>
+</div>
+<h3 class="font-headline-h2 text-4xl md:text-6xl mb-8 leading-[0.9]">THE IMPACT OF DISTRIBUTED CONSENSUS ON ACADEMIC PEER REVIEW.</h3>
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-8 pt-8 border-t-2 border-black">
+<div>
+<div class="debug-text text-[10px] mb-1">AUTHOR</div>
+<div class="font-bold">DR_E_VANCE</div>
+</div>
+<div>
+<div class="debug-text text-[10px] mb-1">PROVENANCE_ID</div>
+<div class="font-bold highlight-blue">0x7F4A...B991</div>
+</div>
+<div>
+<div class="debug-text text-[10px] mb-1">LINKED_SOURCES</div>
+<div class="font-bold">14_ENTRIES</div>
+</div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-gray-100 p-8 flex flex-col justify-between">
+<div>
+<div class="debug-text text-[10px] mb-8">STATUS_REPORT</div>
+<div class="brutalist-border bg-white p-4 mb-4">
+<div class="flex justify-between items-center">
+<span class="font-bold">STEWARD_LVL</span>
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div class="text-xs mt-2">ACCOUNT_VERIFIED_04.2024</div>
+</div>
+</div>
+<button class="w-full bg-black text-white p-4 debug-text text-[10px] font-bold hover:bg-provenance-blue">
+                        GET_METADATA_RECEIPT
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Pre-Alpha Warning -->
+<section class="p-8 border-b-2 border-black bg-gray-50">
+<div class="brutalist-border p-6 border-dashed border-2 bg-white">
+<div class="flex items-center gap-3 mb-6 font-bold text-red-600">
+<span class="material-symbols-outlined">warning</span>
+<span class="debug-text">WARNING: PRE_ALPHA_ENVIRONMENT</span>
+</div>
+<div class="grid md:grid-cols-2 gap-8 font-mono text-[10px]">
+<ul class="space-y-2 list-none uppercase">
+<li>[!] LIVE RESEARCH ENVIRONMENT. BREAKING CHANGES FREQUENT.</li>
+<li>[!] ZERO ALGORITHMIC RANKING. ORGANIC DISCOVERY ONLY.</li>
+<li>[!] MODERATION TOOLS GATED BY PROTOCOL.</li>
+</ul>
+<ul class="space-y-2 list-none uppercase">
+<li>[!] RECEIPTS ARE PLATFORM-SPECIFIC (NON-DOI).</li>
+<li>[!] EXTERNAL BYPASS MODE ACTIVE.</li>
+<li>[!] LOCAL-FIRST DATA STORAGE MANDATORY.</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="text-center py-24 px-8 border-b-2 border-black">
+<h2 class="font-headline-h1 text-6xl md:text-8xl mb-12 italic leading-tight">READY TO BUILD YOUR LEGACY?</h2>
+<div class="flex flex-col sm:flex-row justify-center gap-0">
+<button class="bg-black text-white px-12 py-6 text-lg font-bold uppercase hover:bg-provenance-blue brutalist-border">START_RESEARCH</button>
+<button class="bg-white text-black px-12 py-6 text-lg font-bold uppercase hover:bg-gray-100 border-2 border-black sm:border-l-0">JOIN_COMMUNITY</button>
+</div>
+<div class="mt-12 debug-text text-[10px] opacity-40">SYSTEM_HASH: scholarium-v0.4.2-alpha_6f9a2</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white border-x-2 border-b-2 border-black max-w-container-max-width mx-auto">
+<div class="grid-12">
+<div class="col-span-12 md:col-span-4 p-8 border-b-2 md:border-b-0 md:border-r-2 border-black">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-6 h-6 bg-black flex items-center justify-center">
+<span class="text-white text-[10px]">S</span>
+</div>
+<span class="debug-text font-bold">SCHOLARIUM_ROOT</span>
+</div>
+<p class="text-[10px] font-mono leading-tight mb-8">OPEN RESEARCH COMMONS BY SECUREDME EDUCATION, INC. BUILT FOR THE ERA OF TRACEABLE HUMAN EVIDENCE. RAW DATA PROTOCOL.</p>
+<div class="flex gap-2">
+<div class="w-8 h-8 brutalist-border flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">terminal</span>
+</div>
+</div>
+</div>
+<div class="col-span-6 md:col-span-2 p-8 border-r-2 border-black space-y-4">
+<div class="debug-text text-[10px] font-bold border-b border-black pb-2">PRODUCT</div>
+<ul class="text-[10px] font-mono space-y-2 uppercase">
+<li><a class="hover:highlight-blue" href="#">Overview</a></li>
+<li><a class="hover:highlight-blue" href="#">Log_v0.4</a></li>
+<li><a class="hover:highlight-blue" href="#">Roadmap</a></li>
+</ul>
+</div>
+<div class="col-span-6 md:col-span-2 p-8 border-r-2 border-black space-y-4">
+<div class="debug-text text-[10px] font-bold border-b border-black pb-2">TRUST</div>
+<ul class="text-[10px] font-mono space-y-2 uppercase">
+<li><a class="hover:highlight-blue" href="#">Provenance</a></li>
+<li><a class="hover:highlight-blue" href="#">Security</a></li>
+<li><a class="hover:highlight-blue" href="#">Privacy</a></li>
+</ul>
+</div>
+<div class="col-span-12 md:col-span-4 p-8 space-y-4">
+<div class="debug-text text-[10px] font-bold border-b border-black pb-2">DEV_CONSOLE</div>
+<ul class="text-[10px] font-mono space-y-2 uppercase">
+<li><a class="hover:highlight-blue" href="#">API_DOCS</a></li>
+<li><a class="hover:highlight-blue" href="#">GIT_REPO</a></li>
+<li><a class="hover:highlight-blue" href="#">SPECS</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t-2 border-black p-4 flex flex-col md:flex-row justify-between items-center gap-4 bg-gray-50">
+<div class="debug-text text-[10px]">© 2024 SECUREDME_EDUCATION_INC // SEL-2.0_COMPLIANT</div>
+<div class="flex gap-4 debug-text text-[10px]">
+<a href="#">LEGAL</a>
+<a href="#">ROOT_DIR</a>
+<a class="highlight-blue" href="#">LOCAL_STASH</a>
+</div>
+</div>
+</footer>
+</body></html>

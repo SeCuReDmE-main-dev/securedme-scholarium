@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholarium | Evidence Commons</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#003fc6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#e0e4ff",
+                      "surface-variant": "#dce1ff",
+                      "outline": "#747687",
+                      "surface-tint": "#0f4ee6",
+                      "on-tertiary-fixed-variant": "#4a00d4",
+                      "on-tertiary-fixed": "#1d0061",
+                      "on-secondary-container": "#004462",
+                      "inverse-surface": "#292f48",
+                      "tertiary-container": "#6b3cfb",
+                      "on-error-container": "#93000a",
+                      "surface": "#faf8ff",
+                      "on-background": "#131a32",
+                      "surface-dim": "#d2d9f9",
+                      "on-surface-variant": "#434655",
+                      "surface-container-highest": "#dce1ff",
+                      "on-primary": "#ffffff",
+                      "stewardship-gold": "#FFC857",
+                      "on-primary-fixed": "#001551",
+                      "on-secondary-fixed": "#001e2e",
+                      "tertiary-fixed-dim": "#cbbeff",
+                      "surface-soft": "#EEF3FF",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c3c5d8",
+                      "inverse-primary": "#b7c4ff",
+                      "error-container": "#ffdad6",
+                      "secondary": "#00658f",
+                      "on-tertiary-container": "#e9e1ff",
+                      "secondary-container": "#1eb6fd",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f3f2ff",
+                      "tertiary": "#520ee3",
+                      "secondary-fixed-dim": "#87ceff",
+                      "on-primary-fixed-variant": "#0039b5",
+                      "formalization-violet": "#6F42FF",
+                      "primary-container": "#2157ee",
+                      "surface-container": "#ebedff",
+                      "navy-ink": "#0B1230",
+                      "tertiary-fixed": "#e6deff",
+                      "night-bg": "#080D1C",
+                      "on-secondary-fixed-variant": "#004c6d",
+                      "secondary-fixed": "#c8e6ff",
+                      "background": "#faf8ff",
+                      "on-tertiary": "#ffffff",
+                      "paper-cool": "#F7F8FC",
+                      "surface-bright": "#faf8ff",
+                      "surface-container-high": "#e4e7ff",
+                      "on-surface": "#131a32",
+                      "inverse-on-surface": "#eff0ff",
+                      "on-secondary": "#ffffff",
+                      "paper-warm": "#F4F1E8",
+                      "provenance-cyan": "#23B8FF",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "primary-fixed": "#dce1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "section-v-rhythm-sm": "80px",
+                      "margin-desktop": "80px",
+                      "section-v-rhythm-lg": "140px",
+                      "margin-mobile": "16px",
+                      "container-max-width": "1180px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "hero-lg": ["Instrument Serif"],
+                      "headline-h2": ["Instrument Serif"],
+                      "headline-h3": ["Geist"],
+                      "metadata-micro": ["Geist"],
+                      "hero-lg-mobile": ["Instrument Serif"],
+                      "body-lg": ["Geist"],
+                      "label-caps": ["Geist"],
+                      "headline-h1": ["Instrument Serif"],
+                      "headline-h1-mobile": ["Instrument Serif"],
+                      "body-md": ["Geist"]
+              },
+              "fontSize": {
+                      "hero-lg": ["6.4rem", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "headline-h2": ["3.5rem", {"lineHeight": "1.3", "fontWeight": "400"}],
+                      "headline-h3": ["2rem", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "metadata-micro": ["0.625rem", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "hero-lg-mobile": ["3.8rem", {"lineHeight": "1.1", "fontWeight": "400"}],
+                      "body-lg": ["1.075rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["0.75rem", {"lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                      "headline-h1": ["4.4rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "headline-h1-mobile": ["2.8rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "body-md": ["0.9375rem", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #F4F1E8;
+            color: #131a32;
+            background-image:
+                linear-gradient(rgba(0, 63, 198, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 63, 198, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .sch-paper-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+        .gold-glow {
+            box-shadow: 0 0 20px rgba(255, 200, 87, 0.3);
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #FFC857 0%, #D4A017 100%);
+            color: #10172F;
+            box-shadow: 0 4px 14px 0 rgba(255, 200, 87, 0.39);
+        }
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #FFD680 0%, #E6B02D 100%);
+        }
+        .text-gradient-brand {
+            background: linear-gradient(135deg, #2157EE 0%, #6F42FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .mastery-card {
+            background: linear-gradient(135deg, #0B1230 0%, #1a1a3a 100%);
+        }
+        .fibonacci-line {
+            stroke: #23B8FF;
+            stroke-dasharray: 4 2;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased overflow-x-hidden sch-paper-texture">
+<!-- Header -->
+<header class="bg-white/70 backdrop-blur-md font-body-md text-body-md top-0 sticky z-50 border-b border-outline-variant/30">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max-width mx-auto w-full">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary to-formalization-violet rounded-sm rotate-45 overflow-hidden">
+<span class="text-white font-bold -rotate-45">S</span>
+</div>
+<div class="font-headline-h3 text-xl tracking-tight text-gradient-brand font-bold">SCHOLARIUM</div>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-primary font-semibold border-b-2 border-primary pb-1" href="#">Product</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">How it works</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Trust</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Organizations</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Public source</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-2 mr-2">
+<span class="text-xs font-label-caps text-outline">Neuro-Console</span>
+<button class="w-10 h-5 bg-surface-container-high rounded-full relative p-0.5 border border-outline-variant">
+<div class="w-3.5 h-3.5 bg-white rounded-full shadow-sm"></div>
+</button>
+</div>
+<button class="btn-gold font-semibold px-5 py-2 rounded text-body-md transition-all hover:scale-105 active:scale-95">Enter Scholarium</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-sm md:py-section-v-rhythm-lg grid lg:grid-cols-2 gap-16 items-center">
+<div class="flex flex-col gap-8">
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-provenance-cyan"></span>
+                SECUREDME EDUCATION / PUBLIC PRE-ALPHA
+            </div>
+<h1 class="font-hero-lg-mobile text-hero-lg-mobile md:font-hero-lg md:text-hero-lg text-navy-ink leading-tight">
+                Turn <span class="text-stewardship-gold italic">knowledge</span> into <span class="text-stewardship-gold italic">traceable</span> evidence.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg leading-relaxed">
+                A free social commons for research, learning, and organizational work — built so publications, people, context, and provenance can remain connected.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="btn-gold font-semibold px-8 py-4 rounded text-body-md transition-all flex justify-center items-center gap-2 group">
+                    Explore Scholarium
+                    <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="bg-white border border-outline-variant text-navy-ink font-semibold px-8 py-4 rounded text-body-md hover:bg-surface-container-low transition-colors flex justify-center items-center">
+                    See the workflow
+                </button>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<a class="text-primary text-xs font-semibold hover:underline flex items-center gap-1" href="#">
+                    View public source <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Hero Visual: Fibonacci Mastery -->
+<div class="relative w-full aspect-[4/3] mastery-card rounded-2xl border border-outline/20 p-8 shadow-2xl overflow-hidden flex flex-col justify-center">
+<!-- Background Fibonacci Geometry -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" preserveaspectratio="xMidYMid slice" viewbox="0 0 400 300">
+<path d="M0,300 A300,300 0 0,1 300,0 M300,0 A185,185 0 0,1 115,185 M115,185 A115,115 0 0,1 230,70 M230,70 A70,70 0 0,1 160,140" fill="none" stroke="#23B8FF" stroke-width="0.5"></path>
+</svg>
+<div class="relative z-10 flex flex-col gap-12">
+<div class="flex items-end justify-between gap-2 px-4">
+<!-- Progress Sequence -->
+<div class="flex items-end gap-3 sm:gap-6">
+<div class="flex flex-col items-center gap-2">
+<div class="w-6 h-6 border border-provenance-cyan/30 rounded rotate-45 flex items-center justify-center opacity-40">
+<div class="w-2 h-2 bg-provenance-cyan/40 rounded-full"></div>
+</div>
+<span class="text-[10px] font-mono text-provenance-cyan/40 uppercase tracking-tighter">Tool 1</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 border border-provenance-cyan/50 rounded rotate-45 flex items-center justify-center opacity-60">
+<div class="w-4 h-4 bg-provenance-cyan/60 rounded-full"></div>
+</div>
+<span class="text-[10px] font-mono text-provenance-cyan/60 uppercase tracking-tighter">Mastery 2</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-14 h-14 border border-formalization-violet/70 rounded rotate-45 flex items-center justify-center opacity-80 shadow-[0_0_15px_rgba(111,66,255,0.2)]">
+<div class="w-6 h-6 bg-gradient-to-br from-primary to-formalization-violet rounded-sm"></div>
+</div>
+<span class="text-[10px] font-mono text-formalization-violet/80 uppercase tracking-tighter">Mastery 6</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="relative w-20 h-20 gold-glow rounded rotate-45 flex items-center justify-center border-2 border-stewardship-gold bg-gradient-to-br from-stewardship-gold/20 to-transparent">
+<span class="material-symbols-outlined text-stewardship-gold text-4xl -rotate-45" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<span class="text-[10px] font-bold font-mono text-stewardship-gold uppercase tracking-widest">Premium Mode</span>
+</div>
+</div>
+</div>
+<div class="px-4 text-white/50 text-xs font-mono max-w-xs">
+<span class="text-provenance-cyan">&gt;&gt;</span> PROVENANCE_RECEIPT: verified_mastery_0x7F4A
+                </div>
+</div>
+</div>
+</section>
+<!-- Product Promise -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-sm text-center">
+<h2 class="font-headline-h2 text-headline-h2 text-navy-ink max-w-4xl mx-auto">A platform that respects the work and the learner.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-6">
+            Scholarium is an institutional platform for structuring thought. We move beyond fragmented notes to verifiable, deeply cited publications designed for rigorous review and lasting archival.
+        </p>
+</section>
+<!-- Three-Part Workflow -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-sm">
+<div class="grid md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-white border border-outline-variant p-8 rounded-xl hover:shadow-xl transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-provenance-cyan/5 -mr-8 -mt-8 rounded-full"></div>
+<div class="w-12 h-12 bg-surface-soft border border-primary/10 rounded flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">share</span>
+</div>
+<div class="text-primary font-mono text-xs mb-2">01</div>
+<h3 class="font-headline-h3 text-xl mb-3 text-navy-ink">Share more than a post</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Publish deep context and source trails that survive the initial feed encounter.</p>
+<a class="text-primary font-semibold text-sm flex items-center gap-2" href="#">Learn more <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+</div>
+<!-- Card 2 -->
+<div class="bg-white border border-outline-variant p-8 rounded-xl hover:shadow-xl transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-formalization-violet/5 -mr-8 -mt-8 rounded-full"></div>
+<div class="w-12 h-12 bg-tertiary-fixed rounded flex items-center justify-center text-formalization-violet mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+</div>
+<div class="text-formalization-violet font-mono text-xs mb-2">02</div>
+<h3 class="font-headline-h3 text-xl mb-3 text-navy-ink">Make form a learning tool</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Use structured templates that guide you toward rigor without stifling your unique voice.</p>
+<a class="text-formalization-violet font-semibold text-sm flex items-center gap-2" href="#">Explore templates <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+</div>
+<!-- Card 3 -->
+<div class="bg-white border border-outline-variant p-8 rounded-xl hover:shadow-xl transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-stewardship-gold/5 -mr-8 -mt-8 rounded-full"></div>
+<div class="w-12 h-12 bg-stewardship-gold/20 rounded flex items-center justify-center text-stewardship-gold mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_search</span>
+</div>
+<div class="text-stewardship-gold font-mono text-xs mb-2">03</div>
+<h3 class="font-headline-h3 text-xl mb-3 text-navy-ink">Keep contribution human</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Provenance-backed authorship that values the thinker over the algorithmic metric.</p>
+<a class="text-stewardship-gold font-semibold text-sm flex items-center gap-2" href="#">Trust principles <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+</div>
+</div>
+</section>
+<!-- Trust Section -->
+<section class="bg-navy-ink text-white py-section-v-rhythm-lg mt-section-v-rhythm-sm">
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="font-headline-h2 text-headline-h2 mb-8">Trust by Design</h2>
+<div class="space-y-12">
+<div class="flex gap-6">
+<div class="text-provenance-cyan">
+<span class="material-symbols-outlined text-4xl">fingerprint</span>
+</div>
+<div>
+<h4 class="font-headline-h3 text-xl mb-2">Identity with boundaries</h4>
+<p class="text-outline-variant leading-relaxed">Your data belongs to you. We provide the ledger, you provide the consent. Privacy that stays local by default.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="text-formalization-violet">
+<span class="material-symbols-outlined text-4xl">history_edu</span>
+</div>
+<div>
+<h4 class="font-headline-h3 text-xl mb-2">Provenance first</h4>
+<p class="text-outline-variant leading-relaxed">Every claim is linked to its source. Trace the evolution of an idea from fragment to peer-reviewed publication.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="text-stewardship-gold">
+<span class="material-symbols-outlined text-4xl">verified_user</span>
+</div>
+<div>
+<h4 class="font-headline-h3 text-xl mb-2">Public accountability</h4>
+<p class="text-outline-variant leading-relaxed">Open source at our core. No pay-to-rank, no black-box algorithms. Just human review and transparent receipts.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+<div class="font-mono text-[10px] text-white/30 uppercase tracking-widest mb-6">Internal Receipt Log</div>
+<div class="space-y-3 font-mono text-[11px] text-provenance-cyan/80">
+<div class="flex justify-between border-b border-white/5 pb-2">
+<span>TRANS_ID: 0x932...FF21</span>
+<span class="text-stewardship-gold">SUCCESS</span>
+</div>
+<div class="flex justify-between border-b border-white/5 pb-2">
+<span>BLOCK_REF: 8,442,109</span>
+<span>TS: 2024-05-12</span>
+</div>
+<div class="flex justify-between border-b border-white/5 pb-2">
+<span>AUTHOR_SIG: dr_vance_canonical</span>
+<span class="text-formalization-violet">VERIFIED</span>
+</div>
+<div class="pt-4 text-white/40 leading-relaxed">
+                            "The impact of distributed consensus on academic peer review is not merely technical, but social. It creates a durable chain of human stewardship."
+                        </div>
+</div>
+<div class="mt-8 flex justify-center">
+<div class="w-full h-32 flex items-center justify-center">
+<svg class="w-full h-full stroke-provenance-cyan/20 fill-none" viewbox="0 0 100 40">
+<path d="M0,20 Q25,5 50,20 T100,20"></path>
+<path d="M0,25 Q25,10 50,25 T100,25"></path>
+<circle class="fill-stewardship-gold animate-pulse" cx="50" cy="22.5" r="3"></circle>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Artifact Demo -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-lg">
+<div class="bg-white border border-outline-variant rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-12">
+<div class="md:col-span-8 p-12 border-b md:border-b-0 md:border-r border-outline-variant">
+<div class="flex justify-between items-start mb-8">
+<div class="font-metadata-micro text-xs text-outline uppercase tracking-widest">Research Artifact / Draft v4.2</div>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-surface-soft text-primary font-bold rounded text-[10px] border border-primary/20">CC BY-NC 4.0</span>
+<span class="px-2 py-1 bg-night-bg text-white font-bold rounded text-[10px]">PRIVATE</span>
+</div>
+</div>
+<h3 class="font-headline-h2 text-4xl mb-6 text-navy-ink leading-tight">The Impact of Distributed Consensus on Academic Peer Review</h3>
+<p class="text-on-surface-variant mb-10 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum, nulla vel tincidunt pretium, eros ipsum eleifend eros, eget feugiat urna odio vitae enim. </p>
+<div class="flex flex-wrap gap-8">
+<div class="flex flex-col gap-1">
+<span class="text-[10px] text-outline uppercase font-semibold">Author</span>
+<span class="text-sm font-bold text-navy-ink">Dr. E. Vance</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[10px] text-outline uppercase font-semibold">Provenance ID</span>
+<span class="text-sm font-mono text-provenance-cyan">0x7F4A...B991</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[10px] text-outline uppercase font-semibold">Sources</span>
+<span class="text-sm font-bold text-navy-ink">14 Linked</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 bg-surface-container-low p-12 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-8">
+<span class="text-[10px] text-outline uppercase font-bold tracking-wider">Stewardship Status</span>
+<span class="material-symbols-outlined text-stewardship-gold">verified</span>
+</div>
+<div class="bg-white border border-stewardship-gold/30 p-4 rounded-xl flex items-center gap-4 gold-glow relative group cursor-pointer">
+<div class="w-10 h-10 bg-stewardship-gold/20 rounded flex items-center justify-center text-stewardship-gold">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div>
+<div class="text-xs font-bold text-navy-ink">Scholar Level</div>
+<div class="text-[10px] text-stewardship-gold font-bold">VERIFIED STEWARD</div>
+</div>
+<div class="absolute -right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-stewardship-gold rounded-full flex items-center justify-center text-navy-ink shadow-lg">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+</div>
+</div>
+<div class="mt-auto">
+<div class="flex items-center justify-between p-4 bg-navy-ink rounded-lg text-white">
+<div class="flex items-center gap-3">
+<span class="text-2xl font-bold text-stewardship-gold">8</span>
+<span class="text-[10px] font-bold leading-tight uppercase tracking-widest text-outline-variant">Active<br/>Tools</span>
+</div>
+<span class="material-symbols-outlined text-provenance-cyan">construction</span>
+</div>
+<button class="w-full mt-6 text-sm font-bold text-primary hover:underline flex justify-center items-center gap-2">
+                        View Full Metadata <span class="material-symbols-outlined text-sm">receipt_long</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Organizational Continuity -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-sm">
+<div class="text-center mb-16">
+<div class="font-label-caps text-xs text-primary tracking-widest mb-4">FOR INSTITUTIONS &amp; TEAMS</div>
+<h2 class="font-headline-h2 text-navy-ink">Evidence that survives the handoff.</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="order-2 md:order-1">
+<div class="space-y-8">
+<div class="p-6 bg-white border-l-4 border-provenance-cyan rounded-r-xl shadow-sm">
+<h4 class="font-bold text-navy-ink mb-2">Durable Context</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Organizational knowledge doesn't vanish when a team member leaves. Every edit is a versioned link in a permanent chain.</p>
+</div>
+<div class="p-6 bg-white border-l-4 border-formalization-violet rounded-r-xl shadow-sm">
+<h4 class="font-bold text-navy-ink mb-2">Cross-Project Synergy</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Discover connections between departmental silos through shared sources and common formalization tags.</p>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2 flex justify-center">
+<div class="w-64 h-64 relative">
+<div class="absolute inset-0 bg-primary/5 rounded-full animate-ping"></div>
+<div class="absolute inset-4 bg-white border border-outline-variant rounded-full flex items-center justify-center shadow-lg">
+<div class="text-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-2">hub</span>
+<div class="text-xs font-bold text-navy-ink uppercase">Networked</div>
+</div>
+</div>
+<div class="absolute -top-4 -right-4 w-20 h-20 bg-white border border-outline-variant rounded-full flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-formalization-violet">group</span>
+</div>
+<div class="absolute -bottom-4 -left-4 w-16 h-16 bg-white border border-outline-variant rounded-full flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-stewardship-gold">history</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Suite Bridge -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-lg bg-surface-container-low/50 rounded-3xl mt-section-v-rhythm-sm">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-headline-h2 text-navy-ink mb-6">Part of the SecuredMe Ecosystem</h2>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                    Scholarium is the publishing and research core of SecuredMe. While Scholarium focuses on knowledge and provenance, the broader suite provides the infrastructure for a sovereign digital existence.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-white font-bold px-6 py-3 rounded hover:bg-primary-container transition-all">Open Scholarium</button>
+<button class="text-primary font-bold px-6 py-3 border border-primary/20 rounded hover:bg-white transition-all">Explore SecuredMe Root</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="aspect-square bg-white border border-outline-variant rounded-2xl flex flex-col items-center justify-center p-6 text-center shadow-sm">
+<span class="material-symbols-outlined text-3xl text-primary mb-3">shield</span>
+<span class="text-xs font-bold text-navy-ink">Privacy Vault</span>
+</div>
+<div class="aspect-square bg-white border border-outline-variant rounded-2xl flex flex-col items-center justify-center p-6 text-center shadow-sm">
+<span class="material-symbols-outlined text-3xl text-provenance-cyan mb-3">account_balance</span>
+<span class="text-xs font-bold text-navy-ink">Ledger Core</span>
+</div>
+<div class="aspect-square bg-white border border-outline-variant rounded-2xl flex flex-col items-center justify-center p-6 text-center shadow-sm">
+<span class="material-symbols-outlined text-3xl text-formalization-violet mb-3">auto_awesome</span>
+<span class="text-xs font-bold text-navy-ink">QuaNthoR Coach</span>
+</div>
+<div class="aspect-square bg-white border border-outline-variant rounded-2xl flex flex-col items-center justify-center p-6 text-center shadow-sm">
+<span class="material-symbols-outlined text-3xl text-stewardship-gold mb-3">verified</span>
+<span class="text-xs font-bold text-navy-ink">Trust Identity</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Pre-Alpha Boundary -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-12 border-t border-outline-variant/30 mt-section-v-rhythm-sm">
+<div class="bg-error-container/20 border border-error/10 p-8 rounded-xl">
+<div class="flex items-center gap-3 mb-4 text-error">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-bold uppercase tracking-widest text-xs">Public Pre-Alpha Advisory</span>
+</div>
+<div class="grid md:grid-cols-2 gap-8 text-sm text-on-surface-variant leading-relaxed">
+<ul class="space-y-2 list-disc list-inside">
+<li>This is a live research environment. Expect breaking changes.</li>
+<li>No pay-to-rank: all discovery is organic and evidence-based.</li>
+<li>Provider operations and moderation tools are currently gated.</li>
+</ul>
+<ul class="space-y-2 list-disc list-inside">
+<li>Provenance receipts are for platform context and do not replace legal DOI/ISBN registrations.</li>
+<li>External service execution is in developmental bypass mode.</li>
+<li>Personal data is stored locally-first by architectural default.</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-lg text-center">
+<h2 class="font-headline-h1-mobile md:font-headline-h1 text-navy-ink mb-8 leading-tight">Ready to build your <span class="text-stewardship-gold italic">legacy of knowledge?</span></h2>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<button class="btn-gold font-bold px-12 py-5 rounded-lg text-lg transition-all hover:scale-105">Start Your Research</button>
+<button class="bg-navy-ink text-white font-bold px-12 py-5 rounded-lg text-lg transition-all hover:bg-primary">Join the Community</button>
+</div>
+<div class="mt-8 text-outline-variant font-mono text-xs">Current Hash: scholarium-v0.4.2-alpha_6f9a2</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-navy-ink text-white font-body-md text-body-md py-section-v-rhythm-sm border-t border-white/5">
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-gutter mb-20">
+<div class="col-span-2 md:col-span-1 flex flex-col gap-6">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-gradient-to-br from-primary to-formalization-violet rounded-sm rotate-45 flex items-center justify-center">
+<span class="text-[10px] -rotate-45 font-bold">S</span>
+</div>
+<span class="font-headline-h3 text-lg font-bold tracking-tight">SCHOLARIUM</span>
+</div>
+<p class="text-xs text-outline-variant leading-relaxed max-w-xs">An open research commons by SecuredMe Education, Inc. Built for the era of traceable human evidence.</p>
+<div class="flex gap-4">
+<a class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors" href="#">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-xs font-bold uppercase tracking-widest text-outline-variant">Product</h5>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Overview</a>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">How it works</a>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Public Roadmap</a>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Feedback</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-xs font-bold uppercase tracking-widest text-outline-variant">Publishing</h5>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Studio</a>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Peer Review</a>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Citations</a>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Templates</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-xs font-bold uppercase tracking-widest text-outline-variant">Trust</h5>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Provenance</a>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Security</a>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Identity Boundaries</a>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Ethics Review</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-xs font-bold uppercase tracking-widest text-outline-variant">Developers</h5>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">API Documentation</a>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">GitHub Repository</a>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Protocol Specs</a>
+<a class="text-sm hover:text-provenance-cyan transition-colors" href="#">Open Source</a>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-[10px] text-outline-variant font-mono">
+                © 2024 SECUREDME EDUCATION, INC. ALL RIGHTS RESERVED. SEL-2.0 COMPLIANT.
+            </div>
+<div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest">
+<a class="hover:text-primary transition-colors" href="#">Legal</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Public Calendar</a>
+<a class="hover:text-primary transition-colors" href="#">SecuredMe Root</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

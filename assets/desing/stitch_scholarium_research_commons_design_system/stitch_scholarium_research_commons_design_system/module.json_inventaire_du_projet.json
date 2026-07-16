@@ -1,0 +1,172 @@
+{
+  "project": "Scholarium",
+  "version": "1.0.0",
+  "description": "Inventaire complet des actifs du projet Scholarium - Evidence Commons.",
+  "inventory": {
+    "design_system": [
+      {
+        "id": "{{DATA:DESIGN_SYSTEM:DESIGN_SYSTEM_1}}",
+        "name": "Evidence Commons",
+        "type": "Design System",
+        "description": "Système de design canonique incluant les jetons de couleur, la typographie et les spécifications de mise en page."
+      }
+    ],
+    "screens": [
+      {
+        "id": "{{DATA:SCREEN:SCREEN_54}}",
+        "title": "Scholarium - Light Landing",
+        "device": "desktop",
+        "status": "completed"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_29}}",
+        "title": "Scholarium - Dark Landing",
+        "device": "desktop",
+        "status": "completed"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_32}}",
+        "title": "Scholarium - Mobile Landing",
+        "device": "mobile",
+        "status": "completed"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_40}}",
+        "title": "Scholarium - Soulful Light Landing (Full)",
+        "device": "desktop",
+        "status": "completed"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_55}}",
+        "title": "Scholarium - Soulful Dark Landing (Full)",
+        "device": "desktop",
+        "status": "completed"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_42}}",
+        "title": "Scholarium - Minimalist Archival Variant",
+        "device": "desktop"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_30}}",
+        "title": "Scholarium - Cinematic Immersive Variant",
+        "device": "desktop"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_5}}",
+        "title": "Scholarium - Editorial Storytelling Variant",
+        "device": "desktop"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_37}}",
+        "title": "Scholarium - Geometric Blueprint Variant",
+        "device": "desktop"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_36}}",
+        "title": "Scholarium - Brutalist Ledger Variant",
+        "device": "desktop"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_43}}",
+        "title": "Scholarium - Tactile Archive Variant",
+        "device": "desktop"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_46}}",
+        "title": "Scholarium - Hyper-Linked Network Variant",
+        "device": "desktop"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_35}}",
+        "title": "Scholarium - Avant-Garde Narrative Variant",
+        "device": "desktop"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_26}}",
+        "title": "Scholarium - Glitch Provenance Variant",
+        "device": "desktop"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_3}}",
+        "title": "Scholarium - Brutalist Ledger Mobile",
+        "device": "mobile"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_52}}",
+        "title": "Scholarium - Tactile Archive Mobile",
+        "device": "mobile"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_49}}",
+        "title": "Scholarium - Hyper-Linked Network Mobile",
+        "device": "mobile"
+      },
+      {
+        "id": "{{DATA:SCREEN:SCREEN_31}}",
+        "title": "Scholarium Marketing Copy",
+        "device": "desktop"
+      }
+    ],
+    "images": [
+      {
+        "id": "{{DATA:IMAGE:IMAGE_2}}",
+        "description": "Social Media Card - Soulful Dark"
+      },
+      {
+        "id": "{{DATA:IMAGE:IMAGE_6}}",
+        "description": "Scholarium - Soulful Light Landing Board"
+      },
+      {
+        "id": "{{DATA:IMAGE:IMAGE_41}}",
+        "description": "Professional Marketing Banner Ad"
+      },
+      {
+        "id": "{{DATA:IMAGE:IMAGE_33}}",
+        "description": "Elegant Email Header - Provenance Receipt"
+      },
+      {
+        "id": "{{DATA:IMAGE:IMAGE_48}}",
+        "description": "Scholarium: Hexagonal S Monogram (Logo)"
+      },
+      {
+        "id": "{{DATA:IMAGE:IMAGE_53}}",
+        "description": "Scholarium: Knowledge Network Emblem (Logo)"
+      },
+      {
+        "id": "{{DATA:IMAGE:IMAGE_47}}",
+        "description": "Scholarium: Ledger Folio Mark (Logo)"
+      },
+      {
+        "id": "{{DATA:IMAGE:IMAGE_28}}",
+        "description": "Scholarium: Stewardship Seal Badge (Logo)"
+      },
+      {
+        "id": "{{DATA:IMAGE:IMAGE_51}}",
+        "description": "Scholarium: Fibonacci Trace Logo (Logo)"
+      },
+      {
+        "id": "{{DATA:IMAGE:IMAGE_50}}",
+        "description": "Scholarium - Soulful Dark Landing Board"
+      }
+    ],
+    "documents": [
+      {
+        "id": "{{DATA:DOCUMENT:DOCUMENT_45}}",
+        "title": "SCHOLARIUM_DESIGN.md",
+        "description": "Canonical design and UX contract"
+      },
+      {
+        "id": "{{DATA:DOCUMENT:DOCUMENT_38}}",
+        "title": "Marketing Kit.md",
+        "description": "Assets and rationale for marketing Scholarium"
+      }
+    ],
+    "components": [
+      {
+        "id": "{{DATA:COMPONENTS:COMPONENTS_4}}",
+        "description": "Shared UI components: TopAppBar, Footer"
+      }
+    ]
+  }
+}

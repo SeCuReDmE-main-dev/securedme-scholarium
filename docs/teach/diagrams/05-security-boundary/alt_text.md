@@ -1,0 +1,1 @@
+Security flow from browser TLS and authenticated sessions through role, tenant, consent, pseudonymization, Gate5 verification, isolated workers, canonical receipts, Bouncy Castle signing, threat evidence, technical-only Datadog metrics, and the geometry crypto wall.

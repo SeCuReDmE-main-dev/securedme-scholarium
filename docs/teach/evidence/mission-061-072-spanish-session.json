@@ -1,0 +1,136 @@
+{
+  "schema": "scholarium.execution-evidence.v1",
+  "evidenceId": "mission-061-072-spanish-session",
+  "generatedAt": "2026-07-15T18:31:36.0918542Z",
+  "dataClass": "synthetic_education_only",
+  "actions": [
+    "061",
+    "062",
+    "063",
+    "064",
+    "065",
+    "066",
+    "067",
+    "068",
+    "069",
+    "070",
+    "071",
+    "072"
+  ],
+  "activatedSkills": [
+    "RagGgE_Architectural_Integrity_Design",
+    "RagGgE_Interface_and_Contract_Validation",
+    "RagGgE_Technical_Risk_Assessment",
+    "coding-research:primary-docs-skill",
+    "data-analytics:metric-diagnostics",
+    "architecte-zero:az-browser-visual-qa"
+  ],
+  "activatedPluginSurfaces": [
+    "SecuredMe Education Controller",
+    "Coding Research",
+    "Data Analytics",
+    "local frontend and Playwright"
+  ],
+  "implementation": {
+    "contract": "apps/web/lib/teach-contracts.ts",
+    "service": "apps/web/lib/teach-service.ts",
+    "schema": "apps/web/db/schema.ts",
+    "migration": "apps/web/drizzle/0029_scholarium_teach_core.sql",
+    "api": "apps/web/app/api/teach/lesson/route.ts",
+    "client": "apps/web/app/teach/teach-client.tsx",
+    "tests": "apps/web/tests/teach-contract.test.mjs"
+  },
+  "apiProbe": {
+    "url": "http://localhost:5173/api/v1/teach/lesson",
+    "status": 200,
+    "objectiveCount": 4,
+    "plannedDurationMinutes": 60,
+    "validationEventCount": 12,
+    "persistenceAvailableWhenSignedOut": false
+  },
+  "migrationProbe": {
+    "engine": "python-sqlite-memory",
+    "tableCount": 15,
+    "tables": [
+      "algoquest_learning_events",
+      "growth_stories",
+      "learning_attempts",
+      "learning_hints",
+      "learning_objectives",
+      "learning_questions",
+      "learning_reminders",
+      "strength_observations",
+      "teach_checkpoints",
+      "teach_courses",
+      "teach_enrollments",
+      "teach_lessons",
+      "teach_media_requests",
+      "teach_modules",
+      "teach_purpose_consents"
+    ]
+  },
+  "repositoryValidation": {
+    "command": "npm test",
+    "build": "passed",
+    "testsPassed": 61,
+    "testsFailed": 0,
+    "lintCommand": "npm run lint",
+    "lintErrors": 0,
+    "lintWarnings": 30,
+    "diffCheck": "passed"
+  },
+  "browserValidation": {
+    "url": "http://localhost:5173/teach",
+    "coreLoop": {
+      "objectiveCount": 4,
+      "answersSubmitted": 4,
+      "assistanceLevel": "wait",
+      "resultingState": "recalled",
+      "finalConversationVisible": true
+    },
+    "checkpoint": {
+      "key": "scholarium.teach.spanish.checkpoint.v1",
+      "objectiveIndex": 3,
+      "restoredAfterReload": true,
+      "hydrationErrors": 0
+    },
+    "consoleErrors": 0,
+    "apiRequests": {
+      "countObserved": 3,
+      "status": 200
+    },
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 1000,
+        "horizontalOverflow": false,
+        "screenshot": "apps/web/output/playwright/g6/teach-spanish-desktop-1440x1000.png"
+      },
+      {
+        "width": 820,
+        "height": 1180,
+        "horizontalOverflow": false,
+        "screenshot": "apps/web/output/playwright/g6/teach-spanish-tablet-820x1180.png"
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "horizontalOverflow": false,
+        "screenshot": "apps/web/output/playwright/g6/teach-spanish-mobile-390x844.png"
+      }
+    ],
+    "mobileBottomScreenshot": "apps/web/output/playwright/g6/teach-spanish-mobile-bottom-390x844.png"
+  },
+  "authorityBoundary": {
+    "wallClockHourExecuted": false,
+    "syntheticTimelineValidated": true,
+    "educationalEfficacyClaimed": false,
+    "autonomousTeacherAuthorityClaimed": false,
+    "rawPrivateTranscriptInTeacherSummary": false
+  },
+  "gate": {
+    "id": "G6",
+    "status": "passed",
+    "reason": "The Spanish course runs end to end with question-bound attempts, progressive support, reminder contracts, exact checkpoint restoration, structured teacher summary, a deterministic 60-minute scenario, and browser proof."
+  }
+}

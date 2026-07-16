@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "1535ec90bd5adbfc",
+  "title": "Scholarium Teach Platform Architecture",
+  "engine": "graphviz",
+  "profile": "technical-architecture",
+  "qa_status": "render-ready",
+  "source_path": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium\\docs\\teach\\diagrams\\01-platform-architecture\\scholarium-teach-platform-architecture.dot",
+  "markdown_path": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium\\docs\\teach\\diagrams\\01-platform-architecture\\scholarium-teach-platform-architecture.md",
+  "caption_path": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium\\docs\\teach\\diagrams\\01-platform-architecture\\caption.md",
+  "alt_text_path": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium\\docs\\teach\\diagrams\\01-platform-architecture\\alt_text.md",
+  "rendered": {
+    "svg": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium\\docs\\teach\\diagrams\\01-platform-architecture\\scholarium-teach-platform-architecture.svg",
+    "png": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\securedme-scholarium\\docs\\teach\\diagrams\\01-platform-architecture\\scholarium-teach-platform-architecture.png"
+  },
+  "render_messages": {
+    "svg": "rendered",
+    "png": "rendered"
+  },
+  "tool_versions": {
+    "mmdc": "11.16.0",
+    "dot": "dot - graphviz version 15.1.0 (20260618.0150)"
+  },
+  "warnings": [],
+  "errors": []
+}

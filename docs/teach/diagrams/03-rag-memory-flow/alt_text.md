@@ -1,0 +1,1 @@
+RAG flow from primary sources through Synthia source cards and classification into approved, preparation, or quarantine graphs, then MemoryLake, retrieve-DPR-only HippoRAG, sourced passages, Codex or Gemini, and the human user.

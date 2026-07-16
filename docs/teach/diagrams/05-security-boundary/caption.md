@@ -1,0 +1,1 @@
+Figure 5. Gate5 fails closed before worker execution, Bouncy Castle signs content-free terminal receipt digests, and quasicrystal or Hilbert values remain structurally useful but cryptographically inert.

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholarium - Durable Truth</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#003fc6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#e0e4ff",
+                        "surface-variant": "#dce1ff",
+                        "outline": "#747687",
+                        "surface-tint": "#0f4ee6",
+                        "on-tertiary-fixed-variant": "#4a00d4",
+                        "on-tertiary-fixed": "#1d0061",
+                        "on-secondary-container": "#004462",
+                        "inverse-surface": "#292f48",
+                        "tertiary-container": "#6b3cfb",
+                        "on-error-container": "#93000a",
+                        "surface": "#faf8ff",
+                        "on-background": "#131a32",
+                        "surface-dim": "#d2d9f9",
+                        "on-surface-variant": "#434655",
+                        "surface-container-highest": "#dce1ff",
+                        "on-primary": "#ffffff",
+                        "stewardship-gold": "#FFC857",
+                        "on-primary-fixed": "#001551",
+                        "on-secondary-fixed": "#001e2e",
+                        "tertiary-fixed-dim": "#cbbeff",
+                        "surface-soft": "#EEF3FF",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c3c5d8",
+                        "inverse-primary": "#b7c4ff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#00658f",
+                        "on-tertiary-container": "#e9e1ff",
+                        "secondary-container": "#1eb6fd",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f3f2ff",
+                        "tertiary": "#520ee3",
+                        "secondary-fixed-dim": "#87ceff",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "formalization-violet": "#6F42FF",
+                        "primary-container": "#2157ee",
+                        "surface-container": "#ebedff",
+                        "navy-ink": "#0B1230",
+                        "tertiary-fixed": "#e6deff",
+                        "night-bg": "#080D1C",
+                        "on-secondary-fixed-variant": "#004c6d",
+                        "secondary-fixed": "#c8e6ff",
+                        "background": "#faf8ff",
+                        "on-tertiary": "#ffffff",
+                        "paper-cool": "#F7F8FC",
+                        "surface-bright": "#faf8ff",
+                        "surface-container-high": "#e4e7ff",
+                        "on-surface": "#131a32",
+                        "inverse-on-surface": "#eff0ff",
+                        "on-secondary": "#ffffff",
+                        "paper-warm": "#F4F1E8",
+                        "provenance-cyan": "#23B8FF",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "primary-fixed": "#dce1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-v-rhythm-sm": "80px",
+                        "margin-desktop": "80px",
+                        "section-v-rhythm-lg": "140px",
+                        "margin-mobile": "16px",
+                        "container-max-width": "1180px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "hero-lg": ["Instrument Serif"],
+                        "headline-h2": ["Instrument Serif"],
+                        "headline-h3": ["Geist"],
+                        "metadata-micro": ["Geist"],
+                        "hero-lg-mobile": ["Instrument Serif"],
+                        "body-lg": ["Geist"],
+                        "label-caps": ["Geist"],
+                        "headline-h1": ["Instrument Serif"],
+                        "headline-h1-mobile": ["Instrument Serif"],
+                        "body-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "hero-lg": ["6.4rem", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-h2": ["3.5rem", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "headline-h3": ["2rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "metadata-micro": ["0.625rem", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "hero-lg-mobile": ["3.8rem", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "body-lg": ["1.075rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600" }],
+                        "headline-h1": ["4.4rem", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "headline-h1-mobile": ["2.8rem", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+        @font-face {
+            font-family: 'Geist';
+            src: local('Inter'), local('Helvetica Neue'), local('Arial');
+        }
+
+        body {
+            background-color: theme('colors.night-bg');
+            color: theme('colors.surface-bright');
+        }
+
+        .premium-bg {
+            background-color: #080D1C;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(111, 66, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(35, 184, 255, 0.15) 0%, transparent 40%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .gold-glow {
+            text-shadow: 0 0 20px rgba(255, 200, 87, 0.3);
+        }
+
+        .gold-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(theme('colors.night-bg'), theme('colors.night-bg')) padding-box,
+                        linear-gradient(135deg, theme('colors.stewardship-gold'), transparent, theme('colors.stewardship-gold')) border-box;
+        }
+
+        .pulse-line {
+            stroke-dasharray: 100;
+            animation: dash 10s linear infinite;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -1000;
+            }
+        }
+
+        @keyframes pulse-opacity {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        .node-pulse {
+            animation: pulse-opacity 3s ease-in-out infinite;
+        }
+
+        .artifact-receipt {
+            background: rgba(13, 21, 48, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid theme('colors.stewardship-gold');
+            box-shadow: 0 0 40px rgba(255, 200, 87, 0.1), inset 0 0 20px rgba(255, 200, 87, 0.05);
+        }
+
+        .gold-btn {
+            background: linear-gradient(135deg, #FFC857 0%, #D4A017 100%);
+            color: #080D1C;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 200, 87, 0.3);
+        }
+        .gold-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 200, 87, 0.4);
+        }
+
+        .light-leak {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden selection:bg-stewardship-gold/30 selection:text-surface-bright premium-bg">
+<!-- 1. Header (TopAppBar) -->
+<header class="bg-night-bg/80 backdrop-blur-xl sticky top-0 z-50 border-b border-outline/10 px-margin-mobile md:px-margin-desktop py-4 flex justify-between items-center">
+<div class="flex items-center gap-12 max-w-container-max-width mx-auto w-full justify-between">
+<div class="flex items-center gap-12">
+<a class="font-headline-h3 text-headline-h3 tracking-tight text-stewardship-gold flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-3xl" data-weight="fill">auto_awesome</span>
+                SCHOLARIUM
+            </a>
+<nav class="hidden lg:flex gap-8 items-center h-full">
+<a class="text-outline-variant hover:text-provenance-cyan transition-colors py-2 border-b-2 border-transparent" href="#">Product</a>
+<a class="text-outline-variant hover:text-provenance-cyan transition-colors py-2 border-b-2 border-transparent" href="#">How it works</a>
+<a class="text-stewardship-gold font-bold border-b-2 border-stewardship-gold py-2" href="#">Trust</a>
+<a class="text-outline-variant hover:text-provenance-cyan transition-colors py-2 border-b-2 border-transparent" href="#">Organizations</a>
+<a class="text-outline-variant hover:text-provenance-cyan transition-colors py-2 border-b-2 border-transparent" href="#">Public source</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4 text-outline-variant">
+<span class="material-symbols-outlined hover:text-stewardship-gold cursor-pointer transition-colors" data-icon="settings">settings</span>
+<span class="material-symbols-outlined hover:text-provenance-cyan cursor-pointer transition-colors" data-icon="visibility">visibility</span>
+</div>
+<button class="gold-btn px-6 py-2 rounded">Enter Scholarium</button>
+</div>
+</div>
+</header>
+<main class="relative">
+<div class="absolute inset-0 bg-grid-pattern -z-10 opacity-30"></div>
+<div class="light-leak bg-formalization-violet/10 -top-20 -left-20"></div>
+<div class="light-leak bg-provenance-cyan/10 bottom-0 right-0"></div>
+<!-- 2. Hero Section: Durable Truth & Ecosystem Map -->
+<section class="pt-section-v-rhythm-lg pb-section-v-rhythm-sm px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto flex flex-col items-center text-center relative z-10">
+<span class="font-label-caps text-label-caps text-stewardship-gold tracking-[0.3em] uppercase mb-6 bg-stewardship-gold/10 px-4 py-1 rounded-full">SECUREDME EDUCATION / PUBLIC PRE-ALPHA</span>
+<h1 class="font-hero-lg-mobile md:font-hero-lg text-hero-lg-mobile md:text-hero-lg text-surface-bright mb-8 max-w-4xl mx-auto leading-tight gold-glow italic">
+            Durable <span class="not-italic text-stewardship-gold">Truth.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-outline-variant max-w-2xl mx-auto mb-12">
+            A free social commons for research and learning — built so publications, people, context, and provenance remain eternally connected.
+        </p>
+<button class="gold-btn px-10 py-4 rounded-lg text-lg mb-20">Start Publishing</button>
+<!-- Ecosystem Map Visual -->
+<div class="w-full relative py-20 px-4 overflow-visible">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-formalization-violet/5 to-transparent pointer-events-none"></div>
+<div class="flex flex-wrap justify-center gap-x-12 gap-y-16 max-w-5xl mx-auto relative">
+<!-- SVG Connection Lines (Conceptual representation) -->
+<svg class="absolute inset-0 w-full h-full -z-10 opacity-40" preserveaspectratio="none">
+<path class="pulse-line" d="M200,100 C400,100 600,300 800,300" fill="none" stroke="url(#cyan-violet-grad)" stroke-width="1.5"></path>
+<path class="pulse-line" d="M200,300 C400,300 600,100 800,100" fill="none" stroke="url(#violet-cyan-grad)" stroke-width="1.5"></path>
+<defs>
+<lineargradient id="cyan-violet-grad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:#23B8FF;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#6F42FF;stop-opacity:1"></stop>
+</lineargradient>
+<lineargradient id="violet-cyan-grad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:#6F42FF;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#23B8FF;stop-opacity:1"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Tool Nodes -->
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 rounded-2xl bg-night-bg border border-provenance-cyan/30 flex items-center justify-center text-provenance-cyan shadow-[0_0_20px_rgba(35,184,255,0.2)] group-hover:shadow-[0_0_30px_rgba(35,184,255,0.4)] transition-all">
+<span class="material-symbols-outlined text-3xl">auto_stories</span>
+</div>
+<span class="font-label-caps text-xs text-outline-variant group-hover:text-surface-bright transition-colors">Reader</span>
+</div>
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 rounded-2xl bg-night-bg border border-formalization-violet/30 flex items-center justify-center text-formalization-violet shadow-[0_0_20px_rgba(111,66,255,0.2)] group-hover:shadow-[0_0_30px_rgba(111,66,255,0.4)] transition-all">
+<span class="material-symbols-outlined text-3xl">edit_note</span>
+</div>
+<span class="font-label-caps text-xs text-outline-variant group-hover:text-surface-bright transition-colors">Annotate</span>
+</div>
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 rounded-2xl bg-night-bg border border-stewardship-gold/30 flex items-center justify-center text-stewardship-gold shadow-[0_0_20px_rgba(255,200,87,0.2)] group-hover:shadow-[0_0_30px_rgba(255,200,87,0.4)] transition-all">
+<span class="material-symbols-outlined text-3xl">account_balance</span>
+</div>
+<span class="font-label-caps text-xs text-outline-variant group-hover:text-surface-bright transition-colors">Library</span>
+</div>
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 rounded-2xl bg-night-bg border border-provenance-cyan/30 flex items-center justify-center text-provenance-cyan shadow-[0_0_20px_rgba(35,184,255,0.2)] group-hover:shadow-[0_0_30px_rgba(35,184,255,0.4)] transition-all">
+<span class="material-symbols-outlined text-3xl">format_quote</span>
+</div>
+<span class="font-label-caps text-xs text-outline-variant group-hover:text-surface-bright transition-colors">Cite</span>
+</div>
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 rounded-2xl bg-night-bg border border-formalization-violet/30 flex items-center justify-center text-formalization-violet shadow-[0_0_20px_rgba(111,66,255,0.2)] group-hover:shadow-[0_0_30px_rgba(111,66,255,0.4)] transition-all">
+<span class="material-symbols-outlined text-3xl">monitoring</span>
+</div>
+<span class="font-label-caps text-xs text-outline-variant group-hover:text-surface-bright transition-colors">Insights</span>
+</div>
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 rounded-2xl bg-night-bg border border-stewardship-gold/30 flex items-center justify-center text-stewardship-gold shadow-[0_0_20px_rgba(255,200,87,0.2)] group-hover:shadow-[0_0_30px_rgba(255,200,87,0.4)] transition-all">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<span class="font-label-caps text-xs text-outline-variant group-hover:text-surface-bright transition-colors">AI Tutor</span>
+</div>
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 rounded-2xl bg-night-bg border border-provenance-cyan/30 flex items-center justify-center text-provenance-cyan shadow-[0_0_20px_rgba(35,184,255,0.2)] group-hover:shadow-[0_0_30px_rgba(35,184,255,0.4)] transition-all">
+<span class="material-symbols-outlined text-3xl">groups</span>
+</div>
+<span class="font-label-caps text-xs text-outline-variant group-hover:text-surface-bright transition-colors">Collaborate</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Editorial Promise: Structural Integrity -->
+<section class="py-section-v-rhythm-sm px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-headline-h2 text-headline-h2 mb-6">A return to <span class="text-stewardship-gold italic">structural integrity.</span></h2>
+<p class="font-body-lg text-body-lg text-outline-variant mb-8 leading-relaxed">
+                    Scholarium is enabled through vivigent, soulful, and interactive ecosystems. We are rebuilding the foundations of scholarly communication. No opaque algorithms, no predatory models. Just clean, durable evidence supported by a transparent web of trust.
+                </p>
+<a class="font-body-md text-body-md text-stewardship-gold hover:text-surface-bright transition-colors flex items-center gap-2 group" href="#">
+                    Learn more Scholarium Archive <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">north_east</span>
+</a>
+</div>
+<div class="artifact-receipt rounded-2xl p-8 relative overflow-hidden border-stewardship-gold/20 flex flex-col gap-6">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-stewardship-gold/20 flex items-center justify-center text-stewardship-gold">
+<span class="material-symbols-outlined" data-weight="fill">token</span>
+</div>
+<div>
+<p class="font-label-caps text-xs text-surface-bright uppercase">Institutional Archive</p>
+<p class="text-[10px] text-outline-variant">Period '1 3, 2023 • 8 TOOLS</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-stewardship-gold/40">settings_b_roll</span>
+</div>
+<div class="h-32 w-full bg-night-bg/50 rounded flex items-center justify-center border border-outline/10">
+<span class="material-symbols-outlined text-6xl text-stewardship-gold/20" data-weight="fill">account_balance</span>
+</div>
+<div class="space-y-2">
+<div class="h-1 w-full bg-outline/10 rounded-full overflow-hidden">
+<div class="h-full bg-stewardship-gold w-3/4 shadow-[0_0_10px_rgba(255,200,87,0.5)]"></div>
+</div>
+<div class="flex justify-between text-[10px] text-outline-variant">
+<span>Threshold Reached</span>
+<span>100% Verified</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Three-Part Workflow: Glowing Multi-colored Icons -->
+<section class="py-section-v-rhythm-lg px-margin-mobile md:px-margin-desktop relative">
+<div class="max-w-container-max-width mx-auto">
+<h2 class="font-headline-h2 text-headline-h2 mb-16 text-center">Three-Part Workflow</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Step 1 -->
+<div class="flex flex-col gap-6 p-8 rounded-2xl bg-surface-container-highest/5 border border-outline/10 hover:border-provenance-cyan/30 transition-all group">
+<div class="w-16 h-16 rounded-2xl bg-night-bg border border-provenance-cyan/30 flex items-center justify-center text-provenance-cyan shadow-[0_0_20px_rgba(35,184,255,0.1)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">edit_square</span>
+</div>
+<div class="space-y-3">
+<h3 class="font-headline-h3 text-headline-h3 flex items-center gap-3">
+<span class="text-xs font-mono text-outline-variant bg-outline/10 px-2 py-0.5 rounded">01</span>
+                            Draft &amp; Assert
+                        </h3>
+<p class="font-body-md text-body-md text-outline-variant leading-relaxed">Compose in a structured environment designed for rigorous claims. Every assertion is cryptographically signed at origin.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col gap-6 p-8 rounded-2xl bg-surface-container-highest/5 border border-outline/10 hover:border-formalization-violet/30 transition-all group">
+<div class="w-16 h-16 rounded-2xl bg-night-bg border border-formalization-violet/30 flex items-center justify-center text-formalization-violet shadow-[0_0_20px_rgba(111,66,255,0.1)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">forum</span>
+</div>
+<div class="space-y-3">
+<h3 class="font-headline-h3 text-headline-h3 flex items-center gap-3">
+<span class="text-xs font-mono text-outline-variant bg-outline/10 px-2 py-0.5 rounded">02</span>
+                            Open Peer Review
+                        </h3>
+<p class="font-body-md text-body-md text-outline-variant leading-relaxed">Engage in transparent, version-controlled dialogue. Reviewers build reputation through constructive critique.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col gap-6 p-8 rounded-2xl bg-surface-container-highest/5 border border-outline/10 hover:border-stewardship-gold/30 transition-all group">
+<div class="w-16 h-16 rounded-2xl bg-night-bg border border-stewardship-gold/30 flex items-center justify-center text-stewardship-gold shadow-[0_0_20px_rgba(255,200,87,0.1)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<div class="space-y-3">
+<h3 class="font-headline-h3 text-headline-h3 flex items-center gap-3">
+<span class="text-xs font-mono text-outline-variant bg-outline/10 px-2 py-0.5 rounded">03</span>
+                            Durable Publication
+                        </h3>
+<p class="font-body-md text-body-md text-outline-variant leading-relaxed">Mint a permanent, citable artifact on the public ledger. Immune to link rot and institutional volatility.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Publication Artifact Demo (Provenance Receipt) -->
+<section class="py-section-v-rhythm-sm px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-h2 text-headline-h2 mb-4">The <span class="text-stewardship-gold">Provenance Receipt</span></h2>
+<p class="font-body-lg text-body-lg text-outline-variant max-w-2xl mx-auto italic">A timeless artifact of value, ensuring the lineage of every claim.</p>
+</div>
+<div class="max-w-3xl mx-auto artifact-receipt rounded-3xl p-12 relative overflow-hidden" id="receipt-container">
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-stewardship-gold/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-formalization-violet/10 rounded-full blur-3xl"></div>
+<div class="text-center mb-12">
+<h3 class="font-hero-lg-mobile text-stewardship-gold text-4xl mb-2 gold-glow">Timeless Value</h3>
+<div class="flex items-center justify-center gap-4">
+<div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-stewardship-gold/50"></div>
+<span class="material-symbols-outlined text-stewardship-gold text-3xl" data-weight="fill">verified</span>
+<div class="h-[1px] w-12 bg-gradient-to-l from-transparent to-stewardship-gold/50"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 border-y border-stewardship-gold/20 py-10 mb-10">
+<div class="space-y-6">
+<div>
+<p class="font-label-caps text-metadata-micro text-stewardship-gold/60 uppercase tracking-widest mb-1">Publication Title</p>
+<h4 class="font-headline-h3 text-xl text-surface-bright">Global Trade Dynamics: A Provenance Study</h4>
+</div>
+<div>
+<p class="font-label-caps text-metadata-micro text-stewardship-gold/60 uppercase tracking-widest mb-1">Author Authority</p>
+<p class="text-surface-bright">Dr. Elena Rostova • Senior Fellow</p>
+</div>
+</div>
+<div class="space-y-6 text-right md:text-left">
+<div>
+<p class="font-label-caps text-metadata-micro text-stewardship-gold/60 uppercase tracking-widest mb-1">Verification Hash</p>
+<p class="font-mono text-xs text-outline-variant break-all">0x8F9A7C...D3A2B5E901F2</p>
+</div>
+<div>
+<p class="font-label-caps text-metadata-micro text-stewardship-gold/60 uppercase tracking-widest mb-1">Status</p>
+<div class="flex items-center gap-2 md:justify-start justify-end">
+<span class="w-2 h-2 rounded-full bg-provenance-cyan node-pulse shadow-[0_0_10px_#23B8FF]"></span>
+<span class="text-surface-bright font-medium">Finalized &amp; Distributed</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center">
+<div class="w-24 h-24 flex items-center justify-center rounded-full border-2 border-stewardship-gold/30 bg-stewardship-gold/5 relative group cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-stewardship-gold group-hover:scale-110 transition-transform" data-weight="fill">auto_awesome</span>
+<svg class="absolute inset-0 w-full h-full animate-spin-slow" viewbox="0 0 100 100">
+<circle class="text-stewardship-gold/30" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="10,5" stroke-width="0.5"></circle>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- 10. Soul Section: Earned, not Bought -->
+<section class="py-section-v-rhythm-sm px-margin-mobile md:px-margin-desktop text-center max-w-container-max-width mx-auto">
+<div class="inline-block px-12 py-16 rounded-[3rem] border border-stewardship-gold/10 bg-gradient-to-b from-stewardship-gold/5 to-transparent">
+<h2 class="font-headline-h2 text-headline-h2 mb-4 text-stewardship-gold italic">Earned, not <span class="not-italic">bought.</span></h2>
+<p class="font-body-lg text-body-lg text-outline-variant max-w-2xl mx-auto">
+                Premium Activation isn't a subscription. It's an achievement. Value on Scholarium is earned through rigorous contribution and verified peer recognition — <span class="text-surface-bright font-bold">never</span> by payment.
+            </p>
+<div class="mt-8 flex items-center justify-center gap-4">
+<div class="h-[1px] w-16 bg-outline/20"></div>
+<span class="material-symbols-outlined text-stewardship-gold/50" data-weight="fill">stars</span>
+<div class="h-[1px] w-16 bg-outline/20"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- 11. Footer -->
+<footer class="bg-night-bg border-t border-outline/10 py-section-v-rhythm-sm px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max-width mx-auto grid grid-cols-2 md:grid-cols-5 gap-gutter">
+<div class="col-span-2 space-y-6">
+<a class="font-headline-h3 text-stewardship-gold flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" data-weight="fill">auto_awesome</span>
+                SCHOLARIUM
+            </a>
+<p class="text-outline-variant max-w-xs">Building an immutable record for the future of human discovery.</p>
+<p class="text-metadata-micro text-outline-variant/50">© 2024 SecuredMe Education, Inc. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-stewardship-gold/60 text-xs tracking-widest">Platform</p>
+<a class="text-outline-variant hover:text-provenance-cyan" href="#">Product</a>
+<a class="text-outline-variant hover:text-provenance-cyan" href="#">Publishing</a>
+<a class="text-outline-variant hover:text-provenance-cyan" href="#">API Docs</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-stewardship-gold/60 text-xs tracking-widest">Trust</p>
+<a class="text-outline-variant hover:text-provenance-cyan" href="#">Manifesto</a>
+<a class="text-outline-variant hover:text-provenance-cyan" href="#">Provenance</a>
+<a class="text-outline-variant hover:text-provenance-cyan" href="#">Source Code</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-stewardship-gold/60 text-xs tracking-widest">Legal</p>
+<a class="text-outline-variant hover:text-provenance-cyan" href="#">Privacy Policy</a>
+<a class="text-outline-variant hover:text-provenance-cyan" href="#">Terms of Use</a>
+</div>
+</div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const receipt = document.getElementById('receipt-container');
+        if (!receipt) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('stamp-animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(receipt);
+    });
+</script>
+<style>
+    @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+        animation: spin-slow 12s linear infinite;
+    }
+
+    .stamp-animate {
+        animation: premium-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes premium-reveal {
+        0% { opacity: 0; transform: translateY(30px) scale(0.98); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+</style>
+</body></html>

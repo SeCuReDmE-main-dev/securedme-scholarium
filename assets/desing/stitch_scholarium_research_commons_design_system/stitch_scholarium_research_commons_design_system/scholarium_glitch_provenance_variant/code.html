@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholarium | Glitch Provenance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#003fc6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#e0e4ff",
+                      "surface-variant": "#dce1ff",
+                      "outline": "#747687",
+                      "surface-tint": "#0f4ee6",
+                      "on-tertiary-fixed-variant": "#4a00d4",
+                      "on-tertiary-fixed": "#1d0061",
+                      "on-secondary-container": "#004462",
+                      "inverse-surface": "#292f48",
+                      "tertiary-container": "#6b3cfb",
+                      "on-error-container": "#93000a",
+                      "surface": "#faf8ff",
+                      "on-background": "#131a32",
+                      "surface-dim": "#d2d9f9",
+                      "on-surface-variant": "#434655",
+                      "surface-container-highest": "#dce1ff",
+                      "on-primary": "#ffffff",
+                      "stewardship-gold": "#FFC857",
+                      "on-primary-fixed": "#001551",
+                      "on-secondary-fixed": "#001e2e",
+                      "tertiary-fixed-dim": "#cbbeff",
+                      "surface-soft": "#EEF3FF",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c3c5d8",
+                      "inverse-primary": "#b7c4ff",
+                      "error-container": "#ffdad6",
+                      "secondary": "#00658f",
+                      "on-tertiary-container": "#e9e1ff",
+                      "secondary-container": "#1eb6fd",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f3f2ff",
+                      "tertiary": "#520ee3",
+                      "secondary-fixed-dim": "#87ceff",
+                      "on-primary-fixed-variant": "#0039b5",
+                      "formalization-violet": "#6F42FF",
+                      "primary-container": "#2157ee",
+                      "surface-container": "#ebedff",
+                      "navy-ink": "#0B1230",
+                      "tertiary-fixed": "#e6deff",
+                      "night-bg": "#080D1C",
+                      "on-secondary-fixed-variant": "#004c6d",
+                      "secondary-fixed": "#c8e6ff",
+                      "background": "#faf8ff",
+                      "on-tertiary": "#ffffff",
+                      "paper-cool": "#F7F8FC",
+                      "surface-bright": "#faf8ff",
+                      "surface-container-high": "#e4e7ff",
+                      "on-surface": "#131a32",
+                      "inverse-on-surface": "#eff0ff",
+                      "on-secondary": "#ffffff",
+                      "paper-warm": "#F4F1E8",
+                      "provenance-cyan": "#23B8FF",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "primary-fixed": "#dce1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "section-v-rhythm-sm": "80px",
+                      "margin-desktop": "80px",
+                      "section-v-rhythm-lg": "140px",
+                      "margin-mobile": "16px",
+                      "container-max-width": "1180px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "hero-lg": ["Instrument Serif"],
+                      "headline-h2": ["Instrument Serif"],
+                      "headline-h3": ["Geist"],
+                      "metadata-micro": ["Geist"],
+                      "hero-lg-mobile": ["Instrument Serif"],
+                      "body-lg": ["Geist"],
+                      "label-caps": ["Geist"],
+                      "headline-h1": ["Instrument Serif"],
+                      "headline-h1-mobile": ["Instrument Serif"],
+                      "body-md": ["Geist"]
+              },
+              "fontSize": {
+                      "hero-lg": ["6.4rem", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "headline-h2": ["3.5rem", {"lineHeight": "1.3", "fontWeight": "400"}],
+                      "headline-h3": ["2rem", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "metadata-micro": ["0.625rem", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "hero-lg-mobile": ["3.8rem", {"lineHeight": "1.1", "fontWeight": "400"}],
+                      "body-lg": ["1.075rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["0.75rem", {"lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                      "headline-h1": ["4.4rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "headline-h1-mobile": ["2.8rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "body-md": ["0.9375rem", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #F4F1E8;
+            color: #131a32;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(19, 26, 50, 0.02) 1px, transparent 1px);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.5;
+        }
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 10000;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(35, 184, 255, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+            opacity: 0.1;
+            position: fixed;
+            bottom: 100%;
+            pointer-events: none;
+            animation: scanline 8s linear infinite;
+        }
+        @keyframes scanline {
+            0% { bottom: 100%; }
+            100% { bottom: -100px; }
+        }
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+        .glitch-text::before, .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        .glitch-text::before {
+            color: #23B8FF;
+            z-index: -1;
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip-path: inset(80% 0 0 0); transform: translate(-2px, -2px); }
+            10% { clip-path: inset(10% 0 85% 0); transform: translate(2px, 2px); }
+            20% { clip-path: inset(33% 0 40% 0); transform: translate(-2px, 2px); }
+            30% { clip-path: inset(50% 0 30% 0); transform: translate(2px, -2px); }
+            100% { clip-path: inset(10% 0 10% 0); transform: translate(0); }
+        }
+        .section-transition {
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        }
+        .distorted-border {
+            clip-path: polygon(0% 0%, 100% 1.5%, 98.5% 100%, 1.5% 97%);
+        }
+        .metadata-overlay {
+            font-family: 'Geist', monospace;
+            font-size: 8px;
+            letter-spacing: 0.1em;
+            color: rgba(35, 184, 255, 0.4);
+            pointer-events: none;
+        }
+        .data-stream-item {
+            animation: slide-up 12s linear infinite;
+            opacity: 0;
+        }
+        @keyframes slide-up {
+            0% { transform: translateY(20px); opacity: 0; }
+            5% { opacity: 1; }
+            95% { opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+        .btn-cyan {
+            background: #23B8FF;
+            color: #0B1230;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-cyan::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+        .btn-cyan:hover::after {
+            left: 100%;
+        }
+        .technical-bg {
+            background-image:
+                radial-gradient(circle at 2px 2px, rgba(35, 184, 255, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased overflow-x-hidden technical-bg">
+<div class="scanline"></div>
+<!-- Header -->
+<header class="bg-white/40 backdrop-blur-xl font-body-md text-body-md top-0 sticky z-50 border-b border-provenance-cyan/20">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max-width mx-auto w-full relative">
+<!-- Floating Metadata -->
+<div class="absolute -bottom-1 left-margin-desktop metadata-overlay hidden lg:block">SYS_STATUS: ACTIVE // PORT_8080 // SIG:0x4492</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 flex items-center justify-center bg-provenance-cyan border border-navy-ink/10 rotate-[15deg]">
+<span class="text-navy-ink font-bold -rotate-[15deg] font-mono">S</span>
+</div>
+<div class="font-headline-h3 text-xl tracking-tight font-bold text-navy-ink">SCHOLARIUM<span class="text-provenance-cyan">_</span></div>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-navy-ink font-bold border-b-2 border-provenance-cyan pb-1 text-sm uppercase tracking-widest" href="#">.product</a>
+<a class="text-on-surface-variant hover:text-provenance-cyan transition-colors text-sm uppercase tracking-widest" href="#">.workflow</a>
+<a class="text-on-surface-variant hover:text-provenance-cyan transition-colors text-sm uppercase tracking-widest" href="#">.trust</a>
+<a class="text-on-surface-variant hover:text-provenance-cyan transition-colors text-sm uppercase tracking-widest" href="#">.oss</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="btn-cyan font-bold px-6 py-2 text-xs uppercase tracking-tighter border border-navy-ink/10">Initial_Access</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section: Data Stream -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-sm md:py-24 grid lg:grid-cols-2 gap-16 items-center relative">
+<div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-5">
+<div class="metadata-overlay whitespace-pre leading-loose select-none">
+                01010011 01000011 01001000 01001111 01001100 01000001 01010010 01001001 01010101 01001101
+                PROVENANCE_ROOT: TRUE // HASH: 0x93FA92...A1 // NODE: CANONICAL_01
+                01110100 01110010 01110101 01110011 01110100
+            </div>
+</div>
+<div class="flex flex-col gap-6 relative z-10">
+<div class="metadata-overlay uppercase flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-provenance-cyan animate-pulse"></span>
+                SECUREDME_PROTOCOL_V4.2 // LAYER_0
+            </div>
+<div class="relative">
+<h1 class="font-hero-lg-mobile text-hero-lg-mobile md:font-hero-lg md:text-hero-lg text-navy-ink leading-[1] mix-blend-multiply">
+<span class="block relative -mb-4">Turn</span>
+<span class="block italic text-provenance-cyan glitch-text" data-text="knowledge">knowledge</span>
+<span class="block relative -mt-4">into <span class="italic text-stewardship-gold">traceable</span> evidence.</span>
+</h1>
+<!-- Overlapping Geist type -->
+<div class="absolute -top-12 -right-12 hidden md:block opacity-10 pointer-events-none rotate-90 origin-bottom-right">
+<span class="font-mono text-9xl text-navy-ink uppercase">Verified</span>
+</div>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg leading-relaxed border-l-2 border-provenance-cyan/30 pl-6">
+                A social commons for research where publications, people, and provenance stay connected via cryptographic proofs.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-6">
+<button class="btn-cyan font-bold px-10 py-5 flex justify-center items-center gap-3 group border border-navy-ink/10">
+                    START_RESEARCH_NODE
+                    <span class="material-symbols-outlined text-lg">terminal</span>
+</button>
+<button class="bg-white/50 backdrop-blur-md border border-provenance-cyan/40 text-navy-ink font-bold px-10 py-5 hover:bg-provenance-cyan/10 transition-colors flex justify-center items-center uppercase text-xs tracking-widest">
+                    View_Logic_Map
+                </button>
+</div>
+</div>
+<!-- Live Data Stream Visual -->
+<div class="relative w-full aspect-square md:aspect-[4/3] bg-navy-ink/5 border border-provenance-cyan/20 p-8 flex flex-col justify-end overflow-hidden group">
+<div class="absolute top-4 right-4 metadata-overlay animate-pulse text-[10px]">LIVE_STREAM :: 0x7F4A</div>
+<div class="space-y-4 font-mono text-[10px] text-provenance-cyan/60">
+<div class="data-stream-item flex items-center gap-4 py-2 border-b border-provenance-cyan/10" style="animation-delay: 0s;">
+<span class="text-white bg-navy-ink px-2 py-0.5">NEW_ARTIFACT</span>
+<span>0x992...f21</span>
+<span class="ml-auto text-stewardship-gold">SUCCESS</span>
+</div>
+<div class="data-stream-item flex items-center gap-4 py-2 border-b border-provenance-cyan/10" style="animation-delay: 2s;">
+<span class="text-white bg-provenance-cyan px-2 py-0.5">PEER_REVIEW</span>
+<span>User: dr_vance</span>
+<span class="ml-auto">VERIFIED</span>
+</div>
+<div class="data-stream-item flex items-center gap-4 py-2 border-b border-provenance-cyan/10" style="animation-delay: 4s;">
+<span class="text-white bg-formalization-violet px-2 py-0.5">SIG_ATTACHED</span>
+<span>SHA-256_ENC</span>
+<span class="ml-auto">PENDING...</span>
+</div>
+<div class="data-stream-item flex items-center gap-4 py-2 border-b border-provenance-cyan/10" style="animation-delay: 6s;">
+<span class="text-white bg-navy-ink px-2 py-0.5">NODE_SYNC</span>
+<span>Global_Cluster_01</span>
+<span class="ml-auto">100%</span>
+</div>
+</div>
+<!-- Geometry Artifact -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center">
+<div class="w-64 h-64 border border-provenance-cyan/10 rounded-full animate-[spin_20s_linear_infinite]"></div>
+<div class="absolute w-48 h-48 border border-stewardship-gold/5 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+<svg class="absolute w-full h-full opacity-10" viewbox="0 0 100 100">
+<line stroke="currentColor" stroke-width="0.1" x1="10" x2="90" y1="10" y2="90"></line>
+<line stroke="currentColor" stroke-width="0.1" x1="90" x2="10" y1="10" y2="90"></line>
+</svg>
+</div>
+</div>
+</section>
+<!-- Product Logic Grid -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-sm relative">
+<div class="mb-16 border-l-4 border-provenance-cyan pl-8">
+<div class="metadata-overlay uppercase mb-2">Protocol_Functionality</div>
+<h2 class="font-headline-h2 text-navy-ink text-4xl md:text-5xl max-w-2xl leading-none">A modular stack for structural thought.</h2>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Glitch Card 1 -->
+<div class="bg-white/40 backdrop-blur-sm border border-provenance-cyan/10 p-10 group hover:border-provenance-cyan/50 transition-all relative overflow-hidden distorted-border">
+<div class="absolute top-2 right-2 metadata-overlay">MOD_01</div>
+<div class="w-10 h-10 border border-provenance-cyan flex items-center justify-center text-provenance-cyan mb-8 group-hover:bg-provenance-cyan group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-xl">dataset</span>
+</div>
+<h3 class="font-headline-h3 text-lg mb-4 text-navy-ink uppercase tracking-tighter">Rich Metadata</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-mono opacity-80">Traceable source trails that survive the digital feed encounter. Encrypted at rest.</p>
+<div class="flex items-center gap-2 text-provenance-cyan font-bold text-[10px] uppercase tracking-widest cursor-pointer hover:gap-4 transition-all">
+                    LOG_DETAIL_VIEW <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+</div>
+</div>
+<!-- Glitch Card 2 -->
+<div class="bg-navy-ink text-white p-10 group relative overflow-hidden distorted-border">
+<div class="absolute top-2 right-2 metadata-overlay text-white/40">MOD_02</div>
+<div class="w-10 h-10 border border-stewardship-gold flex items-center justify-center text-stewardship-gold mb-8">
+<span class="material-symbols-outlined text-xl">lock_open</span>
+</div>
+<h3 class="font-headline-h3 text-lg mb-4 uppercase tracking-tighter">Public Proofs</h3>
+<p class="text-white/60 text-sm leading-relaxed mb-6 font-mono opacity-80">Cryptographically signed authorship. Reputation built on evidence, not algorithms.</p>
+<div class="flex items-center gap-2 text-stewardship-gold font-bold text-[10px] uppercase tracking-widest cursor-pointer">
+                    VERIFY_IDENTITY <span class="material-symbols-outlined text-xs">verified</span>
+</div>
+</div>
+<!-- Glitch Card 3 -->
+<div class="bg-white/40 backdrop-blur-sm border border-provenance-cyan/10 p-10 group hover:border-provenance-cyan/50 transition-all relative overflow-hidden distorted-border">
+<div class="absolute top-2 right-2 metadata-overlay">MOD_03</div>
+<div class="w-10 h-10 border border-formalization-violet flex items-center justify-center text-formalization-violet mb-8">
+<span class="material-symbols-outlined text-xl">hub</span>
+</div>
+<h3 class="font-headline-h3 text-lg mb-4 text-navy-ink uppercase tracking-tighter">Neural Graph</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-mono opacity-80">Relational knowledge mapping. Every idea is a node in a global research commons.</p>
+<div class="flex items-center gap-2 text-formalization-violet font-bold text-[10px] uppercase tracking-widest cursor-pointer">
+                    GRAPH_EXPLORER <span class="material-symbols-outlined text-xs">account_tree</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Tech Specs / Trust -->
+<section class="bg-navy-ink text-white py-24 relative overflow-hidden">
+<!-- Background Artifacts -->
+<div class="absolute inset-0 opacity-[0.03] font-mono text-[8px] leading-tight select-none pointer-events-none">
+            BLOCK_8,442,109 // TIMESTAMP: 2024-05-12T14:22:01Z // SIG: verified_mastery_0x7F4A
+            REPEAT(BLOCK_8,442,109) // SEED: 0x44F9...
+        </div>
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop grid lg:grid-cols-2 gap-24 items-center">
+<div class="relative z-10">
+<div class="metadata-overlay text-provenance-cyan mb-4">TRUST_BY_DESIGN // V0.4.2</div>
+<h2 class="font-headline-h2 text-6xl leading-none mb-12 italic">The machine <br/><span class="text-provenance-cyan not-italic font-bold tracking-tighter">never forgets</span> provenance.</h2>
+<div class="space-y-12">
+<div class="flex gap-8 group">
+<div class="text-provenance-cyan border-l-2 border-provenance-cyan pl-6 py-2 group-hover:bg-provenance-cyan/5 transition-colors">
+<h4 class="font-headline-h3 text-xl mb-2 font-bold tracking-tighter uppercase">Local-First Persistence</h4>
+<p class="text-white/40 text-sm leading-relaxed font-mono">Data sovereignty is baked into the storage layer. Your machine is the primary vault.</p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<div class="text-stewardship-gold border-l-2 border-stewardship-gold pl-6 py-2 group-hover:bg-stewardship-gold/5 transition-colors">
+<h4 class="font-headline-h3 text-xl mb-2 font-bold tracking-tighter uppercase">Deterministic Attribution</h4>
+<p class="text-white/40 text-sm leading-relaxed font-mono">Authorship is verifiable via key-pair signing. No impersonation, no algorithmic rank manipulation.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Diagnostic Interface Overlay -->
+<div class="relative bg-white/5 border border-white/10 p-1 rounded-sm shadow-2xl">
+<div class="bg-navy-ink p-8 border border-white/20 relative">
+<div class="flex justify-between items-center mb-10">
+<div class="text-[10px] font-mono text-provenance-cyan">TERMINAL_OUTPUT_01</div>
+<div class="flex gap-1">
+<div class="w-2 h-2 bg-red-500/50 rounded-full"></div>
+<div class="w-2 h-2 bg-yellow-500/50 rounded-full"></div>
+<div class="w-2 h-2 bg-green-500/50 rounded-full"></div>
+</div>
+</div>
+<div class="space-y-4 font-mono text-[11px]">
+<div class="flex justify-between border-b border-white/5 pb-2">
+<span class="text-white/40">AUTH_STATE</span>
+<span class="text-provenance-cyan">ENCRYPTED_JWT</span>
+</div>
+<div class="flex justify-between border-b border-white/5 pb-2">
+<span class="text-white/40">DATA_INTEGRITY</span>
+<span class="text-stewardship-gold">CHECKSUM_OK</span>
+</div>
+<div class="flex justify-between border-b border-white/5 pb-2">
+<span class="text-white/40">PEER_COUNT</span>
+<span>4,192_NODES</span>
+</div>
+</div>
+<div class="mt-12 p-4 bg-provenance-cyan/10 border border-provenance-cyan/20">
+<p class="text-[10px] leading-relaxed text-provenance-cyan italic">
+                            "System.provenance.ensure(artifact_0x93f): Success. Root hash matched distributed ledger. Entry immutable."
+                        </p>
+</div>
+<div class="mt-8 flex justify-center opacity-30">
+<svg class="w-full h-12" viewbox="0 0 100 20">
+<path d="M0,10 Q25,0 50,10 T100,10" fill="none" stroke="#23B8FF" stroke-width="0.5"></path>
+<path d="M0,15 Q25,5 50,15 T100,15" fill="none" stroke="#23B8FF" stroke-width="0.5"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Artifact Preview -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-24">
+<div class="relative">
+<div class="absolute -top-12 -left-12 metadata-overlay text-navy-ink/10 text-4xl whitespace-nowrap overflow-hidden w-full select-none">
+                PREVIEW_LAYER_04_RESEARCH_ARTIFACT_DRAFT_VER_A4.2_SIGNED_VANCE
+            </div>
+<div class="bg-white/60 backdrop-blur-md border border-navy-ink/10 p-12 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-provenance-cyan/5 -mr-16 -mt-16 rotate-45"></div>
+<div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+<div class="max-w-2xl">
+<div class="metadata-overlay text-provenance-cyan mb-4">ROOT_HASH: 0x7F4A...B991</div>
+<h3 class="font-headline-h2 text-4xl text-navy-ink mb-6">The Impact of Distributed Consensus on Academic Peer Review</h3>
+<p class="text-on-surface-variant font-body-md leading-relaxed opacity-80">
+                            Research into the durability of social consensus when backed by cryptographic ledgers. Exploring the shift from institutional trust to algorithmic provenance.
+                        </p>
+</div>
+<div class="w-full md:w-64 space-y-6">
+<div class="p-6 bg-navy-ink text-white">
+<div class="text-[10px] font-mono text-provenance-cyan uppercase mb-4">Verification_Badge</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-stewardship-gold flex items-center justify-center text-navy-ink">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<div class="font-mono text-[10px]">
+<div class="text-stewardship-gold">STEWARD_LEVEL_8</div>
+<div>0x449A_SECURED</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-12 pt-12 border-t border-navy-ink/10">
+<div class="font-mono">
+<div class="text-[8px] text-on-surface-variant/50 uppercase">Author</div>
+<div class="text-xs font-bold text-navy-ink">Dr. E. Vance <span class="text-provenance-cyan">[sig]</span></div>
+</div>
+<div class="font-mono">
+<div class="text-[8px] text-on-surface-variant/50 uppercase">Citations</div>
+<div class="text-xs font-bold text-navy-ink">422_Nodes_Linked</div>
+</div>
+<div class="font-mono ml-auto">
+<button class="text-provenance-cyan font-bold text-[10px] uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all">
+                            OPEN_RAW_JSON <span class="material-symbols-outlined text-xs">code</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-24 text-center section-transition">
+<div class="metadata-overlay mb-6">TERMINAL_END_OF_PAGE</div>
+<h2 class="font-headline-h1-mobile md:font-headline-h1 text-navy-ink mb-12">
+            Build your <br/>
+<span class="italic text-provenance-cyan glitch-text" data-text="legacy of knowledge">legacy of knowledge</span>
+</h2>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<button class="btn-cyan font-bold px-12 py-6 text-sm uppercase tracking-widest border border-navy-ink/10">
+                INIT_RESEARCH_SUITE
+            </button>
+<button class="bg-navy-ink text-white font-bold px-12 py-6 text-sm uppercase tracking-widest border border-navy-ink/20 hover:bg-primary transition-all">
+                JOIN_PEER_NETWORK
+            </button>
+</div>
+<div class="mt-16 metadata-overlay">
+            SYSTEM_HASH: scholarium-v0.4.2-alpha_6f9a2 // ENCRYPTION: AES-256-GCM
+        </div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-navy-ink text-white py-20 border-t border-white/5 relative overflow-hidden">
+<div class="absolute inset-0 pointer-events-none opacity-[0.02]">
+<div class="font-mono text-[100px] font-black uppercase text-white -rotate-12 transform translate-x-20 translate-y-20">
+            PROVENANCE
+        </div>
+</div>
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-6 h-6 bg-provenance-cyan flex items-center justify-center">
+<span class="text-navy-ink font-bold text-[10px]">S</span>
+</div>
+<span class="font-headline-h3 text-lg font-bold tracking-tighter">SCHOLARIUM</span>
+</div>
+<p class="text-[10px] font-mono text-white/40 leading-relaxed max-w-xs">
+                    Cryptographically secured research commons by SecuredMe Education. Built for the era of traceable human evidence.
+                </p>
+</div>
+<div class="space-y-4">
+<h5 class="text-[10px] font-mono font-bold text-provenance-cyan uppercase">.system</h5>
+<nav class="flex flex-col gap-2 font-mono text-[11px] text-white/60">
+<a class="hover:text-white" href="#">_root</a>
+<a class="hover:text-white" href="#">_logic</a>
+<a class="hover:text-white" href="#">_roadmap</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h5 class="text-[10px] font-mono font-bold text-provenance-cyan uppercase">.publish</h5>
+<nav class="flex flex-col gap-2 font-mono text-[11px] text-white/60">
+<a class="hover:text-white" href="#">_studio</a>
+<a class="hover:text-white" href="#">_peers</a>
+<a class="hover:text-white" href="#">_proofs</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h5 class="text-[10px] font-mono font-bold text-provenance-cyan uppercase">.verify</h5>
+<nav class="flex flex-col gap-2 font-mono text-[11px] text-white/60">
+<a class="hover:text-white" href="#">_ledger</a>
+<a class="hover:text-white" href="#">_auth</a>
+<a class="hover:text-white" href="#">_ethics</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h5 class="text-[10px] font-mono font-bold text-provenance-cyan uppercase">.dev</h5>
+<nav class="flex flex-col gap-2 font-mono text-[11px] text-white/60">
+<a class="hover:text-white" href="#">_api_docs</a>
+<a class="hover:text-white" href="#">_github</a>
+<a class="hover:text-white" href="#">_oss_specs</a>
+</nav>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-[10px] font-mono text-white/30">
+                © 2024 SECUREDME_EDUCATION. SEL-2.0_COMPLIANT // SIG:ROOT
+            </div>
+<div class="flex gap-8 text-[10px] font-mono uppercase tracking-widest text-white/40">
+<a class="hover:text-provenance-cyan" href="#">[Legal]</a>
+<a class="hover:text-provenance-cyan" href="#">[Privacy]</a>
+<a class="hover:text-provenance-cyan" href="#">[Calendar]</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

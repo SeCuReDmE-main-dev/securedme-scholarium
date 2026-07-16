@@ -1,0 +1,30 @@
+digraph ScholariumRagFlow {
+  graph [rankdir=TB, bgcolor="#F7F8FC", pad="0.25", nodesep="0.46", ranksep="0.52", fontname="Arial"];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=11, margin="0.14,0.10", color="#D9E0EF", fillcolor="#FFFFFF", fontcolor="#10172F"];
+  edge [color="#63708A", penwidth=1.2, arrowsize=0.7, fontname="Arial", fontsize=9, fontcolor="#44506A"];
+
+  source [label="Primary or institutional source\nURL + author + date + rights"];
+  card [label="synthia.education.source-card.v1\nprovenance required", fillcolor="#EEF3FF", color="#2157EE"];
+  classify [label="Synthia classification\nentities + relations + contradictions"];
+
+  approved [label="Approved graph", fillcolor="#EAF9FF", color="#23B8FF"];
+  preparation [label="Preparation graph", fillcolor="#FFF8E6", color="#FFC857"];
+  quarantine [label="Quarantine graph", fillcolor="#FFF0F0", color="#C85151"];
+  memory [label="MemoryLake.index_records\npartitioned trace store"];
+  retrieve [label="synthia.hipporag-retrieval.v1\nretrieve_dpr only", fillcolor="#F2EEFF", color="#6F42FF"];
+  passages [label="Questions + passages + scores\nwith source trail"];
+  language [label="Codex or Gemini\nuser-facing explanation"];
+  human [label="Learner or educator\nhuman authority remains human", fillcolor="#EAF9FF", color="#23B8FF"];
+
+  source -> card -> classify;
+  { rank=same; approved; preparation; quarantine; }
+  classify -> approved [label="admitted"];
+  classify -> preparation [label="pending"];
+  classify -> quarantine [label="rejected or uncertain"];
+  approved -> memory;
+  preparation -> memory [style=dashed, label="isolated"];
+  quarantine -> memory [style=dashed, label="isolated"];
+  memory -> retrieve [label="approved partition only"];
+  retrieve -> passages -> language -> human;
+  retrieve -> language [style=invis];
+}

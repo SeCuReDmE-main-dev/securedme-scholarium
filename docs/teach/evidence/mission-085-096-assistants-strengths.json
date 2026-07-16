@@ -1,0 +1,115 @@
+{
+  "schema": "scholarium.execution-evidence.v1",
+  "evidenceId": "mission-085-096-assistants-strengths",
+  "generatedAt": "2026-07-15T19:36:17.4510197Z",
+  "dataClass": "synthetic_education_only",
+  "actions": ["085", "086", "087", "088", "089", "090", "091", "092", "093", "094", "095", "096"],
+  "activatedSkills": [
+    "RagGgE_Architectural_Integrity_Design",
+    "RagGgE_Interface_and_Contract_Validation",
+    "RagGgE_Technical_Risk_Assessment",
+    "synthia-adapter:synthia-session"
+  ],
+  "activatedPluginSurfaces": [
+    "SecuredMe Education Controller",
+    "Synthia Adapter",
+    "Codex Memory Systeme boundary",
+    "local FfeD and Gate5 adapter boundary"
+  ],
+  "implementation": {
+    "contracts": "apps/web/lib/teach-contracts.ts",
+    "service": "apps/web/lib/teach-assistant-service.ts",
+    "schema": "apps/web/db/schema.ts",
+    "migration": "apps/web/drizzle/0030_teach_assistants_and_goals.sql",
+    "studentRoute": "apps/web/app/api/teach/assistant/student/route.ts",
+    "teacherRoute": "apps/web/app/api/teach/assistant/teacher/route.ts",
+    "adminRoute": "apps/web/app/api/teach/assistant/admin/route.ts",
+    "exchangeRoute": "apps/web/app/api/teach/assistant/exchanges/route.ts",
+    "goalRoute": "apps/web/app/api/teach/goals/route.ts",
+    "interventionRoute": "apps/web/app/api/teach/interventions/route.ts",
+    "strengthRoute": "apps/web/app/api/teach/strengths/route.ts",
+    "documentation": "docs/teach/ASSISTANT_AND_STRENGTH_CONTRACT.md"
+  },
+  "contracts": {
+    "privateGraphVisibility": "private_owner_only",
+    "teacherRawGraphIncluded": false,
+    "teacherRawAnswersIncluded": false,
+    "adminMinimumCohort": 10,
+    "adminIndividualIdentifiersIncluded": false,
+    "exchangeMaximumLifetimeDays": 7,
+    "exchangeIdempotent": true,
+    "exchangeReceiptRequired": true,
+    "learningConsentRequiredForTeacherAndAdminViews": true,
+    "sharingConsentRequiredForExchange": true,
+    "hiddenMonitoring": false,
+    "offFrequencyMaximumDailyInterventions": 0
+  },
+  "strengthMirror": {
+    "sourceKinds": ["declared", "observed", "proposed"],
+    "observedAndProposedRequireLearnerReview": true,
+    "defaultProposalExpiryDays": 90,
+    "preservedFields": ["evidence", "contradiction", "confidence", "sourceKind", "createdAt", "expiresAt", "learnerCorrection"],
+    "learnerActions": ["accept", "reformulate", "contest", "expire", "delete"],
+    "soccerMathBridge": "candidate_experiment_only",
+    "diagnosisClaimed": false,
+    "fixedIntelligenceLabel": false,
+    "automaticFlattery": false,
+    "forcedPositivity": false
+  },
+  "synthiaValidation": {
+    "command": "python -m synthia_core.cli lexicon classify --text <g8-term-set> --domain education",
+    "matchedTermCount": 0,
+    "promotionPerformed": false,
+    "classificationFamily": "I_system^S",
+    "hierarchy": "I -> I_system^S -> H_lex -> G_lex -> I_lexicon",
+    "interpretation": "The live classifier found no admitted education terms, so G8 uses explicit product contracts and makes no autonomous lexicon claim."
+  },
+  "migrationProbe": {
+    "engine": "python-sqlite-memory",
+    "teachDomainTableCount": 19,
+    "newTables": ["teach_assistant_exchanges", "teach_assistant_graph_records", "teach_intervention_preferences", "teach_weekly_objectives"],
+    "learnerCorrectionColumn": true,
+    "duplicateIdempotencyRejected": true,
+    "exchangeRows": 1,
+    "graphRows": 1,
+    "weeklyGoalRows": 1,
+    "quietMode": true
+  },
+  "runtimeProbe": {
+    "baseUrl": "http://localhost:5173",
+    "signedOutStatus": 401,
+    "routes": [
+      "/api/v1/teach/assistant/student",
+      "/api/v1/teach/assistant/teacher",
+      "/api/v1/teach/assistant/admin",
+      "/api/v1/teach/assistant/exchanges",
+      "/api/v1/teach/goals",
+      "/api/v1/teach/interventions"
+    ],
+    "openApiVersion": "3.1.0",
+    "newOpenApiPathCount": 6
+  },
+  "repositoryValidation": {
+    "command": "npm test",
+    "build": "passed",
+    "testsPassed": 68,
+    "testsFailed": 0,
+    "focusedTestsPassed": 18,
+    "lintCommand": "npm run lint",
+    "lintErrors": 0,
+    "lintWarnings": 30,
+    "diffCheck": "passed"
+  },
+  "authorityBoundary": {
+    "autonomousTeacherAuthorityClaimed": false,
+    "clinicalAuthorityClaimed": false,
+    "disciplinaryAuthorityClaimed": false,
+    "administrativeLearnerDecisionClaimed": false,
+    "realStudentDataUsed": false
+  },
+  "gate": {
+    "id": "G8",
+    "status": "passed",
+    "reason": "Learner, teacher, and administrative assistants now cooperate through role-, course-, consent-, purpose-, expiry-, idempotency-, and receipt-bound projections while the learner's private graph and raw answers remain isolated."
+  }
+}

@@ -1,0 +1,1 @@
+Architecture map from learner, teacher, guardian, and administrator through the Scholarium web, shared identity, D1, R2, an internal gateway, Gate5, Synthia, MemoryLake, retrieval-only HippoRAG, FNP-QNN, QuaNTecH-ViD, and a Bouncy Castle receipt signer.

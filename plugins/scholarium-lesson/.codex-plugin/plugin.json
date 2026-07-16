@@ -1,0 +1,18 @@
+{
+  "name": "scholarium-lesson",
+  "version": "0.1.0",
+  "description": "Build adaptive lessons with evidence-based mastery.",
+  "author": {
+    "name": "SecuredMe Education"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Scholarium Lesson",
+    "shortDescription": "Build adaptive lessons with evidence-based mastery.",
+    "longDescription": "Build adaptive lessons with evidence-based mastery. Stateless by design: durable graph and memory operations go through the central Scholarium gateway.",
+    "developerName": "SecuredMe Education",
+    "category": "Education",
+    "capabilities": ["education", "central-knowledge-gateway", "human-review"],
+    "defaultPrompt": "Create one evidence-based adaptive lesson interaction using the central Scholarium knowledge gateway."
+  }
+}

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholarium | Evidence Commons</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#003fc6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#e0e4ff",
+                      "surface-variant": "#dce1ff",
+                      "outline": "#747687",
+                      "surface-tint": "#0f4ee6",
+                      "on-tertiary-fixed-variant": "#4a00d4",
+                      "on-tertiary-fixed": "#1d0061",
+                      "on-secondary-container": "#004462",
+                      "inverse-surface": "#292f48",
+                      "tertiary-container": "#6b3cfb",
+                      "on-error-container": "#93000a",
+                      "surface": "#faf8ff",
+                      "on-background": "#131a32",
+                      "surface-dim": "#d2d9f9",
+                      "on-surface-variant": "#434655",
+                      "surface-container-highest": "#dce1ff",
+                      "on-primary": "#ffffff",
+                      "stewardship-gold": "#FFC857",
+                      "on-primary-fixed": "#001551",
+                      "on-secondary-fixed": "#001e2e",
+                      "tertiary-fixed-dim": "#cbbeff",
+                      "surface-soft": "#EEF3FF",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c3c5d8",
+                      "inverse-primary": "#b7c4ff",
+                      "error-container": "#ffdad6",
+                      "secondary": "#00658f",
+                      "on-tertiary-container": "#e9e1ff",
+                      "secondary-container": "#1eb6fd",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f3f2ff",
+                      "tertiary": "#520ee3",
+                      "secondary-fixed-dim": "#87ceff",
+                      "on-primary-fixed-variant": "#0039b5",
+                      "formalization-violet": "#6F42FF",
+                      "primary-container": "#2157ee",
+                      "surface-container": "#ebedff",
+                      "navy-ink": "#0B1230",
+                      "tertiary-fixed": "#e6deff",
+                      "night-bg": "#080D1C",
+                      "on-secondary-fixed-variant": "#004c6d",
+                      "secondary-fixed": "#c8e6ff",
+                      "background": "#faf8ff",
+                      "on-tertiary": "#ffffff",
+                      "paper-cool": "#F7F8FC",
+                      "surface-bright": "#faf8ff",
+                      "surface-container-high": "#e4e7ff",
+                      "on-surface": "#131a32",
+                      "inverse-on-surface": "#eff0ff",
+                      "on-secondary": "#ffffff",
+                      "paper-warm": "#F4F1E8",
+                      "provenance-cyan": "#23B8FF",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "primary-fixed": "#dce1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "section-v-rhythm-sm": "80px",
+                      "margin-desktop": "80px",
+                      "section-v-rhythm-lg": "140px",
+                      "margin-mobile": "16px",
+                      "container-max-width": "1180px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "hero-lg": ["Instrument Serif"],
+                      "headline-h2": ["Instrument Serif"],
+                      "headline-h3": ["Geist"],
+                      "metadata-micro": ["Geist"],
+                      "hero-lg-mobile": ["Instrument Serif"],
+                      "body-lg": ["Geist"],
+                      "label-caps": ["Geist"],
+                      "headline-h1": ["Instrument Serif"],
+                      "headline-h1-mobile": ["Instrument Serif"],
+                      "body-md": ["Geist"]
+              },
+              "fontSize": {
+                      "hero-lg": ["6.4rem", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "headline-h2": ["3.5rem", {"lineHeight": "1.3", "fontWeight": "400"}],
+                      "headline-h3": ["2rem", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "metadata-micro": ["0.625rem", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "hero-lg-mobile": ["3.8rem", {"lineHeight": "1.1", "fontWeight": "400"}],
+                      "body-lg": ["1.075rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["0.75rem", {"lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                      "headline-h1": ["4.4rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "headline-h1-mobile": ["2.8rem", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "body-md": ["0.9375rem", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F4F1E8;
+            color: #131a32;
+            background-image:
+                linear-gradient(rgba(0, 63, 198, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 63, 198, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .sch-paper-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+        .glowing-dot {
+            box-shadow: 0 0 30px rgba(35, 184, 255, 0.6);
+            animation: pulse-glow 3s infinite ease-in-out;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.5); opacity: 1; box-shadow: 0 0 50px rgba(35, 184, 255, 0.8); }
+        }
+        .vertical-nav-line {
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, #747687 20%, #747687 80%, transparent);
+        }
+        .snap-container {
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+        .snap-section {
+            scroll-snap-align: start;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .text-gradient-brand {
+            background: linear-gradient(135deg, #003fc6 0%, #6F42FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased overflow-hidden sch-paper-texture">
+<!-- Minimal Vertical Progress Navigation -->
+<nav class="fixed left-margin-mobile md:left-margin-desktop top-1/2 -translate-y-1/2 z-50 hidden sm:flex flex-col items-center gap-6">
+<div class="vertical-nav-line h-64 relative">
+<div class="absolute top-0 -left-1 w-2.5 h-2.5 rounded-full bg-primary border-2 border-paper-warm"></div>
+</div>
+<div class="flex flex-col gap-8">
+<a class="w-2 h-2 rounded-full bg-primary transition-all hover:scale-150" href="#hero"></a>
+<a class="w-2 h-2 rounded-full bg-outline transition-all hover:scale-150" href="#identity"></a>
+<a class="w-2 h-2 rounded-full bg-outline transition-all hover:scale-150" href="#provenance"></a>
+<a class="w-2 h-2 rounded-full bg-outline transition-all hover:scale-150" href="#privacy"></a>
+<a class="w-2 h-2 rounded-full bg-outline transition-all hover:scale-150" href="#footer"></a>
+</div>
+</nav>
+<!-- Header Overlay -->
+<header class="fixed top-0 left-0 right-0 z-40 p-8 flex justify-between items-center pointer-events-none">
+<div class="flex items-center gap-3 pointer-events-auto">
+<div class="w-6 h-6 flex items-center justify-center bg-navy-ink rounded-sm rotate-45 overflow-hidden">
+<span class="text-white text-[10px] font-bold -rotate-45">S</span>
+</div>
+<div class="font-label-caps text-xs tracking-widest text-navy-ink font-bold">SCHOLARIUM</div>
+</div>
+<div class="pointer-events-auto">
+<button class="bg-navy-ink text-white font-label-caps text-[10px] px-4 py-2 rounded-full hover:bg-primary transition-colors">Enter Suite</button>
+</div>
+</header>
+<main class="snap-container">
+<!-- Hero Section -->
+<section class="snap-section px-margin-mobile text-center" id="hero">
+<div class="mb-12">
+<div class="w-3 h-3 bg-provenance-cyan rounded-full glowing-dot mx-auto mb-4"></div>
+<div class="font-label-caps text-[10px] text-outline uppercase tracking-[0.3em]">Provenance First</div>
+</div>
+<h1 class="font-hero-lg-mobile md:font-hero-lg text-hero-lg-mobile md:text-hero-lg text-navy-ink leading-[1] max-w-4xl">
+            Turn <span class="italic text-primary">knowledge</span> into traceable evidence.
+        </h1>
+<div class="mt-16 flex flex-col items-center gap-4">
+<span class="material-symbols-outlined text-outline animate-bounce">expand_more</span>
+</div>
+</section>
+<!-- Principle: Identity -->
+<section class="snap-section px-margin-mobile text-center" id="identity">
+<div class="flex flex-col items-center gap-12 max-w-2xl">
+<span class="material-symbols-outlined text-[8rem] md:text-[12rem] text-primary/10 select-none">fingerprint</span>
+<h2 class="font-headline-h2 text-headline-h2 text-navy-ink leading-tight">
+                Sovereign identity with <span class="text-primary italic">private boundaries</span> by design.
+            </h2>
+</div>
+</section>
+<!-- Principle: Provenance -->
+<section class="snap-section px-margin-mobile text-center" id="provenance">
+<div class="flex flex-col items-center gap-12 max-w-2xl">
+<span class="material-symbols-outlined text-[8rem] md:text-[12rem] text-formalization-violet/10 select-none">history_edu</span>
+<h2 class="font-headline-h2 text-headline-h2 text-navy-ink leading-tight">
+                Every claim linked to a <span class="text-formalization-violet italic">verifiable chain</span> of human stewardship.
+            </h2>
+</div>
+</section>
+<!-- Principle: Privacy -->
+<section class="snap-section px-margin-mobile text-center" id="privacy">
+<div class="flex flex-col items-center gap-12 max-w-2xl">
+<span class="material-symbols-outlined text-[8rem] md:text-[12rem] text-stewardship-gold/10 select-none">verified_user</span>
+<h2 class="font-headline-h2 text-headline-h2 text-navy-ink leading-tight">
+                Public accountability through <span class="text-stewardship-gold italic">open-source transparency</span>.
+            </h2>
+</div>
+</section>
+<!-- Conclusion / CTA -->
+<section class="snap-section px-margin-mobile text-center" id="cta">
+<div class="max-w-3xl">
+<h2 class="font-headline-h1-mobile md:font-headline-h1 text-navy-ink mb-12">Begin your <span class="text-primary italic">legacy</span>.</h2>
+<div class="flex flex-col sm:flex-row justify-center gap-8">
+<button class="bg-navy-ink text-white font-label-caps text-sm px-10 py-5 rounded-full hover:bg-primary transition-all">Start Research</button>
+<button class="border border-navy-ink text-navy-ink font-label-caps text-sm px-10 py-5 rounded-full hover:bg-navy-ink hover:text-white transition-all">Public Source</button>
+</div>
+</div>
+</section>
+<!-- Minimal Footer -->
+<footer class="snap-section bg-navy-ink text-white px-margin-mobile text-center" id="footer">
+<div class="max-w-container-max-width mx-auto flex flex-col items-center gap-12">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary to-formalization-violet rounded-sm rotate-45">
+<span class="text-white font-bold -rotate-45">S</span>
+</div>
+<div class="font-headline-h3 text-xl tracking-tighter font-bold">SCHOLARIUM</div>
+</div>
+<div class="flex flex-wrap justify-center gap-x-12 gap-y-6 text-xs font-label-caps tracking-widest text-outline-variant">
+<a class="hover:text-white" href="#">Product</a>
+<a class="hover:text-white" href="#">Trust</a>
+<a class="hover:text-white" href="#">Organizations</a>
+<a class="hover:text-white" href="#">Privacy</a>
+<a class="hover:text-white" href="#">Legal</a>
+</div>
+<div class="text-[10px] font-mono text-white/20 uppercase tracking-widest">
+                © 2024 SECUREDME EDUCATION. HASH: scholarium-v4.0.0-radical
+            </div>
+</div>
+</footer>
+</main>
+<script>
+    // Simple script to update nav dots on scroll
+    const sections = document.querySelectorAll('.snap-section');
+    const dots = document.querySelectorAll('nav a');
+    const container = document.querySelector('.snap-container');
+
+    container.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (container.scrollTop >= (sectionTop - sectionHeight / 3)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        dots.forEach(dot => {
+            dot.classList.remove('bg-primary', 'scale-150');
+            dot.classList.add('bg-outline');
+            if (dot.getAttribute('href').includes(current)) {
+                dot.classList.add('bg-primary', 'scale-150');
+                dot.classList.remove('bg-outline');
+            }
+        });
+    });
+</script>
+</body></html>

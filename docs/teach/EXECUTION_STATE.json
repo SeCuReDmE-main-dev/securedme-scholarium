@@ -1,0 +1,76 @@
+{
+  "schema": "scholarium.teach-execution-state.v1",
+  "plan": "scholarium-teach-163-actions",
+  "updatedAt": "2026-07-16T02:52:17Z",
+  "executionFrontier": 156,
+  "activeGate": "G14",
+  "activeAction": 157,
+  "activeRange": {
+    "from": 157,
+    "to": 163
+  },
+  "resumePolicy": {
+    "sourceOfTruth": "this file",
+    "matrixRole": "action-level evidence ledger",
+    "evidenceRegisterRole": "proof index",
+    "historicalDebtCanRewind": false,
+    "completedMissionBundlesCanBeRestarted": false
+  },
+  "validatedMissionBundles": [
+    "060",
+    "061-072",
+    "073-084",
+    "085-096",
+    "097-108",
+    "109-120",
+    "121-132",
+    "133-144",
+    "145-156"
+  ],
+  "activeSkills": [
+    "CeLeBrUm_Strategic_Decomposition_Mastery",
+    "RagGgE_Technical_Risk_Assessment",
+    "celebrum-vscode-tunnel",
+    "celebrum-datadog-flow",
+    "securedme-education-suite-operator",
+    "github"
+  ],
+  "activePlugins": [
+    "SecuredMe Education Controller",
+    "CeLeBrUm Tool Belt",
+    "SecuredMe cPanel Operator",
+    "GitHub"
+  ],
+  "blockers": [
+    {
+      "action": 48,
+      "code": "external_legal_review_required",
+      "effect": "Real-student pilots remain prohibited; synthetic data only until qualified Loi 25 review and a separate France/EU gate are signed.",
+      "rewindsExecution": false
+    },
+    {
+      "action": 157,
+      "code": "vscode_tunnel_authentication_required",
+      "effect": "Remote tunnel is disconnected; local VS Code remains usable.",
+      "rewindsExecution": false
+    }
+  ],
+  "completedIndependentActions": [158, 159, 160, 161, 162, 163],
+  "programCompletion": {
+    "completed": 151,
+    "blocked": 2,
+    "planned": 9,
+    "inProgress": 1,
+    "total": 163,
+    "percent": 92.64,
+    "honestHundredPercentClaimAllowed": false
+  },
+  "operationalCorrections": [
+    {
+      "id": "datadog-visible-task-disabled",
+      "status": "applied",
+      "detail": "The interactive per-minute PowerShell task was stopped and disabled. It must not be re-enabled in an interactive user session."
+    }
+  ],
+  "nextIndependentActions": []
+}

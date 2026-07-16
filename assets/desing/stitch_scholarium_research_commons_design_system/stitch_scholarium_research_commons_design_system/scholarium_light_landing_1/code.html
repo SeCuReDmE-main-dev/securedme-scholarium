@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholarium | Evidence Commons</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#0039b5",
+                      "surface-container-highest": "#dce1ff",
+                      "inverse-on-surface": "#eff0ff",
+                      "primary-fixed": "#dce1ff",
+                      "on-primary-fixed": "#001551",
+                      "outline": "#747687",
+                      "secondary": "#00658f",
+                      "on-tertiary-container": "#e9e1ff",
+                      "on-surface": "#131a32",
+                      "surface-soft": "#EEF3FF",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#e6deff",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "provenance-cyan": "#23B8FF",
+                      "on-secondary-fixed": "#001e2e",
+                      "paper-cool": "#F7F8FC",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "secondary-fixed": "#c8e6ff",
+                      "secondary-container": "#1eb6fd",
+                      "on-secondary-container": "#004462",
+                      "on-secondary-fixed-variant": "#004c6d",
+                      "on-surface-variant": "#434655",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#faf8ff",
+                      "inverse-surface": "#292f48",
+                      "on-error": "#ffffff",
+                      "paper-warm": "#F4F1E8",
+                      "navy-ink": "#0B1230",
+                      "inverse-primary": "#b7c4ff",
+                      "surface-tint": "#0f4ee6",
+                      "on-tertiary-fixed": "#1d0061",
+                      "surface-dim": "#d2d9f9",
+                      "on-primary-container": "#e0e4ff",
+                      "surface-bright": "#faf8ff",
+                      "formalization-violet": "#6F42FF",
+                      "surface-container": "#ebedff",
+                      "on-secondary": "#ffffff",
+                      "primary": "#003fc6",
+                      "stewardship-gold": "#FFC857",
+                      "primary-container": "#2157ee",
+                      "on-background": "#131a32",
+                      "tertiary-container": "#6b3cfb",
+                      "outline-variant": "#c3c5d8",
+                      "surface-variant": "#dce1ff",
+                      "on-tertiary-fixed-variant": "#4a00d4",
+                      "tertiary-fixed-dim": "#cbbeff",
+                      "error-container": "#ffdad6",
+                      "error": "#ba1a1a",
+                      "tertiary": "#520ee3",
+                      "surface-container-low": "#f3f2ff",
+                      "secondary-fixed-dim": "#87ceff",
+                      "night-bg": "#080D1C",
+                      "surface-container-high": "#e4e7ff",
+                      "background": "#faf8ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "section-v-rhythm-lg": "140px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "section-v-rhythm-sm": "80px",
+                      "container-max-width": "1180px",
+                      "margin-desktop": "80px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Geist"
+                      ],
+                      "headline-h2": [
+                              "Instrument Serif"
+                      ],
+                      "headline-h3": [
+                              "Geist"
+                      ],
+                      "hero-lg-mobile": [
+                              "Instrument Serif"
+                      ],
+                      "label-caps": [
+                              "Geist"
+                      ],
+                      "headline-h1": [
+                              "Instrument Serif"
+                      ],
+                      "hero-lg": [
+                              "Instrument Serif"
+                      ],
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "headline-h1-mobile": [
+                              "Instrument Serif"
+                      ],
+                      "metadata-micro": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "1.075rem",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-h2": [
+                              "3.5rem",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-h3": [
+                              "2rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "hero-lg-mobile": [
+                              "3.8rem",
+                              {
+                                      "lineHeight": "1.1",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "0.75rem",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-h1": [
+                              "4.4rem",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "hero-lg": [
+                              "6.4rem",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "0.9375rem",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-h1-mobile": [
+                              "2.8rem",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "metadata-micro": [
+                              "0.625rem",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #F7F8FC;
+            color: #131a32;
+        }
+        .sch-line {
+            border-color: #DFE4EF;
+        }
+        .ambient-shadow {
+            box-shadow: 0 4px 24px rgba(11, 18, 48, 0.05);
+        }
+      </style>
+</head>
+<body class="font-body-md antialiased overflow-x-hidden">
+<!-- Header Component -->
+<header class="bg-surface/90 dark:bg-night-bg/90 backdrop-blur-md font-body-md text-body-md docked full-width top-0 sticky z-50 border-b border-outline-variant/30 dark:border-outline/20">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max-width mx-auto">
+<div class="font-headline-h3 text-headline-h3 tracking-tight text-on-surface dark:text-surface-bright">
+                SCHOLARIUM
+            </div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-primary dark:text-provenance-cyan font-bold border-b-2 border-primary dark:border-provenance-cyan pb-1 active:scale-98 transition-all duration-200" href="#">Product</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-highest/10 px-2 py-1 rounded" href="#">How it works</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-highest/10 px-2 py-1 rounded" href="#">Trust</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-highest/10 px-2 py-1 rounded" href="#">Organizations</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-highest/10 px-2 py-1 rounded" href="#">Public source</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-2">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">visibility</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary font-body-md px-4 py-2 rounded text-body-md hover:bg-primary-container transition-colors">Enter Scholarium</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-v-rhythm-sm md:py-section-v-rhythm-lg grid md:grid-cols-2 gap-gutter items-center">
+<div class="flex flex-col gap-6">
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-provenance-cyan"></span>
+                    SECUREDME EDUCATION / PUBLIC PRE-ALPHA
+                </div>
+<h1 class="font-hero-lg-mobile text-hero-lg-mobile md:font-hero-lg md:text-hero-lg text-on-surface">Turn knowledge into traceable evidence.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                    Scholarium is an institutional platform for structuring thought. We move beyond fragmented notes to verifiable, deeply cited publications designed for rigorous review and lasting archival.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="bg-primary text-on-primary font-body-md text-body-md px-6 py-3 rounded hover:bg-primary-container transition-colors flex justify-center items-center">
+                        Explore Scholarium
+                    </button>
+<button class="border border-outline text-on-surface font-body-md text-body-md px-6 py-3 rounded hover:bg-surface-container-low transition-colors flex justify-center items-center">
+                        See the workflow
+                    </button>
+</div>
+</div>
+<div class="relative w-full aspect-square md:aspect-[4/5] bg-paper-warm rounded-lg border sch-line flex items-center justify-center p-8 ambient-shadow overflow-hidden">
+<!-- Abstract Workflow Illustration -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #001551 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="relative z-10 w-full max-w-sm bg-surface rounded shadow-sm border border-outline-variant p-6 flex flex-col gap-4 bg-white/80 backdrop-blur-sm">
+<div class="flex justify-between items-start">
+<div class="font-metadata-micro text-metadata-micro text-outline uppercase tracking-wider">Research Artifact</div>
+<span class="material-symbols-outlined text-stewardship-gold text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<h3 class="font-headline-h3 text-headline-h3 text-on-surface leading-tight">The Impact of Distributed Consensus on Academic Peer Review</h3>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="px-2 py-1 rounded bg-surface-soft text-primary font-metadata-micro text-metadata-micro border border-primary/20">CC BY-NC 4.0</span>
+<span class="px-2 py-1 rounded bg-surface-soft text-on-surface font-metadata-micro text-metadata-micro border border-outline-variant">Public</span>
+<span class="px-2 py-1 rounded bg-surface-container-highest text-on-surface font-metadata-micro text-metadata-micro border border-outline-variant">Peer Reviewed</span>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/50 flex flex-col gap-2">
+<div class="flex justify-between items-center font-metadata-micro text-metadata-micro text-on-surface-variant">
+<span>Author</span>
+<span class="font-medium text-on-surface">Dr. E. Vance</span>
+</div>
+<div class="flex justify-between items-center font-metadata-micro text-metadata-micro text-on-surface-variant">
+<span>Provenance ID</span>
+<span class="font-mono text-xs text-provenance-cyan">0x7F4A...B991</span>
+</div>
+</div>
+</div>
+<!-- Geometric decorative lines -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none z-0" preserveaspectratio="none" viewbox="0 0 100 100">
+<path class="opacity-40" d="M 0 50 Q 25 30 50 50 T 100 50" fill="none" stroke="#23B8FF" stroke-dasharray="2 2" stroke-width="0.5"></path>
+<path class="opacity-40" d="M 50 0 L 50 100" fill="none" stroke="#6F42FF" stroke-dasharray="2 2" stroke-width="0.5"></path>
+</svg>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface dark:bg-night-bg font-body-md text-body-md full-width border-t border-outline-variant dark:border-outline/30 mt-section-v-rhythm-lg">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-gutter py-section-v-rhythm-sm px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<div class="col-span-2 md:col-span-1 flex flex-col gap-4">
+<div class="font-headline-h3 text-headline-h3 text-on-surface dark:text-surface-bright">SCHOLARIUM</div>
+<div class="text-on-surface-variant dark:text-outline-variant text-sm mt-auto">© 2024 SecuredMe Education, Inc. All rights reserved.</div>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan underline decoration-1 underline-offset-4 transition-colors duration-200 ease-in-out" href="#">Product</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan underline decoration-1 underline-offset-4 transition-colors duration-200 ease-in-out" href="#">Publishing</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan underline decoration-1 underline-offset-4 transition-colors duration-200 ease-in-out" href="#">Trust</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan underline decoration-1 underline-offset-4 transition-colors duration-200 ease-in-out" href="#">Developers</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-provenance-cyan underline decoration-1 underline-offset-4 transition-colors duration-200 ease-in-out" href="#">Legal</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,22 @@
+{
+  "schema": "scholarium.quasicrystal-structural-address.v1",
+  "algorithm_version": "fivefold-cut-project-locator.v1",
+  "input": "scholarium.hilbert-location.v1",
+  "outputs": [
+    "lattice_coordinates",
+    "internal_window_coordinates",
+    "acceptance_radius",
+    "cell",
+    "projection_fingerprint"
+  ],
+  "authority": "deterministic_structural_locator_only",
+  "cryptographic_use": "forbidden",
+  "prohibited_bindings": [
+    "KDF",
+    "AAD",
+    "key_material",
+    "vault_material",
+    "authentication_secret",
+    "key_rotation_material"
+  ]
+}
