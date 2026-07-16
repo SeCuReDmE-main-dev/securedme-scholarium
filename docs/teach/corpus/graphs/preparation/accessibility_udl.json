@@ -1,0 +1,477 @@
+{
+  "authorityBoundary": "Graph membership is a traceability state, not approval of a scientific, legal, or pedagogical claim.",
+  "category": "accessibility_udl",
+  "edges": [
+    {
+      "id": "edge:source-0182f6c038d8e557fa57:0",
+      "predicate": "classified_in",
+      "source": "source-0182f6c038d8e557fa57",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-0182f6c038d8e557fa57:1",
+      "predicate": "issued_by",
+      "source": "source-0182f6c038d8e557fa57",
+      "status": "metadata_supported",
+      "target": "authority:e8abc7f833f2cd37"
+    },
+    {
+      "id": "edge:source-0182f6c038d8e557fa57:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-0182f6c038d8e557fa57",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:assistive"
+    },
+    {
+      "id": "edge:source-0a7e486e5f526d816fae:0",
+      "predicate": "classified_in",
+      "source": "source-0a7e486e5f526d816fae",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-0a7e486e5f526d816fae:1",
+      "predicate": "issued_by",
+      "source": "source-0a7e486e5f526d816fae",
+      "status": "metadata_supported",
+      "target": "authority:e8abc7f833f2cd37"
+    },
+    {
+      "id": "edge:source-0a7e486e5f526d816fae:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-0a7e486e5f526d816fae",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:assistive"
+    },
+    {
+      "id": "edge:source-57d2e38fcd5c2a46b124:0",
+      "predicate": "classified_in",
+      "source": "source-57d2e38fcd5c2a46b124",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-57d2e38fcd5c2a46b124:1",
+      "predicate": "issued_by",
+      "source": "source-57d2e38fcd5c2a46b124",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-57d2e38fcd5c2a46b124:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-57d2e38fcd5c2a46b124",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:communication"
+    },
+    {
+      "id": "edge:source-5f085df40ef2e55d8cda:0",
+      "predicate": "classified_in",
+      "source": "source-5f085df40ef2e55d8cda",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-5f085df40ef2e55d8cda:1",
+      "predicate": "issued_by",
+      "source": "source-5f085df40ef2e55d8cda",
+      "status": "metadata_supported",
+      "target": "authority:4aef40e49cb1e0d7"
+    },
+    {
+      "id": "edge:source-5f085df40ef2e55d8cda:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-5f085df40ef2e55d8cda",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:universal-design"
+    },
+    {
+      "id": "edge:source-694b75d6f4c6be01dc69:0",
+      "predicate": "classified_in",
+      "source": "source-694b75d6f4c6be01dc69",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-694b75d6f4c6be01dc69:1",
+      "predicate": "issued_by",
+      "source": "source-694b75d6f4c6be01dc69",
+      "status": "metadata_supported",
+      "target": "authority:df38fa483ae1f77a"
+    },
+    {
+      "id": "edge:source-694b75d6f4c6be01dc69:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-694b75d6f4c6be01dc69",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:assistive"
+    },
+    {
+      "id": "edge:source-7fbef7ff15a944b07bd8:0",
+      "predicate": "classified_in",
+      "source": "source-7fbef7ff15a944b07bd8",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-7fbef7ff15a944b07bd8:1",
+      "predicate": "issued_by",
+      "source": "source-7fbef7ff15a944b07bd8",
+      "status": "metadata_supported",
+      "target": "authority:e8abc7f833f2cd37"
+    },
+    {
+      "id": "edge:source-7fbef7ff15a944b07bd8:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-7fbef7ff15a944b07bd8",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:communication"
+    },
+    {
+      "id": "edge:source-8f9c40cf8d2c1d7420e8:0",
+      "predicate": "classified_in",
+      "source": "source-8f9c40cf8d2c1d7420e8",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-8f9c40cf8d2c1d7420e8:1",
+      "predicate": "issued_by",
+      "source": "source-8f9c40cf8d2c1d7420e8",
+      "status": "metadata_supported",
+      "target": "authority:e8abc7f833f2cd37"
+    },
+    {
+      "id": "edge:source-8f9c40cf8d2c1d7420e8:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-8f9c40cf8d2c1d7420e8",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:accessibility"
+    },
+    {
+      "id": "edge:source-92b52511b32f96669868:0",
+      "predicate": "classified_in",
+      "source": "source-92b52511b32f96669868",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-92b52511b32f96669868:1",
+      "predicate": "issued_by",
+      "source": "source-92b52511b32f96669868",
+      "status": "metadata_supported",
+      "target": "authority:e8abc7f833f2cd37"
+    },
+    {
+      "id": "edge:source-92b52511b32f96669868:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-92b52511b32f96669868",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:communication"
+    },
+    {
+      "id": "edge:source-b0d23305f3403a43c6ed:0",
+      "predicate": "classified_in",
+      "source": "source-b0d23305f3403a43c6ed",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-b0d23305f3403a43c6ed:1",
+      "predicate": "issued_by",
+      "source": "source-b0d23305f3403a43c6ed",
+      "status": "metadata_supported",
+      "target": "authority:e8abc7f833f2cd37"
+    },
+    {
+      "id": "edge:source-b0d23305f3403a43c6ed:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-b0d23305f3403a43c6ed",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:communication"
+    },
+    {
+      "id": "edge:source-b596a4a1888d791ce64b:0",
+      "predicate": "classified_in",
+      "source": "source-b596a4a1888d791ce64b",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-b596a4a1888d791ce64b:1",
+      "predicate": "issued_by",
+      "source": "source-b596a4a1888d791ce64b",
+      "status": "metadata_supported",
+      "target": "authority:a38466a51d291c7a"
+    },
+    {
+      "id": "edge:source-b596a4a1888d791ce64b:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-b596a4a1888d791ce64b",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:assistive"
+    },
+    {
+      "id": "edge:source-bdd0ee1652672237ea7e:0",
+      "predicate": "classified_in",
+      "source": "source-bdd0ee1652672237ea7e",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-bdd0ee1652672237ea7e:1",
+      "predicate": "issued_by",
+      "source": "source-bdd0ee1652672237ea7e",
+      "status": "metadata_supported",
+      "target": "authority:e8abc7f833f2cd37"
+    },
+    {
+      "id": "edge:source-bdd0ee1652672237ea7e:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-bdd0ee1652672237ea7e",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:communication"
+    },
+    {
+      "id": "edge:source-d23ff660d870488e27c6:0",
+      "predicate": "classified_in",
+      "source": "source-d23ff660d870488e27c6",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-d23ff660d870488e27c6:1",
+      "predicate": "issued_by",
+      "source": "source-d23ff660d870488e27c6",
+      "status": "metadata_supported",
+      "target": "authority:e8abc7f833f2cd37"
+    },
+    {
+      "id": "edge:source-d23ff660d870488e27c6:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-d23ff660d870488e27c6",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:assistive"
+    },
+    {
+      "id": "edge:source-f2b5c3127f79f7fab180:0",
+      "predicate": "classified_in",
+      "source": "source-f2b5c3127f79f7fab180",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-f2b5c3127f79f7fab180:1",
+      "predicate": "issued_by",
+      "source": "source-f2b5c3127f79f7fab180",
+      "status": "metadata_supported",
+      "target": "authority:a6ba9cfcac121b16"
+    },
+    {
+      "id": "edge:source-f2b5c3127f79f7fab180:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-f2b5c3127f79f7fab180",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:universal-design"
+    },
+    {
+      "id": "edge:source-f57cb6cf29f27dc110ff:0",
+      "predicate": "classified_in",
+      "source": "source-f57cb6cf29f27dc110ff",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-f57cb6cf29f27dc110ff:1",
+      "predicate": "issued_by",
+      "source": "source-f57cb6cf29f27dc110ff",
+      "status": "metadata_supported",
+      "target": "authority:626554227244dd79"
+    },
+    {
+      "id": "edge:source-f57cb6cf29f27dc110ff:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-f57cb6cf29f27dc110ff",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:universal-design"
+    },
+    {
+      "id": "edge:source-fdf03478e3bdb5c48b5f:0",
+      "predicate": "classified_in",
+      "source": "source-fdf03478e3bdb5c48b5f",
+      "status": "metadata_supported",
+      "target": "category:accessibility_udl"
+    },
+    {
+      "id": "edge:source-fdf03478e3bdb5c48b5f:1",
+      "predicate": "issued_by",
+      "source": "source-fdf03478e3bdb5c48b5f",
+      "status": "metadata_supported",
+      "target": "authority:e8abc7f833f2cd37"
+    },
+    {
+      "id": "edge:source-fdf03478e3bdb5c48b5f:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-fdf03478e3bdb5c48b5f",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:accessibility"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "authority:099ecbe5d380e7f5",
+      "label": "SAGE Publications",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:4aef40e49cb1e0d7",
+      "label": "Massey University",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:626554227244dd79",
+      "label": "Institute of Advanced Engineering and Science",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:a38466a51d291c7a",
+      "label": "Elsevier BV",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:a6ba9cfcac121b16",
+      "label": "MDPI AG",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:df38fa483ae1f77a",
+      "label": "Springer Science and Business Media LLC",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:e8abc7f833f2cd37",
+      "label": "Informa UK Limited",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "category:accessibility_udl",
+      "label": "accessibility_udl",
+      "type": "education_category"
+    },
+    {
+      "id": "concept:accessibility",
+      "label": "accessibility",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:assistive",
+      "label": "assistive",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:communication",
+      "label": "communication",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:universal-design",
+      "label": "universal design",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "source-0182f6c038d8e557fa57",
+      "label": "The potential of time-assistive products to improve daily time management in persons with dementia: a randomised controlled trial",
+      "type": "source"
+    },
+    {
+      "id": "source-0a7e486e5f526d816fae",
+      "label": "Inclusive education: The case for early identification and early intervention in assistive technology",
+      "type": "source"
+    },
+    {
+      "id": "source-57d2e38fcd5c2a46b124",
+      "label": "Applying System of Least Prompts to Augmentative and Alternative Communication Intervention",
+      "type": "source"
+    },
+    {
+      "id": "source-5f085df40ef2e55d8cda",
+      "label": "The beauty of universal design for learning (UDL) and why everyone in early childhood education and intervention should be using it",
+      "type": "source"
+    },
+    {
+      "id": "source-694b75d6f4c6be01dc69",
+      "label": "Effects of a caregiver-inclusive assistive technology intervention: a randomized controlled trial",
+      "type": "source"
+    },
+    {
+      "id": "source-7fbef7ff15a944b07bd8",
+      "label": "Updated systematic-narrative review on communication intervention in Rett Syndrome: 2010–2022",
+      "type": "source"
+    },
+    {
+      "id": "source-8f9c40cf8d2c1d7420e8",
+      "label": "Effectiveness of the mobile learning HiSense Taxi App for improving taxi drivers’ services for individuals with disabilities: a randomized controlled trial",
+      "type": "source"
+    },
+    {
+      "id": "source-92b52511b32f96669868",
+      "label": "“All of a sudden we noticed a difference at home too”: parents’ perception of a parent-focused early communication and AAC intervention for toddlers",
+      "type": "source"
+    },
+    {
+      "id": "source-b0d23305f3403a43c6ed",
+      "label": "Speech-language pathologists’ perspectives on augmentative and alternative communication assessment and intervention across language domains: A crosslinguistic replication study",
+      "type": "source"
+    },
+    {
+      "id": "source-b596a4a1888d791ce64b",
+      "label": "Effect of assistive technology in hand osteoarthritis: a randomised controlled trial",
+      "type": "source"
+    },
+    {
+      "id": "source-bdd0ee1652672237ea7e",
+      "label": "Feasibility of an eye-gaze technology intervention for students with severe motor and communication difficulties in Taiwan",
+      "type": "source"
+    },
+    {
+      "id": "source-d23ff660d870488e27c6",
+      "label": "Effects of Assistive Home Technology on quality of life and falls of people with dementia and job satisfaction of caregivers: Results from a pilot randomized controlled trial",
+      "type": "source"
+    },
+    {
+      "id": "source-f2b5c3127f79f7fab180",
+      "label": "Designing Sustainable Learning Environments: The Effects of Project-Based Learning Informed by Universal Design for Learning on Students’ 21st-Century Skills",
+      "type": "source"
+    },
+    {
+      "id": "source-f57cb6cf29f27dc110ff",
+      "label": "Evaluation of universal design for constructivist-based statistics learning module for students’ increased motivation",
+      "type": "source"
+    },
+    {
+      "id": "source-fdf03478e3bdb5c48b5f",
+      "label": "Feasibility study by a single-blind randomized controlled trial of self-management of mobility with a gait-speed feedback device by older persons at risk for falling",
+      "type": "source"
+    }
+  ],
+  "partition": "preparation",
+  "schema": "synthia.education.graph-shard.v1",
+  "sourceCardIds": [
+    "source-0182f6c038d8e557fa57",
+    "source-0a7e486e5f526d816fae",
+    "source-57d2e38fcd5c2a46b124",
+    "source-5f085df40ef2e55d8cda",
+    "source-694b75d6f4c6be01dc69",
+    "source-7fbef7ff15a944b07bd8",
+    "source-8f9c40cf8d2c1d7420e8",
+    "source-92b52511b32f96669868",
+    "source-b0d23305f3403a43c6ed",
+    "source-b596a4a1888d791ce64b",
+    "source-bdd0ee1652672237ea7e",
+    "source-d23ff660d870488e27c6",
+    "source-f2b5c3127f79f7fab180",
+    "source-f57cb6cf29f27dc110ff",
+    "source-fdf03478e3bdb5c48b5f"
+  ]
+}

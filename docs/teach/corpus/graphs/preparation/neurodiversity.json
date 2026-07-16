@@ -1,0 +1,622 @@
+{
+  "authorityBoundary": "Graph membership is a traceability state, not approval of a scientific, legal, or pedagogical claim.",
+  "category": "neurodiversity",
+  "edges": [
+    {
+      "id": "edge:source-0969d38cc96e5ccabac1:0",
+      "predicate": "classified_in",
+      "source": "source-0969d38cc96e5ccabac1",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-0969d38cc96e5ccabac1:1",
+      "predicate": "issued_by",
+      "source": "source-0969d38cc96e5ccabac1",
+      "status": "metadata_supported",
+      "target": "authority:008c14a97f3a1e6d"
+    },
+    {
+      "id": "edge:source-0969d38cc96e5ccabac1:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-0969d38cc96e5ccabac1",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:adhd"
+    },
+    {
+      "id": "edge:source-0b7a34e63daf1c82d11e:0",
+      "predicate": "classified_in",
+      "source": "source-0b7a34e63daf1c82d11e",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-0b7a34e63daf1c82d11e:1",
+      "predicate": "issued_by",
+      "source": "source-0b7a34e63daf1c82d11e",
+      "status": "metadata_supported",
+      "target": "authority:a38466a51d291c7a"
+    },
+    {
+      "id": "edge:source-0b7a34e63daf1c82d11e:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-0b7a34e63daf1c82d11e",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:adhd"
+    },
+    {
+      "id": "edge:source-205a052e62647ad3bb21:0",
+      "predicate": "classified_in",
+      "source": "source-205a052e62647ad3bb21",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-205a052e62647ad3bb21:1",
+      "predicate": "issued_by",
+      "source": "source-205a052e62647ad3bb21",
+      "status": "metadata_supported",
+      "target": "authority:206b7cc7aab4f2fc"
+    },
+    {
+      "id": "edge:source-205a052e62647ad3bb21:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-205a052e62647ad3bb21",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    },
+    {
+      "id": "edge:source-2e905c44eb5db9f8b446:0",
+      "predicate": "classified_in",
+      "source": "source-2e905c44eb5db9f8b446",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-2e905c44eb5db9f8b446:1",
+      "predicate": "issued_by",
+      "source": "source-2e905c44eb5db9f8b446",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-2e905c44eb5db9f8b446:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-2e905c44eb5db9f8b446",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:adhd"
+    },
+    {
+      "id": "edge:source-3efd162010fcdf1c8524:0",
+      "predicate": "classified_in",
+      "source": "source-3efd162010fcdf1c8524",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-3efd162010fcdf1c8524:1",
+      "predicate": "issued_by",
+      "source": "source-3efd162010fcdf1c8524",
+      "status": "metadata_supported",
+      "target": "authority:d702db7887eba5e2"
+    },
+    {
+      "id": "edge:source-3efd162010fcdf1c8524:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-3efd162010fcdf1c8524",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    },
+    {
+      "id": "edge:source-4ca3e8a46cc20a19aaf8:0",
+      "predicate": "classified_in",
+      "source": "source-4ca3e8a46cc20a19aaf8",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-4ca3e8a46cc20a19aaf8:1",
+      "predicate": "issued_by",
+      "source": "source-4ca3e8a46cc20a19aaf8",
+      "status": "metadata_supported",
+      "target": "authority:df38fa483ae1f77a"
+    },
+    {
+      "id": "edge:source-4ca3e8a46cc20a19aaf8:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-4ca3e8a46cc20a19aaf8",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    },
+    {
+      "id": "edge:source-4d623cc9250abf2defdd:0",
+      "predicate": "classified_in",
+      "source": "source-4d623cc9250abf2defdd",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-4d623cc9250abf2defdd:1",
+      "predicate": "issued_by",
+      "source": "source-4d623cc9250abf2defdd",
+      "status": "metadata_supported",
+      "target": "authority:206b7cc7aab4f2fc"
+    },
+    {
+      "id": "edge:source-4d623cc9250abf2defdd:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-4d623cc9250abf2defdd",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    },
+    {
+      "id": "edge:source-53194b3a9cadf4de3396:0",
+      "predicate": "classified_in",
+      "source": "source-53194b3a9cadf4de3396",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-53194b3a9cadf4de3396:1",
+      "predicate": "issued_by",
+      "source": "source-53194b3a9cadf4de3396",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-53194b3a9cadf4de3396:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-53194b3a9cadf4de3396",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    },
+    {
+      "id": "edge:source-6453079ed1f9da14ec02:0",
+      "predicate": "classified_in",
+      "source": "source-6453079ed1f9da14ec02",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-6453079ed1f9da14ec02:1",
+      "predicate": "issued_by",
+      "source": "source-6453079ed1f9da14ec02",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-6453079ed1f9da14ec02:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-6453079ed1f9da14ec02",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    },
+    {
+      "id": "edge:source-66077a8df0eed42e3d99:0",
+      "predicate": "classified_in",
+      "source": "source-66077a8df0eed42e3d99",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-66077a8df0eed42e3d99:1",
+      "predicate": "issued_by",
+      "source": "source-66077a8df0eed42e3d99",
+      "status": "metadata_supported",
+      "target": "authority:206b7cc7aab4f2fc"
+    },
+    {
+      "id": "edge:source-66077a8df0eed42e3d99:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-66077a8df0eed42e3d99",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:dyspraxia"
+    },
+    {
+      "id": "edge:source-7792b36e2c6abbc8e573:0",
+      "predicate": "classified_in",
+      "source": "source-7792b36e2c6abbc8e573",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-7792b36e2c6abbc8e573:1",
+      "predicate": "issued_by",
+      "source": "source-7792b36e2c6abbc8e573",
+      "status": "metadata_supported",
+      "target": "authority:206b7cc7aab4f2fc"
+    },
+    {
+      "id": "edge:source-7792b36e2c6abbc8e573:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-7792b36e2c6abbc8e573",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    },
+    {
+      "id": "edge:source-81650f517dc2a3346b51:0",
+      "predicate": "classified_in",
+      "source": "source-81650f517dc2a3346b51",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-81650f517dc2a3346b51:1",
+      "predicate": "issued_by",
+      "source": "source-81650f517dc2a3346b51",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-81650f517dc2a3346b51:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-81650f517dc2a3346b51",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:adhd"
+    },
+    {
+      "id": "edge:source-93fea4ac411cce837d51:0",
+      "predicate": "classified_in",
+      "source": "source-93fea4ac411cce837d51",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-93fea4ac411cce837d51:1",
+      "predicate": "issued_by",
+      "source": "source-93fea4ac411cce837d51",
+      "status": "metadata_supported",
+      "target": "authority:6a8bad7138c28698"
+    },
+    {
+      "id": "edge:source-93fea4ac411cce837d51:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-93fea4ac411cce837d51",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:adhd"
+    },
+    {
+      "id": "edge:source-99a0ad6810ff918699a1:0",
+      "predicate": "classified_in",
+      "source": "source-99a0ad6810ff918699a1",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-99a0ad6810ff918699a1:1",
+      "predicate": "issued_by",
+      "source": "source-99a0ad6810ff918699a1",
+      "status": "metadata_supported",
+      "target": "authority:a38466a51d291c7a"
+    },
+    {
+      "id": "edge:source-99a0ad6810ff918699a1:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-99a0ad6810ff918699a1",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    },
+    {
+      "id": "edge:source-9f8c4289e279321dad91:0",
+      "predicate": "classified_in",
+      "source": "source-9f8c4289e279321dad91",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-9f8c4289e279321dad91:1",
+      "predicate": "issued_by",
+      "source": "source-9f8c4289e279321dad91",
+      "status": "metadata_supported",
+      "target": "authority:206b7cc7aab4f2fc"
+    },
+    {
+      "id": "edge:source-9f8c4289e279321dad91:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-9f8c4289e279321dad91",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    },
+    {
+      "id": "edge:source-9fe500a3eb334869032a:0",
+      "predicate": "classified_in",
+      "source": "source-9fe500a3eb334869032a",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-9fe500a3eb334869032a:1",
+      "predicate": "issued_by",
+      "source": "source-9fe500a3eb334869032a",
+      "status": "metadata_supported",
+      "target": "authority:bf219bf0adc52934"
+    },
+    {
+      "id": "edge:source-9fe500a3eb334869032a:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-9fe500a3eb334869032a",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    },
+    {
+      "id": "edge:source-ba778abf40cc1e845502:0",
+      "predicate": "classified_in",
+      "source": "source-ba778abf40cc1e845502",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-ba778abf40cc1e845502:1",
+      "predicate": "issued_by",
+      "source": "source-ba778abf40cc1e845502",
+      "status": "metadata_supported",
+      "target": "authority:206b7cc7aab4f2fc"
+    },
+    {
+      "id": "edge:source-ba778abf40cc1e845502:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-ba778abf40cc1e845502",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    },
+    {
+      "id": "edge:source-d95b5f249490cbcc0477:0",
+      "predicate": "classified_in",
+      "source": "source-d95b5f249490cbcc0477",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-d95b5f249490cbcc0477:1",
+      "predicate": "issued_by",
+      "source": "source-d95b5f249490cbcc0477",
+      "status": "metadata_supported",
+      "target": "authority:af1ccb31304d74a7"
+    },
+    {
+      "id": "edge:source-d95b5f249490cbcc0477:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-d95b5f249490cbcc0477",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    },
+    {
+      "id": "edge:source-eb0f5a557f45467553fb:0",
+      "predicate": "classified_in",
+      "source": "source-eb0f5a557f45467553fb",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-eb0f5a557f45467553fb:1",
+      "predicate": "issued_by",
+      "source": "source-eb0f5a557f45467553fb",
+      "status": "metadata_supported",
+      "target": "authority:206b7cc7aab4f2fc"
+    },
+    {
+      "id": "edge:source-eb0f5a557f45467553fb:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-eb0f5a557f45467553fb",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:dyslexia"
+    },
+    {
+      "id": "edge:source-f503ecfa1fdd6b11028d:0",
+      "predicate": "classified_in",
+      "source": "source-f503ecfa1fdd6b11028d",
+      "status": "metadata_supported",
+      "target": "category:neurodiversity"
+    },
+    {
+      "id": "edge:source-f503ecfa1fdd6b11028d:1",
+      "predicate": "issued_by",
+      "source": "source-f503ecfa1fdd6b11028d",
+      "status": "metadata_supported",
+      "target": "authority:df38fa483ae1f77a"
+    },
+    {
+      "id": "edge:source-f503ecfa1fdd6b11028d:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-f503ecfa1fdd6b11028d",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:autism"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "authority:008c14a97f3a1e6d",
+      "label": "Yayasan Cerdas Pedia Indonesia",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:099ecbe5d380e7f5",
+      "label": "SAGE Publications",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:206b7cc7aab4f2fc",
+      "label": "Wiley",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:6a8bad7138c28698",
+      "label": "Scientific Electronic Archives",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:a38466a51d291c7a",
+      "label": "Elsevier BV",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:af1ccb31304d74a7",
+      "label": "Emerald",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:bf219bf0adc52934",
+      "label": "Hindawi Limited",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:d702db7887eba5e2",
+      "label": "American Psychological Association (APA)",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:df38fa483ae1f77a",
+      "label": "Springer Science and Business Media LLC",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "category:neurodiversity",
+      "label": "neurodiversity",
+      "type": "education_category"
+    },
+    {
+      "id": "concept:adhd",
+      "label": "adhd",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:autism",
+      "label": "autism",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:dyslexia",
+      "label": "dyslexia",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:dyspraxia",
+      "label": "dyspraxia",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "source-0969d38cc96e5ccabac1",
+      "label": "Structured Classroom Intervention to Improve Learning Concentration of Students with ADHD in Inclusive Schools",
+      "type": "source"
+    },
+    {
+      "id": "source-0b7a34e63daf1c82d11e",
+      "label": "A self-guided internet-delivered intervention for adults with ADHD: Results from a randomized controlled trial",
+      "type": "source"
+    },
+    {
+      "id": "source-205a052e62647ad3bb21",
+      "label": "Reading Comprehension: A Computerized Intervention with Primary‐age Poor Readers",
+      "type": "source"
+    },
+    {
+      "id": "source-2e905c44eb5db9f8b446",
+      "label": "Effectiveness of a Tailored Intervention for Women With ADHD and ADHD Symptoms: A Randomized Controlled Study",
+      "type": "source"
+    },
+    {
+      "id": "source-3efd162010fcdf1c8524",
+      "label": "Cluster randomized trial of the classroom SCERTS intervention for elementary students with autism spectrum disorder.",
+      "type": "source"
+    },
+    {
+      "id": "source-4ca3e8a46cc20a19aaf8",
+      "label": "Comparisons of Discrete-Trial and Normalized Behavioral Language Intervention for Young Children with Autism",
+      "type": "source"
+    },
+    {
+      "id": "source-4d623cc9250abf2defdd",
+      "label": "The Effectiveness of a 2‐year Supplementary Tutor‐assisted Computerized Intervention on the Reading Development of Beginning Readers at Risk for Reading Difficulties: A Randomized Controlled Trial",
+      "type": "source"
+    },
+    {
+      "id": "source-53194b3a9cadf4de3396",
+      "label": "Multi-component communication intervention for children with autism: A randomized controlled trial",
+      "type": "source"
+    },
+    {
+      "id": "source-6453079ed1f9da14ec02",
+      "label": "Changes in anxiety following a randomized control trial of a theatre-based intervention for youth with autism spectrum disorder",
+      "type": "source"
+    },
+    {
+      "id": "source-66077a8df0eed42e3d99",
+      "label": "Podiatric intervention in managing the gait related symptoms of Developmental Coordination Disorder (Dyspraxia). A retrospective study",
+      "type": "source"
+    },
+    {
+      "id": "source-7792b36e2c6abbc8e573",
+      "label": "Intervention in a Higher Education Market: a Case Study",
+      "type": "source"
+    },
+    {
+      "id": "source-81650f517dc2a3346b51",
+      "label": "A Cooperative Learning Classroom Intervention for Increasing Peer’s Acceptance of Children With ADHD",
+      "type": "source"
+    },
+    {
+      "id": "source-93fea4ac411cce837d51",
+      "label": "ADHD: Causes and alternative types of intervention",
+      "type": "source"
+    },
+    {
+      "id": "source-99a0ad6810ff918699a1",
+      "label": "Oral inferential comprehension intervention program for children with Autism: A randomized controlled trial",
+      "type": "source"
+    },
+    {
+      "id": "source-9f8c4289e279321dad91",
+      "label": "Effects of a phonics intervention in a randomized controlled study in Swedish second‐grade students at risk of reading difficulties",
+      "type": "source"
+    },
+    {
+      "id": "source-9fe500a3eb334869032a",
+      "label": "Respiratory symptoms, perceived air quality and physiological signs in elementary school pupils in relation to displacement and mixing ventilation system: an intervention study",
+      "type": "source"
+    },
+    {
+      "id": "source-ba778abf40cc1e845502",
+      "label": "Effects of a Randomized Reading Intervention Study Aimed at 9‐Year‐Olds: A 5‐Year Follow‐up",
+      "type": "source"
+    },
+    {
+      "id": "source-d95b5f249490cbcc0477",
+      "label": "The impact of sensory activity schedule (SAS) intervention on classroom task performance in students with autism – a pilot randomised controlled trial",
+      "type": "source"
+    },
+    {
+      "id": "source-eb0f5a557f45467553fb",
+      "label": "Predicting responsiveness to a sustained reading and spelling intervention in children with dyslexia",
+      "type": "source"
+    },
+    {
+      "id": "source-f503ecfa1fdd6b11028d",
+      "label": "Randomized Controlled Trial for Early Intervention for Autism: A Pilot Study of the Autism 1-2-3 Project",
+      "type": "source"
+    }
+  ],
+  "partition": "preparation",
+  "schema": "synthia.education.graph-shard.v1",
+  "sourceCardIds": [
+    "source-0969d38cc96e5ccabac1",
+    "source-0b7a34e63daf1c82d11e",
+    "source-205a052e62647ad3bb21",
+    "source-2e905c44eb5db9f8b446",
+    "source-3efd162010fcdf1c8524",
+    "source-4ca3e8a46cc20a19aaf8",
+    "source-4d623cc9250abf2defdd",
+    "source-53194b3a9cadf4de3396",
+    "source-6453079ed1f9da14ec02",
+    "source-66077a8df0eed42e3d99",
+    "source-7792b36e2c6abbc8e573",
+    "source-81650f517dc2a3346b51",
+    "source-93fea4ac411cce837d51",
+    "source-99a0ad6810ff918699a1",
+    "source-9f8c4289e279321dad91",
+    "source-9fe500a3eb334869032a",
+    "source-ba778abf40cc1e845502",
+    "source-d95b5f249490cbcc0477",
+    "source-eb0f5a557f45467553fb",
+    "source-f503ecfa1fdd6b11028d"
+  ]
+}

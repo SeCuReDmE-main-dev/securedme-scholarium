@@ -1,0 +1,66 @@
+{
+  "schema": "synthia.education.corpus-manifest.v1",
+  "generatedAt": "2026-07-16T03:25:00Z",
+  "cardCount": 125,
+  "uniqueIdentityCount": 125,
+  "partitions": {
+    "approved": 0,
+    "preparation": 125,
+    "quarantine": 0
+  },
+  "categories": {
+    "mastery_retrieval": 15,
+    "language_learning": 15,
+    "accessibility_udl": 15,
+    "neurodiversity": 20,
+    "strengths_motivation": 15,
+    "social_belonging_safety": 15,
+    "sport_music_creativity": 15,
+    "legal_institutional": 15
+  },
+  "diagnostics": [
+    {
+      "category": "mastery_retrieval",
+      "candidateCount": 113,
+      "selectedCount": 15
+    },
+    {
+      "category": "language_learning",
+      "candidateCount": 83,
+      "selectedCount": 15
+    },
+    {
+      "category": "accessibility_udl",
+      "candidateCount": 57,
+      "selectedCount": 15
+    },
+    {
+      "category": "neurodiversity",
+      "candidateCount": 290,
+      "selectedCount": 20
+    },
+    {
+      "category": "strengths_motivation",
+      "candidateCount": 199,
+      "selectedCount": 15
+    },
+    {
+      "category": "social_belonging_safety",
+      "candidateCount": 125,
+      "selectedCount": 15
+    },
+    {
+      "category": "sport_music_creativity",
+      "candidateCount": 205,
+      "selectedCount": 15
+    }
+  ],
+  "crossrefPolicy": {
+    "apiKeyUsed": false,
+    "abstractStored": false,
+    "licenseUrlPresenceRequired": true,
+    "retractionsAndUpdatesExcludedWhenVisible": true,
+    "humanMethodReviewRequired": true
+  },
+  "authorityBoundary": "Synthia organizes provenance and uncertainty; it does not certify research quality, legal applicability, or educational truth."
+}

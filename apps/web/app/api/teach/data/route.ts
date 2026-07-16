@@ -64,5 +64,9 @@ export async function DELETE() {
     await db.delete(teachModules).where(inArray(teachModules.courseId, courseIds));
     await db.delete(teachCourses).where(inArray(teachCourses.id, courseIds));
   }
-  return Response.json({ deleted: true, boundary: "Scholarium identity and non-Teach publications were retained." });
+  return Response.json({
+    deleted: true,
+    boundary: "Scholarium identity and non-Teach publications were retained.",
+    retainedSecurityRecords: "Exceptional-access requests, decisions, and digest-only audit events follow the documented security and legal retention schedule.",
+  });
 }

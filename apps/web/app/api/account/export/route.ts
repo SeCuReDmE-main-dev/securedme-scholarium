@@ -39,6 +39,9 @@ import {
   teachCircleMemberships,
   teachCircles,
   teachGate5Jobs,
+  teachExceptionalAccessApprovals,
+  teachExceptionalAccessAuditEvents,
+  teachExceptionalAccessRequests,
   teachMediaRequests,
   teachMediaPublicationConfirmations,
   teachProjectEntries,
@@ -147,6 +150,27 @@ export async function GET() {
       db.select({ category: teachRecognitions.category, circleId: teachRecognitions.circleId, context: teachRecognitions.context, createdAt: teachRecognitions.createdAt, evidenceRef: teachRecognitions.evidenceRef, id: teachRecognitions.id, reviewedAt: teachRecognitions.reviewedAt, statement: teachRecognitions.statement, status: teachRecognitions.status }).from(teachRecognitions).where(or(eq(teachRecognitions.issuerUserId, account.id), eq(teachRecognitions.recipientUserId, account.id))),
       db.select().from(teachRecaps).where(eq(teachRecaps.userId, account.id)),
     ]);
+    const exceptionalAccessRows = await db.select().from(teachExceptionalAccessRequests).where(or(
+      eq(teachExceptionalAccessRequests.requesterUserId, account.id),
+      eq(teachExceptionalAccessRequests.subjectUserId, account.id),
+    ));
+    const exceptionalAccessIds = exceptionalAccessRows.map((row) => row.id);
+    const exceptionalAccessApprovalRows = exceptionalAccessIds.length ? await db.select({
+      createdAt: teachExceptionalAccessApprovals.createdAt,
+      decision: teachExceptionalAccessApprovals.decision,
+      id: teachExceptionalAccessApprovals.id,
+      rationale: teachExceptionalAccessApprovals.rationale,
+      requestId: teachExceptionalAccessApprovals.requestId,
+    }).from(teachExceptionalAccessApprovals).where(or(
+      inArray(teachExceptionalAccessApprovals.requestId, exceptionalAccessIds),
+      eq(teachExceptionalAccessApprovals.approverUserId, account.id),
+    )) : [];
+    const exceptionalAccessAuditRows = exceptionalAccessIds.length ? await db.select({
+      createdAt: teachExceptionalAccessAuditEvents.createdAt,
+      eventDigest: teachExceptionalAccessAuditEvents.eventDigest,
+      eventType: teachExceptionalAccessAuditEvents.eventType,
+      requestId: teachExceptionalAccessAuditEvents.requestId,
+    }).from(teachExceptionalAccessAuditEvents).where(inArray(teachExceptionalAccessAuditEvents.requestId, exceptionalAccessIds)) : [];
 
     const result = {
       exportedAt: new Date().toISOString(),
@@ -203,6 +227,9 @@ export async function GET() {
         mediaPublicationConfirmations: teachMediaPublicationRows,
         gate5Jobs: teachGate5Rows,
         purposeConsents: teachConsentRows,
+        exceptionalAccessRequests: exceptionalAccessRows,
+        exceptionalAccessApprovals: exceptionalAccessApprovalRows,
+        exceptionalAccessAuditEvents: exceptionalAccessAuditRows,
       },
       excluded: [
         "provider session cookies and OAuth state",

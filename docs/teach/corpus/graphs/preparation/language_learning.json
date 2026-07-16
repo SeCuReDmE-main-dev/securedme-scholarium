@@ -1,0 +1,516 @@
+{
+  "authorityBoundary": "Graph membership is a traceability state, not approval of a scientific, legal, or pedagogical claim.",
+  "category": "language_learning",
+  "edges": [
+    {
+      "id": "edge:source-18d613f9b920150e7eae:0",
+      "predicate": "classified_in",
+      "source": "source-18d613f9b920150e7eae",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-18d613f9b920150e7eae:1",
+      "predicate": "issued_by",
+      "source": "source-18d613f9b920150e7eae",
+      "status": "metadata_supported",
+      "target": "authority:d932a5df5036c3b5"
+    },
+    {
+      "id": "edge:source-18d613f9b920150e7eae:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-18d613f9b920150e7eae",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:vocabulary"
+    },
+    {
+      "id": "edge:source-2c55764bd210bd66a1bf:0",
+      "predicate": "classified_in",
+      "source": "source-2c55764bd210bd66a1bf",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-2c55764bd210bd66a1bf:1",
+      "predicate": "issued_by",
+      "source": "source-2c55764bd210bd66a1bf",
+      "status": "metadata_supported",
+      "target": "authority:206b7cc7aab4f2fc"
+    },
+    {
+      "id": "edge:source-2c55764bd210bd66a1bf:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-2c55764bd210bd66a1bf",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:language"
+    },
+    {
+      "id": "edge:source-2d8fc9873bd6ed4bb227:0",
+      "predicate": "classified_in",
+      "source": "source-2d8fc9873bd6ed4bb227",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-2d8fc9873bd6ed4bb227:1",
+      "predicate": "issued_by",
+      "source": "source-2d8fc9873bd6ed4bb227",
+      "status": "metadata_supported",
+      "target": "authority:df38fa483ae1f77a"
+    },
+    {
+      "id": "edge:source-2d8fc9873bd6ed4bb227:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-2d8fc9873bd6ed4bb227",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:vocabulary"
+    },
+    {
+      "id": "edge:source-2f3a77c741e1c6a54ebf:0",
+      "predicate": "classified_in",
+      "source": "source-2f3a77c741e1c6a54ebf",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-2f3a77c741e1c6a54ebf:1",
+      "predicate": "issued_by",
+      "source": "source-2f3a77c741e1c6a54ebf",
+      "status": "metadata_supported",
+      "target": "authority:8ab97701856079f9"
+    },
+    {
+      "id": "edge:source-2f3a77c741e1c6a54ebf:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-2f3a77c741e1c6a54ebf",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:vocabulary"
+    },
+    {
+      "id": "edge:source-362e4c1171615e7174d5:0",
+      "predicate": "classified_in",
+      "source": "source-362e4c1171615e7174d5",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-362e4c1171615e7174d5:1",
+      "predicate": "issued_by",
+      "source": "source-362e4c1171615e7174d5",
+      "status": "metadata_supported",
+      "target": "authority:8ab97701856079f9"
+    },
+    {
+      "id": "edge:source-362e4c1171615e7174d5:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-362e4c1171615e7174d5",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:vocabulary"
+    },
+    {
+      "id": "edge:source-4fdb2f255f49bb4b36f5:0",
+      "predicate": "classified_in",
+      "source": "source-4fdb2f255f49bb4b36f5",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-4fdb2f255f49bb4b36f5:1",
+      "predicate": "issued_by",
+      "source": "source-4fdb2f255f49bb4b36f5",
+      "status": "metadata_supported",
+      "target": "authority:206b7cc7aab4f2fc"
+    },
+    {
+      "id": "edge:source-4fdb2f255f49bb4b36f5:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-4fdb2f255f49bb4b36f5",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:language"
+    },
+    {
+      "id": "edge:source-4fdb2f255f49bb4b36f5:3",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-4fdb2f255f49bb4b36f5",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:pronunciation"
+    },
+    {
+      "id": "edge:source-7036d941edc7d952f179:0",
+      "predicate": "classified_in",
+      "source": "source-7036d941edc7d952f179",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-7036d941edc7d952f179:1",
+      "predicate": "issued_by",
+      "source": "source-7036d941edc7d952f179",
+      "status": "metadata_supported",
+      "target": "authority:e8abc7f833f2cd37"
+    },
+    {
+      "id": "edge:source-7036d941edc7d952f179:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-7036d941edc7d952f179",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:caption"
+    },
+    {
+      "id": "edge:source-7f7eac72071512f6aaa6:0",
+      "predicate": "classified_in",
+      "source": "source-7f7eac72071512f6aaa6",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-7f7eac72071512f6aaa6:1",
+      "predicate": "issued_by",
+      "source": "source-7f7eac72071512f6aaa6",
+      "status": "metadata_supported",
+      "target": "authority:b45166cf934007fb"
+    },
+    {
+      "id": "edge:source-7f7eac72071512f6aaa6:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-7f7eac72071512f6aaa6",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:language"
+    },
+    {
+      "id": "edge:source-ab640a4de0af9e61b1dd:0",
+      "predicate": "classified_in",
+      "source": "source-ab640a4de0af9e61b1dd",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-ab640a4de0af9e61b1dd:1",
+      "predicate": "issued_by",
+      "source": "source-ab640a4de0af9e61b1dd",
+      "status": "metadata_supported",
+      "target": "authority:ea2cb784307cdcd5"
+    },
+    {
+      "id": "edge:source-ab640a4de0af9e61b1dd:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-ab640a4de0af9e61b1dd",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:language"
+    },
+    {
+      "id": "edge:source-b476aca8d6aa4fdbd5b2:0",
+      "predicate": "classified_in",
+      "source": "source-b476aca8d6aa4fdbd5b2",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-b476aca8d6aa4fdbd5b2:1",
+      "predicate": "issued_by",
+      "source": "source-b476aca8d6aa4fdbd5b2",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-b476aca8d6aa4fdbd5b2:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-b476aca8d6aa4fdbd5b2",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:caption"
+    },
+    {
+      "id": "edge:source-c58e003b2c4fe16c945b:0",
+      "predicate": "classified_in",
+      "source": "source-c58e003b2c4fe16c945b",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-c58e003b2c4fe16c945b:1",
+      "predicate": "issued_by",
+      "source": "source-c58e003b2c4fe16c945b",
+      "status": "metadata_supported",
+      "target": "authority:a90e2492e10ccbf9"
+    },
+    {
+      "id": "edge:source-c58e003b2c4fe16c945b:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-c58e003b2c4fe16c945b",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:vocabulary"
+    },
+    {
+      "id": "edge:source-d0cfbc9bd5ef59709d28:0",
+      "predicate": "classified_in",
+      "source": "source-d0cfbc9bd5ef59709d28",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-d0cfbc9bd5ef59709d28:1",
+      "predicate": "issued_by",
+      "source": "source-d0cfbc9bd5ef59709d28",
+      "status": "metadata_supported",
+      "target": "authority:cdee67036d41707d"
+    },
+    {
+      "id": "edge:source-d0cfbc9bd5ef59709d28:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-d0cfbc9bd5ef59709d28",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:language"
+    },
+    {
+      "id": "edge:source-d48d94b37a1a864b389e:0",
+      "predicate": "classified_in",
+      "source": "source-d48d94b37a1a864b389e",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-d48d94b37a1a864b389e:1",
+      "predicate": "issued_by",
+      "source": "source-d48d94b37a1a864b389e",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-d48d94b37a1a864b389e:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-d48d94b37a1a864b389e",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:language"
+    },
+    {
+      "id": "edge:source-d48d94b37a1a864b389e:3",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-d48d94b37a1a864b389e",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:vocabulary"
+    },
+    {
+      "id": "edge:source-ec9bee09927b176f1e11:0",
+      "predicate": "classified_in",
+      "source": "source-ec9bee09927b176f1e11",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-ec9bee09927b176f1e11:1",
+      "predicate": "issued_by",
+      "source": "source-ec9bee09927b176f1e11",
+      "status": "metadata_supported",
+      "target": "authority:a38466a51d291c7a"
+    },
+    {
+      "id": "edge:source-ec9bee09927b176f1e11:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-ec9bee09927b176f1e11",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:language"
+    },
+    {
+      "id": "edge:source-fa2b4da81cf3f0831f0e:0",
+      "predicate": "classified_in",
+      "source": "source-fa2b4da81cf3f0831f0e",
+      "status": "metadata_supported",
+      "target": "category:language_learning"
+    },
+    {
+      "id": "edge:source-fa2b4da81cf3f0831f0e:1",
+      "predicate": "issued_by",
+      "source": "source-fa2b4da81cf3f0831f0e",
+      "status": "metadata_supported",
+      "target": "authority:143c38aad0cadad6"
+    },
+    {
+      "id": "edge:source-fa2b4da81cf3f0831f0e:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-fa2b4da81cf3f0831f0e",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:caption"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "authority:099ecbe5d380e7f5",
+      "label": "SAGE Publications",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:143c38aad0cadad6",
+      "label": "National Foreign Language Resource Center",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:206b7cc7aab4f2fc",
+      "label": "Wiley",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:8ab97701856079f9",
+      "label": "Open Knowledge",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:a38466a51d291c7a",
+      "label": "Elsevier BV",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:a90e2492e10ccbf9",
+      "label": "Castledown Publishers",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:b45166cf934007fb",
+      "label": "Instituto Superior Tecnologico Portoviejo",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:cdee67036d41707d",
+      "label": "Adam Mickiewicz University Poznan",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:d932a5df5036c3b5",
+      "label": "CV. Pusdikra Mitra Jaya",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:df38fa483ae1f77a",
+      "label": "Springer Science and Business Media LLC",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:e8abc7f833f2cd37",
+      "label": "Informa UK Limited",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:ea2cb784307cdcd5",
+      "label": "Darcy & Roy Press Co. Ltd.",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "category:language_learning",
+      "label": "language_learning",
+      "type": "education_category"
+    },
+    {
+      "id": "concept:caption",
+      "label": "caption",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:language",
+      "label": "language",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:pronunciation",
+      "label": "pronunciation",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:vocabulary",
+      "label": "vocabulary",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "source-18d613f9b920150e7eae",
+      "label": "Investigating the Combined Impact of Microlearning and Spaced Repetition on EFL Learners’ Vocabulary Retention",
+      "type": "source"
+    },
+    {
+      "id": "source-2c55764bd210bd66a1bf",
+      "label": "Figurativeness Matters in the Second Language Processing of Collocations: Evidence From a Self‐Paced Reading Experiment",
+      "type": "source"
+    },
+    {
+      "id": "source-2d8fc9873bd6ed4bb227",
+      "label": "Introducing “mobile DDL (data-driven learning)” for vocabulary learning: an experiment for academic English",
+      "type": "source"
+    },
+    {
+      "id": "source-2f3a77c741e1c6a54ebf",
+      "label": "The Impact of Spaced Learning Strategies on Vocabulary Retention in Primary English Classrooms",
+      "type": "source"
+    },
+    {
+      "id": "source-362e4c1171615e7174d5",
+      "label": "The Impact of Spaced Learning Strategies on Vocabulary Retention in Primary English Classrooms",
+      "type": "source"
+    },
+    {
+      "id": "source-4fdb2f255f49bb4b36f5",
+      "label": "The Combined Effects of Immersion and Instruction on Second Language Pronunciation",
+      "type": "source"
+    },
+    {
+      "id": "source-7036d941edc7d952f179",
+      "label": "The effects of binge-watching and spacing on learning L2 multi-word units from captioned TV series",
+      "type": "source"
+    },
+    {
+      "id": "source-7f7eac72071512f6aaa6",
+      "label": "The impact of Content and Language Integrated Learning on students’ motivation on second language learning: A study on academic motivation to second language learning",
+      "type": "source"
+    },
+    {
+      "id": "source-ab640a4de0af9e61b1dd",
+      "label": "The Effect of Gamification Learning on Primary School Students' Second Language Learning",
+      "type": "source"
+    },
+    {
+      "id": "source-b476aca8d6aa4fdbd5b2",
+      "label": "‘May I do something for you?’: The effects of audio-visual material (captioned and non-captioned) on EFL pragmatic learning",
+      "type": "source"
+    },
+    {
+      "id": "source-c58e003b2c4fe16c945b",
+      "label": "Rasch-based instrument validations for an augmented reality vocabulary acquisition experiment",
+      "type": "source"
+    },
+    {
+      "id": "source-d0cfbc9bd5ef59709d28",
+      "label": "The effect of executive functions on word reading among students with Chinese as a second language (CSL)",
+      "type": "source"
+    },
+    {
+      "id": "source-d48d94b37a1a864b389e",
+      "label": "Evaluating the impact of spaced practice using computer-assisted language learning (CALL) on vocabulary learning in the classroom",
+      "type": "source"
+    },
+    {
+      "id": "source-ec9bee09927b176f1e11",
+      "label": "Epistemic agency, a double-stimulation, and video-based learning: A formative intervention study in language teacher education",
+      "type": "source"
+    },
+    {
+      "id": "source-fa2b4da81cf3f0831f0e",
+      "label": "Effects of captioned video on L2 speech segmentation in intermediate learners of Spanish",
+      "type": "source"
+    }
+  ],
+  "partition": "preparation",
+  "schema": "synthia.education.graph-shard.v1",
+  "sourceCardIds": [
+    "source-18d613f9b920150e7eae",
+    "source-2c55764bd210bd66a1bf",
+    "source-2d8fc9873bd6ed4bb227",
+    "source-2f3a77c741e1c6a54ebf",
+    "source-362e4c1171615e7174d5",
+    "source-4fdb2f255f49bb4b36f5",
+    "source-7036d941edc7d952f179",
+    "source-7f7eac72071512f6aaa6",
+    "source-ab640a4de0af9e61b1dd",
+    "source-b476aca8d6aa4fdbd5b2",
+    "source-c58e003b2c4fe16c945b",
+    "source-d0cfbc9bd5ef59709d28",
+    "source-d48d94b37a1a864b389e",
+    "source-ec9bee09927b176f1e11",
+    "source-fa2b4da81cf3f0831f0e"
+  ]
+}
