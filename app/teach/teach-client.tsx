@@ -97,6 +97,7 @@ const stateLabels: Record<MasteryState, string> = {
 };
 
 export function TeachClient({ authenticated = false }: { authenticated?: boolean }) {
+  const [sessionAuthenticated, setSessionAuthenticated] = useState(authenticated);
   const [view, setView] = useState<View>("learn");
   const [accessibility, setAccessibility] = useState<TeachAccessibilitySettings>(initialCheckpoint.accessibility);
   const [objectiveIndex, setObjectiveIndex] = useState(initialCheckpoint.objectiveIndex);
@@ -147,6 +148,12 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
     if (!checkpointLoaded) return;
     window.localStorage.setItem(checkpointKey, JSON.stringify({ accessibility, answer, assistanceLevel, objectiveIndex, progress, showPhonetic, showTranslation }));
   }, [accessibility, answer, assistanceLevel, checkpointLoaded, objectiveIndex, progress, showPhonetic, showTranslation]);
+
+  useEffect(() => {
+    fetch("/api/account")
+      .then((response) => setSessionAuthenticated(response.ok))
+      .catch(() => setSessionAuthenticated(false));
+  }, []);
 
   useEffect(() => {
     fetch("/api/v1/teach/lesson")
@@ -375,10 +382,10 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
         <p className="teach-authority-note">{bridge.authorityBoundary}</p>
       </section>}
 
-      {view === "portfolio" && <TeachPortfolioPanel authenticated={authenticated} />}
-      {view === "statistics" && <TeachStatisticsPanel authenticated={authenticated} />}
+      {view === "portfolio" && <TeachPortfolioPanel authenticated={sessionAuthenticated} />}
+      {view === "statistics" && <TeachStatisticsPanel authenticated={sessionAuthenticated} />}
       {view === "sources" && <TeachSourcesPanel />}
-      {view === "administration" && <TeachAdministrationPanel authenticated={authenticated} />}
+      {view === "administration" && <TeachAdministrationPanel authenticated={sessionAuthenticated} />}
 
       {view === "teacher" && <section id="teach-teacher-panel" role="tabpanel" className="teach-dashboard-band">
         <header><p className="teach-eyebrow">VUE ENSEIGNANT · DONNEES LOCALES</p><h1>{"Preuves d'apprentissage"}</h1></header>
