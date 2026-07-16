@@ -1,0 +1,70 @@
+{
+  "schema": "scholarium.teach.operations-deployment-evidence.v1",
+  "generatedAt": "2026-07-16T02:27:00Z",
+  "scope": [157, 158, 159, 160, 161],
+  "actions": {
+    "157": {
+      "status": "blocked",
+      "tunnel": null,
+      "serviceInstalled": false,
+      "blocker": "vscode_tunnel_authentication_required",
+      "unauthenticatedFallbackUsed": false
+    },
+    "158": {
+      "status": "completed",
+      "healthService": "scholarium",
+      "healthStatus": "ok",
+      "metricCount": 3,
+      "metricNames": [
+        "scholarium.gateway.up",
+        "scholarium.gateway.latency_ms",
+        "scholarium.gateway.openapi_path_count"
+      ],
+      "containsUserData": false,
+      "transport": "127.0.0.1:18125/udp",
+      "agentHealthy": true,
+      "scheduledInteractiveTaskEnabled": false,
+      "senderSha256": "0C0A462C30373A98AF3BEA5C05410CF2BFF75826114BAB0F7A0A181A082D1958"
+    },
+    "159": {
+      "status": "completed",
+      "sourceKind": "local-synthetic-d1",
+      "snapshotSha256": "1D3588BDED75F8DA808C9FD27CF23A2BEE240EE6C169EF07CB94D58AEAAEC0A7",
+      "quickCheck": "ok",
+      "applicationTables": 76,
+      "sourceHashVerified": true,
+      "productionOverwritten": false,
+      "privateBackupDirectoryName": "20260715-222553"
+    },
+    "160": {
+      "status": "completed",
+      "cpanelOperatorHealthy": true,
+      "requiredEnvironmentKeysMissing": 0,
+      "domainInventoryCount": 52,
+      "securedMeDomainCount": 51,
+      "scholariumDomainPresent": true,
+      "deploymentPlanDryRun": true,
+      "liveMutation": false
+    },
+    "161": {
+      "status": "completed",
+      "sitesProject": "appgprj_6a51f67c975881919f3d0930b2a9e868",
+      "currentVersion": 53,
+      "currentCommit": "f3fbcc8fdc3a3cdce5ed56eaa2dc51f0050323d0",
+      "currentPublicHost": "www.scholarium.securedme.ca",
+      "currentPublicHostSsl": "active",
+      "officialHost": "scholarium.securedme.ca",
+      "officialHostSsl": "pending_validation",
+      "d1Binding": "DB",
+      "r2Binding": "MEDIA",
+      "privateWorkersInPublicBundle": false,
+      "liveDeployment": false
+    }
+  },
+  "boundaries": {
+    "realLearnerDataUsed": false,
+    "secretValuesRecorded": false,
+    "cpanelMutationPerformed": false,
+    "sitesDeploymentPerformed": false
+  }
+}
