@@ -20,6 +20,7 @@ test("shares one local-only Theme and Access contract across Scholarium", async 
   assert.doesNotMatch(controls, /fetch\(|XMLHttpRequest|navigator\.sendBeacon/);
   assert.match(layout, /data-theme="dark"/);
   assert.match(layout, /data-access="base"/);
+  assert.doesNotMatch(layout, /support-widget|<script[^>]+src=/);
   for (const surface of [landing, app, teach]) assert.match(surface, /ScholariumControls/);
 });
 

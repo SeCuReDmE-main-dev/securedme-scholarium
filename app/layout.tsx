@@ -19,5 +19,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" data-support-app="scholarium" data-theme="dark" data-access="base"><head><link rel="icon" href="/favicon.svg" type="image/svg+xml" /><script src="https://securedme.ca/assets/support-widget.js" data-api="https://paypal.securedme.ca" defer /></head><body className={`${geist.variable} ${instrumentSerif.variable}`}>{children}</body></html>;
+  return <html lang="en" data-theme="dark" data-access="base"><head><link rel="icon" href="/favicon.svg" type="image/svg+xml" /></head><body className={`${geist.variable} ${instrumentSerif.variable}`}>{children}</body></html>;
 }
