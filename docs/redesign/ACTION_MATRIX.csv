@@ -1,0 +1,83 @@
+action_id,phase,status,evidence
+001,governance,validated,docs/redesign/SCHOLARIUM_82_ACTIONS.md
+002,governance,validated,git baseline 74aacd2 and isolated worktree inventory
+003,governance,validated,branch new/scholarium-visual-surgery
+004,governance,validated,docs/redesign/PRODUCT_TRUTH_AND_ROUTES.md
+005,governance,validated,docs/redesign/PRODUCT_TRUTH_AND_ROUTES.md
+006,governance,validated,docs/redesign/PRODUCT_TRUTH_AND_ROUTES.md
+007,governance,validated,docs/redesign/SURFACE_COVERAGE_MATRIX.md
+008,governance,validated,docs/redesign/RISK_REGISTER.md
+009,intake,validated,docs/redesign/STITCH_ASSET_ADMISSION.md
+010,intake,validated,docs/redesign/STITCH_ASSET_ADMISSION.md
+011,intake,validated,docs/redesign/STITCH_ASSET_ADMISSION.md
+012,intake,validated,docs/redesign/PRODUCT_TRUTH_AND_ROUTES.md and 121 tests
+013,intake,validated,docs/redesign/PRODUCT_TRUTH_AND_ROUTES.md and Teach contract tests
+014,intake,validated,rendered-html teach-contract and teach-g13-quality tests
+015,intake,validated,docs/redesign/PRODUCT_TRUTH_AND_ROUTES.md and public-copy tests
+016,intake,validated,docs/redesign/STITCH_ASSET_ADMISSION.md
+017,intake,validated,docs/redesign/VISUAL_QA_REPORT.md
+018,design-system,validated,apps/web/app/scholarium-system.css and visual-surgery tests
+019,design-system,validated,student tokens and Teach role QA
+020,design-system,validated,teacher tokens and Teach role QA
+021,design-system,validated,organization tokens and Teach role QA
+022,design-system,validated,official Education geometry preserved in shared marks
+023,design-system,validated,teacher green-teal circuit treatment and tablet QA
+024,design-system,validated,shared typography grid spacing shadow and density tokens
+025,design-system,validated,shared controls primitives and build proof
+026,design-system,validated,responsive shared header and mobile QA
+027,design-system,validated,Theme Access computed-style QA for four profiles
+028,landing,validated,apps/web/app/page.tsx and landing desktop/mobile QA
+029,landing,validated,public product statement and rendered HTML test
+030,landing,validated,public evidence and profiles sections with qualitative proof
+031,landing,validated,provenance path and provenance contract tests
+032,landing,validated,distinct App and Teach entry points
+033,landing,validated,institution section with pre-alpha boundary
+034,landing,validated,unverified metrics removed and MIN 10 presented as policy
+035,landing,validated,validated footer routes and build proof
+036,landing,validated,docs/redesign/VISUAL_QA_REPORT.md
+037,app,validated,apps/web/app/scholarium-client.tsx shell decomposition
+038,app,validated,Signal Library Studio Saved Formalization Profile navigation
+039,app,validated,scientific feed author provenance and discussion surfaces
+040,app,validated,library search filters private collections and empty states
+041,app,validated,publication studio sources versions and preview flow
+042,app,validated,owner-controlled profile sections and contract tests
+043,app,validated,discovery rail and anti-pay-to-rank tests
+044,app,validated,internal alert citation and notification presentation
+045,app,validated,provider handoffs gated by explicit consent tests
+046,app,validated,discussion campaign external link and repository preparation surfaces
+047,app,validated,skeleton error reconnect resume and offline states
+048,app,validated,121-test parity suite; Teach historical 048 remains separate
+049,teach-student,validated,student mauve shell and role QA
+050,teach-student,validated,active lesson next action and spaced review home
+051,teach-student,validated,voice transcript phrase translation and phonetic surfaces
+052,teach-student,validated,mastered learning reviewing non-judgment states
+053,teach-student,validated,mastery loop and Teach contract tests
+054,teach-student,validated,qualitative Forces and growth language
+055,teach-student,validated,Portfolio Projects Circles Recognitions Growth Stories
+056,teach-student,validated,exact checkpoints and recovery contract tests
+057,teach-student,validated,synthetic-data keyboard mobile and Access QA
+058,teach-teacher,validated,teacher green-teal shell and tablet QA
+059,teach-teacher,validated,authorized groups lessons reviews intervention dashboard
+060,teach-teacher,validated,consent-safe summaries and no-raw-answer tests
+061,teach-teacher,validated,sequence objectives activities evidence human review
+062,teach-teacher,validated,support intervention language and authority boundary
+063,teach-teacher,validated,recaps recognition strengths and controlled comments
+064,teach-teacher,validated,consent denied insufficient-data and access withdrawal states
+065,teach-teacher,validated,negative permission tests in teach-contract and teach-g13-quality
+066,teach-organization,validated,navy powder-blue organization shell and QA
+067,teach-organization,validated,aggregated institution group program trend views
+068,teach-organization,validated,minimum cohort ten suppression tests
+069,teach-organization,validated,governance policy consent and retention surfaces
+070,teach-organization,validated,justified time-bound approved audited exception states
+071,teach-organization,validated,security and compliance shown as verifiable state
+072,teach-organization,validated,cohort suppression and non-reidentification tests
+073,integration,validated,shared navigation terminology theme Access and account
+074,integration,validated,route consent permission provenance contract tests
+075,integration,validated,Playwright landing app student teacher organization journeys
+076,integration,validated,build 121 tests lint zero errors and clean diff check
+077,integration,validated,docs/redesign/VISUAL_QA_REPORT.md
+078,integration,validated,keyboard semantic zoom reduced-motion and overlap QA
+079,integration,validated,secret private-data local-path and temporary-artifact scan
+080,deployment,in_progress,Sites version package rollback and cPanel evidence pending
+081,deployment,planned,progressive Sites deployment and live browser proof pending
+082,closure,planned,live evidence final commit push and report pending

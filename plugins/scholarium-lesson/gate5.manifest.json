@@ -4,16 +4,48 @@
   "version": "0.1.0",
   "stateless": true,
   "memory_model": "central_gateway_only",
-  "allowed_callers": ["Codex/OpenAI", "Antigravity/Gemini"],
+  "allowed_callers": [
+    "Codex/OpenAI",
+    "Antigravity/Gemini"
+  ],
   "entry_skill": "skills/scholarium-lesson/SKILL.md",
-  "permissions": ["central_gateway.submit", "central_gateway.read_own_receipt"],
-  "prohibited": ["plugin_local_memory", "raw_student_tokens", "autonomous_grading", "automatic_publication"],
-  "required_contracts": ["scholarium.central-knowledge-gateway.v1", "scholarium.learning-attempt.v1"],
-  "integrity": { "algorithm": "sha256", "files": [
-    { "path": "AGENTS.md", "sha256": "dce8f4d6d59c855f2e3c385c5f8a5e305e24daf7cca1854ffef11177c838198c" },
-    { "path": "SOUL.md", "sha256": "0d4c79a0bf3433e9149078ddacbdd7ab9af25b2538c0f085e471bd957238eaad" },
-    { "path": "USER.md", "sha256": "6674795d83e5fa8504a003bc2720b3cd678bc5580c4d56ef5aa65398bf9ebf4e" },
-    { "path": ".codex-plugin/plugin.json", "sha256": "a85434b4a442347a5f52c25c0e665766fcc9f1c2943e58ac82f170b7ca4a2c3e" },
-    { "path": "skills/scholarium-lesson/SKILL.md", "sha256": "941292631aa609f253cd3bab44ac761bd1bc5e5a1a8a55bd2b2479ea31349165" }
-  ] }
+  "permissions": [
+    "central_gateway.submit",
+    "central_gateway.read_own_receipt"
+  ],
+  "prohibited": [
+    "plugin_local_memory",
+    "raw_student_tokens",
+    "autonomous_grading",
+    "automatic_publication"
+  ],
+  "required_contracts": [
+    "scholarium.central-knowledge-gateway.v1",
+    "scholarium.learning-attempt.v1"
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "0b99e8eca20a91ff5397ec1c8987f1894989a6c9a18b2e66ad18d51d047d2a12"
+      },
+      {
+        "path": "SOUL.md",
+        "sha256": "c41b160e83a4a9fc99ab64de2b90114fa133f4ea4fd9f59c44f9f30a4f9b1a92"
+      },
+      {
+        "path": "USER.md",
+        "sha256": "958a028fd9102749593463b1bce8466fd8712ecdec8d2e0b1054d9a4aff95e6c"
+      },
+      {
+        "path": ".codex-plugin/plugin.json",
+        "sha256": "f6609a16187fb818db0a6629ba7635937c581947c33e8fee170038d20daa6ef2"
+      },
+      {
+        "path": "skills/scholarium-lesson/SKILL.md",
+        "sha256": "941292631aa609f253cd3bab44ac761bd1bc5e5a1a8a55bd2b2479ea31349165"
+      }
+    ]
+  }
 }

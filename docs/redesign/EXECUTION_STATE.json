@@ -1,0 +1,26 @@
+{
+  "schema": "scholarium.visual-surgery.v1",
+  "plan": "scholarium-82-actions",
+  "updatedAt": "2026-07-16T16:00:00Z",
+  "branch": "new/scholarium-visual-surgery",
+  "baselineCommit": "74aacd2",
+  "executionFrontier": 79,
+  "activeAction": 80,
+  "activeRange": { "from": 80, "to": 82 },
+  "teachExecutionState": {
+    "path": "docs/teach/EXECUTION_STATE.json",
+    "modifiedByThisProgram": false,
+    "historicalBlockersPreserved": [48, 157]
+  },
+  "programCompletion": {
+    "validated": 79,
+    "inProgress": 1,
+    "blocked": 0,
+    "planned": 2,
+    "total": 82,
+    "percent": 96.34
+  },
+  "deploymentAuthorized": true,
+  "publicClaims": "pre-alpha",
+  "realMinorDataAllowed": false
+}

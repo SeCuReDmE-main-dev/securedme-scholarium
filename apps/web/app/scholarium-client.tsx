@@ -3,6 +3,7 @@
 import { CSSProperties, FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { quantechProviderSurface } from "../lib/quantech-render-request";
 import { publicationTypeForFormalization, publicationTypeOptions } from "../lib/publication-types";
+import { ScholariumControls } from "./components/scholarium-controls";
 
 type View = "signal" | "library" | "studio" | "formalize" | "migration" | "saved";
 type FeedMode = "chronological" | "discovery" | "following" | "verified";
@@ -364,19 +365,13 @@ const fromApiPublication = (publication: ApiPublication): Publication => ({
 
 const suiteNavItems: Array<{ label: string; icon: string; href?: string; id?: View }> = [
   { id: "signal", label: "Signal", icon: "⌁" },
-  { href: "/teach", label: "Teach", icon: "◈" },
-  { href: "/teach#cours", label: "AlgoQuest", icon: "◇" },
-  { href: "/teach#cours", label: "Cours", icon: "▤" },
-  { href: "/teach#projects", label: "Projets", icon: "▱" },
-  { href: "/teach#circles", label: "Cercles", icon: "◌" },
+  { id: "library", label: "Bibliotheque", icon: "▤" },
   { id: "studio", label: "Studio", icon: "◉" },
-  { href: "/teach#statistics", label: "Statistiques", icon: "⌁" },
+  { id: "saved", label: "Sauvegardes", icon: "▱" },
+  { id: "formalize", label: "Formalisation", icon: "◇" },
 ];
 const toolNavItems: Array<{ id: View; label: string; icon: string }> = [
-  { id: "library", label: "Bibliotheque", icon: "▤" },
-  { id: "saved", label: "Enregistres", icon: "▱" },
   { id: "migration", label: "Migration", icon: "⇆" },
-  { id: "formalize", label: "QuaNthoR", icon: "◇" },
 ];
 
 export function ScholariumClient({ session }: { session: { displayName: string | null; provider: "chatgpt" | "google" | "github" | "paypal" | null; signInPath: string; googleSignInPath: string; githubSignInPath: string; paypalSignInPath: string; signOutPath: string } }) {
@@ -1517,14 +1512,18 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <span>scholarium</span>
         </a>
         <div className="suite-label">SECUREDME EDUCATION</div>
-        <img className="suite-strip-mark" src={currentSuiteAssets.banner} alt="SecuredMe Education suite banner." />
+        <div className="suite-identity" aria-label="SecuredMe Education research commons">
+          <span aria-hidden="true">S</span><div><strong>Research commons</strong><small>Sources, versions, human review</small></div>
+        </div>
 
         <nav className="main-nav">
           {suiteNavItems.map((item) => item.href
             ? <a className="nav-item" href={item.href} key={`${item.label}-${item.href}`}><span aria-hidden="true">{item.icon}</span>{item.label}</a>
-            : <button className={view === item.id ? "nav-item active" : "nav-item"} key={item.label} onClick={() => setView(item.id!)} type="button"><span aria-hidden="true">{item.icon}</span>{item.label}</button>)}
+            : <button className={view === item.id ? "nav-item active" : "nav-item"} key={item.label} onClick={() => item.id === "saved" ? void openSaved() : setView(item.id!)} type="button"><span aria-hidden="true">{item.icon}</span>{item.label}</button>)}
+          <button className="nav-item" onClick={() => setProfileOpen(true)} type="button"><span aria-hidden="true">◎</span>Profil</button>
           <span className="nav-section-label">Outils</span>
           {toolNavItems.map((item) => <button className={view === item.id ? "nav-item active" : "nav-item"} key={item.id} onClick={() => item.id === "saved" ? void openSaved() : setView(item.id)} type="button"><span aria-hidden="true">{item.icon}</span>{item.label}</button>)}
+          <a className="nav-item" href="/teach"><span aria-hidden="true">◈</span>Scholarium Teach</a>
         </nav>
 
         <div className="rail-note">
@@ -1544,9 +1543,8 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <div>
             <p className="eyebrow">OPEN SCIENCE / OPEN EDUCATION</p>
             <h1>{view === "signal" ? "Today’s signal" : view === "library" ? "Your knowledge library" : view === "studio" ? "Creator studio" : view === "saved" ? "Your saved library" : view === "migration" ? "Bring your work with you" : "Formalize with QuaNthoR"}</h1>
-            <img className="topbar-suite-logo" src={currentSuiteAssets.logo} alt="SecuredMe Education suite identity sheet." />
           </div>
-          <button className="publish-button" type="button" onClick={() => setComposerOpen(true)}>Publish work <span>+</span></button>
+          <div className="topbar-actions"><ScholariumControls compact /><button className="publish-button" type="button" onClick={() => setComposerOpen(true)}>Publish work <span>+</span></button></div>
         </header>
 
         <label className="search-box">

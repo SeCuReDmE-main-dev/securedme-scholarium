@@ -4,30 +4,34 @@ import test from "node:test";
 
 const read = (path) => readFile(new URL(path, import.meta.url), "utf8");
 
-test("implements the canonical Evidence Commons landing without exposing the internal asset gallery", async () => {
-  const [page, css, design] = await Promise.all([
+test("implements the admitted Scholarium landing without exposing the internal asset gallery", async () => {
+  const [page, css, system] = await Promise.all([
     read("../app/page.tsx"),
     read("../app/landing-evidence.css"),
-    read("../../../assets/desing/stitch_scholarium_research_commons_design_system/stitch_scholarium_research_commons_design_system/scholarium_design.md"),
+    read("../app/scholarium-system.css"),
   ]);
   assert.match(page, /Scholarium/);
-  assert.match(page, /Turn knowledge into traceable evidence/);
-  assert.match(page, /THE EVIDENCE COMMONS/);
-  assert.match(page, /TRUST BY DESIGN/);
+  assert.match(page, /Knowledge with/);
+  assert.match(page, /visible <em>history/);
+  assert.match(page, /A DURABLE KNOWLEDGE TRAIL/);
+  assert.match(page, /The receipt does not claim truth/);
   assert.match(page, /SCHOLARIUM TEACH/);
+  assert.match(page, /ORGANIZATION DIRECTION/);
+  assert.match(page, /landing-hero-dark\.webp/);
   assert.doesNotMatch(page, /asset-gallery|tier-button|logoDraftPaths|badgeDarkPaths/);
-  for (const token of ["#f7f8fc", "#10172f", "#2157ee", "#23b8ff", "#6f42ff", "#0b1230", "#ffc857"]) {
-    assert.match(css.toLowerCase(), new RegExp(token));
-    assert.match(design.toLowerCase(), new RegExp(token));
+  for (const token of ["--sch-midnight", "--sch-ivory", "--sch-gold", "--sch-student", "--sch-teacher", "--sch-org"]) {
+    assert.match(system, new RegExp(token));
   }
-  assert.match(css, /min-height: calc\(100svh - 128px\)/);
-  assert.match(css, /font-family: var\(--font-geist\)/);
-  assert.doesNotMatch(css, /linear-gradient|radial-gradient/);
+  assert.match(css, /\.sch-hero[^}]+min-height:680px/);
+  assert.match(css, /font-family:\s*var\(--font-display\)/);
+  assert.match(css, /html\[data-theme="light"\]/);
 });
 
-test("exposes the accepted suite sitemap and hash-addressable Teach views", async () => {
+test("exposes the accepted research sitemap and hash-addressable Teach views", async () => {
   const [app, teach] = await Promise.all([read("../app/scholarium-client.tsx"), read("../app/teach/teach-client.tsx")]);
-  for (const label of ["Signal", "Teach", "AlgoQuest", "Cours", "Projets", "Cercles", "Studio", "Statistiques"]) assert.match(app, new RegExp(`label: "${label}"`));
+  for (const label of ["Signal", "Bibliotheque", "Studio", "Sauvegardes", "Formalisation"]) assert.match(app, new RegExp(`label: "${label}"`));
+  assert.match(app, /Scholarium Teach/);
+  assert.match(app, />Profil</);
   for (const hash of ["#cours", "#projects", "#circles", "#statistics", "#sources", "#teacher", "#administration"]) assert.match(teach, new RegExp(hash));
   assert.match(teach, /window\.history\.replaceState/);
 });

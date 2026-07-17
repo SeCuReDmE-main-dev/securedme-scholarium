@@ -4,16 +4,48 @@
   "version": "0.1.0",
   "stateless": true,
   "memory_model": "central_gateway_only",
-  "allowed_callers": ["Codex/OpenAI", "Antigravity/Gemini"],
+  "allowed_callers": [
+    "Codex/OpenAI",
+    "Antigravity/Gemini"
+  ],
   "entry_skill": "skills/scholarium-reminder/SKILL.md",
-  "permissions": ["central_gateway.submit", "central_gateway.read_own_receipt"],
-  "prohibited": ["plugin_local_memory", "raw_student_tokens", "punitive_frequency", "automatic_publication"],
-  "required_contracts": ["scholarium.central-knowledge-gateway.v1", "scholarium.learning-reminder.v1"],
-  "integrity": { "algorithm": "sha256", "files": [
-    { "path": "AGENTS.md", "sha256": "687b2db824e63ac0bf502ef4aa997ff617726478310c4e86f9dcf0b5cf6c74d4" },
-    { "path": "SOUL.md", "sha256": "2f01afd466679ecf5c82e74a84e984d5e876a5d8026a13ca42b830d46587af38" },
-    { "path": "USER.md", "sha256": "262cd1a9793796281c6e81e73b2eb0dca217bc52a37380561f9cc4005c68aa2e" },
-    { "path": ".codex-plugin/plugin.json", "sha256": "97205286fb7153b7751e1387351e74f252fa9386f91496f0ab2c6b2ae27ed8a8" },
-    { "path": "skills/scholarium-reminder/SKILL.md", "sha256": "31dba6bc6138f8226e9ee2450e36a97d18eb054f3ba8023e24d4f00fa21f6e6a" }
-  ] }
+  "permissions": [
+    "central_gateway.submit",
+    "central_gateway.read_own_receipt"
+  ],
+  "prohibited": [
+    "plugin_local_memory",
+    "raw_student_tokens",
+    "punitive_frequency",
+    "automatic_publication"
+  ],
+  "required_contracts": [
+    "scholarium.central-knowledge-gateway.v1",
+    "scholarium.learning-reminder.v1"
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "8b5f28335fc3652afcc21f62edc8ec94738f24c317a1c7240c81835c2122b0ee"
+      },
+      {
+        "path": "SOUL.md",
+        "sha256": "167b1ae9a5d73b3bc7196ad82b23a0144e3b5a895312cabeb619486b2d51683b"
+      },
+      {
+        "path": "USER.md",
+        "sha256": "5dd1dc006ad60007dfbbee541f58e52a7e22243cf74aa41576bc45e3b0d969bb"
+      },
+      {
+        "path": ".codex-plugin/plugin.json",
+        "sha256": "a16213f31c6b3adae898f6c0e64593bafe085c451517e2f88d35c3db00b8dd59"
+      },
+      {
+        "path": "skills/scholarium-reminder/SKILL.md",
+        "sha256": "31dba6bc6138f8226e9ee2450e36a97d18eb054f3ba8023e24d4f00fa21f6e6a"
+      }
+    ]
+  }
 }

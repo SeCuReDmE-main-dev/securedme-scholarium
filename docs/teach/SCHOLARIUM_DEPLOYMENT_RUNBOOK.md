@@ -59,11 +59,14 @@ contain variable names in `.env.example`, but never values. Release order:
    checks;
 7. roll back to the prior saved version if any gate fails.
 
-The currently deployed baseline is Sites version 53, commit
-`f3fbcc8fdc3a3cdce5ed56eaa2dc51f0050323d0`. Versions 52 and 51 remain
-available as historical rollback points. This runbook does not assert that
-their data schemas are forward-compatible; a database rollback requires a
-separate migration assessment.
+The currently deployed baseline verified before the visual surgery is Sites
+version 55, source commit `5303fb543c5f9e8b6085de8037e67e5e953e7f93`.
+Version 54 remains the immediate secondary rollback point and versions 53, 52,
+and 51 remain available as historical rollback points. Version 55 packages the
+Teach public-route fix already merged into the GitHub baseline through
+`d3ee815`; the visual-surgery branch therefore preserves that work. This
+runbook does not assert that saved versions have forward-compatible data
+schemas; a database rollback requires a separate migration assessment.
 
 ## cPanel paths
 

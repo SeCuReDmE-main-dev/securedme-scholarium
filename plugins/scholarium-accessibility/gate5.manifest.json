@@ -4,16 +4,48 @@
   "version": "0.1.0",
   "stateless": true,
   "memory_model": "central_gateway_only",
-  "allowed_callers": ["Codex/OpenAI", "Antigravity/Gemini"],
+  "allowed_callers": [
+    "Codex/OpenAI",
+    "Antigravity/Gemini"
+  ],
   "entry_skill": "skills/scholarium-accessibility/SKILL.md",
-  "permissions": ["central_gateway.submit", "central_gateway.read_own_receipt"],
-  "prohibited": ["plugin_local_memory", "raw_student_tokens", "autonomous_diagnosis", "automatic_publication"],
-  "required_contracts": ["scholarium.central-knowledge-gateway.v1", "scholarium.accessibility-profile.v1"],
-  "integrity": { "algorithm": "sha256", "files": [
-    { "path": "AGENTS.md", "sha256": "183189465e0e16e2c856ce7657234b60369ca09d4636c0b632cba9069fdf7b29" },
-    { "path": "SOUL.md", "sha256": "699e32df633d1f2428461679f5f68d898aceb402ec7d48c76b0a4eee3f110c84" },
-    { "path": "USER.md", "sha256": "97984654b687b6d4876dea0aba885265fc1eabf7339a1b19839a8b433fbabb2d" },
-    { "path": ".codex-plugin/plugin.json", "sha256": "e67d845d862ed0e38f5f04e17fe562dd2a016f6582d81a4cbb8199efe722758a" },
-    { "path": "skills/scholarium-accessibility/SKILL.md", "sha256": "1a1d47d306c828aeb9d296ebf196847db1e68c708edbf4e2aeae002ae528d92b" }
-  ] }
+  "permissions": [
+    "central_gateway.submit",
+    "central_gateway.read_own_receipt"
+  ],
+  "prohibited": [
+    "plugin_local_memory",
+    "raw_student_tokens",
+    "autonomous_diagnosis",
+    "automatic_publication"
+  ],
+  "required_contracts": [
+    "scholarium.central-knowledge-gateway.v1",
+    "scholarium.accessibility-profile.v1"
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "bd7e5ee65acb7233a9c227cc8839e39cff6b9426ef0bae2ddf0e6a7642b30a39"
+      },
+      {
+        "path": "SOUL.md",
+        "sha256": "46b3960fd6289581b2d178bb03bd8618075903a89786e9cc5f1c90b159744b57"
+      },
+      {
+        "path": "USER.md",
+        "sha256": "6848e1fae7f1433382a402232c0dfef899311b0fd09c2717af2f074dedd46bdb"
+      },
+      {
+        "path": ".codex-plugin/plugin.json",
+        "sha256": "d348b0903f2bfdaab6084895173d45737da486a6245057a130df3c03ad41d490"
+      },
+      {
+        "path": "skills/scholarium-accessibility/SKILL.md",
+        "sha256": "1a1d47d306c828aeb9d296ebf196847db1e68c708edbf4e2aeae002ae528d92b"
+      }
+    ]
+  }
 }

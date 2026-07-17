@@ -1,0 +1,31 @@
+{
+  "schema": "scholarium.visual-surgery.qa.v1",
+  "checkedAt": "2026-07-16T00:00:00Z",
+  "branch": "new/scholarium-visual-surgery",
+  "automated": {
+    "build": "passed",
+    "tests": { "status": "passed", "count": 121 },
+    "lint": { "status": "passed", "errors": 0, "warnings": 17 },
+    "diffCheck": "passed",
+    "secretScan": "passed"
+  },
+  "surfaces": [
+    { "path": "/", "viewport": "desktop", "theme": "dark", "status": "passed" },
+    { "path": "/", "viewport": "390x844", "theme": "light", "status": "passed" },
+    { "path": "/app", "viewport": "desktop", "theme": "dark", "status": "passed" },
+    { "path": "/teach", "viewport": "mobile", "theme": "light", "role": "student", "status": "passed" },
+    { "path": "/teach", "viewport": "tablet", "theme": "light", "role": "teacher", "status": "passed" },
+    { "path": "/teach", "viewport": "tablet", "theme": "dark", "role": "organization", "status": "passed" },
+    { "path": "/teach", "viewport": "desktop-edge", "theme": "dark", "role": "student", "status": "passed" }
+  ],
+  "accessProfiles": {
+    "Base": "passed",
+    "Autism Calm": "passed",
+    "ADHD Sprint": "passed",
+    "Deep Work": "passed"
+  },
+  "horizontalOverflow": false,
+  "browserConsoleErrors": 0,
+  "historicalTeachBlockersPreserved": [48, 157],
+  "productionDeployment": "pending"
+}
