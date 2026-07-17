@@ -1,0 +1,46 @@
+:root {
+  --sch-midnight: #07101f;
+  --sch-midnight-2: #0c1930;
+  --sch-ivory: #f7f4ec;
+  --sch-paper: #fffdf8;
+  --sch-gold: #d8aa4d;
+  --sch-gold-soft: #f1d89e;
+  --sch-graphite: #1a2230;
+  --sch-muted: #667185;
+  --sch-line: rgba(209, 171, 91, .28);
+  --sch-student: #7652ee;
+  --sch-teacher: #079b86;
+  --sch-org: #86acd8;
+  --sch-focus: #2cbcff;
+}
+
+html[data-theme="dark"] { color-scheme: dark; }
+html[data-theme="light"] { color-scheme: light; }
+body { margin: 0; }
+.sch-controls { position: relative; display: flex; align-items: center; gap: 8px; z-index: 80; }
+.sch-control-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 0 14px; border: 1px solid var(--sch-line); border-radius: 4px; background: rgba(8, 17, 32, .72); color: #f9f7ef; font: 700 12px/1 var(--font-geist), Arial, sans-serif; cursor: pointer; backdrop-filter: blur(14px); }
+html[data-theme="light"] .sch-control-button { background: rgba(255, 253, 248, .92); color: #101b2e; border-color: #cad4e2; }
+.sch-control-button:hover { border-color: var(--sch-gold); }
+.sch-access-menu { position: absolute; top: calc(100% + 10px); right: 0; width: min(330px, calc(100vw - 28px)); padding: 12px; border: 1px solid var(--sch-line); border-radius: 6px; background: #0a1426; box-shadow: 0 24px 70px rgba(0, 0, 0, .36); }
+html[data-theme="light"] .sch-access-menu { background: var(--sch-paper); box-shadow: 0 24px 70px rgba(23, 38, 62, .18); }
+.sch-access-menu header { display: grid; gap: 3px; padding: 6px 8px 12px; color: #fff; }
+html[data-theme="light"] .sch-access-menu header { color: var(--sch-graphite); }
+.sch-access-menu header span { color: #9aa8bc; font-size: 11px; }
+.sch-access-menu > button { display: grid; gap: 3px; width: 100%; min-height: 56px; padding: 10px 12px; border: 1px solid transparent; border-radius: 3px; background: transparent; color: #e9edf5; text-align: left; cursor: pointer; }
+html[data-theme="light"] .sch-access-menu > button { color: var(--sch-graphite); }
+.sch-access-menu > button:hover, .sch-access-menu > button.active { border-color: rgba(44, 188, 255, .55); background: rgba(44, 188, 255, .09); }
+.sch-access-menu small { color: #929fb2; }
+
+html[data-access="autism-calm"] *, html[data-access="autism-calm"] *::before, html[data-access="autism-calm"] *::after,
+html[data-access="deep-work"] *, html[data-access="deep-work"] *::before, html[data-access="deep-work"] *::after { animation: none !important; transition-duration: .001ms !important; }
+html[data-access="autism-calm"] { --sch-focus: #54b9a9; }
+html[data-access="autism-calm"] body { letter-spacing: 0; }
+html[data-access="autism-calm"] main { --access-glow: 0; --access-decoration: .28; }
+html[data-access="adhd-sprint"] :focus-visible { outline: 4px solid #ffcc4a !important; outline-offset: 4px !important; }
+html[data-access="adhd-sprint"] main { --access-muted-section: .62; --access-action-scale: 1.035; }
+html[data-access="adhd-sprint"] a[class*="primary"], html[data-access="adhd-sprint"] button[class*="primary"], html[data-access="adhd-sprint"] .publish-button { transform: scale(var(--access-action-scale)); }
+html[data-access="deep-work"] main { --access-decoration: .08; --access-muted-section: .52; }
+html[data-access="deep-work"] [class*="decor"], html[data-access="deep-work"] [aria-hidden="true"] img { opacity: var(--access-decoration); }
+html[data-access="deep-work"] p { max-width: 72ch; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; transition-duration: .001ms !important; } }
+@media (max-width: 700px) { .sch-control-button { min-width: 78px; padding: 0 10px; font-size: 11px; } }

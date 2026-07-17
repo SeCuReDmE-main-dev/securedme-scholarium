@@ -56,15 +56,15 @@ test("server-renders the Scholarium public landing page instead of the starter s
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /<title>Scholarium — Turn knowledge into traceable evidence<\/title>/i);
-  assert.match(html, /Turn knowledge into/);
-  assert.match(html, /traceable evidence/);
+  assert.match(html, /<title>Scholarium — Knowledge with a visible history<\/title>/i);
+  assert.match(html, /Knowledge with/);
+  assert.match(html, /visible/);
+  assert.match(html, /history/);
   assert.match(html, /No pay-to-rank/);
-  assert.match(html, /Discovery stays free from paid influence/);
-  assert.match(html, /Your work is not a product to be ranked by price/);
-  assert.match(html, /SecuredMe root/);
-  assert.match(html, /View public source/);
-  assert.match(html, /https:\/\/securedme\.ca/);
+  assert.match(html, /Human review remains human/);
+  assert.match(html, /The receipt does not claim truth/);
+  assert.match(html, /Governance before dashboards/);
+  assert.match(html, /https:\/\/securedme\.ca\/product\/education/);
   assert.doesNotMatch(html, /Your site is taking shape|Codex is working|react-loading-skeleton/i);
 });
 
