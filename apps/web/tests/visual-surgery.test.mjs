@@ -7,6 +7,7 @@ const source = (relativePath) => readFile(new URL(`../${relativePath}`, import.m
 test("shares one local-only Theme and Access contract across Scholarium", async () => {
   const controls = await source("app/components/scholarium-controls.tsx");
   const layout = await source("app/layout.tsx");
+  const systemStyles = await source("app/scholarium-system.css");
   const landing = await source("app/page.tsx");
   const app = await source("app/scholarium-client.tsx");
   const teach = await source("app/teach/teach-client.tsx");
@@ -20,7 +21,9 @@ test("shares one local-only Theme and Access contract across Scholarium", async 
   assert.doesNotMatch(controls, /fetch\(|XMLHttpRequest|navigator\.sendBeacon/);
   assert.match(layout, /data-theme="dark"/);
   assert.match(layout, /data-access="base"/);
-  assert.doesNotMatch(layout, /support-widget|<script[^>]+src=/);
+  assert.doesNotMatch(layout, /support-widget|<script[^>]+src=|next\/font/);
+  assert.match(systemStyles, /\/fonts\/geist-latin\.woff2/);
+  assert.match(systemStyles, /\/fonts\/instrument-serif-latin\.woff2/);
   for (const surface of [landing, app, teach]) assert.match(surface, /ScholariumControls/);
 });
 
