@@ -78,6 +78,6 @@ action_id,phase,status,evidence
 077,integration,validated,docs/redesign/VISUAL_QA_REPORT.md
 078,integration,validated,keyboard semantic zoom reduced-motion and overlap QA
 079,integration,validated,secret private-data local-path and temporary-artifact scan
-080,deployment,in_progress,Sites version package rollback and cPanel evidence pending
-081,deployment,planned,progressive Sites deployment and live browser proof pending
-082,closure,planned,live evidence final commit push and report pending
+080,deployment,validated,Sites version 58 package validated; version 55 retained for rollback; cPanel access audited
+081,deployment,validated,Sites deployment succeeded; landing app Teach and health returned HTTP 200 with TLS verified
+082,closure,validated,live browser proof complete; 82 of 82 actions closed; final report recorded

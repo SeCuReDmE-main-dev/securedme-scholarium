@@ -1,6 +1,6 @@
 {
   "schema": "scholarium.visual-surgery.qa.v1",
-  "checkedAt": "2026-07-16T00:00:00Z",
+  "checkedAt": "2026-07-17T11:44:11Z",
   "branch": "new/scholarium-visual-surgery",
   "automated": {
     "build": "passed",
@@ -27,5 +27,19 @@
   "horizontalOverflow": false,
   "browserConsoleErrors": 0,
   "historicalTeachBlockersPreserved": [48, 157],
-  "productionDeployment": "pending"
+  "liveHttp": {
+    "/": 200,
+    "/app": 200,
+    "/teach": 200,
+    "/api/health": 200
+  },
+  "tlsVerifyResult": 0,
+  "productionDeployment": {
+    "status": "passed",
+    "provider": "OpenAI Sites",
+    "version": 58,
+    "deploymentId": "appgdep_6a59fd5b30808191b3335414f497b329",
+    "customDomain": "https://www.scholarium.securedme.ca",
+    "rollbackVersion": 55
+  }
 }

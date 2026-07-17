@@ -1,24 +1,34 @@
 {
   "schema": "scholarium.visual-surgery.v1",
   "plan": "scholarium-82-actions",
-  "updatedAt": "2026-07-16T16:00:00Z",
+  "updatedAt": "2026-07-17T11:44:11Z",
   "branch": "new/scholarium-visual-surgery",
   "baselineCommit": "74aacd2",
-  "executionFrontier": 79,
-  "activeAction": 80,
-  "activeRange": { "from": 80, "to": 82 },
+  "executionFrontier": 82,
+  "activeAction": null,
+  "activeRange": null,
   "teachExecutionState": {
     "path": "docs/teach/EXECUTION_STATE.json",
     "modifiedByThisProgram": false,
     "historicalBlockersPreserved": [48, 157]
   },
   "programCompletion": {
-    "validated": 79,
-    "inProgress": 1,
+    "validated": 82,
+    "inProgress": 0,
     "blocked": 0,
-    "planned": 2,
+    "planned": 0,
     "total": 82,
-    "percent": 96.34
+    "percent": 100
+  },
+  "productionDeployment": {
+    "status": "validated",
+    "provider": "OpenAI Sites",
+    "version": 58,
+    "versionId": "appgprj_6a51f67c975881919f3d0930b2a9e868~appgver_cc5d88a2a64081918db1e8df6abda671",
+    "deploymentId": "appgdep_6a59fd5b30808191b3335414f497b329",
+    "sourceCommit": "23f59a914f5c3d604204136b6e8372ea834f3b73",
+    "rollbackVersion": 55,
+    "customDomain": "https://www.scholarium.securedme.ca"
   },
   "deploymentAuthorized": true,
   "publicClaims": "pre-alpha",

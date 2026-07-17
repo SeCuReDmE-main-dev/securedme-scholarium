@@ -1,6 +1,6 @@
 # Scholarium visual surgery QA report
 
-Date: 2026-07-16
+Date: 2026-07-17
 Branch: `new/scholarium-visual-surgery`
 Schema: `scholarium.visual-surgery.v1`
 
@@ -66,3 +66,16 @@ their operational color emphasis or their data views.
 - The historical Teach actions 048 and 157 remain outside this visual program.
 - Production deployment and live-domain proof are recorded separately after a
   saved Sites version succeeds.
+
+## Live closure
+
+- OpenAI Sites version 58 deployed successfully.
+- `/`, `/app`, `/teach`, and `/api/health` returned HTTP 200 on the custom
+  domain with successful TLS verification.
+- Fresh desktop and 390x844 browser checks produced zero console errors and no
+  document-level horizontal overflow.
+- The student, teacher, and organization role shells exposed their intended
+  mauve, emerald-teal, and powder-blue/navy tokens in production.
+- Sites version 55 remains the immediate rollback target.
+- The visual surgery is closed at 82 validated actions out of 82. Teach actions
+  048 and 157 remain historical blockers outside this program.
