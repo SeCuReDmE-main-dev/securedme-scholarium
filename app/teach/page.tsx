@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { TeachClient } from "./teach-client";
-import "./teach.css";
 import "./teach-evidence.css";
+import "./teach.css";
 
 export const metadata: Metadata = {
   title: "Scholarium Teach",

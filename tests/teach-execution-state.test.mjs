@@ -13,15 +13,19 @@ test("resumes at G14 without rewinding completed mission bundles", async () => {
   assert.equal(state.resumePolicy.historicalDebtCanRewind, false);
   assert.equal(state.resumePolicy.completedMissionBundlesCanBeRestarted, false);
   assert.ok(state.validatedMissionBundles.includes("145-156"));
+  assert.ok(state.validatedMissionBundles.includes("049-060"));
   assert.deepEqual(state.completedIndependentActions, [158, 159, 160, 161, 162, 163]);
+  assert.deepEqual(state.completedHistoricalDebtActions, [46]);
+  assert.deepEqual(state.completedHistoricalAudit.range, [49, 57]);
+  assert.equal(state.completedHistoricalAudit.rewindsExecution, false);
   assert.deepEqual(state.nextIndependentActions, []);
   assert.deepEqual(state.programCompletion, {
-    completed: 151,
+    completed: 161,
     blocked: 2,
-    planned: 9,
-    inProgress: 1,
+    planned: 0,
+    inProgress: 0,
     total: 163,
-    percent: 92.64,
+    percent: 98.77,
     honestHundredPercentClaimAllowed: false,
   });
 

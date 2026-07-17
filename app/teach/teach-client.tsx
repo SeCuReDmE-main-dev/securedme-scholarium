@@ -16,6 +16,7 @@ import {
 import { TeachAccessibilityPanel } from "./teach-accessibility-panel";
 import { TeachAdministrationPanel, TeachSourcesPanel } from "./teach-governance-panels";
 import { TeachPortfolioPanel, TeachStatisticsPanel } from "./teach-social-panels";
+import { ScholariumControls } from "../components/scholarium-controls";
 
 type ObjectiveProgress = { attempts: number; state: MasteryState };
 type ProgressMap = Record<string, ObjectiveProgress>;
@@ -277,9 +278,10 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
     accessibility.density === "reduced" ? "teach-low-density" : "",
   ].filter(Boolean).join(" ");
   const communicationChoices = [objective.answer, "Necesito una pista.", "Puedes repetir, por favor?"];
+  const roleSurface = view === "teacher" ? "teacher" : view === "administration" ? "organization" : "student";
 
   return (
-    <main className={`teach-shell ${accessibilityClasses}`.trim()}>
+    <main className={`teach-shell teach-role-${roleSurface} ${accessibilityClasses}`.trim()} data-teach-role={roleSurface}>
       <a className="teach-skip-link" href="#active-question" onClick={() => window.setTimeout(() => document.getElementById("active-question")?.focus(), 0)}>Aller a la question</a>
       <header className="teach-topbar">
         {/* Vinext's next/link shim currently duplicates React during hydration on this route. */}
@@ -294,7 +296,7 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
           <button type="button" role="tab" data-teach-tab="teacher" tabIndex={view === "teacher" ? 0 : -1} aria-selected={view === "teacher"} aria-controls="teach-teacher-panel" className={view === "teacher" ? "active" : ""} onKeyDown={(event) => moveTab(event, 5)} onClick={() => openView("teacher")}>Enseignant</button>
           <button type="button" role="tab" data-teach-tab="administration" tabIndex={view === "administration" ? 0 : -1} aria-selected={view === "administration"} aria-controls="teach-administration-panel" className={view === "administration" ? "active" : ""} onKeyDown={(event) => moveTab(event, 6)} onClick={() => openView("administration")}>Controles</button>
         </nav>
-        <div className="teach-session-state"><span>{masteredCount}/{spanishStarterLesson.objectives.length}</span><small>maitrisees</small></div>
+        <div className="teach-header-tools"><ScholariumControls compact /><div className="teach-session-state"><span>{masteredCount}/{spanishStarterLesson.objectives.length}</span><small>maitrisees</small></div></div>
       </header>
 
       {view === "learn" && <div id="teach-learn-panel" role="tabpanel">

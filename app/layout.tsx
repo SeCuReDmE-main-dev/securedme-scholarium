@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import "./scholarium-system.css";
 
 const geist = Geist({ variable: "--font-geist", subsets: ["latin"] });
 const instrumentSerif = Instrument_Serif({ variable: "--font-display", weight: "400", subsets: ["latin"] });
@@ -18,5 +19,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><head><link rel="icon" href="/favicon.svg" type="image/svg+xml" /></head><body className={`${geist.variable} ${instrumentSerif.variable}`}>{children}</body></html>;
+  return <html lang="en" data-support-app="scholarium" data-theme="dark" data-access="base"><head><link rel="icon" href="/favicon.svg" type="image/svg+xml" /><script src="https://securedme.ca/assets/support-widget.js" data-api="https://paypal.securedme.ca" defer /></head><body className={`${geist.variable} ${instrumentSerif.variable}`}>{children}</body></html>;
 }
