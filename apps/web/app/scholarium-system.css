@@ -85,6 +85,20 @@ html[data-access="adhd-sprint"] :focus-visible { outline: 4px solid #ffcc4a !imp
 html[data-access="adhd-sprint"] main { --access-muted-section: .62; --access-action-scale: 1.035; }
 html[data-access="adhd-sprint"] a[class*="primary"], html[data-access="adhd-sprint"] button[class*="primary"], html[data-access="adhd-sprint"] .publish-button { transform: scale(var(--access-action-scale)); }
 html[data-access="deep-work"] main { --access-decoration: .08; --access-muted-section: .52; }
+
+.sch-skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  padding: 10px 14px;
+  color: #fff;
+  background: #071729;
+  border: 2px solid #fff;
+  transform: translateY(-180%);
+}
+
+.sch-skip-link:focus { transform: translateY(0); }
 html[data-access="deep-work"] [class*="decor"], html[data-access="deep-work"] [aria-hidden="true"] img { opacity: var(--access-decoration); }
 html[data-access="deep-work"] p { max-width: 72ch; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; transition-duration: .001ms !important; } }

@@ -282,7 +282,7 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
 
   return (
     <main className={`teach-shell teach-role-${roleSurface} ${accessibilityClasses}`.trim()} data-teach-role={roleSurface}>
-      <a className="teach-skip-link" href="#active-question" onClick={() => window.setTimeout(() => document.getElementById("active-question")?.focus(), 0)}>Aller a la question</a>
+      <a className="teach-skip-link" href="#active-question" onClick={() => window.setTimeout(() => document.getElementById("active-question")?.focus(), 0)}>Aller au contenu principal</a>
       <header className="teach-topbar">
         {/* Vinext's next/link shim currently duplicates React during hydration on this route. */}
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
