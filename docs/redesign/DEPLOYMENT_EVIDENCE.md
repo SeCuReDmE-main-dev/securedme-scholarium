@@ -8,12 +8,12 @@ Project: `appgprj_6a51f67c975881919f3d0930b2a9e868`
 
 - Custom domain: `https://www.scholarium.securedme.ca`
 - Sites URL: `https://securedme-scholarium.jean-sebastien.chatgpt.site`
-- Saved and deployed version: 58
-- Version ID: `appgprj_6a51f67c975881919f3d0930b2a9e868~appgver_cc5d88a2a64081918db1e8df6abda671`
-- Deployment ID: `appgdep_6a59fd5b30808191b3335414f497b329`
-- Source commit: `23f59a914f5c3d604204136b6e8372ea834f3b73`
+- Saved and deployed version: 59
+- Version ID: `appgprj_6a51f67c975881919f3d0930b2a9e868~appgver_1e11cb5a0fe08191b55a8762ad07bd47`
+- Deployment ID: `appgdep_6a5b6ac5b67881918baec7a20929736f`
+- Source commit: `2ebad0505f1b743b440fe2997e2a20f7a1102551`
 - Deployment status: succeeded
-- Deployment timestamp: `2026-07-17T10:02:01.213413+00:00`
+- Deployment timestamp: `2026-07-18T12:00:57.080004+00:00`
 
 The public archive contained only `dist` and `.openai/hosting.json`. It was
 scanned before upload and contained no `.env`, `node_modules`, support widget,
@@ -22,9 +22,9 @@ files are bundled in the release.
 
 ## Protected rollback
 
-- Immediate rollback target: Sites version 55
-- Rollback version ID: `appgprj_6a51f67c975881919f3d0930b2a9e868~appgver_25552c346ba48191a76c3023187c5095`
-- Versions 54, 53, 52, and 51 remain retained as historical recovery points.
+- Immediate rollback target: Sites version 58
+- Rollback version ID: `appgprj_6a51f67c975881919f3d0930b2a9e868~appgver_cc5d88a2a64081918db1e8df6abda671`
+- Versions 57 through 51 remain retained as historical recovery points.
 - cPanel was not used as the application runtime and no cPanel filesystem
   mutation was required for this release.
 
@@ -49,6 +49,6 @@ files are bundled in the release.
 
 ## Release rule
 
-Version 58 remains production while all smoke gates stay green. Any future
+Version 59 remains production while all smoke gates stay green. Any future
 build, HTTP, console, network, authentication, or visual smoke failure triggers
-rollback to version 55 before further diagnosis.
+rollback to version 58 before further diagnosis.
