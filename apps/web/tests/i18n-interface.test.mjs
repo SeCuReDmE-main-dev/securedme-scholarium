@@ -16,6 +16,12 @@ test("ships one deterministic FR EN ES interface contract", async () => {
   assert.deepEqual(Object.keys(french.strings), Object.keys(english.strings));
   assert.deepEqual(Object.keys(spanish.strings), Object.keys(english.strings));
   assert.ok(Object.keys(english.strings).length >= 900);
+  for (const catalog of [english, french, spanish]) {
+    const keys = Object.keys(catalog.strings).join("\n");
+    assert.doesNotMatch(keys, /(^|\n)[.:;\[\]{}]/);
+    assert.doesNotMatch(keys, /\b(return|null|undefined|Array<|repositoryLinks)\b/);
+    assert.doesNotMatch(keys, /\[data-|video\/\*|\?:/);
+  }
 });
 
 test("keeps interface locale separate from private content translation", async () => {

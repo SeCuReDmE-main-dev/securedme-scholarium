@@ -205,9 +205,17 @@ def likely_visible(value: str) -> bool:
     value = clean(value)
     if not value or len(value) > 500 or SPANISH_LESSON_MARKERS.search(value):
         return False
+    if value.startswith((".", ":", ";", "[", "]", "{", "}")):
+        return False
     if value.startswith(("/", "./", "../", "#", "http://", "https://", "mailto:", "data:", "var(--")):
         return False
-    if any(marker in value for marker in ("${", "=>", "className", "useState", " const ", "&&", "===", "</", ");", " as ")):
+    if any(marker in value for marker in (
+        "${", "=>", "className", "useState", " const ", "&&", "===", "</", ");", " as ",
+        "?:", " ? ", " : ", "return ", " return", "Array<", "Array ", "?.", "!.",
+        "[data-", "video/*", "application/", "text/",
+    )):
+        return False
+    if re.search(r"\b(null|undefined|boolean|string|number|length|repositoryLinks)\b", value) and re.search(r"[;?:<>{}\[\]]", value):
         return False
     if re.fullmatch(r"[a-z0-9_-]+", value) and ("-" in value or "_" in value):
         return False
