@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./scholarium-system.css";
+import { ScholariumLocaleRuntime } from "./components/scholarium-locale-runtime";
 
 export const metadata: Metadata = {
   title: "Scholarium — Turn knowledge into traceable evidence",
@@ -15,5 +16,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" data-theme="dark" data-access="base"><head><link rel="icon" href="/favicon.svg" type="image/svg+xml" /></head><body>{children}</body></html>;
+  return <html lang="en-CA" data-theme="dark" data-access="base" data-locale="en-CA"><head><link rel="icon" href="/favicon.svg" type="image/svg+xml" /></head><body><ScholariumLocaleRuntime />{children}</body></html>;
 }

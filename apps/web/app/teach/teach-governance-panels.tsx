@@ -104,7 +104,7 @@ export function TeachAdministrationPanel({ authenticated }: { authenticated: boo
     </div>}
     <div className="teach-lifecycle-actions">
       <a href="/api/v1/account/export">Exporter mes donnees</a>
-      <a href="/app">Acces et correction</a>
+      <a href="/app">Accès et correction</a>
       <a href="/privacy">Politique de confidentialite</a>
     </div>
     <p className="teach-authority-note">Les donnees brutes, observations, interpretations, recommandations et decisions humaines restent des categories distinctes.</p>
