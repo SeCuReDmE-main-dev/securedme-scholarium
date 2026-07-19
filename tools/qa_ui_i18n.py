@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
@@ -38,13 +39,20 @@ def main() -> int:
                         if item.status >= 400 else None,
                     )
                     response = page.goto(f"{args.base_url}{route}?lang={locale}", wait_until="networkidle", timeout=45_000)
-                    page.wait_for_function("document.documentElement.dataset.translationStatus", timeout=15_000)
+                    deadline = time.monotonic() + 15
+                    translation_status = None
+                    while time.monotonic() < deadline:
+                        translation_status = page.locator("html").get_attribute("data-translation-status")
+                        if translation_status:
+                            break
+                        time.sleep(0.1)
                     document_locale = page.locator("html").get_attribute("lang")
-                    translation_status = page.locator("html").get_attribute("data-translation-status")
                     selector = page.locator('select[data-control="language"]').first
                     controls_visible = selector.is_visible() and page.get_by_text(access_label, exact=True).first.is_visible()
                     selected_locale = selector.input_value()
-                    overflow = page.evaluate("Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) - window.innerWidth")
+                    viewport_width = int(viewport["width"])
+                    body_box = page.locator("body").bounding_box()
+                    overflow = max(0, round((body_box["width"] if body_box else viewport_width) - viewport_width))
                     body_text = page.locator("body").inner_text()
                     screenshot = OUTPUT / f"{route_name}-{locale}-{viewport_name}.png"
                     page.screenshot(path=str(screenshot), full_page=True)

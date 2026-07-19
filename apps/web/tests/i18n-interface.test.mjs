@@ -50,3 +50,25 @@ test("restores French accents and preserves the Spanish lesson", async () => {
   assert.equal(french.strings["À revoir"], "À revoir");
   assert.equal(Object.hasOwn(french.strings, "Necesito una pista."), false);
 });
+
+test("blocks known poor French and Spanish catalog regressions", async () => {
+  const [english, french, spanish] = await Promise.all([catalog("en-CA"), catalog("fr-CA"), catalog("es")]);
+  const frenchRendered = Object.values(french.strings).join("\n");
+  const spanishRendered = Object.values(spanish.strings).join("\n");
+
+  assert.doesNotMatch(frenchRendered, /rang d'aliment|CONNAISSANCE DURABLE TRAIL|Profil Access|Heureur|capsule d'Aucune|Préparation du retrait/i);
+  assert.doesNotMatch(spanishRendered, /A public pre-alpha commons|Adaptive, multimodal learning|AUTHOR-LED PRODUCTION BRIEF|A DURABLE KnowLEDGE TRAIL|Accessibility|Adaptateurs prives|Aucun cercle|Aucun projet/i);
+
+  assert.equal(french.strings["A contribution supports the project, never the feed rank."], "Une contribution soutient le projet, jamais le classement du fil.");
+  assert.equal(french.strings["A DURABLE KNOWLEDGE TRAIL"], "UNE TRACE DURABLE DU SAVOIR");
+  assert.equal(french.strings["PUBLIC RESEARCH LIBRARY"], "BIBLIOTHÈQUE PUBLIQUE DE RECHERCHE");
+  assert.equal(spanish.strings["A DURABLE KNOWLEDGE TRAIL"], "UNA HUELLA DURADERA DEL CONOCIMIENTO");
+  assert.equal(spanish.strings["A public pre-alpha commons for publishing research and learning artifacts with sources, versions, provenance, and human review."], "Un espacio público prealfa para publicar trabajos de investigación y aprendizaje con fuentes, versiones, procedencia y revisión humana.");
+  assert.equal(spanish.strings["Aller au contenu principal"], "Ir al contenido principal");
+
+  for (const key of ["document.querySelector", "scholarium.access.v1", "twitter:description", "image/png,image/jpeg,image/webp"]) {
+    assert.equal(Object.hasOwn(english.strings, key), false);
+    assert.equal(Object.hasOwn(french.strings, key), false);
+    assert.equal(Object.hasOwn(spanish.strings, key), false);
+  }
+});

@@ -18,6 +18,10 @@ PROTECTED_TERMS = [
     "Theme", "Access", "Autism Calm", "ADHD Sprint", "Deep Work", "T-I-F", "API",
     "DOI", "RTMPS", "SRT", "WCAG", "AI", "RAG",
 ]
+DO_NOT_TRANSLATE = {
+    "ArrowLeft", "ArrowRight", "document.querySelector", "formalizationGuides",
+    "image/png,image/jpeg,image/webp", "scholarium.access.v1", "twitter:description",
+}
 REQUIRED_UI_STRINGS = {
     "Sourd / langue signée", "Communication non verbale", "Lecture adaptée à la dyslexie",
     "Motricité adaptée à la dyspraxie", "Profils d’accès", "Prochain geste", "Prochain geste :",
@@ -82,6 +86,29 @@ EN_OVERRIDES = {
 }
 
 FR_OVERRIDES = {
+    "01 / SCHOLARIUM COMMONS": "01 / COMMUNAUTÉ SCHOLARIUM",
+    "A contribution supports the project, never the feed rank.": "Une contribution soutient le projet, jamais le classement du fil.",
+    "A DURABLE KNOWLEDGE TRAIL": "UNE TRACE DURABLE DU SAVOIR",
+    "A FEW HELPFUL STARTERS": "QUELQUES POINTS DE DÉPART UTILES",
+    "A fixed USD 0.99 contribution supports the service. It never affects your reach, ranking, moderation, or essential access. Checkout requires verified identity and passkey safeguards.": "Une contribution fixe de 0,99 $ US soutient le service. Elle n’influence jamais votre portée, votre classement, la modération ni l’accès essentiel. Le paiement exige une identité vérifiée et des protections par clé d’accès.",
+    "A free scientific and educational platform for publishing work with context, attribution, provenance, and a durable knowledge trail.": "Une plateforme scientifique et éducative gratuite pour publier des travaux avec contexte, attribution, provenance et trace durable du savoir.",
+    "A public pre-alpha commons for publishing research and learning artifacts with sources, versions, provenance, and human review.": "Un espace public pré-alpha pour publier des travaux de recherche et d’apprentissage avec sources, versions, provenance et revue humaine.",
+    "Access profile": "Profil d’accès",
+    "Adaptateurs prives": "Adaptateurs privés",
+    "ADHD Sprint timer": "Minuterie ADHD Sprint",
+    "Aucune capsule.": "Aucune capsule.",
+    "Auteur · URL · Date · Licence · Citation": "Auteur · URL · Date · Licence · Citation",
+    "AUTHOR-LED PRODUCTION BRIEF": "BRIEF DE PRODUCTION DIRIGÉ PAR L’AUTEUR",
+    "brouillon sans preuve liee": "brouillon sans preuve liée",
+    "From an idea to a public artifact.": "D’une idée à un artefact public.",
+    "Open paths for knowledge, learning, and human-led review.": "Des chemins ouverts pour le savoir, l’apprentissage et la revue humaine.",
+    "OPEN SCIENCE / OPEN EDUCATION": "SCIENCE OUVERTE / ÉDUCATION OUVERTE",
+    "OPEN SCIENCE · OPEN EDUCATION · HUMAN AUTHORITY": "SCIENCE OUVERTE · ÉDUCATION OUVERTE · AUTORITÉ HUMAINE",
+    "Preparing handoff…": "Préparation du transfert…",
+    "PUBLIC RESEARCH LIBRARY": "BIBLIOTHÈQUE PUBLIQUE DE RECHERCHE",
+    "Saved work stays here while it remains publicly available; add more from the Signal feed.": "Les travaux sauvegardés restent ici tant qu’ils demeurent publics; ajoutez-en d’autres depuis le fil Signal.",
+    "© 2026 SecuredMe. Public pre-alpha.": "© 2026 SecuredMe. Pré-alpha publique.",
+    "◌ PUBLIC — VERIFICATION IN PROGRESS": "◌ PUBLIC — VÉRIFICATION EN COURS",
     "Language": "Langue",
     "Theme": "Thème",
     "Access": "Accès",
@@ -101,6 +128,7 @@ FR_OVERRIDES = {
     "Mastered": "Maîtrisé",
     "In progress": "En apprentissage",
     "Review": "À revoir",
+    "Accès et correction": "Accès et correction",
     "Acces et correction": "Accès et correction",
     "Aucune penalite de delai": "Aucune pénalité de délai",
     "A revoir": "À revoir",
@@ -136,6 +164,69 @@ FR_OVERRIDES = {
 }
 
 ES_OVERRIDES = {
+    "01 / SCHOLARIUM COMMONS": "01 / COMUNIDAD SCHOLARIUM",
+    "A contribution supports the project, never the feed rank.": "Una contribución apoya el proyecto, nunca la posición en el feed.",
+    "A DURABLE KNOWLEDGE TRAIL": "UNA HUELLA DURADERA DEL CONOCIMIENTO",
+    "A FEW HELPFUL STARTERS": "ALGUNOS PUNTOS DE PARTIDA ÚTILES",
+    "A fixed USD 0.99 contribution supports the service. It never affects your reach, ranking, moderation, or essential access. Checkout requires verified identity and passkey safeguards.": "Una contribución fija de 0,99 USD apoya el servicio. Nunca afecta tu alcance, clasificación, moderación ni acceso esencial. El pago requiere identidad verificada y protecciones con clave de acceso.",
+    "A public pre-alpha commons for publishing research and learning artifacts with sources, versions, provenance, and human review.": "Un espacio público prealfa para publicar trabajos de investigación y aprendizaje con fuentes, versiones, procedencia y revisión humana.",
+    "Access profile": "Perfil de acceso",
+    "Accessibility": "Accesibilidad",
+    "Accès et correction": "Acceso y corrección",
+    "Aller au contenu principal": "Ir al contenido principal",
+    "Adaptateurs prives": "Adaptadores privados",
+    "Adaptive, multimodal learning built from evidence of mastery and learner-controlled strengths.": "Aprendizaje adaptativo y multimodal construido a partir de evidencias de dominio y fortalezas controladas por la persona que aprende.",
+    "Angles et strategie spatiale": "Ángulos y estrategia espacial",
+    "Aucun cercle.": "Ningún círculo.",
+    "Aucun projet.": "Ningún proyecto.",
+    "Aucune capsule.": "Ninguna cápsula.",
+    "Auteur · URL · Date · Licence · Citation": "Autor · URL · Fecha · Licencia · Cita",
+    "AUTHOR-LED PRODUCTION BRIEF": "BRIEF DE PRODUCCIÓN DIRIGIDO POR EL AUTOR",
+    "Capsule enregistree.": "Cápsula guardada.",
+    "Capsule non enregistree.": "Cápsula no guardada.",
+    "Cercle non enregistre.": "Círculo no guardado.",
+    "Conversation finale": "Conversación final",
+    "Ecole / commission": "Escuela / centro de servicios",
+    "Etape de projet ajoutee.": "Etapa de proyecto añadida.",
+    "Etape non enregistree.": "Etapa no guardada.",
+    "Example of a community-built classroom project. Funding figures and checkout are intentionally disabled until the provider and review flow are verified.": "Ejemplo de un proyecto de aula construido por la comunidad. Las cifras de financiación y el pago están desactivados intencionalmente hasta verificar el proveedor y el flujo de revisión.",
+    "Explore Scholarium": "Explorar Scholarium",
+    "Exporter mes donnees": "Exportar mis datos",
+    "Expression originale et reflexion": "Expresión original y reflexión",
+    "Fil de projet cree.": "Flujo de proyecto creado.",
+    "LIVE / PLANNING CONTRACT": "CONTRATO DE PLANIFICACIÓN / EN VIVO",
+    "Nouveau projet": "Nuevo proyecto",
+    "Off — no media analysis": "Desactivado — sin análisis de medios",
+    "Open paths for knowledge, learning, and human-led review.": "Caminos abiertos para el conocimiento, el aprendizaje y la revisión humana.",
+    "OPEN SCIENCE / OPEN EDUCATION": "CIENCIA ABIERTA / EDUCACIÓN ABIERTA",
+    "OPEN SCIENCE · OPEN EDUCATION · HUMAN AUTHORITY": "CIENCIA ABIERTA · EDUCACIÓN ABIERTA · AUTORIDAD HUMANA",
+    "ORCID claim removed from this account.": "La declaración ORCID se eliminó de esta cuenta.",
+    "OWNER-CONFIRMED IMPORT": "IMPORTACIÓN CONFIRMADA POR EL PROPIETARIO",
+    "Prepare a GitHub-ready private workspace from an attributed source repository. Scholarium records the request only; provider OAuth is required before any private repo is created.": "Preparar un espacio privado listo para GitHub a partir de un repositorio fuente atribuido. Scholarium solo registra la solicitud; se requiere OAuth del proveedor antes de crear cualquier repositorio privado.",
+    "Preuves d'apprentissage": "Evidencias de aprendizaje",
+    "Preuves, reflexions et contributions": "Evidencias, reflexiones y contribuciones",
+    "Projet non enregistre.": "Proyecto no guardado.",
+    "Public after import": "Público después de importar",
+    "PUBLIC RESEARCH LIBRARY": "BIBLIOTECA PÚBLICA DE INVESTIGACIÓN",
+    "PUBLICATION OBJECT": "OBJETO DE PUBLICACIÓN",
+    "QUANTHOR / COACH MODE": "QUANTHOR / MODO COACH",
+    "READY FOR AUTHOR REVIEW": "LISTO PARA REVISIÓN DEL AUTOR",
+    "Recapitulatif non enregistre.": "Resumen no guardado.",
+    "Replay review prepared after author consent.": "Revisión de repetición preparada después del consentimiento del autor.",
+    "Research commons": "Comunidad de investigación",
+    "Revue humaine requise": "Revisión humana requerida",
+    "SCHOLARIUM COMMONS": "COMUNIDAD SCHOLARIUM",
+    "SCHOLARIUM PUBLIC PROFILE": "PERFIL PÚBLICO SCHOLARIUM",
+    "SCHOLARIUM PUBLICATION": "PUBLICACIÓN SCHOLARIUM",
+    "SECUREDME EDUCATION / PRE-ALPHA": "SECUREDME EDUCATION / PREALFA",
+    "SOURCES ET PROVENANCE": "FUENTES Y PROCEDENCIA",
+    "Tableau indisponible.": "Tablero no disponible.",
+    "Temps restant du sprint": "Tiempo restante del sprint",
+    "Vue ecole ou commission": "Vista escuela o centro de servicios",
+    "VUE ENSEIGNANT · DONNEES LOCALES": "VISTA DOCENTE · DATOS LOCALES",
+    "Vérifier, puis revoir au besoin": "Verificar y revisar si hace falta",
+    "◌ PUBLIC — VERIFICATION IN PROGRESS": "◌ PÚBLICO — VERIFICACIÓN EN CURSO",
+    "♪ Open on TikTok": "♪ Abrir en TikTok",
     "Language": "Idioma",
     "Theme": "Tema",
     "Access": "Acceso",
@@ -203,6 +294,8 @@ def clean(value: str) -> str:
 
 def likely_visible(value: str) -> bool:
     value = clean(value)
+    if value in DO_NOT_TRANSLATE:
+        return False
     if not value or len(value) > 500 or SPANISH_LESSON_MARKERS.search(value):
         return False
     if value.startswith((".", ":", ";", "[", "]", "{", "}")):
@@ -212,8 +305,13 @@ def likely_visible(value: str) -> bool:
     if any(marker in value for marker in (
         "${", "=>", "className", "useState", " const ", "&&", "===", "</", ");", " as ",
         "?:", " ? ", " : ", "return ", " return", "Array<", "Array ", "?.", "!.",
-        "[data-", "video/*", "application/", "text/",
+        "[data-", "video/*", "application/", "text/", "document.", "querySelector",
+        "meta[", "image/", ".v1",
     )):
+        return False
+    if re.fullmatch(r"[A-Za-z]+(?:Left|Right|Up|Down)", value):
+        return False
+    if re.fullmatch(r"[a-z][A-Za-z0-9]+", value) and value.lower() != value:
         return False
     if re.search(r"\b(null|undefined|boolean|string|number|length|repositoryLinks)\b", value) and re.search(r"[;?:<>{}\[\]]", value):
         return False
