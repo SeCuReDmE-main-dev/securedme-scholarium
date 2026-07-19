@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { ScholariumLocale } from "./scholarium-locale-runtime";
 
 type Theme = "dark" | "light";
 type AccessProfile = "base" | "autism-calm" | "adhd-sprint" | "deep-work";
@@ -21,20 +22,32 @@ function applyPreferences(theme: Theme, access: AccessProfile) {
 export function ScholariumControls({ compact = false }: { compact?: boolean }) {
   const [theme, setTheme] = useState<Theme>("dark");
   const [access, setAccess] = useState<AccessProfile>("base");
+  const [locale, setLocale] = useState<ScholariumLocale>("en-CA");
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem("scholarium.theme.v1");
     const storedAccess = window.localStorage.getItem("scholarium.access.v1");
+    const storedLocale = window.localStorage.getItem("scholarium.locale.v1");
     const nextTheme: Theme = storedTheme === "light" ? "light" : "dark";
     const nextAccess = accessProfiles.some((item) => item.id === storedAccess) ? storedAccess as AccessProfile : "base";
     applyPreferences(nextTheme, nextAccess);
     const frame = window.requestAnimationFrame(() => {
       setTheme(nextTheme);
       setAccess(nextAccess);
+      setLocale(storedLocale === "fr-CA" || storedLocale === "es" ? storedLocale : document.documentElement.lang === "fr-CA" || document.documentElement.lang === "es" ? document.documentElement.lang : "en-CA");
     });
     return () => window.cancelAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => {
+    const syncLocale = (event: Event) => {
+      const next = (event as CustomEvent<{ locale: ScholariumLocale }>).detail?.locale;
+      if (next) setLocale(next);
+    };
+    window.addEventListener("scholarium:locale-changed", syncLocale);
+    return () => window.removeEventListener("scholarium:locale-changed", syncLocale);
   }, []);
 
   useEffect(() => {
@@ -60,7 +73,21 @@ export function ScholariumControls({ compact = false }: { compact?: boolean }) {
     setOpen(false);
   };
 
+  const changeLocale = (nextLocale: ScholariumLocale) => {
+    setLocale(nextLocale);
+    void window.ScholariumI18n?.setLocale(nextLocale);
+  };
+
   return <div className={`sch-controls${compact ? " schol-controls-compact" : ""}`} ref={panelRef}>
+    <label className="sch-language-control">
+      <span className="sr-only">Language</span>
+      <span aria-hidden="true">文</span>
+      <select data-control="language" aria-label="Language" value={locale} onChange={(event) => changeLocale(event.target.value as ScholariumLocale)}>
+        <option value="fr-CA">FR</option>
+        <option value="en-CA">EN</option>
+        <option value="es">ES</option>
+      </select>
+    </label>
     <button className="sch-control-button" type="button" onClick={changeTheme} aria-label={`Use ${theme === "dark" ? "light" : "dark"} theme`}>
       <span aria-hidden="true">{theme === "dark" ? "☾" : "☼"}</span><span>{theme === "dark" ? "Dark" : "Light"}</span>
     </button>

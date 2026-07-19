@@ -49,18 +49,18 @@ export function TeachAccessibilityPanel({
 
   return (
     <aside className="teach-control-panel" aria-label="Learning access controls">
-      <h2>Acces</h2>
+      <h2>Accès</h2>
       {!online && <p className="teach-offline-state" role="status">Hors ligne · checkpoint local actif</p>}
 
       <fieldset>
         <legend>Contenu</legend>
         <label><input type="checkbox" checked={showTranslation} onChange={(event) => onShowTranslationChange(event.target.checked)} /> Traduction</label>
-        <label><input type="checkbox" checked={showPhonetic} onChange={(event) => onShowPhoneticChange(event.target.checked)} /> Phonetique</label>
+        <label><input type="checkbox" checked={showPhonetic} onChange={(event) => onShowPhoneticChange(event.target.checked)} /> Phonétique</label>
         <label><input type="checkbox" checked={settings.showTranscript} onChange={(event) => patchSettings({ showTranscript: event.target.checked })} /> Transcription</label>
       </fieldset>
 
       <fieldset>
-        <legend>{"Profils d'acces"}</legend>
+        <legend>{"Profils d’accès"}</legend>
         {teachAccessibilityProfileIds.map((profileId) => (
           <label key={profileId}>
             <input
@@ -75,13 +75,13 @@ export function TeachAccessibilityPanel({
 
       <fieldset>
         <legend>Affichage et rythme</legend>
-        <label><input type="checkbox" checked={settings.contrast === "high"} onChange={(event) => patchSettings({ contrast: event.target.checked ? "high" : "standard" })} /> Contraste eleve</label>
-        <label><input type="checkbox" checked={settings.saturation === "reduced"} onChange={(event) => patchSettings({ saturation: event.target.checked ? "reduced" : "standard" })} /> Saturation reduite</label>
-        <label><input type="checkbox" checked={settings.density === "reduced"} onChange={(event) => patchSettings({ density: event.target.checked ? "reduced" : "standard" })} /> Densite calme</label>
-        <label><input type="checkbox" checked={settings.motion === "reduced"} onChange={(event) => patchSettings({ motion: event.target.checked ? "reduced" : "standard" })} /> Mouvement reduit</label>
+        <label><input type="checkbox" checked={settings.contrast === "high"} onChange={(event) => patchSettings({ contrast: event.target.checked ? "high" : "standard" })} /> Contraste élevé</label>
+        <label><input type="checkbox" checked={settings.saturation === "reduced"} onChange={(event) => patchSettings({ saturation: event.target.checked ? "reduced" : "standard" })} /> Saturation réduite</label>
+        <label><input type="checkbox" checked={settings.density === "reduced"} onChange={(event) => patchSettings({ density: event.target.checked ? "reduced" : "standard" })} /> Densité calme</label>
+        <label><input type="checkbox" checked={settings.motion === "reduced"} onChange={(event) => patchSettings({ motion: event.target.checked ? "reduced" : "standard" })} /> Mouvement réduit</label>
         <label><input type="checkbox" checked={settings.sound === "on"} onChange={(event) => patchSettings({ sound: event.target.checked ? "on" : "muted" })} /> Son actif</label>
-        <label><input type="checkbox" checked={settings.dataSaver} onChange={(event) => patchSettings({ dataSaver: event.target.checked })} /> Donnees reduites</label>
-        <label><input type="checkbox" checked={settings.readingMeasure === "narrow"} onChange={(event) => patchSettings({ readingMeasure: event.target.checked ? "narrow" : "standard" })} /> Ligne de lecture etroite</label>
+        <label><input type="checkbox" checked={settings.dataSaver} onChange={(event) => patchSettings({ dataSaver: event.target.checked })} /> Données réduites</label>
+        <label><input type="checkbox" checked={settings.readingMeasure === "narrow"} onChange={(event) => patchSettings({ readingMeasure: event.target.checked ? "narrow" : "standard" })} /> Ligne de lecture étroite</label>
         <label><input type="checkbox" checked={settings.readingSpacing === "relaxed"} onChange={(event) => patchSettings({ readingSpacing: event.target.checked ? "relaxed" : "standard" })} /> Espacement de lecture</label>
         <label className="teach-range-control">
           <span>Vitesse audio</span>
@@ -97,7 +97,7 @@ export function TeachAccessibilityPanel({
           <output>{settings.speechRate.toFixed(2)}x</output>
         </label>
         {settings.profiles.adhdSprint && <label className="teach-number-control">
-          <span>Duree du sprint</span>
+          <span>Durée du sprint</span>
           <input
             type="number"
             min="3"
@@ -114,7 +114,7 @@ export function TeachAccessibilityPanel({
         <strong>Communication</strong>
         <span>Voix facultative</span>
         <span>Texte et choix disponibles</span>
-        <span>Aucune penalite de delai</span>
+        <span>Aucune pénalité de délai</span>
       </div>
     </aside>
   );

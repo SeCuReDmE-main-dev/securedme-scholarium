@@ -441,13 +441,13 @@ export function empowermentResponseContract(input: { difficulty?: unknown; stren
 }
 
 export const teachAccessibilityProfiles = {
-  deafSigned: { label: "Sourd / langue signee", transcript: true, audioRequired: false, visualSequence: true, signedContentWhenAvailable: true, humanVerifiedSignOnly: true },
+  deafSigned: { label: "Sourd / langue signée", transcript: true, audioRequired: false, visualSequence: true, signedContentWhenAvailable: true, humanVerifiedSignOnly: true },
   nonVerbal: { label: "Communication non verbale", voiceRequired: false, text: true, choiceBoard: true, assistiveCommunication: true },
   autismCalm: { label: "Autism Calm", predictableSequence: true, surpriseTransitions: false, reducedDensity: true },
   touretteSafe: { label: "Tourette Safe", penalizeDelay: false, penalizeMovement: false, penalizeVocalization: false },
   adhdSprint: { label: "ADHD Sprint", visibleNextAction: true, optionalTimer: true, shortActivationLoop: true },
-  dyslexiaReading: { label: "Lecture dyslexie", adjustableSpacing: true, adjustableMeasure: true, readAloud: true },
-  dyspraxiaMotor: { label: "Motricite dyspraxie", oversizedTargets: true, precisionGesturesRequired: false },
+  dyslexiaReading: { label: "Lecture adaptée à la dyslexie", adjustableSpacing: true, adjustableMeasure: true, readAloud: true },
+  dyspraxiaMotor: { label: "Motricité adaptée à la dyspraxie", oversizedTargets: true, precisionGesturesRequired: false },
 } as const;
 
 export const teachAccessibilityProfileIds = Object.keys(teachAccessibilityProfiles) as Array<keyof typeof teachAccessibilityProfiles>;

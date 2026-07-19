@@ -5,6 +5,10 @@ import "./landing-evidence.css";
 export const metadata: Metadata = {
   title: "Scholarium — Knowledge with a visible history",
   description: "A public pre-alpha commons for publishing research and learning artifacts with sources, versions, provenance, and human review.",
+  alternates: {
+    canonical: "/",
+    languages: { "fr-CA": "/?lang=fr-CA", "en-CA": "/?lang=en-CA", es: "/?lang=es", "x-default": "/" },
+  },
 };
 
 const githubUrl = "https://github.com/SeCuReDmE-main-dev/securedme-scholarium";
@@ -23,7 +27,8 @@ const doors = [
 
 export default function Home() {
   return <main className="sch-landing" id="top">
-    <div className="sch-institutional-strip"><span>SECUREDME EDUCATION</span><strong>Knowledge deserves context.</strong><span>PUBLIC PRE-ALPHA</span></div>
+    <a className="sch-skip-link" href="#main-content">Skip to content</a>
+    <div className="sch-institutional-strip" id="main-content"><span>SECUREDME EDUCATION</span><strong>Knowledge deserves context.</strong><span>PUBLIC PRE-ALPHA</span></div>
     <header className="sch-landing-header">
       <a className="sch-brand" href="#top" aria-label="Scholarium home"><img src="/brand/logos/final/1.webp" alt="" width="46" height="46" /><span><b>Scholarium</b><small>Research commons</small></span></a>
       <nav aria-label="Main navigation"><a href="#commons">Commons</a><a href="#provenance">Provenance</a><a href="#pathways">Pathways</a><a href="#organizations">Organizations</a><a href={githubUrl}>Source</a></nav>

@@ -310,10 +310,10 @@ test("enforces edge-case-first accessibility as a CI contract", async () => {
   assert.match(client, /aria-live="polite"/);
   assert.match(client, /Tableau de communication/);
   assert.match(client, /Aucun avatar automatique/);
-  assert.match(client, /Delai, mouvement et vocalisation ne modifient pas/);
-  assert.match(panel, /Contraste eleve/);
-  assert.match(panel, /Saturation reduite/);
-  assert.match(panel, /Donnees reduites/);
+  assert.match(client, /Délai, mouvement et vocalisation ne modifient pas/);
+  assert.match(panel, /Contraste élevé/);
+  assert.match(panel, /Saturation réduite/);
+  assert.match(panel, /Données réduites/);
   assert.match(panel, /Vitesse audio/);
   assert.match(css, /:focus-visible/);
   assert.match(css, /prefers-reduced-motion: reduce/);
@@ -340,7 +340,7 @@ test("ships an edge-case-first learner and teacher interface", async () => {
   const css = await readFile(new URL("../app/teach/teach.css", import.meta.url), "utf8");
   assert.match(client + panel, /autismCalm/);
   assert.match(client + panel, /Voix facultative/);
-  assert.match(client + panel, /Aucune penalite de delai/);
+  assert.match(client + panel, /Aucune pénalité de délai/);
   assert.match(client, /MIROIR DES FORCES/);
   assert.match(client, /VUE ENSEIGNANT/);
   assert.match(client, /scholarium\.teach\.spanish\.checkpoint\.v1/);

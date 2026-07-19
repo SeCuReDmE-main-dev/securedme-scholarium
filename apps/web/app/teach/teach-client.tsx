@@ -94,7 +94,7 @@ function storedCheckpoint() {
 }
 
 const stateLabels: Record<MasteryState, string> = {
-  new: "Nouvelle", guided: "Guidee", recalled: "Rappelee", contextualized: "Contextualisee", mastered: "Maitrisee", review: "A revoir",
+  new: "Nouvelle", guided: "Guidée", recalled: "Rappelée", contextualized: "Contextualisée", mastered: "Maîtrisée", review: "À revoir",
 };
 
 export function TeachClient({ authenticated = false }: { authenticated?: boolean }) {
@@ -105,7 +105,7 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
   const [answer, setAnswer] = useState(initialCheckpoint.answer);
   const [assistanceLevel, setAssistanceLevel] = useState<AssistanceLevel>(initialCheckpoint.assistanceLevel);
   const [progress, setProgress] = useState<ProgressMap>(initialCheckpoint.progress);
-  const [status, setStatus] = useState("Pret pour une premiere tentative.");
+  const [status, setStatus] = useState("Prêt pour une première tentative.");
   const [showTranslation, setShowTranslation] = useState(initialCheckpoint.showTranslation);
   const [showPhonetic, setShowPhonetic] = useState(initialCheckpoint.showPhonetic);
   const [attemptStartedAt, setAttemptStartedAt] = useState(() => Date.now());
@@ -203,8 +203,8 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
     const result = evaluateLearningAttempt({ answer, targetAnswer: objective.answer, assistanceLevel, questionId: objective.question.id, expectedQuestionId: objective.question.id, responseTimeMs });
     setProgress((current) => ({ ...current, [objective.id]: { attempts: current[objective.id].attempts + 1, state: result.nextState } }));
     setStatus(result.answerMatches && result.contextMatched
-      ? result.nextState === "mastered" ? "Preuve complete. Cette notion est maitrisee." : "Bonne association. Un rappel sans aide reste necessaire."
-      : result.errorCode === "question_context_mismatch" ? "Cette reponse appartient a une autre question. La question active reste visible." : "Cette expression n'est pas encore reconstruite. On reprend sans se presser.");
+      ? result.nextState === "mastered" ? "Preuve complète. Cette notion est maîtrisée." : "Bonne association. Un rappel sans aide reste nécessaire."
+      : result.errorCode === "question_context_mismatch" ? "Cette réponse appartient à une autre question. La question active reste visible." : "Cette expression n’est pas encore reconstruite. On reprend sans se presser.");
 
     if (!persistenceAvailable) return;
     try {
@@ -282,7 +282,7 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
 
   return (
     <main className={`teach-shell teach-role-${roleSurface} ${accessibilityClasses}`.trim()} data-teach-role={roleSurface}>
-      <a className="teach-skip-link" href="#active-question" onClick={() => window.setTimeout(() => document.getElementById("active-question")?.focus(), 0)}>Aller a la question</a>
+      <a className="teach-skip-link" href="#active-question" onClick={() => window.setTimeout(() => document.getElementById("active-question")?.focus(), 0)}>Aller au contenu principal</a>
       <header className="teach-topbar">
         {/* Vinext's next/link shim currently duplicates React during hydration on this route. */}
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
@@ -312,49 +312,49 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
           <section className="teach-lesson" aria-labelledby="active-question">
             <div className="teach-question-header">
               <span>{stateLabels[progress[objective.id].state]}</span>
-              <button type="button" className="teach-icon-button" onClick={() => speak(objective.prompt)} title="Ecouter la question" aria-label="Ecouter la question" disabled={accessibility.sound === "muted"}>▶</button>
+              <button type="button" className="teach-icon-button" onClick={() => speak(objective.prompt)} title="Écouter la question" aria-label="Écouter la question" disabled={accessibility.sound === "muted"}>▶</button>
             </div>
             <h2 id="active-question" tabIndex={-1}>{objective.prompt}</h2>
             {showTranslation && <p className="teach-translation">{objective.translation}</p>}
             {showPhonetic && <p className="teach-phonetic">{objective.phonetic}</p>}
 
             {accessibility.showTranscript && <section className="teach-transcript" aria-labelledby="teach-transcript-title">
-              <h3 id="teach-transcript-title">Transcription et sequence visuelle</h3>
+              <h3 id="teach-transcript-title">Transcription et séquence visuelle</h3>
               <p><strong>Question:</strong> {objective.prompt}</p>
               <ol>
-                <li>Lire ou ecouter la question</li>
-                <li>Ecrire ou choisir une reponse</li>
-                <li>Verifier puis revoir au besoin</li>
+                <li>Lire ou écouter la question</li>
+                <li>Écrire ou choisir une réponse</li>
+                <li>Vérifier, puis revoir au besoin</li>
               </ol>
-              {accessibility.profiles.deafSigned && <p className="teach-signed-status">{"Langue signee: contenu humain verifie non disponible pour cette lecon. Aucun avatar automatique n'est substitue."}</p>}
+              {accessibility.profiles.deafSigned && <p className="teach-signed-status">{"Langue signée : contenu humain vérifié non disponible pour cette leçon. Aucun avatar automatique n’est substitué."}</p>}
             </section>}
 
             {accessibility.profiles.adhdSprint && <section className="teach-sprint" aria-label="ADHD Sprint timer">
-              <div><strong>Prochain geste</strong><span>Repondre a la question active</span></div>
+              <div><strong>Prochain geste</strong><span>Répondre à la question active</span></div>
               <output aria-label="Temps restant du sprint">{sprintClock}</output>
               <div>
-                <button type="button" onClick={() => setSprintRunning((running) => !running)} disabled={sprintRemainingSeconds === 0}>{sprintRunning ? "Pause" : "Demarrer"}</button>
-                <button type="button" onClick={resetSprint}>Reinitialiser</button>
+                <button type="button" onClick={() => setSprintRunning((running) => !running)} disabled={sprintRemainingSeconds === 0}>{sprintRunning ? "Pause" : "Démarrer"}</button>
+                <button type="button" onClick={resetSprint}>Réinitialiser</button>
               </div>
             </section>}
 
             {accessibility.profiles.nonVerbal && <section className="teach-choice-board" aria-labelledby="teach-choice-board-title">
               <h3 id="teach-choice-board-title">Tableau de communication</h3>
-              <div role="group" aria-label="Choix de reponse">
+              <div role="group" aria-label="Choix de réponse">
                 {communicationChoices.map((choice) => <button type="button" key={choice} aria-pressed={answer === choice} onClick={() => setAnswer(choice)}>{choice}</button>)}
               </div>
             </section>}
 
-            {accessibility.profiles.touretteSafe && <p className="teach-access-note" role="note">{"Delai, mouvement et vocalisation ne modifient pas l'evaluation."}</p>}
-            {accessibility.dataSaver && <p className="teach-access-note" role="status">Mode donnees reduites actif.</p>}
+            {accessibility.profiles.touretteSafe && <p className="teach-access-note" role="note">{"Délai, mouvement et vocalisation ne modifient pas l’évaluation."}</p>}
+            {accessibility.dataSaver && <p className="teach-access-note" role="status">Mode données réduites actif.</p>}
 
-            <p id="teach-answer-help" className="teach-next-action"><strong>Prochain geste:</strong> repondre a la question active.</p>
-            <label className="teach-answer">Ta reponse<textarea value={answer} onChange={(event) => setAnswer(event.target.value)} rows={3} autoComplete="off" aria-describedby="teach-answer-help" /></label>
+            <p id="teach-answer-help" className="teach-next-action"><strong>Prochain geste :</strong> répondre à la question active.</p>
+            <label className="teach-answer">Ta réponse<textarea value={answer} onChange={(event) => setAnswer(event.target.value)} rows={3} autoComplete="off" aria-describedby="teach-answer-help" /></label>
             <div className="teach-assistance" role="group" aria-label="Assistance used">
               {assistanceLevels.map((level) => <button type="button" key={level} className={assistanceLevel === level ? "active" : ""} aria-pressed={assistanceLevel === level} onClick={() => setAssistanceLevel(level)}>{level.replaceAll("_", " ")}</button>)}
             </div>
             {activeHelp.content.length > 0 && <div className="teach-help" role="note"><strong>Aide active</strong>{activeHelp.content.map((item) => <span key={item}>{item}</span>)}</div>}
-            <div className="teach-actions"><button type="button" className="secondary" onClick={() => { setAssistanceLevel("full_model"); speak(objective.answer); }} disabled={accessibility.sound === "muted"}>Ecouter le modele</button><button type="button" className="primary" onClick={() => void submitAttempt()} disabled={!answer.trim()}>Verifier</button></div>
+            <div className="teach-actions"><button type="button" className="secondary" onClick={() => { setAssistanceLevel("full_model"); speak(objective.answer); }} disabled={accessibility.sound === "muted"}>Écouter le modèle</button><button type="button" className="primary" onClick={() => void submitAttempt()} disabled={!answer.trim()}>Vérifier</button></div>
             <p className="teach-status" role="status" aria-live="polite" aria-atomic="true">{status}</p>
             {attemptedCount === spanishStarterLesson.objectives.length && <div className="teach-final-conversation"><strong>Conversation finale</strong><p>{spanishStarterLesson.finalConversation.prompt}</p></div>}
             <button type="button" className="teach-next" onClick={nextObjective} disabled={objectiveIndex === spanishStarterLesson.objectives.length - 1}>Question suivante →</button>

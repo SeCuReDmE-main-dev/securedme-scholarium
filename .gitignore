@@ -22,6 +22,7 @@ attachments/
 site/
 
 # Local validation and tool outputs
+/output/
 apps/web/.playwright-cli/
 apps/web/output/
 apps/web/tsconfig.tsbuildinfo

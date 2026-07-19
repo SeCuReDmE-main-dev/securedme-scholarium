@@ -1506,6 +1506,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
 
   return (
     <main className={`scholarium-shell theme-${colorScheme}`} style={{ "--blue": accentColor } as CSSProperties}>
+      <a className="sch-skip-link" href="#top">Skip to content</a>
       <aside className="left-rail" aria-label="Primary navigation">
         <a className="brand" href="#top" aria-label="Scholarium home">
           <span className="brand-mark"><img src={activeEducationIconAsset} alt="" /></span>
