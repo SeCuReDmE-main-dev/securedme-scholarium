@@ -395,6 +395,7 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
         <div className="teacher-objectives">{spanishStarterLesson.objectives.map((item) => <article key={item.id}><div><span>{item.prompt}</span><strong>{stateLabels[progress[item.id].state]}</strong></div><progress max={5} value={Math.min(5, progress[item.id].attempts)} /><small>{progress[item.id].attempts} tentative{progress[item.id].attempts === 1 ? "" : "s"}</small></article>)}</div>
         <p className="teach-authority-note">{"La vue enseignant utilise des preuves structurees. Elle n'expose pas une transcription privee brute et ne remplace pas le jugement pedagogique."}</p>
       </section>}
+      <footer className="teach-collaboration-credit">Design in collaboration with Hector Aguilar.</footer>
     </main>
   );
 }
