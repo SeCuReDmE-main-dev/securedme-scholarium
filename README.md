@@ -31,6 +31,8 @@
 > **Gateway support acknowledgement.** E2B audit support and Datadog observability are routed through the shared SecuredMe gateway when configured. This repository does not claim a direct E2B or Datadog runtime dependency by default, and no secret is stored in this README.
 <!-- SECUREDME-STARTUP-SUPPORT:END -->
 
+> **Maintainer intake during active finishing week.** This repository is maintained directly on `main` by the SecuredMe maintainer. Public issues are open for bug reports, documentation corrections, security-safe observations, and reproducible feedback, but opening an issue does not promise a response or a delivery date. Pull requests are not accepted during the active code-finishing week; use issues only until this notice is replaced.
+
 > [!IMPORTANT]
 > **Pre-alpha / in development.** Scholarium is being built in public, but it is not yet a production social network. The public preview is for product validation. PayPal checkout now fails closed unless dedicated live credentials and a live webhook ID are configured; provider review, public moderation operations, and youth-flow legal review remain gated.
 
@@ -127,7 +129,7 @@ npm run db:generate
 
 This repository contains the public-safe Scholarium source. Credentials, cPanel details, deployment secrets, identity documents, biometric templates, private correspondence, and unpublished research stay outside this repository.
 
-Community feedback is welcome through GitHub Issues. The maintained school-tool route is still pre-alpha: external pull requests are not considered for merge until the documented stability gate is reached. Do not submit secrets, personal identity documents, private student data, or unsupported provider integrations.
+Community feedback is welcome through GitHub Issues, without any promised response or delivery date. The maintained school-tool route is still pre-alpha, and pull requests are not accepted during the active code-finishing week. Do not submit secrets, personal identity documents, private student data, or unsupported provider integrations.
 
 ## Not yet launched
 
