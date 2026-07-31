@@ -16,11 +16,12 @@ import {
 import { TeachAccessibilityPanel } from "./teach-accessibility-panel";
 import { TeachAdministrationPanel, TeachSourcesPanel } from "./teach-governance-panels";
 import { TeachPortfolioPanel, TeachStatisticsPanel } from "./teach-social-panels";
+import { TeachSafetyPanel } from "./teach-safety-panel";
 import { ScholariumControls } from "../components/scholarium-controls";
 
 type ObjectiveProgress = { attempts: number; state: MasteryState };
 type ProgressMap = Record<string, ObjectiveProgress>;
-type View = "learn" | "teacher" | "strengths" | "portfolio" | "statistics" | "sources" | "administration";
+type View = "learn" | "teacher" | "strengths" | "portfolio" | "statistics" | "sources" | "safety" | "administration";
 
 const viewByHash: Record<string, View> = {
   "#administration": "administration",
@@ -29,6 +30,7 @@ const viewByHash: Record<string, View> = {
   "#forces": "strengths",
   "#portfolio": "portfolio",
   "#projects": "portfolio",
+  "#safety": "safety",
   "#sources": "sources",
   "#statistics": "statistics",
   "#teacher": "teacher",
@@ -37,6 +39,7 @@ const hashByView: Record<View, string> = {
   administration: "#administration",
   learn: "#cours",
   portfolio: "#portfolio",
+  safety: "#safety",
   sources: "#sources",
   statistics: "#statistics",
   strengths: "#forces",
@@ -244,7 +247,7 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
   }
 
   function moveTab(event: KeyboardEvent<HTMLButtonElement>, currentIndex: number) {
-    const orderedViews: View[] = ["learn", "strengths", "portfolio", "statistics", "sources", "teacher", "administration"];
+    const orderedViews: View[] = ["learn", "strengths", "portfolio", "statistics", "sources", "teacher", "safety", "administration"];
     let nextIndex = currentIndex;
     if (event.key === "ArrowRight") nextIndex = (currentIndex + 1) % orderedViews.length;
     else if (event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + orderedViews.length) % orderedViews.length;
@@ -278,7 +281,8 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
     accessibility.density === "reduced" ? "teach-low-density" : "",
   ].filter(Boolean).join(" ");
   const communicationChoices = [objective.answer, "Necesito una pista.", "Puedes repetir, por favor?"];
-  const roleSurface = view === "teacher" ? "teacher" : view === "administration" ? "organization" : "student";
+  const establishedRoleSurface = view === "teacher" ? "teacher" : view === "administration" ? "organization" : "student";
+  const roleSurface = view === "safety" ? "organization" : establishedRoleSurface;
 
   return (
     <main className={`teach-shell teach-role-${roleSurface} ${accessibilityClasses}`.trim()} data-teach-role={roleSurface}>
@@ -294,7 +298,8 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
           <button type="button" role="tab" data-teach-tab="statistics" tabIndex={view === "statistics" ? 0 : -1} aria-selected={view === "statistics"} aria-controls="teach-statistics-panel" className={view === "statistics" ? "active" : ""} onKeyDown={(event) => moveTab(event, 3)} onClick={() => openView("statistics")}>Statistiques</button>
           <button type="button" role="tab" data-teach-tab="sources" tabIndex={view === "sources" ? 0 : -1} aria-selected={view === "sources"} aria-controls="teach-sources-panel" className={view === "sources" ? "active" : ""} onKeyDown={(event) => moveTab(event, 4)} onClick={() => openView("sources")}>Sources</button>
           <button type="button" role="tab" data-teach-tab="teacher" tabIndex={view === "teacher" ? 0 : -1} aria-selected={view === "teacher"} aria-controls="teach-teacher-panel" className={view === "teacher" ? "active" : ""} onKeyDown={(event) => moveTab(event, 5)} onClick={() => openView("teacher")}>Enseignant</button>
-          <button type="button" role="tab" data-teach-tab="administration" tabIndex={view === "administration" ? 0 : -1} aria-selected={view === "administration"} aria-controls="teach-administration-panel" className={view === "administration" ? "active" : ""} onKeyDown={(event) => moveTab(event, 6)} onClick={() => openView("administration")}>Controles</button>
+          <button type="button" role="tab" data-teach-tab="safety" tabIndex={view === "safety" ? 0 : -1} aria-selected={view === "safety"} aria-controls="teach-safety-panel" className={view === "safety" ? "active" : ""} onKeyDown={(event) => moveTab(event, 6)} onClick={() => openView("safety")}>Aide</button>
+          <button type="button" role="tab" data-teach-tab="administration" tabIndex={view === "administration" ? 0 : -1} aria-selected={view === "administration"} aria-controls="teach-administration-panel" className={view === "administration" ? "active" : ""} onKeyDown={(event) => moveTab(event, 7)} onClick={() => openView("administration")}>Controles</button>
         </nav>
         <div className="teach-header-tools"><ScholariumControls compact /><div className="teach-session-state"><span>{masteredCount}/{spanishStarterLesson.objectives.length}</span><small>maitrisees</small></div></div>
       </header>
@@ -387,6 +392,7 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
       {view === "portfolio" && <TeachPortfolioPanel authenticated={sessionAuthenticated} />}
       {view === "statistics" && <TeachStatisticsPanel authenticated={sessionAuthenticated} />}
       {view === "sources" && <TeachSourcesPanel />}
+      {view === "safety" && <TeachSafetyPanel authenticated={sessionAuthenticated} />}
       {view === "administration" && <TeachAdministrationPanel authenticated={sessionAuthenticated} />}
 
       {view === "teacher" && <section id="teach-teacher-panel" role="tabpanel" className="teach-dashboard-band">

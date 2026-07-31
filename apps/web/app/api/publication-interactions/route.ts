@@ -2,6 +2,8 @@ import { and, asc, eq } from "drizzle-orm";
 import { getDb } from "../../../db";
 import { interactionReports, publicationComments, publicationReactions, publications, userBoundaries, users } from "../../../db/schema";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
+import { createSchoolSafetyCase } from "../../../lib/teach-safety-case-service";
+import { schoolSafetyRuntimeConfig } from "../../../lib/teach-safety-datadog";
 
 const reactionKinds = new Set(["insightful", "helpful", "question"]);
 const reportReasons = new Set(["harassment", "personal_data", "unsafe", "spam", "copyright", "other"]);
@@ -17,6 +19,9 @@ type InteractionInput = {
   reason?: unknown;
   targetUserId?: unknown;
   details?: unknown;
+  idempotencyKey?: unknown;
+  organizationId?: unknown;
+  proposedSeverity?: unknown;
 };
 
 function requiredId(value: unknown, field: string) {
@@ -137,7 +142,37 @@ export async function POST(request: Request) {
       const details = boundedText(input.details, "details", 1200, false) || null;
       const id = crypto.randomUUID();
       await account.db.insert(interactionReports).values({ commentId, details, id, publicationId, reason, reporterId: account.identity.userId });
-      return Response.json({ report: { id, status: "open" }, message: "Report received. The content stays traceable while a human review is prepared." }, { status: 201 });
+      let schoolSafetyCase: { id: string; status: string } | null = null;
+      let schoolSafetyCaseStatus: "not_requested" | "disabled" | "created" | "rejected" = "not_requested";
+      const organizationId = boundedText(input.organizationId, "organizationId", 180, false);
+      if (organizationId) {
+        const runtime = await schoolSafetyRuntimeConfig();
+        if (!runtime.casesEnabled) {
+          schoolSafetyCaseStatus = "disabled";
+        } else {
+          try {
+            const linked = await createSchoolSafetyCase(account.db, account.identity.userId, {
+              organizationId,
+              subjectType: commentId ? "comment" : "publication",
+              subjectId: commentId ?? publicationId,
+              category: reason,
+              proposedSeverity: ["standard", "high", "urgent"].includes(String(input.proposedSeverity)) ? input.proposedSeverity : "standard",
+              summary: details ?? "Community report linked to a synthetic school safety case.",
+              idempotencyKey: typeof input.idempotencyKey === "string" ? input.idempotencyKey : id,
+            }, { sourceReportId: id });
+            schoolSafetyCase = { id: linked.case.id, status: linked.case.status };
+            schoolSafetyCaseStatus = "created";
+          } catch {
+            schoolSafetyCaseStatus = "rejected";
+          }
+        }
+      }
+      return Response.json({
+        report: { id, status: "open" },
+        schoolSafetyCase,
+        schoolSafetyCaseStatus,
+        message: "Report received. The content stays traceable while a human review is prepared.",
+      }, { status: 201 });
     }
 
     if (action === "boundary") {

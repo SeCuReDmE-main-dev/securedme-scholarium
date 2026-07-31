@@ -1090,3 +1090,131 @@ export const teachPurposeConsents = sqliteTable("teach_purpose_consents", {
   revokedAt: text("revoked_at"),
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 }, (table) => [index("teach_consents_user_idx").on(table.userId), uniqueIndex("teach_consents_purpose_idx").on(table.userId, table.purpose)]);
+
+/** Versioned school policy. No policy is active by default and pre-alpha accepts synthetic data only. */
+export const teachSchoolSafetyPolicies = sqliteTable("teach_school_safety_policies", {
+  id: text("id").primaryKey(),
+  organizationId: text("organization_id").notNull().references(() => organizations.id),
+  version: text("version").notNull(),
+  status: text("status").notNull().default("inactive"),
+  dataMode: text("data_mode").notNull().default("synthetic_only"),
+  urgentMinutes: integer("urgent_minutes").notNull().default(60),
+  highMinutes: integer("high_minutes").notNull().default(240),
+  standardMinutes: integer("standard_minutes").notNull().default(1_440),
+  retentionDays: integer("retention_days").notNull().default(30),
+  notificationPolicy: text("notification_policy").notNull().default('{"channels":["in_app"],"age_adapted":true}'),
+  createdByUserId: text("created_by_user_id").notNull().references(() => users.id),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  activatedAt: text("activated_at"),
+}, (table) => [
+  uniqueIndex("teach_school_safety_policy_version_idx").on(table.organizationId, table.version),
+  index("teach_school_safety_policy_status_idx").on(table.organizationId, table.status),
+]);
+
+/** Sensitive evidence remains private in Scholarium; cases and telemetry carry only this opaque reference. */
+export const teachSchoolSafetyEvidence = sqliteTable("teach_school_safety_evidence", {
+  id: text("id").primaryKey(),
+  organizationId: text("organization_id").notNull().references(() => organizations.id),
+  ownerUserId: text("owner_user_id").notNull().references(() => users.id),
+  kind: text("kind").notNull().default("initial_report"),
+  content: text("content").notNull(),
+  contentSha256: text("content_sha256").notNull(),
+  contentType: text("content_type").notNull().default("text/plain"),
+  sizeBytes: integer("size_bytes").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_school_safety_evidence_org_idx").on(table.organizationId, table.createdAt)]);
+
+export const teachSchoolSafetyCases = sqliteTable("teach_school_safety_cases", {
+  id: text("id").primaryKey(),
+  organizationId: text("organization_id").notNull().references(() => organizations.id),
+  reporterUserId: text("reporter_user_id").notNull().references(() => users.id),
+  reporterRole: text("reporter_role").notNull(),
+  evidenceId: text("evidence_id").notNull().references(() => teachSchoolSafetyEvidence.id),
+  sourceReportId: text("source_report_id").references(() => interactionReports.id),
+  subjectType: text("subject_type").notNull(),
+  subjectId: text("subject_id"),
+  category: text("category").notNull(),
+  proposedSeverity: text("proposed_severity").notNull(),
+  status: text("status").notNull().default("received"),
+  policyVersion: text("policy_version").notNull(),
+  assignedAdminUserId: text("assigned_admin_user_id").references(() => users.id),
+  resolutionCode: text("resolution_code"),
+  telemetryStatus: text("telemetry_status").notNull().default("disabled"),
+  version: integer("version").notNull().default(1),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  resolvedAt: text("resolved_at"),
+  closedAt: text("closed_at"),
+}, (table) => [
+  uniqueIndex("teach_school_safety_case_evidence_idx").on(table.evidenceId),
+  uniqueIndex("teach_school_safety_case_source_report_idx").on(table.sourceReportId),
+  index("teach_school_safety_case_reporter_idx").on(table.reporterUserId, table.createdAt),
+  index("teach_school_safety_case_queue_idx").on(table.organizationId, table.status, table.proposedSeverity, table.createdAt),
+]);
+
+export const teachSchoolSafetyAssignments = sqliteTable("teach_school_safety_assignments", {
+  id: text("id").primaryKey(),
+  caseId: text("case_id").notNull().references(() => teachSchoolSafetyCases.id),
+  adminUserId: text("admin_user_id").notNull().references(() => users.id),
+  assignedByUserId: text("assigned_by_user_id").notNull().references(() => users.id),
+  active: integer("active", { mode: "boolean" }).notNull().default(true),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  releasedAt: text("released_at"),
+}, (table) => [index("teach_school_safety_assignment_case_idx").on(table.caseId, table.active, table.createdAt)]);
+
+/** Hash-chained append-only transition ledger. */
+export const teachSchoolSafetyEvents = sqliteTable("teach_school_safety_events", {
+  id: text("id").primaryKey(),
+  caseId: text("case_id").notNull().references(() => teachSchoolSafetyCases.id),
+  sequence: integer("sequence").notNull(),
+  actorUserId: text("actor_user_id").notNull(),
+  actorRole: text("actor_role").notNull(),
+  fromState: text("from_state"),
+  toState: text("to_state").notNull(),
+  rationaleCode: text("rationale_code").notNull(),
+  rationaleDigest: text("rationale_digest").notNull(),
+  previousHash: text("previous_hash").notNull(),
+  eventHash: text("event_hash").notNull(),
+  idempotencyKey: text("idempotency_key").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  uniqueIndex("teach_school_safety_event_sequence_idx").on(table.caseId, table.sequence),
+  uniqueIndex("teach_school_safety_event_idempotency_idx").on(table.caseId, table.idempotencyKey),
+  index("teach_school_safety_event_case_idx").on(table.caseId, table.createdAt),
+]);
+
+export const teachSchoolSafetyAppeals = sqliteTable("teach_school_safety_appeals", {
+  id: text("id").primaryKey(),
+  caseId: text("case_id").notNull().references(() => teachSchoolSafetyCases.id),
+  appellantUserId: text("appellant_user_id").notNull().references(() => users.id),
+  reviewerUserId: text("reviewer_user_id").references(() => users.id),
+  evidenceId: text("evidence_id").notNull().references(() => teachSchoolSafetyEvidence.id),
+  status: text("status").notNull().default("pending"),
+  outcomeCode: text("outcome_code"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  reviewedAt: text("reviewed_at"),
+}, (table) => [
+  index("teach_school_safety_appeal_status_idx").on(table.caseId, table.status),
+  index("teach_school_safety_appeal_reviewer_idx").on(table.reviewerUserId, table.createdAt),
+]);
+
+/** Redacted Datadog outbox. It is disabled until an explicit external gate is approved. */
+export const teachSchoolSafetyOutbox = sqliteTable("teach_school_safety_outbox", {
+  id: text("id").primaryKey(),
+  caseId: text("case_id").notNull().references(() => teachSchoolSafetyCases.id),
+  eventId: text("event_id").notNull().references(() => teachSchoolSafetyEvents.id),
+  operation: text("operation").notNull(),
+  redactedPayload: text("redacted_payload").notNull(),
+  idempotencyKey: text("idempotency_key").notNull(),
+  status: text("status").notNull().default("disabled"),
+  attempts: integer("attempts").notNull().default(0),
+  nextAttemptAt: text("next_attempt_at"),
+  externalCaseId: text("external_case_id"),
+  lastErrorCode: text("last_error_code"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  sentAt: text("sent_at"),
+}, (table) => [
+  uniqueIndex("teach_school_safety_outbox_idempotency_idx").on(table.idempotencyKey),
+  index("teach_school_safety_outbox_status_idx").on(table.status, table.nextAttemptAt, table.createdAt),
+]);
