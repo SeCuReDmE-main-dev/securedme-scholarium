@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-29.md:1 be10c06b6e6742f8b99bd52466d9d8b1
+msgid "CP-29 - Review a defensive threat signal"
+msgstr "CP-29 - Review a defensive threat signal"
+
+#: ../../docs/prompts/CP-29.md:3 fa17e9470ae74530b517b42d25bedc70
+msgid "**Tool:** `vot-guardian`"
+msgstr "**Tool:** `vot-guardian`"
+
+#: ../../docs/prompts/CP-29.md:5 33ffee6130234ce9bdd21ab0dcde27cd
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-29.md:7 00eb83ca22e74dacb63b331a87d9d73f
+msgid "**Objective.** Review a defensive threat signal"
+msgstr "**Objective.** Review a defensive threat signal"
+
+#: ../../docs/prompts/CP-29.md:28 d8b441d3202f476fbe1fab75253f9c71
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-29.md:30 f3df90681192489387c85b194705fc3f
+msgid "**Objectif.** Reviser un signal defensif"
+msgstr "**Objectif.** Reviser un signal defensif"
+
+#: ../../docs/prompts/CP-29.md:51 e1a72f3be1434359997cdc37c2492022
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-29.md:53 031d7ac6a79d45a3962fc78de45d40da
+msgid "**Objetivo.** Revisar una senal defensiva"
+msgstr "**Objetivo.** Revisar una senal defensiva"

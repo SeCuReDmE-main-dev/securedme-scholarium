@@ -74,6 +74,9 @@ markdown_extensions:
 plugins:
   - search
 
+hooks:
+  - tools/mkdocs_sphinx_bridge.py
+
 extra:
   social:
     - icon: fontawesome/brands/github

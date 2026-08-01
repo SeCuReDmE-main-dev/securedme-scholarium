@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/visual-algorithm-designer/quickstart.md:1
+#: c7484ea354fc4c2fb89fdbb2a622a6a8
+msgid "Visual Algorithm Designer quickstart"
+msgstr "Visual Algorithm Designer inicio rapido"
+
+#: ../../docs/tools/visual-algorithm-designer/quickstart.md:3
+#: 9d0a0c9d42ee4afabb7e7a2271920bfa
+msgid "Requirements"
+msgstr "Requisitos"
+
+#: ../../docs/tools/visual-algorithm-designer/quickstart.md:5
+#: dabcbeacf15e49de9821e3d6726cff12
+msgid ""
+"Use a clean checkout, the runtime declared by the repository, and its "
+"committed lockfiles. Confirm the active branch before installing anything."
+msgstr ""
+"Use una copia limpia, el runtime declarado por el repositorio y sus archivos"
+" de bloqueo confirmados. Confirme la rama activa antes de instalar nada."
+
+#: ../../docs/tools/visual-algorithm-designer/quickstart.md:11
+#: 453dccc84a9b44f5b06d8366c0126b2f
+msgid "Install"
+msgstr "Instalar"
+
+#: ../../docs/tools/visual-algorithm-designer/quickstart.md:18
+#: c2d1a9877ccd4f10bccaea51a0c3e281
+msgid "Start"
+msgstr "Comenzar"
+
+#: ../../docs/tools/visual-algorithm-designer/quickstart.md:24
+#: fbbf322080fc495796add70d37ad1cd1
+msgid "Verify"
+msgstr "Verificar"
+
+#: ../../docs/tools/visual-algorithm-designer/quickstart.md:31
+#: 868c184514514c8eb70389f2f494610c
+msgid "Human acceptance"
+msgstr "Aceptacion humana"
+
+#: ../../docs/tools/visual-algorithm-designer/quickstart.md:33
+#: bfebc9ad45ca465fb2e913a43b930e4e
+msgid ""
+"Inspect the output, logs, test results, and diff. Accept, request a "
+"correction, quarantine, or stop; do not silently promote a generated result."
+msgstr ""
+"Inspeccione la salida, los registros, los resultados de pruebas y el diff. "
+"Acepte, solicite una correccion, ponga en cuarentena o detengase; no "
+"promueva silenciosamente un resultado generado."

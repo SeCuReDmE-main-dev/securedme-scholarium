@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-25.md:1 1417b155298d4384b8fc54291ec28e64
+msgid "CP-25 - Audit lexical provenance"
+msgstr "CP-25 - Audit lexical provenance"
+
+#: ../../docs/prompts/CP-25.md:3 717eae54f5c24729a8966449ac93956c
+msgid "**Tool:** `synthia`"
+msgstr "**Tool:** `synthia`"
+
+#: ../../docs/prompts/CP-25.md:5 e427f399be47428f9381b24930ec181a
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-25.md:7 780dd44b976644aeae9c0219ccbfc0e7
+msgid "**Objective.** Audit lexical provenance"
+msgstr "**Objective.** Audit lexical provenance"
+
+#: ../../docs/prompts/CP-25.md:28 740a762521da4d4eb7bd0b6db575495b
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-25.md:30 d454208514554af78105bce1cb67060e
+msgid "**Objectif.** Auditer la provenance lexicale"
+msgstr "**Objectif.** Auditer la provenance lexicale"
+
+#: ../../docs/prompts/CP-25.md:51 07c1c60225384871b48ce9a802cf7281
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-25.md:53 728d7b023a30456fbacb63da07c54134
+msgid "**Objetivo.** Auditar la procedencia lexica"
+msgstr "**Objetivo.** Auditar la procedencia lexica"

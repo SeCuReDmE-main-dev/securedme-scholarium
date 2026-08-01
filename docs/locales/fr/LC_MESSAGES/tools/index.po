@@ -1,0 +1,254 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/index.md:1 f65f6261c0a046a9a2a12a67d1c8c112
+msgid "Tool library"
+msgstr "Bibliotheque des outils"
+
+#: ../../docs/tools/index.md:3 c60e13c0b8bd496c8b01ee1eec58ac44
+msgid ""
+"The Education catalogue is the public entry point. This library exposes the "
+"technical contract behind every destination."
+msgstr ""
+"Le catalogue Education est la porte d'entree publique. Cette bibliotheque "
+"expose le contrat technique de chaque destination."
+
+#: ../../docs/tools/index.md 021b12f93cfe428fa6716b7c28e16d3e
+msgid "Tool"
+msgstr "Outil"
+
+#: ../../docs/tools/index.md 69fcb13dbca3446eb5343dc6a671cd72
+msgid "Runtime"
+msgstr "Execution"
+
+#: ../../docs/tools/index.md 99afef30604246929c6828e02ca45796
+msgid "Status"
+msgstr "Statut"
+
+#: ../../docs/tools/index.md b099a32234fc44078b1a549e12d79b99
+msgid "Documentation"
+msgstr "Documentation"
+
+#: ../../docs/tools/index.md 687f7a7b59534e8eaffeaced513f3283
+msgid "Source"
+msgstr "Source"
+
+#: ../../docs/tools/index.md 77ab97ccb3344b13ab7f9d1d50c74e6d
+msgid "AlgoQuest Qbit Education"
+msgstr "AlgoQuest Qbit Education"
+
+#: ../../docs/tools/index.md 3b7c2763f28f4ef09af2c96d5184db9a
+#: 45ee6379f09642cf9014016f8373ece9 845a7d4f56c34ed998a62988719c4256
+#: 8c7ad2b719044076bf38bf21519cabde 91be662fe41345d29f57f464bb99ca52
+#: cf3477567c56499883c856cd332db058 deb55a10d1be45c1a8c82d30f3307f1a
+#: e2cd9eda7b8d47d1bcc848c5a8191b94
+msgid "`browser-app`"
+msgstr "`browser-app`"
+
+#: ../../docs/tools/index.md 05b3b4014e074074b2443162e6979dd3
+#: 1b46b47edeeb4973b7d293d2eb36db1b 4d76ff26e865417a858b944694de004b
+#: 6fc2b88f20064ceb9774fd424f625209 b70ac60e4b2740f2bd4be3c26e3f2b0e
+#: c0b8e52a5aed451f9adbf32e22143a5d f57bdb553ccc44c59e88eb219ceb3839
+msgid "public-preview"
+msgstr "public-preview"
+
+#: ../../docs/tools/index.md 2f6309bd8e5147caa1430f6d95a676be
+msgid "[Open](./algoquest-qbit/index.md)"
+msgstr "[Ouvrir](./algoquest-qbit/index.md)"
+
+#: ../../docs/tools/index.md 7c3eb9d58b0a454d953f67afdce81f69
+msgid ""
+"[GitHub](https://github.com/SeCuReDmE-main-dev/algoquest-ams-discovry-labs-"
+"module-)"
+msgstr ""
+"[GitHub](https://github.com/SeCuReDmE-main-dev/algoquest-ams-discovry-labs-"
+"module-)"
+
+#: ../../docs/tools/index.md 1c966ed54e5245639fee46f545b9ad7d
+msgid "Algorithm Builder"
+msgstr "Algorithm Builder"
+
+#: ../../docs/tools/index.md 24ff7f082fc54c56a33f524bff4175d5
+msgid "in-development"
+msgstr "in-development"
+
+#: ../../docs/tools/index.md bca518a8814840308952825e94072a5a
+msgid "[Open](./algorithm-builder/index.md)"
+msgstr "[Ouvrir](./algorithm-builder/index.md)"
+
+#: ../../docs/tools/index.md f34152f8137640448c9ed5bf879aed0a
+msgid "[GitHub](https://github.com/SeCuReDmE-main-dev/algorithm-builder-app)"
+msgstr "[GitHub](https://github.com/SeCuReDmE-main-dev/algorithm-builder-app)"
+
+#: ../../docs/tools/index.md 96689b864e594f3399d742267ad6da0b
+msgid "FfeD-QLC"
+msgstr "FfeD-QLC"
+
+#: ../../docs/tools/index.md 48cbf73c568d4b41b2d1338cd3f71aeb
+msgid "[Open](./ffed-qlc/index.md)"
+msgstr "[Ouvrir](./ffed-qlc/index.md)"
+
+#: ../../docs/tools/index.md b3c8ead4acef48019c3c85cef8fdaa90
+msgid "[GitHub](https://github.com/SeCuReDmE-main-dev/FfeD-QLC-MVP)"
+msgstr "[GitHub](https://github.com/SeCuReDmE-main-dev/FfeD-QLC-MVP)"
+
+#: ../../docs/tools/index.md 4abf1291bf044115ae0aacabdacb6ea9
+msgid "FNP-QNN"
+msgstr "FNP-QNN"
+
+#: ../../docs/tools/index.md 11ef8afb20a24764bfb19ac5582c68de
+#: ccf530bfc4de4cdc9f2a01acb57d7cf7
+msgid "`local-app`"
+msgstr "`local-app`"
+
+#: ../../docs/tools/index.md 9df80febd0114a7da8d16b397cba467a
+msgid "[Open](./fnp-qnn/index.md)"
+msgstr "[Ouvrir](./fnp-qnn/index.md)"
+
+#: ../../docs/tools/index.md 757d9b7ab0174597b2651348d1579064
+msgid "[GitHub](https://github.com/SeCuReDmE-main-dev/FNP-QNN-MVP)"
+msgstr "[GitHub](https://github.com/SeCuReDmE-main-dev/FNP-QNN-MVP)"
+
+#: ../../docs/tools/index.md 9dfd12cb1d1d4573ae791a71902c260d
+msgid "FNP-QNN Gateway"
+msgstr "FNP-QNN Gateway"
+
+#: ../../docs/tools/index.md 0532f0434d2b400eb98043070337327c
+msgid "`api`"
+msgstr "`api`"
+
+#: ../../docs/tools/index.md d4506dc2af1a4217aae9e0799e14bd62
+msgid "local-api"
+msgstr "local-api"
+
+#: ../../docs/tools/index.md d3d90420b0e24d3c9a1146f50a5f10a2
+msgid "[Open](./fnpqnn-gateway/index.md)"
+msgstr "[Ouvrir](./fnpqnn-gateway/index.md)"
+
+#: ../../docs/tools/index.md 1a30b4f45e2c47eeb392c2fcc660af84
+msgid "[GitHub](https://github.com/SeCuReDmE-main-dev/fnpqnn_gateway_MVP)"
+msgstr "[GitHub](https://github.com/SeCuReDmE-main-dev/fnpqnn_gateway_MVP)"
+
+#: ../../docs/tools/index.md 1d3229be17754b80bf049af446e0517d
+msgid "Market Guardian / RetailGuard"
+msgstr "Market Guardian / RetailGuard"
+
+#: ../../docs/tools/index.md 0ef0d628b8a448f2b5c7db07280144ae
+msgid "[Open](./retailguard/index.md)"
+msgstr "[Ouvrir](./retailguard/index.md)"
+
+#: ../../docs/tools/index.md 61027e77131f4f7fb72fcc068d78d1db
+msgid ""
+"[GitHub](https://github.com/SeCuReDmE-main-dev/market-guardian-retailguard)"
+msgstr ""
+"[GitHub](https://github.com/SeCuReDmE-main-dev/market-guardian-retailguard)"
+
+#: ../../docs/tools/index.md 61b7698b9582479a819bd0b3426fb1b3
+msgid "QuaNThoR"
+msgstr "QuaNThoR"
+
+#: ../../docs/tools/index.md 4ba515cd061849ccbaf50add0af9abe7
+#: d21d6a91076f473798f4a9fb7644b31b
+msgid "public-pre-alpha"
+msgstr "public-pre-alpha"
+
+#: ../../docs/tools/index.md bd0cb7fc8fb34004819f5567f88a9145
+msgid "[Open](./quanthor/index.md)"
+msgstr "[Ouvrir](./quanthor/index.md)"
+
+#: ../../docs/tools/index.md 714658244f1e4a8488ec1c560c2f0526
+msgid "[GitHub](https://github.com/SeCuReDmE-main-dev/QuaNThoR)"
+msgstr "[GitHub](https://github.com/SeCuReDmE-main-dev/QuaNThoR)"
+
+#: ../../docs/tools/index.md f8e8385f9284448bb283170829ca8c75
+msgid "SecuredMe Scholarium"
+msgstr "SecuredMe Scholarium"
+
+#: ../../docs/tools/index.md 29e69bfca92a4adfaa3e85757019d634
+msgid "[Open](./scholarium/index.md)"
+msgstr "[Ouvrir](./scholarium/index.md)"
+
+#: ../../docs/tools/index.md d395c5a418e9402c9a0f98fb4b7822e9
+msgid "[GitHub](https://github.com/SeCuReDmE-main-dev/securedme-scholarium)"
+msgstr "[GitHub](https://github.com/SeCuReDmE-main-dev/securedme-scholarium)"
+
+#: ../../docs/tools/index.md 420c19e137e24658bc3e2be3609a5399
+msgid "Synthia"
+msgstr "Synthia"
+
+#: ../../docs/tools/index.md a27fc05658984ec0b3606c998806419b
+msgid "[Open](./synthia/index.md)"
+msgstr "[Ouvrir](./synthia/index.md)"
+
+#: ../../docs/tools/index.md 390072b119b34bcea253dabe0d2cac88
+msgid "[GitHub](https://github.com/SeCuReDmE-main-dev/Synthia)"
+msgstr "[GitHub](https://github.com/SeCuReDmE-main-dev/Synthia)"
+
+#: ../../docs/tools/index.md e388d9ac05dd4087a75f0a5c32d11bdb
+msgid "Tesla Resonance Recovery Workbench"
+msgstr "Tesla Resonance Recovery Workbench"
+
+#: ../../docs/tools/index.md 87f34ae299014fdcb802034b1dbe2c3e
+msgid "`research`"
+msgstr "`research`"
+
+#: ../../docs/tools/index.md 556d5264701b49a3ba89914b3573bf9d
+msgid "local-research"
+msgstr "local-research"
+
+#: ../../docs/tools/index.md 686580755dcd4d978abae086378bdac1
+msgid "[Open](./tesla-workbench/index.md)"
+msgstr "[Ouvrir](./tesla-workbench/index.md)"
+
+#: ../../docs/tools/index.md 81b8bb8e641246c3af648d2e22818e8b
+msgid ""
+"[GitHub](https://github.com/SeCuReDmE-main-dev/tesla-resonance-recovery-"
+"workbench)"
+msgstr ""
+"[GitHub](https://github.com/SeCuReDmE-main-dev/tesla-resonance-recovery-"
+"workbench)"
+
+#: ../../docs/tools/index.md 9f434f973522475ea9cdaea9fb82d4c2
+msgid "V.O.T. Guardian"
+msgstr "V.O.T. Guardian"
+
+#: ../../docs/tools/index.md e1ed1a8aba604026a9dde92b2e37aba3
+msgid "[Open](./vot-guardian/index.md)"
+msgstr "[Ouvrir](./vot-guardian/index.md)"
+
+#: ../../docs/tools/index.md bad6dc50050c4d32a411f45a11104e30
+msgid "[GitHub](https://github.com/SeCuReDmE-main-dev/V.O.T-Guardian)"
+msgstr "[GitHub](https://github.com/SeCuReDmE-main-dev/V.O.T-Guardian)"
+
+#: ../../docs/tools/index.md 26f140151f8c4de4bb911f64b21017f6
+msgid "Visual Algorithm Designer"
+msgstr "Visual Algorithm Designer"
+
+#: ../../docs/tools/index.md 4c927a9afc31449f9179cc94240c6eff
+msgid "[Open](./visual-algorithm-designer/index.md)"
+msgstr "[Ouvrir](./visual-algorithm-designer/index.md)"
+
+#: ../../docs/tools/index.md 74d0edd32044402bb6fe796f5ca7edbf
+msgid ""
+"[GitHub](https://github.com/SeCuReDmE-main-dev/VisualAlgorithmDesigner)"
+msgstr ""
+"[GitHub](https://github.com/SeCuReDmE-main-dev/VisualAlgorithmDesigner)"

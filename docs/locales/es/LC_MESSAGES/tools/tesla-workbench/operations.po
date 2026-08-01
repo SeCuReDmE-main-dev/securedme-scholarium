@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/tesla-workbench/operations.md:1
+#: 8489ba078a934e56a1d487ae29370f17
+msgid "Operations and contribution"
+msgstr "Operacion y contribucion"
+
+#: ../../docs/tools/tesla-workbench/operations.md:3
+#: db3604a2a2794d559c59050d55c9ba4d
+msgid "Configuration"
+msgstr "Configuracion"
+
+#: ../../docs/tools/tesla-workbench/operations.md:5
+#: 6cdde46135834e47ae363b8b9bc24102
+msgid ""
+"Keep secrets outside documentation and source control. Use `.env.example` as"
+" the public contract and store real values only in the designated local "
+"settings surface."
+msgstr ""
+"Mantenga los secretos fuera de la documentacion y del control de codigo. Use"
+" `.env.example` como contrato publico y guarde los valores reales solo en la"
+" superficie local designada."
+
+#: ../../docs/tools/tesla-workbench/operations.md:7
+#: d23dc91ebdb34d2caab3c4bff9140b83
+msgid "Testing"
+msgstr "Pruebas"
+
+#: ../../docs/tools/tesla-workbench/operations.md:9
+#: fac0636d6eda4aba9a6a844eb93e77d3
+msgid ""
+"Run the repository checks listed in the quickstart. A passing narrow test "
+"does not prove unrelated interfaces or scientific claims."
+msgstr ""
+"Ejecute las comprobaciones del repositorio indicadas en el inicio rapido. "
+"Una prueba acotada superada no demuestra interfaces no relacionadas ni "
+"afirmaciones cientificas."
+
+#: ../../docs/tools/tesla-workbench/operations.md:11
+#: a0a3574ea3f54dedb51e1058985a4eb0
+msgid "Troubleshooting"
+msgstr "Solucion de problemas"
+
+#: ../../docs/tools/tesla-workbench/operations.md:13
+#: 43144c7865174aeabe76bc343bbd5954
+msgid "Confirm the repository and branch."
+msgstr "Confirme el repositorio y la rama."
+
+#: ../../docs/tools/tesla-workbench/operations.md:14
+#: b7f498752bc44087a1899090c9e35e64
+msgid "Reproduce with the smallest supported input."
+msgstr "Reproduzca con la entrada compatible mas pequena."
+
+#: ../../docs/tools/tesla-workbench/operations.md:15
+#: 20b2971018b149b8a1fb1e0413c53605
+msgid "Capture the exact command and error."
+msgstr "Registre el comando y el error exactos."
+
+#: ../../docs/tools/tesla-workbench/operations.md:16
+#: 30df7222dc05439c88f9c442a462bc1b
+msgid "Check the documented runtime and lockfile."
+msgstr "Compruebe el runtime documentado y el archivo de bloqueo."
+
+#: ../../docs/tools/tesla-workbench/operations.md:17
+#: 7ba3cd18c7df4bb8989200fba77e254e
+msgid "Open an issue with secret-free evidence."
+msgstr "Abra una incidencia con evidencia sin secretos."
+
+#: ../../docs/tools/tesla-workbench/operations.md:19
+#: 8aa2836fd61044468cab2f128125bbed
+msgid "Security and privacy"
+msgstr "Seguridad y privacidad"
+
+#: ../../docs/tools/tesla-workbench/operations.md:21
+#: f9e3d0224ea449d99c044c1e427707b3
+msgid ""
+"Recovered records and resonance comparisons remain historical or "
+"computational evidence, not physical validation."
+msgstr ""
+"Los registros recuperados y las comparaciones de resonancia siguen siendo "
+"evidencia historica o computacional, no validacion fisica."
+
+#: ../../docs/tools/tesla-workbench/operations.md:23
+#: bc021c30fb204a60b27a73de83d32f04
+msgid "Contributing"
+msgstr "Contribuir"
+
+#: ../../docs/tools/tesla-workbench/operations.md:25
+#: 353ad5bfe2a04e5ea236e69c281f963e
+msgid ""
+"Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository "
+"license when present. Keep changes bounded and include the checks that "
+"justify acceptance."
+msgstr ""
+"Lea `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md` y la licencia del "
+"repositorio cuando existan. Mantenga los cambios acotados e incluya las "
+"comprobaciones que justifican su aceptacion."
+
+#: ../../docs/tools/tesla-workbench/operations.md:27
+#: 63533792ce8b44bab2685b9b63d017bc
+msgid "Releases"
+msgstr "Versiones publicadas"
+
+#: ../../docs/tools/tesla-workbench/operations.md:29
+#: d878cec32e2047119ec9999f8b63958e
+msgid ""
+"The current public documentation describes `0.1.0` with status `local-"
+"research`. Consult the repository history and release notes for changes."
+msgstr ""
+"La documentacion publica actual describe `0.1.0` con el estado `local-"
+"research`. Consulte el historial del repositorio y las notas de version para"
+" conocer los cambios."

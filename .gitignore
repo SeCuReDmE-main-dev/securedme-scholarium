@@ -1,9 +1,12 @@
 .env
 .env.*
 !.env.example
+.venv-docs/
 node_modules/
 dist/
 build/
+.suite-sources/
+*.mo
 .next/
 coverage/
 *.log

@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-08.md:1 f8e403ff270547088cdd078862048cb4
+msgid "CP-08 - Model an algorithm visually"
+msgstr "CP-08 - Model an algorithm visually"
+
+#: ../../docs/prompts/CP-08.md:3 edaf496a24d14ff2b56e5ba081c03d78
+msgid "**Tool:** `algorithm-builder`"
+msgstr "**Tool:** `algorithm-builder`"
+
+#: ../../docs/prompts/CP-08.md:5 f71f37888af14a0c9a5be1c9a3e4b8c4
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-08.md:7 fb6a1e887afb448eb289675651164d06
+msgid "**Objective.** Model an algorithm visually"
+msgstr "**Objective.** Model an algorithm visually"
+
+#: ../../docs/prompts/CP-08.md:28 260dd894cbab40cfb0aeed69dd7f567e
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-08.md:30 f0221b1794214dba94e6114448c5daa3
+msgid "**Objectif.** Modeliser un algorithme visuellement"
+msgstr "**Objectif.** Modeliser un algorithme visuellement"
+
+#: ../../docs/prompts/CP-08.md:51 c4afe2bc359b4515ba83ade482c59744
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-08.md:53 b4e067a32eb642f58b3c9eaf7f147d06
+msgid "**Objetivo.** Modelar un algoritmo visualmente"
+msgstr "**Objetivo.** Modelar un algoritmo visualmente"

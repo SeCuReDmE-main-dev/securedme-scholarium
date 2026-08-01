@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-01.md:1 2b98a9e0d0c44fcaa3f5f44ad89eec55
+msgid "CP-01 - Choose the right entry route"
+msgstr "CP-01 - Choose the right entry route"
+
+#: ../../docs/prompts/CP-01.md:3 ebf0fa5df59a42b7a5d8418ea61f7480
+msgid "**Tool:** `scholarium`"
+msgstr "**Tool:** `scholarium`"
+
+#: ../../docs/prompts/CP-01.md:5 6c0e8a7aa30447e283137c2700ea77e2
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-01.md:7 05f8d76d4d9148bc86bb2e910adc5004
+msgid "**Objective.** Choose the right entry route"
+msgstr "**Objective.** Choose the right entry route"
+
+#: ../../docs/prompts/CP-01.md:28 001c82d57a324c18945865ca49f63088
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-01.md:30 c6899092ff5e4d66a1989439e84c91b9
+msgid "**Objectif.** Choisir la bonne porte d'entree"
+msgstr "**Objectif.** Choisir la bonne porte d'entree"
+
+#: ../../docs/prompts/CP-01.md:51 87d6606754204725bfd3ac6d47cda454
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-01.md:53 609193cb98b44fe5a87b958a040d3af2
+msgid "**Objetivo.** Elegir la ruta de entrada correcta"
+msgstr "**Objetivo.** Elegir la ruta de entrada correcta"

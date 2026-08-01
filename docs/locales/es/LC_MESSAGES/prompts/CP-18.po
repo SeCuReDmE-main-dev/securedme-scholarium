@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-18.md:1 babfb932f3ff4a488d603e46fced2bb2
+msgid "CP-18 - Audit defensive evidence"
+msgstr "CP-18 - Audit defensive evidence"
+
+#: ../../docs/prompts/CP-18.md:3 81245e84f42742e588a5ac9619694428
+msgid "**Tool:** `retailguard`"
+msgstr "**Tool:** `retailguard`"
+
+#: ../../docs/prompts/CP-18.md:5 7f8eb828c9f742389a6c59f060dbc823
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-18.md:7 f2f9c2956041460fbce551fbc5615f21
+msgid "**Objective.** Audit defensive evidence"
+msgstr "**Objective.** Audit defensive evidence"
+
+#: ../../docs/prompts/CP-18.md:28 21652d147af247b3ba7c8c2c56e9e21e
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-18.md:30 e9934526efd2488782ebfa1712b2816e
+msgid "**Objectif.** Auditer une preuve defensive"
+msgstr "**Objectif.** Auditer une preuve defensive"
+
+#: ../../docs/prompts/CP-18.md:51 c6d998e2ff8543919d5dd3260ee5416d
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-18.md:53 97de9cba0de24adf925c81bcf2059ca5
+msgid "**Objetivo.** Auditar evidencia defensiva"
+msgstr "**Objetivo.** Auditar evidencia defensiva"

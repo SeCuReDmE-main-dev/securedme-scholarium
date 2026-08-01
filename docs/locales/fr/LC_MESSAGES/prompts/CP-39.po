@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-39.md:1 4f92b6c8c99e49bf9706092a9a800cb1
+msgid "CP-39 - Prepare release evidence"
+msgstr "CP-39 - Prepare release evidence"
+
+#: ../../docs/prompts/CP-39.md:3 d67ff754bafe4b2a9ee73cd304de4330
+msgid "**Tool:** `scholarium`"
+msgstr "**Tool:** `scholarium`"
+
+#: ../../docs/prompts/CP-39.md:5 860faf4402504dd78de3fb6a37a78946
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-39.md:7 bc68a6d5ded045aca2bcbd598591e6e9
+msgid "**Objective.** Prepare release evidence"
+msgstr "**Objective.** Prepare release evidence"
+
+#: ../../docs/prompts/CP-39.md:28 4a4b33617f204cdeb1fc93b417379aa6
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-39.md:30 d4041ee5ec9f48ee8716a709af695a07
+msgid "**Objectif.** Preparer les preuves de release"
+msgstr "**Objectif.** Preparer les preuves de release"
+
+#: ../../docs/prompts/CP-39.md:51 1ce9fe6797b64f38a80734207da38e8c
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-39.md:53 acf129aabd1946739b3ab82edc6f99ac
+msgid "**Objetivo.** Preparar evidencia de lanzamiento"
+msgstr "**Objetivo.** Preparar evidencia de lanzamiento"

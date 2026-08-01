@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-07.md:1 9ff30af6f7ed4fd9b6adc0036b34c28f
+msgid "CP-07 - Review a teacher pathway"
+msgstr "CP-07 - Review a teacher pathway"
+
+#: ../../docs/prompts/CP-07.md:3 919c96c8338948339eb3717d294438b7
+msgid "**Tool:** `algoquest-qbit`"
+msgstr "**Tool:** `algoquest-qbit`"
+
+#: ../../docs/prompts/CP-07.md:5 ef3065fa89964b169a0b29e69e14c144
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-07.md:7 400705712a30408ba83f53cb3ae3596e
+msgid "**Objective.** Review a teacher pathway"
+msgstr "**Objective.** Review a teacher pathway"
+
+#: ../../docs/prompts/CP-07.md:28 c36371803b164faaab644ba3de234927
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-07.md:30 239ac933f04846899a512a119e3e8cb2
+msgid "**Objectif.** Reviser un parcours enseignant"
+msgstr "**Objectif.** Reviser un parcours enseignant"
+
+#: ../../docs/prompts/CP-07.md:51 85993166a50045419a02e1d525be67ac
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-07.md:53 258f32a6bc554932b94300267c938a77
+msgid "**Objetivo.** Revisar una ruta docente"
+msgstr "**Objetivo.** Revisar una ruta docente"

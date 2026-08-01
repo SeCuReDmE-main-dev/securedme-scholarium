@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-17.md:1 c401fb7bc0624364943e01c3ae0f67a3
+msgid "CP-17 - Build a defensive retail scenario"
+msgstr "CP-17 - Build a defensive retail scenario"
+
+#: ../../docs/prompts/CP-17.md:3 8371e1ba946b4160b22b58acb557a7b6
+msgid "**Tool:** `retailguard`"
+msgstr "**Tool:** `retailguard`"
+
+#: ../../docs/prompts/CP-17.md:5 4b76ba6b23804f55960b19d1392a13db
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-17.md:7 99c6d060f2554ab8a60857962ad8a77f
+msgid "**Objective.** Build a defensive retail scenario"
+msgstr "**Objective.** Build a defensive retail scenario"
+
+#: ../../docs/prompts/CP-17.md:28 2ef48d05301d4573b5295c25c69523bf
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-17.md:30 fcca6696e03b46a68455900bd33c2b86
+msgid "**Objectif.** Construire un scenario defensif"
+msgstr "**Objectif.** Construire un scenario defensif"
+
+#: ../../docs/prompts/CP-17.md:51 8724b5de09334b93864e2e6899d6bd27
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-17.md:53 a137da55cffc4c3eacaa5b41359ef369
+msgid "**Objetivo.** Construir un escenario defensivo"
+msgstr "**Objetivo.** Construir un escenario defensivo"

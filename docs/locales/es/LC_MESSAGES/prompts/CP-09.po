@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-09.md:1 d815b8df076f4c609a13b4025bfbf055
+msgid "CP-09 - Test a visual algorithm"
+msgstr "CP-09 - Test a visual algorithm"
+
+#: ../../docs/prompts/CP-09.md:3 c1d6428ae3bb402882ac2792cc51f616
+msgid "**Tool:** `algorithm-builder`"
+msgstr "**Tool:** `algorithm-builder`"
+
+#: ../../docs/prompts/CP-09.md:5 fa0c5376deae40f8983551a73438de53
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-09.md:7 bedc807fc6d04ca48fdd0f8ac1bf5297
+msgid "**Objective.** Test a visual algorithm"
+msgstr "**Objective.** Test a visual algorithm"
+
+#: ../../docs/prompts/CP-09.md:28 22fdda95549e4a1c8cd518ec6889356a
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-09.md:30 d3aea24922a6462abbbcde7c79fb8245
+msgid "**Objectif.** Tester un algorithme visuel"
+msgstr "**Objectif.** Tester un algorithme visuel"
+
+#: ../../docs/prompts/CP-09.md:51 a8573f16b39e41e5a11646d320c0ca4f
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-09.md:53 5ed77b8b113a477d9943d360bcbe4cb4
+msgid "**Objetivo.** Probar un algoritmo visual"
+msgstr "**Objetivo.** Probar un algoritmo visual"

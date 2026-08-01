@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/vot-guardian/index.md:1 3856b1de79e84cbeb90e0719e7799feb
+msgid "V.O.T. Guardian"
+msgstr "V.O.T. Guardian"
+
+#: ../../docs/tools/vot-guardian/index.md:8 2c1688a088964ce599c2d4189f1c5f18
+msgid ""
+"A defensive cybersecurity training surface for transparent, human-reviewed "
+"threat reasoning."
+msgstr ""
+"Una superficie defensiva de formacion en ciberseguridad para un razonamiento"
+" transparente sobre amenazas revisado por personas."
+
+#: ../../docs/tools/vot-guardian/index.md:10 aa97bbe047f942a68485f895952c2a14
+msgid "Public status"
+msgstr "Estado publico"
+
+#: ../../docs/tools/vot-guardian/index.md:12 1c6513396c244266b121908ab3adc476
+msgid "**Runtime:** `browser-app`"
+msgstr "**Ejecucion:** `browser-app`"
+
+#: ../../docs/tools/vot-guardian/index.md:13 fe9ef321ffc948ef91bdf27f14071689
+msgid "**Availability:** `verified`"
+msgstr "**Disponibilidad:** `verified`"
+
+#: ../../docs/tools/vot-guardian/index.md:14 5e26a2364c084b9381ce16aaf2bf3aaa
+msgid "**License:** `LicenseRef-SECL-2.0`"
+msgstr "**Licencia:** `LicenseRef-SECL-2.0`"
+
+#: ../../docs/tools/vot-guardian/index.md:15 6698ba2a82b24cf295bd274912685b48
+msgid "**Version:** `pre-alpha`"
+msgstr "**Version:** `pre-alpha`"
+
+#: ../../docs/tools/vot-guardian/index.md:23 c6434953545b4c50b88dd2b42d79386f
+msgid "Interfaces"
+msgstr "Interfaces"
+
+#: ../../docs/tools/vot-guardian/index.md:25 df4c5cb6f65f41e786824a0f5ccba038
+msgid "Vue defensive training UI"
+msgstr "Vue defensive training UI"
+
+#: ../../docs/tools/vot-guardian/index.md:26 f126a68eb2ec4f7dbdd71167010ca8aa
+msgid "Scenario review controls"
+msgstr "Scenario review controls"
+
+#: ../../docs/tools/vot-guardian/index.md:27 da5e50db1e8840d580654dcd761b8a19
+msgid "Explainable evidence surfaces"
+msgstr "Explainable evidence surfaces"
+
+#: ../../docs/tools/vot-guardian/index.md:30 98d01c58f0a947d88b371f3bf9990190
+msgid ""
+"V.O.T. Guardian must not be used for attack, surveillance, autonomous "
+"accusation, or unsupervised enforcement."
+msgstr ""
+"V.O.T. Guardian no debe usarse para ataques, vigilancia, acusaciones "
+"autonomas ni aplicacion no supervisada."

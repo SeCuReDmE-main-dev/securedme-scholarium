@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/fnp-qnn/architecture.md:1 1c12fb5123e944aba13d34fc840c5fda
+msgid "Architecture"
+msgstr "Architecture"
+
+#: ../../docs/tools/fnp-qnn/architecture.md:3 5faa948617b44361b8519fd71d37e045
+msgid ""
+"A Python simulator core feeds CLI, TUI, API, and optional containerized "
+"services while retaining an inspectable event trail."
+msgstr ""
+"Un noyau de simulation Python alimente CLI, TUI, API et services "
+"conteneurises optionnels tout en conservant une piste d'evenements "
+"inspectable."
+
+#: ../../docs/tools/fnp-qnn/architecture.md:5 44b36d14a25d4e17b3abe9be0d0ee4fd
+msgid "Data flow"
+msgstr "Flux de donnees"
+
+#: ../../docs/tools/fnp-qnn/architecture.md:11
+#: 7fe653828cc54af6a17215231bea7633
+msgid "Provenance"
+msgstr "Provenance"
+
+#: ../../docs/tools/fnp-qnn/architecture.md:13
+#: 1c64ca828644417da0fe7fb7b1dfa3e3
+msgid ""
+"Record the repository commit, configuration, input identifiers, execution "
+"command, output location, and validation result. A screenshot alone is not a"
+" reproducible artifact."
+msgstr ""
+"Consignez le commit du depot, la configuration, les identifiants d'entree, "
+"la commande d'execution, l'emplacement de sortie et le resultat de "
+"validation. Une capture seule n'est pas un artefact reproductible."
+
+#: ../../docs/tools/fnp-qnn/architecture.md:15
+#: ddbc76e31cb843669b836bebb8d23dd0
+msgid "Failure behavior"
+msgstr "Comportement en cas d'echec"
+
+#: ../../docs/tools/fnp-qnn/architecture.md:17
+#: 6231363e954b401aafd95351a13d3351
+msgid ""
+"Missing configuration, unavailable dependencies, invalid input, and failed "
+"tests must remain visible. The tool must not replace a failure with invented"
+" success."
+msgstr ""
+"Une configuration absente, des dependances indisponibles, une entree "
+"invalide et des tests echoues doivent rester visibles. L'outil ne doit pas "
+"remplacer un echec par un succes invente."

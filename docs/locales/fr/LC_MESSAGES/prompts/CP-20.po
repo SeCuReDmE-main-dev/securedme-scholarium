@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-20.md:1 eca298648d3e423d85c9d7e1c98a816a
+msgid "CP-20 - Review a proof route"
+msgstr "CP-20 - Review a proof route"
+
+#: ../../docs/prompts/CP-20.md:3 f29f29f99acb4790a20927b7ef4eb674
+msgid "**Tool:** `quanthor`"
+msgstr "**Tool:** `quanthor`"
+
+#: ../../docs/prompts/CP-20.md:5 85408c7d7a31447895e02677acaf6a8f
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-20.md:7 97ed946c9b7c48d8b73d480e17228ac4
+msgid "**Objective.** Review a proof route"
+msgstr "**Objective.** Review a proof route"
+
+#: ../../docs/prompts/CP-20.md:28 f8f8f4b229de487f8ec4c74e2fc202f8
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-20.md:30 a7e79b44827846eeb8ca2286d3fa14d4
+msgid "**Objectif.** Reviser une route de preuve"
+msgstr "**Objectif.** Reviser une route de preuve"
+
+#: ../../docs/prompts/CP-20.md:51 8913f3435d4d4b249c3cd0d5ca4de88f
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-20.md:53 bc6408330e6a46598ecece3fc17a5cc3
+msgid "**Objetivo.** Revisar una ruta de prueba"
+msgstr "**Objetivo.** Revisar una ruta de prueba"

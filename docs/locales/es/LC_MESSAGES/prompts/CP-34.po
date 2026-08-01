@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-34.md:1 131808bd2a984b41a10039e438a03e59
+msgid "CP-34 - Design a cross-tool workflow"
+msgstr "CP-34 - Design a cross-tool workflow"
+
+#: ../../docs/prompts/CP-34.md:3 3f363fc547ed4841a7f8a08c24fbf267
+msgid "**Tool:** `scholarium`"
+msgstr "**Tool:** `scholarium`"
+
+#: ../../docs/prompts/CP-34.md:5 1630a7dc57c942b79846cc0c8895dd94
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-34.md:7 839e3d7cbd3d408f936ba318595abbf0
+msgid "**Objective.** Design a cross-tool workflow"
+msgstr "**Objective.** Design a cross-tool workflow"
+
+#: ../../docs/prompts/CP-34.md:28 06da51a9f18f4269a3edb0dcf2112b24
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-34.md:30 7c481e8c6eab4280b3bb26ef78bd4576
+msgid "**Objectif.** Concevoir un flux multi-outils"
+msgstr "**Objectif.** Concevoir un flux multi-outils"
+
+#: ../../docs/prompts/CP-34.md:51 2b1397d170f341f693cee5881a4239cb
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-34.md:53 baa2d8b59ccf424296a5d547df34d7d0
+msgid "**Objetivo.** Disenar un flujo entre herramientas"
+msgstr "**Objetivo.** Disenar un flujo entre herramientas"

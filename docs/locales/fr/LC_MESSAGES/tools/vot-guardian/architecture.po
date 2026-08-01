@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/vot-guardian/architecture.md:1
+#: 154107b7d2854e8d8b153a3f7b9518a0
+msgid "Architecture"
+msgstr "Architecture"
+
+#: ../../docs/tools/vot-guardian/architecture.md:3
+#: 135a4e654b064834917af28c26aa7b51
+msgid ""
+"A defensive interface organizes scenario evidence, explanations, and human "
+"acceptance without autonomous enforcement."
+msgstr ""
+"Une interface defensive organise les preuves de scenario, les explications "
+"et l'acceptation humaine sans application autonome."
+
+#: ../../docs/tools/vot-guardian/architecture.md:5
+#: 34d8398db24648f0a7096157651a29be
+msgid "Data flow"
+msgstr "Flux de donnees"
+
+#: ../../docs/tools/vot-guardian/architecture.md:11
+#: 6b5abb6c2e4c498caf74661a95422661
+msgid "Provenance"
+msgstr "Provenance"
+
+#: ../../docs/tools/vot-guardian/architecture.md:13
+#: 9c522ea29d5d48f3a96b600305f6a0a0
+msgid ""
+"Record the repository commit, configuration, input identifiers, execution "
+"command, output location, and validation result. A screenshot alone is not a"
+" reproducible artifact."
+msgstr ""
+"Consignez le commit du depot, la configuration, les identifiants d'entree, "
+"la commande d'execution, l'emplacement de sortie et le resultat de "
+"validation. Une capture seule n'est pas un artefact reproductible."
+
+#: ../../docs/tools/vot-guardian/architecture.md:15
+#: 5858c2deb4584fefad14008fe8968de4
+msgid "Failure behavior"
+msgstr "Comportement en cas d'echec"
+
+#: ../../docs/tools/vot-guardian/architecture.md:17
+#: 1b3ab142fe8947b2a8524b8493dbfd3d
+msgid ""
+"Missing configuration, unavailable dependencies, invalid input, and failed "
+"tests must remain visible. The tool must not replace a failure with invented"
+" success."
+msgstr ""
+"Une configuration absente, des dependances indisponibles, une entree "
+"invalide et des tests echoues doivent rester visibles. L'outil ne doit pas "
+"remplacer un echec par un succes invente."

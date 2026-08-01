@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-33.md:1 ee6ce2a5faa847e498bd1b5c520e2ae8
+msgid "CP-33 - Validate a visual workflow"
+msgstr "CP-33 - Validate a visual workflow"
+
+#: ../../docs/prompts/CP-33.md:3 099ece1d2cf04fb88658d3e88c214023
+msgid "**Tool:** `visual-algorithm-designer`"
+msgstr "**Tool:** `visual-algorithm-designer`"
+
+#: ../../docs/prompts/CP-33.md:5 7afdaa0d266042eebebd06b0ad73a9b2
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-33.md:7 46d0dae8acbd48b39b5e42ac4f74ed12
+msgid "**Objective.** Validate a visual workflow"
+msgstr "**Objective.** Validate a visual workflow"
+
+#: ../../docs/prompts/CP-33.md:28 14ee423213a24bc7bd681bee1b680b63
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-33.md:30 93fa311c2f304f5d9221477275f5fddf
+msgid "**Objectif.** Valider un flux visuel"
+msgstr "**Objectif.** Valider un flux visuel"
+
+#: ../../docs/prompts/CP-33.md:51 ac092798aae7464ab9e8ada2bfcafc54
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-33.md:53 4075d29fae7c43a7ae57b6fea7717021
+msgid "**Objetivo.** Validar un flujo visual"
+msgstr "**Objetivo.** Validar un flujo visual"

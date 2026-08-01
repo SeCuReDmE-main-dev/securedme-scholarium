@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-24.md:1 bb1ec7ed17194d37ad555317eb3a28a7
+msgid "CP-24 - Create a candidate memory"
+msgstr "CP-24 - Create a candidate memory"
+
+#: ../../docs/prompts/CP-24.md:3 e87de92d85f9414b9762e69ed4bd909a
+msgid "**Tool:** `synthia`"
+msgstr "**Tool:** `synthia`"
+
+#: ../../docs/prompts/CP-24.md:5 ddc825ef5cae461785691c3c8aa15c3d
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-24.md:7 1e4a354a817b4c8b8d3340cd3c8745d9
+msgid "**Objective.** Create a candidate memory"
+msgstr "**Objective.** Create a candidate memory"
+
+#: ../../docs/prompts/CP-24.md:28 706e7463ce124fed99a5cf9ef4a246a4
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-24.md:30 70f18bdfd7af4aec9d9c326a02489f2f
+msgid "**Objectif.** Creer une memoire candidate"
+msgstr "**Objectif.** Creer une memoire candidate"
+
+#: ../../docs/prompts/CP-24.md:51 f1f61cca8d034e5f9754e9c70e30dacd
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-24.md:53 3236a56fe623422e98a8663c5445b6ce
+msgid "**Objetivo.** Crear una memoria candidata"
+msgstr "**Objetivo.** Crear una memoria candidata"

@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:1
+#: aac4b3b5986f4c8384184ee1d14e7d09
+msgid "Interfaces"
+msgstr "Interfaces"
+
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:3
+#: 9e736982248c43178958b27f11462bd8
+msgid ""
+"**fnpqnn-gateway CLI:** use only through the documented repository route."
+msgstr ""
+"**fnpqnn-gateway CLI:** usar solo mediante la ruta documentada del "
+"repositorio."
+
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:4
+#: c4b0e604c3954803924c2fffbe19f273
+msgid "**MCP server:** use only through the documented repository route."
+msgstr ""
+"**MCP server:** usar solo mediante la ruta documentada del repositorio."
+
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:5
+#: a47b5b06813842db850151e6825be15c
+msgid ""
+"**Typed adapter boundary:** use only through the documented repository "
+"route."
+msgstr ""
+"**Typed adapter boundary:** usar solo mediante la ruta documentada del "
+"repositorio."
+
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:7
+#: 5a161fd3618b4e2da2dd1a5ec3684150
+msgid "Interface contract"
+msgstr "Contrato de interfaz"
+
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:9
+#: ff6e6adc2307445ca810fbac7e717d15
+msgid ""
+"Inputs must be explicit, outputs must be inspectable, errors must be "
+"returned as errors, and consequential external actions require human "
+"approval."
+msgstr ""
+"Las entradas deben ser explicitas, las salidas inspeccionables, los errores "
+"devueltos como errores y las acciones externas importantes requieren "
+"aprobacion humana."
+
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:11
+#: 26e43f94b2c04fb9b71c58a5b543aab4
+msgid "Compatibility"
+msgstr "Compatibilidad"
+
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:13
+#: edf06d8a9f0448ebbf019365ff34dcb8
+msgid ""
+"Treat undocumented endpoints, commands, and browser controls as unsupported."
+" Confirm the current repository version before integrating another system."
+msgstr ""
+"Considere no compatibles los endpoints, comandos y controles del navegador "
+"no documentados. Confirme la version actual del repositorio antes de "
+"integrar otro sistema."

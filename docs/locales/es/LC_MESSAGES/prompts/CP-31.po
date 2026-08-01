@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-31.md:1 3cff5e96a6334698b1cfb05ba48da19c
+msgid "CP-31 - Draft an algorithm canvas"
+msgstr "CP-31 - Draft an algorithm canvas"
+
+#: ../../docs/prompts/CP-31.md:3 ca0b7e2f1fc84efe8c8ccddfc265afb3
+msgid "**Tool:** `visual-algorithm-designer`"
+msgstr "**Tool:** `visual-algorithm-designer`"
+
+#: ../../docs/prompts/CP-31.md:5 fc8675ffa56a4092a75e266ce1c79488
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-31.md:7 4cb605b50a2c42868a5ba6a24cb6dfc4
+msgid "**Objective.** Draft an algorithm canvas"
+msgstr "**Objective.** Draft an algorithm canvas"
+
+#: ../../docs/prompts/CP-31.md:28 9d960eff718b4cdfa90df80e50f083d2
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-31.md:30 8087f420410e42a59ec109fc59fffc15
+msgid "**Objectif.** Ebaucher un canevas algorithmique"
+msgstr "**Objectif.** Ebaucher un canevas algorithmique"
+
+#: ../../docs/prompts/CP-31.md:51 e350d7894ba447d1b887d5853ff50acd
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-31.md:53 edb2c22332124eb799a05e384417831e
+msgid "**Objetivo.** Bosquejar un lienzo algoritmico"
+msgstr "**Objetivo.** Bosquejar un lienzo algoritmico"

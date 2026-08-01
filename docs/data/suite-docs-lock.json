@@ -1,0 +1,371 @@
+{
+  "schema": "securedme.suite-docs-lock.v2",
+  "canonical_url": "https://docs.securedme.ca",
+  "catalog_url": "https://securedme.ca/product/education/",
+  "tools": [
+    {
+      "slug": "algoquest-qbit",
+      "repository": "algoquest-ams-discovry-labs-module-",
+      "requested_ref": "609fa9a60750fedd90dade662066ff23946688e7",
+      "resolved_commit": "609fa9a60750fedd90dade662066ff23946688e7",
+      "contract_sha256": "ceda5cccb82bbe7947477bf0b5670f4b0910be52e3276799b453f50d822f620f",
+      "logo": "_static/tools/algoquest-qbit/logo.png",
+      "files": [
+        {
+          "path": "architecture.md",
+          "sha256": "e1830ba666952df18fe6accd233f6ad407c97526e6791c2931448f8ea082f796"
+        },
+        {
+          "path": "index.md",
+          "sha256": "db5d24bba23ecbea7eba182f3601dcb71969c45f49353320fe44673df199ec49"
+        },
+        {
+          "path": "interfaces.md",
+          "sha256": "a8f43c9d6526cea42251cd6c65a9b9bc1a887e2f1c1708829985760ee8a61c98"
+        },
+        {
+          "path": "operations.md",
+          "sha256": "7db9e8f08dd14369f8dd85be9c0f26842569f8635345389471867ec5914e8907"
+        },
+        {
+          "path": "quickstart.md",
+          "sha256": "7b34f22b3f0dc9cbff0a217907f8dd853cde957b87be0b7d38539368d1bdb156"
+        }
+      ]
+    },
+    {
+      "slug": "algorithm-builder",
+      "repository": "algorithm-builder-app",
+      "requested_ref": "d7ba9de72c2e45d1f27ded1c365cfd223e18bba7",
+      "resolved_commit": "d7ba9de72c2e45d1f27ded1c365cfd223e18bba7",
+      "contract_sha256": "326b68b60d819617be2cd2359f6955d83c2708704dc566c9c160b6fc12183ef8",
+      "logo": "_static/tools/algorithm-builder/logo.png",
+      "files": [
+        {
+          "path": "architecture.md",
+          "sha256": "7125b53d2ebe88603d6d59ffa60053d6b74d2997777cd3bef753afc48bfe9aae"
+        },
+        {
+          "path": "index.md",
+          "sha256": "ce267419ccc95740b7e16d83ce54da094af83582148dcf35f5baee5dc8c032ea"
+        },
+        {
+          "path": "interfaces.md",
+          "sha256": "8ba5f26ff27825f35ba7b02854fdbf1ca14b9948f4bbf124646a36357824391a"
+        },
+        {
+          "path": "operations.md",
+          "sha256": "308fe19362677951b0337c556ee376487704b953830ba9f151a036665a411e04"
+        },
+        {
+          "path": "quickstart.md",
+          "sha256": "ca89d09fbe9569f5f00089dee6c7a292ab7a4a86e183b3c52fa1a8ce251d2773"
+        }
+      ]
+    },
+    {
+      "slug": "ffed-qlc",
+      "repository": "FfeD-QLC-MVP",
+      "requested_ref": "1037666d063a85fe7932897beaf1b90acb3ba3dd",
+      "resolved_commit": "1037666d063a85fe7932897beaf1b90acb3ba3dd",
+      "contract_sha256": "9dc7c9dea8b95cee4ae62f1cef3c155ca1a79fe8d0c895d5c914ed9faf2c7dcb",
+      "logo": "_static/tools/ffed-qlc/logo.png",
+      "files": [
+        {
+          "path": "architecture.md",
+          "sha256": "6ef423a1f1e3985dd05d609b387a2d6bef00551ee115101bfe19e55517829595"
+        },
+        {
+          "path": "index.md",
+          "sha256": "919d2c649f385c1d59089469d6ab1498725d2f8531ace2dda21a652e79d2a0e0"
+        },
+        {
+          "path": "interfaces.md",
+          "sha256": "631962d4c77bb732dd40651d23a8a00f3617f2e8fbeacbcd39025111060843f4"
+        },
+        {
+          "path": "operations.md",
+          "sha256": "568ed9735108ae3a2d3b5f9847693ce0ac0d310fb73c11d7379ae68e4b306a51"
+        },
+        {
+          "path": "quickstart.md",
+          "sha256": "8fcb73c032b6cf0ca144e88db16f03cee2d1f0fb57379e537b937c7d446f41af"
+        }
+      ]
+    },
+    {
+      "slug": "fnp-qnn",
+      "repository": "FNP-QNN-MVP",
+      "requested_ref": "b7b5932c94abd48118d1dd7587818bcb56e72804",
+      "resolved_commit": "b7b5932c94abd48118d1dd7587818bcb56e72804",
+      "contract_sha256": "2bc99c1908ef8fb1d5b34b0ca6db026b149ea104134c8d09f744774263ced188",
+      "logo": "_static/tools/fnp-qnn/logo.png",
+      "files": [
+        {
+          "path": "architecture.md",
+          "sha256": "cb75044fd26a768f5ea5435759e890d080539e58357854a5f2b259c2e027ef62"
+        },
+        {
+          "path": "index.md",
+          "sha256": "9ae38a1e0eebe9b78f14883fd98a5f0ee0e6a8ebde5f9208ce9344b02dd71942"
+        },
+        {
+          "path": "interfaces.md",
+          "sha256": "ef8524d2f5b336078a05522ca356524650cda3342dcc5193661cbfcb674b1652"
+        },
+        {
+          "path": "operations.md",
+          "sha256": "9420a3eb238022caa0668f723ad61da2824cd2d64b5e595d46b81712b5301ee4"
+        },
+        {
+          "path": "quickstart.md",
+          "sha256": "2b6fe1d16f6385cecf085d5a149816641bd1baa8f0cc53f40bf0a58322ad2c51"
+        }
+      ]
+    },
+    {
+      "slug": "fnpqnn-gateway",
+      "repository": "fnpqnn_gateway_MVP",
+      "requested_ref": "1cd49c4999d2878742377ed794a08659b0aeb2e2",
+      "resolved_commit": "1cd49c4999d2878742377ed794a08659b0aeb2e2",
+      "contract_sha256": "8910091e1d6f16c26a604e2a2ae84155d17e227e735ca3a82e8e1b0b8e113396",
+      "logo": "_static/tools/fnpqnn-gateway/logo.png",
+      "files": [
+        {
+          "path": "architecture.md",
+          "sha256": "3b0a87fb32288222576c90214a05e29daff58af0330dd64a27dee16f7320929f"
+        },
+        {
+          "path": "assets/fnp-qnn-gateway-logo.png",
+          "sha256": "9f2dd4ff61ff90ca9ce4d9e8756debc1f4241d13645f2508f9817a3cb4339126"
+        },
+        {
+          "path": "index.md",
+          "sha256": "418db0d0f35e4a283cdea1c21599576ce27cc21dbaec279256cccb8c05fca152"
+        },
+        {
+          "path": "interfaces.md",
+          "sha256": "e47cddbf0289e86af0749e5760571bbe771eb4351790526d0537e6781c0e7f80"
+        },
+        {
+          "path": "operations.md",
+          "sha256": "e88bfdb4d550971ee48a202ac68e039442846092c6f23d8bf814291913ce0fd6"
+        },
+        {
+          "path": "quickstart.md",
+          "sha256": "bfebc1f9cca03eced483148309584184e4debc20b6645e65749370426a7a8d1c"
+        }
+      ]
+    },
+    {
+      "slug": "retailguard",
+      "repository": "market-guardian-retailguard",
+      "requested_ref": "763cd55739f4dec7e5517d47c73ccc36940e33e6",
+      "resolved_commit": "763cd55739f4dec7e5517d47c73ccc36940e33e6",
+      "contract_sha256": "e27394bebb18392d03b7f60713f53041e60815ef2c6b8649669a82c7f7262766",
+      "logo": "_static/tools/retailguard/logo.png",
+      "files": [
+        {
+          "path": "architecture.md",
+          "sha256": "97d89dd75e9b9a67aca2346feba225e072a7fc7b67f3181410e4c1bb419d2797"
+        },
+        {
+          "path": "index.md",
+          "sha256": "eb52a494f6564a6fac00d9b7a12817c7af95c900abea02781a7ffd675c21ee19"
+        },
+        {
+          "path": "interfaces.md",
+          "sha256": "7aa055ecf56e7eb425ccd9290a0b1b2e431b900538deae2c2f8cccfad14de80a"
+        },
+        {
+          "path": "operations.md",
+          "sha256": "e821b10951b03f1e6f20653011ad5d4632c1efff5267a3c1b742f0910975c04d"
+        },
+        {
+          "path": "quickstart.md",
+          "sha256": "693dec9396b6b67e33ef51b96b61540178468a641904d25cecc6d9480e65ec4c"
+        }
+      ]
+    },
+    {
+      "slug": "quanthor",
+      "repository": "QuaNThoR",
+      "requested_ref": "cda80297132f40c116314fe87874f7a463b2c92d",
+      "resolved_commit": "cda80297132f40c116314fe87874f7a463b2c92d",
+      "contract_sha256": "98515f4f971af48e3b0aa9d02494ae601bc1b4081f563c70689d64baa1d7ed62",
+      "logo": "_static/tools/quanthor/logo.png",
+      "files": [
+        {
+          "path": "architecture.md",
+          "sha256": "23f576260c57b2066f286372cc5118d3022dbcd27522cd4f7171b019ff7a6f13"
+        },
+        {
+          "path": "index.md",
+          "sha256": "5ecbaa5861834abf49023c94f822933072efc7f763af1549e1b30a06177eeba3"
+        },
+        {
+          "path": "interfaces.md",
+          "sha256": "59ea40010faf105d3bbe262ddb0a5acf991dd31171c28914037dcc806f8c663c"
+        },
+        {
+          "path": "operations.md",
+          "sha256": "5a9b838e17569dbf8ab4800bf8a55a2438d2de4ff82c6f08650075578ab9ed4e"
+        },
+        {
+          "path": "quickstart.md",
+          "sha256": "48d2b74ce7c3cbe53c3cb833faf91b70269eed1feb2deb0d75edb0ce37ea76a8"
+        }
+      ]
+    },
+    {
+      "slug": "scholarium",
+      "repository": "securedme-scholarium",
+      "requested_ref": "1ccaab5c906286727a1c0553a8faf4b3aa8f6b73",
+      "resolved_commit": "a9b46fc1262c2d4b36b98ae3bf7ad0e56ab31e25",
+      "contract_sha256": "b77b9e39197611fc673bea1e6ce398af41b424d260cdc764e9ff0a8d139353e5",
+      "logo": "_static/tools/scholarium/logo.webp",
+      "files": [
+        {
+          "path": "architecture.md",
+          "sha256": "a60983ef531ac0211f7fdeb86eb4d3c1ab08694a6dabd9725f0a9b88621dfc7f"
+        },
+        {
+          "path": "index.md",
+          "sha256": "39e033ed2958632d31eb4c0eb5cac9e928f24bfdda51414d99b28c06e28c8412"
+        },
+        {
+          "path": "interfaces.md",
+          "sha256": "60f9bab8e600063924cb511346fc236bdbd8f479f2793b7006dd8a00599c9b73"
+        },
+        {
+          "path": "operations.md",
+          "sha256": "6b06212f53282409b3ef130ad95032f4dc91d6942386f82f1a167e41de5e9cd9"
+        },
+        {
+          "path": "quickstart.md",
+          "sha256": "707e7cab47cc148f671242b3c4430e666e51394601c91a14bcf7a21b984bf06d"
+        }
+      ]
+    },
+    {
+      "slug": "synthia",
+      "repository": "Synthia",
+      "requested_ref": "495ac98cdeda5d7d78b5f513705bcf871ea17218",
+      "resolved_commit": "495ac98cdeda5d7d78b5f513705bcf871ea17218",
+      "contract_sha256": "acc1080906896dfbb382ab3de015d5430ccd574c823429237a2df86d9c0f39a1",
+      "logo": "_static/tools/synthia/logo.png",
+      "files": [
+        {
+          "path": "architecture.md",
+          "sha256": "6f57cd606c4e987528aa7dedcfdee7ef6b905c697e1dd26861c8a06a6a4c337a"
+        },
+        {
+          "path": "index.md",
+          "sha256": "d74df4e5f3f43635224115f8884c33b954621a49d603dcdf82a667f3d44d4ae2"
+        },
+        {
+          "path": "interfaces.md",
+          "sha256": "108b686a908b1ed0bcbfa63930358f77569de449c7e260be471f367add9167a9"
+        },
+        {
+          "path": "operations.md",
+          "sha256": "bf6311871806268803ce0015f067d9bd771ee6ccbcb08a3c82e1fae9e5055e67"
+        },
+        {
+          "path": "quickstart.md",
+          "sha256": "b64a26ae0dc7277f1d8c4d2a307e4c225480c968719b90816beb328a6ac77517"
+        }
+      ]
+    },
+    {
+      "slug": "tesla-workbench",
+      "repository": "tesla-resonance-recovery-workbench",
+      "requested_ref": "33d0324708182bc1fff0f326d6e689f9405638a5",
+      "resolved_commit": "33d0324708182bc1fff0f326d6e689f9405638a5",
+      "contract_sha256": "88ec1d547676af66a8c49b37a89689d824ac8c780d83d126215841722863ec41",
+      "logo": "_static/tools/tesla-workbench/logo.png",
+      "files": [
+        {
+          "path": "architecture.md",
+          "sha256": "17e275f2fff98bdebb980ef5af3d3d5b129118fb40dd232137b20d29d6d27128"
+        },
+        {
+          "path": "index.md",
+          "sha256": "77f0b149b1894a0f8f0d373b9bc60641e3f9702c67094f92a65da1bb65062a6d"
+        },
+        {
+          "path": "interfaces.md",
+          "sha256": "f619d018a4035a1c4a5af6b64cf42397db0dede6372838401306985dcbe76943"
+        },
+        {
+          "path": "operations.md",
+          "sha256": "de837153f242ef992a9baf086b6d97fc1dd884ff5f950ac8901c370646b953c6"
+        },
+        {
+          "path": "quickstart.md",
+          "sha256": "a583868594a70887cc6e69865c5ea47ea8db83a0aca9ba8f3baac5e55e0822e3"
+        }
+      ]
+    },
+    {
+      "slug": "vot-guardian",
+      "repository": "V.O.T-Guardian",
+      "requested_ref": "15e44ab83808485b923955030841f46115a2dce1",
+      "resolved_commit": "15e44ab83808485b923955030841f46115a2dce1",
+      "contract_sha256": "592ae8d46dd10168c98b1dacdc1846fbf34a86a8628b60f266605afb345f68a7",
+      "logo": "_static/tools/vot-guardian/logo.png",
+      "files": [
+        {
+          "path": "architecture.md",
+          "sha256": "a62296381cfe34233d09934798d9839e31ef96d030687bc9e4a39d05b7c49620"
+        },
+        {
+          "path": "index.md",
+          "sha256": "dc6faeba2118ac0f0f430d23613fd352373028f2bf54654856093ee50b4e9e9d"
+        },
+        {
+          "path": "interfaces.md",
+          "sha256": "0ff6ef366d9a57bbf0a361eba76478eab29c5e9a4aa425763951c4d0bd7fef2c"
+        },
+        {
+          "path": "operations.md",
+          "sha256": "fe63d0faa552f6a63846477662a1171c26fd39a551a630dfc8f2dacf5b71fcff"
+        },
+        {
+          "path": "quickstart.md",
+          "sha256": "b312c488a44885785a6666961f59c3973ccfa806f8f99d4f80a8e140809ace37"
+        }
+      ]
+    },
+    {
+      "slug": "visual-algorithm-designer",
+      "repository": "VisualAlgorithmDesigner",
+      "requested_ref": "368ec6217c9ec3a9edaa4575e05c2e4f779b8ae9",
+      "resolved_commit": "368ec6217c9ec3a9edaa4575e05c2e4f779b8ae9",
+      "contract_sha256": "9552f36973fa02bb85ac0bd2e80eca4c2c453a859e553713c7067681e295120d",
+      "logo": "_static/tools/visual-algorithm-designer/logo.png",
+      "files": [
+        {
+          "path": "architecture.md",
+          "sha256": "60075961aab374f8027bc69a9922e17d17e1c6a411f0fa0f8e02a0a0e72e5cf3"
+        },
+        {
+          "path": "index.md",
+          "sha256": "e62b93e465806ec2939e5591e72fab059361290bcdc0b9fe63093b86496b98b7"
+        },
+        {
+          "path": "interfaces.md",
+          "sha256": "d34756145617d3a4d60a4f693e994d69b1a9988ea7fc2d0cc9a68cd69148b302"
+        },
+        {
+          "path": "operations.md",
+          "sha256": "68926207a73e6e8364fcad104557d390f97e324a30b9e887509a5f9d8a3c27bb"
+        },
+        {
+          "path": "quickstart.md",
+          "sha256": "2cdb496db5ef6eea22a12c5b13559f31805be0827e957dbd4160fa91f5b9c127"
+        }
+      ]
+    }
+  ]
+}

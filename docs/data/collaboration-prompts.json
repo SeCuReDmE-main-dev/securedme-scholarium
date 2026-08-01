@@ -1,0 +1,725 @@
+{
+  "schema": "securedme.collaboration-prompts.v2",
+  "prompts": [
+    {
+      "id": "CP-01",
+      "tool": "scholarium",
+      "title": {
+        "en": "Choose the right entry route",
+        "fr": "Choisir la bonne porte d'entree",
+        "es": "Elegir la ruta de entrada correcta"
+      },
+      "expected_result": {
+        "en": "A tool choice, rejected alternatives, and the next verifiable action.",
+        "fr": "Un choix d'outil, les options rejetees et la prochaine action verifiable.",
+        "es": "Una herramienta elegida, alternativas rechazadas y la proxima accion verificable."
+      },
+      "role": "operator",
+      "difficulty": "foundation",
+      "task_type": "planning",
+      "result_type": "plan"
+    },
+    {
+      "id": "CP-02",
+      "tool": "scholarium",
+      "title": {
+        "en": "Inspect a tool contract",
+        "fr": "Inspecter le contrat d'un outil",
+        "es": "Inspeccionar el contrato de una herramienta"
+      },
+      "expected_result": {
+        "en": "A contract summary linked to exact repository fields.",
+        "fr": "Un resume relie aux champs exacts du depot.",
+        "es": "Un resumen vinculado a los campos exactos del repositorio."
+      },
+      "role": "reviewer",
+      "difficulty": "intermediate",
+      "task_type": "audit",
+      "result_type": "contract"
+    },
+    {
+      "id": "CP-03",
+      "tool": "scholarium",
+      "title": {
+        "en": "Reproduce repository state",
+        "fr": "Reproduire l'etat du depot",
+        "es": "Reproducir el estado del repositorio"
+      },
+      "expected_result": {
+        "en": "A replayable state receipt with no secret values.",
+        "fr": "Un recu d'etat rejouable sans valeur secrete.",
+        "es": "Un recibo de estado reproducible sin valores secretos."
+      },
+      "role": "security-operator",
+      "difficulty": "advanced",
+      "task_type": "operation",
+      "result_type": "manifest"
+    },
+    {
+      "id": "CP-04",
+      "tool": "scholarium",
+      "title": {
+        "en": "Plan one bounded change",
+        "fr": "Planifier un changement borne",
+        "es": "Planificar un cambio acotado"
+      },
+      "expected_result": {
+        "en": "A decision-complete plan that does not execute the change.",
+        "fr": "Un plan complet qui n'execute pas le changement.",
+        "es": "Un plan completo que no ejecuta el cambio."
+      },
+      "role": "operator",
+      "difficulty": "intermediate",
+      "task_type": "planning",
+      "result_type": "plan"
+    },
+    {
+      "id": "CP-05",
+      "tool": "scholarium",
+      "title": {
+        "en": "Audit a public route",
+        "fr": "Auditer une route publique",
+        "es": "Auditar una ruta publica"
+      },
+      "expected_result": {
+        "en": "A pass/fail route report with screenshots or response evidence.",
+        "fr": "Un rapport route reussie/echouee avec preuves.",
+        "es": "Un informe de ruta aprobada/fallida con evidencias."
+      },
+      "role": "reviewer",
+      "difficulty": "intermediate",
+      "task_type": "audit",
+      "result_type": "report"
+    },
+    {
+      "id": "CP-06",
+      "tool": "algoquest-qbit",
+      "title": {
+        "en": "Design a bounded learner challenge",
+        "fr": "Concevoir un defi eleve borne",
+        "es": "Disenar un desafio estudiantil acotado"
+      },
+      "expected_result": {
+        "en": "A challenge specification and acceptance rubric.",
+        "fr": "Une specification de defi et une grille d'acceptation.",
+        "es": "Una especificacion de desafio y rubrica de aceptacion."
+      },
+      "role": "educator",
+      "difficulty": "intermediate",
+      "task_type": "design",
+      "result_type": "contract"
+    },
+    {
+      "id": "CP-07",
+      "tool": "algoquest-qbit",
+      "title": {
+        "en": "Review a teacher pathway",
+        "fr": "Reviser un parcours enseignant",
+        "es": "Revisar una ruta docente"
+      },
+      "expected_result": {
+        "en": "A revised pathway with explicit teacher decisions.",
+        "fr": "Un parcours revise avec decisions enseignantes explicites.",
+        "es": "Una ruta revisada con decisiones docentes explicitas."
+      },
+      "role": "educator",
+      "difficulty": "intermediate",
+      "task_type": "audit",
+      "result_type": "report"
+    },
+    {
+      "id": "CP-08",
+      "tool": "algorithm-builder",
+      "title": {
+        "en": "Model an algorithm visually",
+        "fr": "Modeliser un algorithme visuellement",
+        "es": "Modelar un algoritmo visualmente"
+      },
+      "expected_result": {
+        "en": "A graph specification and unresolved assumptions.",
+        "fr": "Une specification de graphe et hypotheses non resolues.",
+        "es": "Una especificacion de grafo y supuestos no resueltos."
+      },
+      "role": "developer",
+      "difficulty": "intermediate",
+      "task_type": "design",
+      "result_type": "contract"
+    },
+    {
+      "id": "CP-09",
+      "tool": "algorithm-builder",
+      "title": {
+        "en": "Test a visual algorithm",
+        "fr": "Tester un algorithme visuel",
+        "es": "Probar un algoritmo visual"
+      },
+      "expected_result": {
+        "en": "A test matrix tied to graph nodes and transitions.",
+        "fr": "Une matrice de tests reliee aux noeuds et transitions.",
+        "es": "Una matriz de pruebas vinculada a nodos y transiciones."
+      },
+      "role": "reviewer",
+      "difficulty": "intermediate",
+      "task_type": "validation",
+      "result_type": "diagram"
+    },
+    {
+      "id": "CP-10",
+      "tool": "ffed-qlc",
+      "title": {
+        "en": "Evaluate candidate admissibility",
+        "fr": "Evaluer l'admissibilite d'un candidat",
+        "es": "Evaluar la admisibilidad de un candidato"
+      },
+      "expected_result": {
+        "en": "An admitted, suspended, or rejected trace with reasons.",
+        "fr": "Une trace admise, suspendue ou rejetee avec raisons.",
+        "es": "Una traza admitida, suspendida o rechazada con razones."
+      },
+      "role": "operator",
+      "difficulty": "intermediate",
+      "task_type": "validation",
+      "result_type": "trace"
+    },
+    {
+      "id": "CP-11",
+      "tool": "ffed-qlc",
+      "title": {
+        "en": "Preserve a contradiction",
+        "fr": "Preserver une contradiction",
+        "es": "Preservar una contradiccion"
+      },
+      "expected_result": {
+        "en": "A contradiction record that avoids forced consensus.",
+        "fr": "Un registre de contradiction sans consensus force.",
+        "es": "Un registro de contradiccion sin consenso forzado."
+      },
+      "role": "operator",
+      "difficulty": "intermediate",
+      "task_type": "documentation",
+      "result_type": "record"
+    },
+    {
+      "id": "CP-12",
+      "tool": "fnp-qnn",
+      "title": {
+        "en": "Define a simulator run",
+        "fr": "Definir une execution du simulateur",
+        "es": "Definir una ejecucion del simulador"
+      },
+      "expected_result": {
+        "en": "A frozen run manifest ready for human approval.",
+        "fr": "Un manifeste gele pret pour approbation humaine.",
+        "es": "Un manifiesto congelado listo para aprobacion humana."
+      },
+      "role": "operator",
+      "difficulty": "foundation",
+      "task_type": "operation",
+      "result_type": "manifest"
+    },
+    {
+      "id": "CP-13",
+      "tool": "fnp-qnn",
+      "title": {
+        "en": "Compare two simulator runs",
+        "fr": "Comparer deux executions",
+        "es": "Comparar dos ejecuciones"
+      },
+      "expected_result": {
+        "en": "A difference table with reproducibility metadata.",
+        "fr": "Un tableau de differences avec metadonnees de reproduction.",
+        "es": "Una tabla de diferencias con metadatos de reproduccion."
+      },
+      "role": "reviewer",
+      "difficulty": "intermediate",
+      "task_type": "validation",
+      "result_type": "record"
+    },
+    {
+      "id": "CP-14",
+      "tool": "fnp-qnn",
+      "title": {
+        "en": "Inspect the TUI workflow",
+        "fr": "Inspecter le flux TUI",
+        "es": "Inspeccionar el flujo TUI"
+      },
+      "expected_result": {
+        "en": "A keyboard and state-transition QA report.",
+        "fr": "Un rapport QA clavier et transitions d'etat.",
+        "es": "Un informe QA de teclado y transiciones de estado."
+      },
+      "role": "reviewer",
+      "difficulty": "intermediate",
+      "task_type": "audit",
+      "result_type": "report"
+    },
+    {
+      "id": "CP-15",
+      "tool": "fnpqnn-gateway",
+      "title": {
+        "en": "Validate a gateway command",
+        "fr": "Valider une commande gateway",
+        "es": "Validar un comando gateway"
+      },
+      "expected_result": {
+        "en": "A command contract with one positive and one negative case.",
+        "fr": "Un contrat de commande avec un cas positif et negatif.",
+        "es": "Un contrato de comando con un caso positivo y uno negativo."
+      },
+      "role": "developer",
+      "difficulty": "intermediate",
+      "task_type": "validation",
+      "result_type": "contract"
+    },
+    {
+      "id": "CP-16",
+      "tool": "fnpqnn-gateway",
+      "title": {
+        "en": "Review an MCP boundary",
+        "fr": "Reviser une frontiere MCP",
+        "es": "Revisar una frontera MCP"
+      },
+      "expected_result": {
+        "en": "An MCP capability and risk register.",
+        "fr": "Un registre de capacites et risques MCP.",
+        "es": "Un registro de capacidades y riesgos MCP."
+      },
+      "role": "reviewer",
+      "difficulty": "advanced",
+      "task_type": "audit",
+      "result_type": "report"
+    },
+    {
+      "id": "CP-17",
+      "tool": "retailguard",
+      "title": {
+        "en": "Build a defensive retail scenario",
+        "fr": "Construire un scenario defensif",
+        "es": "Construir un escenario defensivo"
+      },
+      "expected_result": {
+        "en": "A supervised scenario, safeguards, and debrief questions.",
+        "fr": "Un scenario supervise, protections et questions de retour.",
+        "es": "Un escenario supervisado, protecciones y preguntas de revision."
+      },
+      "role": "security-operator",
+      "difficulty": "intermediate",
+      "task_type": "operation",
+      "result_type": "artifact"
+    },
+    {
+      "id": "CP-18",
+      "tool": "retailguard",
+      "title": {
+        "en": "Audit defensive evidence",
+        "fr": "Auditer une preuve defensive",
+        "es": "Auditar evidencia defensiva"
+      },
+      "expected_result": {
+        "en": "An evidence table that does not accuse a person.",
+        "fr": "Un tableau de preuve sans accusation de personne.",
+        "es": "Una tabla de evidencia sin acusar a una persona."
+      },
+      "role": "security-operator",
+      "difficulty": "intermediate",
+      "task_type": "audit",
+      "result_type": "record"
+    },
+    {
+      "id": "CP-19",
+      "tool": "quanthor",
+      "title": {
+        "en": "Formalize an informal claim",
+        "fr": "Formaliser une affirmation",
+        "es": "Formalizar una afirmacion"
+      },
+      "expected_result": {
+        "en": "A draft formal statement with unresolved terms.",
+        "fr": "Un enonce formel provisoire avec termes non resolus.",
+        "es": "Un enunciado formal provisional con terminos no resueltos."
+      },
+      "role": "researcher",
+      "difficulty": "intermediate",
+      "task_type": "design",
+      "result_type": "artifact"
+    },
+    {
+      "id": "CP-20",
+      "tool": "quanthor",
+      "title": {
+        "en": "Review a proof route",
+        "fr": "Reviser une route de preuve",
+        "es": "Revisar una ruta de prueba"
+      },
+      "expected_result": {
+        "en": "A proof-obligation ledger, not a theorem claim.",
+        "fr": "Un registre d'obligations, pas une affirmation de theoreme.",
+        "es": "Un registro de obligaciones, no una afirmacion de teorema."
+      },
+      "role": "researcher",
+      "difficulty": "advanced",
+      "task_type": "audit",
+      "result_type": "report"
+    },
+    {
+      "id": "CP-21",
+      "tool": "quanthor",
+      "title": {
+        "en": "Use HippoRAG as evidence support",
+        "fr": "Utiliser HippoRAG comme support",
+        "es": "Usar HippoRAG como apoyo"
+      },
+      "expected_result": {
+        "en": "A cited retrieval trace and independent proof obligations.",
+        "fr": "Une trace citee et des obligations de preuve independantes.",
+        "es": "Una traza citada y obligaciones de prueba independientes."
+      },
+      "role": "researcher",
+      "difficulty": "advanced",
+      "task_type": "operation",
+      "result_type": "trace"
+    },
+    {
+      "id": "CP-22",
+      "tool": "scholarium",
+      "title": {
+        "en": "Create a source record",
+        "fr": "Creer une fiche source",
+        "es": "Crear un registro de fuente"
+      },
+      "expected_result": {
+        "en": "A reusable source record with provenance.",
+        "fr": "Une fiche source reutilisable avec provenance.",
+        "es": "Un registro reutilizable con procedencia."
+      },
+      "role": "researcher",
+      "difficulty": "foundation",
+      "task_type": "documentation",
+      "result_type": "record"
+    },
+    {
+      "id": "CP-23",
+      "tool": "scholarium",
+      "title": {
+        "en": "Prepare a publication route",
+        "fr": "Preparer une route de publication",
+        "es": "Preparar una ruta de publicacion"
+      },
+      "expected_result": {
+        "en": "A route that remains blocked until human approval.",
+        "fr": "Une route bloquee jusqu'a approbation humaine.",
+        "es": "Una ruta bloqueada hasta aprobacion humana."
+      },
+      "role": "publisher",
+      "difficulty": "intermediate",
+      "task_type": "planning",
+      "result_type": "plan"
+    },
+    {
+      "id": "CP-24",
+      "tool": "synthia",
+      "title": {
+        "en": "Create a candidate memory",
+        "fr": "Creer une memoire candidate",
+        "es": "Crear una memoria candidata"
+      },
+      "expected_result": {
+        "en": "A traceable candidate, not an accepted fact.",
+        "fr": "Un candidat tracable, pas un fait accepte.",
+        "es": "Un candidato trazable, no un hecho aceptado."
+      },
+      "role": "operator",
+      "difficulty": "intermediate",
+      "task_type": "operation",
+      "result_type": "trace"
+    },
+    {
+      "id": "CP-25",
+      "tool": "synthia",
+      "title": {
+        "en": "Audit lexical provenance",
+        "fr": "Auditer la provenance lexicale",
+        "es": "Auditar la procedencia lexica"
+      },
+      "expected_result": {
+        "en": "A complete lexical trace with no collapsed layer.",
+        "fr": "Une trace lexicale complete sans couche ecrasee.",
+        "es": "Una traza lexica completa sin capas colapsadas."
+      },
+      "role": "reviewer",
+      "difficulty": "intermediate",
+      "task_type": "audit",
+      "result_type": "trace"
+    },
+    {
+      "id": "CP-26",
+      "tool": "synthia",
+      "title": {
+        "en": "Quarantine conflicting taxonomy",
+        "fr": "Mettre une taxonomie en quarantaine",
+        "es": "Poner una taxonomia en cuarentena"
+      },
+      "expected_result": {
+        "en": "A quarantined contradiction and resolution requirements.",
+        "fr": "Une contradiction en quarantaine et conditions de resolution.",
+        "es": "Una contradiccion en cuarentena y requisitos de resolucion."
+      },
+      "role": "researcher",
+      "difficulty": "advanced",
+      "task_type": "operation",
+      "result_type": "artifact"
+    },
+    {
+      "id": "CP-27",
+      "tool": "tesla-workbench",
+      "title": {
+        "en": "Recover a structured record",
+        "fr": "Recuperer un dossier structure",
+        "es": "Recuperar un registro estructurado"
+      },
+      "expected_result": {
+        "en": "A recovery manifest that marks every unknown.",
+        "fr": "Un manifeste de recuperation qui marque chaque inconnu.",
+        "es": "Un manifiesto de recuperacion que marca cada dato desconocido."
+      },
+      "role": "operator",
+      "difficulty": "intermediate",
+      "task_type": "documentation",
+      "result_type": "manifest"
+    },
+    {
+      "id": "CP-28",
+      "tool": "tesla-workbench",
+      "title": {
+        "en": "Compare resonance records",
+        "fr": "Comparer des dossiers de resonance",
+        "es": "Comparar registros de resonancia"
+      },
+      "expected_result": {
+        "en": "A comparison table with explicit incompatibilities.",
+        "fr": "Un tableau comparatif avec incompatibilites explicites.",
+        "es": "Una tabla comparativa con incompatibilidades explicitas."
+      },
+      "role": "researcher",
+      "difficulty": "intermediate",
+      "task_type": "validation",
+      "result_type": "record"
+    },
+    {
+      "id": "CP-29",
+      "tool": "vot-guardian",
+      "title": {
+        "en": "Review a defensive threat signal",
+        "fr": "Reviser un signal defensif",
+        "es": "Revisar una senal defensiva"
+      },
+      "expected_result": {
+        "en": "A defensive review that makes no autonomous accusation.",
+        "fr": "Une revue defensive sans accusation autonome.",
+        "es": "Una revision defensiva sin acusacion autonoma."
+      },
+      "role": "security-operator",
+      "difficulty": "intermediate",
+      "task_type": "audit",
+      "result_type": "report"
+    },
+    {
+      "id": "CP-30",
+      "tool": "vot-guardian",
+      "title": {
+        "en": "Explain a security decision",
+        "fr": "Expliquer une decision securite",
+        "es": "Explicar una decision de seguridad"
+      },
+      "expected_result": {
+        "en": "A concise explanation suitable for supervised training.",
+        "fr": "Une explication concise pour formation supervisee.",
+        "es": "Una explicacion concisa para formacion supervisada."
+      },
+      "role": "educator",
+      "difficulty": "intermediate",
+      "task_type": "planning",
+      "result_type": "plan"
+    },
+    {
+      "id": "CP-31",
+      "tool": "visual-algorithm-designer",
+      "title": {
+        "en": "Draft an algorithm canvas",
+        "fr": "Ebaucher un canevas algorithmique",
+        "es": "Bosquejar un lienzo algoritmico"
+      },
+      "expected_result": {
+        "en": "A canvas specification ready for implementation.",
+        "fr": "Une specification de canevas prete a implementer.",
+        "es": "Una especificacion de lienzo lista para implementar."
+      },
+      "role": "developer",
+      "difficulty": "foundation",
+      "task_type": "design",
+      "result_type": "contract"
+    },
+    {
+      "id": "CP-32",
+      "tool": "visual-algorithm-designer",
+      "title": {
+        "en": "Design a reusable subpipeline",
+        "fr": "Concevoir un sous-pipeline",
+        "es": "Disenar un subpipeline reutilizable"
+      },
+      "expected_result": {
+        "en": "A versioned subpipeline contract and tests.",
+        "fr": "Un contrat de sous-pipeline versionne et ses tests.",
+        "es": "Un contrato de subpipeline versionado y sus pruebas."
+      },
+      "role": "reviewer",
+      "difficulty": "intermediate",
+      "task_type": "validation",
+      "result_type": "contract"
+    },
+    {
+      "id": "CP-33",
+      "tool": "visual-algorithm-designer",
+      "title": {
+        "en": "Validate a visual workflow",
+        "fr": "Valider un flux visuel",
+        "es": "Validar un flujo visual"
+      },
+      "expected_result": {
+        "en": "A defect list ranked by operational impact.",
+        "fr": "Une liste de defauts classee par impact.",
+        "es": "Una lista de defectos ordenada por impacto."
+      },
+      "role": "developer",
+      "difficulty": "intermediate",
+      "task_type": "validation",
+      "result_type": "report"
+    },
+    {
+      "id": "CP-34",
+      "tool": "scholarium",
+      "title": {
+        "en": "Design a cross-tool workflow",
+        "fr": "Concevoir un flux multi-outils",
+        "es": "Disenar un flujo entre herramientas"
+      },
+      "expected_result": {
+        "en": "A sequence diagram with no imaginary connector.",
+        "fr": "Un diagramme de sequence sans connecteur imaginaire.",
+        "es": "Un diagrama de secuencia sin conectores imaginarios."
+      },
+      "role": "developer",
+      "difficulty": "advanced",
+      "task_type": "design",
+      "result_type": "diagram"
+    },
+    {
+      "id": "CP-35",
+      "tool": "scholarium",
+      "title": {
+        "en": "Place a human approval gate",
+        "fr": "Placer un controle humain",
+        "es": "Colocar un control humano"
+      },
+      "expected_result": {
+        "en": "An approval contract that defaults to no action.",
+        "fr": "Un contrat d'approbation qui bloque par defaut.",
+        "es": "Un contrato de aprobacion que bloquea por defecto."
+      },
+      "role": "operator",
+      "difficulty": "intermediate",
+      "task_type": "operation",
+      "result_type": "contract"
+    },
+    {
+      "id": "CP-36",
+      "tool": "scholarium",
+      "title": {
+        "en": "Test degraded behavior",
+        "fr": "Tester le mode degrade",
+        "es": "Probar el modo degradado"
+      },
+      "expected_result": {
+        "en": "A failure-injection report with no hidden retry.",
+        "fr": "Un rapport de panne sans retry cache.",
+        "es": "Un informe de fallo sin reintento oculto."
+      },
+      "role": "reviewer",
+      "difficulty": "advanced",
+      "task_type": "validation",
+      "result_type": "report"
+    },
+    {
+      "id": "CP-37",
+      "tool": "scholarium",
+      "title": {
+        "en": "Audit secret boundaries",
+        "fr": "Auditer les frontieres de secrets",
+        "es": "Auditar limites de secretos"
+      },
+      "expected_result": {
+        "en": "A redacted finding list and remediation evidence.",
+        "fr": "Une liste expurgee et les preuves de correction.",
+        "es": "Una lista redactada y evidencia de correccion."
+      },
+      "role": "security-operator",
+      "difficulty": "advanced",
+      "task_type": "audit",
+      "result_type": "report"
+    },
+    {
+      "id": "CP-38",
+      "tool": "scholarium",
+      "title": {
+        "en": "Review accessibility",
+        "fr": "Reviser l'accessibilite",
+        "es": "Revisar la accesibilidad"
+      },
+      "expected_result": {
+        "en": "An accessibility report with viewport evidence.",
+        "fr": "Un rapport accessibilite avec preuves par viewport.",
+        "es": "Un informe de accesibilidad con evidencia por viewport."
+      },
+      "role": "educator",
+      "difficulty": "intermediate",
+      "task_type": "audit",
+      "result_type": "report"
+    },
+    {
+      "id": "CP-39",
+      "tool": "scholarium",
+      "title": {
+        "en": "Prepare release evidence",
+        "fr": "Preparer les preuves de release",
+        "es": "Preparar evidencia de lanzamiento"
+      },
+      "expected_result": {
+        "en": "A release dossier that supports an approval decision.",
+        "fr": "Un dossier de release pour decision d'approbation.",
+        "es": "Un dossier de lanzamiento para decidir aprobacion."
+      },
+      "role": "publisher",
+      "difficulty": "intermediate",
+      "task_type": "planning",
+      "result_type": "decision"
+    },
+    {
+      "id": "CP-40",
+      "tool": "scholarium",
+      "title": {
+        "en": "Publish portfolio evidence",
+        "fr": "Publier une preuve portfolio",
+        "es": "Publicar evidencia de portafolio"
+      },
+      "expected_result": {
+        "en": "A declarative portfolio entry with direct proof links.",
+        "fr": "Une entree portfolio declarative avec liens de preuve.",
+        "es": "Una entrada de portafolio declarativa con enlaces de evidencia."
+      },
+      "role": "researcher",
+      "difficulty": "advanced",
+      "task_type": "documentation",
+      "result_type": "artifact"
+    }
+  ]
+}

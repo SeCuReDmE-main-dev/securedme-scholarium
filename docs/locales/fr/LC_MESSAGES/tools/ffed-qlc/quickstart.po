@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/ffed-qlc/quickstart.md:1 74a5a5b603924bdf86ad11f1a37696e8
+msgid "FfeD-QLC quickstart"
+msgstr "FfeD-QLC demarrage rapide"
+
+#: ../../docs/tools/ffed-qlc/quickstart.md:3 01c605b0d051422a893d5729931aed7a
+msgid "Requirements"
+msgstr "Prerequis"
+
+#: ../../docs/tools/ffed-qlc/quickstart.md:5 89dd486d3d5145238ed0d6f12ccc9152
+msgid ""
+"Use a clean checkout, the runtime declared by the repository, and its "
+"committed lockfiles. Confirm the active branch before installing anything."
+msgstr ""
+"Utilisez un clone propre, le runtime declare par le depot et ses fichiers de"
+" verrouillage valides. Confirmez la branche active avant toute installation."
+
+#: ../../docs/tools/ffed-qlc/quickstart.md:11 fdb4e3269ff041bf96ba873085794f18
+msgid "Install"
+msgstr "Installer"
+
+#: ../../docs/tools/ffed-qlc/quickstart.md:19 026655d66db8495fad559ea683250ebf
+msgid "Start"
+msgstr "Demarrer"
+
+#: ../../docs/tools/ffed-qlc/quickstart.md:26 531ba7b12a894eb1b599e1f108e33712
+msgid "Verify"
+msgstr "Verifier"
+
+#: ../../docs/tools/ffed-qlc/quickstart.md:33 98b267fb3330492da4892e1bf7a8a74d
+msgid "Human acceptance"
+msgstr "Acceptation humaine"
+
+#: ../../docs/tools/ffed-qlc/quickstart.md:35 8cc6c9bd291b42d08698a8ffb6fff5b1
+msgid ""
+"Inspect the output, logs, test results, and diff. Accept, request a "
+"correction, quarantine, or stop; do not silently promote a generated result."
+msgstr ""
+"Inspectez la sortie, les journaux, les resultats de tests et le diff. "
+"Acceptez, demandez une correction, placez en quarantaine ou arretez; ne "
+"promouvez jamais silencieusement un resultat genere."

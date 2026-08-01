@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/synthia/quickstart.md:1 c90837da064a45d7b9837c304c05127b
+msgid "Synthia quickstart"
+msgstr "Synthia inicio rapido"
+
+#: ../../docs/tools/synthia/quickstart.md:3 553630f2a7874d86b6698dea28074f42
+msgid "Requirements"
+msgstr "Requisitos"
+
+#: ../../docs/tools/synthia/quickstart.md:5 434a5f0a2bc54dab9d3ea04dc4245979
+msgid ""
+"Use a clean checkout, the runtime declared by the repository, and its "
+"committed lockfiles. Confirm the active branch before installing anything."
+msgstr ""
+"Use una copia limpia, el runtime declarado por el repositorio y sus archivos"
+" de bloqueo confirmados. Confirme la rama activa antes de instalar nada."
+
+#: ../../docs/tools/synthia/quickstart.md:11 7df8cb386b5b4ecbaf4566b3fd9e56cb
+msgid "Install"
+msgstr "Instalar"
+
+#: ../../docs/tools/synthia/quickstart.md:18 a3320161d0124708b2dc722909ead36f
+msgid "Start"
+msgstr "Comenzar"
+
+#: ../../docs/tools/synthia/quickstart.md:24 3a9a544a754741d890c55fd156ee9573
+msgid "Verify"
+msgstr "Verificar"
+
+#: ../../docs/tools/synthia/quickstart.md:30 00c4adc61f204bf78f1aedc258c8135f
+msgid "Human acceptance"
+msgstr "Aceptacion humana"
+
+#: ../../docs/tools/synthia/quickstart.md:32 5159aa5fdf2b46bfb5aa5cac3d1757c1
+msgid ""
+"Inspect the output, logs, test results, and diff. Accept, request a "
+"correction, quarantine, or stop; do not silently promote a generated result."
+msgstr ""
+"Inspeccione la salida, los registros, los resultados de pruebas y el diff. "
+"Acepte, solicite una correccion, ponga en cuarentena o detengase; no "
+"promueva silenciosamente un resultado generado."

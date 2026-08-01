@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/synthia/operations.md:1 f18f7c54664f467baf5d8ce48a829dd2
+msgid "Operations and contribution"
+msgstr "Exploitation et contribution"
+
+#: ../../docs/tools/synthia/operations.md:3 6fb4111d6eb746309368f8b7eca75256
+msgid "Configuration"
+msgstr "Configuration"
+
+#: ../../docs/tools/synthia/operations.md:5 b019c20918874f0ea6b1df0f420d34fe
+msgid ""
+"Keep secrets outside documentation and source control. Use `.env.example` as"
+" the public contract and store real values only in the designated local "
+"settings surface."
+msgstr ""
+"Gardez les secrets hors de la documentation et du controle de source. "
+"Utilisez `.env.example` comme contrat public et stockez les valeurs reelles "
+"uniquement dans la surface locale designee."
+
+#: ../../docs/tools/synthia/operations.md:7 5a06c0d604c34955a89ac7a62b30bdbf
+msgid "Testing"
+msgstr "Tests"
+
+#: ../../docs/tools/synthia/operations.md:9 3a0fe89ea9dc4883851848bfdd40a048
+msgid ""
+"Run the repository checks listed in the quickstart. A passing narrow test "
+"does not prove unrelated interfaces or scientific claims."
+msgstr ""
+"Executez les controles du depot listes dans le demarrage rapide. La reussite"
+" d'un test borne ne prouve ni les interfaces non liees ni des affirmations "
+"scientifiques."
+
+#: ../../docs/tools/synthia/operations.md:11 400d67cd416447379e827aa59cf62ff7
+msgid "Troubleshooting"
+msgstr "Depannage"
+
+#: ../../docs/tools/synthia/operations.md:13 106e2e3120b146d881fb6be27ff8234a
+msgid "Confirm the repository and branch."
+msgstr "Confirmez le depot et la branche."
+
+#: ../../docs/tools/synthia/operations.md:14 ea4678ea58d04e04b52c2b1d2cb1abca
+msgid "Reproduce with the smallest supported input."
+msgstr "Reproduisez avec la plus petite entree prise en charge."
+
+#: ../../docs/tools/synthia/operations.md:15 7744d8ffc1ce4cf182574f8394205332
+msgid "Capture the exact command and error."
+msgstr "Consignez la commande et l'erreur exactes."
+
+#: ../../docs/tools/synthia/operations.md:16 7aa564e2927044d49137e922b668ae9f
+msgid "Check the documented runtime and lockfile."
+msgstr "Verifiez le runtime documente et le fichier de verrouillage."
+
+#: ../../docs/tools/synthia/operations.md:17 a559460c17a143f69f9d06f6af51b7d0
+msgid "Open an issue with secret-free evidence."
+msgstr "Ouvrez une issue avec des preuves sans secret."
+
+#: ../../docs/tools/synthia/operations.md:19 826f0db0e18b4a11b6f10418400e4398
+msgid "Security and privacy"
+msgstr "Securite et vie privee"
+
+#: ../../docs/tools/synthia/operations.md:21 ee03d48eddfd4d5c8bd94c8e8b979ef6
+msgid ""
+"Preserve I -> I_system^S -> H_lex -> G_lex -> I_lexicon; Synthia supports "
+"traceability and does not certify taxonomy or science."
+msgstr ""
+"Preserver I -> I_system^S -> H_lex -> G_lex -> I_lexicon; Synthia soutient "
+"la tracabilite et ne certifie ni la taxonomie ni la science."
+
+#: ../../docs/tools/synthia/operations.md:23 fd7828302c0144a7b19624fbed942ece
+msgid "Contributing"
+msgstr "Contribuer"
+
+#: ../../docs/tools/synthia/operations.md:25 d8594dac3c4e4da6801fd9f5f7e28513
+msgid ""
+"Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository "
+"license when present. Keep changes bounded and include the checks that "
+"justify acceptance."
+msgstr ""
+"Lisez `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md` et la licence du depot "
+"lorsqu'ils existent. Gardez les changements bornes et incluez les controles "
+"qui justifient leur acceptation."
+
+#: ../../docs/tools/synthia/operations.md:27 45eb8d6a258e4ec7b227a0d6e895b03a
+msgid "Releases"
+msgstr "Versions publiees"
+
+#: ../../docs/tools/synthia/operations.md:29 b829289760674478b47c33692efdaef3
+msgid ""
+"The current public documentation describes `0.1.0` with status `public-"
+"preview`. Consult the repository history and release notes for changes."
+msgstr ""
+"La documentation publique actuelle decrit `0.1.0` avec le statut `public-"
+"preview`. Consultez l'historique du depot et les notes de version pour les "
+"changements."

@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/fnpqnn-gateway/quickstart.md:1
+#: 2eba334101024fdfb63f903ae2679f01
+msgid "FNP-QNN Gateway quickstart"
+msgstr "FNP-QNN Gateway inicio rapido"
+
+#: ../../docs/tools/fnpqnn-gateway/quickstart.md:3
+#: f28c2dbd125242e39de6b20dddb03d7a
+msgid "Requirements"
+msgstr "Requisitos"
+
+#: ../../docs/tools/fnpqnn-gateway/quickstart.md:5
+#: c2b5e4bdc3b54c4590c4655af0093883
+msgid ""
+"Use a clean checkout, the runtime declared by the repository, and its "
+"committed lockfiles. Confirm the active branch before installing anything."
+msgstr ""
+"Use una copia limpia, el runtime declarado por el repositorio y sus archivos"
+" de bloqueo confirmados. Confirme la rama activa antes de instalar nada."
+
+#: ../../docs/tools/fnpqnn-gateway/quickstart.md:11
+#: eb9792c185394759ae2d68f848d1a6e9
+msgid "Install"
+msgstr "Instalar"
+
+#: ../../docs/tools/fnpqnn-gateway/quickstart.md:18
+#: dfc563234b2a4a02af693cecd04d6c99
+msgid "Start"
+msgstr "Comenzar"
+
+#: ../../docs/tools/fnpqnn-gateway/quickstart.md:25
+#: aa15ac4a951545b99956bbc95c2e7331
+msgid "Verify"
+msgstr "Verificar"
+
+#: ../../docs/tools/fnpqnn-gateway/quickstart.md:31
+#: 5d7aca3295914f909f05e9c2876c9964
+msgid "Human acceptance"
+msgstr "Aceptacion humana"
+
+#: ../../docs/tools/fnpqnn-gateway/quickstart.md:33
+#: 2a557128fad44435bb26163a756c56cf
+msgid ""
+"Inspect the output, logs, test results, and diff. Accept, request a "
+"correction, quarantine, or stop; do not silently promote a generated result."
+msgstr ""
+"Inspeccione la salida, los registros, los resultados de pruebas y el diff. "
+"Acepte, solicite una correccion, ponga en cuarentena o detengase; no "
+"promueva silenciosamente un resultado generado."

@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/scholarium/index.md:1 e5d82097618645b299942c4aebc53c69
+msgid "SecuredMe Scholarium"
+msgstr "SecuredMe Scholarium"
+
+#: ../../docs/tools/scholarium/index.md:8 8ae526d9e411407baa90ec52ca90d097
+msgid ""
+"The public education and research commons and the suite documentation "
+"aggregator."
+msgstr ""
+"El espacio publico de educacion e investigacion y el agregador documental de"
+" la suite."
+
+#: ../../docs/tools/scholarium/index.md:10 92deb3de9a954db2a2f594b8b0b5a152
+msgid "Public status"
+msgstr "Estado publico"
+
+#: ../../docs/tools/scholarium/index.md:12 c59b94f5fd6b444d9b3db84a94ae6e27
+msgid "**Runtime:** `browser-app`"
+msgstr "**Ejecucion:** `browser-app`"
+
+#: ../../docs/tools/scholarium/index.md:13 b50982644c8b4346b5b3e3af8e6d783b
+msgid "**Availability:** `pending`"
+msgstr "**Disponibilidad:** `pending`"
+
+#: ../../docs/tools/scholarium/index.md:14 1287672cf6d84ac28b4d57e9f8cea826
+msgid "**License:** `LicenseRef-SEL-2.0`"
+msgstr "**Licencia:** `LicenseRef-SEL-2.0`"
+
+#: ../../docs/tools/scholarium/index.md:15 251fd11b273d4ca5a8fd80f2532a66ad
+msgid "**Version:** `pre-alpha`"
+msgstr "**Version:** `pre-alpha`"
+
+#: ../../docs/tools/scholarium/index.md:23 25afa1e995dd45a3aaec0f28f989624c
+msgid "Interfaces"
+msgstr "Interfaces"
+
+#: ../../docs/tools/scholarium/index.md:25 653d9efce1a749feaaab798842c31bfa
+msgid "Public research commons"
+msgstr "Public research commons"
+
+#: ../../docs/tools/scholarium/index.md:26 946f80bd43fd4593a4428d2356fb5d1c
+msgid "Teach workspace"
+msgstr "Teach workspace"
+
+#: ../../docs/tools/scholarium/index.md:27 5b3eac13617b41e1951ea787abb45def
+msgid "Publication routes"
+msgstr "Publication routes"
+
+#: ../../docs/tools/scholarium/index.md:28 cd7f264d2fad40ce9c5c994bc00a67cd
+msgid "Sphinx documentation aggregator"
+msgstr "Sphinx documentation aggregator"
+
+#: ../../docs/tools/scholarium/index.md:31 ee2a454d6705408298eff41ebcba0527
+msgid ""
+"Scholarium organizes and publishes reviewed material; it is not an academic,"
+" legal, or taxonomic authority."
+msgstr ""
+"Scholarium organiza y publica material revisado; no es una autoridad "
+"academica, juridica ni taxonomica."

@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-35.md:1 86ad311dedfa401d8f6b12fe78d70d52
+msgid "CP-35 - Place a human approval gate"
+msgstr "CP-35 - Place a human approval gate"
+
+#: ../../docs/prompts/CP-35.md:3 0574b8c775184da281c28ce725de2021
+msgid "**Tool:** `scholarium`"
+msgstr "**Tool:** `scholarium`"
+
+#: ../../docs/prompts/CP-35.md:5 cfc1cbf8795c476eb3cc9fc15ff92035
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-35.md:7 2bcb64181adf46139c98db811109aa87
+msgid "**Objective.** Place a human approval gate"
+msgstr "**Objective.** Place a human approval gate"
+
+#: ../../docs/prompts/CP-35.md:28 52bb5d3280364bbf95a610ca6ec9ea24
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-35.md:30 4cfcb5b0854e410bbef4e21a43d27561
+msgid "**Objectif.** Placer un controle humain"
+msgstr "**Objectif.** Placer un controle humain"
+
+#: ../../docs/prompts/CP-35.md:51 dd81cfd6b4a048fb8e0fa384f67a4c03
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-35.md:53 2d6beaaa2a8e4d5ba80a564b6335f9ea
+msgid "**Objetivo.** Colocar un control humano"
+msgstr "**Objetivo.** Colocar un control humano"

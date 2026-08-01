@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-40.md:1 63be5ff41a21425081aa6a8da6ca8acd
+msgid "CP-40 - Publish portfolio evidence"
+msgstr "CP-40 - Publish portfolio evidence"
+
+#: ../../docs/prompts/CP-40.md:3 5215a550969c411190835d1b21d96588
+msgid "**Tool:** `scholarium`"
+msgstr "**Tool:** `scholarium`"
+
+#: ../../docs/prompts/CP-40.md:5 687af07a3d0a41c58d6bc1823fad9b38
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-40.md:7 c3bdb8ed3b094f6f8ea147f46a22284f
+msgid "**Objective.** Publish portfolio evidence"
+msgstr "**Objective.** Publish portfolio evidence"
+
+#: ../../docs/prompts/CP-40.md:28 e7943234cc1145a4ad1e76e603fccfd1
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-40.md:30 ac5eab63ed6e46e6a52dd1a85914fb31
+msgid "**Objectif.** Publier une preuve portfolio"
+msgstr "**Objectif.** Publier une preuve portfolio"
+
+#: ../../docs/prompts/CP-40.md:51 11b9a1adceb94a42a5a8c7928fd98132
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-40.md:53 cd13b74d021a4b9a8286d5c5759c1ea0
+msgid "**Objetivo.** Publicar evidencia de portafolio"
+msgstr "**Objetivo.** Publicar evidencia de portafolio"

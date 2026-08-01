@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-23.md:1 67ccbf64ba784bb78bbdd6553756593c
+msgid "CP-23 - Prepare a publication route"
+msgstr "CP-23 - Prepare a publication route"
+
+#: ../../docs/prompts/CP-23.md:3 24072aa4b216445e951dabbaaa47b0c1
+msgid "**Tool:** `scholarium`"
+msgstr "**Tool:** `scholarium`"
+
+#: ../../docs/prompts/CP-23.md:5 8ec9671afc4b4d418c655e932f64968f
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-23.md:7 d542a5b84ed9410cb28a9248cdfcedf3
+msgid "**Objective.** Prepare a publication route"
+msgstr "**Objective.** Prepare a publication route"
+
+#: ../../docs/prompts/CP-23.md:28 3439199d698c41a98d88ecb196dff788
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-23.md:30 dd73eeb67a16475194d655428107e34d
+msgid "**Objectif.** Preparer une route de publication"
+msgstr "**Objectif.** Preparer une route de publication"
+
+#: ../../docs/prompts/CP-23.md:51 4d670d149d0d4314ac10be78e96e4783
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-23.md:53 2a1777101680480786fd955f2fdbcf82
+msgid "**Objetivo.** Preparar una ruta de publicacion"
+msgstr "**Objetivo.** Preparar una ruta de publicacion"

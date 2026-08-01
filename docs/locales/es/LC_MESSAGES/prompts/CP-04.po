@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-04.md:1 5bdfa2fc9fc54938b25e81cb7682baf3
+msgid "CP-04 - Plan one bounded change"
+msgstr "CP-04 - Plan one bounded change"
+
+#: ../../docs/prompts/CP-04.md:3 5ccc0ab3ff9e40498804b317a747d6a4
+msgid "**Tool:** `scholarium`"
+msgstr "**Tool:** `scholarium`"
+
+#: ../../docs/prompts/CP-04.md:5 ad57897147954864989cb39b32f5ef7c
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-04.md:7 429cbd1cb5374812879138c37b8e1d64
+msgid "**Objective.** Plan one bounded change"
+msgstr "**Objective.** Plan one bounded change"
+
+#: ../../docs/prompts/CP-04.md:28 f91e09092dab4e76a0f63ab60e0dee43
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-04.md:30 5faefa9426bb4ab4a7533f75ca6d20b4
+msgid "**Objectif.** Planifier un changement borne"
+msgstr "**Objectif.** Planifier un changement borne"
+
+#: ../../docs/prompts/CP-04.md:51 18a13c49ac164fcb81d59311656e251f
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-04.md:53 28916447478e44a99c2aa368d44a0219
+msgid "**Objetivo.** Planificar un cambio acotado"
+msgstr "**Objetivo.** Planificar un cambio acotado"

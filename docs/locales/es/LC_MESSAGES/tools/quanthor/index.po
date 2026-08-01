@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/quanthor/index.md:1 a68c1c0ad9d64f3fbb3d1cba6a9f2831
+msgid "QuaNThoR"
+msgstr "QuaNThoR"
+
+#: ../../docs/tools/quanthor/index.md:8 45659f95d01d44ffb8b9889cf552bd77
+msgid ""
+"A formalization coach that moves informal mathematical claims toward "
+"reviewable structure."
+msgstr ""
+"Un asistente de formalizacion que lleva afirmaciones matematicas informales "
+"hacia estructuras revisables."
+
+#: ../../docs/tools/quanthor/index.md:10 8da6f94053284e02b6504952e56b313c
+msgid "Public status"
+msgstr "Estado publico"
+
+#: ../../docs/tools/quanthor/index.md:12 443de2d48fe74fb29f8caa187e847b24
+msgid "**Runtime:** `local-app`"
+msgstr "**Ejecucion:** `local-app`"
+
+#: ../../docs/tools/quanthor/index.md:13 90e79899e40f4bc2ba2bbe71a6d5569b
+msgid "**Availability:** `verified`"
+msgstr "**Disponibilidad:** `verified`"
+
+#: ../../docs/tools/quanthor/index.md:14 896dfc18e6d64cf78586157596adfd21
+msgid "**License:** `LicenseRef-SEL-2.0`"
+msgstr "**Licencia:** `LicenseRef-SEL-2.0`"
+
+#: ../../docs/tools/quanthor/index.md:15 938ee24e9d4e4dab9b34560bae5fb981
+msgid "**Version:** `pre-alpha`"
+msgstr "**Version:** `pre-alpha`"
+
+#: ../../docs/tools/quanthor/index.md:23 f1205b486aa64195b40372f3eb352004
+msgid "Interfaces"
+msgstr "Interfaces"
+
+#: ../../docs/tools/quanthor/index.md:25 335bc94e29004b8ea164eb35557ed30a
+msgid "Local proof editor"
+msgstr "Local proof editor"
+
+#: ../../docs/tools/quanthor/index.md:26 091f0cb49eeb4b7d8d9acc21b5aec4ec
+msgid "POST /verify"
+msgstr "POST /verify"
+
+#: ../../docs/tools/quanthor/index.md:27 8bc12bf065b646fcb9f6fd64b545edb1
+msgid "POST /route"
+msgstr "POST /route"
+
+#: ../../docs/tools/quanthor/index.md:28 84e39ea1b00a4027be05f87f976a9423
+msgid "POST /draft"
+msgstr "POST /draft"
+
+#: ../../docs/tools/quanthor/index.md:29 8fb4bc601fbd46f6afda6c1f91c12d2c
+msgid "Optional HippoRAG retrieval"
+msgstr "Optional HippoRAG retrieval"
+
+#: ../../docs/tools/quanthor/index.md:32 8c6dfa30d9cf4443ab10f01b9258b059
+msgid ""
+"Formalization assistance does not establish a theorem until an accepted "
+"proof and qualified review exist."
+msgstr ""
+"La ayuda a la formalizacion no establece un teorema hasta que exista una "
+"prueba aceptada y una revision cualificada."

@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-14.md:1 e705d43fc0754b739b1243022011ae40
+msgid "CP-14 - Inspect the TUI workflow"
+msgstr "CP-14 - Inspect the TUI workflow"
+
+#: ../../docs/prompts/CP-14.md:3 ca9f9df957c745499fe304048cb22870
+msgid "**Tool:** `fnp-qnn`"
+msgstr "**Tool:** `fnp-qnn`"
+
+#: ../../docs/prompts/CP-14.md:5 b1885b479ddf4f3da29cbe92688df225
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-14.md:7 a2f1019882f44fafaa51e311ddd383c3
+msgid "**Objective.** Inspect the TUI workflow"
+msgstr "**Objective.** Inspect the TUI workflow"
+
+#: ../../docs/prompts/CP-14.md:28 31b85fffdb7b45839dcdb1806d6cdbe0
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-14.md:30 5165dbe12e7a459d8ab657165929a189
+msgid "**Objectif.** Inspecter le flux TUI"
+msgstr "**Objectif.** Inspecter le flux TUI"
+
+#: ../../docs/prompts/CP-14.md:51 0386fe8a64d84618b74107618bd19e27
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-14.md:53 a2b6f13b5e6441bba88049773ff762db
+msgid "**Objetivo.** Inspeccionar el flujo TUI"
+msgstr "**Objetivo.** Inspeccionar el flujo TUI"

@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/fnpqnn-gateway/index.md:1 3af1574006db495eaa761ec218069033
+msgid "FNP-QNN Gateway"
+msgstr "FNP-QNN Gateway"
+
+#: ../../docs/tools/fnpqnn-gateway/index.md:8 a850a185e3ca4f33aa000ed5aea4fbd1
+msgid ""
+"The shared CLI, MCP, and service boundary for controlled FNP-QNN access."
+msgstr ""
+"La frontiere partagee CLI, MCP et service pour un acces controle a FNP-QNN."
+
+#: ../../docs/tools/fnpqnn-gateway/index.md:10
+#: f7f43a54bb7346f39b63bbae7285b83b
+msgid "Public status"
+msgstr "Statut public"
+
+#: ../../docs/tools/fnpqnn-gateway/index.md:12
+#: 2aabceef97494b4287cb8e6478c97362
+msgid "**Runtime:** `api`"
+msgstr "**Execution:** `api`"
+
+#: ../../docs/tools/fnpqnn-gateway/index.md:13
+#: f19ea3a8d95f4e029c6ee2449a56c7d3
+msgid "**Availability:** `pending`"
+msgstr "**Disponibilite:** `pending`"
+
+#: ../../docs/tools/fnpqnn-gateway/index.md:14
+#: 7ec0b4e502bd4b488b89fb791a726a38
+msgid "**License:** `LicenseRef-SEL-2.0`"
+msgstr "**Licence:** `LicenseRef-SEL-2.0`"
+
+#: ../../docs/tools/fnpqnn-gateway/index.md:15
+#: 82e34ad1034e4ff2b029ad92158c8717
+msgid "**Version:** `0.1.0`"
+msgstr "**Version:** `0.1.0`"
+
+#: ../../docs/tools/fnpqnn-gateway/index.md:23
+#: a0beb8efbb304ef2b0a2d8384c7b2211
+msgid "Interfaces"
+msgstr "Interfaces"
+
+#: ../../docs/tools/fnpqnn-gateway/index.md:25
+#: eddf2fd2d2cd4d33a5d8cae9c3c97092
+msgid "fnpqnn-gateway CLI"
+msgstr "fnpqnn-gateway CLI"
+
+#: ../../docs/tools/fnpqnn-gateway/index.md:26
+#: e2b9516a14ea47fa90a5b521a36cb726
+msgid "MCP server"
+msgstr "MCP server"
+
+#: ../../docs/tools/fnpqnn-gateway/index.md:27
+#: 19f7fceab48a4f2dad6432eb15a86cab
+msgid "Typed adapter boundary"
+msgstr "Typed adapter boundary"
+
+#: ../../docs/tools/fnpqnn-gateway/index.md:30
+#: 6ae268c6f904440d841658a2252a1302
+msgid ""
+"The gateway transports and validates requests; it does not convert model "
+"output into scientific authority."
+msgstr ""
+"La passerelle transporte et valide les requetes; elle ne transforme pas une "
+"sortie de modele en autorite scientifique."

@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-21.md:1 96ca25c77d9b437d9b6151873e8bad30
+msgid "CP-21 - Use HippoRAG as evidence support"
+msgstr "CP-21 - Use HippoRAG as evidence support"
+
+#: ../../docs/prompts/CP-21.md:3 0ce259c471e045499ab153a59505317d
+msgid "**Tool:** `quanthor`"
+msgstr "**Tool:** `quanthor`"
+
+#: ../../docs/prompts/CP-21.md:5 352e99faf9884e5db69bedd6e4c6ef57
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-21.md:7 eed2467e01f84b7b89b969bdfcf09f53
+msgid "**Objective.** Use HippoRAG as evidence support"
+msgstr "**Objective.** Use HippoRAG as evidence support"
+
+#: ../../docs/prompts/CP-21.md:28 03c3db71ce8d4952b8555c4f63999b56
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-21.md:30 60da59ae9de742c082480c68fd53c78b
+msgid "**Objectif.** Utiliser HippoRAG comme support"
+msgstr "**Objectif.** Utiliser HippoRAG comme support"
+
+#: ../../docs/prompts/CP-21.md:51 dec28d83090f42729d9ac83af584953c
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-21.md:53 514d14837e1f40fda2250a84e4e4c9f0
+msgid "**Objetivo.** Usar HippoRAG como apoyo"
+msgstr "**Objetivo.** Usar HippoRAG como apoyo"

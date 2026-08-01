@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/vot-guardian/operations.md:1
+#: 0bdb6fa6c7d344d6b00c3a297521cb52
+msgid "Operations and contribution"
+msgstr "Exploitation et contribution"
+
+#: ../../docs/tools/vot-guardian/operations.md:3
+#: 95785d5a947a4b6e8674f5f626ea908b
+msgid "Configuration"
+msgstr "Configuration"
+
+#: ../../docs/tools/vot-guardian/operations.md:5
+#: 322a0b87021446578cff562b3bb71bcc
+msgid ""
+"Keep secrets outside documentation and source control. Use `.env.example` as"
+" the public contract and store real values only in the designated local "
+"settings surface."
+msgstr ""
+"Gardez les secrets hors de la documentation et du controle de source. "
+"Utilisez `.env.example` comme contrat public et stockez les valeurs reelles "
+"uniquement dans la surface locale designee."
+
+#: ../../docs/tools/vot-guardian/operations.md:7
+#: 9d1c66f1941942098c6812f50eb95143
+msgid "Testing"
+msgstr "Tests"
+
+#: ../../docs/tools/vot-guardian/operations.md:9
+#: dce95b328c2e4f2cab33e3326e20ddd8
+msgid ""
+"Run the repository checks listed in the quickstart. A passing narrow test "
+"does not prove unrelated interfaces or scientific claims."
+msgstr ""
+"Executez les controles du depot listes dans le demarrage rapide. La reussite"
+" d'un test borne ne prouve ni les interfaces non liees ni des affirmations "
+"scientifiques."
+
+#: ../../docs/tools/vot-guardian/operations.md:11
+#: 762b42ccb485489c9d6dcdff99f63237
+msgid "Troubleshooting"
+msgstr "Depannage"
+
+#: ../../docs/tools/vot-guardian/operations.md:13
+#: 8e421dd2d8aa4665807748fa2c0cbd5a
+msgid "Confirm the repository and branch."
+msgstr "Confirmez le depot et la branche."
+
+#: ../../docs/tools/vot-guardian/operations.md:14
+#: bf852cc56f3c4f71946fc4919206fae7
+msgid "Reproduce with the smallest supported input."
+msgstr "Reproduisez avec la plus petite entree prise en charge."
+
+#: ../../docs/tools/vot-guardian/operations.md:15
+#: b89701d7cfa44531b615e6ed159714c0
+msgid "Capture the exact command and error."
+msgstr "Consignez la commande et l'erreur exactes."
+
+#: ../../docs/tools/vot-guardian/operations.md:16
+#: e39a111be85a47ceb7333e57b963077d
+msgid "Check the documented runtime and lockfile."
+msgstr "Verifiez le runtime documente et le fichier de verrouillage."
+
+#: ../../docs/tools/vot-guardian/operations.md:17
+#: 9efb0f69b26f4b1a94141c5044b24bbf
+msgid "Open an issue with secret-free evidence."
+msgstr "Ouvrez une issue avec des preuves sans secret."
+
+#: ../../docs/tools/vot-guardian/operations.md:19
+#: 69ee1332ab8940db8f9c86699830d7c1
+msgid "Security and privacy"
+msgstr "Securite et vie privee"
+
+#: ../../docs/tools/vot-guardian/operations.md:21
+#: 7153af97dfff4b2299a3fc18370bf80e
+msgid ""
+"V.O.T. Guardian must not be used for attack, surveillance, autonomous "
+"accusation, or unsupervised enforcement."
+msgstr ""
+"V.O.T. Guardian ne doit pas servir a l'attaque, la surveillance, "
+"l'accusation autonome ou l'application non supervisee."
+
+#: ../../docs/tools/vot-guardian/operations.md:23
+#: 79c40a82c5514c90981e4aba50b7f979
+msgid "Contributing"
+msgstr "Contribuer"
+
+#: ../../docs/tools/vot-guardian/operations.md:25
+#: 9b43c440e69e4acd8cd8d9b9c2929e18
+msgid ""
+"Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository "
+"license when present. Keep changes bounded and include the checks that "
+"justify acceptance."
+msgstr ""
+"Lisez `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md` et la licence du depot "
+"lorsqu'ils existent. Gardez les changements bornes et incluez les controles "
+"qui justifient leur acceptation."
+
+#: ../../docs/tools/vot-guardian/operations.md:27
+#: caace71be4cd42a4ae82df8689918050
+msgid "Releases"
+msgstr "Versions publiees"
+
+#: ../../docs/tools/vot-guardian/operations.md:29
+#: 0f1c7590c3e3439ebcf883162aa18ec1
+msgid ""
+"The current public documentation describes `pre-alpha` with status `public-"
+"preview`. Consult the repository history and release notes for changes."
+msgstr ""
+"La documentation publique actuelle decrit `pre-alpha` avec le statut "
+"`public-preview`. Consultez l'historique du depot et les notes de version "
+"pour les changements."

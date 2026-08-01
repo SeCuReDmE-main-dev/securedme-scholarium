@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/algorithm-builder/quickstart.md:1
+#: e9a3231f993443a889769f1c06a41732
+msgid "Algorithm Builder quickstart"
+msgstr "Algorithm Builder inicio rapido"
+
+#: ../../docs/tools/algorithm-builder/quickstart.md:3
+#: b9e1dcd1033c4eb09cc3cb96ad7bff85
+msgid "Requirements"
+msgstr "Requisitos"
+
+#: ../../docs/tools/algorithm-builder/quickstart.md:5
+#: d4ad8aca3e9f4ad59bc54a85068b4040
+msgid ""
+"Use a clean checkout, the runtime declared by the repository, and its "
+"committed lockfiles. Confirm the active branch before installing anything."
+msgstr ""
+"Use una copia limpia, el runtime declarado por el repositorio y sus archivos"
+" de bloqueo confirmados. Confirme la rama activa antes de instalar nada."
+
+#: ../../docs/tools/algorithm-builder/quickstart.md:11
+#: 7453ac8d5a0940f19ecd17bf4196fcc2
+msgid "Install"
+msgstr "Instalar"
+
+#: ../../docs/tools/algorithm-builder/quickstart.md:17
+#: 6390e532e3c44672939d1fd6cd0ce89b
+msgid "Start"
+msgstr "Comenzar"
+
+#: ../../docs/tools/algorithm-builder/quickstart.md:23
+#: 6f3dd78da8f64eadb1dbf89d1c27bd5b
+msgid "Verify"
+msgstr "Verificar"
+
+#: ../../docs/tools/algorithm-builder/quickstart.md:29
+#: ce9a2dc16b0e47a396ec90f566e562df
+msgid "Human acceptance"
+msgstr "Aceptacion humana"
+
+#: ../../docs/tools/algorithm-builder/quickstart.md:31
+#: 5d661848d78043298c369966e8e9ae8e
+msgid ""
+"Inspect the output, logs, test results, and diff. Accept, request a "
+"correction, quarantine, or stop; do not silently promote a generated result."
+msgstr ""
+"Inspeccione la salida, los registros, los resultados de pruebas y el diff. "
+"Acepte, solicite una correccion, ponga en cuarentena o detengase; no "
+"promueva silenciosamente un resultado generado."

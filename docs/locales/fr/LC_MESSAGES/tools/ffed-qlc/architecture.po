@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/ffed-qlc/architecture.md:1
+#: d85397d978bc40909ee8eccdade11aa9
+msgid "Architecture"
+msgstr "Architecture"
+
+#: ../../docs/tools/ffed-qlc/architecture.md:3
+#: 2a320e4363c3424a84e0075579d29893
+msgid ""
+"A Python admissibility core is exposed through bounded CLI, API, and "
+"browser-facing study surfaces."
+msgstr ""
+"Un noyau Python d'admissibilite est expose par des surfaces d'etude CLI, API"
+" et navigateur bornees."
+
+#: ../../docs/tools/ffed-qlc/architecture.md:5
+#: f0cc79ae2b7e4842ac980c1458838399
+msgid "Data flow"
+msgstr "Flux de donnees"
+
+#: ../../docs/tools/ffed-qlc/architecture.md:11
+#: 4d9573e9142044a5b9c9b9e47566e9c5
+msgid "Provenance"
+msgstr "Provenance"
+
+#: ../../docs/tools/ffed-qlc/architecture.md:13
+#: aba508e445cb4861a26c003a9726410b
+msgid ""
+"Record the repository commit, configuration, input identifiers, execution "
+"command, output location, and validation result. A screenshot alone is not a"
+" reproducible artifact."
+msgstr ""
+"Consignez le commit du depot, la configuration, les identifiants d'entree, "
+"la commande d'execution, l'emplacement de sortie et le resultat de "
+"validation. Une capture seule n'est pas un artefact reproductible."
+
+#: ../../docs/tools/ffed-qlc/architecture.md:15
+#: 53a8ec79754d4292ac7add08ee48a3d7
+msgid "Failure behavior"
+msgstr "Comportement en cas d'echec"
+
+#: ../../docs/tools/ffed-qlc/architecture.md:17
+#: 28d408259da84f70b357486521571bf0
+msgid ""
+"Missing configuration, unavailable dependencies, invalid input, and failed "
+"tests must remain visible. The tool must not replace a failure with invented"
+" success."
+msgstr ""
+"Une configuration absente, des dependances indisponibles, une entree "
+"invalide et des tests echoues doivent rester visibles. L'outil ne doit pas "
+"remplacer un echec par un succes invente."

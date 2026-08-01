@@ -1,0 +1,318 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:58-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/index.md:1 23cc4460aed041ad98fd70d42b743f8a
+msgid "Collaboration prompt library"
+msgstr "Biblioteca de prompts de colaboracion"
+
+#: ../../docs/prompts/index.md:3 a47cb01a52654dea87ebeff86be812c2
+msgid ""
+"Forty trilingual collaboration contracts tied to real suite tools and "
+"explicit human stop points."
+msgstr ""
+"Cuarenta contratos de colaboracion trilingues vinculados a herramientas "
+"reales de la suite y a puntos explicitos de control humano."
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Tool"
+#~ msgstr "Herramienta"
+
+#~ msgid "Contract"
+#~ msgstr "Contract"
+
+#~ msgid "CP-01"
+#~ msgstr "CP-01"
+
+#~ msgid "`scholarium`"
+#~ msgstr "`scholarium`"
+
+#~ msgid "[Choose the right entry route](CP-01.md)"
+#~ msgstr "[Choose the right entry route](CP-01.md)"
+
+#~ msgid "CP-02"
+#~ msgstr "CP-02"
+
+#~ msgid "[Inspect a tool contract](CP-02.md)"
+#~ msgstr "[Inspect a tool contract](CP-02.md)"
+
+#~ msgid "CP-03"
+#~ msgstr "CP-03"
+
+#~ msgid "[Reproduce repository state](CP-03.md)"
+#~ msgstr "[Reproduce repository state](CP-03.md)"
+
+#~ msgid "CP-04"
+#~ msgstr "CP-04"
+
+#~ msgid "[Plan one bounded change](CP-04.md)"
+#~ msgstr "[Plan one bounded change](CP-04.md)"
+
+#~ msgid "CP-05"
+#~ msgstr "CP-05"
+
+#~ msgid "[Audit a public route](CP-05.md)"
+#~ msgstr "[Audit a public route](CP-05.md)"
+
+#~ msgid "CP-06"
+#~ msgstr "CP-06"
+
+#~ msgid "`algoquest-qbit`"
+#~ msgstr "`algoquest-qbit`"
+
+#~ msgid "[Design a bounded learner challenge](CP-06.md)"
+#~ msgstr "[Design a bounded learner challenge](CP-06.md)"
+
+#~ msgid "CP-07"
+#~ msgstr "CP-07"
+
+#~ msgid "[Review a teacher pathway](CP-07.md)"
+#~ msgstr "[Review a teacher pathway](CP-07.md)"
+
+#~ msgid "CP-08"
+#~ msgstr "CP-08"
+
+#~ msgid "`algorithm-builder`"
+#~ msgstr "`algorithm-builder`"
+
+#~ msgid "[Model an algorithm visually](CP-08.md)"
+#~ msgstr "[Model an algorithm visually](CP-08.md)"
+
+#~ msgid "CP-09"
+#~ msgstr "CP-09"
+
+#~ msgid "[Test a visual algorithm](CP-09.md)"
+#~ msgstr "[Test a visual algorithm](CP-09.md)"
+
+#~ msgid "CP-10"
+#~ msgstr "CP-10"
+
+#~ msgid "`ffed-qlc`"
+#~ msgstr "`ffed-qlc`"
+
+#~ msgid "[Evaluate candidate admissibility](CP-10.md)"
+#~ msgstr "[Evaluate candidate admissibility](CP-10.md)"
+
+#~ msgid "CP-11"
+#~ msgstr "CP-11"
+
+#~ msgid "[Preserve a contradiction](CP-11.md)"
+#~ msgstr "[Preserve a contradiction](CP-11.md)"
+
+#~ msgid "CP-12"
+#~ msgstr "CP-12"
+
+#~ msgid "`fnp-qnn`"
+#~ msgstr "`fnp-qnn`"
+
+#~ msgid "[Define a simulator run](CP-12.md)"
+#~ msgstr "[Define a simulator run](CP-12.md)"
+
+#~ msgid "CP-13"
+#~ msgstr "CP-13"
+
+#~ msgid "[Compare two simulator runs](CP-13.md)"
+#~ msgstr "[Compare two simulator runs](CP-13.md)"
+
+#~ msgid "CP-14"
+#~ msgstr "CP-14"
+
+#~ msgid "[Inspect the TUI workflow](CP-14.md)"
+#~ msgstr "[Inspect the TUI workflow](CP-14.md)"
+
+#~ msgid "CP-15"
+#~ msgstr "CP-15"
+
+#~ msgid "`fnpqnn-gateway`"
+#~ msgstr "`fnpqnn-gateway`"
+
+#~ msgid "[Validate a gateway command](CP-15.md)"
+#~ msgstr "[Validate a gateway command](CP-15.md)"
+
+#~ msgid "CP-16"
+#~ msgstr "CP-16"
+
+#~ msgid "[Review an MCP boundary](CP-16.md)"
+#~ msgstr "[Review an MCP boundary](CP-16.md)"
+
+#~ msgid "CP-17"
+#~ msgstr "CP-17"
+
+#~ msgid "`retailguard`"
+#~ msgstr "`retailguard`"
+
+#~ msgid "[Build a defensive retail scenario](CP-17.md)"
+#~ msgstr "[Build a defensive retail scenario](CP-17.md)"
+
+#~ msgid "CP-18"
+#~ msgstr "CP-18"
+
+#~ msgid "[Audit defensive evidence](CP-18.md)"
+#~ msgstr "[Audit defensive evidence](CP-18.md)"
+
+#~ msgid "CP-19"
+#~ msgstr "CP-19"
+
+#~ msgid "`quanthor`"
+#~ msgstr "`quanthor`"
+
+#~ msgid "[Formalize an informal claim](CP-19.md)"
+#~ msgstr "[Formalize an informal claim](CP-19.md)"
+
+#~ msgid "CP-20"
+#~ msgstr "CP-20"
+
+#~ msgid "[Review a proof route](CP-20.md)"
+#~ msgstr "[Review a proof route](CP-20.md)"
+
+#~ msgid "CP-21"
+#~ msgstr "CP-21"
+
+#~ msgid "[Use HippoRAG as evidence support](CP-21.md)"
+#~ msgstr "[Use HippoRAG as evidence support](CP-21.md)"
+
+#~ msgid "CP-22"
+#~ msgstr "CP-22"
+
+#~ msgid "[Create a source record](CP-22.md)"
+#~ msgstr "[Create a source record](CP-22.md)"
+
+#~ msgid "CP-23"
+#~ msgstr "CP-23"
+
+#~ msgid "[Prepare a publication route](CP-23.md)"
+#~ msgstr "[Prepare a publication route](CP-23.md)"
+
+#~ msgid "CP-24"
+#~ msgstr "CP-24"
+
+#~ msgid "`synthia`"
+#~ msgstr "`synthia`"
+
+#~ msgid "[Create a candidate memory](CP-24.md)"
+#~ msgstr "[Create a candidate memory](CP-24.md)"
+
+#~ msgid "CP-25"
+#~ msgstr "CP-25"
+
+#~ msgid "[Audit lexical provenance](CP-25.md)"
+#~ msgstr "[Audit lexical provenance](CP-25.md)"
+
+#~ msgid "CP-26"
+#~ msgstr "CP-26"
+
+#~ msgid "[Quarantine conflicting taxonomy](CP-26.md)"
+#~ msgstr "[Quarantine conflicting taxonomy](CP-26.md)"
+
+#~ msgid "CP-27"
+#~ msgstr "CP-27"
+
+#~ msgid "`tesla-workbench`"
+#~ msgstr "`tesla-workbench`"
+
+#~ msgid "[Recover a structured record](CP-27.md)"
+#~ msgstr "[Recover a structured record](CP-27.md)"
+
+#~ msgid "CP-28"
+#~ msgstr "CP-28"
+
+#~ msgid "[Compare resonance records](CP-28.md)"
+#~ msgstr "[Compare resonance records](CP-28.md)"
+
+#~ msgid "CP-29"
+#~ msgstr "CP-29"
+
+#~ msgid "`vot-guardian`"
+#~ msgstr "`vot-guardian`"
+
+#~ msgid "[Review a defensive threat signal](CP-29.md)"
+#~ msgstr "[Review a defensive threat signal](CP-29.md)"
+
+#~ msgid "CP-30"
+#~ msgstr "CP-30"
+
+#~ msgid "[Explain a security decision](CP-30.md)"
+#~ msgstr "[Explain a security decision](CP-30.md)"
+
+#~ msgid "CP-31"
+#~ msgstr "CP-31"
+
+#~ msgid "`visual-algorithm-designer`"
+#~ msgstr "`visual-algorithm-designer`"
+
+#~ msgid "[Draft an algorithm canvas](CP-31.md)"
+#~ msgstr "[Draft an algorithm canvas](CP-31.md)"
+
+#~ msgid "CP-32"
+#~ msgstr "CP-32"
+
+#~ msgid "[Design a reusable subpipeline](CP-32.md)"
+#~ msgstr "[Design a reusable subpipeline](CP-32.md)"
+
+#~ msgid "CP-33"
+#~ msgstr "CP-33"
+
+#~ msgid "[Validate a visual workflow](CP-33.md)"
+#~ msgstr "[Validate a visual workflow](CP-33.md)"
+
+#~ msgid "CP-34"
+#~ msgstr "CP-34"
+
+#~ msgid "[Design a cross-tool workflow](CP-34.md)"
+#~ msgstr "[Design a cross-tool workflow](CP-34.md)"
+
+#~ msgid "CP-35"
+#~ msgstr "CP-35"
+
+#~ msgid "[Place a human approval gate](CP-35.md)"
+#~ msgstr "[Place a human approval gate](CP-35.md)"
+
+#~ msgid "CP-36"
+#~ msgstr "CP-36"
+
+#~ msgid "[Test degraded behavior](CP-36.md)"
+#~ msgstr "[Test degraded behavior](CP-36.md)"
+
+#~ msgid "CP-37"
+#~ msgstr "CP-37"
+
+#~ msgid "[Audit secret boundaries](CP-37.md)"
+#~ msgstr "[Audit secret boundaries](CP-37.md)"
+
+#~ msgid "CP-38"
+#~ msgstr "CP-38"
+
+#~ msgid "[Review accessibility](CP-38.md)"
+#~ msgstr "[Review accessibility](CP-38.md)"
+
+#~ msgid "CP-39"
+#~ msgstr "CP-39"
+
+#~ msgid "[Prepare release evidence](CP-39.md)"
+#~ msgstr "[Prepare release evidence](CP-39.md)"
+
+#~ msgid "CP-40"
+#~ msgstr "CP-40"
+
+#~ msgid "[Publish portfolio evidence](CP-40.md)"
+#~ msgstr "[Publish portfolio evidence](CP-40.md)"

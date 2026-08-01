@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/quanthor/operations.md:1 2c9e1e0b47a54fdca33f4aeb26a6aaac
+msgid "Operations and contribution"
+msgstr "Exploitation et contribution"
+
+#: ../../docs/tools/quanthor/operations.md:3 fd04b85a572b402d82b0be8598798617
+msgid "Configuration"
+msgstr "Configuration"
+
+#: ../../docs/tools/quanthor/operations.md:5 b6e246cf7ed44495a967a208bc5903d4
+msgid ""
+"Keep secrets outside documentation and source control. Use `.env.example` as"
+" the public contract and store real values only in the designated local "
+"settings surface."
+msgstr ""
+"Gardez les secrets hors de la documentation et du controle de source. "
+"Utilisez `.env.example` comme contrat public et stockez les valeurs reelles "
+"uniquement dans la surface locale designee."
+
+#: ../../docs/tools/quanthor/operations.md:7 f44a1c361d2d42da8f1b050dd78a7b05
+msgid "Testing"
+msgstr "Tests"
+
+#: ../../docs/tools/quanthor/operations.md:9 7916989ba56641379daa0063b3418bcd
+msgid ""
+"Run the repository checks listed in the quickstart. A passing narrow test "
+"does not prove unrelated interfaces or scientific claims."
+msgstr ""
+"Executez les controles du depot listes dans le demarrage rapide. La reussite"
+" d'un test borne ne prouve ni les interfaces non liees ni des affirmations "
+"scientifiques."
+
+#: ../../docs/tools/quanthor/operations.md:11 65daa6db7ce949c1ad5d701d163968d8
+msgid "Troubleshooting"
+msgstr "Depannage"
+
+#: ../../docs/tools/quanthor/operations.md:13 d766056e229045618254d0997ccc8c44
+msgid "Confirm the repository and branch."
+msgstr "Confirmez le depot et la branche."
+
+#: ../../docs/tools/quanthor/operations.md:14 5e6c10f518e04cfa8a80c891e1b2fe34
+msgid "Reproduce with the smallest supported input."
+msgstr "Reproduisez avec la plus petite entree prise en charge."
+
+#: ../../docs/tools/quanthor/operations.md:15 3f81f7a744ef42a2bf0c2dfd8c17f2f9
+msgid "Capture the exact command and error."
+msgstr "Consignez la commande et l'erreur exactes."
+
+#: ../../docs/tools/quanthor/operations.md:16 f0317478e3824f5ebd35c9ea24813917
+msgid "Check the documented runtime and lockfile."
+msgstr "Verifiez le runtime documente et le fichier de verrouillage."
+
+#: ../../docs/tools/quanthor/operations.md:17 c550516965b94458906e673379be39bb
+msgid "Open an issue with secret-free evidence."
+msgstr "Ouvrez une issue avec des preuves sans secret."
+
+#: ../../docs/tools/quanthor/operations.md:19 cef85ede6e254a81834423e394eb6cb5
+msgid "Security and privacy"
+msgstr "Securite et vie privee"
+
+#: ../../docs/tools/quanthor/operations.md:21 e815d4d4678548c5b89741cba0e8ad4d
+msgid ""
+"Formalization assistance does not establish a theorem until an accepted "
+"proof and qualified review exist."
+msgstr ""
+"L'aide a la formalisation n'etablit pas un theoreme tant qu'une preuve "
+"acceptee et une revue qualifiee n'existent pas."
+
+#: ../../docs/tools/quanthor/operations.md:23 1c779fb3f88c4aaeb297dfd0eee9706e
+msgid "Contributing"
+msgstr "Contribuer"
+
+#: ../../docs/tools/quanthor/operations.md:25 16b3c89885ff4b9fb96e001efb11917f
+msgid ""
+"Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository "
+"license when present. Keep changes bounded and include the checks that "
+"justify acceptance."
+msgstr ""
+"Lisez `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md` et la licence du depot "
+"lorsqu'ils existent. Gardez les changements bornes et incluez les controles "
+"qui justifient leur acceptation."
+
+#: ../../docs/tools/quanthor/operations.md:27 bed79aa8d1914598bdc456d1f9c0c1b3
+msgid "Releases"
+msgstr "Versions publiees"
+
+#: ../../docs/tools/quanthor/operations.md:29 576248f499624fb8a59ab3a9b35ab36f
+msgid ""
+"The current public documentation describes `pre-alpha` with status `public-"
+"pre-alpha`. Consult the repository history and release notes for changes."
+msgstr ""
+"La documentation publique actuelle decrit `pre-alpha` avec le statut "
+"`public-pre-alpha`. Consultez l'historique du depot et les notes de version "
+"pour les changements."

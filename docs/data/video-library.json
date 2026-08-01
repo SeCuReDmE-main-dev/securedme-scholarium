@@ -1,157 +1,278 @@
 {
-  "schema_version": 1,
+  "schema": "securedme.video-library.v2",
   "channel_id": "UCYHLMJuIoJre3n39z7LUGIg",
   "source": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYHLMJuIoJre3n39z7LUGIg",
+  "updated_at": "2026-08-01T12:57:51-04:00",
   "videos": [
     {
       "video_id": "pADapMCfTR0",
       "title": "How to Structure AI Coding Agents",
       "published": "2026-07-31T17:18:49+00:00",
       "date": "2026-07-31",
+      "language": "en",
+      "tool": "scholarium",
+      "topic": "agent architecture",
       "duration_seconds": 74,
       "format": "short",
       "url": "https://youtu.be/pADapMCfTR0",
-      "thumbnail": "https://i.ytimg.com/vi/pADapMCfTR0/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/pADapMCfTR0/hqdefault.jpg",
+      "paired_video_id": "siQuygli4aU",
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "siQuygli4aU",
       "title": "Architecting True Agency  Skills, Plugins, and Executable Motor",
       "published": "2026-07-31T17:15:08+00:00",
       "date": "2026-07-31",
+      "language": "en",
+      "tool": "scholarium",
+      "topic": "agent architecture",
       "duration_seconds": 542,
       "format": "long",
       "url": "https://youtu.be/siQuygli4aU",
-      "thumbnail": "https://i.ytimg.com/vi/siQuygli4aU/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/siQuygli4aU/hqdefault.jpg",
+      "paired_video_id": "pADapMCfTR0",
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "MPowqNgUzhk",
       "title": "Planning Mode Is Where Humans Stay in Control #Shorts",
       "published": "2026-07-29T03:36:00+00:00",
       "date": "2026-07-29",
+      "language": "en",
+      "tool": "scholarium",
+      "topic": "planning and human review",
       "duration_seconds": 64,
       "format": "short",
       "url": "https://youtu.be/MPowqNgUzhk",
-      "thumbnail": "https://i.ytimg.com/vi/MPowqNgUzhk/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/MPowqNgUzhk/hqdefault.jpg",
+      "paired_video_id": "9sGT9xwR95o",
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "9sGT9xwR95o",
       "title": "Architecting the AI-Native IDE: Archive, Planning, Browser",
       "published": "2026-07-29T03:32:50+00:00",
       "date": "2026-07-29",
+      "language": "en",
+      "tool": "scholarium",
+      "topic": "planning and human review",
       "duration_seconds": 409,
       "format": "long",
       "url": "https://youtu.be/9sGT9xwR95o",
-      "thumbnail": "https://i.ytimg.com/vi/9sGT9xwR95o/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/9sGT9xwR95o/hqdefault.jpg",
+      "paired_video_id": "MPowqNgUzhk",
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "1s6ugSBFqY4",
       "title": "The Evidence-Claim Gap: Classify Before You Amplify",
       "published": "2026-07-24T02:22:59+00:00",
       "date": "2026-07-24",
+      "language": "en",
+      "tool": "ffed-qlc",
+      "topic": "evidence admission",
       "duration_seconds": 280,
       "format": "long",
       "url": "https://youtu.be/1s6ugSBFqY4",
-      "thumbnail": "https://i.ytimg.com/vi/1s6ugSBFqY4/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/1s6ugSBFqY4/hqdefault.jpg",
+      "paired_video_id": null,
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "SQgqTwFjJ7M",
       "title": "Architecting the AI Resilient Research Commons",
       "published": "2026-07-11T12:01:26+00:00",
       "date": "2026-07-11",
+      "language": "en",
+      "tool": "scholarium",
+      "topic": "research commons",
       "duration_seconds": 444,
       "format": "long",
       "url": "https://youtu.be/SQgqTwFjJ7M",
-      "thumbnail": "https://i.ytimg.com/vi/SQgqTwFjJ7M/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/SQgqTwFjJ7M/hqdefault.jpg",
+      "paired_video_id": null,
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "9UqIJRJBjZk",
       "title": "Découvrez AlgoQuest : L'éducation cyber-sécurisée ! #Shorts #opensource #science #researchproject",
       "published": "2026-07-09T14:03:00+00:00",
       "date": "2026-07-09",
+      "language": "fr",
+      "tool": "algoquest-qbit",
+      "topic": "zero trust classroom",
       "duration_seconds": 54,
       "format": "short",
       "url": "https://youtu.be/9UqIJRJBjZk",
-      "thumbnail": "https://i.ytimg.com/vi/9UqIJRJBjZk/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/9UqIJRJBjZk/hqdefault.jpg",
+      "paired_video_id": "w_VrkmQOoDU",
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "w_VrkmQOoDU",
       "title": "Architecting the Zero Trust Classroom",
       "published": "2026-07-09T13:58:00+00:00",
       "date": "2026-07-09",
+      "language": "en",
+      "tool": "algoquest-qbit",
+      "topic": "zero trust classroom",
       "duration_seconds": 348,
       "format": "long",
       "url": "https://youtu.be/w_VrkmQOoDU",
-      "thumbnail": "https://i.ytimg.com/vi/w_VrkmQOoDU/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/w_VrkmQOoDU/hqdefault.jpg",
+      "paired_video_id": "9UqIJRJBjZk",
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "lYVIGz_7w7E",
       "title": "Architecting QuaNThoR: Bridging LLMs and Formal Proofs",
       "published": "2026-07-02T05:10:30+00:00",
       "date": "2026-07-02",
+      "language": "en",
+      "tool": "quanthor",
+      "topic": "formal verification",
       "duration_seconds": 408,
       "format": "long",
       "url": "https://youtu.be/lYVIGz_7w7E",
-      "thumbnail": "https://i.ytimg.com/vi/lYVIGz_7w7E/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/lYVIGz_7w7E/hqdefault.jpg",
+      "paired_video_id": null,
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "RbDY5J1ihqM",
       "title": "El Futuro del Café y Cacao Venezolano #researchproject #science #physics #aiforeducation #universe",
       "published": "2026-07-02T04:26:55+00:00",
       "date": "2026-07-02",
+      "language": "es",
+      "tool": "scholarium",
+      "topic": "agricultural research",
       "duration_seconds": 71,
       "format": "short",
       "url": "https://youtu.be/RbDY5J1ihqM",
-      "thumbnail": "https://i.ytimg.com/vi/RbDY5J1ihqM/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/RbDY5J1ihqM/hqdefault.jpg",
+      "paired_video_id": "HqTzFp0OfM0",
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "HqTzFp0OfM0",
       "title": "Para el Profesor Aguilar — Su sueño es posible",
       "published": "2026-07-02T02:59:48+00:00",
       "date": "2026-07-02",
+      "language": "es",
+      "tool": "scholarium",
+      "topic": "agricultural research",
       "duration_seconds": 389,
       "format": "long",
       "url": "https://youtu.be/HqTzFp0OfM0",
-      "thumbnail": "https://i.ytimg.com/vi/HqTzFp0OfM0/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/HqTzFp0OfM0/hqdefault.jpg",
+      "paired_video_id": "RbDY5J1ihqM",
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "H5j2Rakqg5I",
       "title": "Master the SecuredMe Educational Suite: The 10-Tool Ecosystem",
       "published": "2026-06-29T00:54:18+00:00",
       "date": "2026-06-29",
+      "language": "en",
+      "tool": "scholarium",
+      "topic": "education suite",
       "duration_seconds": 334,
       "format": "long",
       "url": "https://youtu.be/H5j2Rakqg5I",
-      "thumbnail": "https://i.ytimg.com/vi/H5j2Rakqg5I/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/H5j2Rakqg5I/hqdefault.jpg",
+      "paired_video_id": null,
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "sP6X3tMKo5s",
       "title": "Synthia, SecuredMe, and the Future of Responsible AI Education",
       "published": "2026-06-29T00:12:45+00:00",
       "date": "2026-06-29",
+      "language": "en",
+      "tool": "synthia",
+      "topic": "responsible AI education",
       "duration_seconds": 428,
       "format": "long",
       "url": "https://youtu.be/sP6X3tMKo5s",
-      "thumbnail": "https://i.ytimg.com/vi/sP6X3tMKo5s/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/sP6X3tMKo5s/hqdefault.jpg",
+      "paired_video_id": null,
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "gEdZr9EgO9A",
       "title": "FNP-QNN Quantum Simulator — First YouTube Publicity Test",
       "published": "2026-06-28T00:49:28+00:00",
       "date": "2026-06-28",
+      "language": "en",
+      "tool": "fnp-qnn",
+      "topic": "simulation",
       "duration_seconds": 10,
       "format": "short",
       "url": "https://youtu.be/gEdZr9EgO9A",
-      "thumbnail": "https://i.ytimg.com/vi/gEdZr9EgO9A/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/gEdZr9EgO9A/hqdefault.jpg",
+      "paired_video_id": null,
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     },
     {
       "video_id": "gzuWgO3sZT8",
       "title": "I Am Synthia — Intelligence for Biology, Classification & Living Systems",
       "published": "2026-06-26T07:07:11+00:00",
       "date": "2026-06-26",
+      "language": "en",
+      "tool": "synthia",
+      "topic": "living systems",
       "duration_seconds": 415,
       "format": "long",
       "url": "https://youtu.be/gzuWgO3sZT8",
-      "thumbnail": "https://i.ytimg.com/vi/gzuWgO3sZT8/hqdefault.jpg"
+      "thumbnail": "https://i.ytimg.com/vi/gzuWgO3sZT8/hqdefault.jpg",
+      "paired_video_id": null,
+      "transcript": {
+        "status": "not-provided",
+        "url": null
+      }
     }
   ]
 }

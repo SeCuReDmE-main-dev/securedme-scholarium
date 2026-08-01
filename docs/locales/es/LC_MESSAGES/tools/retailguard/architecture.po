@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/retailguard/architecture.md:1
+#: c20c5eac3d3649a9868f590fb70a5a46
+msgid "Architecture"
+msgstr "Arquitectura"
+
+#: ../../docs/tools/retailguard/architecture.md:3
+#: 443813cd0bb14d0591e3f8705b47e303
+msgid ""
+"Defensive scenarios are converted into reviewable risk signals without "
+"exposing offensive automation as a product surface."
+msgstr ""
+"Los escenarios defensivos se convierten en senales de riesgo revisables sin "
+"exponer automatizacion ofensiva como superficie de producto."
+
+#: ../../docs/tools/retailguard/architecture.md:5
+#: 4a8daaf0a1b24295a29396e494535249
+msgid "Data flow"
+msgstr "Flujo de datos"
+
+#: ../../docs/tools/retailguard/architecture.md:11
+#: 227548be80614d47a09a749f1e6b1fba
+msgid "Provenance"
+msgstr "Procedencia"
+
+#: ../../docs/tools/retailguard/architecture.md:13
+#: b6ac12d3374d4086acf13bccb53173a7
+msgid ""
+"Record the repository commit, configuration, input identifiers, execution "
+"command, output location, and validation result. A screenshot alone is not a"
+" reproducible artifact."
+msgstr ""
+"Registre el commit del repositorio, la configuracion, los identificadores de"
+" entrada, el comando de ejecucion, la ubicacion de salida y el resultado de "
+"validacion. Una captura por si sola no es un artefacto reproducible."
+
+#: ../../docs/tools/retailguard/architecture.md:15
+#: bfc287f0d69f45f288b5803e16a9f0b5
+msgid "Failure behavior"
+msgstr "Comportamiento ante fallos"
+
+#: ../../docs/tools/retailguard/architecture.md:17
+#: d44a875ea43d4a6bac5e923d89b0b734
+msgid ""
+"Missing configuration, unavailable dependencies, invalid input, and failed "
+"tests must remain visible. The tool must not replace a failure with invented"
+" success."
+msgstr ""
+"La configuracion ausente, las dependencias no disponibles, una entrada "
+"invalida y las pruebas fallidas deben seguir visibles. La herramienta no "
+"debe reemplazar un fallo por un exito inventado."

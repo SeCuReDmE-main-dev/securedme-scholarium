@@ -1,0 +1,238 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 13:35-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/getting-started/15-minute-tutorial.md:1
+#: 2f79a5dfc3ea44f28dca9f550b811438
+msgid "Start with SeCuReDmE Education in 15 minutes"
+msgstr "Comenzar con SeCuReDmE Education en 15 minutos"
+
+#: ../../docs/getting-started/15-minute-tutorial.md:3
+#: 99d4cda5b57c424289f1bbfbc60525cd
+msgid ""
+"This route teaches the shared operating method. It does not pretend that all"
+" twelve tools have the same runtime."
+msgstr ""
+"Este recorrido ensena el metodo operativo comun. No pretende que las doce "
+"herramientas utilicen el mismo entorno de ejecucion."
+
+#: ../../docs/getting-started/15-minute-tutorial.md:5
+#: c4e9f920b1954f6895ed379ba2ad59bb
+msgid "Minutes 0-3: choose a real surface"
+msgstr "Minutos 0-3: elegir una superficie real"
+
+#: ../../docs/getting-started/15-minute-tutorial.md:7
+#: cf0944c5df2e400b9f44d3787f66d0d8
+msgid ""
+"Open the [tool library](../tools/index.md). Select a browser application for"
+" an interactive lesson, or a local, CLI, API, or research surface for "
+"inspectable execution. Read the status and boundary before starting."
+msgstr ""
+"Abra la [biblioteca de herramientas](../tools/index.md). Elija una "
+"aplicacion web para una actividad interactiva, o una superficie local, CLI, "
+"API o de investigacion para una ejecucion inspeccionable. Lea el estado y el"
+" limite antes de comenzar."
+
+#: ../../docs/getting-started/15-minute-tutorial.md:9
+#: 688575799e4d4871ad238c9c4b732ec7
+msgid "Minutes 3-7: inspect before installing"
+msgstr "Minutos 3-7: inspeccionar antes de instalar"
+
+#: ../../docs/getting-started/15-minute-tutorial.md:11
+#: 840283288deb4104841f218de9d8e7f1
+msgid ""
+"Open the selected tool's quickstart and source repository. In a clean "
+"checkout, record the active branch and changes:"
+msgstr ""
+"Abra el inicio rapido y el repositorio fuente de la herramienta elegida. En "
+"una copia limpia, registre la rama activa y los cambios:"
+
+#: ../../docs/getting-started/15-minute-tutorial.md:17
+#: d6ba489541824c7ebda1a03fae2d44a7
+msgid ""
+"Use only the installation command committed by that tool. Never paste a "
+"password, cookie, private token, or `.env` value into a prompt or tutorial."
+msgstr ""
+"Use solamente el comando de instalacion registrado por la herramienta. Nunca"
+" coloque una contrasena, cookie, token privado o valor `.env` en un prompt o"
+" tutorial."
+
+#: ../../docs/getting-started/15-minute-tutorial.md:19
+#: 5ad6c5c156304617888495341be245c4
+msgid "Minutes 7-12: run one bounded action"
+msgstr "Minutos 7-12: ejecutar una accion acotada"
+
+#: ../../docs/getting-started/15-minute-tutorial.md:21
+#: 4d00c113ed104267b093f7f5a4eae586
+msgid ""
+"Execute the smallest documented example. Keep the input, command, output "
+"path, and test result together. A generated file, screenshot, or model "
+"answer is a candidate artifact until the documented validation succeeds."
+msgstr ""
+"Ejecute el ejemplo documentado mas pequeno. Conserve juntos la entrada, el "
+"comando, la ruta de salida y el resultado de prueba. Un archivo generado, "
+"una captura o una respuesta del modelo sigue siendo un artefacto candidato "
+"hasta que la validacion documentada tenga exito."
+
+#: ../../docs/getting-started/15-minute-tutorial.md:23
+#: 80986009559a402896f290f05f7b3c17
+msgid "Minutes 12-15: review and decide"
+msgstr "Minutos 12-15: revisar y decidir"
+
+#: ../../docs/getting-started/15-minute-tutorial.md:25
+#: 2f40aef87fa04fbaa1ec3688743c8fb3
+msgid ""
+"Inspect the result and choose `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED`, or "
+"`BLOCKED`. Stop before publishing, spending, deleting, changing remote "
+"state, or promoting an unverified scientific or educational claim."
+msgstr ""
+"Inspeccione el resultado y elija `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` o"
+" `BLOCKED`. Detengase antes de publicar, gastar, borrar, cambiar estado "
+"remoto o promover una afirmacion cientifica o educativa no verificada."
+
+#~ msgid "English"
+#~ msgstr "English"
+
+#~ msgid "Francais"
+#~ msgstr "Francais"
+
+#~ msgid "Minutes 0-3 : choisir une surface reelle"
+#~ msgstr "Minutes 0-3 : choisir une surface reelle"
+
+#~ msgid ""
+#~ "Ouvrez la [bibliotheque des outils](../tools/index.md). Choisissez une "
+#~ "application web pour une activite interactive, ou une surface locale, CLI, "
+#~ "API ou de recherche pour une execution inspectable. Lisez le statut et la "
+#~ "limite avant de commencer."
+#~ msgstr ""
+#~ "Ouvrez la [bibliotheque des outils](../tools/index.md). Choisissez une "
+#~ "application web pour une activite interactive, ou une surface locale, CLI, "
+#~ "API ou de recherche pour une execution inspectable. Lisez le statut et la "
+#~ "limite avant de commencer."
+
+#~ msgid "Minutes 3-7 : inspecter avant d'installer"
+#~ msgstr "Minutes 3-7 : inspecter avant d'installer"
+
+#~ msgid ""
+#~ "Ouvrez le demarrage rapide et le depot de l'outil choisi. Dans un clone "
+#~ "propre, notez la branche active et les modifications :"
+#~ msgstr ""
+#~ "Ouvrez le demarrage rapide et le depot de l'outil choisi. Dans un clone "
+#~ "propre, notez la branche active et les modifications :"
+
+#~ msgid ""
+#~ "Utilisez seulement la commande d'installation inscrite dans le depot. Ne "
+#~ "placez jamais un mot de passe, un cookie, un jeton prive ou une valeur "
+#~ "`.env` dans une invite ou un tutoriel."
+#~ msgstr ""
+#~ "Utilisez seulement la commande d'installation inscrite dans le depot. Ne "
+#~ "placez jamais un mot de passe, un cookie, un jeton prive ou une valeur "
+#~ "`.env` dans une invite ou un tutoriel."
+
+#~ msgid "Minutes 7-12 : executer une action bornee"
+#~ msgstr "Minutes 7-12 : executer une action bornee"
+
+#~ msgid ""
+#~ "Executez le plus petit exemple documente. Conservez ensemble l'entree, la "
+#~ "commande, le chemin de sortie et le resultat du test. Un fichier genere, une"
+#~ " capture ou une reponse de modele reste un artefact candidat tant que la "
+#~ "validation documentee n'a pas reussi."
+#~ msgstr ""
+#~ "Executez le plus petit exemple documente. Conservez ensemble l'entree, la "
+#~ "commande, le chemin de sortie et le resultat du test. Un fichier genere, une"
+#~ " capture ou une reponse de modele reste un artefact candidat tant que la "
+#~ "validation documentee n'a pas reussi."
+
+#~ msgid "Minutes 12-15 : reviser et decider"
+#~ msgstr "Minutes 12-15 : reviser et decider"
+
+#~ msgid ""
+#~ "Inspectez le resultat et choisissez `COMPLETED`, `NEEDS_INPUT`, "
+#~ "`QUARANTINED` ou `BLOCKED`. Arretez avant de publier, depenser, supprimer, "
+#~ "modifier un etat distant ou promouvoir une affirmation scientifique ou "
+#~ "pedagogique non verifiee."
+#~ msgstr ""
+#~ "Inspectez le resultat et choisissez `COMPLETED`, `NEEDS_INPUT`, "
+#~ "`QUARANTINED` ou `BLOCKED`. Arretez avant de publier, depenser, supprimer, "
+#~ "modifier un etat distant ou promouvoir une affirmation scientifique ou "
+#~ "pedagogique non verifiee."
+
+#~ msgid "Espanol"
+#~ msgstr "Espanol"
+
+#~ msgid "Minutos 0-3: elegir una superficie real"
+#~ msgstr "Minutos 0-3: elegir una superficie real"
+
+#~ msgid ""
+#~ "Abra la [biblioteca de herramientas](../tools/index.md). Elija una "
+#~ "aplicacion web para una actividad interactiva, o una superficie local, CLI, "
+#~ "API o de investigacion para una ejecucion inspeccionable. Lea el estado y el"
+#~ " limite antes de comenzar."
+#~ msgstr ""
+#~ "Abra la [biblioteca de herramientas](../tools/index.md). Elija una "
+#~ "aplicacion web para una actividad interactiva, o una superficie local, CLI, "
+#~ "API o de investigacion para una ejecucion inspeccionable. Lea el estado y el"
+#~ " limite antes de comenzar."
+
+#~ msgid "Minutos 3-7: inspeccionar antes de instalar"
+#~ msgstr "Minutos 3-7: inspeccionar antes de instalar"
+
+#~ msgid ""
+#~ "Abra el inicio rapido y el repositorio de la herramienta elegida. En una "
+#~ "copia limpia, registre la rama activa y los cambios:"
+#~ msgstr ""
+#~ "Abra el inicio rapido y el repositorio de la herramienta elegida. En una "
+#~ "copia limpia, registre la rama activa y los cambios:"
+
+#~ msgid ""
+#~ "Use solamente el comando de instalacion registrado en el repositorio. Nunca "
+#~ "coloque una contrasena, cookie, token privado o valor `.env` en un prompt o "
+#~ "tutorial."
+#~ msgstr ""
+#~ "Use solamente el comando de instalacion registrado en el repositorio. Nunca "
+#~ "coloque una contrasena, cookie, token privado o valor `.env` en un prompt o "
+#~ "tutorial."
+
+#~ msgid "Minutos 7-12: ejecutar una accion acotada"
+#~ msgstr "Minutos 7-12: ejecutar una accion acotada"
+
+#~ msgid ""
+#~ "Ejecute el ejemplo documentado mas pequeno. Conserve juntos la entrada, el "
+#~ "comando, la ruta de salida y el resultado de prueba. Un archivo generado, "
+#~ "captura o respuesta del modelo sigue siendo un artefacto candidato hasta que"
+#~ " la validacion documentada tenga exito."
+#~ msgstr ""
+#~ "Ejecute el ejemplo documentado mas pequeno. Conserve juntos la entrada, el "
+#~ "comando, la ruta de salida y el resultado de prueba. Un archivo generado, "
+#~ "captura o respuesta del modelo sigue siendo un artefacto candidato hasta que"
+#~ " la validacion documentada tenga exito."
+
+#~ msgid "Minutos 12-15: revisar y decidir"
+#~ msgstr "Minutos 12-15: revisar y decidir"
+
+#~ msgid ""
+#~ "Inspeccione el resultado y elija `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` o"
+#~ " `BLOCKED`. Detengase antes de publicar, gastar, borrar, cambiar estado "
+#~ "remoto o promover una afirmacion cientifica o educativa no verificada."
+#~ msgstr ""
+#~ "Inspeccione el resultado y elija `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` o"
+#~ " `BLOCKED`. Detengase antes de publicar, gastar, borrar, cambiar estado "
+#~ "remoto o promover una afirmacion cientifica o educativa no verificada."

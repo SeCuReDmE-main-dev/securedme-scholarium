@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-22.md:1 b5fe4882e16b4732999129672041f5fc
+msgid "CP-22 - Create a source record"
+msgstr "CP-22 - Create a source record"
+
+#: ../../docs/prompts/CP-22.md:3 83c5ed367f434e37b6adaaee3528aa32
+msgid "**Tool:** `scholarium`"
+msgstr "**Tool:** `scholarium`"
+
+#: ../../docs/prompts/CP-22.md:5 aab447f85a304529b6f3697f1e398b97
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-22.md:7 074e70d5a0ac4a61b4ebd1cfc99daf56
+msgid "**Objective.** Create a source record"
+msgstr "**Objective.** Create a source record"
+
+#: ../../docs/prompts/CP-22.md:28 89c0e51b78284914b1bdedaec2a6518b
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-22.md:30 6ce0fa57ad1240abbfa12435b2df9324
+msgid "**Objectif.** Creer une fiche source"
+msgstr "**Objectif.** Creer une fiche source"
+
+#: ../../docs/prompts/CP-22.md:51 2e636e1b151d46b2a39e1e9cc201a14e
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-22.md:53 c81a84e943264944a6313ea3356ce04e
+msgid "**Objetivo.** Crear un registro de fuente"
+msgstr "**Objetivo.** Crear un registro de fuente"

@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/synthia/index.md:1 ecc835f0eaea4339a474da64e2c53638
+msgid "Synthia"
+msgstr "Synthia"
+
+#: ../../docs/tools/synthia/index.md:8 bb5e9abfafcc4b53ba2c2ed4431e93f4
+msgid ""
+"A traceability system for scientific candidate memories, lexicons, sources, "
+"and uncertainty."
+msgstr ""
+"Un sistema de trazabilidad para memorias candidatas cientificas, lexicos, "
+"fuentes e incertidumbre."
+
+#: ../../docs/tools/synthia/index.md:10 6650d4c40e3a4eafbdbec5f994e08113
+msgid "Public status"
+msgstr "Estado publico"
+
+#: ../../docs/tools/synthia/index.md:12 68a9b7ba57e647c5960fa9ac8b4cc831
+msgid "**Runtime:** `browser-app`"
+msgstr "**Ejecucion:** `browser-app`"
+
+#: ../../docs/tools/synthia/index.md:13 b88cb273bf114565bc9406593177f689
+msgid "**Availability:** `verified`"
+msgstr "**Disponibilidad:** `verified`"
+
+#: ../../docs/tools/synthia/index.md:14 795b3742de574dd9a32f5dea52b94fdf
+msgid "**License:** `LicenseRef-SEL-2.0`"
+msgstr "**Licencia:** `LicenseRef-SEL-2.0`"
+
+#: ../../docs/tools/synthia/index.md:15 651cdef49bb9449fbb78c73fc13862a2
+msgid "**Version:** `0.1.0`"
+msgstr "**Version:** `0.1.0`"
+
+#: ../../docs/tools/synthia/index.md:23 6d5556e68bd84804bfea6585069086ca
+msgid "Interfaces"
+msgstr "Interfaces"
+
+#: ../../docs/tools/synthia/index.md:25 94a22187a6574445b57fbcbecfd4233f
+msgid "synthia CLI"
+msgstr "synthia CLI"
+
+#: ../../docs/tools/synthia/index.md:26 70321e8bfd54483e88d4503e2e41e83c
+msgid "Static trace lab"
+msgstr "Static trace lab"
+
+#: ../../docs/tools/synthia/index.md:27 0e4a7368f8f5419b9b78e7701186917c
+msgid "Candidate-memory manifest"
+msgstr "Candidate-memory manifest"
+
+#: ../../docs/tools/synthia/index.md:28 556ac8cd45fb4903b407090dfeb441e5
+msgid "Optional RethinkDB adapter"
+msgstr "Optional RethinkDB adapter"
+
+#: ../../docs/tools/synthia/index.md:31 d0315d9e68544a619a022e9bb0ed3fbc
+msgid ""
+"Preserve I -> I_system^S -> H_lex -> G_lex -> I_lexicon; Synthia supports "
+"traceability and does not certify taxonomy or science."
+msgstr ""
+"Preservar I -> I_system^S -> H_lex -> G_lex -> I_lexicon; Synthia facilita "
+"la trazabilidad y no certifica taxonomia ni ciencia."

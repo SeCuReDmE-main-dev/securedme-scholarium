@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/retailguard/interfaces.md:1
+#: 2e0844a97d1f4512b47abf92a83b6f67
+msgid "Interfaces"
+msgstr "Interfaces"
+
+#: ../../docs/tools/retailguard/interfaces.md:3
+#: 6f42c8e97c954f80b0b4319d1e0f965d
+msgid ""
+"**Public defensive learning surface:** use only through the documented "
+"repository route."
+msgstr ""
+"**Public defensive learning surface:** utiliser uniquement par la route "
+"documentee du depot."
+
+#: ../../docs/tools/retailguard/interfaces.md:4
+#: a3aa5cc022c148f686b1b0c142755220
+msgid ""
+"**Scenario fixtures:** use only through the documented repository route."
+msgstr ""
+"**Scenario fixtures:** utiliser uniquement par la route documentee du depot."
+
+#: ../../docs/tools/retailguard/interfaces.md:5
+#: cfc16065be6d467e9c1d728a2f745939
+msgid ""
+"**Human review ledger:** use only through the documented repository route."
+msgstr ""
+"**Human review ledger:** utiliser uniquement par la route documentee du "
+"depot."
+
+#: ../../docs/tools/retailguard/interfaces.md:7
+#: 2af646d5608f4f79b884670474b1bca2
+msgid "Interface contract"
+msgstr "Contrat d'interface"
+
+#: ../../docs/tools/retailguard/interfaces.md:9
+#: ef6732ae21034926bbf1c35b80d83356
+msgid ""
+"Inputs must be explicit, outputs must be inspectable, errors must be "
+"returned as errors, and consequential external actions require human "
+"approval."
+msgstr ""
+"Les entrees doivent etre explicites, les sorties inspectables, les erreurs "
+"retournees comme erreurs et les actions externes consequentes approuvees par"
+" une personne."
+
+#: ../../docs/tools/retailguard/interfaces.md:11
+#: f4427d905bfb4e3bbad8acde2b20059a
+msgid "Compatibility"
+msgstr "Compatibilite"
+
+#: ../../docs/tools/retailguard/interfaces.md:13
+#: 0464c25a944f4aa4a2de545961b6aaa6
+msgid ""
+"Treat undocumented endpoints, commands, and browser controls as unsupported."
+" Confirm the current repository version before integrating another system."
+msgstr ""
+"Considerez les endpoints, commandes et controles navigateur non documentes "
+"comme non pris en charge. Confirmez la version courante du depot avant "
+"d'integrer un autre systeme."

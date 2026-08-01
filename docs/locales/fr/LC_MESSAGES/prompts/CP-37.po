@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-37.md:1 b7927a02cc6f40cf8d647f509bea227d
+msgid "CP-37 - Audit secret boundaries"
+msgstr "CP-37 - Audit secret boundaries"
+
+#: ../../docs/prompts/CP-37.md:3 a1d84a0c4ae74a42a07503deb3f3971a
+msgid "**Tool:** `scholarium`"
+msgstr "**Tool:** `scholarium`"
+
+#: ../../docs/prompts/CP-37.md:5 f7c4db61ffe84fc587b900779656a845
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-37.md:7 a31abdc2786541168f6279359ad33738
+msgid "**Objective.** Audit secret boundaries"
+msgstr "**Objective.** Audit secret boundaries"
+
+#: ../../docs/prompts/CP-37.md:28 db35c6d31cd141179b246ed64bd27b5b
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-37.md:30 e5d7334289204f1b9d79e14349d5838f
+msgid "**Objectif.** Auditer les frontieres de secrets"
+msgstr "**Objectif.** Auditer les frontieres de secrets"
+
+#: ../../docs/prompts/CP-37.md:51 89b5eb108ad448a7bf187cd64fb5ae1c
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-37.md:53 83b4ce32b6974e6db0acd01332d9f25d
+msgid "**Objetivo.** Auditar limites de secretos"
+msgstr "**Objetivo.** Auditar limites de secretos"

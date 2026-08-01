@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-36.md:1 b12507edcc2849bdae00c2c9d990029d
+msgid "CP-36 - Test degraded behavior"
+msgstr "CP-36 - Test degraded behavior"
+
+#: ../../docs/prompts/CP-36.md:3 0f11974aeabf4e30824e9f656ed62f0e
+msgid "**Tool:** `scholarium`"
+msgstr "**Tool:** `scholarium`"
+
+#: ../../docs/prompts/CP-36.md:5 9d8e1e18d30846f19065a299b08e6d36
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-36.md:7 3a8023ca226543919f510d8be437a8d4
+msgid "**Objective.** Test degraded behavior"
+msgstr "**Objective.** Test degraded behavior"
+
+#: ../../docs/prompts/CP-36.md:28 b3d56953256d4686bbf34a25f95b0965
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-36.md:30 4192d3bb29414b988808930639bea737
+msgid "**Objectif.** Tester le mode degrade"
+msgstr "**Objectif.** Tester le mode degrade"
+
+#: ../../docs/prompts/CP-36.md:51 d3e627b44c5c4c9482b3e9b3652e7476
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-36.md:53 aa17c20e58c045ac85a477d4b8f7b2a6
+msgid "**Objetivo.** Probar el modo degradado"
+msgstr "**Objetivo.** Probar el modo degradado"

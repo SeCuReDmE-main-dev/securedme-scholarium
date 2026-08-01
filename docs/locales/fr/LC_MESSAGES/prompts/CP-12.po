@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-12.md:1 50b688bc16b341b19f9bf61515999335
+msgid "CP-12 - Define a simulator run"
+msgstr "CP-12 - Define a simulator run"
+
+#: ../../docs/prompts/CP-12.md:3 95e6ae22dcb5431b9a3db8875d396a95
+msgid "**Tool:** `fnp-qnn`"
+msgstr "**Tool:** `fnp-qnn`"
+
+#: ../../docs/prompts/CP-12.md:5 fcbd4cbcb0564262bcf612e805d17374
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-12.md:7 edd2ce6d698c47a39108a214178ea5ed
+msgid "**Objective.** Define a simulator run"
+msgstr "**Objective.** Define a simulator run"
+
+#: ../../docs/prompts/CP-12.md:28 8f47ba8c862f4bc9b7a91ada122990d8
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-12.md:30 3a0f0a17fca341238a2835945d50b0f8
+msgid "**Objectif.** Definir une execution du simulateur"
+msgstr "**Objectif.** Definir une execution du simulateur"
+
+#: ../../docs/prompts/CP-12.md:51 48520299f2ed49d7a29daa9d8748bda8
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-12.md:53 8d06f838025b4a41a5a4831be978ed8a
+msgid "**Objetivo.** Definir una ejecucion del simulador"
+msgstr "**Objetivo.** Definir una ejecucion del simulador"

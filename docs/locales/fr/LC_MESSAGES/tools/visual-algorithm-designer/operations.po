@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:1
+#: 5369c0a1f937452eba6afc9aaa9f9360
+msgid "Operations and contribution"
+msgstr "Exploitation et contribution"
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:3
+#: 96930c002245467c9e177b1f25d46754
+msgid "Configuration"
+msgstr "Configuration"
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:5
+#: f7203854e3f54da4b1ee004bb5f6d1fa
+msgid ""
+"Keep secrets outside documentation and source control. Use `.env.example` as"
+" the public contract and store real values only in the designated local "
+"settings surface."
+msgstr ""
+"Gardez les secrets hors de la documentation et du controle de source. "
+"Utilisez `.env.example` comme contrat public et stockez les valeurs reelles "
+"uniquement dans la surface locale designee."
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:7
+#: ef4626467bb244d284161e0e693133de
+msgid "Testing"
+msgstr "Tests"
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:9
+#: e903791f5dbb4c29a3cc6873e3d18bcf
+msgid ""
+"Run the repository checks listed in the quickstart. A passing narrow test "
+"does not prove unrelated interfaces or scientific claims."
+msgstr ""
+"Executez les controles du depot listes dans le demarrage rapide. La reussite"
+" d'un test borne ne prouve ni les interfaces non liees ni des affirmations "
+"scientifiques."
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:11
+#: 73ea19aa9bfe460f871291752222bb95
+msgid "Troubleshooting"
+msgstr "Depannage"
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:13
+#: f91f72dc22bb4727b56f0987b4170001
+msgid "Confirm the repository and branch."
+msgstr "Confirmez le depot et la branche."
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:14
+#: 320258b50d914169a9b6875468da7264
+msgid "Reproduce with the smallest supported input."
+msgstr "Reproduisez avec la plus petite entree prise en charge."
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:15
+#: 28767ba60f0644cebf4a7d798820680c
+msgid "Capture the exact command and error."
+msgstr "Consignez la commande et l'erreur exactes."
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:16
+#: 686682441fe441b8a0600bdf7d10a6a2
+msgid "Check the documented runtime and lockfile."
+msgstr "Verifiez le runtime documente et le fichier de verrouillage."
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:17
+#: d1922ef92d77468988cc75fc6cf492bb
+msgid "Open an issue with secret-free evidence."
+msgstr "Ouvrez une issue avec des preuves sans secret."
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:19
+#: 0fd3ad19f77e438daf13b8ba8cf99abc
+msgid "Security and privacy"
+msgstr "Securite et vie privee"
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:21
+#: d4fd8f61c3e34ec5af2e63d94043cd52
+msgid ""
+"Visual composition does not guarantee algorithmic correctness; tests and "
+"code review remain required."
+msgstr ""
+"La composition visuelle ne garantit pas la correction algorithmique; les "
+"tests et la revue de code restent obligatoires."
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:23
+#: fc415b34f1bc4337b6ab826c84a0387d
+msgid "Contributing"
+msgstr "Contribuer"
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:25
+#: 09fcd65c087e44e68af8edf4584be974
+msgid ""
+"Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository "
+"license when present. Keep changes bounded and include the checks that "
+"justify acceptance."
+msgstr ""
+"Lisez `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md` et la licence du depot "
+"lorsqu'ils existent. Gardez les changements bornes et incluez les controles "
+"qui justifient leur acceptation."
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:27
+#: a924633446994b8d9836b9574e6ecee7
+msgid "Releases"
+msgstr "Versions publiees"
+
+#: ../../docs/tools/visual-algorithm-designer/operations.md:29
+#: 6aa6bed323584b5e817c831e08712cbd
+msgid ""
+"The current public documentation describes `pre-alpha` with status `public-"
+"preview`. Consult the repository history and release notes for changes."
+msgstr ""
+"La documentation publique actuelle decrit `pre-alpha` avec le statut "
+"`public-preview`. Consultez l'historique du depot et les notes de version "
+"pour les changements."

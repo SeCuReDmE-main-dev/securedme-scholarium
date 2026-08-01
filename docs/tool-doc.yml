@@ -1,0 +1,37 @@
+schema: securedme.tool-doc.v2
+slug: scholarium
+title: SecuredMe Scholarium
+version: pre-alpha
+status: public-pre-alpha
+license: LicenseRef-SEL-2.0
+summary: The public education and research commons and the suite documentation aggregator.
+identity:
+  logo: apps/web/public/brand/logos/final/1.webp
+  family: SecuredMe Scholarium
+runtime:
+  type: browser-app
+  availability: verified
+  public_url: https://www.scholarium.securedme.ca
+source:
+  repository: https://github.com/SeCuReDmE-main-dev/securedme-scholarium
+  issues: https://github.com/SeCuReDmE-main-dev/securedme-scholarium/issues
+documentation:
+  public_root: docs/public
+  source_language: en
+  languages:
+  - en
+  - fr
+  - es
+commands:
+  install:
+  - cd apps/web
+  - npm install
+  start:
+  - npm run dev
+  test:
+  - npm test
+  - npm run build
+boundaries:
+  authority: Scholarium organizes and publishes reviewed material; it is not an academic,
+    legal, or taxonomic authority.
+  human_review_required: true

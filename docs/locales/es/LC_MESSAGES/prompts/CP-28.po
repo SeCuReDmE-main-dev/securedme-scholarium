@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-28.md:1 c79968f8265a4b7f8e213a1e39dcd765
+msgid "CP-28 - Compare resonance records"
+msgstr "CP-28 - Compare resonance records"
+
+#: ../../docs/prompts/CP-28.md:3 82d4fb763a324badb3dbd56380088a39
+msgid "**Tool:** `tesla-workbench`"
+msgstr "**Tool:** `tesla-workbench`"
+
+#: ../../docs/prompts/CP-28.md:5 0edfa5b08e734a0eaa1c2dc5d7d6e28c
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-28.md:7 b541ebd4efb441ec8dec2aa6e7f0acca
+msgid "**Objective.** Compare resonance records"
+msgstr "**Objective.** Compare resonance records"
+
+#: ../../docs/prompts/CP-28.md:28 88cc98e161dd42a194147f3b4f9acc19
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-28.md:30 8ec0ca9f16e24c2e90643830a5941e11
+msgid "**Objectif.** Comparer des dossiers de resonance"
+msgstr "**Objectif.** Comparer des dossiers de resonance"
+
+#: ../../docs/prompts/CP-28.md:51 82d962fc667a48c69d68ea6f394bb91f
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-28.md:53 9db8e32c7066465bb55d0939e0dc2352
+msgid "**Objetivo.** Comparar registros de resonancia"
+msgstr "**Objetivo.** Comparar registros de resonancia"

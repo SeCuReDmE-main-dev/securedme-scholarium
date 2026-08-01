@@ -1,66 +1,36 @@
-# Developer tool library
+# Tool library
 
-Twelve public tool guides, one consistent onboarding contract. Each page points back to the repository documents that remain authoritative for installation, contribution, safety, and licensing.
+The Education catalogue is the public entry point. This library exposes the technical contract behind every destination.
 
-<div class="se-doc-grid">
-<a class="se-doc-card" href="algoquest-qbit/">
-  <strong>AlgoQuest Qbit Education</strong>
-  <span>Algorithm learning</span>
-  <p>Interactive algorithm and quantum-concept learning through bounded, inspectable exercises.</p>
-</a>
-<a class="se-doc-card" href="algorithm-builder/">
-  <strong>Algorithm Builder</strong>
-  <span>Algorithm learning</span>
-  <p>A visual workspace for composing, inspecting, and explaining algorithm structures.</p>
-</a>
-<a class="se-doc-card" href="ffed-qlc/">
-  <strong>FfeD-QLC</strong>
-  <span>Education research</span>
-  <p>An education-first research surface for structured quantum and logical-computation experiments.</p>
-</a>
-<a class="se-doc-card" href="fnp-qnn/">
-  <strong>FNP-QNN</strong>
-  <span>Education simulator</span>
-  <p>A governed simulator for repeatable mathematical experiments; simulation is never presented as physical detection.</p>
-</a>
-<a class="se-doc-card" href="fnpqnn-gateway/">
-  <strong>FNP-QNN Gateway</strong>
-  <span>Suite gateway</span>
-  <p>The shared integration boundary for suite services, audit routes, and controlled tool access.</p>
-</a>
-<a class="se-doc-card" href="retailguard/">
-  <strong>Market Guardian / RetailGuard</strong>
-  <span>Defensive cybersecurity education</span>
-  <p>A defensive retail-security learning environment focused on explainable safeguards and review.</p>
-</a>
-<a class="se-doc-card" href="quanthor/">
-  <strong>QuaNThoR</strong>
-  <span>Formal mathematics education</span>
-  <p>A formalization coach that helps move from an informal claim toward reviewable mathematical structure.</p>
-</a>
-<a class="se-doc-card" href="scholarium/">
-  <strong>SecuredMe Scholarium</strong>
-  <span>Education platform</span>
-  <p>The public education and research commons, and the canonical documentation home for the suite.</p>
-</a>
-<a class="se-doc-card" href="synthia/">
-  <strong>Synthia</strong>
-  <span>Scientific education</span>
-  <p>A traceability system for classifying scientific candidate memories while preserving sources and uncertainty.</p>
-</a>
-<a class="se-doc-card" href="tesla-workbench/">
-  <strong>Tesla Resonance Recovery Workbench</strong>
-  <span>Validation workbench</span>
-  <p>A reproducible workbench for recovery, comparison, and validation of structured resonance experiments.</p>
-</a>
-<a class="se-doc-card" href="vot-guardian/">
-  <strong>V.O.T. Guardian</strong>
-  <span>Defensive cybersecurity education</span>
-  <p>A defensive cybersecurity training surface for transparent, human-reviewed threat reasoning.</p>
-</a>
-<a class="se-doc-card" href="visual-algorithm-designer/">
-  <strong>Visual Algorithm Designer</strong>
-  <span>Algorithm learning</span>
-  <p>A visual editor for learning how algorithms are assembled, inspected, and communicated.</p>
-</a>
-</div>
+| Tool | Runtime | Status | Documentation | Source |
+| --- | --- | --- | --- | --- |
+| AlgoQuest Qbit Education | `browser-app` | public-preview | [Open](./algoquest-qbit/index.md) | [GitHub](https://github.com/SeCuReDmE-main-dev/algoquest-ams-discovry-labs-module-) |
+| Algorithm Builder | `browser-app` | in-development | [Open](./algorithm-builder/index.md) | [GitHub](https://github.com/SeCuReDmE-main-dev/algorithm-builder-app) |
+| FfeD-QLC | `browser-app` | public-preview | [Open](./ffed-qlc/index.md) | [GitHub](https://github.com/SeCuReDmE-main-dev/FfeD-QLC-MVP) |
+| FNP-QNN | `local-app` | public-preview | [Open](./fnp-qnn/index.md) | [GitHub](https://github.com/SeCuReDmE-main-dev/FNP-QNN-MVP) |
+| FNP-QNN Gateway | `api` | local-api | [Open](./fnpqnn-gateway/index.md) | [GitHub](https://github.com/SeCuReDmE-main-dev/fnpqnn_gateway_MVP) |
+| Market Guardian / RetailGuard | `browser-app` | public-preview | [Open](./retailguard/index.md) | [GitHub](https://github.com/SeCuReDmE-main-dev/market-guardian-retailguard) |
+| QuaNThoR | `local-app` | public-pre-alpha | [Open](./quanthor/index.md) | [GitHub](https://github.com/SeCuReDmE-main-dev/QuaNThoR) |
+| SecuredMe Scholarium | `browser-app` | public-pre-alpha | [Open](./scholarium/index.md) | [GitHub](https://github.com/SeCuReDmE-main-dev/securedme-scholarium) |
+| Synthia | `browser-app` | public-preview | [Open](./synthia/index.md) | [GitHub](https://github.com/SeCuReDmE-main-dev/Synthia) |
+| Tesla Resonance Recovery Workbench | `research` | local-research | [Open](./tesla-workbench/index.md) | [GitHub](https://github.com/SeCuReDmE-main-dev/tesla-resonance-recovery-workbench) |
+| V.O.T. Guardian | `browser-app` | public-preview | [Open](./vot-guardian/index.md) | [GitHub](https://github.com/SeCuReDmE-main-dev/V.O.T-Guardian) |
+| Visual Algorithm Designer | `browser-app` | public-preview | [Open](./visual-algorithm-designer/index.md) | [GitHub](https://github.com/SeCuReDmE-main-dev/VisualAlgorithmDesigner) |
+
+```{toctree}
+:maxdepth: 2
+:hidden:
+
+algoquest-qbit/index
+algorithm-builder/index
+ffed-qlc/index
+fnp-qnn/index
+fnpqnn-gateway/index
+retailguard/index
+quanthor/index
+scholarium/index
+synthia/index
+tesla-workbench/index
+vot-guardian/index
+visual-algorithm-designer/index
+```

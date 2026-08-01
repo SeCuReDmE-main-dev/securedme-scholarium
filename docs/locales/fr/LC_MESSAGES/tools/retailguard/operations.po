@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/retailguard/operations.md:1
+#: f38083d6776e435898a26f618720f58b
+msgid "Operations and contribution"
+msgstr "Exploitation et contribution"
+
+#: ../../docs/tools/retailguard/operations.md:3
+#: a151f17f6a064073bc3e87bfc4269f80
+msgid "Configuration"
+msgstr "Configuration"
+
+#: ../../docs/tools/retailguard/operations.md:5
+#: 9e9e4512f7c04974b59783c03585fc95
+msgid ""
+"Keep secrets outside documentation and source control. Use `.env.example` as"
+" the public contract and store real values only in the designated local "
+"settings surface."
+msgstr ""
+"Gardez les secrets hors de la documentation et du controle de source. "
+"Utilisez `.env.example` comme contrat public et stockez les valeurs reelles "
+"uniquement dans la surface locale designee."
+
+#: ../../docs/tools/retailguard/operations.md:7
+#: f8b3138494304067a74e89baa6644d3e
+msgid "Testing"
+msgstr "Tests"
+
+#: ../../docs/tools/retailguard/operations.md:9
+#: 9a2dce8f81414f75b3c8929410d72822
+msgid ""
+"Run the repository checks listed in the quickstart. A passing narrow test "
+"does not prove unrelated interfaces or scientific claims."
+msgstr ""
+"Executez les controles du depot listes dans le demarrage rapide. La reussite"
+" d'un test borne ne prouve ni les interfaces non liees ni des affirmations "
+"scientifiques."
+
+#: ../../docs/tools/retailguard/operations.md:11
+#: c618b555ae884621bfbbf9c4d52f0ee5
+msgid "Troubleshooting"
+msgstr "Depannage"
+
+#: ../../docs/tools/retailguard/operations.md:13
+#: 5c902f2071114530b52c7150d05f6cfb
+msgid "Confirm the repository and branch."
+msgstr "Confirmez le depot et la branche."
+
+#: ../../docs/tools/retailguard/operations.md:14
+#: e3a7cb00f063475f91c4440e699b7a55
+msgid "Reproduce with the smallest supported input."
+msgstr "Reproduisez avec la plus petite entree prise en charge."
+
+#: ../../docs/tools/retailguard/operations.md:15
+#: b1fd388360874df6a79ffef006110881
+msgid "Capture the exact command and error."
+msgstr "Consignez la commande et l'erreur exactes."
+
+#: ../../docs/tools/retailguard/operations.md:16
+#: 137bf6d4439c4e20884792f9639afdc3
+msgid "Check the documented runtime and lockfile."
+msgstr "Verifiez le runtime documente et le fichier de verrouillage."
+
+#: ../../docs/tools/retailguard/operations.md:17
+#: 01e781082c504084aa55a63812c939bc
+msgid "Open an issue with secret-free evidence."
+msgstr "Ouvrez une issue avec des preuves sans secret."
+
+#: ../../docs/tools/retailguard/operations.md:19
+#: a38472c1773b425ab910a9a09e8fd527
+msgid "Security and privacy"
+msgstr "Securite et vie privee"
+
+#: ../../docs/tools/retailguard/operations.md:21
+#: 7ca831c14eba40fd93412e697598555a
+msgid ""
+"RetailGuard is for prevention, simulation, and supervised defensive "
+"education only."
+msgstr ""
+"RetailGuard sert uniquement a la prevention, a la simulation et a "
+"l'education defensive supervisee."
+
+#: ../../docs/tools/retailguard/operations.md:23
+#: 4be1ead6c1d9444c92dc50d247a48a17
+msgid "Contributing"
+msgstr "Contribuer"
+
+#: ../../docs/tools/retailguard/operations.md:25
+#: d3a2cdf03ad74ede87fe52156c8cfa60
+msgid ""
+"Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository "
+"license when present. Keep changes bounded and include the checks that "
+"justify acceptance."
+msgstr ""
+"Lisez `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md` et la licence du depot "
+"lorsqu'ils existent. Gardez les changements bornes et incluez les controles "
+"qui justifient leur acceptation."
+
+#: ../../docs/tools/retailguard/operations.md:27
+#: 5a9f21bbd281423e92309a61de903863
+msgid "Releases"
+msgstr "Versions publiees"
+
+#: ../../docs/tools/retailguard/operations.md:29
+#: 82268b3ddee24142b64b5d8acdc2e0a6
+msgid ""
+"The current public documentation describes `pre-alpha` with status `public-"
+"preview`. Consult the repository history and release notes for changes."
+msgstr ""
+"La documentation publique actuelle decrit `pre-alpha` avec le statut "
+"`public-preview`. Consultez l'historique du depot et les notes de version "
+"pour les changements."

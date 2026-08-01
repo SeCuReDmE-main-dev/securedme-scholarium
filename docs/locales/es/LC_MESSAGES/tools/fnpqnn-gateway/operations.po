@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:1
+#: e6e45efc646c412893a731f43bbe242b
+msgid "Operations and contribution"
+msgstr "Operacion y contribucion"
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:3
+#: 92138df1a7dd42a3b48cbe10f6bf666d
+msgid "Configuration"
+msgstr "Configuracion"
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:5
+#: 1b8c811754c6402897f1a08032df6694
+msgid ""
+"Keep secrets outside documentation and source control. Use `.env.example` as"
+" the public contract and store real values only in the designated local "
+"settings surface."
+msgstr ""
+"Mantenga los secretos fuera de la documentacion y del control de codigo. Use"
+" `.env.example` como contrato publico y guarde los valores reales solo en la"
+" superficie local designada."
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:7
+#: aaf24120a6bd4b8c87c461422e4eb7b2
+msgid "Testing"
+msgstr "Pruebas"
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:9
+#: ff016e7fa9184c23a44006a01d52a235
+msgid ""
+"Run the repository checks listed in the quickstart. A passing narrow test "
+"does not prove unrelated interfaces or scientific claims."
+msgstr ""
+"Ejecute las comprobaciones del repositorio indicadas en el inicio rapido. "
+"Una prueba acotada superada no demuestra interfaces no relacionadas ni "
+"afirmaciones cientificas."
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:11
+#: b6d67989c8144bd98be02c7009a6545a
+msgid "Troubleshooting"
+msgstr "Solucion de problemas"
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:13
+#: 59439ddb12534bfb80ce2fe7fe49d2bf
+msgid "Confirm the repository and branch."
+msgstr "Confirme el repositorio y la rama."
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:14
+#: 7e7187f8ddf8419581a235ec96a532ff
+msgid "Reproduce with the smallest supported input."
+msgstr "Reproduzca con la entrada compatible mas pequena."
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:15
+#: 305f8b6e88a145439414adc8692010bf
+msgid "Capture the exact command and error."
+msgstr "Registre el comando y el error exactos."
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:16
+#: 7e445b8b044b49939c667173fb824a8a
+msgid "Check the documented runtime and lockfile."
+msgstr "Compruebe el runtime documentado y el archivo de bloqueo."
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:17
+#: 4381447e72d8460dbb16dc3da940a8e5
+msgid "Open an issue with secret-free evidence."
+msgstr "Abra una incidencia con evidencia sin secretos."
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:19
+#: 779630e01655453aa61b75495f9f22a7
+msgid "Security and privacy"
+msgstr "Seguridad y privacidad"
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:21
+#: 392be5a19bd24cf9be5b1b4dc19ee6ed
+msgid ""
+"The gateway transports and validates requests; it does not convert model "
+"output into scientific authority."
+msgstr ""
+"La pasarela transporta y valida solicitudes; no convierte la salida de un "
+"modelo en autoridad cientifica."
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:23
+#: e43f94e2e7104364bdc533cf4c2efcb4
+msgid "Contributing"
+msgstr "Contribuir"
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:25
+#: fbdd496080d644b9a801e8865c237903
+msgid ""
+"Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository "
+"license when present. Keep changes bounded and include the checks that "
+"justify acceptance."
+msgstr ""
+"Lea `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md` y la licencia del "
+"repositorio cuando existan. Mantenga los cambios acotados e incluya las "
+"comprobaciones que justifican su aceptacion."
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:27
+#: 745a94bb0c4649c2a5a70f4a1695f381
+msgid "Releases"
+msgstr "Versiones publicadas"
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:29
+#: a245180da5aa41868d84e38b08978e43
+msgid ""
+"The current public documentation describes `0.1.0` with status `local-api`. "
+"Consult the repository history and release notes for changes."
+msgstr ""
+"La documentacion publica actual describe `0.1.0` con el estado `local-api`. "
+"Consulte el historial del repositorio y las notas de version para conocer "
+"los cambios."

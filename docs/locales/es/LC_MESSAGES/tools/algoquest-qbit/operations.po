@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/algoquest-qbit/operations.md:1
+#: 4b427b41eca949a8bd208212ae10743e
+msgid "Operations and contribution"
+msgstr "Operacion y contribucion"
+
+#: ../../docs/tools/algoquest-qbit/operations.md:3
+#: 5ccd89e254654bcd9fa035a1e4335b20
+msgid "Configuration"
+msgstr "Configuracion"
+
+#: ../../docs/tools/algoquest-qbit/operations.md:5
+#: 9053df33bb8948018c928a8588c4eb52
+msgid ""
+"Keep secrets outside documentation and source control. Use `.env.example` as"
+" the public contract and store real values only in the designated local "
+"settings surface."
+msgstr ""
+"Mantenga los secretos fuera de la documentacion y del control de codigo. Use"
+" `.env.example` como contrato publico y guarde los valores reales solo en la"
+" superficie local designada."
+
+#: ../../docs/tools/algoquest-qbit/operations.md:7
+#: 673ae99518214107824cfbeec68a2e05
+msgid "Testing"
+msgstr "Pruebas"
+
+#: ../../docs/tools/algoquest-qbit/operations.md:9
+#: 00ece6df3f1b47a5b58b883a8f16af67
+msgid ""
+"Run the repository checks listed in the quickstart. A passing narrow test "
+"does not prove unrelated interfaces or scientific claims."
+msgstr ""
+"Ejecute las comprobaciones del repositorio indicadas en el inicio rapido. "
+"Una prueba acotada superada no demuestra interfaces no relacionadas ni "
+"afirmaciones cientificas."
+
+#: ../../docs/tools/algoquest-qbit/operations.md:11
+#: 777c2a99f8ed4f6ea3b601430b33facb
+msgid "Troubleshooting"
+msgstr "Solucion de problemas"
+
+#: ../../docs/tools/algoquest-qbit/operations.md:13
+#: 085196dcad914bbbaf41762e94c1f538
+msgid "Confirm the repository and branch."
+msgstr "Confirme el repositorio y la rama."
+
+#: ../../docs/tools/algoquest-qbit/operations.md:14
+#: f6803d597e254b57b9644ce2455e8b54
+msgid "Reproduce with the smallest supported input."
+msgstr "Reproduzca con la entrada compatible mas pequena."
+
+#: ../../docs/tools/algoquest-qbit/operations.md:15
+#: b4a041daf4be45efb67e7fce567eec60
+msgid "Capture the exact command and error."
+msgstr "Registre el comando y el error exactos."
+
+#: ../../docs/tools/algoquest-qbit/operations.md:16
+#: 064f09fb9dcc4e9ab8db0020a3eb6aff
+msgid "Check the documented runtime and lockfile."
+msgstr "Compruebe el runtime documentado y el archivo de bloqueo."
+
+#: ../../docs/tools/algoquest-qbit/operations.md:17
+#: fd2c8f988d7946e7bdc2d4ffb0eb1ace
+msgid "Open an issue with secret-free evidence."
+msgstr "Abra una incidencia con evidencia sin secretos."
+
+#: ../../docs/tools/algoquest-qbit/operations.md:19
+#: fb7a4289de7b40ea88693180041819f4
+msgid "Security and privacy"
+msgstr "Seguridad y privacidad"
+
+#: ../../docs/tools/algoquest-qbit/operations.md:21
+#: 54c6a4615c2e4cf297c801a7eb113bc5
+msgid ""
+"Learning output is formative evidence. It is not a credential, assessment "
+"authority, or autonomous teaching decision."
+msgstr ""
+"El resultado de aprendizaje es evidencia formativa. No es una credencial, "
+"una autoridad evaluadora ni una decision docente autonoma."
+
+#: ../../docs/tools/algoquest-qbit/operations.md:23
+#: a92aa80c2ec74392b3e74e71f27f4757
+msgid "Contributing"
+msgstr "Contribuir"
+
+#: ../../docs/tools/algoquest-qbit/operations.md:25
+#: b1295aa8644a4af987dd6ae4638496a1
+msgid ""
+"Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository "
+"license when present. Keep changes bounded and include the checks that "
+"justify acceptance."
+msgstr ""
+"Lea `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md` y la licencia del "
+"repositorio cuando existan. Mantenga los cambios acotados e incluya las "
+"comprobaciones que justifican su aceptacion."
+
+#: ../../docs/tools/algoquest-qbit/operations.md:27
+#: b4582af0320a48b1839f26a91e42239c
+msgid "Releases"
+msgstr "Versiones publicadas"
+
+#: ../../docs/tools/algoquest-qbit/operations.md:29
+#: 0596ef2817d942b4bd397943324c6634
+msgid ""
+"The current public documentation describes `0.0.0` with status `public-"
+"preview`. Consult the repository history and release notes for changes."
+msgstr ""
+"La documentacion publica actual describe `0.0.0` con el estado `public-"
+"preview`. Consulte el historial del repositorio y las notas de version para "
+"conocer los cambios."

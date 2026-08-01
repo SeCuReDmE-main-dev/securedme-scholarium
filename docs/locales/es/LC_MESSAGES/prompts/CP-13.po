@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-13.md:1 e562261b3b5b46b89368bee24677b336
+msgid "CP-13 - Compare two simulator runs"
+msgstr "CP-13 - Compare two simulator runs"
+
+#: ../../docs/prompts/CP-13.md:3 44ab71dc1f50400f81bf29554201e6b9
+msgid "**Tool:** `fnp-qnn`"
+msgstr "**Tool:** `fnp-qnn`"
+
+#: ../../docs/prompts/CP-13.md:5 a53745b6ddd040229034c53670b4ca77
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-13.md:7 2cd6b31c58fa4daa908eb0cd70d58844
+msgid "**Objective.** Compare two simulator runs"
+msgstr "**Objective.** Compare two simulator runs"
+
+#: ../../docs/prompts/CP-13.md:28 6eafa414fddc4fb3814ccaf7c1e234ab
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-13.md:30 6bb49f7ea021433685af7f3dc875b243
+msgid "**Objectif.** Comparer deux executions"
+msgstr "**Objectif.** Comparer deux executions"
+
+#: ../../docs/prompts/CP-13.md:51 2a5a15f5836b4622a003a5b6b96198ee
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-13.md:53 d0091b1f97d64235b076504ca1fc0b0a
+msgid "**Objetivo.** Comparar dos ejecuciones"
+msgstr "**Objetivo.** Comparar dos ejecuciones"

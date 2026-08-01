@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/index.md:16
+msgid "Start"
+msgstr "Comenzar"
+
+#: ../../docs/index.md:1 e28bb743ab8f401780805051dfd27648
+msgid "SeCuReDmE Developer Library"
+msgstr "Biblioteca para desarrolladores SeCuReDmE"
+
+#: ../../docs/index.md:3 1b89dd73d1b84c09a3ddc5d28b417c61
+msgid ""
+"Public technical documentation for the twelve tools in the SeCuReDmE "
+"Education suite. The catalogue tells you where to enter; this library "
+"explains how each system runs, what it validates, and where human review "
+"remains mandatory."
+msgstr ""
+"Documentacion tecnica publica de las doce herramientas de SeCuReDmE "
+"Education. El catalogo indica por donde entrar; esta biblioteca explica como"
+" funciona cada sistema, que valida y donde la revision humana sigue siendo "
+"obligatoria."
+
+#: ../../docs/index.md:6 d7d2bc9f4bd44a01a909b0e32ab53368
+msgid ""
+"Generated output, simulations, classifications, and agent suggestions remain"
+" reviewable artifacts. They do not become scientific, legal, security, "
+"clinical, or editorial authority by themselves."
+msgstr ""
+"Las salidas generadas, simulaciones, clasificaciones y sugerencias de "
+"agentes siguen siendo artefactos revisables. Por si solas no se convierten "
+"en autoridad cientifica, juridica, de seguridad, clinica o editorial."
+
+#: ../../docs/index.md:9 866542ed47ed4f27adc0a21b8bf5a7f0
+msgid "Start with the route that matches your work"
+msgstr "Comience por la ruta que corresponde a su trabajo"
+
+#: ../../docs/index.md:11 0fdd6c774c884a49af36b69ed27b4a10
+msgid ""
+"[Start in 15 minutes](getting-started/15-minute-tutorial.md) to learn the "
+"common operating method."
+msgstr ""
+"[Start in 15 minutes](getting-started/15-minute-tutorial.md) to learn the "
+"common operating method."
+
+#: ../../docs/index.md:12 7315c81364b744958878843f27a0beae
+msgid ""
+"[Open the tool library](tools/index.md) for installation, interfaces, tests,"
+" and public boundaries."
+msgstr ""
+"[Open the tool library](tools/index.md) for installation, interfaces, tests,"
+" and public boundaries."
+
+#: ../../docs/index.md:13 1c4ca878f2b7412eb53cef50c10dffa1
+msgid ""
+"[Use the 40 collaboration contracts](prompts/index.md) when you need a "
+"bounded, reusable prompt."
+msgstr ""
+"[Use the 40 collaboration contracts](prompts/index.md) when you need a "
+"bounded, reusable prompt."
+
+#: ../../docs/index.md:14 3dbf14da7b9e486297c618048da7724d
+msgid ""
+"[Browse the video library](media/video-library.md) to connect short "
+"explanations with long-form walkthroughs."
+msgstr ""
+"[Browse the video library](media/video-library.md) to connect short "
+"explanations with long-form walkthroughs."
+
+#: ../../docs/index.md:26 4eddc1492038409ca997d5acc00c39fa
+msgid "Documentation contract"
+msgstr "Contrato documental"
+
+#: ../../docs/index.md:28 9c6cdd154577486bb279193901f9cd3f
+msgid ""
+"Every tool documents the same technical surface: status, prerequisites, "
+"installation, quickstart, architecture, interfaces, configuration, examples,"
+" tests, security, troubleshooting, contribution, releases, and source links."
+" The repository that implements the tool remains authoritative; Scholarium "
+"aggregates and validates its public documentation."
+msgstr ""
+"Cada herramienta documenta la misma superficie tecnica: estado, requisitos, "
+"instalacion, inicio rapido, arquitectura, interfaces, configuracion, "
+"ejemplos, pruebas, seguridad, solucion de problemas, contribucion, versiones"
+" y enlaces fuente. El repositorio que implementa la herramienta sigue siendo"
+" la referencia; Scholarium agrega y valida su documentacion publica."
+
+#: ../../docs/index.md:30 c0f23094baf54b9f8f4e282a858b846b
+msgid "Public entry point"
+msgstr "Punto de entrada publico"
+
+#: ../../docs/index.md:32 89c2875763f54b0caaa6e11fbcc80c14
+msgid ""
+"The human-facing catalogue remains [SeCuReDmE "
+"Education](https://securedme.ca/product/education/). Browser-ready tools "
+"open their real application. Local, CLI, API, and research tools open a full"
+" technical route instead of a simulated dashboard."
+msgstr ""
+"El catalogo para las personas sigue siendo [SeCuReDmE "
+"Education](https://securedme.ca/product/education/). Las herramientas web "
+"abren su aplicacion real. Las herramientas locales, CLI, API y de "
+"investigacion abren una ruta tecnica completa en vez de un panel simulado."

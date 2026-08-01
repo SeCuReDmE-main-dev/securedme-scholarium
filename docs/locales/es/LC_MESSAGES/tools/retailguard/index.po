@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/retailguard/index.md:1 643964b6ad484aafb8a8b4b8c8108915
+msgid "Market Guardian / RetailGuard"
+msgstr "Market Guardian / RetailGuard"
+
+#: ../../docs/tools/retailguard/index.md:8 bbec295b6a3741a6b74b5a138fb7d3f1
+msgid ""
+"A defensive retail-security learning environment focused on explainable "
+"safeguards and review."
+msgstr ""
+"Un entorno defensivo de aprendizaje sobre seguridad minorista centrado en "
+"salvaguardas explicables y revision."
+
+#: ../../docs/tools/retailguard/index.md:10 028c01e0bcfe4a81b7e4955761000d2d
+msgid "Public status"
+msgstr "Estado publico"
+
+#: ../../docs/tools/retailguard/index.md:12 35ba17912f3943e39251a4321d1cb77c
+msgid "**Runtime:** `browser-app`"
+msgstr "**Ejecucion:** `browser-app`"
+
+#: ../../docs/tools/retailguard/index.md:13 362597ce76b24ab6b2e75a25bed8e6ce
+msgid "**Availability:** `verified`"
+msgstr "**Disponibilidad:** `verified`"
+
+#: ../../docs/tools/retailguard/index.md:14 5ac750ed9f8c43bb8623e6e7aa7714b7
+msgid "**License:** `LicenseRef-SECL-2.0`"
+msgstr "**Licencia:** `LicenseRef-SECL-2.0`"
+
+#: ../../docs/tools/retailguard/index.md:15 ab93f167545f4190830e67932bd04c8f
+msgid "**Version:** `pre-alpha`"
+msgstr "**Version:** `pre-alpha`"
+
+#: ../../docs/tools/retailguard/index.md:23 62e469d6fe9e4687a5ffddc90c7e085a
+msgid "Interfaces"
+msgstr "Interfaces"
+
+#: ../../docs/tools/retailguard/index.md:25 f512fbae4dd8442d85652f0c7f13b286
+msgid "Public defensive learning surface"
+msgstr "Public defensive learning surface"
+
+#: ../../docs/tools/retailguard/index.md:26 74f5aefd4f9c46aa91339bf670c724d0
+msgid "Scenario fixtures"
+msgstr "Scenario fixtures"
+
+#: ../../docs/tools/retailguard/index.md:27 850e5598c1d94e6e881df706cdd00450
+msgid "Human review ledger"
+msgstr "Human review ledger"
+
+#: ../../docs/tools/retailguard/index.md:30 e9ea22fd9d7542a1971c7614b56b6765
+msgid ""
+"RetailGuard is for prevention, simulation, and supervised defensive "
+"education only."
+msgstr ""
+"RetailGuard sirve exclusivamente para prevencion, simulacion y educacion "
+"defensiva supervisada."

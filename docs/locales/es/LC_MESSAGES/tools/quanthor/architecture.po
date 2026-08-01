@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/quanthor/architecture.md:1
+#: ac700059c32f483f950704f566adcec4
+msgid "Architecture"
+msgstr "Arquitectura"
+
+#: ../../docs/tools/quanthor/architecture.md:3
+#: ad01a4ee15bf444891bff783bb36c968
+msgid ""
+"A local editor routes claims through bounded drafting, verification, "
+"provenance, and optional retrieval services."
+msgstr ""
+"Un editor local dirige las afirmaciones mediante redaccion acotada, "
+"verificacion, procedencia y servicios opcionales de recuperacion."
+
+#: ../../docs/tools/quanthor/architecture.md:5
+#: e52f9b8b274243a39d5e47e68cb1abd0
+msgid "Data flow"
+msgstr "Flujo de datos"
+
+#: ../../docs/tools/quanthor/architecture.md:11
+#: a47e0e77bccb4856956851416c108eab
+msgid "Provenance"
+msgstr "Procedencia"
+
+#: ../../docs/tools/quanthor/architecture.md:13
+#: 0358b8b61f80420f9fc2234f6b4f7de1
+msgid ""
+"Record the repository commit, configuration, input identifiers, execution "
+"command, output location, and validation result. A screenshot alone is not a"
+" reproducible artifact."
+msgstr ""
+"Registre el commit del repositorio, la configuracion, los identificadores de"
+" entrada, el comando de ejecucion, la ubicacion de salida y el resultado de "
+"validacion. Una captura por si sola no es un artefacto reproducible."
+
+#: ../../docs/tools/quanthor/architecture.md:15
+#: 10da6081d99a4a9994507d64dbf3feef
+msgid "Failure behavior"
+msgstr "Comportamiento ante fallos"
+
+#: ../../docs/tools/quanthor/architecture.md:17
+#: b03acb71867e44b0ba516260d92f78e3
+msgid ""
+"Missing configuration, unavailable dependencies, invalid input, and failed "
+"tests must remain visible. The tool must not replace a failure with invented"
+" success."
+msgstr ""
+"La configuracion ausente, las dependencias no disponibles, una entrada "
+"invalida y las pruebas fallidas deben seguir visibles. La herramienta no "
+"debe reemplazar un fallo por un exito inventado."

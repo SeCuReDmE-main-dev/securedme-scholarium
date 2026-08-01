@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-16.md:1 3c77f2da37ba4f1dad6b655a3f3a1818
+msgid "CP-16 - Review an MCP boundary"
+msgstr "CP-16 - Review an MCP boundary"
+
+#: ../../docs/prompts/CP-16.md:3 ad321b1181f8458999f22d0645228732
+msgid "**Tool:** `fnpqnn-gateway`"
+msgstr "**Tool:** `fnpqnn-gateway`"
+
+#: ../../docs/prompts/CP-16.md:5 056ab84ea0e1427c92d37329670bfce2
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-16.md:7 b00511b56fb3467395174685786fa9da
+msgid "**Objective.** Review an MCP boundary"
+msgstr "**Objective.** Review an MCP boundary"
+
+#: ../../docs/prompts/CP-16.md:28 005c92108ee44cab94b2d5f5759d0b7e
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-16.md:30 7ad7096198144196b96d4e417cbc49ff
+msgid "**Objectif.** Reviser une frontiere MCP"
+msgstr "**Objectif.** Reviser une frontiere MCP"
+
+#: ../../docs/prompts/CP-16.md:51 e925bacd9c2d49e99ffe50638a047e0e
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-16.md:53 2fef552df942487eaf699eee80a073b0
+msgid "**Objetivo.** Revisar una frontera MCP"
+msgstr "**Objetivo.** Revisar una frontera MCP"

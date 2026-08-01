@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/algorithm-builder/index.md:1
+#: bbb37a7c31ad45158665a762736a576f
+msgid "Algorithm Builder"
+msgstr "Algorithm Builder"
+
+#: ../../docs/tools/algorithm-builder/index.md:8
+#: 134babd4b89244958d1b3ca32dc60609
+msgid ""
+"A visual workspace for composing, inspecting, and explaining algorithm "
+"structures."
+msgstr ""
+"Un espacio visual para componer, inspeccionar y explicar estructuras "
+"algoritmicas."
+
+#: ../../docs/tools/algorithm-builder/index.md:10
+#: 5b04e8790f894eb2b289ae3cc390f7b4
+msgid "Public status"
+msgstr "Estado publico"
+
+#: ../../docs/tools/algorithm-builder/index.md:12
+#: 4f0e2271ca9b4b26ae03051c5914fe29
+msgid "**Runtime:** `browser-app`"
+msgstr "**Ejecucion:** `browser-app`"
+
+#: ../../docs/tools/algorithm-builder/index.md:13
+#: 0db88abe833e4c2bab21f41d9c0f381a
+msgid "**Availability:** `pending`"
+msgstr "**Disponibilidad:** `pending`"
+
+#: ../../docs/tools/algorithm-builder/index.md:14
+#: 71f49183930a439eaa8008ed458df560
+msgid "**License:** `LicenseRef-SEL-2.0`"
+msgstr "**Licencia:** `LicenseRef-SEL-2.0`"
+
+#: ../../docs/tools/algorithm-builder/index.md:15
+#: e911a42e0e984df1aa7f18e8025f4ef8
+msgid "**Version:** `1.0.0`"
+msgstr "**Version:** `1.0.0`"
+
+#: ../../docs/tools/algorithm-builder/index.md:23
+#: 556d271a36444c01b86331480ce4ff40
+msgid "Interfaces"
+msgstr "Interfaces"
+
+#: ../../docs/tools/algorithm-builder/index.md:25
+#: 9d92c0d4d57847bd9285994994eb07d7
+msgid "React visual builder"
+msgstr "React visual builder"
+
+#: ../../docs/tools/algorithm-builder/index.md:26
+#: 9b71313e913e489ca9d2adc33251584b
+msgid "Express service"
+msgstr "Express service"
+
+#: ../../docs/tools/algorithm-builder/index.md:27
+#: 3353a0aa75ce47b19e817d145c2fea5d
+msgid "WebSocket collaboration channel"
+msgstr "WebSocket collaboration channel"
+
+#: ../../docs/tools/algorithm-builder/index.md:30
+#: 66a0001412d149228aa7d86252283b22
+msgid ""
+"The builder supports explanation and experimentation; generated structures "
+"remain subject to code review and tests."
+msgstr ""
+"El constructor facilita la explicacion y la experimentacion; las estructuras"
+" generadas siguen sujetas a revision de codigo y pruebas."

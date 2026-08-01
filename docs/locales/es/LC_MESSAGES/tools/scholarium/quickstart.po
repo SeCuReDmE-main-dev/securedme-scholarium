@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/scholarium/quickstart.md:1
+#: 8bc86e569ff449e1a3d11ea8f8941446
+msgid "SecuredMe Scholarium quickstart"
+msgstr "SecuredMe Scholarium inicio rapido"
+
+#: ../../docs/tools/scholarium/quickstart.md:3
+#: 7ac8d9824fc044b88b8ee590871f4465
+msgid "Requirements"
+msgstr "Requisitos"
+
+#: ../../docs/tools/scholarium/quickstart.md:5
+#: d2e3afd286624a27bc98acbda3319642
+msgid ""
+"Use a clean checkout, the runtime declared by the repository, and its "
+"committed lockfiles. Confirm the active branch before installing anything."
+msgstr ""
+"Use una copia limpia, el runtime declarado por el repositorio y sus archivos"
+" de bloqueo confirmados. Confirme la rama activa antes de instalar nada."
+
+#: ../../docs/tools/scholarium/quickstart.md:11
+#: 1aaf492f7b064eb08dde1fec6b0ae244
+msgid "Install"
+msgstr "Instalar"
+
+#: ../../docs/tools/scholarium/quickstart.md:18
+#: 8871ea8e9b1d44448d28a68de0a4927d
+msgid "Start"
+msgstr "Comenzar"
+
+#: ../../docs/tools/scholarium/quickstart.md:24
+#: 2a90f788c2404b739c3116739cd6badf
+msgid "Verify"
+msgstr "Verificar"
+
+#: ../../docs/tools/scholarium/quickstart.md:31
+#: 3a161d75d2484849a7282fe1248f6dec
+msgid "Human acceptance"
+msgstr "Aceptacion humana"
+
+#: ../../docs/tools/scholarium/quickstart.md:33
+#: a6446442be264c5d8e25dbb11aaebc35
+msgid ""
+"Inspect the output, logs, test results, and diff. Accept, request a "
+"correction, quarantine, or stop; do not silently promote a generated result."
+msgstr ""
+"Inspeccione la salida, los registros, los resultados de pruebas y el diff. "
+"Acepte, solicite una correccion, ponga en cuarentena o detengase; no "
+"promueva silenciosamente un resultado generado."

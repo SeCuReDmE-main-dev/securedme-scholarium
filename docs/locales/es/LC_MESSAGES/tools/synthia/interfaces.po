@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/synthia/interfaces.md:1 74b30f724bb34a1bb839b23e2c468276
+msgid "Interfaces"
+msgstr "Interfaces"
+
+#: ../../docs/tools/synthia/interfaces.md:3 b72b8a676f554b8289319d35e875f301
+msgid "**synthia CLI:** use only through the documented repository route."
+msgstr ""
+"**synthia CLI:** usar solo mediante la ruta documentada del repositorio."
+
+#: ../../docs/tools/synthia/interfaces.md:4 77ff19b196dc482c9883e3432acdb025
+msgid ""
+"**Static trace lab:** use only through the documented repository route."
+msgstr ""
+"**Static trace lab:** usar solo mediante la ruta documentada del "
+"repositorio."
+
+#: ../../docs/tools/synthia/interfaces.md:5 19741f2ceac9440a8d29ff1a08e7162c
+msgid ""
+"**Candidate-memory manifest:** use only through the documented repository "
+"route."
+msgstr ""
+"**Candidate-memory manifest:** usar solo mediante la ruta documentada del "
+"repositorio."
+
+#: ../../docs/tools/synthia/interfaces.md:6 4c9cc8e14c6847b0ae5e26e3804356f4
+msgid ""
+"**Optional RethinkDB adapter:** use only through the documented repository "
+"route."
+msgstr ""
+"**Optional RethinkDB adapter:** usar solo mediante la ruta documentada del "
+"repositorio."
+
+#: ../../docs/tools/synthia/interfaces.md:8 2b1a06c357a24606b82b472122d33053
+msgid "Interface contract"
+msgstr "Contrato de interfaz"
+
+#: ../../docs/tools/synthia/interfaces.md:10 07236742a4ff4f9996d3eb648ad63ea3
+msgid ""
+"Inputs must be explicit, outputs must be inspectable, errors must be "
+"returned as errors, and consequential external actions require human "
+"approval."
+msgstr ""
+"Las entradas deben ser explicitas, las salidas inspeccionables, los errores "
+"devueltos como errores y las acciones externas importantes requieren "
+"aprobacion humana."
+
+#: ../../docs/tools/synthia/interfaces.md:12 653971a49ec541be867442f14da28814
+msgid "Compatibility"
+msgstr "Compatibilidad"
+
+#: ../../docs/tools/synthia/interfaces.md:14 652f2effd63140fab02061d0bef248b6
+msgid ""
+"Treat undocumented endpoints, commands, and browser controls as unsupported."
+" Confirm the current repository version before integrating another system."
+msgstr ""
+"Considere no compatibles los endpoints, comandos y controles del navegador "
+"no documentados. Confirme la version actual del repositorio antes de "
+"integrar otro sistema."

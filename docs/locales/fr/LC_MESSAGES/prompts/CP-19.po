@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-19.md:1 0c65a032682e495aa4b9f21d9fd41f6c
+msgid "CP-19 - Formalize an informal claim"
+msgstr "CP-19 - Formalize an informal claim"
+
+#: ../../docs/prompts/CP-19.md:3 4ab75824f52e461987b4f99163a0d6d1
+msgid "**Tool:** `quanthor`"
+msgstr "**Tool:** `quanthor`"
+
+#: ../../docs/prompts/CP-19.md:5 e4abbd48484b49de93c070f248ce2801
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-19.md:7 fd70785f4e9a423cbf077400030a5e62
+msgid "**Objective.** Formalize an informal claim"
+msgstr "**Objective.** Formalize an informal claim"
+
+#: ../../docs/prompts/CP-19.md:28 0911eaf6a2fe4102a2d934eb9a2bce37
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-19.md:30 d11350b89f3d4ecb91945307a9481a26
+msgid "**Objectif.** Formaliser une affirmation"
+msgstr "**Objectif.** Formaliser une affirmation"
+
+#: ../../docs/prompts/CP-19.md:51 13c98dd164494c68ab8707beab66c9ba
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-19.md:53 9f6e6f76f5f0484bb458348e5285e708
+msgid "**Objetivo.** Formalizar una afirmacion"
+msgstr "**Objetivo.** Formalizar una afirmacion"

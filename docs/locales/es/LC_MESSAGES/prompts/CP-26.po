@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-26.md:1 216008ecfc0e4d359af9abfeb49a7909
+msgid "CP-26 - Quarantine conflicting taxonomy"
+msgstr "CP-26 - Quarantine conflicting taxonomy"
+
+#: ../../docs/prompts/CP-26.md:3 fdd144b770774b458a2435dd1226bfca
+msgid "**Tool:** `synthia`"
+msgstr "**Tool:** `synthia`"
+
+#: ../../docs/prompts/CP-26.md:5 919dad84cc224909981b47015b326e39
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-26.md:7 96c0161b426f4451962c9c4b37f5e778
+msgid "**Objective.** Quarantine conflicting taxonomy"
+msgstr "**Objective.** Quarantine conflicting taxonomy"
+
+#: ../../docs/prompts/CP-26.md:28 03f427e0e18243a686a4ca36c83386b2
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-26.md:30 00c60f32eb054a52b3956808805ce77f
+msgid "**Objectif.** Mettre une taxonomie en quarantaine"
+msgstr "**Objectif.** Mettre une taxonomie en quarantaine"
+
+#: ../../docs/prompts/CP-26.md:51 81a03383ff6340daaf7cd90df4393ec7
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-26.md:53 9b70311358c34e75a8deac38df321603
+msgid "**Objetivo.** Poner una taxonomia en cuarentena"
+msgstr "**Objetivo.** Poner una taxonomia en cuarentena"

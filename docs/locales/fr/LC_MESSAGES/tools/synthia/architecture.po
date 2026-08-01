@@ -1,0 +1,69 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/synthia/architecture.md:1 d16d44abbe4d4a83bab9d6a3d222a3c2
+msgid "Architecture"
+msgstr "Architecture"
+
+#: ../../docs/tools/synthia/architecture.md:3 ccf75ee2cf1944369d2f25afd491464f
+msgid ""
+"A Python taxonomy-memory core emits traceable candidate records for human "
+"review and optional persistence."
+msgstr ""
+"Un noyau Python de memoire taxonomique emet des dossiers candidats tracables"
+" pour revision humaine et persistance optionnelle."
+
+#: ../../docs/tools/synthia/architecture.md:5 4b7d592dee1f48658be1022f37801274
+msgid "Data flow"
+msgstr "Flux de donnees"
+
+#: ../../docs/tools/synthia/architecture.md:11
+#: bb172582473e4e059a5197339273f85e
+msgid "Provenance"
+msgstr "Provenance"
+
+#: ../../docs/tools/synthia/architecture.md:13
+#: bb7ef8de0af8491286f8c49dbe0ef1f3
+msgid ""
+"Record the repository commit, configuration, input identifiers, execution "
+"command, output location, and validation result. A screenshot alone is not a"
+" reproducible artifact."
+msgstr ""
+"Consignez le commit du depot, la configuration, les identifiants d'entree, "
+"la commande d'execution, l'emplacement de sortie et le resultat de "
+"validation. Une capture seule n'est pas un artefact reproductible."
+
+#: ../../docs/tools/synthia/architecture.md:15
+#: 9d1023649b2b4e3dbb39362d70418c18
+msgid "Failure behavior"
+msgstr "Comportement en cas d'echec"
+
+#: ../../docs/tools/synthia/architecture.md:17
+#: 3574e61a709742fca5b778071ee2ef87
+msgid ""
+"Missing configuration, unavailable dependencies, invalid input, and failed "
+"tests must remain visible. The tool must not replace a failure with invented"
+" success."
+msgstr ""
+"Une configuration absente, des dependances indisponibles, une entree "
+"invalide et des tests echoues doivent rester visibles. L'outil ne doit pas "
+"remplacer un echec par un succes invente."

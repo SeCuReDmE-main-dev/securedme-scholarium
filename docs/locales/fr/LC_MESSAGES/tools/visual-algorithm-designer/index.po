@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:1
+#: 980028abd8474eba8d7b87cbf6b2e1e3
+msgid "Visual Algorithm Designer"
+msgstr "Visual Algorithm Designer"
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:8
+#: 65ec560902474a8280e0bfe1d26a9819
+msgid ""
+"A visual editor for assembling, inspecting, testing, and communicating "
+"algorithms."
+msgstr ""
+"Un editeur visuel pour assembler, inspecter, tester et communiquer des "
+"algorithmes."
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:10
+#: a6e852c3e55143c5a26c3ce24240d33e
+msgid "Public status"
+msgstr "Statut public"
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:12
+#: d27b3c8c8f0e48f6b7d553bffa54920c
+msgid "**Runtime:** `browser-app`"
+msgstr "**Execution:** `browser-app`"
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:13
+#: d0b8cacdea044922851ade1bd93b92e3
+msgid "**Availability:** `verified`"
+msgstr "**Disponibilite:** `verified`"
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:14
+#: c711b744bef74ee9b50563d26148c5c6
+msgid "**License:** `LicenseRef-SEL-2.0`"
+msgstr "**Licence:** `LicenseRef-SEL-2.0`"
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:15
+#: 981af680ee0a47969a52fd5f3241e1b7
+msgid "**Version:** `pre-alpha`"
+msgstr "**Version:** `pre-alpha`"
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:23
+#: 0e54758046e34c078c8373c7c185b806
+msgid "Interfaces"
+msgstr "Interfaces"
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:25
+#: 0277916c77e7417e9307d28baa8ca705
+msgid "React algorithm canvas"
+msgstr "React algorithm canvas"
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:26
+#: a3cde2221a1244b0b5c7c154242d3553
+msgid "Algorithm palette"
+msgstr "Algorithm palette"
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:27
+#: 323548d4697249929708de1f2210689e
+msgid "Properties and explanation panels"
+msgstr "Properties and explanation panels"
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:28
+#: 9f6cdde021b14eeea76955c18c469de4
+msgid "Backend service"
+msgstr "Backend service"
+
+#: ../../docs/tools/visual-algorithm-designer/index.md:31
+#: 383795fcd7374817a9809dfd543d4129
+msgid ""
+"Visual composition does not guarantee algorithmic correctness; tests and "
+"code review remain required."
+msgstr ""
+"La composition visuelle ne garantit pas la correction algorithmique; les "
+"tests et la revue de code restent obligatoires."

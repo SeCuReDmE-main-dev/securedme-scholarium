@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/algorithm-builder/operations.md:1
+#: ecbc90b0c3214821972c1ad74f717518
+msgid "Operations and contribution"
+msgstr "Operacion y contribucion"
+
+#: ../../docs/tools/algorithm-builder/operations.md:3
+#: 9f974c33e4ef4cd99181102260c6a834
+msgid "Configuration"
+msgstr "Configuracion"
+
+#: ../../docs/tools/algorithm-builder/operations.md:5
+#: 3a3ebf0916884b4d8759f6b3ebe46b77
+msgid ""
+"Keep secrets outside documentation and source control. Use `.env.example` as"
+" the public contract and store real values only in the designated local "
+"settings surface."
+msgstr ""
+"Mantenga los secretos fuera de la documentacion y del control de codigo. Use"
+" `.env.example` como contrato publico y guarde los valores reales solo en la"
+" superficie local designada."
+
+#: ../../docs/tools/algorithm-builder/operations.md:7
+#: 8e83b4ecff9b4d5a8bf2bd5286815b11
+msgid "Testing"
+msgstr "Pruebas"
+
+#: ../../docs/tools/algorithm-builder/operations.md:9
+#: b61f4ff6de7e425c85e892e51ecbd938
+msgid ""
+"Run the repository checks listed in the quickstart. A passing narrow test "
+"does not prove unrelated interfaces or scientific claims."
+msgstr ""
+"Ejecute las comprobaciones del repositorio indicadas en el inicio rapido. "
+"Una prueba acotada superada no demuestra interfaces no relacionadas ni "
+"afirmaciones cientificas."
+
+#: ../../docs/tools/algorithm-builder/operations.md:11
+#: 956c25951d324b1d9768eb800bec113c
+msgid "Troubleshooting"
+msgstr "Solucion de problemas"
+
+#: ../../docs/tools/algorithm-builder/operations.md:13
+#: 2c5d3b0356f1441ab63643f8f04a1205
+msgid "Confirm the repository and branch."
+msgstr "Confirme el repositorio y la rama."
+
+#: ../../docs/tools/algorithm-builder/operations.md:14
+#: 12036614322240d5b05d833eeb4b0c8f
+msgid "Reproduce with the smallest supported input."
+msgstr "Reproduzca con la entrada compatible mas pequena."
+
+#: ../../docs/tools/algorithm-builder/operations.md:15
+#: 676c53fc59f646e7ab4198cfac5dcb40
+msgid "Capture the exact command and error."
+msgstr "Registre el comando y el error exactos."
+
+#: ../../docs/tools/algorithm-builder/operations.md:16
+#: 3a83fca89e724a8fa271bda6ddae1de4
+msgid "Check the documented runtime and lockfile."
+msgstr "Compruebe el runtime documentado y el archivo de bloqueo."
+
+#: ../../docs/tools/algorithm-builder/operations.md:17
+#: cb3fff400006427e9412f85659bb4548
+msgid "Open an issue with secret-free evidence."
+msgstr "Abra una incidencia con evidencia sin secretos."
+
+#: ../../docs/tools/algorithm-builder/operations.md:19
+#: e6e98cac864f4f5e82427a39dbb64cff
+msgid "Security and privacy"
+msgstr "Seguridad y privacidad"
+
+#: ../../docs/tools/algorithm-builder/operations.md:21
+#: 4458dad7d7444ada9b3fd7f918b9af4f
+msgid ""
+"The builder supports explanation and experimentation; generated structures "
+"remain subject to code review and tests."
+msgstr ""
+"El constructor facilita la explicacion y la experimentacion; las estructuras"
+" generadas siguen sujetas a revision de codigo y pruebas."
+
+#: ../../docs/tools/algorithm-builder/operations.md:23
+#: 14a2eecb9f164e97a0175e17dc52dc6e
+msgid "Contributing"
+msgstr "Contribuir"
+
+#: ../../docs/tools/algorithm-builder/operations.md:25
+#: 326759a6f8bc4d5ca3a4aaaaaa5379f0
+msgid ""
+"Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository "
+"license when present. Keep changes bounded and include the checks that "
+"justify acceptance."
+msgstr ""
+"Lea `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md` y la licencia del "
+"repositorio cuando existan. Mantenga los cambios acotados e incluya las "
+"comprobaciones que justifican su aceptacion."
+
+#: ../../docs/tools/algorithm-builder/operations.md:27
+#: bc7126a0ff6745769b66a20bbf688338
+msgid "Releases"
+msgstr "Versiones publicadas"
+
+#: ../../docs/tools/algorithm-builder/operations.md:29
+#: a049a7f3ca5549fe99e194b7573fb996
+msgid ""
+"The current public documentation describes `1.0.0` with status `in-"
+"development`. Consult the repository history and release notes for changes."
+msgstr ""
+"La documentacion publica actual describe `1.0.0` con el estado `in-"
+"development`. Consulte el historial del repositorio y las notas de version "
+"para conocer los cambios."

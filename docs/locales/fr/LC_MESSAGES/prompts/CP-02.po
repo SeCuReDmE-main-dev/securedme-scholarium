@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-02.md:1 fbf31569c8e44ef4afb1ee3159552b58
+msgid "CP-02 - Inspect a tool contract"
+msgstr "CP-02 - Inspect a tool contract"
+
+#: ../../docs/prompts/CP-02.md:3 00c9188ae5374c7095f068a9453c1e34
+msgid "**Tool:** `scholarium`"
+msgstr "**Tool:** `scholarium`"
+
+#: ../../docs/prompts/CP-02.md:5 9c1ce04b9cb444ea82a22bbb2919e936
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-02.md:7 b9cf3f0f16a9472d86079ddb6257590e
+msgid "**Objective.** Inspect a tool contract"
+msgstr "**Objective.** Inspect a tool contract"
+
+#: ../../docs/prompts/CP-02.md:28 e02201ca30f14d3a8120dc69b015a743
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-02.md:30 f042a74510754408ba3695150f3396f0
+msgid "**Objectif.** Inspecter le contrat d'un outil"
+msgstr "**Objectif.** Inspecter le contrat d'un outil"
+
+#: ../../docs/prompts/CP-02.md:51 8f6a3d33581e43aab7e34f48ceda5672
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-02.md:53 c3f6337922eb4eebac7d94083705c947
+msgid "**Objetivo.** Inspeccionar el contrato de una herramienta"
+msgstr "**Objetivo.** Inspeccionar el contrato de una herramienta"

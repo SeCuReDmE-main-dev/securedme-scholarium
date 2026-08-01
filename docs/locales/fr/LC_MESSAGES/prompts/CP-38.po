@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/prompts/CP-38.md:1 a3a5e89e275348498ba08431b02e8361
+msgid "CP-38 - Review accessibility"
+msgstr "CP-38 - Review accessibility"
+
+#: ../../docs/prompts/CP-38.md:3 57c5a1210c4b41c297bee164861d2f26
+msgid "**Tool:** `scholarium`"
+msgstr "**Tool:** `scholarium`"
+
+#: ../../docs/prompts/CP-38.md:5 d696c22fc786477dac4ef7c82e367e40
+msgid "English"
+msgstr "English"
+
+#: ../../docs/prompts/CP-38.md:7 c797f403de7e483aae34c3c08b901f44
+msgid "**Objective.** Review accessibility"
+msgstr "**Objective.** Review accessibility"
+
+#: ../../docs/prompts/CP-38.md:28 090bb1a2c5ba4e39bde5329450cb9172
+msgid "Francais"
+msgstr "Francais"
+
+#: ../../docs/prompts/CP-38.md:30 c597df58de1640e7908f6dcc63eefaf5
+msgid "**Objectif.** Reviser l'accessibilite"
+msgstr "**Objectif.** Reviser l'accessibilite"
+
+#: ../../docs/prompts/CP-38.md:51 89d9f0a36a884130803857731af4e6dd
+msgid "Espanol"
+msgstr "Espanol"
+
+#: ../../docs/prompts/CP-38.md:53 88264f8a3ade4612826614bb1483bbe8
+msgid "**Objetivo.** Revisar la accesibilidad"
+msgstr "**Objetivo.** Revisar la accesibilidad"
