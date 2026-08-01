@@ -1,5 +1,14 @@
 <h1 align="center">SecuredMe Scholarium</h1>
 
+<!-- SECUREDME-CPAI-MESH:START -->
+<p align="center">
+  <img alt="CodeProject.AI Server embedded mesh node" src="https://img.shields.io/badge/CodeProject.AI%20Server-Embedded%20Mesh%20Node-1F6FEB?style=for-the-badge" />
+  <img alt="YOLO real local inference validated" src="https://img.shields.io/badge/YOLO-Real%20Local%20Inference-16A34A?style=for-the-badge" />
+</p>
+<!-- SECUREDME-CPAI-MESH:END -->
+
+[Embedded CodeProject.AI node operations](infra/codeproject-ai/README.md)
+
 <p align="center">
   <strong>An open, education-first home for research, projects, teaching work, and the people who make them.</strong><br />
   Publish with context. Learn in public. Keep discovery free.
