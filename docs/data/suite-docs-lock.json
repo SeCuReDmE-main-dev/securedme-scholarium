@@ -220,8 +220,8 @@
     {
       "slug": "scholarium",
       "repository": "securedme-scholarium",
-      "requested_ref": "1ccaab5c906286727a1c0553a8faf4b3aa8f6b73",
-      "resolved_commit": "a9b46fc1262c2d4b36b98ae3bf7ad0e56ab31e25",
+      "requested_ref": "03dbb4c4010e5e5471e5682dcf50348f90998d78",
+      "resolved_commit": "03dbb4c4010e5e5471e5682dcf50348f90998d78",
       "contract_sha256": "b77b9e39197611fc673bea1e6ce398af41b424d260cdc764e9ff0a8d139353e5",
       "logo": "_static/tools/scholarium/logo.webp",
       "files": [
