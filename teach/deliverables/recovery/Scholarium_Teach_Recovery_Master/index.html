@@ -1,0 +1,4104 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Public developer documentation for the twelve-tool SeCuReDmE Education suite.">
+      
+      
+      
+        <link rel="canonical" href="https://securedme-main-dev.github.io/securedme-scholarium/teach/deliverables/recovery/Scholarium_Teach_Recovery_Master/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/education/education-icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Scholarium + Teach - Dossier maître de récupération - SeCuReDmE Developer Library</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/securedme-education.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/securedme-theme-toggle.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/securedme-accessibility.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/securedme-docs.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scholarium-teach-dossier-maitre-de-recuperation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="SeCuReDmE Developer Library" class="md-header__button md-logo" aria-label="SeCuReDmE Developer Library" data-md-component="logo">
+      
+  <img src="../../../../assets/education/education-icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SeCuReDmE Developer Library
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Scholarium + Teach - Dossier maître de récupération
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SeCuReDmE-main-dev/securedme-scholarium" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SeCuReDmE-main-dev/securedme-scholarium
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../getting-started/15-minute-tutorial/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Start in 15 minutes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../tools/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tool library
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../LIFE_SCIENCE_40_PROMPT_BOOK/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Collaborate
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../media/video-library/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Watch
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../API-COVERAGE-MATRIX/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Platform
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../accessibility/edge-user-console/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Accessibility
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="SeCuReDmE Developer Library" class="md-nav__button md-logo" aria-label="SeCuReDmE Developer Library" data-md-component="logo">
+      
+  <img src="../../../../assets/education/education-icon.png" alt="logo">
+
+    </a>
+    SeCuReDmE Developer Library
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SeCuReDmE-main-dev/securedme-scholarium" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SeCuReDmE-main-dev/securedme-scholarium
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../getting-started/15-minute-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start in 15 minutes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../tools/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool library
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tool library
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/algoquest-qbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AlgoQuest Qbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/algorithm-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithm Builder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/ffed-qlc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FfeD-QLC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/fnp-qnn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FNP-QNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/fnpqnn-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FNP-QNN Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/retailguard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market Guardian / RetailGuard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/quanthor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QuaNThoR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/scholarium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scholarium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/synthia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synthia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/tesla-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla Recovery Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/vot-guardian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V.O.T. Guardian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/visual-algorithm-designer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Algorithm Designer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collaborate
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Collaborate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LIFE_SCIENCE_40_PROMPT_BOOK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All 40 prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../CODE-COLLABORATION-BOUNDARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code collaboration boundary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DEVELOPER-SEED-PROTOCOL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer seed protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SCHOOL_SAFETY_HITL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    School safety and HITL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Watch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Watch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../media/video-library/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video library
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../VIDEO-INTEGRATION-BOUNDARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video integration boundary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../PODCAST-VIDEO-STUDIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Podcast and video studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../API-COVERAGE-MATRIX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API coverage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../API-VERSIONING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API versioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../PROVENANCE-VERIFICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Provenance verification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../PUBLICATION-FORMATS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publication formats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../SECURITY-BASELINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security baseline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accessibility
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Accessibility
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../accessibility/edge-user-console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Edge user console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../accessibility/neurodivergent-comfort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neurodivergent comfort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resume-executif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Résumé exécutif
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-point-de-depart-une-vraie-seance-despagnol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Point de départ: une vraie séance d'espagnol
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-idee-centrale-et-invariants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Idée centrale et invariants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-evolution-du-systeme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Évolution du système
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Évolution du système">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memoire-pedagogique-et-maitrise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mémoire pédagogique et maîtrise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algoquest-et-assistants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AlgoQuest et assistants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessibilite-edge-case-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessibilité edge-case-first
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#social-portfolio-et-analytique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Social, portfolio et analytique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#media-et-plugins-educatifs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Média et plugins éducatifs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synthia-memorylake-et-hipporag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Synthia, MemoryLake et HippoRAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fnp-qnn-ffed-gate5-et-geometrie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FNP-QNN, FfeD, Gate5 et géométrie
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ce-qui-a-reellement-ete-construit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Ce qui a réellement été construit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-etat-quantitatif-des-163-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. État quantitatif des 163 actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-etat-operationnel-verifie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. État opérationnel vérifié
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-reprise-exacte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Reprise exacte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-corpus-g5-et-limites-explicites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Corpus G5 et limites explicites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-index-des-livrables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Index des livrables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annexe-a-registre-complet-des-idees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annexe A - Registre complet des idées
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annexe-b-registre-complet-des-163-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annexe B - Registre complet des 163 actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annexe-c-carte-de-provenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annexe C - Carte de provenance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annexe-d-glossaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annexe D - Glossaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/SeCuReDmE-main-dev/securedme-scholarium/edit/main/docs/teach/deliverables/recovery/Scholarium_Teach_Recovery_Master.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+
+  <section class="se-ribbon" aria-label="SecuredMe Education page marker">
+    <img src="../../../../assets/education/education-icon.png" alt="" class="se-ribbon__mark">
+    <div class="se-ribbon__text">
+      <span class="se-ribbon__title">SecuredMe Education</span>
+      <span class="se-ribbon__meta">Learn / Apprendre - Connect / Connecter - Explore / Explorer - Collaborate / Collaborer</span>
+    </div>
+  </section>
+
+
+
+<h1 id="scholarium-teach-dossier-maitre-de-recuperation">Scholarium + Teach - Dossier maître de récupération<a class="headerlink" href="#scholarium-teach-dossier-maitre-de-recuperation" title="Permanent link">&para;</a></h1>
+<p>Date: 2026-07-16<br />
+Statut: public pre-alpha; données synthétiques seulement<br />
+Source de vérité: <code>docs/teach/EXECUTION_STATE.json</code></p>
+<h2 id="resume-executif">Résumé exécutif<a class="headerlink" href="#resume-executif" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>161/163 actions sont terminées (98.77 %).</strong></li>
+<li><strong>Deux actions demeurent bloquées par des conditions externes:</strong> 048 pour la validation Loi 25 et 157 pour l'authentification interactive du tunnel VS Code.</li>
+<li><strong>L'application est active:</strong> landing, <code>/app</code>, <code>/teach</code>, santé API et leçon espagnole ont répondu HTTP 200.</li>
+<li><strong>La PR #2 est fusionnée:</strong> https://github.com/SeCuReDmE-main-dev/securedme-scholarium/pull/2.</li>
+<li><strong>Le corpus G5 est fermé:</strong> 125 cartes, 125 classifications Synthia, 125 paquets OpenIE et trois magasins de graphe durables.</li>
+</ul>
+<p>Ce dossier permet de récupérer le projet sans relire la conversation. Il sépare l'idée initiale, les décisions, ce qui est réellement implanté, les preuves et ce qui demeure externe.</p>
+<p><img alt="État des actions" src="../assets/action-status.png" /></p>
+<h2 id="1-point-de-depart-une-vraie-seance-despagnol">1. Point de départ: une vraie séance d'espagnol<a class="headerlink" href="#1-point-de-depart-une-vraie-seance-despagnol" title="Permanent link">&para;</a></h2>
+<p>Le projet est parti d'un besoin concret: apprendre à tenir une conversation quotidienne simple en espagnol au moyen de séances réelles d'environ une heure, pratiques, orales, visuelles, progressives et fondées sur la maîtrise.</p>
+<p>Quatre interactions ont servi de premier laboratoire:</p>
+<ol>
+<li><code>Hola, ¿cómo estás?</code> -&gt; <code>Muy bien, ¿y tú?</code></li>
+<li><code>¿Cómo te llamas?</code> -&gt; <code>Me llamo Jean-Sébastien.</code></li>
+<li><code>¿De dónde eres?</code> -&gt; <code>Soy de Montreal.</code></li>
+<li><code>¿Cuántos años tienes?</code> -&gt; <code>Tengo treinta y ocho años.</code></li>
+</ol>
+<p>Les erreurs observées ont établi les premiers contrats: une réponse doit correspondre à la question; une lecture ou un « OK » n'est pas une preuve de maîtrise; la phrase peut être segmentée puis reconstruite; les rappels doivent être immédiats, différés et contextuels; une séance doit reprendre exactement après interruption.</p>
+<p><img alt="Évolution du projet" src="../assets/project-timeline.png" /></p>
+<h2 id="2-idee-centrale-et-invariants">2. Idée centrale et invariants<a class="headerlink" href="#2-idee-centrale-et-invariants" title="Permanent link">&para;</a></h2>
+<p><strong>Un élève n'est pas résumé par ses notes.</strong> Une note est un signal parmi d'autres. Scholarium Teach relie performance, processus d'apprentissage, talents, passions, projets, sport, musique, créativité, persévérance et contribution sociale.</p>
+<p>L'exemple fondateur reste: <code>D en math -&gt; réussite au soccer -&gt; stratégie spatiale</code>. L'assistant peut proposer un pont entre lecture du jeu, angles, trajectoires, anticipation et géométrie. L'élève conserve le droit d'accepter, reformuler, contester, expirer ou supprimer cette interprétation.</p>
+<p>Invariants conservés:</p>
+<ul>
+<li>empowerment, dignité et pluralité des formes d'intelligence;</li>
+<li>intégrité et respect plutôt qu'une conception restriction-first;</li>
+<li>expression honnête des difficultés sans positivité forcée;</li>
+<li>provenance, contradiction, incertitude et correction visibles;</li>
+<li>contrôle utilisateur et séparation des autorités;</li>
+<li>accessibilité edge-case-first;</li>
+<li>aucune surveillance cachée, écoute passive, décision disciplinaire autonome ou diagnostic clinique.</li>
+</ul>
+<h2 id="3-evolution-du-systeme">3. Évolution du système<a class="headerlink" href="#3-evolution-du-systeme" title="Permanent link">&para;</a></h2>
+<h3 id="memoire-pedagogique-et-maitrise">Mémoire pédagogique et maîtrise<a class="headerlink" href="#memoire-pedagogique-et-maitrise" title="Permanent link">&para;</a></h3>
+<p>Cours, modules, leçons, notions, questions, réponses, indices, niveaux d'aide, rappels et checkpoints forment une boucle durable. La maîtrise exige une réponse non assistée, liée à la bonne question, rappelée après délai et transférée dans un nouveau contexte.</p>
+<h3 id="algoquest-et-assistants">AlgoQuest et assistants<a class="headerlink" href="#algoquest-et-assistants" title="Permanent link">&para;</a></h3>
+<p>AlgoQuest sert de porte d'entrée éducative et d'outbox durable. L'assistant étudiant conserve le graphe privé. L'enseignant reçoit une projection pédagogique bornée; l'administration reçoit uniquement des agrégats respectant le seuil de cohorte.</p>
+<h3 id="accessibilite-edge-case-first">Accessibilité edge-case-first<a class="headerlink" href="#accessibilite-edge-case-first" title="Permanent link">&para;</a></h3>
+<p>Sept profils combinables ont été implantés: sourd/signé disponible, non verbal, Autism Calm, Tourette Safe, ADHD Sprint, Dyslexia Reading et Dyspraxia Motor. Les parcours essentiels fonctionnent sans voix, souris ou animation obligatoire.</p>
+<h3 id="social-portfolio-et-analytique">Social, portfolio et analytique<a class="headerlink" href="#social-portfolio-et-analytique" title="Permanent link">&para;</a></h3>
+<p>Le système comprend capsules de croissance, fils de projets, cercles, reconnaissances et récapitulatifs. Les statistiques sont utiles à l'élève et pratiques pour l'enseignant sans produire un score unique de valeur personnelle.</p>
+<h3 id="media-et-plugins-educatifs">Média et plugins éducatifs<a class="headerlink" href="#media-et-plugins-educatifs" title="Permanent link">&para;</a></h3>
+<p>Les médias sont déclenchés explicitement depuis une leçon, un fil, un projet ou une réussite. Les contrats plafonnent à trois vidéos quotidiennes de cinq minutes et cinq balados de trente minutes, avec confirmation distincte avant publication.</p>
+<p>Six plugins éducatifs stateless possèdent des starters complets <code>AGENTS.md</code>, <code>SOUL.md</code> et <code>USER.md</code>. Aucun plugin ne possède de <code>MEMORY.md</code>; la mémoire est centralisée par le gateway.</p>
+<h3 id="synthia-memorylake-et-hipporag">Synthia, MemoryLake et HippoRAG<a class="headerlink" href="#synthia-memorylake-et-hipporag" title="Permanent link">&para;</a></h3>
+<p>Synthia préserve <code>I -&gt; I_system^S -&gt; H_lex -&gt; G_lex -&gt; I_lexicon</code>. MemoryLake fournit <code>index_records</code>; HippoRAG demeure limité à <code>retrieve_dpr</code>; Codex ou Gemini produit le langage utilisateur. Synthia trace les termes, sources, corrections et incertitudes sans devenir autorité pédagogique, scientifique, juridique ou taxonomique.</p>
+<h3 id="fnp-qnn-ffed-gate5-et-geometrie">FNP-QNN, FfeD, Gate5 et géométrie<a class="headerlink" href="#fnp-qnn-ffed-gate5-et-geometrie" title="Permanent link">&para;</a></h3>
+<p>Pluginpack a passé 337 tests, 41/41 contrôles d'intégrité et 12/12 contrôles doctor. FNP-QNN exécute cinq plugins sous allowlist et poids versionnés. Gate5 contrôle capacité, consentement, expiration, replay et preuve. La géométrie quasicristalline fournit adressage, projection, replay et diff; elle ne remplace pas la cryptographie et n'entre jamais dans KDF, AAD, coffre ou matériel de clé.</p>
+<h2 id="4-ce-qui-a-reellement-ete-construit">4. Ce qui a réellement été construit<a class="headerlink" href="#4-ce-qui-a-reellement-ete-construit" title="Permanent link">&para;</a></h2>
+<ul>
+<li>boucle espagnole complète avec checkpoint et scénario d'environ une heure;</li>
+<li>sept profils d'accessibilité, clavier, ARIA et contrôles de mouvement/son/densité;</li>
+<li>assistants, objectifs hebdomadaires, interventions silencieuses et miroir des forces;</li>
+<li>portfolio, projets, cercles, reconnaissances, récapitulatifs et tableaux analytiques;</li>
+<li>contrats QuaNTecH-ViD, quotas et manifestes signés contre altération et replay;</li>
+<li>six prefabs éducatifs avec starters Codex/Gemini et gateway mémoire central;</li>
+<li>corpus de 125 sources, Synthia, OpenIE et graphes approuvé/préparation/quarantaine;</li>
+<li>Gate5, FNP-QNN, pluginpack, Bouncy Castle transitoire et adressage structurel;</li>
+<li>identité Stitch, navigation Teach, Sources et Administration;</li>
+<li>guides élève/enseignant/administrateur, deux présentations et dossier corporatif;</li>
+<li>tests, captures, migrations, OpenAPI, sauvegarde/restauration, Datadog et déploiement Cloudflare.</li>
+</ul>
+<h2 id="5-etat-quantitatif-des-163-actions">5. État quantitatif des 163 actions<a class="headerlink" href="#5-etat-quantitatif-des-163-actions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Porte</th>
+<th>Actions</th>
+<th>Terminées</th>
+<th>Bloquées</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G1</td>
+<td>001-012</td>
+<td>12</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>013-024</td>
+<td>12</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>025-036</td>
+<td>12</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G4</td>
+<td>037-048</td>
+<td>11</td>
+<td>1</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>049-060</td>
+<td>12</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G6</td>
+<td>061-072</td>
+<td>12</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G7</td>
+<td>073-084</td>
+<td>12</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G8</td>
+<td>085-096</td>
+<td>12</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G9</td>
+<td>097-108</td>
+<td>12</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G10</td>
+<td>109-120</td>
+<td>12</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G11</td>
+<td>121-132</td>
+<td>12</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G12</td>
+<td>133-144</td>
+<td>12</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G13</td>
+<td>145-156</td>
+<td>12</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>G14</td>
+<td>157-163</td>
+<td>6</td>
+<td>1</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Complétion par porte" src="../assets/gate-completion.png" /></p>
+<p>La frontière d'exécution reste <code>156</code>. La dette historique 049-057 a été fermée sans rembobiner les groupes déjà validés.</p>
+<h2 id="6-etat-operationnel-verifie">6. État opérationnel vérifié<a class="headerlink" href="#6-etat-operationnel-verifie" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>HTTP</th>
+<th>Octets</th>
+<th>Contrôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://www.scholarium.securedme.ca/</td>
+<td>200</td>
+<td>28032</td>
+<td>Scholarium identity present</td>
+</tr>
+<tr>
+<td>https://www.scholarium.securedme.ca/app</td>
+<td>200</td>
+<td>20016</td>
+<td>Application shell present</td>
+</tr>
+<tr>
+<td>https://www.scholarium.securedme.ca/teach</td>
+<td>200</td>
+<td>15792</td>
+<td>Scholarium Teach present</td>
+</tr>
+<tr>
+<td>https://www.scholarium.securedme.ca/api/health</td>
+<td>200</td>
+<td>77</td>
+<td>Health response present</td>
+</tr>
+<tr>
+<td>https://www.scholarium.securedme.ca/api/v1/teach/lesson</td>
+<td>200</td>
+<td>3319</td>
+<td>Spanish lesson present</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Branche de travail lors de la capture: <code>new/scholarium-teach-163-actions</code>.</li>
+<li>Commit de référence avant le dossier: <code>d3ee8156a59e850991399bef7c8fdb54c5e8ec2a</code>.</li>
+<li>PR #2: <code>MERGED</code>, fusionnée le <code>2026-07-16T05:37:07Z</code>.</li>
+<li>Check Datadog de la PR: <code>SUCCESS</code>.</li>
+<li>Le fichier utilisateur <code>assets/desing/ChatGPT Installer (1).exe</code> est exclu de la livraison Git.</li>
+</ul>
+<h2 id="7-reprise-exacte">7. Reprise exacte<a class="headerlink" href="#7-reprise-exacte" title="Permanent link">&para;</a></h2>
+<p>Fichiers faisant autorité:</p>
+<ol>
+<li><code>docs/teach/EXECUTION_STATE.json</code> - pointeur de reprise.</li>
+<li><code>docs/teach/ACTION_MATRIX.csv</code> - statut et preuve de chaque action.</li>
+<li><code>docs/teach/EVIDENCE_REGISTER.md</code> - index des preuves.</li>
+<li><code>docs/teach/IDEA_REGISTRY.md</code> - idées conservées, reportées ou rejetées.</li>
+<li><code>docs/teach/corpus/classification-run.json</code> - reçu G5.</li>
+</ol>
+<p>Procédure après reboot:</p>
+<ol>
+<li>Lire <code>activeAction</code> dans <code>EXECUTION_STATE.json</code>; ne jamais choisir la plus ancienne ligne incomplète de la matrice.</li>
+<li>Vérifier <code>git status --short</code> et préserver tous les fichiers utilisateur non suivis.</li>
+<li>Lancer les tests ciblés de l'action active.</li>
+<li>Consigner une preuve directe avant de modifier un statut.</li>
+<li>Ne jamais faire reculer <code>executionFrontier</code> pour régler une dette historique.</li>
+</ol>
+<p>Blocages restant à fermer:</p>
+<ul>
+<li><strong>048:</strong> obtenir une revue Loi 25 qualifiée avant toute donnée réelle d'élève; conserver la porte France/UE séparée.</li>
+<li><strong>157:</strong> terminer l'authentification interactive du tunnel VS Code; le développement local reste fonctionnel.</li>
+</ul>
+<h2 id="8-corpus-g5-et-limites-explicites">8. Corpus G5 et limites explicites<a class="headerlink" href="#8-corpus-g5-et-limites-explicites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>125 cartes uniques et 125 classifications Synthia réelles.</li>
+<li>66 URL accessibles, 54 restreintes, 2 erreurs HTTP et 3 vérifications réseau non résolues.</li>
+<li>125 paquets OpenIE; aucune contradiction sémantique inventée.</li>
+<li><code>approved=0</code>, <code>preparation=125</code>, <code>quarantine=0</code>.</li>
+<li>Les graphes sont opérationnels; leur partition ne constitue jamais une certification.</li>
+</ul>
+<h2 id="9-index-des-livrables">9. Index des livrables<a class="headerlink" href="#9-index-des-livrables" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>docs/teach/deliverables/Scholarium_Teach_Corporate_Dossier.pdf</code></li>
+<li><code>docs/teach/deliverables/guides/Scholarium_Teach_Administrator_Guide.docx</code></li>
+<li><code>docs/teach/deliverables/guides/Scholarium_Teach_Student_Guide.docx</code></li>
+<li><code>docs/teach/deliverables/guides/Scholarium_Teach_Teacher_Guide.docx</code></li>
+<li><code>docs/teach/deliverables/presentations/Scholarium_Teach_Operating_Review.pptx</code></li>
+<li><code>docs/teach/deliverables/presentations/Scholarium_Teach_Operating_Review.pptx.inspect.ndjson</code></li>
+<li><code>docs/teach/deliverables/presentations/Scholarium_Teach_Team_Alignment.pptx</code></li>
+<li><code>docs/teach/deliverables/presentations/Scholarium_Teach_Team_Alignment.pptx.inspect.ndjson</code></li>
+</ul>
+<h2 id="annexe-a-registre-complet-des-idees">Annexe A - Registre complet des idées<a class="headerlink" href="#annexe-a-registre-complet-des-idees" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Idée</th>
+<th>Source</th>
+<th>Classe</th>
+<th>Décision</th>
+<th>Destination</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One-hour conversational Spanish lessons</td>
+<td>Original learning session</td>
+<td>requirement</td>
+<td>implemented</td>
+<td><code>/teach</code>, lesson contract</td>
+</tr>
+<tr>
+<td>Mastery requires unaided, contextual, delayed, restart, and transfer evidence</td>
+<td>Original learning session</td>
+<td>invariant</td>
+<td>implemented</td>
+<td><code>teach-contracts.ts</code></td>
+</tr>
+<tr>
+<td>Exact pause and resume</td>
+<td>Original learning session</td>
+<td>requirement</td>
+<td>implemented</td>
+<td>local checkpoint and D1 checkpoint</td>
+</tr>
+<tr>
+<td>Voice, transcript, translation, and phonetic support</td>
+<td>Original learning session</td>
+<td>requirement</td>
+<td>partially implemented</td>
+<td>browser speech and visual lesson; live transcription remains gated</td>
+</tr>
+<tr>
+<td>AlgoQuest as the education entry point</td>
+<td>Original design report</td>
+<td>architecture</td>
+<td>accepted</td>
+<td>durable event outbox</td>
+</tr>
+<tr>
+<td>Student and teacher assistants exchange bounded summaries</td>
+<td>Original design report</td>
+<td>architecture</td>
+<td>accepted</td>
+<td>Gate5 exchange contract</td>
+</tr>
+<tr>
+<td>Assistant follows the real school year</td>
+<td>Brainstorm</td>
+<td>requirement</td>
+<td>accepted</td>
+<td>weekly objectives domain</td>
+</tr>
+<tr>
+<td>Daily learning guidance without fatigue</td>
+<td>Brainstorm</td>
+<td>requirement</td>
+<td>accepted</td>
+<td>intervention preferences; no hidden phone surveillance</td>
+</tr>
+<tr>
+<td>Recognize academic, spatial, athletic, musical, artistic, and social strengths</td>
+<td>Brainstorm</td>
+<td>invariant</td>
+<td>implemented foundation</td>
+<td>contestable strength observations</td>
+</tr>
+<tr>
+<td>Math difficulty connected to soccer spatial strategy</td>
+<td>Brainstorm recovery</td>
+<td>example</td>
+<td>implemented</td>
+<td>strength bridge</td>
+</tr>
+<tr>
+<td>Honest frustration can become a growth story</td>
+<td>Brainstorm recovery</td>
+<td>social behavior</td>
+<td>accepted</td>
+<td><code>growth_story</code> contract</td>
+</tr>
+<tr>
+<td>Integrity and respect contracts instead of restriction-first design</td>
+<td>Brainstorm correction</td>
+<td>invariant</td>
+<td>accepted</td>
+<td>social integrity policy</td>
+</tr>
+<tr>
+<td>Edge-case-first support</td>
+<td>Brainstorm</td>
+<td>invariant</td>
+<td>implemented foundation</td>
+<td>Teach access controls and QA gate</td>
+</tr>
+<tr>
+<td>Deaf and signed learning</td>
+<td>Brainstorm</td>
+<td>requirement</td>
+<td>research-gated</td>
+<td>signed assets and qualified review required</td>
+</tr>
+<tr>
+<td>Non-verbal and assistive communication</td>
+<td>Brainstorm</td>
+<td>requirement</td>
+<td>accepted</td>
+<td>multimodal response contract</td>
+</tr>
+<tr>
+<td>Autism, Tourette, ADHD, dyslexia, and dyspraxia modes</td>
+<td>Brainstorm</td>
+<td>requirement</td>
+<td>implemented foundation</td>
+<td>local accessibility profiles</td>
+</tr>
+<tr>
+<td>Student-friendly and teacher-practical analytics</td>
+<td>Brainstorm</td>
+<td>requirement</td>
+<td>implemented foundation</td>
+<td>learner and teacher Teach views</td>
+</tr>
+<tr>
+<td>Five social patterns for education</td>
+<td>Brainstorm</td>
+<td>product direction</td>
+<td>accepted</td>
+<td>growth stories, project threads, circles, recognition, recaps</td>
+</tr>
+<tr>
+<td>Three user-triggered videos per day, maximum five minutes</td>
+<td>Brainstorm</td>
+<td>quota</td>
+<td>implemented contract</td>
+<td>Teach media API</td>
+</tr>
+<tr>
+<td>Five user-triggered podcasts per day, maximum thirty minutes</td>
+<td>Brainstorm</td>
+<td>quota</td>
+<td>implemented contract</td>
+<td>Teach media API</td>
+</tr>
+<tr>
+<td>Media generated from a selected lesson, thread, project, or success</td>
+<td>Brainstorm</td>
+<td>invariant</td>
+<td>implemented contract</td>
+<td>source-bound media request</td>
+</tr>
+<tr>
+<td>125-source educational corpus</td>
+<td>Brainstorm</td>
+<td>research deliverable</td>
+<td>research-gated</td>
+<td>Synthia source registry</td>
+</tr>
+<tr>
+<td>Synthia classification and HippoRAG retrieval</td>
+<td>Brainstorm</td>
+<td>integration</td>
+<td>accepted</td>
+<td>adapter boundary</td>
+</tr>
+<tr>
+<td>MemoryLake as approved durable evidence store</td>
+<td>Brainstorm</td>
+<td>integration</td>
+<td>accepted</td>
+<td><code>MemoryLake.index_records</code> boundary</td>
+</tr>
+<tr>
+<td>Plithogenic handling of compatible, contradictory, uncertain, evolving signals</td>
+<td>Brainstorm</td>
+<td>algorithm research</td>
+<td>accepted</td>
+<td>FNP-QNN adapter research lane</td>
+</tr>
+<tr>
+<td>FNP-QNN five-plugin integration</td>
+<td>Existing implementation</td>
+<td>integration</td>
+<td>accepted after integrity repair</td>
+<td>Gate5 to FNP-QNN</td>
+</tr>
+<tr>
+<td>Import all pluginpack plugins into Scholarium</td>
+<td>Repo audit</td>
+<td>architecture</td>
+<td>rejected</td>
+<td>selected capabilities only through Gate5</td>
+</tr>
+<tr>
+<td>FfeD as capability, proof, replay, and audit broker</td>
+<td>Repo audit</td>
+<td>architecture</td>
+<td>accepted</td>
+<td>internal gateway</td>
+</tr>
+<tr>
+<td>Quasicrystal geometry as the sole cryptographic protection</td>
+<td>Repo audit</td>
+<td>security claim</td>
+<td>rejected</td>
+<td>geometry remains structural proof and addressing</td>
+</tr>
+<tr>
+<td>Quasicrystal partitioning, projection, replay, and diff</td>
+<td>Repo audit</td>
+<td>experimental capability</td>
+<td>accepted, non-blocking</td>
+<td>FfeD sidecar</td>
+</tr>
+<tr>
+<td>Codex/OpenAI and Antigravity/Gemini browser authentication</td>
+<td>School governance</td>
+<td>invariant</td>
+<td>accepted</td>
+<td>existing WebAuth boundary</td>
+</tr>
+<tr>
+<td>Unknown or raw-token classroom providers</td>
+<td>School governance</td>
+<td>provider route</td>
+<td>rejected</td>
+<td>unsupported school route</td>
+</tr>
+<tr>
+<td>Law 25 and EFVP before real student data</td>
+<td>Brainstorm and official law</td>
+<td>launch gate</td>
+<td>accepted</td>
+<td>EFVP dossier</td>
+</tr>
+<tr>
+<td>Datadog for reliability without personal content</td>
+<td>Brainstorm</td>
+<td>operations</td>
+<td>accepted</td>
+<td>gateway metrics only</td>
+</tr>
+<tr>
+<td>VS Code tunnel</td>
+<td>Brainstorm</td>
+<td>operations</td>
+<td>accepted</td>
+<td>authenticated, bounded port surface</td>
+</tr>
+<tr>
+<td>cPanel deployment</td>
+<td>Brainstorm</td>
+<td>operations</td>
+<td>partially accepted</td>
+<td>static, domain, docs, and compatible proxy only</td>
+</tr>
+<tr>
+<td>Forty-prompt Life Science learning book</td>
+<td>Brainstorm</td>
+<td>publication</td>
+<td>accepted</td>
+<td>professional publication lane</td>
+</tr>
+<tr>
+<td>Six education plugins with complete Codex and Gemini starter prompts</td>
+<td>Live implementation clarification</td>
+<td>plugin contract</td>
+<td>implemented and validated</td>
+<td>actions 117-120 plugin prefabs</td>
+</tr>
+<tr>
+<td>No intra-plugin MEMORY.md</td>
+<td>Live implementation clarification</td>
+<td>architecture invariant</td>
+<td>implemented and validated</td>
+<td>central knowledge gateway only</td>
+</tr>
+<tr>
+<td>HippoRAG central graph classification and Hilbert location vectors</td>
+<td>Live implementation clarification</td>
+<td>experimental integration</td>
+<td>implemented contract, runtime pending</td>
+<td>central gateway adapter</td>
+</tr>
+<tr>
+<td>Euler graph matrices and replayable vector production</td>
+<td>Live implementation clarification</td>
+<td>computational contract</td>
+<td>implemented contract, runtime pending</td>
+<td>adjacency, incidence, degree and Laplacian outputs</td>
+</tr>
+<tr>
+<td>Existing Scholarium assets must replace the starter-template identity</td>
+<td>Live implementation clarification</td>
+<td>visual product requirement</td>
+<td>accepted</td>
+<td>actions 133, 137-139 and <code>VISUAL_IDENTITY_EXECUTION_BRIEF.md</code></td>
+</tr>
+<tr>
+<td>V.O.T Guardian Tenebris as an ephemeral processing envelope</td>
+<td>Live implementation clarification and local repo audit</td>
+<td>security integration</td>
+<td>accepted, research-gated</td>
+<td>actions 130+, Gate5 private adapter and <code>VOT_GUARDIAN_TENEBRIS_INTEGRATION_ASSESSMENT.md</code></td>
+</tr>
+<tr>
+<td>Direct V.O.T voice detector import or automatic student voice analysis</td>
+<td>Local repo audit</td>
+<td>unsafe coupling</td>
+<td>rejected</td>
+<td>no direct import; no passive listening or biometric route</td>
+</tr>
+<tr>
+<td>Military use</td>
+<td>Brainstorm detour</td>
+<td>excluded scope</td>
+<td>rejected</td>
+<td>no destination</td>
+</tr>
+</tbody>
+</table>
+<h2 id="annexe-b-registre-complet-des-163-actions">Annexe B - Registre complet des 163 actions<a class="headerlink" href="#annexe-b-registre-complet-des-163-actions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Porte</th>
+<th>Action</th>
+<th>Skills</th>
+<th>Plugins</th>
+<th>Statut</th>
+<th>Preuve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>G1</td>
+<td>Capturer chaque idée du chat, du rapport espagnol et des fichiers locaux dans un registre unique.</td>
+<td>S1,S6</td>
+<td>P0,P2</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>002</td>
+<td>G1</td>
+<td>Attribuer à chaque idée un identifiant stable, sa source, son intention et sa formulation originale.</td>
+<td>S3,S6</td>
+<td>P0,P2</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>003</td>
+<td>G1</td>
+<td>Classer chaque idée comme exigence, hypothèse, recherche, décision, risque ou vision future.</td>
+<td>S1,S6</td>
+<td>P0,P2</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>004</td>
+<td>G1</td>
+<td>Créer la matrice <code>idée -&gt; lot -&gt; contrat -&gt; test -&gt; preuve -&gt; statut</code>.</td>
+<td>S1,S3</td>
+<td>P0,P1</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>005</td>
+<td>G1</td>
+<td>Enregistrer explicitement les idées conservées, reportées, remplacées ou rejetées avec justification.</td>
+<td>S1,S4</td>
+<td>P0</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>006</td>
+<td>G1</td>
+<td>Fixer les invariants Scholarium : empowerment, dignité, pluralité des forces, provenance et contrôle utilisateur.</td>
+<td>S1,S2</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>007</td>
+<td>G1</td>
+<td>Fixer les frontières d’autorité de Codex, Gemini, Synthia, QuaNthoR et des moteurs algorithmiques.</td>
+<td>S2,S6</td>
+<td>P1,P2</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>008</td>
+<td>G1</td>
+<td>Documenter AlgoQuest comme porte d’entrée éducative, Scholarium comme plateforme sociale et Teach comme domaine adaptatif.</td>
+<td>S1,S2</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>009</td>
+<td>G1</td>
+<td>Documenter l’exclusion des usages militaires, disciplinaires autonomes, cliniques et de surveillance cachée.</td>
+<td>S2,S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>010</td>
+<td>G1</td>
+<td>Créer le registre des décisions d’architecture avec contexte, alternatives et conséquences.</td>
+<td>S2,S3</td>
+<td>P0</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>011</td>
+<td>G1</td>
+<td>Créer le registre des risques techniques, pédagogiques, juridiques, sociaux et opérationnels.</td>
+<td>S4</td>
+<td>P0,P1</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>012</td>
+<td>G1</td>
+<td>Construire le tableau maître des 163 actions avec dépendances, preuves et portes de sortie.</td>
+<td>S1</td>
+<td>P0,P12</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>013</td>
+<td>G2</td>
+<td>Photographier l’état Git de Scholarium, FfeD, pluginpack, FNP-QNN, Synthia, HippoRAG et QuaNTecH-ViD.</td>
+<td>S2,S4</td>
+<td>P0,P13</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>014</td>
+<td>G2</td>
+<td>Identifier et préserver toutes les modifications et tous les fichiers non suivis appartenant à l’utilisateur.</td>
+<td>S2</td>
+<td>P0,P12</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>015</td>
+<td>G2</td>
+<td>Inventorier les applications, API, schémas, migrations, tests et documents déjà présents dans Scholarium.</td>
+<td>S1,S5</td>
+<td>P0,P4</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>016</td>
+<td>G2</td>
+<td>Inventorier les plugins, skills, MCP, connecteurs et commandes réellement disponibles.</td>
+<td>S1,S5</td>
+<td>P0,P4</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>017</td>
+<td>G2</td>
+<td>Vérifier l’environnement Node, npm, Wrangler, Python et la <code>.venv</code> centrale.</td>
+<td>S4,S12</td>
+<td>P0,P5</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>018</td>
+<td>G2</td>
+<td>Vérifier l’existence et les noms des variables <code>.env</code> sans lire ni afficher leurs valeurs.</td>
+<td>S4,S12</td>
+<td>P0,P5</td>
+<td>completed</td>
+<td>See docs/teach/EVIDENCE_REGISTER.md</td>
+</tr>
+<tr>
+<td>019</td>
+<td>G2</td>
+<td>Exécuter les builds, tests et lint actuels de Scholarium afin d’établir la référence initiale.</td>
+<td>S4</td>
+<td>P0</td>
+<td>completed</td>
+<td>Build passed; 107/107 tests passed; lint 0 errors and 20 known warnings</td>
+</tr>
+<tr>
+<td>020</td>
+<td>G2</td>
+<td>Exporter la référence OpenAPI actuelle et détecter les routes de compatibilité.</td>
+<td>S3</td>
+<td>P0</td>
+<td>completed</td>
+<td>Runtime OpenAPI 3.1.0 returned HTTP 200 with 82 paths; compatibility routes retained</td>
+</tr>
+<tr>
+<td>021</td>
+<td>G2</td>
+<td>Exécuter le doctor complet de pluginpack et consigner ses sept défaillances connues.</td>
+<td>S4</td>
+<td>P13</td>
+<td>completed</td>
+<td>Pluginpack 337 passed; integrity 41/41; doctor 12/12 PASS</td>
+</tr>
+<tr>
+<td>022</td>
+<td>G2</td>
+<td>Revalider le bridge FNP-QNN et l’exécution réelle de ses cinq plugins.</td>
+<td>S3,S4</td>
+<td>P13</td>
+<td>completed</td>
+<td>Five live plugins observed; no errors; module state restored</td>
+</tr>
+<tr>
+<td>023</td>
+<td>G2</td>
+<td>Revalider Gate5, les contrats, preuves, replay et tests de FfeD.</td>
+<td>S2,S4</td>
+<td>P13</td>
+<td>completed</td>
+<td>G11 Gate5 tamper replay expiry revocation recovery concurrency and interop evidence passed</td>
+</tr>
+<tr>
+<td>024</td>
+<td>G2</td>
+<td>Vérifier la santé de Synthia, MemoryLake, HippoRAG et QuaNTecH-ViD sans modifier leurs dépôts.</td>
+<td>S5,S6</td>
+<td>P2,P3,P7,P13</td>
+<td>completed</td>
+<td>Synthia 265; MemoryLake 49; retrieval boundary 20; QuaNTecH 9 and adapter 2 passed</td>
+</tr>
+<tr>
+<td>025</td>
+<td>G3</td>
+<td>Produire la carte complète des composants et des flux de données.</td>
+<td>S2</td>
+<td>P0,P9</td>
+<td>completed</td>
+<td>Architecture and five validated diagram packages delivered in docs/teach/diagrams</td>
+</tr>
+<tr>
+<td>026</td>
+<td>G3</td>
+<td>Définir Scholarium Teach comme domaine du dépôt existant et non comme seconde application indépendante.</td>
+<td>S1,S2</td>
+<td>P1</td>
+<td>completed</td>
+<td>Teach routes schema and UI compile inside apps/web; no second identity application</td>
+</tr>
+<tr>
+<td>027</td>
+<td>G3</td>
+<td>Définir la passerelle interne entre Cloudflare, FfeD et les workers Python.</td>
+<td>S2,S3</td>
+<td>P13</td>
+<td>completed</td>
+<td>Versioned Gate5 outbox and private-worker separation validated in G11 and G14</td>
+</tr>
+<tr>
+<td>028</td>
+<td>G3</td>
+<td>Établir que Scholarium n’importe directement ni pluginpack, ni le noyau FfeD, ni HippoRAG.</td>
+<td>S2</td>
+<td>P13</td>
+<td>completed</td>
+<td>Static bundle-boundary test passed; Gate5 outbox imports no external runtime</td>
+</tr>
+<tr>
+<td>029</td>
+<td>G3</td>
+<td>Spécifier <code>scholarium.learning-objective.v1</code>.</td>
+<td>S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>Teach schema API and contract tests validated learning objectives</td>
+</tr>
+<tr>
+<td>030</td>
+<td>G3</td>
+<td>Spécifier <code>scholarium.learning-attempt.v1</code> et les niveaux d’aide.</td>
+<td>S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>Spanish loop validated six help levels and question-bound attempts</td>
+</tr>
+<tr>
+<td>031</td>
+<td>G3</td>
+<td>Spécifier <code>scholarium.mastery-evidence.v1</code> et ses preuves minimales.</td>
+<td>S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>G6 evidence proved recall context and transfer requirements</td>
+</tr>
+<tr>
+<td>032</td>
+<td>G3</td>
+<td>Spécifier <code>scholarium.strength-observation.v1</code> avec contexte, contradiction et expiration.</td>
+<td>S3,S6</td>
+<td>P1,P2</td>
+<td>completed</td>
+<td>G8 tests validated provenance contradiction confidence expiry and learner controls</td>
+</tr>
+<tr>
+<td>033</td>
+<td>G3</td>
+<td>Spécifier <code>scholarium.growth-story.v1</code> pour les réussites multidimensionnelles.</td>
+<td>S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>G9 durable growth_story publication contract and tests passed</td>
+</tr>
+<tr>
+<td>034</td>
+<td>G3</td>
+<td>Spécifier les contrats RAG, source card, requête, résultat et lien de mémoire.</td>
+<td>S3,S6</td>
+<td>P2,P3</td>
+<td>completed</td>
+<td>Central gateway contract and route compile; graph contract tests pass</td>
+</tr>
+<tr>
+<td>035</td>
+<td>G3</td>
+<td>Spécifier les contrats de signal FNP-QNN, porteur, capacité Gate5 et preuve géométrique.</td>
+<td>S3</td>
+<td>P13</td>
+<td>completed</td>
+<td>Live FNP carrier, Gate5 registry and quasicrystal structural-address contracts validated</td>
+</tr>
+<tr>
+<td>036</td>
+<td>G3</td>
+<td>Définir la politique de versionnement, dépréciation, migration, idempotence et erreurs.</td>
+<td>S3,S4</td>
+<td>P0</td>
+<td>completed</td>
+<td>Versioned schemas idempotency receipts migrations and API error tests passed</td>
+</tr>
+<tr>
+<td>037</td>
+<td>G4</td>
+<td>Réutiliser l’identité existante sans créer une seconde base d’utilisateurs Teach.</td>
+<td>S2,S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>Teach uses the existing authenticated user and account tables</td>
+</tr>
+<tr>
+<td>038</td>
+<td>G4</td>
+<td>Étendre les rôles élève, enseignant, gardien, administrateur, école et commission.</td>
+<td>S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>Role and tenant boundaries validated in G13</td>
+</tr>
+<tr>
+<td>039</td>
+<td>G4</td>
+<td>Définir les liens élève-enseignant-classe-école avec dates et révocation.</td>
+<td>S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>Education relationships and scoped assignments validated in schema and API tests</td>
+</tr>
+<tr>
+<td>040</td>
+<td>G4</td>
+<td>Créer les consentements séparés pour apprentissage, personnalisation, profilage, partage et média.</td>
+<td>S3,S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>Purpose-specific Teach consents and media publication confirmation validated</td>
+</tr>
+<tr>
+<td>041</td>
+<td>G4</td>
+<td>Ajouter les règles adaptées aux moins de 14 ans et aux responsabilités du gardien.</td>
+<td>S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>Minor capability and guardian activation revocation expiry routes validated</td>
+</tr>
+<tr>
+<td>042</td>
+<td>G4</td>
+<td>Définir les durées de conservation par type de donnée et finalité.</td>
+<td>S3,S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>Retention schedule documented in EFVP and backup recovery runbook</td>
+</tr>
+<tr>
+<td>043</td>
+<td>G4</td>
+<td>Implémenter accès, correction, exportation, retrait et effacement de Teach.</td>
+<td>S3,S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>Export consent revocation and Teach-domain deletion tests passed</td>
+</tr>
+<tr>
+<td>044</td>
+<td>G4</td>
+<td>Concevoir l’EFVP Scholarium Teach avant toute utilisation de données réelles.</td>
+<td>S4</td>
+<td>P1,P10</td>
+<td>completed</td>
+<td>docs/teach/PRIVACY_EFVP.md delivered; synthetic-data gate remains enforced</td>
+</tr>
+<tr>
+<td>045</td>
+<td>G4</td>
+<td>Séparer données brutes, observations, inférences, recommandations et décisions humaines.</td>
+<td>S2,S3,S6</td>
+<td>P1,P2</td>
+<td>completed</td>
+<td>Architecture contracts and G8 projections preserve the five data classes</td>
+</tr>
+<tr>
+<td>046</td>
+<td>G4</td>
+<td>Définir l’accès exceptionnel doublement autorisé, temporaire, justifié et audité.</td>
+<td>S3,S4</td>
+<td>P1,P13</td>
+<td>completed</td>
+<td>Two independent approvers; four-hour maximum; single-use claim; digest audit; 4 tests and 35-migration rehearsal passed</td>
+</tr>
+<tr>
+<td>047</td>
+<td>G4</td>
+<td>Empêcher la reconstruction des personnes à partir des métriques agrégées.</td>
+<td>S4,S8</td>
+<td>P1,P6</td>
+<td>completed</td>
+<td>Minimum cohort 10 suppression and identifier-free organization projections passed</td>
+</tr>
+<tr>
+<td>048</td>
+<td>G4</td>
+<td>Faire valider le dossier Loi 25 avant le pilote réel et créer une porte juridique France/UE distincte.</td>
+<td>S4</td>
+<td>P1,P10</td>
+<td>blocked</td>
+<td>External qualified legal review is required before a real-student pilot; synthetic data only</td>
+</tr>
+<tr>
+<td>049</td>
+<td>G5</td>
+<td>Définir les catégories nécessaires au corpus de 125 sources.</td>
+<td>S1,S5,S6</td>
+<td>P2,P4</td>
+<td>completed</td>
+<td>Eight bounded categories total exactly 125 targets; see MISSION_049_057_EDUCATION_CORPUS.md</td>
+</tr>
+<tr>
+<td>050</td>
+<td>G5</td>
+<td>Collecter les sources primaires sur pédagogie, maîtrise, accessibilité et neurodiversité.</td>
+<td>S5</td>
+<td>P4</td>
+<td>completed</td>
+<td>65 primary-source candidates retained with Crossref or issuing-authority provenance</td>
+</tr>
+<tr>
+<td>051</td>
+<td>G5</td>
+<td>Collecter les sources primaires sur forces, talents, motivation et apprentissage contextualisé.</td>
+<td>S5</td>
+<td>P4</td>
+<td>completed</td>
+<td>45 primary-source candidates retained across strengths, belonging, sport, music and creativity</td>
+</tr>
+<tr>
+<td>052</td>
+<td>G5</td>
+<td>Collecter les sources juridiques et institutionnelles Québec, Canada, France et UE.</td>
+<td>S5,S4</td>
+<td>P4</td>
+<td>completed</td>
+<td>15 official primary documents retained with jurisdiction and issuing-authority URLs</td>
+</tr>
+<tr>
+<td>053</td>
+<td>G5</td>
+<td>Vérifier auteurs, URL, licence, date, citation et droits de chaque source.</td>
+<td>S5,S6</td>
+<td>P2,P4</td>
+<td>completed</td>
+<td>125/125 metadata and rights fields checked; 120 URLs reachable or access-restricted; 5 unresolved checks retained visibly</td>
+</tr>
+<tr>
+<td>054</td>
+<td>G5</td>
+<td>Produire les 125 cartes <code>synthia.education.source-card.v1</code>.</td>
+<td>S3,S6</td>
+<td>P2</td>
+<td>completed</td>
+<td>125 unique source cards; SHA-256 B246B8F061A7D6B3D09EAD3329DA4EBECA8EABF66258FFEC873BC7537C392000</td>
+</tr>
+<tr>
+<td>055</td>
+<td>G5</td>
+<td>Classifier les concepts dans <code>H_lex</code>, <code>G_lex</code> et <code>I_lexicon</code> sans autorité taxonomique autonome.</td>
+<td>S6</td>
+<td>P2</td>
+<td>completed</td>
+<td>125 real Synthia CLI classifications preserve I -&gt; I_system^S -&gt; H_lex -&gt; G_lex -&gt; I_lexicon</td>
+</tr>
+<tr>
+<td>056</td>
+<td>G5</td>
+<td>Extraire entités, relations, contradictions et paquets OpenIE traçables.</td>
+<td>S6</td>
+<td>P2</td>
+<td>completed</td>
+<td>125 source-bound OpenIE packets; unresolved layers explicit; no semantic contradiction invented</td>
+</tr>
+<tr>
+<td>057</td>
+<td>G5</td>
+<td>Créer les graphes séparés approuvé, préparation et quarantaine.</td>
+<td>S2,S3</td>
+<td>P2,P13</td>
+<td>completed</td>
+<td>Three durable partition manifests and eight preparation shards; approved 0, preparation 125, quarantine 0</td>
+</tr>
+<tr>
+<td>058</td>
+<td>G5</td>
+<td>Implémenter <code>MemoryLakeHippoRAGTraceStore</code> via <code>MemoryLake.index_records</code>.</td>
+<td>S3,S6</td>
+<td>P2,P3,P13</td>
+<td>completed</td>
+<td>Synthia unit tests 8/8; real isolated MemoryLake indexed 2, deduped 2 on replay, retrieval count 1</td>
+</tr>
+<tr>
+<td>059</td>
+<td>G5</td>
+<td>Configurer HippoRAG en récupération seule et garder la génération dans Codex ou Gemini.</td>
+<td>S2,S4</td>
+<td>P1,P13</td>
+<td>completed</td>
+<td>Synthia gateway calls retrieve_dpr only; generation and graph fact reranking bypassed; generative methods fail closed</td>
+</tr>
+<tr>
+<td>060</td>
+<td>G5</td>
+<td>Mesurer précision, rappel, provenance, suppression et reconstruction face à MemoryLake seul.</td>
+<td>S4,S8</td>
+<td>P3,P6,P13</td>
+<td>completed</td>
+<td>Synthetic benchmark: MemoryLake P@3 0.333333 R@3 0.833333; DPR-compatible P@3 0.388889 R@3 1.0; both provenance 1.0, leakage 0.0, reconstruction 1.0; JSON SHA-256 2D4CCD1B4A7F4EA001F92BB21D1EBEC435988A18FEF49B963DD7F2C12E3A1F54</td>
+</tr>
+<tr>
+<td>061</td>
+<td>G6</td>
+<td>Modéliser cours, module, leçon, notion, question, réponse, indice et rappel.</td>
+<td>S2,S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_061_072_SPANISH_SESSION.md</td>
+</tr>
+<tr>
+<td>062</td>
+<td>G6</td>
+<td>Encoder les quatre interactions espagnoles issues de la séance originale.</td>
+<td>S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_061_072_SPANISH_SESSION.md</td>
+</tr>
+<tr>
+<td>063</td>
+<td>G6</td>
+<td>Créer les états <code>nouvelle</code>, <code>guidée</code>, <code>rappelée</code>, <code>contextualisée</code>, <code>maîtrisée</code> et <code>à revoir</code>.</td>
+<td>S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_061_072_SPANISH_SESSION.md</td>
+</tr>
+<tr>
+<td>064</td>
+<td>G6</td>
+<td>Implémenter la vérification réponse-question pour éviter les réponses mémorisées hors contexte.</td>
+<td>S3,S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_061_072_SPANISH_SESSION.md</td>
+</tr>
+<tr>
+<td>065</td>
+<td>G6</td>
+<td>Implémenter le découpage progressif d’une phrase et sa reconstruction complète.</td>
+<td>S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_061_072_SPANISH_SESSION.md</td>
+</tr>
+<tr>
+<td>066</td>
+<td>G6</td>
+<td>Implémenter l’échelle d’aide : attente, indice, premier segment, segmentation et modèle complet.</td>
+<td>S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_061_072_SPANISH_SESSION.md</td>
+</tr>
+<tr>
+<td>067</td>
+<td>G6</td>
+<td>Implémenter les rappels immédiats, différés et espacés.</td>
+<td>S3,S5</td>
+<td>P1,P4</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_061_072_SPANISH_SESSION.md</td>
+</tr>
+<tr>
+<td>068</td>
+<td>G6</td>
+<td>Enregistrer erreurs fréquentes, confusions, aide requise, délai et transfert contextuel.</td>
+<td>S3,S8</td>
+<td>P1,P6</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_061_072_SPANISH_SESSION.md</td>
+</tr>
+<tr>
+<td>069</td>
+<td>G6</td>
+<td>Empêcher qu’une lecture, une répétition ou un « OK » soit compté comme maîtrise.</td>
+<td>S3,S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_061_072_SPANISH_SESSION.md</td>
+</tr>
+<tr>
+<td>070</td>
+<td>G6</td>
+<td>Construire la reprise exacte après pause ou fermeture de séance.</td>
+<td>S2,S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_061_072_SPANISH_SESSION.md</td>
+</tr>
+<tr>
+<td>071</td>
+<td>G6</td>
+<td>Produire le résumé enseignant de la séance sans transcription privée brute.</td>
+<td>S3,S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_061_072_SPANISH_SESSION.md</td>
+</tr>
+<tr>
+<td>072</td>
+<td>G6</td>
+<td>Valider une séance complète d’environ une heure avec rappels et conversation finale.</td>
+<td>S4,S9</td>
+<td>P1,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_061_072_SPANISH_SESSION.md</td>
+</tr>
+<tr>
+<td>073</td>
+<td>G7</td>
+<td>Auditer les modes d’accessibilité existants et leur persistance locale.</td>
+<td>S4,S7,S9</td>
+<td>P1,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_073_084_ACCESSIBILITY.md</td>
+</tr>
+<tr>
+<td>074</td>
+<td>G7</td>
+<td>Concevoir le mode sourd/signé avec transcription, visuels et contenus signés disponibles.</td>
+<td>S5,S7</td>
+<td>P4,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_073_084_ACCESSIBILITY.md</td>
+</tr>
+<tr>
+<td>075</td>
+<td>G7</td>
+<td>Concevoir le mode non verbal avec texte, choix, pictogrammes et communication assistée.</td>
+<td>S5,S7</td>
+<td>P4,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_073_084_ACCESSIBILITY.md</td>
+</tr>
+<tr>
+<td>076</td>
+<td>G7</td>
+<td>Concevoir Autism Calm avec prévisibilité, faible surprise et séquences visibles.</td>
+<td>S5,S7</td>
+<td>P4,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_073_084_ACCESSIBILITY.md</td>
+</tr>
+<tr>
+<td>077</td>
+<td>G7</td>
+<td>Concevoir Tourette Safe sans pénalité pour délai, tic, mouvement ou vocalisation.</td>
+<td>S5,S7</td>
+<td>P4,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_073_084_ACCESSIBILITY.md</td>
+</tr>
+<tr>
+<td>078</td>
+<td>G7</td>
+<td>Concevoir ADHD Sprint avec objectif court, minuteur et prochain geste visible.</td>
+<td>S5,S7</td>
+<td>P4,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_073_084_ACCESSIBILITY.md</td>
+</tr>
+<tr>
+<td>079</td>
+<td>G7</td>
+<td>Concevoir Dyslexia Reading avec typographie, largeur, espacement et lecture audio ajustables.</td>
+<td>S5,S7</td>
+<td>P4,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_073_084_ACCESSIBILITY.md</td>
+</tr>
+<tr>
+<td>080</td>
+<td>G7</td>
+<td>Concevoir Dyspraxia Motor avec grandes cibles et absence d’interactions exigeant une précision fine.</td>
+<td>S5,S7</td>
+<td>P4,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_073_084_ACCESSIBILITY.md</td>
+</tr>
+<tr>
+<td>081</td>
+<td>G7</td>
+<td>Ajouter contrôles de mouvement, contraste, saturation, densité, son et vitesse.</td>
+<td>S7</td>
+<td>P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_073_084_ACCESSIBILITY.md</td>
+</tr>
+<tr>
+<td>082</td>
+<td>G7</td>
+<td>Garantir clavier, lecteur d’écran, annonces ARIA et ordre de focus cohérent.</td>
+<td>S7,S9</td>
+<td>P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_073_084_ACCESSIBILITY.md</td>
+</tr>
+<tr>
+<td>083</td>
+<td>G7</td>
+<td>Tester mobile, tablette, desktop, faible bande passante et reprise hors ligne limitée.</td>
+<td>S4,S9</td>
+<td>P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_073_084_ACCESSIBILITY.md</td>
+</tr>
+<tr>
+<td>084</td>
+<td>G7</td>
+<td>Faire de l’accessibilité un contrat testé dans CI et non une option décorative.</td>
+<td>S3,S9</td>
+<td>P9,P12</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_073_084_ACCESSIBILITY.md</td>
+</tr>
+<tr>
+<td>085</td>
+<td>G8</td>
+<td>Remplacer le stub AlgoQuest par une outbox durable, versionnée et idempotente.</td>
+<td>S2,S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_085_096_ASSISTANTS_STRENGTHS.md</td>
+</tr>
+<tr>
+<td>086</td>
+<td>G8</td>
+<td>Créer l’assistant privé de l’élève et son graphe personnel.</td>
+<td>S2,S3</td>
+<td>P1,P3</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_085_096_ASSISTANTS_STRENGTHS.md</td>
+</tr>
+<tr>
+<td>087</td>
+<td>G8</td>
+<td>Créer l’assistant enseignant avec sorties pédagogiques bornées.</td>
+<td>S2,S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_085_096_ASSISTANTS_STRENGTHS.md</td>
+</tr>
+<tr>
+<td>088</td>
+<td>G8</td>
+<td>Créer les assistants administratifs uniquement pour les agrégats autorisés.</td>
+<td>S2,S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_085_096_ASSISTANTS_STRENGTHS.md</td>
+</tr>
+<tr>
+<td>089</td>
+<td>G8</td>
+<td>Définir le protocole assistant-à-assistant avec finalité, expiration et reçu.</td>
+<td>S3</td>
+<td>P1,P13</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_085_096_ASSISTANTS_STRENGTHS.md</td>
+</tr>
+<tr>
+<td>090</td>
+<td>G8</td>
+<td>Construire les objectifs hebdomadaires reliés à l’année scolaire réelle.</td>
+<td>S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_085_096_ASSISTANTS_STRENGTHS.md</td>
+</tr>
+<tr>
+<td>091</td>
+<td>G8</td>
+<td>Ajouter les préférences d’intervention quotidienne, fréquence, contexte et silence.</td>
+<td>S3,S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_085_096_ASSISTANTS_STRENGTHS.md</td>
+</tr>
+<tr>
+<td>092</td>
+<td>G8</td>
+<td>Créer les observations de forces déclarées, observées et proposées.</td>
+<td>S3,S6</td>
+<td>P1,P2</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_085_096_ASSISTANTS_STRENGTHS.md</td>
+</tr>
+<tr>
+<td>093</td>
+<td>G8</td>
+<td>Conserver preuve, contradiction, confiance, ancienneté et correction de chaque force proposée.</td>
+<td>S3,S6</td>
+<td>P1,P2</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_085_096_ASSISTANTS_STRENGTHS.md</td>
+</tr>
+<tr>
+<td>094</td>
+<td>G8</td>
+<td>Implémenter le pont <code>D en math -&gt; réussite au soccer -&gt; stratégie spatiale</code>.</td>
+<td>S1,S6</td>
+<td>P1,P2</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_085_096_ASSISTANTS_STRENGTHS.md</td>
+</tr>
+<tr>
+<td>095</td>
+<td>G8</td>
+<td>Permettre à l’élève d’accepter, reformuler, contester, expirer ou supprimer une interprétation.</td>
+<td>S3,S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_085_096_ASSISTANTS_STRENGTHS.md</td>
+</tr>
+<tr>
+<td>096</td>
+<td>G8</td>
+<td>Tester que l’assistant encourage sans diagnostic, flatterie automatique ou positivité forcée.</td>
+<td>S4,S6</td>
+<td>P1,P2</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_085_096_ASSISTANTS_STRENGTHS.md</td>
+</tr>
+<tr>
+<td>097</td>
+<td>G9</td>
+<td>Étendre les publications avec le type <code>growth_story</code>.</td>
+<td>S2,S3</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_097_108_SOCIAL_ANALYTICS.md</td>
+</tr>
+<tr>
+<td>098</td>
+<td>G9</td>
+<td>Construire les capsules de réussite courtes avec preuve, contexte et réflexion.</td>
+<td>S7</td>
+<td>P1,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_097_108_SOCIAL_ANALYTICS.md</td>
+</tr>
+<tr>
+<td>099</td>
+<td>G9</td>
+<td>Construire les fils de projets avec jalons, versions, fichiers, sources et contributions.</td>
+<td>S2,S3,S7</td>
+<td>P1,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_097_108_SOCIAL_ANALYTICS.md</td>
+</tr>
+<tr>
+<td>100</td>
+<td>G9</td>
+<td>Construire les cercles de classe, équipe, musique, art, intérêt et entraide.</td>
+<td>S2,S3,S7</td>
+<td>P1,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_097_108_SOCIAL_ANALYTICS.md</td>
+</tr>
+<tr>
+<td>101</td>
+<td>G9</td>
+<td>Ajouter les reconnaissances persévérance, créativité, leadership, entraide, clarté et progrès.</td>
+<td>S3,S7</td>
+<td>P1,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_097_108_SOCIAL_ANALYTICS.md</td>
+</tr>
+<tr>
+<td>102</td>
+<td>G9</td>
+<td>Construire les récapitulatifs hebdomadaires, mensuels et trimestriels.</td>
+<td>S7,S8</td>
+<td>P1,P6,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_097_108_SOCIAL_ANALYTICS.md</td>
+</tr>
+<tr>
+<td>103</td>
+<td>G9</td>
+<td>Autoriser l’expression honnête d’une difficulté et proposer une reformulation facultative.</td>
+<td>S3,S6</td>
+<td>P1,P2</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_097_108_SOCIAL_ANALYTICS.md</td>
+</tr>
+<tr>
+<td>104</td>
+<td>G9</td>
+<td>Implémenter le contrat d’intégrité contre harcèlement, usurpation, doxxing et preuve falsifiée.</td>
+<td>S3,S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_097_108_SOCIAL_ANALYTICS.md</td>
+</tr>
+<tr>
+<td>105</td>
+<td>G9</td>
+<td>Concevoir des comparaisons multidimensionnelles explicables sans résumer une personne à une note.</td>
+<td>S1,S8</td>
+<td>P1,P6</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_097_108_SOCIAL_ANALYTICS.md</td>
+</tr>
+<tr>
+<td>106</td>
+<td>G9</td>
+<td>Construire le tableau élève avec notions, rappels, forces, projets et preuves.</td>
+<td>S7,S8</td>
+<td>P6,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_097_108_SOCIAL_ANALYTICS.md</td>
+</tr>
+<tr>
+<td>107</td>
+<td>G9</td>
+<td>Construire le tableau enseignant avec objectifs, confusions, stratégies et interventions.</td>
+<td>S7,S8</td>
+<td>P1,P6,P9</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_097_108_SOCIAL_ANALYTICS.md</td>
+</tr>
+<tr>
+<td>108</td>
+<td>G9</td>
+<td>Construire les vues école et commission avec seuils d’agrégation et prévention de reconstruction.</td>
+<td>S4,S8</td>
+<td>P1,P6</td>
+<td>completed</td>
+<td>See docs/teach/MISSION_097_108_SOCIAL_ANALYTICS.md</td>
+</tr>
+<tr>
+<td>109</td>
+<td>G10</td>
+<td>Étendre le contrat média pour les leçons, fils, projets et réussites.</td>
+<td>S3</td>
+<td>P7</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-109-120-media-plugins.json</td>
+</tr>
+<tr>
+<td>110</td>
+<td>G10</td>
+<td>Implémenter le quota de trois vidéos quotidiennes de cinq minutes.</td>
+<td>S3,S4</td>
+<td>P7</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-109-120-media-plugins.json</td>
+</tr>
+<tr>
+<td>111</td>
+<td>G10</td>
+<td>Implémenter le quota de cinq balados quotidiens de trente minutes.</td>
+<td>S3,S4</td>
+<td>P7</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-109-120-media-plugins.json</td>
+</tr>
+<tr>
+<td>112</td>
+<td>G10</td>
+<td>Adapter automatiquement les quotas aux limites gratuites réelles du moteur.</td>
+<td>S4,S5</td>
+<td>P4,P7</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-109-120-media-plugins.json</td>
+</tr>
+<tr>
+<td>113</td>
+<td>G10</td>
+<td>Exiger un déclenchement explicite par l’utilisateur pour chaque génération.</td>
+<td>S3,S4</td>
+<td>P7</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-109-120-media-plugins.json</td>
+</tr>
+<tr>
+<td>114</td>
+<td>G10</td>
+<td>Construire le script depuis la source sélectionnée, ses preuves et son contexte.</td>
+<td>S3,S6</td>
+<td>P2,P7</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-109-120-media-plugins.json</td>
+</tr>
+<tr>
+<td>115</td>
+<td>G10</td>
+<td>Connecter le worker local QuaNTecH-ViD avec manifestes signés et expirants.</td>
+<td>S2,S3</td>
+<td>P7,P13</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-109-120-media-plugins.json</td>
+</tr>
+<tr>
+<td>116</td>
+<td>G10</td>
+<td>Exiger une confirmation distincte avant toute publication externe.</td>
+<td>S3,S4</td>
+<td>P7</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-109-120-media-plugins.json</td>
+</tr>
+<tr>
+<td>117</td>
+<td>G10</td>
+<td>Définir le manifeste standard des plugins éducatifs Gate5.</td>
+<td>S3,S11</td>
+<td>P1,P13</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-109-120-media-plugins.json</td>
+</tr>
+<tr>
+<td>118</td>
+<td>G10</td>
+<td>Créer les premiers prefabs pour leçon, rappel, accessibilité, source, portfolio et rapport.</td>
+<td>S1,S11</td>
+<td>P1</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-109-120-media-plugins.json</td>
+</tr>
+<tr>
+<td>119</td>
+<td>G10</td>
+<td>Router automatiquement les recherches Life Science vers le bon outil spécialisé.</td>
+<td>S5,S11</td>
+<td>P4,P8</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-109-120-media-plugins.json</td>
+</tr>
+<tr>
+<td>120</td>
+<td>G10</td>
+<td>Produire le livre de quarante prompts formatifs Life Science pour élèves et enseignants.</td>
+<td>S5,S10</td>
+<td>P8,P10</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-109-120-media-plugins.json</td>
+</tr>
+<tr>
+<td>121</td>
+<td>G11</td>
+<td>Corriger l’empreinte SHA-256 du manifeste <code>p046</code> à partir du contenu validé.</td>
+<td>S3,S4</td>
+<td>P13</td>
+<td>completed</td>
+<td>Integrity verifier reports 41/41 valid</td>
+</tr>
+<tr>
+<td>122</td>
+<td>G11</td>
+<td>Corriger les six autres échecs de la suite pluginpack.</td>
+<td>S4</td>
+<td>P13</td>
+<td>completed</td>
+<td>Pluginpack full suite 337 passed</td>
+</tr>
+<tr>
+<td>123</td>
+<td>G11</td>
+<td>Obtenir un doctor pluginpack à 41/41 et zéro échec de test.</td>
+<td>S4</td>
+<td>P13</td>
+<td>completed</td>
+<td>Doctor 12/12 PASS; 337 tests passed</td>
+</tr>
+<tr>
+<td>124</td>
+<td>G11</td>
+<td>Ajouter la validation d’intégrité avant toute invocation depuis FNP-QNN.</td>
+<td>S2,S3,S4</td>
+<td>P13</td>
+<td>completed</td>
+<td>Fail-closed altered-plugin test and real bridge run</td>
+</tr>
+<tr>
+<td>125</td>
+<td>G11</td>
+<td>Isoler le chargement dynamique pour éviter les collisions <code>sys.path</code> et <code>sys.modules</code>.</td>
+<td>S2,S4</td>
+<td>P13</td>
+<td>completed</td>
+<td>Locked loader restores sys.path and sys.modules; targeted tests passed</td>
+</tr>
+<tr>
+<td>126</td>
+<td>G11</td>
+<td>Centraliser l’allowlist et les poids des cinq plugins dans un contrat versionné.</td>
+<td>S2,S3</td>
+<td>P13</td>
+<td>completed</td>
+<td>fnp-qnn.ffed-plugin-policy.v1 validated with five live plugins</td>
+</tr>
+<tr>
+<td>127</td>
+<td>G11</td>
+<td>Revalider les porteurs <code>D_f</code>, <code>dF</code>, <code>i_fractal</code>, traces et configurations effectives.</td>
+<td>S3,S6</td>
+<td>P2,P13</td>
+<td>completed</td>
+<td>Live five-plugin run preserved carrier hierarchy and effective configurations</td>
+</tr>
+<tr>
+<td>128</td>
+<td>G11</td>
+<td>Exposer FNP-QNN uniquement derrière Gate5 avec paquets pseudonymisés.</td>
+<td>S2,S3</td>
+<td>P13</td>
+<td>completed</td>
+<td>Signed keyed-pseudonym Gate5 envelope rejects raw identity and content</td>
+</tr>
+<tr>
+<td>129</td>
+<td>G11</td>
+<td>Connecter Gate5 aux adaptateurs Synthia, mémoire, HippoRAG, FNP et média.</td>
+<td>S2,S3</td>
+<td>P2,P3,P7,P13</td>
+<td>completed</td>
+<td>Versioned registry plus durable outbox covers five active private adapters</td>
+</tr>
+<tr>
+<td>130</td>
+<td>G11</td>
+<td>Implémenter l’adressage déterministe des cellules quasicristallines et les empreintes de projection.</td>
+<td>S2,S3</td>
+<td>P13</td>
+<td>completed</td>
+<td>Deterministic fivefold structural cell and projection fingerprint tests passed</td>
+</tr>
+<tr>
+<td>131</td>
+<td>G11</td>
+<td>Maintenir les valeurs géométriques hors KDF, AAD, coffre et matériel de clé.</td>
+<td>S2,S4</td>
+<td>P13</td>
+<td>completed</td>
+<td>Geometry cryptographic-use prohibition and bundle-boundary tests passed</td>
+</tr>
+<tr>
+<td>132</td>
+<td>G11</td>
+<td>Tester menace, altération, replay, diff, révocation, récupération, concurrence et performance.</td>
+<td>S4</td>
+<td>P13</td>
+<td>completed</td>
+<td>13/13 targeted threat tests plus BC/WebCrypto interoperability passed</td>
+</tr>
+<tr>
+<td>133</td>
+<td>G12</td>
+<td>Transformer la navigation actuelle selon le sitemap Signal, Teach, AlgoQuest, Cours, Projets, Cercles, Studio et Statistiques.</td>
+<td>S1,S7</td>
+<td>P9</td>
+<td>completed</td>
+<td>Validated sitemap in app shell and desktop capture; 98/98 tests</td>
+</tr>
+<tr>
+<td>134</td>
+<td>G12</td>
+<td>Construire la vue Teach élève comme écran principal utilisable.</td>
+<td>S7</td>
+<td>P1,P9</td>
+<td>completed</td>
+<td>Teach learner path validated on desktop, tablet and mobile</td>
+</tr>
+<tr>
+<td>135</td>
+<td>G12</td>
+<td>Construire la vue Teach enseignant dense et orientée vers les tâches.</td>
+<td>S7,S8</td>
+<td>P1,P6,P9</td>
+<td>completed</td>
+<td>Teacher projection and task-oriented Teach surface validated</td>
+</tr>
+<tr>
+<td>136</td>
+<td>G12</td>
+<td>Construire les vues Sources, Administration et gestion des consentements.</td>
+<td>S7</td>
+<td>P1,P9</td>
+<td>completed</td>
+<td>Sources and Administration panels compile and render without console errors</td>
+</tr>
+<tr>
+<td>137</td>
+<td>G12</td>
+<td>Revoir le système visuel Scholarium sans casser l’identité publique existante.</td>
+<td>S7,S9</td>
+<td>P9</td>
+<td>completed</td>
+<td>Stitch identity integrated; landing desktop and mobile visually inspected</td>
+</tr>
+<tr>
+<td>138</td>
+<td>G12</td>
+<td>Créer les composants stables, responsifs, accessibles et sans cartes imbriquées.</td>
+<td>S7</td>
+<td>P9</td>
+<td>completed</td>
+<td>Responsive components and zero horizontal overflow verified</td>
+</tr>
+<tr>
+<td>139</td>
+<td>G12</td>
+<td>Ajouter graphiques, chronologies, cartes de forces et preuves interactives.</td>
+<td>S7,S8</td>
+<td>P6,P9</td>
+<td>completed</td>
+<td>Portfolio, statistics, evidence and timeline surfaces validated</td>
+</tr>
+<tr>
+<td>140</td>
+<td>G12</td>
+<td>Produire les diagrammes d’architecture, données, RAG, assistants et sécurité.</td>
+<td>S2,S10</td>
+<td>P9,P10</td>
+<td>completed</td>
+<td>Five editable diagram packages with SVG, PNG, alt text, caption and manifest</td>
+</tr>
+<tr>
+<td>141</td>
+<td>G12</td>
+<td>Produire le guide élève, le guide enseignant et le manuel administrateur.</td>
+<td>S10</td>
+<td>P10</td>
+<td>completed</td>
+<td>Three paginated DOCX role guides rendered and visually inspected</td>
+</tr>
+<tr>
+<td>142</td>
+<td>G12</td>
+<td>Produire la présentation Team Alignment depuis le modèle retenu.</td>
+<td>S1,S10</td>
+<td>P10</td>
+<td>completed</td>
+<td>10-slide template-derived deck; fidelity check passed with zero issues</td>
+</tr>
+<tr>
+<td>143</td>
+<td>G12</td>
+<td>Produire l’Operating Review avec scorecards, risques, décisions et actions.</td>
+<td>S4,S8,S10</td>
+<td>P6,P10</td>
+<td>completed</td>
+<td>11-slide evidence review; fidelity check passed with zero issues</td>
+</tr>
+<tr>
+<td>144</td>
+<td>G12</td>
+<td>Produire le PDF corporatif final avec sitemap, maquettes, graphiques et contrats.</td>
+<td>S10</td>
+<td>P10</td>
+<td>completed</td>
+<td>14-page corporate dossier rendered and inspected page by page</td>
+</tr>
+<tr>
+<td>145</td>
+<td>G13</td>
+<td>Étendre les tests unitaires des états pédagogiques et de la maîtrise.</td>
+<td>S3,S4</td>
+<td>P0</td>
+<td>completed</td>
+<td>G13 evidence: 105/105 full suite; mastery and Spanish learning contracts green</td>
+</tr>
+<tr>
+<td>146</td>
+<td>G13</td>
+<td>Ajouter les tests de contrats API, schémas, erreurs et idempotence.</td>
+<td>S3</td>
+<td>P0</td>
+<td>completed</td>
+<td>G13 evidence: canonical API errors, schemas and idempotency focused test green</td>
+</tr>
+<tr>
+<td>147</td>
+<td>G13</td>
+<td>Ajouter les tests de consentement, rôles, tenants, export et suppression.</td>
+<td>S3,S4</td>
+<td>P1</td>
+<td>completed</td>
+<td>G13 evidence: consent, role, tenant, export and Teach deletion focused test green</td>
+</tr>
+<tr>
+<td>148</td>
+<td>G13</td>
+<td>Ajouter les tests contre données personnelles dans logs, preuves, plugins et Datadog.</td>
+<td>S4,S12</td>
+<td>P1,P5,P13</td>
+<td>completed</td>
+<td>G13 evidence: no secret or learner content in Teach proof surfaces; Datadog technical-only contract tested</td>
+</tr>
+<tr>
+<td>149</td>
+<td>G13</td>
+<td>Ajouter les tests d’accessibilité automatisés et manuels.</td>
+<td>S4,S9</td>
+<td>P9</td>
+<td>completed</td>
+<td>G7 Axe, keyboard and manual QA retained; G13 full suite green</td>
+</tr>
+<tr>
+<td>150</td>
+<td>G13</td>
+<td>Ajouter les parcours Playwright élève, enseignant, gardien et administrateur.</td>
+<td>S9</td>
+<td>P9</td>
+<td>completed</td>
+<td>G13 Playwright captures for learner, teacher, guardian-consent and administrator role boundaries</td>
+</tr>
+<tr>
+<td>151</td>
+<td>G13</td>
+<td>Vérifier par captures desktop, mobile et tablette l’absence de chevauchements.</td>
+<td>S7,S9</td>
+<td>P9</td>
+<td>completed</td>
+<td>G7/G12 responsive captures plus five G13 role captures; zero horizontal overflow</td>
+</tr>
+<tr>
+<td>152</td>
+<td>G13</td>
+<td>Tester les pannes HippoRAG, FNP-QNN, mémoire, média et FfeD.</td>
+<td>S4</td>
+<td>P3,P7,P13</td>
+<td>completed</td>
+<td>G13 explicit degraded policies for all five private adapters; core learning path preserved</td>
+</tr>
+<tr>
+<td>153</td>
+<td>G13</td>
+<td>Tester les files, délais, retries, circuit breakers et reprises.</td>
+<td>S4</td>
+<td>P5,P13</td>
+<td>completed</td>
+<td>G13 retry, capped delay, circuit, idempotent queue and snapshot recovery tests green</td>
+</tr>
+<tr>
+<td>154</td>
+<td>G13</td>
+<td>Tester les charges 1x, 10x et 100x et identifier le premier point de rupture.</td>
+<td>S4,S8</td>
+<td>P6</td>
+<td>completed</td>
+<td>G13 modeled first backpressure point at 100x with 1800-job backlog</td>
+</tr>
+<tr>
+<td>155</td>
+<td>G13</td>
+<td>Exécuter secret scan, dépendances, build, lint, tests, migrations et OpenAPI.</td>
+<td>S4,S12</td>
+<td>P0,P12</td>
+<td>completed</td>
+<td>G13: prod audit 0; build pass; lint 0 errors; 105 tests; 34 migrations; OpenAPI HTTP 200</td>
+</tr>
+<tr>
+<td>156</td>
+<td>G13</td>
+<td>Produire un dossier de preuves avec commandes, résultats, captures et limites résiduelles.</td>
+<td>S4,S10</td>
+<td>P10,P12</td>
+<td>completed</td>
+<td>docs/teach/evidence/mission-145-156-quality-security.json and mission report</td>
+</tr>
+<tr>
+<td>157</td>
+<td>G14</td>
+<td>Créer le tunnel VS Code authentifié sans exposer <code>.env</code>, bases, coffres ou workers privés.</td>
+<td>S4,S12</td>
+<td>P5</td>
+<td>blocked</td>
+<td>Authentication required; no tunnel or service started; see mission-157-161 evidence</td>
+</tr>
+<tr>
+<td>158</td>
+<td>G14</td>
+<td>Connecter Datadog aux métriques techniques du gateway sans contenu étudiant.</td>
+<td>S4,S12</td>
+<td>P5</td>
+<td>completed</td>
+<td>Healthy Agent; 3 technical-only metrics; interactive scheduled task disabled; see mission-157-161 evidence</td>
+</tr>
+<tr>
+<td>159</td>
+<td>G14</td>
+<td>Documenter et tester sauvegarde, restauration, rotation, suppression et reprise après incident.</td>
+<td>S4,S12</td>
+<td>P1,P5</td>
+<td>completed</td>
+<td>Fresh synthetic D1 backup and isolated restore passed hash and quick_check; see mission-157-161 evidence</td>
+</tr>
+<tr>
+<td>160</td>
+<td>G14</td>
+<td>Préparer les chemins cPanel pour domaine, redirections, documentation, statique et proxy compatible.</td>
+<td>S12</td>
+<td>P11</td>
+<td>completed</td>
+<td>Secret-safe cPanel inventory and dry-run deployment paths recorded; no mutation; see deployment runbook</td>
+</tr>
+<tr>
+<td>161</td>
+<td>G14</td>
+<td>Préparer le déploiement Cloudflare de l’application, D1, R2 et les workers privés séparés.</td>
+<td>S2,S12</td>
+<td>P0,P11</td>
+<td>completed</td>
+<td>Sites version/domain state, DB/MEDIA bindings and private-worker boundary recorded; no deployment</td>
+</tr>
+<tr>
+<td>162</td>
+<td>G14</td>
+<td>Créer la branche, les commits atomiques, les rapports de validation et le flux GitHub de livraison.</td>
+<td>S1,S4</td>
+<td>P12</td>
+<td>completed</td>
+<td>Six delivery commits merged through PR #2; recovery closeout uses a separate atomic follow-up branch because the original remote branch was deleted after merge</td>
+</tr>
+<tr>
+<td>163</td>
+<td>G14</td>
+<td>Exécuter l’audit final des 163 actions, fermer chaque preuve, publier seulement les surfaces validées et produire le rapport de complétion à 100 %.</td>
+<td>S1,S4,S6</td>
+<td>P1,P2,P10,P12</td>
+<td>completed</td>
+<td>Recovery audit delivered; 161/163 complete and 2 external blockers prevent an honest 100 percent claim</td>
+</tr>
+</tbody>
+</table>
+<h2 id="annexe-c-carte-de-provenance">Annexe C - Carte de provenance<a class="headerlink" href="#annexe-c-carte-de-provenance" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Idée originale: <code>docs/IDEA_CAPTURE_2026-07-15_scholarium_spanish_course.md</code>.</li>
+<li>Rapport émergent: <code>docs/idea-captures/2026-07-15_scholarium-teach-spanish-emergent-design.md</code>.</li>
+<li>Brief opérationnel: <code>docs/idea-captures/2026-07-15_scholarium-teach_operational-brief.md</code>.</li>
+<li>Architecture: <code>docs/teach/ARCHITECTURE.md</code>.</li>
+<li>Plan accepté: <code>docs/teach/PLAN_163_ACTIONS.md</code>.</li>
+<li>Preuves: <code>docs/teach/evidence/</code> et <code>docs/teach/EVIDENCE_REGISTER.md</code>.</li>
+<li>État en ligne: <code>docs/teach/evidence/recovery-master-runtime.json</code>.</li>
+</ul>
+<h2 id="annexe-d-glossaire">Annexe D - Glossaire<a class="headerlink" href="#annexe-d-glossaire" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Scholarium:</strong> plateforme éducative, sociale et de portfolio.</li>
+<li><strong>Teach:</strong> domaine adaptatif de l'application Scholarium existante.</li>
+<li><strong>AlgoQuest:</strong> porte d'entrée et échange éducatif durable.</li>
+<li><strong>Synthia:</strong> gardienne de lexiques et de traçabilité sous autorité humaine.</li>
+<li><strong>MemoryLake:</strong> stockage central approuvé par contrat <code>index_records</code>.</li>
+<li><strong>HippoRAG:</strong> récupération seulement par <code>retrieve_dpr</code>.</li>
+<li><strong>Gate5:</strong> courtier de capacités, preuves, consentements, replay et audit.</li>
+<li><strong>FNP-QNN:</strong> moteur expérimental de signaux plithogéniques derrière Gate5.</li>
+<li><strong>QuaNTecH-ViD:</strong> worker média privé, explicitement déclenché et plafonné.</li>
+<li><strong>V.O.T Guardian/Tenebris:</strong> enveloppe éphémère étudiée; aucune écoute passive ni analyse biométrique automatique.</li>
+</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>Le projet n'a pas disparu dans la journée de travail. Il est passé d'une séance d'espagnol à une suite éducative pre-alpha active, documentée et testée. La fermeture honnête est <code>161/163</code>: tout le travail interne prévu est fermé; les deux dernières actions dépendent d'une validation juridique externe et d'une authentification interactive.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Jean-Sebastien Beaulieu · ORCID 0009-0007-2904-0443
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/SeCuReDmE-main-dev" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/channel/UCYHLMJuIoJre3n39z7LUGIg" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://orcid.org/0009-0007-2904-0443" target="_blank" rel="noopener" title="orcid.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M0 96c0-35.3 28.7-64 64-64h448c35.3 0 64 28.7 64 64zm0 48h576v272c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm247.3 272c20.2 0 35.3-19.4 22.4-35-14.7-17.7-36.9-29-61.7-29h-64c-24.8 0-47 11.3-61.7 29-12.9 15.6 2.2 35 22.4 35h142.5zM176 312a56 56 0 1 0 0-112 56 56 0 1 0 0 112m184-104c-13.3 0-24 10.7-24 24s10.7 24 24 24h112c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h112c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../../javascripts/securedme-theme-toggle.js"></script>
+      
+        <script src="../../../../javascripts/securedme-accessibility.js"></script>
+      
+    
+  </body>
+</html>

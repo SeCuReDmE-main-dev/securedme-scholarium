@@ -1,0 +1,149 @@
+{
+  "schema": "scholarium.execution-evidence.v1",
+  "evidenceId": "mission-097-108-social-analytics",
+  "generatedAt": "2026-07-15T20:25:28.4949847Z",
+  "dataClass": "synthetic_education_only",
+  "actions": ["097", "098", "099", "100", "101", "102", "103", "104", "105", "106", "107", "108"],
+  "activatedSkills": [
+    "CeLeBrUm_Strategic_Decomposition_Mastery",
+    "RagGgE_Architectural_Integrity_Design",
+    "RagGgE_Interface_and_Contract_Validation",
+    "RagGgE_Technical_Risk_Assessment",
+    "synthia-adapter:synthia-session",
+    "architecte-zero:az-frontend",
+    "data-analytics:design-kpis",
+    "playwright"
+  ],
+  "activatedPluginSurfaces": [
+    "SecuredMe Education Controller",
+    "Synthia Adapter",
+    "Data Analytics",
+    "local Scholarium frontend"
+  ],
+  "implementation": {
+    "contracts": "apps/web/lib/teach-social-contracts.ts",
+    "service": "apps/web/lib/teach-social-service.ts",
+    "schema": "apps/web/db/schema.ts",
+    "migration": "apps/web/drizzle/0031_teach_social_portfolio.sql",
+    "growthStoryRoute": "apps/web/app/api/growth-stories/route.ts",
+    "projectRoute": "apps/web/app/api/teach/projects/route.ts",
+    "projectEntryRoute": "apps/web/app/api/teach/projects/entries/route.ts",
+    "circleRoute": "apps/web/app/api/teach/circles/route.ts",
+    "recognitionRoute": "apps/web/app/api/teach/recognitions/route.ts",
+    "recapRoute": "apps/web/app/api/teach/recaps/route.ts",
+    "studentDashboardRoute": "apps/web/app/api/teach/dashboard/student/route.ts",
+    "teacherDashboardRoute": "apps/web/app/api/teach/dashboard/teacher/route.ts",
+    "organizationDashboardRoute": "apps/web/app/api/teach/dashboard/organization/route.ts",
+    "frontend": "apps/web/app/teach/teach-social-panels.tsx",
+    "publicationTypes": "apps/web/lib/publication-types.ts",
+    "openApi": "apps/web/app/api/openapi.json/route.ts",
+    "accountExport": "apps/web/app/api/account/export/route.ts",
+    "accountDeletion": "apps/web/app/api/teach/data/route.ts"
+  },
+  "socialContracts": {
+    "publicationType": "growth_story",
+    "growthStoryEvidenceBound": true,
+    "originalExpressionPreserved": true,
+    "reframeOptional": true,
+    "profanityAloneTreatedAsHarm": false,
+    "integrityBlocks": ["targeted_harassment", "impersonation", "doxxing", "false_verified_proof"],
+    "projectEntryKinds": ["milestone", "version", "file", "source", "contribution"],
+    "circleKinds": ["class", "team", "music", "art", "interest", "peer_support"],
+    "recognitionKinds": ["perseverance", "creativity", "leadership", "peer_support", "clarity", "progress"],
+    "recapPeriods": ["weekly", "monthly", "quarterly"],
+    "compositePersonScore": false,
+    "personRank": false,
+    "popularityLeaderboard": false
+  },
+  "privacyAndLifecycle": {
+    "privateByDefault": true,
+    "explicitPublicGrowthStoryRequired": true,
+    "serverTrustsClientEvidenceVerification": false,
+    "teacherRawAnswersIncluded": false,
+    "teacherPrivateGraphIncluded": false,
+    "organizationMinimumCohort": 10,
+    "organizationReconstructionProtection": true,
+    "accountExportExtended": true,
+    "accountDeletionExtended": true,
+    "realStudentDataUsed": false
+  },
+  "synthiaValidation": {
+    "command": "python -m synthia_core.cli lexicon classify --text <g9-term-set> --domain education",
+    "matchedTermCount": 0,
+    "promotionPerformed": false,
+    "classificationFamily": "I_system^S",
+    "hierarchy": "I -> I_system^S -> H_lex -> G_lex -> I_lexicon",
+    "interpretation": "The live classifier admitted no new social terms. The implementation therefore uses explicit versioned product contracts and claims no autonomous taxonomy authority."
+  },
+  "migrationProbe": {
+    "engine": "python-sqlite-memory",
+    "teachDomainTableCount": 26,
+    "newTables": [
+      "teach_circle_memberships",
+      "teach_circles",
+      "teach_organization_scopes",
+      "teach_project_entries",
+      "teach_project_threads",
+      "teach_recaps",
+      "teach_recognitions"
+    ],
+    "growthContextColumn": true,
+    "growthReframeColumn": true,
+    "duplicateRecapRejected": true,
+    "syntheticRowsInserted": 7
+  },
+  "runtimeProbe": {
+    "baseUrl": "http://localhost:5173",
+    "signedOutProtectedProbeCount": 9,
+    "signedOutStatus": 401,
+    "openApiVersion": "3.1.0",
+    "newOpenApiPathCount": 8,
+    "accountBoundFetchesSuppressedWhileSignedOut": true
+  },
+  "browserValidation": {
+    "tool": "Playwright CLI",
+    "authenticatedDataMode": "synthetic request headers plus empty route fixtures",
+    "realIdentityUsed": false,
+    "viewports": [
+      {"name": "desktop", "width": 1440, "height": 1000, "horizontalOverflow": false},
+      {"name": "tablet", "width": 820, "height": 1180, "horizontalOverflow": false},
+      {"name": "mobile", "width": 390, "height": 844, "horizontalOverflow": false}
+    ],
+    "screenshots": [
+      {"path": "apps/web/output/playwright/g9/teach-portfolio-desktop.png", "sha256": "7A77EF3A7E863538B3CE77DD3B3FA91607C6F1F4AE73EC3EEE3D9AFBDEEDA50D"},
+      {"path": "apps/web/output/playwright/g9/teach-statistics-tablet.png", "sha256": "67569C17A66BF4F9065732B4716A98BF2C9F41C0DC455A06666625AAC1C835E3"},
+      {"path": "apps/web/output/playwright/g9/teach-course-mobile.png", "sha256": "F6DD354B171F1256705A5A9E7D140F30FF57CF0BD2A7CF4FDBC1FFA9F5B1F2F2"},
+      {"path": "apps/web/output/playwright/g9/teach-anonymous-desktop.png", "sha256": "043127F14C8D0236BEC14815A79A342F2F48FB23C5CA3BE19E1AC31F5D07EA96"}
+    ],
+    "portfolioForms": 4,
+    "portfolioFields": 19,
+    "allMobileTabsVisible": true,
+    "keyboardTabNavigation": true,
+    "clippedMobileControls": 0,
+    "consoleErrors": 0,
+    "visualOverlapFound": false
+  },
+  "repositoryValidation": {
+    "command": "npm test",
+    "build": "passed",
+    "testsPassed": 75,
+    "testsFailed": 0,
+    "focusedTestsPassed": 25,
+    "lintCommand": "npm run lint",
+    "lintErrors": 0,
+    "lintWarnings": 30,
+    "diffCheck": "passed_with_line_ending_notices"
+  },
+  "authorityBoundary": {
+    "autonomousTeacherAuthorityClaimed": false,
+    "clinicalAuthorityClaimed": false,
+    "disciplinaryAuthorityClaimed": false,
+    "administrativeLearnerDecisionClaimed": false,
+    "realStudentDataUsed": false
+  },
+  "gate": {
+    "id": "G9",
+    "status": "passed",
+    "reason": "Growth stories, project threads, bounded circles, evidence-linked recognition, periodic recaps and role-bounded dashboards are durable, exportable, deletable, visually usable and explicitly avoid a composite person score or popularity rank."
+  }
+}

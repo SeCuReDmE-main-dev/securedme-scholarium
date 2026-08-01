@@ -1,0 +1,42 @@
+{
+  "schema": "scholarium.teach-evidence.v1",
+  "mission": "049-057",
+  "status": "completed",
+  "recordedAt": "2026-07-16T05:36:00Z",
+  "counts": {
+    "sourceCards": 125,
+    "uniqueIdentities": 125,
+    "synthiaInvocations": 125,
+    "classifications": 125,
+    "openiePackets": 125,
+    "partitionGraphs": 3,
+    "preparationShards": 8,
+    "approvedSources": 0,
+    "preparationSources": 125,
+    "quarantinedSources": 0
+  },
+  "urlOutcomes": {
+    "reachable": 66,
+    "reachableWithRestriction": 54,
+    "httpError": 2,
+    "networkUnresolved": 3
+  },
+  "tests": {
+    "command": "node --test tests/education-corpus.test.mjs",
+    "passed": 3,
+    "failed": 0
+  },
+  "hierarchy": "I -> I_system^S -> H_lex -> G_lex -> I_lexicon",
+  "digests": {
+    "sourceCategories": "sha256:114DC8D301C3B254BA3BAA3BE8C64AD06671DCAB95192B418F510F3CA5A5B0E9",
+    "sourceCards": "sha256:B246B8F061A7D6B3D09EAD3329DA4EBECA8EABF66258FFEC873BC7537C392000",
+    "classificationRun": "sha256:87ADE1AD8A995D7ABC92F726650EB2354767A3EBA879F234A8D4F22BBEE42D81",
+    "synthiaClassifications": "sha256:99F328E090A6AD36DF59DE8C06C2378C88848A63ADD91C1F10F221FE4CC35AFB",
+    "openiePackets": "sha256:AD2ED59656B1BD7970279204A5FCDCB8EE1C06979CBCEC23F0840CB7695D30DC",
+    "urlVerifications": "sha256:0884EEDBDBE68659FD26481C798794DD06AB6EC7B8B3F208CD3BBB89CBD812F4",
+    "approvedGraph": "sha256:DAFA1C57FEFDFE6FC679C4C424110DEB4EC6BBBF44394B4149A78429419D8055",
+    "preparationGraph": "sha256:6FACEEBF942C3FD27C319EB3FA74C6A684B219AC297068BF76C52E1974EF24E1",
+    "quarantineGraph": "sha256:2373F1E63A859842F12D57CFA74710DA777C336DC8FB33B4F038AE1B51A641A0"
+  },
+  "authorityBoundary": "Synthia provides traceability and uncertainty classification under human review; no source was automatically certified or promoted."
+}

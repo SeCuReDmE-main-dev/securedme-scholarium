@@ -1,0 +1,516 @@
+{
+  "authorityBoundary": "Graph membership is a traceability state, not approval of a scientific, legal, or pedagogical claim.",
+  "category": "social_belonging_safety",
+  "edges": [
+    {
+      "id": "edge:source-00065c3445fbca56d377:0",
+      "predicate": "classified_in",
+      "source": "source-00065c3445fbca56d377",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-00065c3445fbca56d377:1",
+      "predicate": "issued_by",
+      "source": "source-00065c3445fbca56d377",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-00065c3445fbca56d377:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-00065c3445fbca56d377",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:bullying"
+    },
+    {
+      "id": "edge:source-00065c3445fbca56d377:3",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-00065c3445fbca56d377",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:peer"
+    },
+    {
+      "id": "edge:source-2f2774039925cd3aa87a:0",
+      "predicate": "classified_in",
+      "source": "source-2f2774039925cd3aa87a",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-2f2774039925cd3aa87a:1",
+      "predicate": "issued_by",
+      "source": "source-2f2774039925cd3aa87a",
+      "status": "metadata_supported",
+      "target": "authority:df38fa483ae1f77a"
+    },
+    {
+      "id": "edge:source-2f2774039925cd3aa87a:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-2f2774039925cd3aa87a",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:bullying"
+    },
+    {
+      "id": "edge:source-32e52b1eae8dd4130556:0",
+      "predicate": "classified_in",
+      "source": "source-32e52b1eae8dd4130556",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-32e52b1eae8dd4130556:1",
+      "predicate": "issued_by",
+      "source": "source-32e52b1eae8dd4130556",
+      "status": "metadata_supported",
+      "target": "authority:3d5564a45ebb75fa"
+    },
+    {
+      "id": "edge:source-32e52b1eae8dd4130556:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-32e52b1eae8dd4130556",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:belonging"
+    },
+    {
+      "id": "edge:source-382be2f4d83af5055db8:0",
+      "predicate": "classified_in",
+      "source": "source-382be2f4d83af5055db8",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-382be2f4d83af5055db8:1",
+      "predicate": "issued_by",
+      "source": "source-382be2f4d83af5055db8",
+      "status": "metadata_supported",
+      "target": "authority:206b7cc7aab4f2fc"
+    },
+    {
+      "id": "edge:source-382be2f4d83af5055db8:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-382be2f4d83af5055db8",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:participation"
+    },
+    {
+      "id": "edge:source-382be2f4d83af5055db8:3",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-382be2f4d83af5055db8",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:peer"
+    },
+    {
+      "id": "edge:source-39b016d7f7628c700fb1:0",
+      "predicate": "classified_in",
+      "source": "source-39b016d7f7628c700fb1",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-39b016d7f7628c700fb1:1",
+      "predicate": "issued_by",
+      "source": "source-39b016d7f7628c700fb1",
+      "status": "metadata_supported",
+      "target": "authority:4d17863ec4801d5c"
+    },
+    {
+      "id": "edge:source-39b016d7f7628c700fb1:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-39b016d7f7628c700fb1",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:citizenship"
+    },
+    {
+      "id": "edge:source-78810eed0c5867338297:0",
+      "predicate": "classified_in",
+      "source": "source-78810eed0c5867338297",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-78810eed0c5867338297:1",
+      "predicate": "issued_by",
+      "source": "source-78810eed0c5867338297",
+      "status": "metadata_supported",
+      "target": "authority:6ba8796e2ce2f4e5"
+    },
+    {
+      "id": "edge:source-78810eed0c5867338297:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-78810eed0c5867338297",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:peer"
+    },
+    {
+      "id": "edge:source-85793db75a22d8e8ff76:0",
+      "predicate": "classified_in",
+      "source": "source-85793db75a22d8e8ff76",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-85793db75a22d8e8ff76:1",
+      "predicate": "issued_by",
+      "source": "source-85793db75a22d8e8ff76",
+      "status": "metadata_supported",
+      "target": "authority:45b673383aa209c3"
+    },
+    {
+      "id": "edge:source-85793db75a22d8e8ff76:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-85793db75a22d8e8ff76",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:peer"
+    },
+    {
+      "id": "edge:source-8af8c286c155219cc70f:0",
+      "predicate": "classified_in",
+      "source": "source-8af8c286c155219cc70f",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-8af8c286c155219cc70f:1",
+      "predicate": "issued_by",
+      "source": "source-8af8c286c155219cc70f",
+      "status": "metadata_supported",
+      "target": "authority:099ecbe5d380e7f5"
+    },
+    {
+      "id": "edge:source-8af8c286c155219cc70f:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-8af8c286c155219cc70f",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:belonging"
+    },
+    {
+      "id": "edge:source-94ce09b681c76f91abd8:0",
+      "predicate": "classified_in",
+      "source": "source-94ce09b681c76f91abd8",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-94ce09b681c76f91abd8:1",
+      "predicate": "issued_by",
+      "source": "source-94ce09b681c76f91abd8",
+      "status": "metadata_supported",
+      "target": "authority:626554227244dd79"
+    },
+    {
+      "id": "edge:source-94ce09b681c76f91abd8:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-94ce09b681c76f91abd8",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:peer"
+    },
+    {
+      "id": "edge:source-9f48845df80b8550318d:0",
+      "predicate": "classified_in",
+      "source": "source-9f48845df80b8550318d",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-9f48845df80b8550318d:1",
+      "predicate": "issued_by",
+      "source": "source-9f48845df80b8550318d",
+      "status": "metadata_supported",
+      "target": "authority:a38466a51d291c7a"
+    },
+    {
+      "id": "edge:source-9f48845df80b8550318d:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-9f48845df80b8550318d",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:peer"
+    },
+    {
+      "id": "edge:source-b2e1cabfb6930d898905:0",
+      "predicate": "classified_in",
+      "source": "source-b2e1cabfb6930d898905",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-b2e1cabfb6930d898905:1",
+      "predicate": "issued_by",
+      "source": "source-b2e1cabfb6930d898905",
+      "status": "metadata_supported",
+      "target": "authority:78196eee1241a3e1"
+    },
+    {
+      "id": "edge:source-b2e1cabfb6930d898905:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-b2e1cabfb6930d898905",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:peer"
+    },
+    {
+      "id": "edge:source-b2e9eb0b345988059ea8:0",
+      "predicate": "classified_in",
+      "source": "source-b2e9eb0b345988059ea8",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-b2e9eb0b345988059ea8:1",
+      "predicate": "issued_by",
+      "source": "source-b2e9eb0b345988059ea8",
+      "status": "metadata_supported",
+      "target": "authority:df38fa483ae1f77a"
+    },
+    {
+      "id": "edge:source-b2e9eb0b345988059ea8:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-b2e9eb0b345988059ea8",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:bullying"
+    },
+    {
+      "id": "edge:source-c23f07b9eda8c7ee4db6:0",
+      "predicate": "classified_in",
+      "source": "source-c23f07b9eda8c7ee4db6",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-c23f07b9eda8c7ee4db6:1",
+      "predicate": "issued_by",
+      "source": "source-c23f07b9eda8c7ee4db6",
+      "status": "metadata_supported",
+      "target": "authority:f66b95ec01f86068"
+    },
+    {
+      "id": "edge:source-c23f07b9eda8c7ee4db6:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-c23f07b9eda8c7ee4db6",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:belonging"
+    },
+    {
+      "id": "edge:source-d15fd5bfb3f2e4637a06:0",
+      "predicate": "classified_in",
+      "source": "source-d15fd5bfb3f2e4637a06",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-d15fd5bfb3f2e4637a06:1",
+      "predicate": "issued_by",
+      "source": "source-d15fd5bfb3f2e4637a06",
+      "status": "metadata_supported",
+      "target": "authority:df38fa483ae1f77a"
+    },
+    {
+      "id": "edge:source-d15fd5bfb3f2e4637a06:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-d15fd5bfb3f2e4637a06",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:bullying"
+    },
+    {
+      "id": "edge:source-d293ec307115762dc7fc:0",
+      "predicate": "classified_in",
+      "source": "source-d293ec307115762dc7fc",
+      "status": "metadata_supported",
+      "target": "category:social_belonging_safety"
+    },
+    {
+      "id": "edge:source-d293ec307115762dc7fc:1",
+      "predicate": "issued_by",
+      "source": "source-d293ec307115762dc7fc",
+      "status": "metadata_supported",
+      "target": "authority:a38466a51d291c7a"
+    },
+    {
+      "id": "edge:source-d293ec307115762dc7fc:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-d293ec307115762dc7fc",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:peer"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "authority:099ecbe5d380e7f5",
+      "label": "SAGE Publications",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:206b7cc7aab4f2fc",
+      "label": "Wiley",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:3d5564a45ebb75fa",
+      "label": "Hispanic Educational Technology Services",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:45b673383aa209c3",
+      "label": "International Society for the Scholarship of Teaching and Learning",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:4d17863ec4801d5c",
+      "label": "FapUNIFESP (SciELO)",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:626554227244dd79",
+      "label": "Institute of Advanced Engineering and Science",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:6ba8796e2ce2f4e5",
+      "label": "UiT The Arctic University of Norway",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:78196eee1241a3e1",
+      "label": "Universitas Negeri Padang",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:a38466a51d291c7a",
+      "label": "Elsevier BV",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:df38fa483ae1f77a",
+      "label": "Springer Science and Business Media LLC",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:f66b95ec01f86068",
+      "label": "University of Southern Queensland",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "category:social_belonging_safety",
+      "label": "social_belonging_safety",
+      "type": "education_category"
+    },
+    {
+      "id": "concept:belonging",
+      "label": "belonging",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:bullying",
+      "label": "bullying",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:citizenship",
+      "label": "citizenship",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:participation",
+      "label": "participation",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:peer",
+      "label": "peer",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "source-00065c3445fbca56d377",
+      "label": "The Longitudinal Relationship Between Peer Relations and Empathy and Their Joint Contribution to Reducing Bullying in Middle School: Findings From a Randomized Trial of Cooperative Learning",
+      "type": "source"
+    },
+    {
+      "id": "source-2f2774039925cd3aa87a",
+      "label": "School Climate Counts: A Longitudinal Analysis of School Climate and Middle School Bullying Behaviors",
+      "type": "source"
+    },
+    {
+      "id": "source-32e52b1eae8dd4130556",
+      "label": "Impact of Growth, Purpose, and Sense of Belonging (GPS) Mindset Intervention on Student Retention Rates in Asynchronous Mathematics Courses",
+      "type": "source"
+    },
+    {
+      "id": "source-382be2f4d83af5055db8",
+      "label": "Perspectives of students with autism on their participation in a peer‐mediated intervention",
+      "type": "source"
+    },
+    {
+      "id": "source-39b016d7f7628c700fb1",
+      "label": "Digital citizenship and democracy: an evaluation model for public digital inclusion initiatives",
+      "type": "source"
+    },
+    {
+      "id": "source-78810eed0c5867338297",
+      "label": "Nursing students’ perceptions of peer learning as a learning model in clinical practice and students’ learning through peer learning - an evaluation study",
+      "type": "source"
+    },
+    {
+      "id": "source-85793db75a22d8e8ff76",
+      "label": "Agency Development and Valuing Peer Perspectives: Lessons from an Intervention to Enhance STEM University Students’ Feedback Literacy",
+      "type": "source"
+    },
+    {
+      "id": "source-8af8c286c155219cc70f",
+      "label": "Replicating a Middle-School Belonging Intervention: Evidence from a Randomized Trial Within a New School District",
+      "type": "source"
+    },
+    {
+      "id": "source-94ce09b681c76f91abd8",
+      "label": "Assisting peer on distance learning as intervention to improve students’ performance in mathematics: a cross-over study",
+      "type": "source"
+    },
+    {
+      "id": "source-9f48845df80b8550318d",
+      "label": "A peer learning intervention for nursing students in clinical practice education: A quasi-experimental study",
+      "type": "source"
+    },
+    {
+      "id": "source-b2e1cabfb6930d898905",
+      "label": "Learning Process Experiment through Peer Tutoring in the Typography Subject from Students Learning Motivation of Arts Department FBS UNP",
+      "type": "source"
+    },
+    {
+      "id": "source-b2e9eb0b345988059ea8",
+      "label": "Use and Impact of the Wisconsin Bullying Prevention Program Assessment Tool in Addressing Middle School Bullying",
+      "type": "source"
+    },
+    {
+      "id": "source-c23f07b9eda8c7ee4db6",
+      "label": "The Agentic Belonging Workshop: A Quasi-Experimental Evaluation of a Social Belonging Intervention in two English Universities",
+      "type": "source"
+    },
+    {
+      "id": "source-d15fd5bfb3f2e4637a06",
+      "label": "Enhancing Active Bystander Intervention in Bullying through a Web-based Visual Novel: Preliminary Findings from a Randomized Trial",
+      "type": "source"
+    },
+    {
+      "id": "source-d293ec307115762dc7fc",
+      "label": "Advancing empathy and emotional intelligence among pharmacy students: A comparative mixed-methods study with peer role-play simulation intervention",
+      "type": "source"
+    }
+  ],
+  "partition": "preparation",
+  "schema": "synthia.education.graph-shard.v1",
+  "sourceCardIds": [
+    "source-00065c3445fbca56d377",
+    "source-2f2774039925cd3aa87a",
+    "source-32e52b1eae8dd4130556",
+    "source-382be2f4d83af5055db8",
+    "source-39b016d7f7628c700fb1",
+    "source-78810eed0c5867338297",
+    "source-85793db75a22d8e8ff76",
+    "source-8af8c286c155219cc70f",
+    "source-94ce09b681c76f91abd8",
+    "source-9f48845df80b8550318d",
+    "source-b2e1cabfb6930d898905",
+    "source-b2e9eb0b345988059ea8",
+    "source-c23f07b9eda8c7ee4db6",
+    "source-d15fd5bfb3f2e4637a06",
+    "source-d293ec307115762dc7fc"
+  ]
+}

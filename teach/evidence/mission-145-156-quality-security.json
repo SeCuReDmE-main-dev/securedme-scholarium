@@ -1,0 +1,67 @@
+{
+  "schema": "scholarium.execution-evidence.v1",
+  "mission": "actions-145-156-quality-security",
+  "status": "completed",
+  "evidence_cut": "2026-07-15",
+  "data_boundary": "synthetic-data-only-before-efvp",
+  "actions": {
+    "145": "Mastery, assistance, reminder, question-binding and one-hour Spanish session unit contracts remain covered.",
+    "146": "Canonical API path, schema, error status and idempotency checks include the versioned Gate5 adapter envelope.",
+    "147": "Consent, role, tenant, export and Teach-domain deletion boundaries are directly tested.",
+    "148": "High-confidence secret and learner-content scans cover Teach logs and adapter proofs; the Datadog contract permits platform reliability metadata only.",
+    "149": "Automated accessibility contracts and the existing manual Axe, keyboard, responsive and offline evidence remain green.",
+    "150": "Playwright covers learner, teacher, guardian-consent and organization administration paths with synthetic authentication only.",
+    "151": "Desktop, tablet and mobile evidence remains free of horizontal overflow; all five G13 desktop role captures were visually inspected.",
+    "152": "Every active private adapter has an explicit bounded degraded mode while the core learning path continues.",
+    "153": "Retry budgets, capped exponential delay, circuit transitions, queue idempotency, delayed claim and snapshot recovery are tested.",
+    "154": "The deterministic load profile covers 1x, 10x and 100x; the first modeled backpressure point is 100x.",
+    "155": "Secret scan, dependency audit, build, lint, 105 tests, 34 isolated D1 migrations and runtime OpenAPI validation completed.",
+    "156": "This machine-readable record, the mission report and browser captures form the G13 evidence package."
+  },
+  "validation": {
+    "vinext_build": {"status": "passed", "vite_version": "8.1.4"},
+    "web_tests": {"passed": 105, "failed": 0, "total": 105},
+    "g13_focused_tests": {"passed": 7, "failed": 0, "total": 7},
+    "lint": {"errors": 0, "warnings": 20, "new_g13_warnings": 0},
+    "dependency_audit": {
+      "production": {"total": 0, "high": 0, "critical": 0},
+      "development": {"total": 6, "low": 1, "moderate": 5, "high": 0, "critical": 0},
+      "updated": {"cloudflare_vite_plugin": "1.45.0", "wrangler": "4.111.0", "vite": "8.1.4", "next_postcss_override": "8.5.19"}
+    },
+    "migrations": {"source_count": 34, "applied_from_zero": 34, "application_tables": 76, "isolated_persistence": "apps/web/output/g13/d1-validation"},
+    "openapi_runtime": {"http_status": 200, "version": "3.1.0", "path_count": 82, "gate5_schema": "scholarium.gate5-adapter-envelope.v1"},
+    "health_runtime": {"http_status": 200, "service": "scholarium", "status": "ok"},
+    "role_boundary": {"organization_without_role": 403, "organization_with_school_admin_role": 200, "minimum_cohort_suppression": true, "individual_identifiers_included": false, "synthetic_rows_removed": true},
+    "secret_scan": {"high_confidence_matches": 0, "tracked_secret_env_files": 0, "tracked_env_examples": 2},
+    "git_diff_check": "passed",
+    "browser": {"horizontal_overflow": 0, "visual_captures_inspected": 5}
+  },
+  "load_profile": {
+    "baseline_jobs": 20,
+    "batch_size": 20,
+    "window_capacity": 200,
+    "profiles": [
+      {"multiplier": 1, "jobs": 20, "batches_required": 1, "backlog": 0, "state": "within_window"},
+      {"multiplier": 10, "jobs": 200, "batches_required": 10, "backlog": 0, "state": "within_window"},
+      {"multiplier": 100, "jobs": 2000, "batches_required": 100, "backlog": 1800, "state": "backpressure_required"}
+    ],
+    "first_breakpoint_multiplier": 100
+  },
+  "deliverables": [
+    {"path": "apps/web/lib/teach-resilience-contracts.ts", "sha256": "CF0F6BC3FE398FD139024A90EDF6AA984262DC29BF0698FD007DA13AE2DE7EF7"},
+    {"path": "apps/web/tests/teach-g13-quality.test.mjs", "sha256": "5415288A677CE99434E7F51FC51681AF053AFA311F48BA1116FBFF6EE3D285B0"},
+    {"path": "apps/web/output/playwright/g13/student-course-desktop.png", "sha256": "CCA38DCDC8CFBCBD887FF0AE5CB6A5CBF76179AE7DF1D776FEB90BC07A72B1AD"},
+    {"path": "apps/web/output/playwright/g13/teacher-desktop.png", "sha256": "10D2BF2F0D0CB9A07B134C9DE454B52E38D47CA45107353FD87870B7CEF9DAD6"},
+    {"path": "apps/web/output/playwright/g13/guardian-consent-desktop.png", "sha256": "3F9AD39BB29BF293A851435FF04027CB25789D3EA788B8CFC7876FB188B67C85"},
+    {"path": "apps/web/output/playwright/g13/administration-desktop.png", "sha256": "3845B86C5BE2BD886DDD3193D24A783322E3A270D0A05C942BF3B4E05114F274"},
+    {"path": "apps/web/output/playwright/g13/administration-authorized-desktop.png", "sha256": "3893A24A2DB5819DB85E4363184FB40803B7475A7C00C0D1FD5D11DB37C0F88A"}
+  ],
+  "residual_limits": [
+    "No real learner data before EFVP and legal validation.",
+    "The 1x, 10x and 100x result is a deterministic contract-model load test, not a distributed production soak test.",
+    "Six development-only dependency advisories remain: one low and five moderate; production dependencies have zero audit findings.",
+    "Twenty inherited lint warnings remain, primarily image optimization warnings; there are zero lint errors.",
+    "Datadog runtime connection remains action 158; G13 validates its no-learner-content contract only.",
+    "No production, legal, clinical, disciplinary, enforcement or autonomous authority readiness is claimed."
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "schema": "scholarium.execution-evidence.v1",
+  "evidenceId": "mission-121-132-gate5-fnp-quasicrystal",
+  "generatedAt": "2026-07-15T21:52:46.5378376Z",
+  "dataClass": "synthetic_education_only",
+  "actions": ["121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132"],
+  "activatedSkills": [
+    "RagGgE_Architectural_Integrity_Design",
+    "RagGgE_Interface_and_Contract_Validation",
+    "RagGgE_Technical_Risk_Assessment",
+    "ffed-plugin-porting",
+    "synthia-adapter:synthia-session"
+  ],
+  "pluginpack": {
+    "python": "C:\\Users\\jeans\\Desktop\\Case study\\modele\\.venv\\Scripts\\python.exe",
+    "testsPassed": 337,
+    "testsFailed": 0,
+    "manifestIntegrityValid": 41,
+    "manifestIntegrityInvalid": 0,
+    "doctorPassed": 12,
+    "doctorFailed": 0
+  },
+  "fnpQnn": {
+    "policySchema": "fnp-qnn.ffed-plugin-policy.v1",
+    "activated": true,
+    "allExpectedPluginsObserved": true,
+    "pluginErrors": [],
+    "plugins": [
+      "p011_fractales_atomiques",
+      "p046_rossler_beaulieu_cubic_framework",
+      "p097_fbm_tuner",
+      "p109_dual_triplex",
+      "p114_ffed_neutrosophic_consensus"
+    ],
+    "focusedTestsPassed": 29,
+    "focusedTestsSkipped": 1,
+    "focusedTestsFailed": 0,
+    "hierarchy": "I -> I_system^S -> D_f -> dF -> i_fractal",
+    "carrier": {
+      "D_f": 0.3622984875,
+      "D_f_hat": 0.3622984875,
+      "dF_carrier": 0.3622984875,
+      "i_fractal_candidate": 0.3622984875,
+      "admissible": true,
+      "effectiveConfigurationsRecorded": true
+    },
+    "boundary": "alpha-local educational simulation only; not a physical quantum proof, clinical system, security system, or production-public claim"
+  },
+  "gate5": {
+    "registrySchema": "scholarium.gate5-adapter-registry.v1",
+    "activeAdapters": ["synthia", "memory-lake", "hipporag", "fnp-qnn", "quantech-vid"],
+    "tenebrisStatus": "research_gated",
+    "envelopeSignature": "hmac-sha256",
+    "pseudonymization": "keyed_hmac",
+    "rawIdentityRejected": true,
+    "rawLearnerContentRejected": true,
+    "hippoRagMode": "retrieve_dpr_only",
+    "durableOutboxMigration": "0033_teach_gate5_outbox.sql",
+    "migrationCount": 34,
+    "tableCount": 75,
+    "signedOutSubmissionStatus": 401,
+    "unsignedWorkerStatus": 401,
+    "directExternalRuntimeImports": false,
+    "runtimeInvocationPerformedByWeb": false
+  },
+  "quasicrystal": {
+    "schema": "scholarium.quasicrystal-structural-address.v1",
+    "basis": "fivefold_cut_project.v1",
+    "input": "replayable_hilbert_vector",
+    "deterministic": true,
+    "changedInputProducesDiff": true,
+    "projectionFingerprint": "sha256",
+    "authority": "structural_locator_only",
+    "cryptographicUse": "forbidden",
+    "excludedFrom": ["KDF", "AAD", "key material", "vault material", "authentication secrets"]
+  },
+  "threatValidation": {
+    "targetedTestsPassed": 13,
+    "targetedTestsFailed": 0,
+    "tamperRejected": true,
+    "replayRejected": true,
+    "expiryRejected": true,
+    "revocationRejected": true,
+    "ledgerRecoveryPassed": true,
+    "concurrentAttempts": 32,
+    "concurrentAdmissions": 1,
+    "structuralDiffPassed": true,
+    "projectionCount": 250,
+    "projectionBudgetMilliseconds": 5000,
+    "projectionObservedUnderBudget": true,
+    "tenebrisIncompleteDestructionRejected": true
+  },
+  "transitionalBouncyCastle": {
+    "package": "BouncyCastle.Cryptography",
+    "packageVersion": "2.6.2",
+    "runtime": ".NET 8 private adapter",
+    "use": "Ed25519 terminal Gate5 receipt signatures only",
+    "adapterProjectSha256": "AEAD66E5A8601595E4860270C460ACE61DC34930BB2D3ECB80FB8B1890303BBA",
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "bouncyCastleSigned": true,
+    "webCryptoVerified": true,
+    "persistedKeyMaterial": false,
+    "privateKeyInWebEnvironmentTemplate": false,
+    "historicalGatewayStatus": "quarantine_not_approved",
+    "historicalGatewayAuditSha256": "14F4AEC21E72DDF8C2F7E5D50A3D4D83FE7B42A80D620BA76D197328483266DD"
+  },
+  "repositoryValidation": {
+    "npmTestsPassed": 94,
+    "npmTestsFailed": 0,
+    "lintErrors": 0,
+    "lintWarnings": 30,
+    "secretValuesFound": 0,
+    "diffCheck": "passed_with_line_ending_notices"
+  },
+  "gate": {
+    "id": "G11",
+    "status": "passed",
+    "reason": "Plugin integrity is fail-closed, FNP-QNN is represented only by pseudonymous signed Gate5 jobs, quasicrystal coordinates are structural locators with an explicit cryptographic-use prohibition, and tamper, replay, expiry, revocation, recovery, concurrency, interoperability and performance checks pass."
+  }
+}

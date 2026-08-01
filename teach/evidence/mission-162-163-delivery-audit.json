@@ -1,0 +1,42 @@
+{
+  "schema": "scholarium.teach-evidence.v1",
+  "generatedAt": "2026-07-16T02:52:17Z",
+  "actions": [162, 163],
+  "delivery": {
+    "branch": "new/scholarium-teach-163-actions",
+    "baseCommit": "095c6c4",
+    "commits": ["a4f250a", "da7396c", "f6791da", "381586e"],
+    "finalAuditCommit": "self",
+    "commitCount": 5,
+    "draftPullRequest": "https://github.com/SeCuReDmE-main-dev/securedme-scholarium/pull/2",
+    "forcePush": false,
+    "liveDeploymentPerformed": false
+  },
+  "matrix": {
+    "completed": 151,
+    "blocked": 2,
+    "planned": 9,
+    "inProgress": 1,
+    "total": 163,
+    "completionPercent": 92.64,
+    "hundredPercentClaimAllowed": false
+  },
+  "blockedActions": [
+    {"action": 48, "code": "external_legal_review_required"},
+    {"action": 157, "code": "vscode_tunnel_authentication_required"}
+  ],
+  "openActions": [46, 49, 50, 51, 52, 53, 54, 55, 56, 57],
+  "claims": {
+    "sourceCardsProduced": 0,
+    "realStudentDataUsed": false,
+    "productionReady": false,
+    "preAlpha": true
+  },
+  "finalValidation": {
+    "build": "passed",
+    "nodeTests": {"passed": 107, "failed": 0},
+    "lint": {"errors": 0, "knownWarnings": 20},
+    "educationPluginIntegrity": "passed",
+    "stagedSecretScan": "passed"
+  }
+}

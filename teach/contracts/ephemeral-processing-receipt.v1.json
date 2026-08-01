@@ -1,0 +1,23 @@
+{
+  "schema": "scholarium.ephemeral-processing-receipt.v1",
+  "terminal_statuses": ["complete", "degraded", "violation"],
+  "memory_admission_requires": [
+    "status_complete",
+    "temporary_files_purged",
+    "memory_cleared",
+    "key_revoked",
+    "worker_destruction_digest",
+    "key_revocation_digest",
+    "zero_residual_artifacts",
+    "audit_digest"
+  ],
+  "forbidden": [
+    "audio",
+    "video",
+    "voice_feature",
+    "transcript",
+    "student_identity",
+    "email",
+    "biometric_identifier"
+  ]
+}

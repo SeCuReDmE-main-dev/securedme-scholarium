@@ -1,0 +1,477 @@
+{
+  "authorityBoundary": "Graph membership is a traceability state, not approval of a scientific, legal, or pedagogical claim.",
+  "category": "legal_institutional",
+  "edges": [
+    {
+      "id": "edge:source-08300f4c9f02c9a7ed0e:0",
+      "predicate": "classified_in",
+      "source": "source-08300f4c9f02c9a7ed0e",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-08300f4c9f02c9a7ed0e:1",
+      "predicate": "issued_by",
+      "source": "source-08300f4c9f02c9a7ed0e",
+      "status": "metadata_supported",
+      "target": "authority:6c94c147cd1a2f38"
+    },
+    {
+      "id": "edge:source-08300f4c9f02c9a7ed0e:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-08300f4c9f02c9a7ed0e",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:privacy"
+    },
+    {
+      "id": "edge:source-0ce5572cf1980e48ed86:0",
+      "predicate": "classified_in",
+      "source": "source-0ce5572cf1980e48ed86",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-0ce5572cf1980e48ed86:1",
+      "predicate": "issued_by",
+      "source": "source-0ce5572cf1980e48ed86",
+      "status": "metadata_supported",
+      "target": "authority:cf6f73093dc481f5"
+    },
+    {
+      "id": "edge:source-0ce5572cf1980e48ed86:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-0ce5572cf1980e48ed86",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:privacy"
+    },
+    {
+      "id": "edge:source-18fe2014dd5403b061d4:0",
+      "predicate": "classified_in",
+      "source": "source-18fe2014dd5403b061d4",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-18fe2014dd5403b061d4:1",
+      "predicate": "issued_by",
+      "source": "source-18fe2014dd5403b061d4",
+      "status": "metadata_supported",
+      "target": "authority:cf6f73093dc481f5"
+    },
+    {
+      "id": "edge:source-18fe2014dd5403b061d4:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-18fe2014dd5403b061d4",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:privacy"
+    },
+    {
+      "id": "edge:source-1d16cbb8089259dd9fb6:0",
+      "predicate": "classified_in",
+      "source": "source-1d16cbb8089259dd9fb6",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-1d16cbb8089259dd9fb6:1",
+      "predicate": "issued_by",
+      "source": "source-1d16cbb8089259dd9fb6",
+      "status": "metadata_supported",
+      "target": "authority:c28a75847bf2a6b5"
+    },
+    {
+      "id": "edge:source-1d16cbb8089259dd9fb6:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-1d16cbb8089259dd9fb6",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:privacy"
+    },
+    {
+      "id": "edge:source-2bedccbe0b59a8e7e702:0",
+      "predicate": "classified_in",
+      "source": "source-2bedccbe0b59a8e7e702",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-2bedccbe0b59a8e7e702:1",
+      "predicate": "issued_by",
+      "source": "source-2bedccbe0b59a8e7e702",
+      "status": "metadata_supported",
+      "target": "authority:cf6f73093dc481f5"
+    },
+    {
+      "id": "edge:source-2bedccbe0b59a8e7e702:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-2bedccbe0b59a8e7e702",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:privacy"
+    },
+    {
+      "id": "edge:source-2c859b000e538ff9c5d5:0",
+      "predicate": "classified_in",
+      "source": "source-2c859b000e538ff9c5d5",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-2c859b000e538ff9c5d5:1",
+      "predicate": "issued_by",
+      "source": "source-2c859b000e538ff9c5d5",
+      "status": "metadata_supported",
+      "target": "authority:6c94c147cd1a2f38"
+    },
+    {
+      "id": "edge:source-2c859b000e538ff9c5d5:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-2c859b000e538ff9c5d5",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:privacy"
+    },
+    {
+      "id": "edge:source-57a21b0f83298f86c1b9:0",
+      "predicate": "classified_in",
+      "source": "source-57a21b0f83298f86c1b9",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-57a21b0f83298f86c1b9:1",
+      "predicate": "issued_by",
+      "source": "source-57a21b0f83298f86c1b9",
+      "status": "metadata_supported",
+      "target": "authority:c3c27cfe44265f72"
+    },
+    {
+      "id": "edge:source-57a21b0f83298f86c1b9:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-57a21b0f83298f86c1b9",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:rights"
+    },
+    {
+      "id": "edge:source-5cfbd2af7a0e58b1ffbc:0",
+      "predicate": "classified_in",
+      "source": "source-5cfbd2af7a0e58b1ffbc",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-5cfbd2af7a0e58b1ffbc:1",
+      "predicate": "issued_by",
+      "source": "source-5cfbd2af7a0e58b1ffbc",
+      "status": "metadata_supported",
+      "target": "authority:db0bdcddee9af205"
+    },
+    {
+      "id": "edge:source-5cfbd2af7a0e58b1ffbc:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-5cfbd2af7a0e58b1ffbc",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:privacy"
+    },
+    {
+      "id": "edge:source-7dea349245cf96708441:0",
+      "predicate": "classified_in",
+      "source": "source-7dea349245cf96708441",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-7dea349245cf96708441:1",
+      "predicate": "issued_by",
+      "source": "source-7dea349245cf96708441",
+      "status": "metadata_supported",
+      "target": "authority:c3c27cfe44265f72"
+    },
+    {
+      "id": "edge:source-7dea349245cf96708441:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-7dea349245cf96708441",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:rights"
+    },
+    {
+      "id": "edge:source-9f7d87fbe987a7c3f3cd:0",
+      "predicate": "classified_in",
+      "source": "source-9f7d87fbe987a7c3f3cd",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-9f7d87fbe987a7c3f3cd:1",
+      "predicate": "issued_by",
+      "source": "source-9f7d87fbe987a7c3f3cd",
+      "status": "metadata_supported",
+      "target": "authority:819929e34ad02461"
+    },
+    {
+      "id": "edge:source-9f7d87fbe987a7c3f3cd:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-9f7d87fbe987a7c3f3cd",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:artificial-intelligence"
+    },
+    {
+      "id": "edge:source-ab2d2dc4f12a407605bb:0",
+      "predicate": "classified_in",
+      "source": "source-ab2d2dc4f12a407605bb",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-ab2d2dc4f12a407605bb:1",
+      "predicate": "issued_by",
+      "source": "source-ab2d2dc4f12a407605bb",
+      "status": "metadata_supported",
+      "target": "authority:c28a75847bf2a6b5"
+    },
+    {
+      "id": "edge:source-ab2d2dc4f12a407605bb:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-ab2d2dc4f12a407605bb",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:privacy"
+    },
+    {
+      "id": "edge:source-ae7bfb8760b302e2cb2b:0",
+      "predicate": "classified_in",
+      "source": "source-ae7bfb8760b302e2cb2b",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-ae7bfb8760b302e2cb2b:1",
+      "predicate": "issued_by",
+      "source": "source-ae7bfb8760b302e2cb2b",
+      "status": "metadata_supported",
+      "target": "authority:e5c0c8ddb01588da"
+    },
+    {
+      "id": "edge:source-ae7bfb8760b302e2cb2b:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-ae7bfb8760b302e2cb2b",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:privacy"
+    },
+    {
+      "id": "edge:source-b70dd85399aee62844e3:0",
+      "predicate": "classified_in",
+      "source": "source-b70dd85399aee62844e3",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-b70dd85399aee62844e3:1",
+      "predicate": "issued_by",
+      "source": "source-b70dd85399aee62844e3",
+      "status": "metadata_supported",
+      "target": "authority:819929e34ad02461"
+    },
+    {
+      "id": "edge:source-b70dd85399aee62844e3:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-b70dd85399aee62844e3",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:privacy"
+    },
+    {
+      "id": "edge:source-bc2307ab530c1292103a:0",
+      "predicate": "classified_in",
+      "source": "source-bc2307ab530c1292103a",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-bc2307ab530c1292103a:1",
+      "predicate": "issued_by",
+      "source": "source-bc2307ab530c1292103a",
+      "status": "metadata_supported",
+      "target": "authority:23080f80c554abae"
+    },
+    {
+      "id": "edge:source-bc2307ab530c1292103a:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-bc2307ab530c1292103a",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:privacy"
+    },
+    {
+      "id": "edge:source-f6e11b0abc8570b32e17:0",
+      "predicate": "classified_in",
+      "source": "source-f6e11b0abc8570b32e17",
+      "status": "metadata_supported",
+      "target": "category:legal_institutional"
+    },
+    {
+      "id": "edge:source-f6e11b0abc8570b32e17:1",
+      "predicate": "issued_by",
+      "source": "source-f6e11b0abc8570b32e17",
+      "status": "metadata_supported",
+      "target": "authority:23080f80c554abae"
+    },
+    {
+      "id": "edge:source-f6e11b0abc8570b32e17:2",
+      "predicate": "mentions_candidate_concept",
+      "source": "source-f6e11b0abc8570b32e17",
+      "status": "title_match_or_category_fallback",
+      "target": "concept:privacy"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "authority:23080f80c554abae",
+      "label": "Parliament of Canada",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:6c94c147cd1a2f38",
+      "label": "Commission d'accès à l'information du Québec",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:819929e34ad02461",
+      "label": "European Parliament and Council",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:c28a75847bf2a6b5",
+      "label": "CNIL",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:c3c27cfe44265f72",
+      "label": "United Nations",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:cf6f73093dc481f5",
+      "label": "Quebec National Assembly",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:db0bdcddee9af205",
+      "label": "Office of the Privacy Commissioner of Canada",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "authority:e5c0c8ddb01588da",
+      "label": "French Republic",
+      "type": "issuing_authority"
+    },
+    {
+      "id": "category:legal_institutional",
+      "label": "legal_institutional",
+      "type": "education_category"
+    },
+    {
+      "id": "concept:artificial-intelligence",
+      "label": "artificial intelligence",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:privacy",
+      "label": "privacy",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "concept:rights",
+      "label": "rights",
+      "type": "candidate_concept"
+    },
+    {
+      "id": "source-08300f4c9f02c9a7ed0e",
+      "label": "Guide to conducting a privacy impact assessment",
+      "type": "source"
+    },
+    {
+      "id": "source-0ce5572cf1980e48ed86",
+      "label": "Act respecting Access to documents held by public bodies and the Protection of personal information",
+      "type": "source"
+    },
+    {
+      "id": "source-18fe2014dd5403b061d4",
+      "label": "Act to modernize legislative provisions as regards the protection of personal information",
+      "type": "source"
+    },
+    {
+      "id": "source-1d16cbb8089259dd9fb6",
+      "label": "Data protection impact assessment",
+      "type": "source"
+    },
+    {
+      "id": "source-2bedccbe0b59a8e7e702",
+      "label": "Act respecting the protection of personal information in the private sector",
+      "type": "source"
+    },
+    {
+      "id": "source-2c859b000e538ff9c5d5",
+      "label": "Privacy incidents guidance",
+      "type": "source"
+    },
+    {
+      "id": "source-57a21b0f83298f86c1b9",
+      "label": "Convention on the Rights of Persons with Disabilities",
+      "type": "source"
+    },
+    {
+      "id": "source-5cfbd2af7a0e58b1ffbc",
+      "label": "Privacy and youth",
+      "type": "source"
+    },
+    {
+      "id": "source-7dea349245cf96708441",
+      "label": "Convention on the Rights of the Child",
+      "type": "source"
+    },
+    {
+      "id": "source-9f7d87fbe987a7c3f3cd",
+      "label": "Artificial Intelligence Act (EU) 2024/1689",
+      "type": "source"
+    },
+    {
+      "id": "source-ab2d2dc4f12a407605bb",
+      "label": "Eight recommendations to enhance the protection of children online",
+      "type": "source"
+    },
+    {
+      "id": "source-ae7bfb8760b302e2cb2b",
+      "label": "Law no. 78-17 on information technology, data files and civil liberties",
+      "type": "source"
+    },
+    {
+      "id": "source-b70dd85399aee62844e3",
+      "label": "General Data Protection Regulation (EU) 2016/679",
+      "type": "source"
+    },
+    {
+      "id": "source-bc2307ab530c1292103a",
+      "label": "Personal Information Protection and Electronic Documents Act",
+      "type": "source"
+    },
+    {
+      "id": "source-f6e11b0abc8570b32e17",
+      "label": "Privacy Act",
+      "type": "source"
+    }
+  ],
+  "partition": "preparation",
+  "schema": "synthia.education.graph-shard.v1",
+  "sourceCardIds": [
+    "source-08300f4c9f02c9a7ed0e",
+    "source-0ce5572cf1980e48ed86",
+    "source-18fe2014dd5403b061d4",
+    "source-1d16cbb8089259dd9fb6",
+    "source-2bedccbe0b59a8e7e702",
+    "source-2c859b000e538ff9c5d5",
+    "source-57a21b0f83298f86c1b9",
+    "source-5cfbd2af7a0e58b1ffbc",
+    "source-7dea349245cf96708441",
+    "source-9f7d87fbe987a7c3f3cd",
+    "source-ab2d2dc4f12a407605bb",
+    "source-ae7bfb8760b302e2cb2b",
+    "source-b70dd85399aee62844e3",
+    "source-bc2307ab530c1292103a",
+    "source-f6e11b0abc8570b32e17"
+  ]
+}

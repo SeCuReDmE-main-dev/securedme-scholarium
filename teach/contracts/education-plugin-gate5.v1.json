@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scholarium.local/contracts/education-plugin-gate5.v1.json",
+  "title": "Scholarium education plugin Gate5 manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "plugin_id", "version", "stateless", "memory_model", "allowed_callers", "entry_skill", "permissions", "prohibited", "required_contracts", "integrity"],
+  "properties": {
+    "schema": { "const": "scholarium.education-plugin-gate5.v1" },
+    "plugin_id": { "type": "string", "pattern": "^scholarium-[a-z-]+$" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "stateless": { "const": true },
+    "memory_model": { "const": "central_gateway_only" },
+    "allowed_callers": { "const": ["Codex/OpenAI", "Antigravity/Gemini"] },
+    "entry_skill": { "type": "string", "pattern": "^skills/.+/SKILL\\.md$" },
+    "permissions": { "const": ["central_gateway.submit", "central_gateway.read_own_receipt"] },
+    "prohibited": {
+      "type": "array",
+      "contains": { "const": "plugin_local_memory" }
+    },
+    "required_contracts": {
+      "type": "array",
+      "contains": { "const": "scholarium.central-knowledge-gateway.v1" }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "files"],
+      "properties": {
+        "algorithm": { "const": "sha256" },
+        "files": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256"],
+            "properties": {
+              "path": { "type": "string" },
+              "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

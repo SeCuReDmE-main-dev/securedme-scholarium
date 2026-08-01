@@ -1,0 +1,104 @@
+{
+  "schema": "scholarium.execution-evidence.v1",
+  "evidenceId": "mission-073-084-accessibility",
+  "generatedAt": "2026-07-15T19:03:14.4420044Z",
+  "dataClass": "synthetic_education_only",
+  "actions": ["073", "074", "075", "076", "077", "078", "079", "080", "081", "082", "083", "084"],
+  "activatedSkills": [
+    "RagGgE_Technical_Risk_Assessment",
+    "architecte-zero:az-frontend",
+    "architecte-zero:az-browser-visual-qa",
+    "coding-research:primary-docs-skill"
+  ],
+  "activatedPluginSurfaces": [
+    "SecuredMe Education Controller",
+    "Coding Research",
+    "local frontend and Playwright"
+  ],
+  "implementation": {
+    "contract": "apps/web/lib/teach-contracts.ts",
+    "client": "apps/web/app/teach/teach-client.tsx",
+    "controls": "apps/web/app/teach/teach-accessibility-panel.tsx",
+    "styles": "apps/web/app/teach/teach.css",
+    "tests": "apps/web/tests/teach-contract.test.mjs",
+    "documentation": "docs/teach/ACCESSIBILITY_EDGE_CASE_CONTRACT.md"
+  },
+  "profiles": {
+    "count": 7,
+    "allEnabledTogether": true,
+    "ids": ["deafSigned", "nonVerbal", "autismCalm", "touretteSafe", "adhdSprint", "dyslexiaReading", "dyspraxiaMotor"],
+    "selectionBoundary": "User-controlled interface preferences; never a diagnosis, disability inference, or fixed learner label.",
+    "automaticSignAvatarSubstituted": false
+  },
+  "repositoryValidation": {
+    "command": "npm test",
+    "build": "passed",
+    "testsPassed": 63,
+    "testsFailed": 0,
+    "lintCommand": "npm run lint",
+    "lintErrors": 0,
+    "lintWarnings": 30,
+    "diffCheck": "passed"
+  },
+  "browserValidation": {
+    "url": "http://localhost:5173/teach",
+    "visibleContracts": {
+      "transcript": true,
+      "signedContentBoundary": true,
+      "adhdSprint": true,
+      "nonVerbalChoiceBoard": true,
+      "touretteEvaluationBoundary": true,
+      "dataSaver": true
+    },
+    "nonVerbalInteraction": {
+      "selectedChoice": "Muy bien, y tu?",
+      "textareaPopulated": true,
+      "attemptCompleted": true
+    },
+    "keyboard": {
+      "firstTabStop": "Aller a la question",
+      "skipDestination": "H2#active-question",
+      "arrowRightDestination": "Forces",
+      "selectedState": true
+    },
+    "offline": {
+      "eventObserved": true,
+      "statusVisible": true,
+      "checkpointContainsAllSevenProfiles": true,
+      "alreadyLoadedTabOnly": true,
+      "offlineReloadClaimed": false
+    },
+    "lowBandwidth": {
+      "profile": "64kbps-down-32kbps-up-400ms",
+      "hydratedCheckpointRestoreMs": 7395,
+      "headingVisible": true,
+      "checkpointRestored": true,
+      "dataSaverRestored": true,
+      "allSevenProfilesRestored": true
+    },
+    "axe": {
+      "tags": ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"],
+      "passes": 29,
+      "incomplete": 0,
+      "violations": 0
+    },
+    "consoleErrors": 0,
+    "viewports": [
+      {"width": 1440, "height": 1000, "horizontalOverflow": false, "screenshot": "apps/web/output/playwright/g7/teach-accessibility-desktop-top.png"},
+      {"width": 820, "height": 1180, "horizontalOverflow": false, "screenshot": "apps/web/output/playwright/g7/teach-accessibility-tablet-top.png"},
+      {"width": 390, "height": 844, "horizontalOverflow": false, "screenshot": "apps/web/output/playwright/g7/teach-accessibility-mobile-top.png"}
+    ],
+    "mobileControlsScreenshot": "apps/web/output/playwright/g7/teach-accessibility-mobile-controls.png"
+  },
+  "authorityBoundary": {
+    "clinicalAssessmentClaimed": false,
+    "representativeUserValidationCompleted": false,
+    "realStudentDataUsed": false,
+    "fullOfflineApplicationClaimed": false
+  },
+  "gate": {
+    "id": "G7",
+    "status": "passed",
+    "reason": "Essential Teach learning actions are executable without voice, mouse or animation, with seven combinable user-controlled profiles, responsive browser proof, keyboard semantics, local checkpoint continuity and a zero-violation automated accessibility scan."
+  }
+}

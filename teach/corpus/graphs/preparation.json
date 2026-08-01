@@ -1,0 +1,64 @@
+{
+  "authorityBoundary": "Only a qualified human review can move a source into approved.",
+  "partition": "preparation",
+  "schema": "synthia.education.partition-graph.v1",
+  "shards": [
+    {
+      "digest": "sha256:dec81f1d7ef6282d4a594d356bac68b821ac6e1c6d7c3e4ca5d1b9a6a8f50e24",
+      "edgeCount": 45,
+      "nodeCount": 27,
+      "path": "preparation/accessibility_udl.json",
+      "sourceCount": 15
+    },
+    {
+      "digest": "sha256:5cb62db4f3ffd6df9d9f8b527455ae7b5039504411d8185e3226b72c59451b64",
+      "edgeCount": 47,
+      "nodeCount": 32,
+      "path": "preparation/language_learning.json",
+      "sourceCount": 15
+    },
+    {
+      "digest": "sha256:5f26223be419e2a7b9434789f38eb8cbee4153920e52d39f524f111fe785247e",
+      "edgeCount": 45,
+      "nodeCount": 27,
+      "path": "preparation/legal_institutional.json",
+      "sourceCount": 15
+    },
+    {
+      "digest": "sha256:5a5a08118f25b8101927b4fa65065994227f8b9319860c7aa4da4ac0b4fb7c26",
+      "edgeCount": 45,
+      "nodeCount": 33,
+      "path": "preparation/mastery_retrieval.json",
+      "sourceCount": 15
+    },
+    {
+      "digest": "sha256:d3b3cf409747bc895faf6c43f052a9748ebf30037731cfd09636be4600897b59",
+      "edgeCount": 60,
+      "nodeCount": 34,
+      "path": "preparation/neurodiversity.json",
+      "sourceCount": 20
+    },
+    {
+      "digest": "sha256:46ff6d734642d69566030f022e184e9b36d9bdfef62d7048764d31d02ea1d290",
+      "edgeCount": 47,
+      "nodeCount": 32,
+      "path": "preparation/social_belonging_safety.json",
+      "sourceCount": 15
+    },
+    {
+      "digest": "sha256:9730ba7d7e9a8c32726aed42e2c5b4bc1d3f30d2667f4ccbc4a2aac11a656404",
+      "edgeCount": 47,
+      "nodeCount": 32,
+      "path": "preparation/sport_music_creativity.json",
+      "sourceCount": 15
+    },
+    {
+      "digest": "sha256:77b92986933ecfb8d7dc75bd77916f0c75222b3a427c23572147d5257e61aca4",
+      "edgeCount": 46,
+      "nodeCount": 28,
+      "path": "preparation/strengths_motivation.json",
+      "sourceCount": 15
+    }
+  ],
+  "sourceCount": 125
+}

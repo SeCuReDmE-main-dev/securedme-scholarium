@@ -1,0 +1,48 @@
+{
+  "schema": "scholarium.execution-evidence.v1",
+  "mission": "actions-133-144-webapp-design-documentation",
+  "status": "completed",
+  "evidence_cut": "2026-07-15",
+  "data_boundary": "synthetic-data-only-before-efvp",
+  "actions": {
+    "133": "Validated application sitemap: Signal, Teach, AlgoQuest, courses, projects, circles, studio, and statistics.",
+    "134": "Learner Teach workspace rendered on desktop, tablet, and mobile.",
+    "135": "Teacher projection and task-oriented Teach surface rendered and contract-tested.",
+    "136": "Sources and Administration panels integrated with consent and governance context.",
+    "137": "Stitch identity integrated into the public landing without replacing the maintained public product boundary.",
+    "138": "Stable responsive components validated with zero horizontal overflow on representative viewports.",
+    "139": "Portfolio, statistics, timelines, evidence, and strength surfaces integrated and visually inspected.",
+    "140": "Five diagram packages delivered with DOT, SVG, PNG, Markdown companion, caption, alt text, and manifest.",
+    "141": "Student, teacher, and administrator DOCX guides rendered and visually inspected.",
+    "142": "Team Alignment presentation delivered from the required template; fidelity status pass with zero issues.",
+    "143": "Operating Review presentation delivered from the required template; fidelity status pass with zero issues.",
+    "144": "Corporate PDF delivered with sitemap, product captures, diagrams, contracts, scorecard, risks, and next gates."
+  },
+  "validation": {
+    "vinext_build": "passed",
+    "web_tests": {"passed": 98, "failed": 0, "total": 98},
+    "lint": {"errors": 0, "warnings": 20},
+    "git_diff_check": "passed",
+    "high_confidence_secret_scan": "no matches",
+    "landing_browser": {"console_errors": 0, "horizontal_overflow": 0, "viewports": ["desktop", "mobile"]},
+    "application_browser": {"console_errors": 0, "horizontal_overflow": 0, "publication_api_status": 200},
+    "team_alignment_template_fidelity": {"status": "pass", "issues": 0, "slides": 10},
+    "operating_review_template_fidelity": {"status": "pass", "issues": 0, "slides": 11},
+    "corporate_pdf": {"pages": 14, "minimum_extracted_text_characters_per_page": 171, "visual_pages_inspected": 14}
+  },
+  "deliverables": [
+    {"path": "docs/teach/deliverables/Scholarium_Teach_Corporate_Dossier.pdf", "sha256": "1C15F52D589216FE0A75C0BF7A676BB40DBDDD3C7921C473561AECAEA9F71A98"},
+    {"path": "docs/teach/deliverables/presentations/Scholarium_Teach_Team_Alignment.pptx", "sha256": "7CD1D79D491F166B4AEFF04DD39DBE97649505836046FDF6CE7DACAD3074E83E"},
+    {"path": "docs/teach/deliverables/presentations/Scholarium_Teach_Operating_Review.pptx", "sha256": "2E2609347094F3EBEBAE793F342C3A798BFA67318B95B64D77FBE622AF871CD3"},
+    {"path": "docs/teach/deliverables/guides/Scholarium_Teach_Student_Guide.docx", "sha256": "FF52AA50179A884D6A501C9217018796D03AA341F4E06FD696BD2709413AF074"},
+    {"path": "docs/teach/deliverables/guides/Scholarium_Teach_Teacher_Guide.docx", "sha256": "1CBDA1658B3F7A78E485CFA1A2EAF09D07B6DB95FBCC946157BA5A304A56316E"},
+    {"path": "docs/teach/deliverables/guides/Scholarium_Teach_Administrator_Guide.docx", "sha256": "79D63D10598388757F2D7A6F0DF3DDC514C06C7E77A044BAD2F5753C5E70B32D"}
+  ],
+  "residual_limits": [
+    "No real learner data before EFVP and legal validation.",
+    "No production, deployment, legal, clinical, disciplinary, or autonomous authority readiness claim.",
+    "The central virtual environment Pillow installation is inconsistent while the active media worker holds it; presentation exports and QA used the independent artifact runtime and system PDF runtime.",
+    "Twenty lint warnings remain, primarily inherited image optimization warnings; there are zero lint errors.",
+    "G13 quality and security actions 145-156 and G14 operations actions 157-163 remain separate gates."
+  ]
+}

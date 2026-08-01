@@ -1,0 +1,30 @@
+{
+  "authorityBoundary": "Synthia is traceability support. It does not certify taxonomy, law, pedagogy, or scientific truth.",
+  "classificationCount": 125,
+  "generatedAt": "2026-07-16T05:31:08Z",
+  "hierarchy": "I -> I_system^S -> H_lex -> G_lex -> I_lexicon",
+  "memoryGateway": {
+    "generation": "Codex or Gemini",
+    "intraPluginMemory": false,
+    "retrieval": "HippoRAG.retrieve_dpr",
+    "store": "MemoryLake.index_records"
+  },
+  "openiePacketCount": 125,
+  "partitions": {
+    "approved": 0,
+    "preparation": 125,
+    "quarantine": 0
+  },
+  "promotionPolicy": "No source is promoted from preparation without qualified human method, rights, and applicability review.",
+  "schema": "synthia.education.classification-run.v1",
+  "sourceCardCount": 125,
+  "synthiaCommand": "python -m synthia_core.cli lexicon classify --text <bounded-source-text> --domain education",
+  "synthiaInvocationCount": 125,
+  "urlOutcomes": {
+    "http_error": 2,
+    "network_unresolved": 3,
+    "reachable": 66,
+    "reachable_with_http_restriction": 54
+  },
+  "urlVerificationCount": 125
+}

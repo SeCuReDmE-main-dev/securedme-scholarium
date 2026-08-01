@@ -1,0 +1,7 @@
+{
+  "authorityBoundary": "Only a qualified human review can move a source into approved.",
+  "partition": "approved",
+  "schema": "synthia.education.partition-graph.v1",
+  "shards": [],
+  "sourceCount": 0
+}

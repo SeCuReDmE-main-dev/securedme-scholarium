@@ -1,0 +1,47 @@
+{
+  "schema": "synthia.education.source-categories.v1",
+  "generatedAt": "2026-07-16T03:25:00Z",
+  "totalTarget": 125,
+  "categories": [
+    {
+      "id": "mastery_retrieval",
+      "label": "Mastery, retrieval, spacing and formative feedback",
+      "target": 15
+    },
+    {
+      "id": "language_learning",
+      "label": "Second-language learning, pronunciation and captioned media",
+      "target": 15
+    },
+    {
+      "id": "accessibility_udl",
+      "label": "Accessibility, universal design and assistive learning",
+      "target": 15
+    },
+    {
+      "id": "neurodiversity",
+      "label": "Autism, ADHD, dyslexia, Tourette and motor diversity",
+      "target": 20
+    },
+    {
+      "id": "strengths_motivation",
+      "label": "Strengths, motivation, agency and learner identity",
+      "target": 15
+    },
+    {
+      "id": "social_belonging_safety",
+      "label": "Belonging, peer learning, bullying prevention and digital participation",
+      "target": 15
+    },
+    {
+      "id": "sport_music_creativity",
+      "label": "Sport, music, arts, spatial reasoning and creativity",
+      "target": 15
+    },
+    {
+      "id": "legal_institutional",
+      "label": "Privacy, minors, accessibility and AI governance",
+      "target": 15
+    }
+  ]
+}

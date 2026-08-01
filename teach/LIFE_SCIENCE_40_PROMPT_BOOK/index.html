@@ -1,0 +1,2986 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Public developer documentation for the twelve-tool SeCuReDmE Education suite.">
+      
+      
+      
+        <link rel="canonical" href="https://securedme-main-dev.github.io/securedme-scholarium/teach/LIFE_SCIENCE_40_PROMPT_BOOK/">
+      
+      
+        <link rel="prev" href="../../tools/visual-algorithm-designer/">
+      
+      
+        <link rel="next" href="../../CODE-COLLABORATION-BOUNDARY/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/education/education-icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>All 40 prompts - SeCuReDmE Developer Library</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/securedme-education.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/securedme-theme-toggle.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/securedme-accessibility.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/securedme-docs.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scholarium-teach-40-prompts-de-collaboration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SeCuReDmE Developer Library" class="md-header__button md-logo" aria-label="SeCuReDmE Developer Library" data-md-component="logo">
+      
+  <img src="../../assets/education/education-icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SeCuReDmE Developer Library
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              All 40 prompts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SeCuReDmE-main-dev/securedme-scholarium" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SeCuReDmE-main-dev/securedme-scholarium
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../getting-started/15-minute-tutorial/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Start in 15 minutes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tool library
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Collaborate
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../media/video-library/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Watch
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../API-COVERAGE-MATRIX/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Platform
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../accessibility/edge-user-console/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Accessibility
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SeCuReDmE Developer Library" class="md-nav__button md-logo" aria-label="SeCuReDmE Developer Library" data-md-component="logo">
+      
+  <img src="../../assets/education/education-icon.png" alt="logo">
+
+    </a>
+    SeCuReDmE Developer Library
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SeCuReDmE-main-dev/securedme-scholarium" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SeCuReDmE-main-dev/securedme-scholarium
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/15-minute-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start in 15 minutes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tools/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool library
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tool library
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/algoquest-qbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AlgoQuest Qbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/algorithm-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithm Builder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/ffed-qlc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FfeD-QLC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/fnp-qnn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FNP-QNN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/fnpqnn-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FNP-QNN Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/retailguard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market Guardian / RetailGuard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/quanthor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QuaNThoR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/scholarium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scholarium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/synthia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Synthia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/tesla-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tesla Recovery Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/vot-guardian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    V.O.T. Guardian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/visual-algorithm-designer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Algorithm Designer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collaborate
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Collaborate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All 40 prompts
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All 40 prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recherche-en-sciences-de-la-vie-sourcee-rejouable-et-revisable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recherche en sciences de la vie, sourcée, rejouable et révisable
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mode-demploi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mode d'emploi
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CODE-COLLABORATION-BOUNDARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code collaboration boundary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEVELOPER-SEED-PROTOCOL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer seed protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SCHOOL_SAFETY_HITL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    School safety and HITL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Watch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Watch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../media/video-library/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video library
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VIDEO-INTEGRATION-BOUNDARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video integration boundary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PODCAST-VIDEO-STUDIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Podcast and video studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API-COVERAGE-MATRIX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API coverage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API-VERSIONING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API versioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PROVENANCE-VERIFICATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Provenance verification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PUBLICATION-FORMATS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publication formats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SECURITY-BASELINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security baseline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accessibility
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Accessibility
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accessibility/edge-user-console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Edge user console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accessibility/neurodivergent-comfort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neurodivergent comfort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recherche-en-sciences-de-la-vie-sourcee-rejouable-et-revisable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recherche en sciences de la vie, sourcée, rejouable et révisable
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mode-demploi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mode d'emploi
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/SeCuReDmE-main-dev/securedme-scholarium/edit/main/docs/teach/LIFE_SCIENCE_40_PROMPT_BOOK.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+
+  <section class="se-ribbon" aria-label="SecuredMe Education page marker">
+    <img src="../../assets/education/education-icon.png" alt="" class="se-ribbon__mark">
+    <div class="se-ribbon__text">
+      <span class="se-ribbon__title">SecuredMe Education</span>
+      <span class="se-ribbon__meta">Learn / Apprendre - Connect / Connecter - Explore / Explorer - Collaborate / Collaborer</span>
+    </div>
+  </section>
+
+
+
+<h1 id="scholarium-teach-40-prompts-de-collaboration">Scholarium Teach - 40 prompts de collaboration<a class="headerlink" href="#scholarium-teach-40-prompts-de-collaboration" title="Permanent link">&para;</a></h1>
+<h2 id="recherche-en-sciences-de-la-vie-sourcee-rejouable-et-revisable">Recherche en sciences de la vie, sourcée, rejouable et révisable<a class="headerlink" href="#recherche-en-sciences-de-la-vie-sourcee-rejouable-et-revisable" title="Permanent link">&para;</a></h2>
+<p><strong>Édition:</strong> 1.0
+<strong>Public:</strong> élèves avancés, enseignants et accompagnateurs de recherche
+<strong>Cadre:</strong> apprentissage et recherche documentaire seulement; aucune décision clinique autonome</p>
+<h2 id="mode-demploi">Mode d'emploi<a class="headerlink" href="#mode-demploi" title="Permanent link">&para;</a></h2>
+<p>Chaque atelier est maintenant un contrat de collaboration compact: la personne fixe l'intention et les limites; l'agent propose, exécute dans ce périmètre, expose ses preuves et s'arrête aux portes HITL. Chaque prompt peut être copié tel quel après avoir remplacé les champs <code>[A COMPLETER]</code>. Chaque atelier commence par une question bornée et un objectif pédagogique. L'agent doit utiliser uniquement les skills nommés, conserver les paramètres de requête, identifiants primaires, URL, horodatage et limites, puis remettre le résultat à une personne. Le routeur choisit le plus petit ensemble spécialisé. Synthia peut classifier les traces; le gateway central gère le graphe, MemoryLake et HippoRAG; aucun plugin ne crée de mémoire locale.</p>
+<p>Le statut final est <code>COMPLETED</code>, <code>NEEDS_INPUT</code>, <code>QUARANTINED</code> ou <code>BLOCKED</code>. <code>COMPLETED</code> exige des preuves lisibles et une revue humaine indiquée. Les données d'élèves demeurent synthétiques avant la porte EFVP.</p>
+<h1 id="partie-i-lire-la-litterature">Partie I - Lire la littérature<a class="headerlink" href="#partie-i-lire-la-litterature" title="Permanent link">&para;</a></h1>
+<h2 id="ls-01-router-une-question">LS-01 - Router une question<a class="headerlink" href="#ls-01-router-une-question" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Transformer une question générale en une recherche primaire minimale.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>TACHE: LS-01 - Router une question
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>MISSION BORNEE
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Utilise `life-science-research:research-router-skill`. Reformule ma question en une intention bornée, sélectionne au plus trois sources spécialisées installées, puis retourne outils, paramètres, preuves attendues et limites. N&#39;exécute rien avant mon accord.
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>Intention, outils exacts, motif de routage, champs attendus.
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>ARRET HITL
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>L&#39;enseignant confirme que le périmètre répond à la question sans l&#39;élargir.
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-02-retrouver-un-article-pmc">LS-02 - Retrouver un article PMC<a class="headerlink" href="#ls-02-retrouver-un-article-pmc" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Apprendre la différence entre recherche bibliographique et lecture de texte intégral.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>TACHE: LS-02 - Retrouver un article PMC
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>MISSION BORNEE
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>Utilise `life-science-research:ncbi-pmc-skill` pour trouver jusqu&#39;à cinq articles en texte intégral sur [SUJET]. Retourne PMCID, titre, année, URL primaire, type d&#39;étude et une limite par article. Ne résume pas au-delà du texte retrouvé.
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>PMCID, requête, URL, date d&#39;accès.
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>ARRET HITL
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>Vérifier qu&#39;un article cité existe et correspond au sujet.
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-03-examiner-un-preprint">LS-03 - Examiner un préprint<a class="headerlink" href="#ls-03-examiner-un-preprint" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Distinguer résultat préliminaire et connaissance révisée.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>TACHE: LS-03 - Examiner un préprint
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>MISSION BORNEE
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>Utilise `life-science-research:biorxiv-skill` pour retrouver un préprint sur [SUJET]. Donne DOI, version, date, auteurs, statut de préprint et trois affirmations explicitement attribuées. Cherche un article publié lié seulement si la source l&#39;indique.
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>DOI, version, statut, liens.
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>ARRET HITL
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>Le mot préprint doit rester visible dans toute réutilisation.
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-04-construire-une-requete-entrez">LS-04 - Construire une requête Entrez<a class="headerlink" href="#ls-04-construire-une-requete-entrez" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Comprendre opérateurs, champs et identifiants NCBI.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>TACHE: LS-04 - Construire une requête Entrez
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>MISSION BORNEE
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>Utilise `life-science-research:ncbi-entrez-skill`. Construis deux requêtes Entrez pour [QUESTION], explique les champs et opérateurs, exécute la plus précise et retourne les identifiants sans inventer de résultat.
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>Requêtes exactes, base ciblée, identifiants, compteur.
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>ARRET HITL
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>Comparer précision et rappel des deux formulations.
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-05-trouver-un-jeu-ncbi">LS-05 - Trouver un jeu NCBI<a class="headerlink" href="#ls-05-trouver-un-jeu-ncbi" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Relier une publication à un jeu de données récupérable.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>TACHE: LS-05 - Trouver un jeu NCBI
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>MISSION BORNEE
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>Utilise `life-science-research:ncbi-datasets-skill` pour trouver un jeu lié à [ORGANISME/GÈNE]. Retourne accession, espèce, assemblage ou produit, taille, licence ou conditions visibles et commande de récupération proposée, sans télécharger.
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>Accession, taxon, métadonnées, URL.
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>ARRET HITL
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>Confirmer espèce et version avant toute analyse.
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h1 id="partie-ii-genes-proteines-et-fonctions">Partie II - Gènes, protéines et fonctions<a class="headerlink" href="#partie-ii-genes-proteines-et-fonctions" title="Permanent link">&para;</a></h1>
+<h2 id="ls-06-situer-un-gene-avec-ensembl">LS-06 - Situer un gène avec Ensembl<a class="headerlink" href="#ls-06-situer-un-gene-avec-ensembl" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Lire un identifiant stable, une région et des transcrits.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>TACHE: LS-06 - Situer un gène avec Ensembl
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>MISSION BORNEE
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>Utilise `life-science-research:ensembl-skill` pour [GÈNE, ESPÈCE]. Retourne identifiant Ensembl, assemblage, coordonnées, brin, transcrits principaux et liens primaires. Sépare faits de base et interprétations.
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>Identifiants, version d&#39;assemblage, coordonnées, requête.
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>ARRET HITL
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>Refuser toute comparaison entre assemblages non alignés.
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-07-lire-une-fiche-uniprot">LS-07 - Lire une fiche UniProt<a class="headerlink" href="#ls-07-lire-une-fiche-uniprot" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Distinguer annotation révisée et annotation automatique.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>TACHE: LS-07 - Lire une fiche UniProt
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>MISSION BORNEE
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>Utilise `life-science-research:uniprot-skill` pour [PROTÉINE/ACCESSION]. Donne accession, organisme, statut reviewed/unreviewed, fonction annotée, domaines et références, avec provenance de chaque champ.
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>Accession, statut, références croisées, URL.
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>ARRET HITL
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>Toute fonction proposée doit porter son niveau de preuve.
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-08-interroger-gene-ontology">LS-08 - Interroger Gene Ontology<a class="headerlink" href="#ls-08-interroger-gene-ontology" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Lire une annotation GO avec son code de preuve.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>TACHE: LS-08 - Interroger Gene Ontology
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>MISSION BORNEE
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>Utilise `life-science-research:quickgo-skill` pour [GÈNE/PROTÉINE]. Retourne au plus dix termes GO, aspect, code de preuve, référence et taxon. N&#39;assimile pas une annotation prédite à une validation expérimentale.
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>GO IDs, evidence codes, références, taxon.
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>ARRET HITL
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>Classer les codes de preuve avant la synthèse.
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-09-explorer-une-voie-reactome">LS-09 - Explorer une voie Reactome<a class="headerlink" href="#ls-09-explorer-une-voie-reactome" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Relier entités et réactions dans une voie versionnée.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>TACHE: LS-09 - Explorer une voie Reactome
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>MISSION BORNEE
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>Utilise `life-science-research:reactome-skill` pour [GÈNE/VOIE]. Retourne l&#39;identifiant Reactome, espèce, événements parents/enfants, entités participantes et version. Distingue présence dans la voie et causalité.
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>Stable IDs, hiérarchie, version, URL.
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>ARRET HITL
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>Vérifier l&#39;espèce et l&#39;événement exact.
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-10-construire-un-reseau-string">LS-10 - Construire un réseau STRING<a class="headerlink" href="#ls-10-construire-un-reseau-string" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Comprendre scores, canaux de preuve et seuils.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>TACHE: LS-10 - Construire un réseau STRING
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>MISSION BORNEE
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>Utilise `life-science-research:string-skill` pour [LISTE DE PROTÉINES, ESPÈCE]. Produis un réseau borné, retourne score combiné et canaux de preuve par arête, plus les paramètres de seuil. N&#39;appelle pas une association une interaction physique sans preuve.
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>IDs STRING, taxon, scores, paramètres.
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>ARRET HITL
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>Inspecter au moins une arête de chaque type de preuve.
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h1 id="partie-iii-variants-et-genetique">Partie III - Variants et génétique<a class="headerlink" href="#partie-iii-variants-et-genetique" title="Permanent link">&para;</a></h1>
+<h2 id="ls-11-lire-clinvar">LS-11 - Lire ClinVar<a class="headerlink" href="#ls-11-lire-clinvar" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Examiner une classification de variant et ses conflits.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>TACHE: LS-11 - Lire ClinVar
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>MISSION BORNEE
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>Utilise `life-science-research:clinvar-variation-skill` pour [VARIANT]. Retourne Variation ID, HGVS, assembly, significations cliniques soumises, statut de revue, dates et conflits. Ne donne aucun conseil médical.
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>IDs, soumissions, étoiles/revue, URL.
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>ARRET HITL
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>Une personne qualifiée interprète toute portée clinique.
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-12-verifier-une-frequence-gnomad">LS-12 - Vérifier une fréquence gnomAD<a class="headerlink" href="#ls-12-verifier-une-frequence-gnomad" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Relier fréquence allélique, population et couverture.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>TACHE: LS-12 - Vérifier une fréquence gnomAD
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>MISSION BORNEE
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>Utilise `life-science-research:gnomad-graphql-skill` pour [VARIANT, BUILD]. Retourne fréquences globales et par population disponibles, comptes alléliques, homozygotes et avertissements de qualité.
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>Requête GraphQL, build, identifiant, champs retournés.
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>ARRET HITL
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>Ne pas interpréter absence ou rareté comme diagnostic.
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-13-etudier-une-association-gwas">LS-13 - Étudier une association GWAS<a class="headerlink" href="#ls-13-etudier-une-association-gwas" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Lire trait, locus, effet et population.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>TACHE: LS-13 - Étudier une association GWAS
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>MISSION BORNEE
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>Utilise `life-science-research:gwas-catalog-skill` pour [TRAIT]. Retourne études, PMID, variant, p-value, taille d&#39;effet si disponible, ascendance et taille d&#39;échantillon. Sépare association et causalité.
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>Study/association IDs, PMID, paramètres.
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>ARRET HITL
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>Signaler les populations sous-représentées.
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-14-relier-cible-et-maladie">LS-14 - Relier cible et maladie<a class="headerlink" href="#ls-14-relier-cible-et-maladie" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Comprendre l'agrégation de preuves d'Open Targets.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>TACHE: LS-14 - Relier cible et maladie
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>MISSION BORNEE
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>Utilise `life-science-research:opentargets-skill` pour [CIBLE, MALADIE]. Retourne identifiants EFO/Ensembl, types et scores de preuves, sources contributrices et limites. Ne transforme pas un score en recommandation thérapeutique.
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>IDs, evidence types, scores, URL.
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>ARRET HITL
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>Ouvrir au moins une preuve primaire sous-jacente.
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-15-cartographier-un-trait-efo">LS-15 - Cartographier un trait EFO<a class="headerlink" href="#ls-15-cartographier-un-trait-efo" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Apprendre synonymes, parents et identifiants d'ontologie.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>TACHE: LS-15 - Cartographier un trait EFO
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>MISSION BORNEE
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>Utilise `life-science-research:efo-ontology-skill` pour [TERME]. Retourne EFO ID, libellé, définition, synonymes, parents et correspondances. Garde les ambiguïtés lexicales visibles.
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>ID, version, relations, URL.
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>ARRET HITL
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>L&#39;enseignant valide le concept choisi avant jointure de données.
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h1 id="partie-iv-expression-et-cellules">Partie IV - Expression et cellules<a class="headerlink" href="#partie-iv-expression-et-cellules" title="Permanent link">&para;</a></h1>
+<h2 id="ls-16-comparer-lexpression-gtex">LS-16 - Comparer l'expression GTEx<a class="headerlink" href="#ls-16-comparer-lexpression-gtex" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Comparer des tissus sans confondre expression et effet causal.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>TACHE: LS-16 - Comparer l&#39;expression GTEx
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>MISSION BORNEE
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>Utilise `life-science-research:gtex-eqtl-skill` pour [GÈNE]. Retourne tissus, mesure d&#39;expression ou eQTL demandé, version du dataset, taille d&#39;échantillon visible et limites.
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>Gene ID, tissu, version, valeurs et paramètres.
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>ARRET HITL
+<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>Vérifier que les unités sont comparables.
+<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-17-examiner-bgee">LS-17 - Examiner Bgee<a class="headerlink" href="#ls-17-examiner-bgee" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Lire présence/absence d'expression entre espèces et stades.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>TACHE: LS-17 - Examiner Bgee
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>MISSION BORNEE
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>Utilise `life-science-research:bgee-skill` pour [GÈNE, ESPÈCE]. Retourne anatomie, stade, type de donnée, appel d&#39;expression et qualité. N&#39;extrapole pas entre espèces.
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>IDs Bgee, taxon, stades, sources.
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>ARRET HITL
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>Relever explicitement toute comparaison inter-espèces.
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-18-consulter-human-protein-atlas">LS-18 - Consulter Human Protein Atlas<a class="headerlink" href="#ls-18-consulter-human-protein-atlas" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Comparer ARN, protéine et localisation.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>TACHE: LS-18 - Consulter Human Protein Atlas
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>MISSION BORNEE
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>Utilise `life-science-research:human-protein-atlas-skill` pour [GÈNE]. Retourne catégories de tissu, cellule et localisation subcellulaire avec méthodes et niveaux de preuve visibles.
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a>Gene page, catégories, méthodes, URL.
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>ARRET HITL
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>Ne pas fusionner ARN et protéine en une seule mesure.
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-19-explorer-une-collection-cellxgene">LS-19 - Explorer une collection cellxgene<a class="headerlink" href="#ls-19-explorer-une-collection-cellxgene" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Formuler une requête unicellulaire reproductible.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>TACHE: LS-19 - Explorer une collection cellxgene
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>MISSION BORNEE
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>Utilise `life-science-research:cellxgene-skill` pour [TISSU/CELLULE/GÈNE]. Retourne collection, dataset, organisme, ontologies, effectifs et filtres proposés. Ne télécharge pas les matrices avant validation.
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>Collection/dataset IDs, filtres, effectifs, URL.
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>ARRET HITL
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>Valider annotations cellulaires et critères d&#39;inclusion.
+<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-20-examiner-une-experience-encode">LS-20 - Examiner une expérience ENCODE<a class="headerlink" href="#ls-20-examiner-une-experience-encode" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Lire assay, biosample, fichiers et audits.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>TACHE: LS-20 - Examiner une expérience ENCODE
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>MISSION BORNEE
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>Utilise `life-science-research:encode-skill` pour [ASSAY, BIOSAMPLE]. Retourne accession d&#39;expérience, biosample, fichiers recommandés, assembly, audits et contrôles.
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>Accessions, formats, assembly, audit flags.
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>ARRET HITL
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>Aucun fichier audité en erreur n&#39;entre silencieusement dans l&#39;analyse.
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h1 id="partie-v-structures-et-molecules">Partie V - Structures et molécules<a class="headerlink" href="#partie-v-structures-et-molecules" title="Permanent link">&para;</a></h1>
+<h2 id="ls-21-inspecter-alphafold">LS-21 - Inspecter AlphaFold<a class="headerlink" href="#ls-21-inspecter-alphafold" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Interpréter confiance locale et erreur d'alignement prédite.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>TACHE: LS-21 - Inspecter AlphaFold
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>MISSION BORNEE
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>Utilise `life-science-research:alphafold-skill` pour [UNIPROT ID]. Retourne modèle, version, pLDDT par région, PAE disponible et limites. N&#39;appelle jamais la prédiction une structure expérimentale.
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>Model ID, version, scores, URL.
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>ARRET HITL
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>Identifier les régions de faible confiance.
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-22-trouver-une-structure-pdb">LS-22 - Trouver une structure PDB<a class="headerlink" href="#ls-22-trouver-une-structure-pdb" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Lire méthode expérimentale, résolution et ligands.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>TACHE: LS-22 - Trouver une structure PDB
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>MISSION BORNEE
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>Utilise `life-science-research:rcsb-pdb-skill` pour [PROTÉINE/LIGAND]. Retourne PDB ID, méthode, résolution si applicable, organismes, chaînes, ligands et date.
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>PDB ID, méthode, métriques, références.
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>ARRET HITL
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>Comparer construction expérimentale et protéine canonique.
+<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-23-rechercher-bindingdb">LS-23 - Rechercher BindingDB<a class="headerlink" href="#ls-23-rechercher-bindingdb" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Examiner une mesure d'affinité avec unités et protocole.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>TACHE: LS-23 - Rechercher BindingDB
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>MISSION BORNEE
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>Utilise `life-science-research:bindingdb-skill` pour [CIBLE/LIGAND]. Retourne paires, Ki/Kd/IC50 avec unités, DOI/PMID et conditions disponibles. Ne compare pas des mesures incompatibles.
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a>IDs, valeurs, unités, référence primaire.
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>
+<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a>ARRET HITL
+<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a>Grouper uniquement les mêmes types de mesure.
+<a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-24-interroger-chembl">LS-24 - Interroger ChEMBL<a class="headerlink" href="#ls-24-interroger-chembl" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Relier composé, cible, assay et activité.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>TACHE: LS-24 - Interroger ChEMBL
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>MISSION BORNEE
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>Utilise `life-science-research:chembl-skill` pour [CIBLE/COMPOSÉ]. Retourne ChEMBL IDs, assay type, standard value/unit, relation et document source; limite à vingt activités pertinentes.
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>IDs, assay, activité standardisée, document.
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>ARRET HITL
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>Inspecter les relations `=`, `&lt;`, `&gt;` avant agrégation.
+<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-25-verifier-pubchem">LS-25 - Vérifier PubChem<a class="headerlink" href="#ls-25-verifier-pubchem" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Distinguer substance, composé et bioassay.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>TACHE: LS-25 - Vérifier PubChem
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>MISSION BORNEE
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>Utilise `life-science-research:pubchem-pug-skill` pour [NOM/CID]. Retourne CID, synonymes bornés, formule, propriétés demandées et liens vers bioassays pertinents.
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>CID/SID/AID, requête PUG, URL.
+<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>
+<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>ARRET HITL
+<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a>Confirmer structure et stéréochimie avant comparaison.
+<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-26-normaliser-avec-chebi">LS-26 - Normaliser avec ChEBI<a class="headerlink" href="#ls-26-normaliser-avec-chebi" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Utiliser une ontologie chimique pour éviter les noms ambigus.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>TACHE: LS-26 - Normaliser avec ChEBI
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>MISSION BORNEE
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>Utilise `life-science-research:chebi-skill` pour [TERME]. Retourne ChEBI ID, nom, définition, formule, parents/enfants et synonymes; marque les candidats ambigus.
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a>ChEBI ID, relations, version, URL.
+<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a>
+<a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a>ARRET HITL
+<a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a>Choisir explicitement un identifiant avant le graphe.
+<a id="__codelineno-25-23" name="__codelineno-25-23" href="#__codelineno-25-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-27-lire-une-reaction-rhea">LS-27 - Lire une réaction Rhea<a class="headerlink" href="#ls-27-lire-une-reaction-rhea" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Relier réaction équilibrée, participants et enzymes.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>TACHE: LS-27 - Lire une réaction Rhea
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>MISSION BORNEE
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>Utilise `life-science-research:rhea-skill` pour [RÉACTION/EC]. Retourne Rhea ID, équation, direction, ChEBI IDs et liens UniProt.
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a>Rhea/ChEBI IDs, équation, direction, URL.
+<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a>
+<a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a>ARRET HITL
+<a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a>Vérifier équilibre et compartiment avant interprétation.
+<a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-28-explorer-hmdb">LS-28 - Explorer HMDB<a class="headerlink" href="#ls-28-explorer-hmdb" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Lire une fiche métabolite sans transformer une association en diagnostic.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>TACHE: LS-28 - Explorer HMDB
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>MISSION BORNEE
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>Utilise `life-science-research:hmdb-skill` pour [MÉTABOLITE]. Retourne HMDB ID, synonymes, formule, biospecimens, voies et références. N&#39;émets aucune conclusion clinique individuelle.
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a>
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a>HMDB ID, champs, références, URL.
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a>
+<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a>ARRET HITL
+<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a>Distinguer présence documentée et valeur diagnostique.
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h1 id="partie-vi-etudes-et-interpretation">Partie VI - Études et interprétation<a class="headerlink" href="#partie-vi-etudes-et-interpretation" title="Permanent link">&para;</a></h1>
+<h2 id="ls-29-lire-clinicaltrialsgov">LS-29 - Lire ClinicalTrials.gov<a class="headerlink" href="#ls-29-lire-clinicaltrialsgov" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Comprendre statut, critères et résultats déclarés.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>TACHE: LS-29 - Lire ClinicalTrials.gov
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>MISSION BORNEE
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>Utilise `life-science-research:clinicaltrials-skill` pour [CONDITION/INTERVENTION]. Retourne NCT ID, statut, phases, critères, promoteur, dates, résultats disponibles et URL.
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a>
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>NCT IDs, requête, statut daté, champs sources.
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>
+<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a>ARRET HITL
+<a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a>Ne jamais présenter inscription ou résultat comme conseil de soin.
+<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-30-explorer-cbioportal">LS-30 - Explorer cBioPortal<a class="headerlink" href="#ls-30-explorer-cbioportal" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Lire une cohorte cancéreuse et ses altérations.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>TACHE: LS-30 - Explorer cBioPortal
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>MISSION BORNEE
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>Utilise `life-science-research:cbioportal-skill` pour [GÈNE/ÉTUDE]. Retourne study/case set IDs, profil moléculaire, effectifs et fréquences avec dénominateurs.
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a>
+<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a>IDs d&#39;étude, paramètres, effectifs, URL.
+<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a>
+<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a>ARRET HITL
+<a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a>Toute fréquence doit conserver son dénominateur.
+<a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-31-examiner-civic">LS-31 - Examiner CIViC<a class="headerlink" href="#ls-31-examiner-civic" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Comprendre assertions, evidence items et niveaux.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>TACHE: LS-31 - Examiner CIViC
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>MISSION BORNEE
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>Utilise `life-science-research:civic-skill` pour [VARIANT/CANCER]. Retourne IDs CIViC, type et niveau de preuve, statut, citations et conflits.
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a>
+<a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a>CIViC IDs, niveaux, PMID, dates.
+<a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a>
+<a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a>ARRET HITL
+<a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a>Une personne qualifiée interprète la signification clinique.
+<a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-32-lire-pharmgkb">LS-32 - Lire PharmGKB<a class="headerlink" href="#ls-32-lire-pharmgkb" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Distinguer annotation, guideline et étiquette.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>TACHE: LS-32 - Lire PharmGKB
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>MISSION BORNEE
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>Utilise `life-science-research:pharmgkb-skill` pour [GÈNE/MÉDICAMENT]. Retourne PharmGKB IDs, type d&#39;annotation, niveau, sources et population. Aucun conseil de prescription.
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a>
+<a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a>IDs, niveau, guideline/source, URL.
+<a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a>
+<a id="__codelineno-31-21" name="__codelineno-31-21" href="#__codelineno-31-21"></a>ARRET HITL
+<a id="__codelineno-31-22" name="__codelineno-31-22" href="#__codelineno-31-22"></a>Vérifier juridiction et version de la guideline.
+<a id="__codelineno-31-23" name="__codelineno-31-23" href="#__codelineno-31-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h1 id="partie-vii-depots-de-donnees">Partie VII - Dépôts de données<a class="headerlink" href="#partie-vii-depots-de-donnees" title="Permanent link">&para;</a></h1>
+<h2 id="ls-33-retrouver-biostudiesarrayexpress">LS-33 - Retrouver BioStudies/ArrayExpress<a class="headerlink" href="#ls-33-retrouver-biostudiesarrayexpress" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Examiner conception d'étude et fichiers avant téléchargement.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>TACHE: LS-33 - Retrouver BioStudies/ArrayExpress
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>MISSION BORNEE
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>Utilise `life-science-research:biostudies-arrayexpress-skill` pour [SUJET]. Retourne accession, design, organisme, facteurs, fichiers et licence visible.
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>
+<a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a>Accession, métadonnées, liste de fichiers, URL.
+<a id="__codelineno-32-20" name="__codelineno-32-20" href="#__codelineno-32-20"></a>
+<a id="__codelineno-32-21" name="__codelineno-32-21" href="#__codelineno-32-21"></a>ARRET HITL
+<a id="__codelineno-32-22" name="__codelineno-32-22" href="#__codelineno-32-22"></a>Valider design et groupes avant calcul.
+<a id="__codelineno-32-23" name="__codelineno-32-23" href="#__codelineno-32-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-34-examiner-pride">LS-34 - Examiner PRIDE<a class="headerlink" href="#ls-34-examiner-pride" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Lire une étude protéomique et ses fichiers.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>TACHE: LS-34 - Examiner PRIDE
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>MISSION BORNEE
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>Utilise `life-science-research:pride-skill` pour [SUJET/ACCESSION]. Retourne PXD, organisme, instruments, modifications, fichiers et publication associée.
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>
+<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a>
+<a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a>PXD, fichiers, DOI/PMID, URL.
+<a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a>
+<a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a>ARRET HITL
+<a id="__codelineno-33-22" name="__codelineno-33-22" href="#__codelineno-33-22"></a>Confirmer fichiers bruts et résultats dérivés.
+<a id="__codelineno-33-23" name="__codelineno-33-23" href="#__codelineno-33-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-35-naviguer-proteomexchange">LS-35 - Naviguer ProteomeXchange<a class="headerlink" href="#ls-35-naviguer-proteomexchange" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Relier dépôt membre, statut et identifiant PXD.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>TACHE: LS-35 - Naviguer ProteomeXchange
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>MISSION BORNEE
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>Utilise `life-science-research:proteomexchange-skill` pour [PXD/SUJET]. Retourne dépôt membre, statut, date, espèce, publication et liens de données.
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>
+<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a>PXD, dépôt, statut, URL.
+<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a>
+<a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a>ARRET HITL
+<a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a>Signaler les jeux partiels ou non publics.
+<a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-36-trouver-metabolights">LS-36 - Trouver MetaboLights<a class="headerlink" href="#ls-36-trouver-metabolights" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Examiner facteurs, protocoles et métabolites.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>TACHE: LS-36 - Trouver MetaboLights
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>MISSION BORNEE
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>Utilise `life-science-research:metabolights-skill` pour [SUJET]. Retourne MTBLS ID, organisme, design, technologie, protocoles, fichiers et licence.
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>
+<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>
+<a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a>MTBLS ID, métadonnées ISA, URL.
+<a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a>
+<a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a>ARRET HITL
+<a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a>Vérifier unités, normalisation et contrôles.
+<a id="__codelineno-35-23" name="__codelineno-35-23" href="#__codelineno-35-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-37-explorer-mgnify">LS-37 - Explorer MGnify<a class="headerlink" href="#ls-37-explorer-mgnify" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Lire une analyse microbiome avec pipeline et biome.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>TACHE: LS-37 - Explorer MGnify
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>MISSION BORNEE
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>Utilise `life-science-research:mgnify-skill` pour [BIOME/ÉTUDE]. Retourne accessions, biome, pipeline/version, échantillons et produits d&#39;analyse.
+<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>
+<a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-36-17" name="__codelineno-36-17" href="#__codelineno-36-17"></a>
+<a id="__codelineno-36-18" name="__codelineno-36-18" href="#__codelineno-36-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-36-19" name="__codelineno-36-19" href="#__codelineno-36-19"></a>Study/analysis IDs, pipeline, URL.
+<a id="__codelineno-36-20" name="__codelineno-36-20" href="#__codelineno-36-20"></a>
+<a id="__codelineno-36-21" name="__codelineno-36-21" href="#__codelineno-36-21"></a>ARRET HITL
+<a id="__codelineno-36-22" name="__codelineno-36-22" href="#__codelineno-36-22"></a>Ne pas comparer des pipelines incompatibles sans correction.
+<a id="__codelineno-36-23" name="__codelineno-36-23" href="#__codelineno-36-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-38-preparer-un-blast">LS-38 - Préparer un BLAST<a class="headerlink" href="#ls-38-preparer-un-blast" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Formuler une recherche de similarité reproductible.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>TACHE: LS-38 - Préparer un BLAST
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>
+<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>MISSION BORNEE
+<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>Utilise `life-science-research:ncbi-blast-skill` avec [SÉQUENCE SYNTHÉTIQUE/PUBLIQUE]. Propose programme, base, taxon et seuils; masque toute donnée sensible et demande confirmation avant exécution.
+<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>
+<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-37-15" name="__codelineno-37-15" href="#__codelineno-37-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-37-16" name="__codelineno-37-16" href="#__codelineno-37-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-37-17" name="__codelineno-37-17" href="#__codelineno-37-17"></a>
+<a id="__codelineno-37-18" name="__codelineno-37-18" href="#__codelineno-37-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-37-19" name="__codelineno-37-19" href="#__codelineno-37-19"></a>Digest de séquence, paramètres, RID si exécuté, date.
+<a id="__codelineno-37-20" name="__codelineno-37-20" href="#__codelineno-37-20"></a>
+<a id="__codelineno-37-21" name="__codelineno-37-21" href="#__codelineno-37-21"></a>ARRET HITL
+<a id="__codelineno-37-22" name="__codelineno-37-22" href="#__codelineno-37-22"></a>Confirmer provenance et droit d&#39;utiliser la séquence.
+<a id="__codelineno-37-23" name="__codelineno-37-23" href="#__codelineno-37-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h1 id="partie-viii-synthese-controlee">Partie VIII - Synthèse contrôlée<a class="headerlink" href="#partie-viii-synthese-controlee" title="Permanent link">&para;</a></h1>
+<h2 id="ls-39-construire-une-carte-de-sources">LS-39 - Construire une carte de sources<a class="headerlink" href="#ls-39-construire-une-carte-de-sources" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Transformer des résultats hétérogènes en traces centrales contestables.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>TACHE: LS-39 - Construire une carte de sources
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>
+<a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>MISSION BORNEE
+<a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>À partir des sorties validées, crée des cartes `synthia.education.source-card.v1`. Sépare observations, inférences et contradictions; soumets uniquement un `graph_delta` au `scholarium.central-knowledge-gateway.v1`. Demande matrices Euler/Hilbert seulement si l&#39;ordre et les sources sont replayables.
+<a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a>
+<a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-38-15" name="__codelineno-38-15" href="#__codelineno-38-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-38-16" name="__codelineno-38-16" href="#__codelineno-38-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-38-17" name="__codelineno-38-17" href="#__codelineno-38-17"></a>
+<a id="__codelineno-38-18" name="__codelineno-38-18" href="#__codelineno-38-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-38-19" name="__codelineno-38-19" href="#__codelineno-38-19"></a>Source cards, provenance, partition demandée, reçu gateway.
+<a id="__codelineno-38-20" name="__codelineno-38-20" href="#__codelineno-38-20"></a>
+<a id="__codelineno-38-21" name="__codelineno-38-21" href="#__codelineno-38-21"></a>ARRET HITL
+<a id="__codelineno-38-22" name="__codelineno-38-22" href="#__codelineno-38-22"></a>Aucune source rejetée ou sans licence ne passe dans `approved`.
+<a id="__codelineno-38-23" name="__codelineno-38-23" href="#__codelineno-38-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h2 id="ls-40-projet-integrateur">LS-40 - Projet intégrateur<a class="headerlink" href="#ls-40-projet-integrateur" title="Permanent link">&para;</a></h2>
+<p><strong>Objectif.</strong> Réaliser une mini-revue multi-source sans surpromesse.</p>
+<p><strong>Prompt de collaboration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>TACHE: LS-40 - Projet intégrateur
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>CONTEXTE FOURNI PAR LA PERSONNE
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>- Question ou objet: [A COMPLETER]
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>- Public et niveau: [A COMPLETER]
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>- Limite de temps ou de volume: [A COMPLETER]
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>MISSION BORNEE
+<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>Utilise d&#39;abord `life-science-research:research-router-skill` sur [QUESTION]. Après accord, exécute au plus quatre skills primaires complémentaires. Produis une table affirmation-preuve-contradiction-limite, les requêtes replayables et un reçu du gateway central. Termine par ce qu&#39;on ne sait pas.
+<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>
+<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a>CONTRAT DE COLLABORATION
+<a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a>1. Signale `NEEDS_INPUT` si un champ requis reste ambigu; ne le devine pas.
+<a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a>2. N&#39;utilise que l&#39;outil ou la source nommee dans la mission. Toute substitution doit etre proposee avant execution.
+<a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a>3. Conserve la requete exacte, les identifiants primaires, l&#39;URL, la date d&#39;acces et les parametres utiles au replay.
+<a id="__codelineno-39-15" name="__codelineno-39-15" href="#__codelineno-39-15"></a>4. Separe clairement `OBSERVATION`, `INFERENCE`, `CONTRADICTION` et `LIMITE`.
+<a id="__codelineno-39-16" name="__codelineno-39-16" href="#__codelineno-39-16"></a>5. Retourne un statut final parmi `COMPLETED`, `NEEDS_INPUT`, `QUARANTINED` ou `BLOCKED`, avec sa justification.
+<a id="__codelineno-39-17" name="__codelineno-39-17" href="#__codelineno-39-17"></a>
+<a id="__codelineno-39-18" name="__codelineno-39-18" href="#__codelineno-39-18"></a>PREUVES OBLIGATOIRES
+<a id="__codelineno-39-19" name="__codelineno-39-19" href="#__codelineno-39-19"></a>Plan approuvé, identifiants primaires, matrice de provenance, reçu, limites.
+<a id="__codelineno-39-20" name="__codelineno-39-20" href="#__codelineno-39-20"></a>
+<a id="__codelineno-39-21" name="__codelineno-39-21" href="#__codelineno-39-21"></a>ARRET HITL
+<a id="__codelineno-39-22" name="__codelineno-39-22" href="#__codelineno-39-22"></a>L&#39;élève explique oralement ou par modalité accessible une preuve, une contradiction et une incertitude.
+<a id="__codelineno-39-23" name="__codelineno-39-23" href="#__codelineno-39-23"></a>Arrete-toi avant tout telechargement important, ecriture externe, interpretation clinique, ou elargissement du perimetre non approuve.
+</code></pre></div>
+<p><strong>Critere d'acceptation.</strong> La sortie est courte, rejouable, corrigeable par une personne et ne transforme ni score, ni association, ni prediction en autorite.</p>
+<h1 id="grille-de-validation">Grille de validation<a class="headerlink" href="#grille-de-validation" title="Permanent link">&para;</a></h1>
+<p>Un atelier est réussi quand la question reste bornée, les outils utilisés sont ceux annoncés, les identifiants et URL sont primaires, la date de récupération est visible, les limites ne sont pas masquées, et la personne peut corriger ou rejeter la synthèse. Le score ne mesure jamais la valeur ou l'intelligence d'un élève.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Jean-Sebastien Beaulieu · ORCID 0009-0007-2904-0443
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/SeCuReDmE-main-dev" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/channel/UCYHLMJuIoJre3n39z7LUGIg" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://orcid.org/0009-0007-2904-0443" target="_blank" rel="noopener" title="orcid.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M0 96c0-35.3 28.7-64 64-64h448c35.3 0 64 28.7 64 64zm0 48h576v272c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm247.3 272c20.2 0 35.3-19.4 22.4-35-14.7-17.7-36.9-29-61.7-29h-64c-24.8 0-47 11.3-61.7 29-12.9 15.6 2.2 35 22.4 35h142.5zM176 312a56 56 0 1 0 0-112 56 56 0 1 0 0 112m184-104c-13.3 0-24 10.7-24 24s10.7 24 24 24h112c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h112c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/securedme-theme-toggle.js"></script>
+      
+        <script src="../../javascripts/securedme-accessibility.js"></script>
+      
+    
+  </body>
+</html>

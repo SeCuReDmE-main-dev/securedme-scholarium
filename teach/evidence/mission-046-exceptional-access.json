@@ -1,0 +1,25 @@
+{
+  "schema": "scholarium.teach-evidence.v1",
+  "action": 46,
+  "generatedAt": "2026-07-16T03:31:00Z",
+  "contract": {
+    "independentApprovalsRequired": 2,
+    "requesterMayApprove": false,
+    "subjectMayApprove": false,
+    "maximumWindowHours": 4,
+    "maximumUses": 1,
+    "crossOrganizationAccess": false,
+    "rawGraphIncluded": false,
+    "rawAnswersIncluded": false,
+    "auditDigest": "sha256"
+  },
+  "validation": {
+    "focusedTests": {"passed": 4, "failed": 0},
+    "build": "passed",
+    "migrationCount": 35,
+    "quickCheck": "ok",
+    "applicationTableCount": 78,
+    "dualApproverUniqueIndex": true
+  },
+  "authorityBoundary": "Temporary traceable support under human review; never surveillance, diagnosis, grading, discipline, or autonomous authority."
+}

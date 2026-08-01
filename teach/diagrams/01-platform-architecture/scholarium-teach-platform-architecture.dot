@@ -1,0 +1,43 @@
+digraph ScholariumArchitecture {
+  graph [rankdir=LR, bgcolor="#F7F8FC", pad="0.25", nodesep="0.42", ranksep="0.7", fontname="Arial"];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=11, margin="0.14,0.10", color="#D9E0EF", fillcolor="#FFFFFF", fontcolor="#10172F"];
+  edge [color="#63708A", penwidth=1.2, arrowsize=0.7, fontname="Arial", fontsize=9, fontcolor="#44506A"];
+
+  subgraph cluster_people {
+    label="People"; color="#D9E0EF"; fontcolor="#44506A";
+    learner [label="Learner"];
+    teacher [label="Teacher"];
+    guardian [label="Guardian"];
+    admin [label="School administration"];
+  }
+
+  subgraph cluster_product {
+    label="Scholarium product boundary"; color="#2157EE"; penwidth=1.6; fontcolor="#2157EE";
+    web [label="Scholarium web\nSignal + Teach + AlgoQuest", fillcolor="#EEF3FF", color="#2157EE"];
+    identity [label="Shared identity, roles\nand purpose consent"];
+    d1 [label="D1 product records"];
+    r2 [label="R2 approved artifacts"];
+    gateway [label="Internal capability gateway\nversioned envelopes", fillcolor="#EAF9FF", color="#23B8FF"];
+  }
+
+  subgraph cluster_private {
+    label="Private worker boundary"; color="#6F42FF"; penwidth=1.6; fontcolor="#6F42FF";
+    gate5 [label="FfeD Gate5\nverify before invocation", fillcolor="#F2EEFF", color="#6F42FF"];
+    synthia [label="Synthia\nclassification"];
+    memory [label="MemoryLake\ntrace index"];
+    hippo [label="HippoRAG\nretrieval only"];
+    fnp [label="FNP-QNN\nresearch-gated signal"];
+    media [label="QuaNTecH-ViD\nuser-triggered media"];
+    signer [label="Bouncy Castle sidecar\nreceipt digest signing"];
+  }
+
+  people_anchor [shape=point, width=0.01, label="", style=invis];
+  learner -> web; teacher -> web; guardian -> web; admin -> web;
+  web -> identity; web -> d1; web -> r2; web -> gateway;
+  gateway -> gate5 [label="pseudonymous envelope"];
+  gate5 -> synthia; gate5 -> memory; gate5 -> hippo; gate5 -> fnp; gate5 -> media;
+  synthia -> hippo [label="approved graph"];
+  memory -> hippo [label="trace records"];
+  gate5 -> signer [label="terminal digest"];
+  signer -> gate5 [label="Ed25519 receipt"];
+}

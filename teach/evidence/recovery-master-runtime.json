@@ -1,0 +1,33 @@
+{
+  "schema": "scholarium.recovery-runtime-snapshot.v1",
+  "capturedAt": "2026-07-16T05:39:00Z",
+  "branch": "new/scholarium-teach-163-actions",
+  "headBeforeRecoveryCommit": "d3ee8156a59e850991399bef7c8fdb54c5e8ec2a",
+  "pullRequest": {
+    "number": 2,
+    "state": "MERGED",
+    "mergedAt": "2026-07-16T05:37:07Z",
+    "url": "https://github.com/SeCuReDmE-main-dev/securedme-scholarium/pull/2",
+    "datadogCheck": "SUCCESS"
+  },
+  "production": [
+    {"url": "https://www.scholarium.securedme.ca/", "status": 200, "bytes": 28032, "contentCheck": "Scholarium identity present"},
+    {"url": "https://www.scholarium.securedme.ca/app", "status": 200, "bytes": 20016, "contentCheck": "Application shell present"},
+    {"url": "https://www.scholarium.securedme.ca/teach", "status": 200, "bytes": 15792, "contentCheck": "Scholarium Teach present"},
+    {"url": "https://www.scholarium.securedme.ca/api/health", "status": 200, "bytes": 77, "contentCheck": "Health response present"},
+    {"url": "https://www.scholarium.securedme.ca/api/v1/teach/lesson", "status": 200, "bytes": 3319, "contentCheck": "Spanish lesson present"}
+  ],
+  "program": {
+    "completed": 161,
+    "blocked": 2,
+    "planned": 0,
+    "inProgress": 0,
+    "total": 163,
+    "percent": 98.77
+  },
+  "blockers": [
+    {"action": 48, "reason": "Qualified external Loi 25 review is required before real-student pilots."},
+    {"action": 157, "reason": "Interactive VS Code tunnel authentication remains required; local VS Code works."}
+  ],
+  "authorityBoundary": "This snapshot reports direct technical observations. It is not legal approval or production-student authorization."
+}
