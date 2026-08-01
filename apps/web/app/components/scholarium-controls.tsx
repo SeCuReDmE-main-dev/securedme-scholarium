@@ -94,6 +94,9 @@ export function ScholariumControls({ compact = false }: { compact?: boolean }) {
     <button className="sch-control-button" type="button" aria-expanded={open} aria-controls="sch-access-menu" onClick={() => setOpen((value) => !value)}>
       <span aria-hidden="true">◉</span><span>Access</span>
     </button>
+    <a href="https://securedme.ca/pay/" target="_blank" rel="noopener noreferrer" className="sch-control-button sch-support-button" style={{ background: 'linear-gradient(135deg, #0284c7, #7c3aed)', color: '#ffffff', border: '1px solid #2cbcff', textTransform: 'uppercase', textDecoration: 'none' }}>
+      Support SecuredMe
+    </a>
     {open && <div className="sch-access-menu" id="sch-access-menu" role="dialog" aria-label="Access profile">
       <header><strong>Choose your reading profile</strong><span>Stored only in this browser.</span></header>
       {accessProfiles.map((profile) => <button key={profile.id} type="button" className={access === profile.id ? "active" : ""} onClick={() => changeAccess(profile.id)}>

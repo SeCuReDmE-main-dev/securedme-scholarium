@@ -43,9 +43,66 @@ export default function Home() {
         <div className="sch-action-row"><a className="sch-button sch-button-primary" href="/app">Explore Scholarium <span>→</span></a><a className="sch-button sch-button-quiet" href="#provenance">Follow the trace</a></div>
         <div className="sch-proof-line"><span>Public pre-alpha</span><span>Human review remains human</span><span>No pay-to-rank</span></div>
       </div>
-      <div className="sch-hero-visual" aria-label="Scholarium editorial identity">
-        <img src="/brand/campaigns/landing-hero-dark.webp" alt="A luminous Scholarium archive device surrounded by knowledge traces." />
-        <div className="sch-visual-caption"><span>01 / SCHOLARIUM COMMONS</span><strong>Context is part of the work.</strong></div>
+      <div className="sch-hero-visual" aria-label="Scholarium commons telemetry visualizer" style={{ background: "rgba(10, 20, 38, 0.92)", border: "1px solid rgba(216, 170, 77, 0.4)", borderRadius: "14px", padding: "20px", boxShadow: "0 16px 40px rgba(0, 0, 0, 0.45)", backdropFilter: "blur(14px)" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid rgba(216, 170, 77, 0.2)", paddingBottom: "10px", marginBottom: "14px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#929fb2" }}></span>
+            <span style={{ color: "#d8aa4d", fontWeight: "800", fontSize: "11px", letterSpacing: "0.05em" }}>SCHOLARIUM PROVENANCE EXAMPLE</span>
+          </div>
+          <span style={{ fontSize: "11px", color: "#f7f4ec", fontWeight: "600" }}>Research Commons Telemetry</span>
+          <span style={{ padding: "2px 8px", borderRadius: "4px", background: "rgba(216, 170, 77, 0.15)", border: "1px solid rgba(216, 170, 77, 0.35)", color: "#d8aa4d", fontSize: "10px", fontWeight: "800" }}>SAMPLE TRACE</span>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "10px", marginBottom: "16px" }}>
+          <div style={{ background: "rgba(18, 30, 52, 0.8)", padding: "10px", borderRadius: "6px", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
+            <span style={{ color: "#929fb2", fontSize: "10px", textTransform: "uppercase", display: "block" }}>Artifact Gate</span>
+            <strong style={{ color: "#d8aa4d", fontFamily: "monospace", fontSize: "13px" }}>NOT EVALUATED</strong>
+          </div>
+          <div style={{ background: "rgba(18, 30, 52, 0.8)", padding: "10px", borderRadius: "6px", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
+            <span style={{ color: "#929fb2", fontSize: "10px", textTransform: "uppercase", display: "block" }}>Sources & Version</span>
+            <strong style={{ color: "#f7f4ec", fontFamily: "monospace", fontSize: "13px" }}>Example v1.2</strong>
+          </div>
+          <div style={{ background: "rgba(18, 30, 52, 0.8)", padding: "10px", borderRadius: "6px", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
+            <span style={{ color: "#929fb2", fontSize: "10px", textTransform: "uppercase", display: "block" }}>Human Review</span>
+            <strong style={{ color: "#2cbcff", fontFamily: "monospace", fontSize: "13px" }}>REQUIRED</strong>
+          </div>
+          <div style={{ background: "rgba(18, 30, 52, 0.8)", padding: "10px", borderRadius: "6px", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
+            <span style={{ color: "#929fb2", fontSize: "10px", textTransform: "uppercase", display: "block" }}>Visibility State</span>
+            <strong style={{ color: "#34d399", fontFamily: "monospace", fontSize: "13px" }}>DRAFT</strong>
+          </div>
+        </div>
+
+        <div style={{ borderRadius: "8px", background: "radial-gradient(circle at center, rgba(16, 32, 60, 0.9) 0%, rgba(7, 16, 31, 0.98) 100%)", border: "1px solid rgba(216, 170, 77, 0.2)", padding: "12px", display: "flex", justifyContent: "center" }}>
+          <svg viewBox="0 0 460 140" style={{ width: "100%", maxHeight: "150px" }} xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Example provenance trace from idea to draft receipt">
+            <path d="M 60 70 L 160 35" stroke="rgba(216, 170, 77, 0.5)" strokeWidth="2" fill="none" strokeDasharray="4 2"/>
+            <path d="M 60 70 L 160 105" stroke="rgba(216, 170, 77, 0.5)" strokeWidth="2" fill="none"/>
+            <path d="M 160 35 L 300 70" stroke="rgba(44, 188, 255, 0.65)" strokeWidth="2.5" fill="none"/>
+            <path d="M 160 105 L 300 70" stroke="rgba(216, 170, 77, 0.5)" strokeWidth="2" fill="none"/>
+            <path d="M 300 70 L 400 70" stroke="#34d399" strokeWidth="3" fill="none"/>
+
+            <g transform="translate(60, 70)">
+              <circle r="20" fill="rgba(10, 20, 38, 0.95)" stroke="#d8aa4d" strokeWidth="2"/>
+              <text y="4" textAnchor="middle" fill="#d8aa4d" fontSize="9" fontWeight="bold">Idea Node</text>
+            </g>
+            <g transform="translate(160, 35)">
+              <circle r="18" fill="rgba(10, 20, 38, 0.95)" stroke="#d8aa4d" strokeWidth="1.8"/>
+              <text y="4" textAnchor="middle" fill="#f7f4ec" fontSize="8" fontWeight="bold">Sources</text>
+            </g>
+            <g transform="translate(160, 105)">
+              <circle r="18" fill="rgba(10, 20, 38, 0.95)" stroke="#d8aa4d" strokeWidth="1.8"/>
+              <text y="4" textAnchor="middle" fill="#f7f4ec" fontSize="8" fontWeight="bold">Version 1.2</text>
+            </g>
+            <g transform="translate(300, 70)">
+              <circle r="20" fill="rgba(16, 32, 60, 0.95)" stroke="#2cbcff" strokeWidth="2.2"/>
+              <text y="4" textAnchor="middle" fill="#2cbcff" fontSize="9" fontWeight="bold">Review</text>
+            </g>
+            <g transform="translate(400, 70)">
+              <circle r="22" fill="rgba(10, 25, 45, 0.95)" stroke="#34d399" strokeWidth="2.5"/>
+              <text y="4" textAnchor="middle" fill="#34d399" fontSize="9" fontWeight="bold">Receipt</text>
+            </g>
+          </svg>
+        </div>
+        <div className="sch-visual-caption" style={{ marginTop: "12px" }}><span>01 / SCHOLARIUM COMMONS</span><strong>Context is part of the work.</strong></div>
       </div>
     </section>
 

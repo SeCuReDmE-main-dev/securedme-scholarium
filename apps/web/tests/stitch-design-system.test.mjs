@@ -4,7 +4,7 @@ import test from "node:test";
 
 const read = (path) => readFile(new URL(path, import.meta.url), "utf8");
 
-test("implements the admitted Scholarium landing without exposing the internal asset gallery", async () => {
+test("implements an honest Scholarium provenance example without exposing the internal asset gallery", async () => {
   const [page, css, system] = await Promise.all([
     read("../app/page.tsx"),
     read("../app/landing-evidence.css"),
@@ -17,7 +17,10 @@ test("implements the admitted Scholarium landing without exposing the internal a
   assert.match(page, /The receipt does not claim truth/);
   assert.match(page, /SCHOLARIUM TEACH/);
   assert.match(page, /ORGANIZATION DIRECTION/);
-  assert.match(page, /landing-hero-dark\.webp/);
+  assert.match(page, /SCHOLARIUM PROVENANCE EXAMPLE/);
+  assert.match(page, /SAMPLE TRACE/);
+  assert.match(page, /NOT EVALUATED/);
+  assert.doesNotMatch(page, /PROVENANCE ACTIVE|LIVE PREVIEW|>ADMITTED</);
   assert.doesNotMatch(page, /asset-gallery|tier-button|logoDraftPaths|badgeDarkPaths/);
   for (const token of ["--sch-midnight", "--sch-ivory", "--sch-gold", "--sch-student", "--sch-teacher", "--sch-org"]) {
     assert.match(system, new RegExp(token));
