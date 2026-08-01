@@ -1,6 +1,12 @@
-site_name: securedme-scholarium
-site_description: SecuredMe Education documentation for securedme-scholarium.
+site_name: SeCuReDmE Developer Library
+site_description: Public developer documentation for the twelve-tool SeCuReDmE Education suite.
+site_url: https://securedme-main-dev.github.io/securedme-scholarium/
+repo_url: https://github.com/SeCuReDmE-main-dev/securedme-scholarium
+repo_name: SeCuReDmE-main-dev/securedme-scholarium
+edit_uri: edit/main/docs/
 docs_dir: docs
+copyright: Jean-Sebastien Beaulieu · ORCID 0009-0007-2904-0443
+
 theme:
   name: material
   language: en
@@ -8,67 +14,107 @@ theme:
   logo: assets/education/education-icon.png
   favicon: assets/education/education-icon.png
   features:
-  - navigation.instant
-  - navigation.tracking
-  - navigation.sections
-  - navigation.expand
-  - navigation.indexes
-  - navigation.top
-  - search.suggest
-  - search.highlight
-  - content.code.copy
-  - toc.follow
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.action.edit
+    - toc.follow
   palette:
-  - media: '(prefers-color-scheme: light)'
-    scheme: default
-    primary: indigo
-    accent: deep purple
-    toggle:
-      icon: material/weather-night
-      name: Switch to dark Education mode
-  - media: '(prefers-color-scheme: dark)'
-    scheme: slate
-    primary: indigo
-    accent: cyan
-    toggle:
-      icon: material/weather-sunny
-      name: Switch to light Education mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
 extra_css:
-- stylesheets/securedme-education.css
-- stylesheets/securedme-theme-toggle.css
-- stylesheets/securedme-accessibility.css
+  - stylesheets/securedme-education.css
+  - stylesheets/securedme-theme-toggle.css
+  - stylesheets/securedme-accessibility.css
+  - stylesheets/securedme-docs.css
+
 extra_javascript:
-- javascripts/algoquest-qbit-adapter.js
-- javascripts/securedme-theme-toggle.js
-- javascripts/securedme-accessibility.js
+  - javascripts/securedme-theme-toggle.js
+  - javascripts/securedme-accessibility.js
+
 markdown_extensions:
-- admonition
-- attr_list
-- md_in_html
-- tables
-- toc:
-    permalink: true
-- pymdownx.details
-- pymdownx.superfences
-- pymdownx.highlight:
-    anchor_linenums: true
-- pymdownx.inlinehilite
-- pymdownx.snippets
-- pymdownx.tabbed:
-    alternate_style: true
-- pymdownx.tasklist:
-    custom_checkbox: true
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
 plugins:
-- search
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/SeCuReDmE-main-dev
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UCYHLMJuIoJre3n39z7LUGIg
+    - icon: fontawesome/solid/id-card
+      link: https://orcid.org/0009-0007-2904-0443
+
 nav:
-- Scholarium Teach:
-  - Vision and Idea Registry: teach/IDEA_REGISTRY.md
-  - Architecture: teach/ARCHITECTURE.md
-  - Privacy and EFVP: teach/PRIVACY_EFVP.md
-  - Risk Register: teach/RISK_REGISTER.md
-  - Evidence Register: teach/EVIDENCE_REGISTER.md
-  - Plan 163 Actions: teach/PLAN_163_ACTIONS.md
-- Home: index.md
-- Accessibility:
-  - Edge User Console: accessibility/edge-user-console.md
-  - Neurodivergent Comfort: accessibility/neurodivergent-comfort.md
+  - Home: index.md
+  - Start in 15 minutes: getting-started/15-minute-tutorial.md
+  - Tool library:
+      - All 12 tools: tools/index.md
+      - AlgoQuest Qbit: tools/algoquest-qbit.md
+      - Algorithm Builder: tools/algorithm-builder.md
+      - FfeD-QLC: tools/ffed-qlc.md
+      - FNP-QNN: tools/fnp-qnn.md
+      - FNP-QNN Gateway: tools/fnpqnn-gateway.md
+      - Market Guardian / RetailGuard: tools/retailguard.md
+      - QuaNThoR: tools/quanthor.md
+      - Scholarium: tools/scholarium.md
+      - Synthia: tools/synthia.md
+      - Tesla Recovery Workbench: tools/tesla-workbench.md
+      - V.O.T. Guardian: tools/vot-guardian.md
+      - Visual Algorithm Designer: tools/visual-algorithm-designer.md
+  - Collaborate:
+      - All 40 prompts: teach/LIFE_SCIENCE_40_PROMPT_BOOK.md
+      - Code collaboration boundary: CODE-COLLABORATION-BOUNDARY.md
+      - Developer seed protocol: DEVELOPER-SEED-PROTOCOL.md
+      - School safety and HITL: teach/SCHOOL_SAFETY_HITL.md
+  - Watch:
+      - Video library: media/video-library.md
+      - Video integration boundary: VIDEO-INTEGRATION-BOUNDARY.md
+      - Podcast and video studio: PODCAST-VIDEO-STUDIO.md
+  - Platform:
+      - API coverage: API-COVERAGE-MATRIX.md
+      - API versioning: API-VERSIONING.md
+      - Provenance verification: PROVENANCE-VERIFICATION.md
+      - Publication formats: PUBLICATION-FORMATS.md
+      - Security baseline: SECURITY-BASELINE.md
+  - Accessibility:
+      - Edge user console: accessibility/edge-user-console.md
+      - Neurodivergent comfort: accessibility/neurodivergent-comfort.md

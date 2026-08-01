@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "generated_from": "workspace-repositories.json",
+  "tools": [
+    {
+      "slug": "algoquest-qbit",
+      "repo": "algoquest-ams-discovry-labs-module-",
+      "title": "AlgoQuest Qbit Education",
+      "classification": "Algorithm learning",
+      "summary": "Interactive algorithm and quantum-concept learning through bounded, inspectable exercises.",
+      "public_url": "https://algoquest.securedme.ca"
+    },
+    {
+      "slug": "algorithm-builder",
+      "repo": "algorithm-builder-app",
+      "title": "Algorithm Builder",
+      "classification": "Algorithm learning",
+      "summary": "A visual workspace for composing, inspecting, and explaining algorithm structures.",
+      "public_url": "https://algorithm-builder.securedme.ca"
+    },
+    {
+      "slug": "ffed-qlc",
+      "repo": "FfeD-QLC-MVP",
+      "title": "FfeD-QLC",
+      "classification": "Education research",
+      "summary": "An education-first research surface for structured quantum and logical-computation experiments.",
+      "public_url": "https://ffed-qlc.securedme.ca"
+    },
+    {
+      "slug": "fnp-qnn",
+      "repo": "FNP-QNN-MVP",
+      "title": "FNP-QNN",
+      "classification": "Education simulator",
+      "summary": "A governed simulator for repeatable mathematical experiments; simulation is never presented as physical detection.",
+      "public_url": "https://fnp-qnn.securedme.ca"
+    },
+    {
+      "slug": "fnpqnn-gateway",
+      "repo": "fnpqnn_gateway_MVP",
+      "title": "FNP-QNN Gateway",
+      "classification": "Suite gateway",
+      "summary": "The shared integration boundary for suite services, audit routes, and controlled tool access.",
+      "public_url": "https://gateway.securedme.ca"
+    },
+    {
+      "slug": "retailguard",
+      "repo": "market-guardian-retailguard",
+      "title": "Market Guardian / RetailGuard",
+      "classification": "Defensive cybersecurity education",
+      "summary": "A defensive retail-security learning environment focused on explainable safeguards and review.",
+      "public_url": "https://retailguard.securedme.ca"
+    },
+    {
+      "slug": "quanthor",
+      "repo": "QuaNThoR",
+      "title": "QuaNThoR",
+      "classification": "Formal mathematics education",
+      "summary": "A formalization coach that helps move from an informal claim toward reviewable mathematical structure.",
+      "public_url": "https://quanthor.securedme.ca"
+    },
+    {
+      "slug": "scholarium",
+      "repo": "securedme-scholarium",
+      "title": "SecuredMe Scholarium",
+      "classification": "Education platform",
+      "summary": "The public education and research commons, and the canonical documentation home for the suite.",
+      "public_url": "https://www.scholarium.securedme.ca"
+    },
+    {
+      "slug": "synthia",
+      "repo": "Synthia",
+      "title": "Synthia",
+      "classification": "Scientific education",
+      "summary": "A traceability system for classifying scientific candidate memories while preserving sources and uncertainty.",
+      "public_url": "https://github.com/SeCuReDmE-main-dev/Synthia"
+    },
+    {
+      "slug": "tesla-workbench",
+      "repo": "tesla-resonance-recovery-workbench",
+      "title": "Tesla Resonance Recovery Workbench",
+      "classification": "Validation workbench",
+      "summary": "A reproducible workbench for recovery, comparison, and validation of structured resonance experiments.",
+      "public_url": "https://tesla-workbench.securedme.ca"
+    },
+    {
+      "slug": "vot-guardian",
+      "repo": "V.O.T-Guardian",
+      "title": "V.O.T. Guardian",
+      "classification": "Defensive cybersecurity education",
+      "summary": "A defensive cybersecurity training surface for transparent, human-reviewed threat reasoning.",
+      "public_url": "https://vot-guardian.securedme.ca"
+    },
+    {
+      "slug": "visual-algorithm-designer",
+      "repo": "VisualAlgorithmDesigner",
+      "title": "Visual Algorithm Designer",
+      "classification": "Algorithm learning",
+      "summary": "A visual editor for learning how algorithms are assembled, inspected, and communicated.",
+      "public_url": "https://vad.securedme.ca"
+    }
+  ]
+}
