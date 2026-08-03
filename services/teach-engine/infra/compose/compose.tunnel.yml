@@ -1,0 +1,18 @@
+services:
+  cloudflared:
+    # The digest is deliberately required. The alpha compose file never pulls
+    # a moving tunnel image and this overlay has no host port.
+    image: ${SCHOLARIUM_TEACH_CLOUDFLARED_IMAGE_DIGEST:?pin through Settings Operator}
+    command: tunnel --no-autoupdate run --token ${SCHOLARIUM_TEACH_CLOUDFLARE_TUNNEL_TOKEN:?configure through Settings Operator}
+    depends_on:
+      engine:
+        condition: service_healthy
+    networks: [engine]
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: [no-new-privileges:true]
+
+networks:
+  engine:
+    external: true
+    name: scholarium-teach-alpha_engine

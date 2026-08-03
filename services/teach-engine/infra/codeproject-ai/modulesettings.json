@@ -1,0 +1,14 @@
+{
+  "schema": "scholarium.teach.codeproject-adapter-settings.v1",
+  "enabled": false,
+  "activation": "requires_reviewed_capability_manifest",
+  "baseUrlSetting": "SCHOLARIUM_CODEPROJECT_URL",
+  "timeoutMs": 2000,
+  "maxAudioBytes": 2097152,
+  "maxAudioDurationMs": 10000,
+  "authority": "observation_only",
+  "canChangeMastery": false,
+  "retainAudio": false,
+  "allowedProfiles": ["synthetic", "consenting_adult"],
+  "blockedProfiles": ["minor"]
+}

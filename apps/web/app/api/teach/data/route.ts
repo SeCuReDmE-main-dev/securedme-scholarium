@@ -7,6 +7,7 @@ import {
   teachMediaPublicationConfirmations, teachGate5Jobs,
   teachModules, teachPurposeConsents, teachWeeklyObjectives, teachCircleMemberships, teachCircles,
   teachProjectEntries, teachProjectThreads, teachRecognitions, teachRecaps,
+  teachEngineAttempts, teachEngineEducatorAssignments, teachEngineOutbox, teachEnginePrivacyConsents, teachEngineReceipts, teachEngineSessions,
 } from "../../../../db/schema";
 import { getPlatformIdentity, signInRequired } from "../../../../lib/platform-identity";
 
@@ -25,7 +26,17 @@ export async function DELETE() {
   const ownedProjectIds = ownedProjects.map((row) => row.id);
   const ownedCircles = await db.select({ id: teachCircles.id }).from(teachCircles).where(eq(teachCircles.ownerUserId, identity.userId));
   const ownedCircleIds = ownedCircles.map((row) => row.id);
+  const engineSessionRows = await db.select({ id: teachEngineSessions.id }).from(teachEngineSessions).where(eq(teachEngineSessions.userId, identity.userId));
+  const engineSessionIds = engineSessionRows.map((row) => row.id);
+  const engineAttemptRows = engineSessionIds.length ? await db.select({ id: teachEngineAttempts.id }).from(teachEngineAttempts).where(inArray(teachEngineAttempts.sessionId, engineSessionIds)) : [];
+  const engineAttemptIds = engineAttemptRows.map((row) => row.id);
 
+  if (engineAttemptIds.length) await db.delete(teachEngineReceipts).where(inArray(teachEngineReceipts.attemptId, engineAttemptIds));
+  if (engineSessionIds.length) await db.delete(teachEngineOutbox).where(inArray(teachEngineOutbox.sessionId, engineSessionIds));
+  if (engineSessionIds.length) await db.delete(teachEngineAttempts).where(inArray(teachEngineAttempts.sessionId, engineSessionIds));
+  await db.delete(teachEngineSessions).where(eq(teachEngineSessions.userId, identity.userId));
+  await db.delete(teachEnginePrivacyConsents).where(eq(teachEnginePrivacyConsents.userId, identity.userId));
+  await db.delete(teachEngineEducatorAssignments).where(or(eq(teachEngineEducatorAssignments.educatorUserId, identity.userId), eq(teachEngineEducatorAssignments.learnerUserId, identity.userId)));
   await db.delete(learningReminders).where(eq(learningReminders.userId, identity.userId));
   await db.delete(learningAttempts).where(eq(learningAttempts.userId, identity.userId));
   await db.delete(teachCheckpoints).where(eq(teachCheckpoints.userId, identity.userId));

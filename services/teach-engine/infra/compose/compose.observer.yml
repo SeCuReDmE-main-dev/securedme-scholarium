@@ -1,0 +1,16 @@
+services:
+  codeproject-ai:
+    # An observer is opt-in and must use a reviewed immutable image digest.
+    image: ${SCHOLARIUM_CODEPROJECT_IMAGE_DIGEST:?pin through Settings Operator}
+    profiles: [observers]
+    expose: ["32168"]
+    networks: [observers]
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: [no-new-privileges:true]
+    volumes:
+      - ../codeproject-ai/appsettings.json:/etc/codeproject/ai/appsettings.json:ro
+
+networks:
+  observers:
+    internal: true

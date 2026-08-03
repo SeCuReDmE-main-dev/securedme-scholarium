@@ -40,3 +40,16 @@ Validated public routes:
 ## Remaining Boundary
 
 The public GitHub Pages mirror is validated. Switching or redirecting `docs.securedme.ca` remains a live-domain operation and requires explicit human approval.
+
+## Scholarium Teach Pre-Alpha Closure
+
+Scholarium Teach is closed on 2026-08-02 as `pre-alpha closed / alpha blocked`.
+The syllable-first engine has deterministic core proof, synthetic Linux D1
+proof, valid settings contract, passing Teach contract tests, and a passing
+Vinext production build. It does not pass alpha.
+
+The remaining alpha blockers are route-level Teach proof with a Linux-compatible
+test identity adapter, Settings Operator secrets, private ingress, backup and
+restore proof, CodeProject.AI live contract verification, Timescale/PostgreSQL
+runtime acceptance, full Playwright/accessibility/device gates, and qualified
+privacy review before any minor, school, or external access.

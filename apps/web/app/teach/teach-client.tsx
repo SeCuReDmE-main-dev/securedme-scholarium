@@ -18,6 +18,7 @@ import { TeachAdministrationPanel, TeachSourcesPanel } from "./teach-governance-
 import { TeachPortfolioPanel, TeachStatisticsPanel } from "./teach-social-panels";
 import { TeachSafetyPanel } from "./teach-safety-panel";
 import { ScholariumControls } from "../components/scholarium-controls";
+import { SyllabicLessonPanel } from "./syllabic-lesson-panel";
 
 type ObjectiveProgress = { attempts: number; state: MasteryState };
 type ProgressMap = Record<string, ObjectiveProgress>;
@@ -304,7 +305,8 @@ export function TeachClient({ authenticated = false }: { authenticated?: boolean
         <div className="teach-header-tools"><ScholariumControls compact /><div className="teach-session-state"><span>{masteredCount}/{spanishStarterLesson.objectives.length}</span><small>maitrisees</small></div></div>
       </header>
 
-      {view === "learn" && <div id="teach-learn-panel" role="tabpanel">
+      {view === "learn" && <SyllabicLessonPanel authenticated={sessionAuthenticated} />}
+      {false && view === "learn" && <div id="teach-legacy-lesson-panel" role="tabpanel">
         <section className="teach-context-band">
           <div><p className="teach-eyebrow">ESPAGNOL · CONVERSATION 01</p><h1>{spanishStarterLesson.title}</h1></div>
           <div className="teach-progress-block">

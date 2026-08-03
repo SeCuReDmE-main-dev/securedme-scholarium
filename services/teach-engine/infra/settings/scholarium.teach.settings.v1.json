@@ -1,0 +1,22 @@
+{
+  "schema": "scholarium.teach.settings.v1",
+  "settings": {
+    "SCHOLARIUM_TEACH_ENGINE_URL": { "type": "url", "required": false },
+    "SCHOLARIUM_TEACH_ENGINE_HMAC_SECRET": { "type": "secret", "required": true },
+    "SCHOLARIUM_TEACH_POSTGRES_ADMIN_PASSWORD": { "type": "secret", "required": true },
+    "SCHOLARIUM_TEACH_POSTGRES_READER_PASSWORD": { "type": "secret", "required": true },
+    "SCHOLARIUM_TEACH_POSTGRES_DSN": { "type": "secret", "required": false },
+    "SCHOLARIUM_TEACH_TIMESCALE_DSN": { "type": "secret", "required": false },
+    "SCHOLARIUM_CODEPROJECT_URL": { "type": "url", "required": false },
+    "SCHOLARIUM_CODEPROJECT_ENABLED": { "type": "boolean", "default": false },
+    "SCHOLARIUM_TEACH_AUDIO_MODE": { "type": "enum", "values": ["disabled", "synthetic", "consenting_adult"], "default": "disabled" },
+    "SCHOLARIUM_TEACH_CLOUDFLARE_TUNNEL_TOKEN": { "type": "secret", "required": false },
+    "SCHOLARIUM_TEACH_CLOUDFLARED_IMAGE_DIGEST": { "type": "string", "required": false },
+    "SCHOLARIUM_CODEPROJECT_IMAGE_DIGEST": { "type": "string", "required": false },
+    "SCHOLARIUM_TEACH_ENGINE_ACCESS_CLIENT_ID": { "type": "string", "required": false },
+    "SCHOLARIUM_TEACH_ENGINE_ACCESS_CLIENT_SECRET": { "type": "secret", "required": false },
+    "SCHOLARIUM_OBJECT_STORE_IMAGE_DIGEST": { "type": "string", "required": false },
+    "SCHOLARIUM_OBJECT_STORE_ACCESS_KEY": { "type": "secret", "required": false },
+    "SCHOLARIUM_OBJECT_STORE_SECRET_KEY": { "type": "secret", "required": false }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "block_id": "castellano-latam-neutral",
+  "content_digest": "sha256:d95b28a584aa13f608eaed1262a7e6d6f24ae573163cf98855a1fe761ff8b26d",
+  "engine_api_major": 1,
+  "entry_node_id": "syllable-ma-series",
+  "language_profile": {
+    "display_name": "Castellano",
+    "locale": "es-419",
+    "profile_id": "castellano-latam-neutral-1",
+    "regional_scope": "latin-american-neutral-initial"
+  },
+  "nodes": [
+    {
+      "audio_ref": "audio/es-419/ma.v1.wav",
+      "kind": "syllable",
+      "node_id": "syllable-ma-series",
+      "picture_as_answer": false,
+      "position": 0,
+      "prerequisites": [],
+      "prompt": "Lee la sílaba indicada: ma",
+      "required_evidence": [
+        "independent",
+        "delayed_recall"
+      ],
+      "syllables": [
+        "ma",
+        "mi",
+        "mu",
+        "mo",
+        "me"
+      ],
+      "target": "ma"
+    },
+    {
+      "audio_ref": "audio/es-419/ma.v1.wav",
+      "kind": "sound",
+      "node_id": "sound-ma-series",
+      "picture_as_answer": false,
+      "position": 1,
+      "prerequisites": [
+        "syllable-ma-series"
+      ],
+      "prompt": "Escucha y reconoce: ma",
+      "required_evidence": [
+        "independent"
+      ],
+      "syllables": [
+        "ma",
+        "mi",
+        "mu",
+        "mo",
+        "me"
+      ],
+      "target": "ma"
+    },
+    {
+      "audio_ref": null,
+      "kind": "composition",
+      "node_id": "composition-mama",
+      "picture_as_answer": false,
+      "position": 2,
+      "prerequisites": [
+        "sound-ma-series"
+      ],
+      "prompt": "Combina ma + ma",
+      "required_evidence": [
+        "independent",
+        "recomposition"
+      ],
+      "syllables": [
+        "ma",
+        "ma"
+      ],
+      "target": "mama"
+    },
+    {
+      "audio_ref": "audio/es-419/mama.v1.wav",
+      "kind": "reading",
+      "node_id": "reading-mama",
+      "picture_as_answer": false,
+      "position": 3,
+      "prerequisites": [
+        "composition-mama"
+      ],
+      "prompt": "Lee sin modelo: mama",
+      "required_evidence": [
+        "independent",
+        "delayed_recall",
+        "transfer"
+      ],
+      "syllables": [
+        "ma",
+        "ma"
+      ],
+      "target": "mama"
+    },
+    {
+      "audio_ref": null,
+      "kind": "writing",
+      "node_id": "writing-mama",
+      "picture_as_answer": false,
+      "position": 4,
+      "prerequisites": [
+        "reading-mama"
+      ],
+      "prompt": "Escribe la palabra que ya puedes leer",
+      "required_evidence": [
+        "independent",
+        "reading_mastery"
+      ],
+      "syllables": [
+        "ma",
+        "ma"
+      ],
+      "target": "mama"
+    }
+  ],
+  "policy_digest": "sha256:55a5f4181b4fd9e8a6e7a9540e4c1647838ef48c257869546f0d6d70276f8745",
+  "provenance": [
+    {
+      "citation": "Prof. Hector Fernando Aguilar syllable-first teaching correspondence; message identifiers remain in the private provenance registry.",
+      "evidence_level": "hypothesis",
+      "source_id": "aguilar-hf-thread",
+      "source_type": "expert_message"
+    },
+    {
+      "citation": "IES Foundational Skills to Support Reading for Understanding, Practice Guide 21.",
+      "evidence_level": "experimental",
+      "source_id": "ies-foundational-reading-21",
+      "source_type": "research"
+    }
+  ],
+  "schema_id": "scholarium.teach.block-manifest.v1",
+  "status": "published",
+  "version": "1.0.0"
+}

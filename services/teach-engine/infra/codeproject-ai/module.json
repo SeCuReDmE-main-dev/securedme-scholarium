@@ -1,0 +1,10 @@
+{
+  "ModuleId": "ScholariumTeachObserver",
+  "Name": "Scholarium Teach Multimodal Observer",
+  "Version": "1.0.0",
+  "Description": "Optional non-authoritative audio and visual observations for Scholarium Teach.",
+  "Platforms": ["windows", "linux"],
+  "Accelerator": "none",
+  "InstallOptions": [],
+  "Modules": []
+}

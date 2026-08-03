@@ -1,0 +1,60 @@
+name: scholarium-teach-alpha
+
+services:
+  engine:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    environment:
+      SCHOLARIUM_TEACH_ENGINE_HMAC_SECRET: ${SCHOLARIUM_TEACH_ENGINE_HMAC_SECRET:?configure through Settings Operator}
+      SCHOLARIUM_TEACH_PACK_ROOT: /app/packs
+    expose: ["8080"]
+    networks: [engine, data]
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/internal/v1/health', timeout=2)"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+
+  postgres:
+    build:
+      context: ..
+      dockerfile: postgres/Dockerfile
+    environment:
+      POSTGRES_DB: scholarium_teach
+      POSTGRES_USER: scholarium_catalog
+      POSTGRES_PASSWORD: ${SCHOLARIUM_TEACH_POSTGRES_ADMIN_PASSWORD:?configure through Settings Operator}
+      SCHOLARIUM_ENGINE_READER_PASSWORD: ${SCHOLARIUM_TEACH_POSTGRES_READER_PASSWORD:?configure through Settings Operator}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    expose: ["5432"]
+    networks: [data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+
+  object-store:
+    image: ${SCHOLARIUM_OBJECT_STORE_IMAGE_DIGEST:?pin through Settings Operator}
+    profiles: [object-store]
+    command: server /data --console-address :9001
+    environment:
+      MINIO_ROOT_USER: ${SCHOLARIUM_OBJECT_STORE_ACCESS_KEY:?configure through Settings Operator}
+      MINIO_ROOT_PASSWORD: ${SCHOLARIUM_OBJECT_STORE_SECRET_KEY:?configure through Settings Operator}
+    volumes: [object_data:/data]
+    expose: ["9000", "9001"]
+    networks: [data]
+    security_opt: [no-new-privileges:true]
+
+networks:
+  web: { internal: true }
+  engine: { internal: true }
+  data: { internal: true }
+
+volumes:
+  postgres_data:
+  object_data:

@@ -1,0 +1,46 @@
+{
+  "schema": "scholarium.teach-syllabic-surgery-state.v1",
+  "program": "scholarium-teach-syllabic-surgery-81-actions",
+  "baselineCommit": "92172e3",
+  "historicalProgram": "scholarium-teach-163-actions",
+  "historicalExecutionRewound": false,
+  "scope": ["securedme-scholarium", "scholarium-teach"],
+  "stages": 9,
+  "actionsPerStage": 9,
+  "testsPerStage": 5,
+  "status": "in_progress",
+  "activeStage": 5,
+  "completedStages": [1, 2, 3, 4],
+  "actionProgress": {
+    "completed": 36,
+    "implementedPendingOperationalProof": 32,
+    "blockedOrPending": 13,
+    "total": 81
+  },
+  "verification": {
+    "pythonTestsPassed": 20,
+    "newWebContractTestsPassed": 6,
+    "historicalAndCurrentWebTestsPassed": 142,
+    "webBuildPassed": true,
+    "lintErrors": 0,
+    "packDigest": "sha256:d95b28a584aa13f608eaed1262a7e6d6f24ae573163cf98855a1fe761ff8b26d",
+    "packReproducibilityRuns": 2,
+    "styledVisualQaPassed": false,
+    "containerBuildPassed": true,
+    "containerPython": "3.12.11",
+    "containerRunsAs": "engine",
+    "runtimeHealthPassed": true,
+    "runtimeHmacDecisionPassed": true,
+    "runtimeAudioAdultObserved": true,
+    "runtimeAudioMinorBlocked": true,
+    "d1MigrationApplied": false
+  },
+  "realMinorPilotAllowed": false,
+  "blockers": [
+    "qualified_quebec_privacy_review_required",
+    "qualified_france_eu_privacy_review_required",
+    "local_workerd_runtime_failure_on_z_volume",
+    "vinext_start_static_assets_unavailable_in_local_preview",
+    "d1_migration_and_private_runtime_settings_not_applied"
+  ]
+}

@@ -42,6 +42,11 @@ import {
   teachExceptionalAccessApprovals,
   teachExceptionalAccessAuditEvents,
   teachExceptionalAccessRequests,
+  teachEngineAttempts,
+  teachEnginePrivacyConsents,
+  teachEngineOutbox,
+  teachEngineReceipts,
+  teachEngineSessions,
   teachMediaRequests,
   teachMediaPublicationConfirmations,
   teachProjectEntries,
@@ -117,7 +122,7 @@ export async function GET() {
     const savedCollectionItems = collectionIds.length ? await db.select().from(collectionItems).where(inArray(collectionItems.collectionId, collectionIds)) : [];
     const ownedProjectRows = await db.select().from(teachProjectThreads).where(eq(teachProjectThreads.ownerUserId, account.id));
     const ownedProjectIds = ownedProjectRows.map((project) => project.id);
-    const [teachAttemptRows, teachReminderRows, teachCheckpointRows, strengthRows, algoquestRows, assistantGraphRows, assistantExchangeRows, weeklyObjectiveRows, interventionPreferenceRows, growthRows, teachMediaRows, teachMediaPublicationRows, teachGate5Rows, teachConsentRows, projectEntryRows, circleRows, circleMembershipRows, recognitionRows, recapRows] = await Promise.all([
+    const [teachAttemptRows, teachReminderRows, teachCheckpointRows, strengthRows, algoquestRows, assistantGraphRows, assistantExchangeRows, weeklyObjectiveRows, interventionPreferenceRows, growthRows, teachMediaRows, teachMediaPublicationRows, teachGate5Rows, teachConsentRows, projectEntryRows, circleRows, circleMembershipRows, recognitionRows, recapRows, engineSessionRows] = await Promise.all([
       db.select().from(learningAttempts).where(eq(learningAttempts.userId, account.id)),
       db.select().from(learningReminders).where(eq(learningReminders.userId, account.id)),
       db.select().from(teachCheckpoints).where(eq(teachCheckpoints.userId, account.id)),
@@ -149,7 +154,24 @@ export async function GET() {
       db.select().from(teachCircleMemberships).where(eq(teachCircleMemberships.userId, account.id)),
       db.select({ category: teachRecognitions.category, circleId: teachRecognitions.circleId, context: teachRecognitions.context, createdAt: teachRecognitions.createdAt, evidenceRef: teachRecognitions.evidenceRef, id: teachRecognitions.id, reviewedAt: teachRecognitions.reviewedAt, statement: teachRecognitions.statement, status: teachRecognitions.status }).from(teachRecognitions).where(or(eq(teachRecognitions.issuerUserId, account.id), eq(teachRecognitions.recipientUserId, account.id))),
       db.select().from(teachRecaps).where(eq(teachRecaps.userId, account.id)),
+      db.select().from(teachEngineSessions).where(eq(teachEngineSessions.userId, account.id)),
     ]);
+    const engineSessionIds = engineSessionRows.map((row) => row.id);
+    const engineAttemptRows = engineSessionIds.length ? await db.select().from(teachEngineAttempts).where(inArray(teachEngineAttempts.sessionId, engineSessionIds)) : [];
+    const engineAttemptIds = engineAttemptRows.map((row) => row.id);
+    const [engineReceiptRows, engineOutboxRows] = await Promise.all([
+      engineAttemptIds.length ? db.select().from(teachEngineReceipts).where(inArray(teachEngineReceipts.attemptId, engineAttemptIds)) : Promise.resolve([]),
+      engineSessionIds.length ? db.select().from(teachEngineOutbox).where(inArray(teachEngineOutbox.sessionId, engineSessionIds)) : Promise.resolve([]),
+    ]);
+    const enginePrivacyConsentRows = await db.select({
+      expiresAt: teachEnginePrivacyConsents.expiresAt,
+      grantedAt: teachEnginePrivacyConsents.grantedAt,
+      policyVersion: teachEnginePrivacyConsents.policyVersion,
+      purpose: teachEnginePrivacyConsents.purpose,
+      receiptDigest: teachEnginePrivacyConsents.receiptDigest,
+      revokedAt: teachEnginePrivacyConsents.revokedAt,
+      status: teachEnginePrivacyConsents.status,
+    }).from(teachEnginePrivacyConsents).where(eq(teachEnginePrivacyConsents.userId, account.id));
     const exceptionalAccessRows = await db.select().from(teachExceptionalAccessRequests).where(or(
       eq(teachExceptionalAccessRequests.requesterUserId, account.id),
       eq(teachExceptionalAccessRequests.subjectUserId, account.id),
@@ -210,6 +232,11 @@ export async function GET() {
         learningAttempts: teachAttemptRows,
         learningReminders: teachReminderRows,
         checkpoints: teachCheckpointRows,
+        engineSessions: engineSessionRows,
+        engineAttempts: engineAttemptRows,
+        engineReceipts: engineReceiptRows,
+        engineOutbox: engineOutboxRows,
+        enginePrivacyConsents: enginePrivacyConsentRows,
         strengthObservations: strengthRows,
         algoquestLearningEvents: algoquestRows,
         assistantGraphRecords: assistantGraphRows,

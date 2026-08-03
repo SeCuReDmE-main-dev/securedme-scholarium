@@ -786,6 +786,103 @@ export const teachCheckpoints = sqliteTable("teach_checkpoints", {
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
 
+/** Canonical syllabic-engine sessions. D1 owns this state; Python receives a copy per decision. */
+export const teachEngineSessions = sqliteTable("teach_engine_sessions", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  blockId: text("block_id").notNull(),
+  blockVersion: text("block_version").notNull(),
+  blockDigest: text("block_digest").notNull(),
+  policyDigest: text("policy_digest").notNull(),
+  checkpointJson: text("checkpoint_json").notNull(),
+  checkpointDigest: text("checkpoint_digest").notNull(),
+  status: text("status").notNull().default("active"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  uniqueIndex("teach_engine_sessions_user_block_idx").on(table.userId, table.blockId, table.blockVersion),
+  index("teach_engine_sessions_user_idx").on(table.userId),
+]);
+
+export const teachEngineAttempts = sqliteTable("teach_engine_attempts", {
+  id: text("id").primaryKey(),
+  sessionId: text("session_id").notNull().references(() => teachEngineSessions.id),
+  userId: text("user_id").notNull().references(() => users.id),
+  idempotencyKey: text("idempotency_key").notNull(),
+  requestDigest: text("request_digest").notNull(),
+  expectedCheckpointDigest: text("expected_checkpoint_digest").notNull(),
+  nodeId: text("node_id").notNull(),
+  answerRedacted: text("answer_redacted").notNull().default("[bounded evidence]"),
+  receiptId: text("receipt_id").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  uniqueIndex("teach_engine_attempts_idempotency_idx").on(table.sessionId, table.idempotencyKey),
+  index("teach_engine_attempts_user_idx").on(table.userId),
+]);
+
+export const teachEngineReceipts = sqliteTable("teach_engine_receipts", {
+  id: text("id").primaryKey(),
+  sessionId: text("session_id").notNull().references(() => teachEngineSessions.id),
+  attemptId: text("attempt_id").notNull().references(() => teachEngineAttempts.id),
+  receiptJson: text("receipt_json").notNull(),
+  receiptDigest: text("receipt_digest").notNull(),
+  previousCheckpointDigest: text("previous_checkpoint_digest").notNull(),
+  nextCheckpointDigest: text("next_checkpoint_digest").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  uniqueIndex("teach_engine_receipts_attempt_idx").on(table.attemptId),
+  index("teach_engine_receipts_session_idx").on(table.sessionId),
+]);
+
+export const teachEngineOutbox = sqliteTable("teach_engine_outbox", {
+  id: text("id").primaryKey(),
+  sessionId: text("session_id").notNull().references(() => teachEngineSessions.id),
+  eventType: text("event_type").notNull(),
+  payloadJson: text("payload_json").notNull(),
+  payloadDigest: text("payload_digest").notNull(),
+  destination: text("destination").notNull(),
+  status: text("status").notNull().default("pending"),
+  attempts: integer("attempts").notNull().default(0),
+  nextAttemptAt: text("next_attempt_at"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  deliveredAt: text("delivered_at"),
+}, (table) => [index("teach_engine_outbox_delivery_idx").on(table.destination, table.status, table.nextAttemptAt)]);
+
+/** Separate, revocable consent records. Audio itself never appears in this table. */
+export const teachEnginePrivacyConsents = sqliteTable("teach_engine_privacy_consents", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  purpose: text("purpose").notNull(),
+  status: text("status").notNull().default("granted"),
+  policyVersion: text("policy_version").notNull(),
+  receiptDigest: text("receipt_digest").notNull(),
+  grantedAt: text("granted_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  expiresAt: text("expires_at").notNull(),
+  revokedAt: text("revoked_at"),
+}, (table) => [index("teach_engine_privacy_consents_user_idx").on(table.userId, table.purpose, table.status, table.expiresAt)]);
+
+/** An explicit assignment is required before an educator may request a learner projection. */
+export const teachEngineEducatorAssignments = sqliteTable("teach_engine_educator_assignments", {
+  id: text("id").primaryKey(),
+  educatorUserId: text("educator_user_id").notNull().references(() => users.id),
+  learnerUserId: text("learner_user_id").notNull().references(() => users.id),
+  status: text("status").notNull().default("active"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  revokedAt: text("revoked_at"),
+}, (table) => [uniqueIndex("teach_engine_educator_assignment_unique_idx").on(table.educatorUserId, table.learnerUserId), index("teach_engine_educator_assignment_learner_idx").on(table.learnerUserId, table.status)]);
+
+/** Organization rows contain delayed, k-anonymous aggregates only. */
+export const teachEngineOrganizationAggregates = sqliteTable("teach_engine_organization_aggregates", {
+  id: text("id").primaryKey(),
+  organizationScope: text("organization_scope").notNull(),
+  metricKey: text("metric_key").notNull(),
+  timeBucket: text("time_bucket").notNull(),
+  cohortSize: integer("cohort_size").notNull(),
+  valueInteger: integer("value_integer").notNull(),
+  sourceWindowDigest: text("source_window_digest").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [index("teach_engine_organization_aggregates_scope_idx").on(table.organizationScope, table.metricKey, table.timeBucket)]);
+
 export const strengthObservations = sqliteTable("strength_observations", {
   id: text("id").primaryKey(),
   userId: text("user_id").notNull().references(() => users.id),

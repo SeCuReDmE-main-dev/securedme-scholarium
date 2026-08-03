@@ -1,0 +1,87 @@
+{
+  "schema_id": "scholarium.teach.block-manifest.v1",
+  "block_id": "castellano-latam-neutral",
+  "version": "1.0.0",
+  "engine_api_major": 1,
+  "status": "published",
+  "language_profile": {
+    "profile_id": "castellano-latam-neutral-1",
+    "locale": "es-419",
+    "display_name": "Castellano",
+    "regional_scope": "latin-american-neutral-initial"
+  },
+  "entry_node_id": "syllable-ma-series",
+  "nodes": [
+    {
+      "node_id": "syllable-ma-series",
+      "kind": "syllable",
+      "position": 0,
+      "prompt": "Lee la sílaba indicada: ma",
+      "target": "ma",
+      "syllables": ["ma", "mi", "mu", "mo", "me"],
+      "required_evidence": ["independent", "delayed_recall"],
+      "picture_as_answer": false,
+      "audio_ref": "audio/es-419/ma.v1.wav"
+    },
+    {
+      "node_id": "sound-ma-series",
+      "kind": "sound",
+      "position": 1,
+      "prompt": "Escucha y reconoce: ma",
+      "target": "ma",
+      "syllables": ["ma", "mi", "mu", "mo", "me"],
+      "prerequisites": ["syllable-ma-series"],
+      "required_evidence": ["independent"],
+      "picture_as_answer": false,
+      "audio_ref": "audio/es-419/ma.v1.wav"
+    },
+    {
+      "node_id": "composition-mama",
+      "kind": "composition",
+      "position": 2,
+      "prompt": "Combina ma + ma",
+      "target": "mama",
+      "syllables": ["ma", "ma"],
+      "prerequisites": ["sound-ma-series"],
+      "required_evidence": ["independent", "recomposition"],
+      "picture_as_answer": false
+    },
+    {
+      "node_id": "reading-mama",
+      "kind": "reading",
+      "position": 3,
+      "prompt": "Lee sin modelo: mama",
+      "target": "mama",
+      "syllables": ["ma", "ma"],
+      "prerequisites": ["composition-mama"],
+      "required_evidence": ["independent", "delayed_recall", "transfer"],
+      "picture_as_answer": false,
+      "audio_ref": "audio/es-419/mama.v1.wav"
+    },
+    {
+      "node_id": "writing-mama",
+      "kind": "writing",
+      "position": 4,
+      "prompt": "Escribe la palabra que ya puedes leer",
+      "target": "mama",
+      "syllables": ["ma", "ma"],
+      "prerequisites": ["reading-mama"],
+      "required_evidence": ["independent", "reading_mastery"],
+      "picture_as_answer": false
+    }
+  ],
+  "provenance": [
+    {
+      "source_id": "aguilar-hf-thread",
+      "source_type": "expert_message",
+      "citation": "Prof. Hector Fernando Aguilar syllable-first teaching correspondence; message identifiers remain in the private provenance registry.",
+      "evidence_level": "hypothesis"
+    },
+    {
+      "source_id": "ies-foundational-reading-21",
+      "source_type": "research",
+      "citation": "IES Foundational Skills to Support Reading for Understanding, Practice Guide 21.",
+      "evidence_level": "experimental"
+    }
+  ]
+}

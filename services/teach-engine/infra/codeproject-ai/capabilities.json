@@ -1,0 +1,12 @@
+{
+  "schema": "scholarium.teach.codeproject-capabilities.v1",
+  "capabilities": [],
+  "policy": {
+    "default": "deny",
+    "meshEnabled": false,
+    "canChangeMastery": false,
+    "retainRequest": false,
+    "retainResponse": false,
+    "permittedProfiles": ["synthetic", "consenting_adult"]
+  }
+}

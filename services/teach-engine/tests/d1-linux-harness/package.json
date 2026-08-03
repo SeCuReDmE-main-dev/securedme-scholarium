@@ -1,0 +1,8 @@
+{
+  "name": "scholarium-teach-d1-linux-harness",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "wrangler": "4.118.0"
+  }
+}
