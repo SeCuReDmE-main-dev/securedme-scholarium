@@ -20,7 +20,7 @@
   <a href="https://github.com/SeCuReDmE-main-dev/securedme-scholarium/issues">Feedback</a>
 </p>
 
-[![SecuredMe Education Suite public calendar](https://img.shields.io/badge/SecuredMe%20Education%20Suite-public%20calendar%20%7C%20pre--alpha%20through%20Aug%208%202026-5484ED?style=for-the-badge&logo=googlecalendar&logoColor=white)](https://calendrier.securedme.ca)
+[![SecuredMe Education Suite public calendar](https://img.shields.io/badge/SecuredMe%20Education%20Suite-public%20calendar%20%7C%20pre--alpha%20%7C%20active%20public%20development-5484ED?style=for-the-badge&logo=googlecalendar&logoColor=white)](https://calendrier.securedme.ca)
 
 **Attribution:** Jean-Sebastien Beaulieu · [ORCID 0009-0007-2904-0443](https://orcid.org/0009-0007-2904-0443) · [SecuredMe](https://securedme.ca) · [Scholarium](https://www.scholarium.securedme.ca)
 
@@ -43,7 +43,7 @@
 > **Maintainer intake during active finishing week.** This repository is maintained directly on `main` by the SecuredMe maintainer. Public issues are open for bug reports, documentation corrections, security-safe observations, and reproducible feedback, but opening an issue does not promise a response or a delivery date. Pull requests are not accepted during the active code-finishing week; use issues only until this notice is replaced.
 
 > [!IMPORTANT]
-> **Pre-alpha / in development.** Scholarium is being built in public, but it is not yet a production social network. The public preview is for product validation. PayPal checkout now fails closed unless dedicated live credentials and a live webhook ID are configured; provider review, public moderation operations, and youth-flow legal review remain gated.
+> **Pre-alpha — active public development.** Scholarium is being built in public, but it is not yet a production social network. The public preview is for product validation. PayPal checkout now fails closed unless dedicated live credentials and a live webhook ID are configured; provider review, public moderation operations, and youth-flow legal review remain gated.
 
 ## Why Scholarium exists
 
