@@ -26,6 +26,12 @@ These names are registered through SecuredMe Settings Operator. Values never bel
 
 The service must fail closed for decisions when its HMAC or pack is missing. Timescale and CodeProject failures must never block textual learning or mutate D1.
 
+For the Tiger Cloud development service, `SCHOLARIUM_TEACH_TIMESCALE_DSN`
+points to the write-only telemetry target. The historical root-level alias
+`SCHOLARIUM_TIMESCALEDB_DSN` may exist for operator convenience, but Teach code
+should prefer the schema name above. Both names are secrets and must never be
+published, logged or committed with values.
+
 `compose.alpha.yml` is the only runnable alpha base. Tunnel and observer
 services are separate overlays, remain disabled by default, publish no host
 port, and require image digests from Settings Operator.

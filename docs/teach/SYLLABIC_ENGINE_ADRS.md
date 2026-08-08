@@ -30,6 +30,19 @@ available for consultation. TimescaleDB and CodeProject.AI failures never stop
 the deterministic textual lesson. Audio observations are advisory and can
 abstain.
 
+## ADR-STE-006: Tiger Cloud is telemetry infrastructure only
+
+The development TimescaleDB service `scholarium-teach-dev` is accepted as a
+managed telemetry target for synthetic and derived Teach events. It may store
+hypertables, compression and retention policies, and continuous aggregates for
+operational observation. It is not a model host, not a learner authority, and
+not evidence of alpha readiness by itself.
+
+Education AI tooling remains limited to supervised Codex and Antigravity
+workflows. MindsDB, external forecasting services and other model runtimes are
+out of scope for Scholarium Teach unless a later reviewed ADR explicitly admits
+them.
+
 ## ADR-STE-005: voice boundary
 
 Voice is personal data. Audio is processed in bounded memory, is never written

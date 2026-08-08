@@ -35,6 +35,12 @@
 - No backup/restore drill has passed.
 - CodeProject.AI live API contract has not been verified and remains disabled.
 - TimescaleDB/PostgreSQL runtime services are not accepted as alpha evidence yet; they remain catalog/telemetry infrastructure to prove, not pedagogical authority.
+- Tiger Cloud `scholarium-teach-dev` has been verified as a free development
+  TimescaleDB service for synthetic, derived telemetry only. The service
+  successfully hosted the Teach telemetry hypertable, compression and retention
+  policies, a continuous aggregate, a dashboard CSV import, and read queries.
+  This does not change alpha readiness and does not admit external AI model
+  services into the Education runtime.
 - Full Playwright accessibility/device gate remains open.
 - Real-minor audio and pilot use remain prohibited pending qualified EFVP, Loi 25 and France/EU reviews.
 
