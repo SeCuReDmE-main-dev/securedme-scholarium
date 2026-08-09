@@ -421,6 +421,19 @@ test("offers an owner-confirmed Academia migration with private-by-default revie
   assert.match(boundary, /not a bulk scraping tool/);
   assert.match(boundary, /not a WebAuth bypass/);
   assert.match(robots, /disallow: \["\/api\/", "\/app"/);
+  assert.doesNotMatch(robots, /disallow:.*\/privacy/);
+});
+
+test("keeps public legal pages crawlable, canonical, and discoverable", async () => {
+  const robots = await readFile(new URL("../app/robots.ts", import.meta.url), "utf8");
+  const sitemap = await readFile(new URL("../app/sitemap.ts", import.meta.url), "utf8");
+  const privacy = await readFile(new URL("../app/privacy/page.tsx", import.meta.url), "utf8");
+  const terms = await readFile(new URL("../app/terms/page.tsx", import.meta.url), "utf8");
+  assert.match(robots, /allow: \["\/", "\/privacy", "\/terms"/);
+  assert.match(sitemap, /`\$\{origin\}\/privacy`/);
+  assert.match(sitemap, /`\$\{origin\}\/terms`/);
+  assert.match(privacy, /canonical: "\/privacy"/);
+  assert.match(terms, /canonical: "\/terms"/);
 });
 
 test("records author-declared source relationships without turning attribution into a truth verdict", async () => {

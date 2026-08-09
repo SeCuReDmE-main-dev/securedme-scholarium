@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 BUILD = ROOT / "build"
 LANGUAGES = ("en", "fr", "es")
-CANONICAL_ROOT = "https://docs.securedme.ca"
+CANONICAL_ROOT = "https://securedme-main-dev.github.io/securedme-scholarium"
 DEFAULT_DESCRIPTION = (
     "Public developer documentation for the twelve SeCuReDmE Education tools, "
     "including quickstarts, interfaces, operating limits, prompts, and videos."
@@ -30,7 +30,7 @@ def run(*args: str, env: dict[str, str] | None = None) -> None:
 
 def root_index() -> str:
     return """<!doctype html>
-<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>SeCuReDmE Developer Library</title><link rel=\"canonical\" href=\"https://docs.securedme.ca/en/\"><script>const l=(navigator.language||'en').slice(0,2);location.replace(['en','fr','es'].includes(l)?`/${l}/`:'/en/');</script><noscript><meta http-equiv=\"refresh\" content=\"0;url=/en/\"></noscript></head><body><a href=\"/en/\">Open documentation</a></body></html>
+<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>SeCuReDmE Developer Library</title><link rel=\"canonical\" href=\"https://securedme-main-dev.github.io/securedme-scholarium/en/\"><script>const l=(navigator.language||'en').slice(0,2);location.replace(['en','fr','es'].includes(l)?`${l}/`:'en/');</script><noscript><meta http-equiv=\"refresh\" content=\"0;url=en/\"></noscript></head><body><a href=\"en/\">Open documentation</a></body></html>
 """
 
 
@@ -159,7 +159,6 @@ def main() -> None:
     output = BUILD / "html"
     output.mkdir(parents=True, exist_ok=True)
     (output / "index.html").write_text(root_index(), encoding="utf-8")
-    (output / "CNAME").write_text("docs.securedme.ca\n", encoding="ascii")
     inject_page_metadata(output)
     write_discovery_assets(output)
     run(sys.executable, "tools/validate_built_site.py", str(output))

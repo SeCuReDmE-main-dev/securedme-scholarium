@@ -117,12 +117,12 @@ class DiscoveryAssetTests(unittest.TestCase):
             build.inject_page_metadata(output)
             build.write_discovery_assets(output)
             rendered = (output / "fr" / "guide" / "index.html").read_text(encoding="utf-8")
-            self.assertIn('rel="canonical" href="https://docs.securedme.ca/fr/guide/"', rendered)
+            self.assertIn('rel="canonical" href="https://securedme-main-dev.github.io/securedme-scholarium/fr/guide/"', rendered)
             self.assertEqual(rendered.count('rel="canonical"'), 1)
             self.assertIn('hreflang="en"', rendered)
             self.assertIn('application/ld+json', rendered)
-            self.assertIn("https://docs.securedme.ca/es/guide/", (output / "sitemap.xml").read_text(encoding="utf-8"))
-            self.assertIn("Sitemap: https://docs.securedme.ca/sitemap.xml", (output / "robots.txt").read_text(encoding="ascii"))
+            self.assertIn("https://securedme-main-dev.github.io/securedme-scholarium/es/guide/", (output / "sitemap.xml").read_text(encoding="utf-8"))
+            self.assertIn("Sitemap: https://securedme-main-dev.github.io/securedme-scholarium/sitemap.xml", (output / "robots.txt").read_text(encoding="ascii"))
 
 
 class BuiltSiteValidationTests(unittest.TestCase):
