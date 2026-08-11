@@ -1,12 +1,14 @@
 # Architecture
 
-A React and TypeScript learning client organized around challenges, guided planning, and reviewable learner actions.
+A React and TypeScript learning client organized around challenges, governed Hero Books missions, guided planning, and reviewable learner actions.
 
 ## Data flow
 
 ```text
-Reviewed input -> typed boundary -> tool mechanism -> reviewable artifact -> human decision
+AlgoQuest mission -> MV3 Builder artifact -> broker admission -> Colab evidence -> AlgoQuest progression decision
 ```
+
+AlgoQuest remains the canonical mission and progression owner. The Chromium extension transports typed evidence without reading the Colab DOM. Narrative rewards, learning evidence, execution receipts, and ephemeral observations remain separate records.
 
 ## Provenance
 

@@ -5,7 +5,7 @@
   <div><strong>AlgoQuest Qbit Education</strong><span>public-preview · browser-app · version 0.0.0</span></div>
 </div>
 
-Interactive algorithm learning through bounded, inspectable challenges for students and teachers.
+A governed Hero Books learning runtime where AlgoQuest assigns missions, preserves learner-visible state, and alone decides progression from Builder and Colab evidence.
 
 ## Public status
 
@@ -22,12 +22,19 @@ Interactive algorithm learning through bounded, inspectable challenges for stude
 
 ## Interfaces
 
-- React learning interface
-- Teacher planning surface
-- Vite development server
+- React Hero Books and study/artifact surfaces
+- `MissionEnvelope.v2` assignment bridge to the Chromium Builder side panel
+- `AlgorithmArtifactReceipt.v2` and `ColabExecutionReceipt.v2` admission
+- Teacher planning surface and Vite development server
+
+## Mage First-Proof
+
+The first complete mechanism is the Mage force-and-trajectory mission. AlgoQuest assigns one prompt exactly once, the Builder preserves and validates the card program, and Colab may return execution evidence through the authenticated broker. Failed attempts preserve the build and do not subtract narrative rewards.
+
+The mechanism and local contract loop are tested. Live Auth0, HTTPS broker deployment, real Chrome extension acceptance, live Colab return, and school approval remain separate gates.
 
 ```{important}
-Learning output is formative evidence. It is not a credential, assessment authority, or autonomous teaching decision.
+AlgoQuest owns mission assignment and progression. Builder and Colab return bounded formative evidence; neither grades, profiles, or becomes mastery authority.
 ```
 
 ```{toctree}

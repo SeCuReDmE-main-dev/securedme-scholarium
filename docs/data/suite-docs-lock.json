@@ -6,134 +6,158 @@
     {
       "slug": "algoquest-qbit",
       "repository": "algoquest-ams-discovry-labs-module-",
-      "requested_ref": "609fa9a60750fedd90dade662066ff23946688e7",
-      "resolved_commit": "609fa9a60750fedd90dade662066ff23946688e7",
-      "contract_sha256": "ceda5cccb82bbe7947477bf0b5670f4b0910be52e3276799b453f50d822f620f",
+      "requested_ref": "3e76820221109a5aacf3fbdc5dc88f18aea1178b",
+      "resolved_commit": "3e76820221109a5aacf3fbdc5dc88f18aea1178b",
+      "contract_sha256": "e6f289738eb45ecdfbd2dac9114df0cb45e4f2050769977f4aaa506f3a91f581",
       "logo": "_static/tools/algoquest-qbit/logo.png",
       "files": [
         {
           "path": "architecture.md",
-          "sha256": "e1830ba666952df18fe6accd233f6ad407c97526e6791c2931448f8ea082f796"
+          "sha256": "2ef8b549a6638825fd1d023bbe9151f6895bb95511bb10832ff2fe68e2a6ced9"
         },
         {
           "path": "index.md",
-          "sha256": "db5d24bba23ecbea7eba182f3601dcb71969c45f49353320fe44673df199ec49"
+          "sha256": "01205227f279006c2431862faf9b8eb8f94613bd638a44cd80832011576de270"
         },
         {
           "path": "interfaces.md",
-          "sha256": "a8f43c9d6526cea42251cd6c65a9b9bc1a887e2f1c1708829985760ee8a61c98"
+          "sha256": "a310e6c23f98e12de295b5475bb861c4b95bb8e5d63afa69a8926840c7e0477d"
         },
         {
           "path": "operations.md",
-          "sha256": "7db9e8f08dd14369f8dd85be9c0f26842569f8635345389471867ec5914e8907"
+          "sha256": "42e19001626a9a19afb21ee65700476f255ca11e5377d0af78dfe0a40493cc98"
         },
         {
           "path": "quickstart.md",
-          "sha256": "7b34f22b3f0dc9cbff0a217907f8dd853cde957b87be0b7d38539368d1bdb156"
+          "sha256": "38e0599ea6d24f4544af6bcbf2bedad1aad6530d89ccb867bb457b2848d87292"
         }
       ]
     },
     {
       "slug": "algorithm-builder",
       "repository": "algorithm-builder-app",
-      "requested_ref": "d7ba9de72c2e45d1f27ded1c365cfd223e18bba7",
-      "resolved_commit": "d7ba9de72c2e45d1f27ded1c365cfd223e18bba7",
-      "contract_sha256": "326b68b60d819617be2cd2359f6955d83c2708704dc566c9c160b6fc12183ef8",
+      "requested_ref": "94015ac9dd87614fb14646320e28de764973f03a",
+      "resolved_commit": "94015ac9dd87614fb14646320e28de764973f03a",
+      "contract_sha256": "b6a01a75518bcb245f0d29f8aa2e8ed555ed68a3ad03aa36ea5f6e334ed7ae3a",
       "logo": "_static/tools/algorithm-builder/logo.png",
       "files": [
         {
           "path": "architecture.md",
-          "sha256": "7125b53d2ebe88603d6d59ffa60053d6b74d2997777cd3bef753afc48bfe9aae"
+          "sha256": "43a1e211a0ab6e0ba11abeed97763d848d5ed7fcb02df7b4bcc2fd9e825da92a"
         },
         {
           "path": "index.md",
-          "sha256": "ce267419ccc95740b7e16d83ce54da094af83582148dcf35f5baee5dc8c032ea"
+          "sha256": "d0d911bdeee81d7ffa0d0f534887ad93564996f5d5184ef98628d16bb9541bb2"
         },
         {
           "path": "interfaces.md",
-          "sha256": "8ba5f26ff27825f35ba7b02854fdbf1ca14b9948f4bbf124646a36357824391a"
+          "sha256": "523f929c95fbd1f4473bd5ff183037661e6b397e6ac3ed9f0458bbd55afe4524"
         },
         {
           "path": "operations.md",
-          "sha256": "308fe19362677951b0337c556ee376487704b953830ba9f151a036665a411e04"
+          "sha256": "46f8ed4e0f4080cfa6208b21d9b590798112f4eb1ea67387c005e0b7384664c9"
         },
         {
           "path": "quickstart.md",
-          "sha256": "ca89d09fbe9569f5f00089dee6c7a292ab7a4a86e183b3c52fa1a8ce251d2773"
+          "sha256": "90e344ef771ce4e5fa17a202dee3043df59eefef6bc400f59c3f46e32dbc6d49"
         }
       ]
     },
     {
       "slug": "ffed-qlc",
       "repository": "FfeD-QLC-MVP",
-      "requested_ref": "1037666d063a85fe7932897beaf1b90acb3ba3dd",
-      "resolved_commit": "1037666d063a85fe7932897beaf1b90acb3ba3dd",
-      "contract_sha256": "9dc7c9dea8b95cee4ae62f1cef3c155ca1a79fe8d0c895d5c914ed9faf2c7dcb",
+      "requested_ref": "0afa07982d0e90a2d640f372e435c604befb4a68",
+      "resolved_commit": "0afa07982d0e90a2d640f372e435c604befb4a68",
+      "contract_sha256": "f9fa50c6706e18bb2acb32298ab000025b8e2bea7b5697abadaf657c9f6d2126",
       "logo": "_static/tools/ffed-qlc/logo.png",
       "files": [
         {
+          "path": "alpha-architecture.md",
+          "sha256": "03f5bea30c90984e63a52ea2f93413f57990506adf041332d53fb65ea3d05c8a"
+        },
+        {
+          "path": "alpha-validation.md",
+          "sha256": "0f2b368fc5f74325a8a94e1c982ca23d0bd235558a7b914e1e243d12dd324948"
+        },
+        {
           "path": "architecture.md",
-          "sha256": "6ef423a1f1e3985dd05d609b387a2d6bef00551ee115101bfe19e55517829595"
+          "sha256": "932579a6e01568908d6b6f1da1f5ee044da62afd54a5652452f7d52e0e5e7ad8"
+        },
+        {
+          "path": "claim-boundaries.md",
+          "sha256": "c3022ac1352b4689d961929b11ae919fa6de442cfb5f15c0485506017e728d64"
+        },
+        {
+          "path": "gateway-troubleshooting.md",
+          "sha256": "609897a0b81610c8ada74a1c50154455596a78a2c7695f9ebad74371090d02e5"
         },
         {
           "path": "index.md",
-          "sha256": "919d2c649f385c1d59089469d6ab1498725d2f8531ace2dda21a652e79d2a0e0"
+          "sha256": "3a82d8ead283f90397a1ded1bd7f1b0355a1a34336c1a1949f7b21f1097f82b6"
         },
         {
           "path": "interfaces.md",
-          "sha256": "631962d4c77bb732dd40651d23a8a00f3617f2e8fbeacbcd39025111060843f4"
+          "sha256": "73d875a424e912f489ede64c2d35b2b319e13ce27384a40be3057644abfa3151"
         },
         {
           "path": "operations.md",
-          "sha256": "568ed9735108ae3a2d3b5f9847693ce0ac0d310fb73c11d7379ae68e4b306a51"
+          "sha256": "1adbdfef9d6636b7bd3c36e7053cdacb1922aa490ed0f4a431bc236b02188d43"
+        },
+        {
+          "path": "professor-path.md",
+          "sha256": "2bd937e9e54823c48e18f6a7ceae906d33655f4ec3a04706250d21b045ddec7c"
         },
         {
           "path": "quickstart.md",
-          "sha256": "8fcb73c032b6cf0ca144e88db16f03cee2d1f0fb57379e537b937c7d446f41af"
+          "sha256": "bc2ccea4be120640fafa5c0c6e4462f0f6d05c057f8d8117c27ea5abf6948148"
+        },
+        {
+          "path": "student-path.md",
+          "sha256": "67ffd77805f65218767acd0809fa90817d10c1951ab36b93e718af01043fe02c"
         }
       ]
     },
     {
       "slug": "fnp-qnn",
       "repository": "FNP-QNN-MVP",
-      "requested_ref": "b7b5932c94abd48118d1dd7587818bcb56e72804",
-      "resolved_commit": "b7b5932c94abd48118d1dd7587818bcb56e72804",
-      "contract_sha256": "2bc99c1908ef8fb1d5b34b0ca6db026b149ea104134c8d09f744774263ced188",
+      "requested_ref": "ba8a20be695a53efe9c636d424df92bda35fd9f9",
+      "resolved_commit": "ba8a20be695a53efe9c636d424df92bda35fd9f9",
+      "contract_sha256": "4da32be1b8531a2e6b70412fc94a9f78756247bffd782b0a1269447bb5f9d3c8",
       "logo": "_static/tools/fnp-qnn/logo.png",
       "files": [
         {
           "path": "architecture.md",
-          "sha256": "cb75044fd26a768f5ea5435759e890d080539e58357854a5f2b259c2e027ef62"
+          "sha256": "3e54ac48fb4b32a902ba2b286e922472579efdbfa3d2d8edec9f359a818f3214"
         },
         {
           "path": "index.md",
-          "sha256": "9ae38a1e0eebe9b78f14883fd98a5f0ee0e6a8ebde5f9208ce9344b02dd71942"
+          "sha256": "24a9ed1239cbf043316d84b12be98dd213c80e5e9a07ff73e777d123dc92948f"
         },
         {
           "path": "interfaces.md",
-          "sha256": "ef8524d2f5b336078a05522ca356524650cda3342dcc5193661cbfcb674b1652"
+          "sha256": "bf79b93e09d3c86b7e04d56867a3ef17846d00703e602c3ce097b54138b32464"
         },
         {
           "path": "operations.md",
-          "sha256": "9420a3eb238022caa0668f723ad61da2824cd2d64b5e595d46b81712b5301ee4"
+          "sha256": "c2d792412b779a696c324b53dd21aa6264c281819e28f14abe832fe536db07ec"
         },
         {
           "path": "quickstart.md",
-          "sha256": "2b6fe1d16f6385cecf085d5a149816641bd1baa8f0cc53f40bf0a58322ad2c51"
+          "sha256": "7c1686d6a795e5b676205812868daac7d6db1b60857b42d948127d4612901620"
         }
       ]
     },
     {
       "slug": "fnpqnn-gateway",
       "repository": "fnpqnn_gateway_MVP",
-      "requested_ref": "1cd49c4999d2878742377ed794a08659b0aeb2e2",
-      "resolved_commit": "1cd49c4999d2878742377ed794a08659b0aeb2e2",
-      "contract_sha256": "8910091e1d6f16c26a604e2a2ae84155d17e227e735ca3a82e8e1b0b8e113396",
+      "requested_ref": "b04f19d6933b93414a791a9f14fe9832f99e962d",
+      "resolved_commit": "b04f19d6933b93414a791a9f14fe9832f99e962d",
+      "contract_sha256": "1eac72e12f7295e3ce7ccd23741c896fa60e95c462e9c216cc800280c7332c25",
       "logo": "_static/tools/fnpqnn-gateway/logo.png",
       "files": [
         {
           "path": "architecture.md",
-          "sha256": "3b0a87fb32288222576c90214a05e29daff58af0330dd64a27dee16f7320929f"
+          "sha256": "910663e8474bcf5b40d6aa6822d73ef68be3fc9229c2652b79d88c318b7c4f58"
         },
         {
           "path": "assets/fnp-qnn-gateway-logo.png",
@@ -141,88 +165,88 @@
         },
         {
           "path": "index.md",
-          "sha256": "418db0d0f35e4a283cdea1c21599576ce27cc21dbaec279256cccb8c05fca152"
+          "sha256": "b6c005b28ac0db77cf50fae7b83ba49639b9be1e4d9b32e83d637c816766d690"
         },
         {
           "path": "interfaces.md",
-          "sha256": "e47cddbf0289e86af0749e5760571bbe771eb4351790526d0537e6781c0e7f80"
+          "sha256": "0f6c61f8ab7f272e35120319c0016ba6922b51854e89d2d755acdeea54f612b4"
         },
         {
           "path": "operations.md",
-          "sha256": "e88bfdb4d550971ee48a202ac68e039442846092c6f23d8bf814291913ce0fd6"
+          "sha256": "ad00b3edb768b6530b1bf4a4669bdb07c58cccaf21e69d96161f81625265c35b"
         },
         {
           "path": "quickstart.md",
-          "sha256": "bfebc1f9cca03eced483148309584184e4debc20b6645e65749370426a7a8d1c"
+          "sha256": "f491dc3fd4becdca5e0bae1edc74a6bdf4421045344ca17edd080346e63e2f1d"
         }
       ]
     },
     {
       "slug": "retailguard",
       "repository": "market-guardian-retailguard",
-      "requested_ref": "763cd55739f4dec7e5517d47c73ccc36940e33e6",
-      "resolved_commit": "763cd55739f4dec7e5517d47c73ccc36940e33e6",
-      "contract_sha256": "e27394bebb18392d03b7f60713f53041e60815ef2c6b8649669a82c7f7262766",
+      "requested_ref": "921634703ebe426f00056bb1c078de388a439c0a",
+      "resolved_commit": "921634703ebe426f00056bb1c078de388a439c0a",
+      "contract_sha256": "52597d18d3987961d60a031d41bc6732cda293f2a1623810e5854500bec8a3a3",
       "logo": "_static/tools/retailguard/logo.png",
       "files": [
         {
           "path": "architecture.md",
-          "sha256": "97d89dd75e9b9a67aca2346feba225e072a7fc7b67f3181410e4c1bb419d2797"
+          "sha256": "948e70e856caa3568a276dd4b49fe4aab0748b9223c9284b417f72a2d9d2a69d"
         },
         {
           "path": "index.md",
-          "sha256": "eb52a494f6564a6fac00d9b7a12817c7af95c900abea02781a7ffd675c21ee19"
+          "sha256": "e1fff5fb782db04602a8b8b3a408e1defa527edc61c421682780767da37a42a7"
         },
         {
           "path": "interfaces.md",
-          "sha256": "7aa055ecf56e7eb425ccd9290a0b1b2e431b900538deae2c2f8cccfad14de80a"
+          "sha256": "c41eacf4cdd3e5722d27279fed217a44ab6470950f600d1368d6e064f0810fc1"
         },
         {
           "path": "operations.md",
-          "sha256": "e821b10951b03f1e6f20653011ad5d4632c1efff5267a3c1b742f0910975c04d"
+          "sha256": "75e41eaa137d355456b451a450830483c9b95b18b044c5e2eca3c4455df8d209"
         },
         {
           "path": "quickstart.md",
-          "sha256": "693dec9396b6b67e33ef51b96b61540178468a641904d25cecc6d9480e65ec4c"
+          "sha256": "f5f6651d7bdad0fe587b6fd3d3392f445119738edd49278734074e81b94ee80b"
         }
       ]
     },
     {
       "slug": "quanthor",
       "repository": "QuaNThoR",
-      "requested_ref": "cda80297132f40c116314fe87874f7a463b2c92d",
-      "resolved_commit": "cda80297132f40c116314fe87874f7a463b2c92d",
-      "contract_sha256": "98515f4f971af48e3b0aa9d02494ae601bc1b4081f563c70689d64baa1d7ed62",
+      "requested_ref": "4eb20ffaa05bd275e814d84950ee82758f181e7f",
+      "resolved_commit": "4eb20ffaa05bd275e814d84950ee82758f181e7f",
+      "contract_sha256": "c8f9042c6747b3f7bfbece1ea8213f47936926ccc0cb160233c1cebeb99ccb1c",
       "logo": "_static/tools/quanthor/logo.png",
       "files": [
         {
           "path": "architecture.md",
-          "sha256": "23f576260c57b2066f286372cc5118d3022dbcd27522cd4f7171b019ff7a6f13"
+          "sha256": "a52ee4b8e3b3d8ca9f5896023b505cbf8ed8afc5edc7bea62e518dd182871e55"
         },
         {
           "path": "index.md",
-          "sha256": "5ecbaa5861834abf49023c94f822933072efc7f763af1549e1b30a06177eeba3"
+          "sha256": "cbc562acad8273b1b7a7d8d380ccc3df585fb64c7c1961b9fc4ab5668bf60066"
         },
         {
           "path": "interfaces.md",
-          "sha256": "59ea40010faf105d3bbe262ddb0a5acf991dd31171c28914037dcc806f8c663c"
+          "sha256": "95039fc0c914ef7ec788d7175845ff314575df6ed76385fa960ae7f709aee634"
         },
         {
           "path": "operations.md",
-          "sha256": "5a9b838e17569dbf8ab4800bf8a55a2438d2de4ff82c6f08650075578ab9ed4e"
+          "sha256": "26a403bc52bf0c5046629ea2e39e921e5b0d830d9c4a0c02fc3dbbc49e208c90"
         },
         {
           "path": "quickstart.md",
-          "sha256": "48d2b74ce7c3cbe53c3cb833faf91b70269eed1feb2deb0d75edb0ce37ea76a8"
+          "sha256": "ae27ddfb751116def6f9ccff71be1406eb76823d5b5cd7cc1b8ac5eec922525e"
         }
       ]
     },
     {
       "slug": "scholarium",
       "repository": "securedme-scholarium",
-      "requested_ref": "03dbb4c4010e5e5471e5682dcf50348f90998d78",
-      "resolved_commit": "03dbb4c4010e5e5471e5682dcf50348f90998d78",
-      "contract_sha256": "b77b9e39197611fc673bea1e6ce398af41b424d260cdc764e9ff0a8d139353e5",
+      "requested_ref": "1f6dd7720dafb3c60de55ede4de7b07c33a2777d",
+      "resolved_commit": "1f6dd7720dafb3c60de55ede4de7b07c33a2777d",
+      "contract_sha256": "7647d7a4bdc5d8f42294841700102e5a615a103123617f8a0d5b13b135df786b",
       "logo": "_static/tools/scholarium/logo.webp",
       "files": [
         {
@@ -250,120 +274,120 @@
     {
       "slug": "synthia",
       "repository": "Synthia",
-      "requested_ref": "495ac98cdeda5d7d78b5f513705bcf871ea17218",
-      "resolved_commit": "495ac98cdeda5d7d78b5f513705bcf871ea17218",
-      "contract_sha256": "acc1080906896dfbb382ab3de015d5430ccd574c823429237a2df86d9c0f39a1",
+      "requested_ref": "4686521ecd332dab86f7f2f7357f591df6c5b19a",
+      "resolved_commit": "4686521ecd332dab86f7f2f7357f591df6c5b19a",
+      "contract_sha256": "82d6d82778fcc58783091673a63e93bf0fe4bb85047dc591e2102df14357806a",
       "logo": "_static/tools/synthia/logo.png",
       "files": [
         {
           "path": "architecture.md",
-          "sha256": "6f57cd606c4e987528aa7dedcfdee7ef6b905c697e1dd26861c8a06a6a4c337a"
+          "sha256": "54251d11d005ea96a2cccffee2d46dd5ef71c7cd1ce064988b3cba1aaf9cfc77"
         },
         {
           "path": "index.md",
-          "sha256": "d74df4e5f3f43635224115f8884c33b954621a49d603dcdf82a667f3d44d4ae2"
+          "sha256": "d81ee8d5aed3dbf412c7b7d266f889a8a920b7af8050c1f48f6e7d8b19ab789e"
         },
         {
           "path": "interfaces.md",
-          "sha256": "108b686a908b1ed0bcbfa63930358f77569de449c7e260be471f367add9167a9"
+          "sha256": "c8d9b178da88226d7789f6b8531c843bc3121f2ace3dedfd2cb62381f2e29b79"
         },
         {
           "path": "operations.md",
-          "sha256": "bf6311871806268803ce0015f067d9bd771ee6ccbcb08a3c82e1fae9e5055e67"
+          "sha256": "fe703b488ea053c8cf61e62ed7b2c1ec8162518be4b949265676aa2ca39a50ff"
         },
         {
           "path": "quickstart.md",
-          "sha256": "b64a26ae0dc7277f1d8c4d2a307e4c225480c968719b90816beb328a6ac77517"
+          "sha256": "3a4f7c7419e0b4c8486e7d49fea505efe431712c244c226f9e339cfdaeea31d0"
         }
       ]
     },
     {
       "slug": "tesla-workbench",
       "repository": "tesla-resonance-recovery-workbench",
-      "requested_ref": "33d0324708182bc1fff0f326d6e689f9405638a5",
-      "resolved_commit": "33d0324708182bc1fff0f326d6e689f9405638a5",
-      "contract_sha256": "88ec1d547676af66a8c49b37a89689d824ac8c780d83d126215841722863ec41",
+      "requested_ref": "ee6b2f5df019419b794a99286d78cda964cbee80",
+      "resolved_commit": "ee6b2f5df019419b794a99286d78cda964cbee80",
+      "contract_sha256": "06d728d7d7d478d1cf15d0bb55a5e3b42fd98fb8133c8de85d7914b5ee044b52",
       "logo": "_static/tools/tesla-workbench/logo.png",
       "files": [
         {
           "path": "architecture.md",
-          "sha256": "17e275f2fff98bdebb980ef5af3d3d5b129118fb40dd232137b20d29d6d27128"
+          "sha256": "1e3fb5aa5d1148a8e9977db572828d06f8acb753b0d4d19c5d3c2efeed7520ae"
         },
         {
           "path": "index.md",
-          "sha256": "77f0b149b1894a0f8f0d373b9bc60641e3f9702c67094f92a65da1bb65062a6d"
+          "sha256": "98d076f2f733f48b63ed9ef6a14776317fcbd00995a53a1839401b796eb7a8b8"
         },
         {
           "path": "interfaces.md",
-          "sha256": "f619d018a4035a1c4a5af6b64cf42397db0dede6372838401306985dcbe76943"
+          "sha256": "25790a95adf2b4ee1d8d7d97177418ae251d5f3d9ae07ccae5404ab59ca11618"
         },
         {
           "path": "operations.md",
-          "sha256": "de837153f242ef992a9baf086b6d97fc1dd884ff5f950ac8901c370646b953c6"
+          "sha256": "87c919f7a32dda82b6c8b7a277dc6650eb230a68441d249d7b6cb8b3a7790da4"
         },
         {
           "path": "quickstart.md",
-          "sha256": "a583868594a70887cc6e69865c5ea47ea8db83a0aca9ba8f3baac5e55e0822e3"
+          "sha256": "931bc98fbf7b4acf0a4595ffb322c32d9fc2a62d98c17a152b1502910843109a"
         }
       ]
     },
     {
       "slug": "vot-guardian",
       "repository": "V.O.T-Guardian",
-      "requested_ref": "15e44ab83808485b923955030841f46115a2dce1",
-      "resolved_commit": "15e44ab83808485b923955030841f46115a2dce1",
-      "contract_sha256": "592ae8d46dd10168c98b1dacdc1846fbf34a86a8628b60f266605afb345f68a7",
+      "requested_ref": "671ad61e53ab2915ba5e13648e3527e3fcf6ad48",
+      "resolved_commit": "671ad61e53ab2915ba5e13648e3527e3fcf6ad48",
+      "contract_sha256": "d7db66b58307cb7678d5f420cd8f6a8463fb5a296c29ff0b07a39c40f6764f74",
       "logo": "_static/tools/vot-guardian/logo.png",
       "files": [
         {
           "path": "architecture.md",
-          "sha256": "a62296381cfe34233d09934798d9839e31ef96d030687bc9e4a39d05b7c49620"
+          "sha256": "4caed72e575cc848980b4a81eb87f22dc6727d6675ea3dbab7dd22ec9e9d2aca"
         },
         {
           "path": "index.md",
-          "sha256": "dc6faeba2118ac0f0f430d23613fd352373028f2bf54654856093ee50b4e9e9d"
+          "sha256": "455476de7f834408ae1330cc986d71fd1074dbfa1b9ddc3ea85d1387982753b5"
         },
         {
           "path": "interfaces.md",
-          "sha256": "0ff6ef366d9a57bbf0a361eba76478eab29c5e9a4aa425763951c4d0bd7fef2c"
+          "sha256": "91ec6f937e7cf8602091b21c19d17259ab8025d13801b35aa596308ca0f36103"
         },
         {
           "path": "operations.md",
-          "sha256": "fe63d0faa552f6a63846477662a1171c26fd39a551a630dfc8f2dacf5b71fcff"
+          "sha256": "add369913d9848dc3f2c704350a1123b66a709fffe1efe82468f934b76f4535e"
         },
         {
           "path": "quickstart.md",
-          "sha256": "b312c488a44885785a6666961f59c3973ccfa806f8f99d4f80a8e140809ace37"
+          "sha256": "b96c01377c288d787f1bd2d44e0b8e99bedbf1189092892a4e5a23af4eb869f1"
         }
       ]
     },
     {
       "slug": "visual-algorithm-designer",
       "repository": "VisualAlgorithmDesigner",
-      "requested_ref": "368ec6217c9ec3a9edaa4575e05c2e4f779b8ae9",
-      "resolved_commit": "368ec6217c9ec3a9edaa4575e05c2e4f779b8ae9",
-      "contract_sha256": "9552f36973fa02bb85ac0bd2e80eca4c2c453a859e553713c7067681e295120d",
+      "requested_ref": "b1bd8f2a94ad02ff398cb0109770d6aed74e3f7c",
+      "resolved_commit": "b1bd8f2a94ad02ff398cb0109770d6aed74e3f7c",
+      "contract_sha256": "bb2334472279028b86babc594a5698cd621ace2ef45108367f00abc5f2aaa1fb",
       "logo": "_static/tools/visual-algorithm-designer/logo.png",
       "files": [
         {
           "path": "architecture.md",
-          "sha256": "60075961aab374f8027bc69a9922e17d17e1c6a411f0fa0f8e02a0a0e72e5cf3"
+          "sha256": "55990f4404ec4dc0244456c6e108a1c47e0967306ca5f766e58b91fe0e696fc0"
         },
         {
           "path": "index.md",
-          "sha256": "e62b93e465806ec2939e5591e72fab059361290bcdc0b9fe63093b86496b98b7"
+          "sha256": "678bcdd922137c0a13b502b0d70a72aa836b6b1bcfeb5f97377e72662e0516e9"
         },
         {
           "path": "interfaces.md",
-          "sha256": "d34756145617d3a4d60a4f693e994d69b1a9988ea7fc2d0cc9a68cd69148b302"
+          "sha256": "e6b89139534a870ffcbdffc231d3460746e00ca1995fb295f18a8c0ea9562a31"
         },
         {
           "path": "operations.md",
-          "sha256": "68926207a73e6e8364fcad104557d390f97e324a30b9e887509a5f9d8a3c27bb"
+          "sha256": "7bd50233003c397a15828a6511cb5df106bd019d3c52c2b49aa972f4d4b4b7cc"
         },
         {
           "path": "quickstart.md",
-          "sha256": "2cdb496db5ef6eea22a12c5b13559f31805be0827e957dbd4160fa91f5b9c127"
+          "sha256": "2038e2755a5a626ab6f61089ffbf01047f422e7e82696bb002002eb11ea5ae79"
         }
       ]
     }

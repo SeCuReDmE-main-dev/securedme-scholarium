@@ -3,15 +3,15 @@ canonical_docs_url: https://docs.securedme.ca
 catalog_url: https://securedme.ca/product/education/
 organization: SeCuReDmE-main-dev
 tools:
-  - {slug: algoquest-qbit, repository: algoquest-ams-discovry-labs-module-, ref: 609fa9a60750fedd90dade662066ff23946688e7}
-  - {slug: algorithm-builder, repository: algorithm-builder-app, ref: d7ba9de72c2e45d1f27ded1c365cfd223e18bba7}
-  - {slug: ffed-qlc, repository: FfeD-QLC-MVP, ref: 1037666d063a85fe7932897beaf1b90acb3ba3dd}
-  - {slug: fnp-qnn, repository: FNP-QNN-MVP, ref: b7b5932c94abd48118d1dd7587818bcb56e72804}
-  - {slug: fnpqnn-gateway, repository: fnpqnn_gateway_MVP, ref: 1cd49c4999d2878742377ed794a08659b0aeb2e2}
-  - {slug: retailguard, repository: market-guardian-retailguard, ref: 763cd55739f4dec7e5517d47c73ccc36940e33e6}
-  - {slug: quanthor, repository: QuaNThoR, ref: cda80297132f40c116314fe87874f7a463b2c92d}
-  - {slug: scholarium, repository: securedme-scholarium, ref: 03dbb4c4010e5e5471e5682dcf50348f90998d78}
-  - {slug: synthia, repository: Synthia, ref: 495ac98cdeda5d7d78b5f513705bcf871ea17218}
-  - {slug: tesla-workbench, repository: tesla-resonance-recovery-workbench, ref: 33d0324708182bc1fff0f326d6e689f9405638a5}
-  - {slug: vot-guardian, repository: V.O.T-Guardian, ref: 15e44ab83808485b923955030841f46115a2dce1}
-  - {slug: visual-algorithm-designer, repository: VisualAlgorithmDesigner, ref: 368ec6217c9ec3a9edaa4575e05c2e4f779b8ae9}
+  - {slug: algoquest-qbit, repository: algoquest-ams-discovry-labs-module-, ref: 3e76820221109a5aacf3fbdc5dc88f18aea1178b}
+  - {slug: algorithm-builder, repository: algorithm-builder-app, ref: 94015ac9dd87614fb14646320e28de764973f03a}
+  - {slug: ffed-qlc, repository: FfeD-QLC-MVP, ref: 0afa07982d0e90a2d640f372e435c604befb4a68}
+  - {slug: fnp-qnn, repository: FNP-QNN-MVP, ref: ba8a20be695a53efe9c636d424df92bda35fd9f9}
+  - {slug: fnpqnn-gateway, repository: fnpqnn_gateway_MVP, ref: b04f19d6933b93414a791a9f14fe9832f99e962d}
+  - {slug: retailguard, repository: market-guardian-retailguard, ref: 921634703ebe426f00056bb1c078de388a439c0a}
+  - {slug: quanthor, repository: QuaNThoR, ref: 4eb20ffaa05bd275e814d84950ee82758f181e7f}
+  - {slug: scholarium, repository: securedme-scholarium, ref: 1f6dd7720dafb3c60de55ede4de7b07c33a2777d}
+  - {slug: synthia, repository: Synthia, ref: 4686521ecd332dab86f7f2f7357f591df6c5b19a}
+  - {slug: tesla-workbench, repository: tesla-resonance-recovery-workbench, ref: ee6b2f5df019419b794a99286d78cda964cbee80}
+  - {slug: vot-guardian, repository: V.O.T-Guardian, ref: 671ad61e53ab2915ba5e13648e3527e3fcf6ad48}
+  - {slug: visual-algorithm-designer, repository: VisualAlgorithmDesigner, ref: b1bd8f2a94ad02ff398cb0109770d6aed74e3f7c}

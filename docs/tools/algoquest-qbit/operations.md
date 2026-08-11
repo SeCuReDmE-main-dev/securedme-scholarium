@@ -27,3 +27,5 @@ Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository license w
 ## Releases
 
 The current public documentation describes `0.0.0` with status `public-preview`. Consult the repository history and release notes for changes.
+
+The Mage First-Proof mechanism is implemented and locally tested, but the public preview must not be described as a live Builder-to-Colab service until Auth0, the HTTPS broker, the unpacked extension, and a real Colab callback pass acceptance together.
