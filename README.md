@@ -71,9 +71,20 @@ Scholarium is a professional, free-first social platform for people who learn, t
 | Files | Typed upload contract, SHA-256 hashing, and R2 metadata shape for supported documents, data files, archives, and video. |
 | QuaNthoR | A non-blocking formalization coach for articles, white papers, chapters, presentations, project briefs, videos, life-science protocols, and Mizar-proof handoff. |
 | Profiles | Avatar/banner preview, themes, accent colour, badges, local-only insight preference, and consent-first tool connections. |
-| Identity | ChatGPT WebAuth plus separate Google, GitHub, and PayPal entry routes. Each provider identity remains separate until an explicit future account-linking flow is reviewed. PayPal is sandbox-configured; Google and GitHub await their own provider credentials. |
+| Identity | ChatGPT WebAuth plus separate Google, GitHub, and PayPal entry routes. Each provider identity remains separate until an explicit future account-linking flow is reviewed. The twelve-tool Gateway adapter policy is shared, but deployed login acceptance remains application-specific. PayPal is sandbox-configured; Google and GitHub await their own provider credentials. |
 | Verified contribution | Fixed-price verified contributor plan metadata, verification-gated preparation, server-side PayPal order creation, and server-side capture return path with no ranking effect. |
 | Integrations | Consent preparation contracts for ORCID, GitHub, Zenodo, Google Drive, QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, Antigravity/Gemini, and life-science discovery. |
+| Education toolchain | A learner-visible directory for Scholarium Teach, AlgoQuest, Algorithm Builder, FfeD-QLC, and the shared Gateway contract. |
+
+## Teach and the first-proof toolchain
+
+Scholarium Teach now has a deterministic syllable-engine core, versioned language blocks, synthetic D1 proof, and explicit non-diagnostic audio, image, mastery, and provenance boundaries. Its execution ledger records 161 of 163 actions complete. The remaining gates are material: real-student pilots are prohibited until qualified Quebec and France/EU legal review is signed, and remote VS Code tunnel authentication is unavailable while local development remains usable. This is a strong pre-alpha mechanism, not a certified teaching method or an open child pilot.
+
+The web application also exposes the current Education journey without collapsing responsibilities:
+
+`AlgoQuest mission -> Algorithm Builder artifact -> Colab execution evidence -> AlgoQuest progression`
+
+FfeD-QLC is the supervised geometric-cryptography path, with Vigil organizing evidence and a professor retaining the final decision. The Gateway audits the twelve shared WebAuth adapter contracts and rejects secret material; it is not a hosted identity provider and does not make every product login live by itself.
 
 ## QuaNthoR in Scholarium
 

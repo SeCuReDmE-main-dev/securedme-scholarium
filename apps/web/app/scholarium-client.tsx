@@ -5,7 +5,7 @@ import { quantechProviderSurface } from "../lib/quantech-render-request";
 import { publicationTypeForFormalization, publicationTypeOptions } from "../lib/publication-types";
 import { ScholariumControls } from "./components/scholarium-controls";
 
-type View = "signal" | "library" | "studio" | "formalize" | "migration" | "saved";
+type View = "signal" | "library" | "studio" | "formalize" | "toolchain" | "migration" | "saved";
 type FeedMode = "chronological" | "discovery" | "following" | "verified";
 type ColorScheme = "scholarium-dark" | "scholarium-light" | "midnight-code" | "paper-library";
 type Publication = {
@@ -371,6 +371,7 @@ const suiteNavItems: Array<{ label: string; icon: string; href?: string; id?: Vi
   { id: "formalize", label: "Formalisation", icon: "◇" },
 ];
 const toolNavItems: Array<{ id: View; label: string; icon: string }> = [
+  { id: "toolchain", label: "Education tools", icon: "✦" },
   { id: "migration", label: "Migration", icon: "⇆" },
 ];
 
@@ -1543,7 +1544,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
         <header className="topbar">
           <div>
             <p className="eyebrow">OPEN SCIENCE / OPEN EDUCATION</p>
-            <h1>{view === "signal" ? "Today’s signal" : view === "library" ? "Your knowledge library" : view === "studio" ? "Creator studio" : view === "saved" ? "Your saved library" : view === "migration" ? "Bring your work with you" : "Formalize with QuaNthoR"}</h1>
+            <h1>{view === "signal" ? "Today’s signal" : view === "library" ? "Your knowledge library" : view === "studio" ? "Creator studio" : view === "saved" ? "Your saved library" : view === "toolchain" ? "Build, test, and explain" : view === "migration" ? "Bring your work with you" : "Formalize with QuaNthoR"}</h1>
           </div>
           <div className="topbar-actions"><ScholariumControls compact /><button className="publish-button" type="button" onClick={() => setComposerOpen(true)}>Publish work <span>+</span></button></div>
         </header>
@@ -1561,7 +1562,18 @@ export function ScholariumClient({ session }: { session: { displayName: string |
           <button className={feedMode === "chronological" ? "feed-tab active" : "feed-tab"} type="button" onClick={() => setFeedMode("chronological")}>Chronological</button>
         </div>}
 
-        {view === "migration" ? (
+        {view === "toolchain" ? (
+          <section className="library-page" aria-label="SecuredMe Education toolchain">
+            <div className="library-search-heading"><div><p className="eyebrow">EVIDENCE-FIRST LEARNING</p><h2>Choose the tool that owns the next decision.</h2><p>The suite shares a no-secret WebAuth adapter policy, but each product keeps its own learning authority and must prove its deployed login separately.</p></div></div>
+            <div className="migration-review-list">
+              <article className="publication-card"><div className="publication-body"><p className="eyebrow">LANGUAGE / PRE-ALPHA</p><h3>Scholarium Teach</h3><p>Explore a syllable-first, deterministic learning engine that keeps image, audio, mastery, provenance, and human-review boundaries visible. Real-student pilots remain closed pending qualified legal review; synthetic demonstrations are available.</p><div className="tool-actions"><a href="/teach">Open Teach</a><a href="https://docs.securedme.ca/tools/scholarium/" rel="noreferrer">Read the contract</a></div></div></article>
+              <article className="publication-card"><div className="publication-body"><p className="eyebrow">MISSION / FIRST PROOF</p><h3>AlgoQuest</h3><p>Enter through a governed Hero Books mission. Narrative rewards never stand in for mastery, and AlgoQuest alone decides progression from admitted evidence.</p><div className="tool-actions"><a href="https://algoquest.securedme.ca" rel="noreferrer">Open AlgoQuest</a><a href="https://docs.securedme.ca/tools/algoquest-qbit/" rel="noreferrer">Read the contract</a></div></div></article>
+              <article className="publication-card"><div className="publication-body"><p className="eyebrow">BUILD / MV3 SIDE PANEL</p><h3>Algorithm Builder</h3><p>Build the Mage artifact as a deterministic typed card program, validate it locally, and prepare a Colab notebook without surrendering mission or progression authority.</p><div className="tool-actions"><a href="https://algorithm-builder.securedme.ca" rel="noreferrer">Open Builder</a><a href="https://docs.securedme.ca/tools/algorithm-builder/" rel="noreferrer">Read the contract</a></div></div></article>
+              <article className="publication-card"><div className="publication-body"><p className="eyebrow">GEOMETRY / SUPERVISED ALPHA</p><h3>FfeD-QLC with Vigil</h3><p>Move through nine bounded laboratories, inspect FQLC1 and exact geometric traces, then give the evidence and its limits to a professor. Synthetic fixtures only; no cryptographic certification is claimed.</p><div className="tool-actions"><a href="https://ffed-qlc.securedme.ca" rel="noreferrer">Open FfeD-QLC</a><a href="https://docs.securedme.ca/tools/ffed-qlc/" rel="noreferrer">Read the contract</a></div></div></article>
+            </div>
+            <section className="transparency-card"><strong>Shared Gateway, separate login proof</strong><p>The Gateway audits twelve Codex and Antigravity adapter templates, rejects secret material, and exposes bounded CLI/MCP mechanisms. It is not an identity provider or a substitute for each application’s callback, account binding, expiry, logout, recovery, and accessibility tests.</p><a href="https://docs.securedme.ca/tools/fnpqnn-gateway/" rel="noreferrer">Inspect the Gateway contract</a></section>
+          </section>
+        ) : view === "migration" ? (
           <section className="library-page academia-migration" aria-label="Academia.edu migration">
             <div className="library-search-card">
               <p className="eyebrow">OWNER-CONFIRMED IMPORT</p>
