@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/ffed-qlc/gateway-troubleshooting.md:1
+#: be404bb574444e28a3f5e8d8dbf7a947
+msgid "Gateway Troubleshooting"
+msgstr "Gateway Troubleshooting"
+
+#: ../../docs/tools/ffed-qlc/gateway-troubleshooting.md:3
+#: 2257b528ce1d4b06afa473aa0ad274e4
+msgid ""
+"Confirm `FFED_QLC_GATEWAY_ROOT` points to the `fnpqnn_gateway_MVP` "
+"repository."
+msgstr ""
+"Confirm `FFED_QLC_GATEWAY_ROOT` points to the `fnpqnn_gateway_MVP` "
+"repository."
+
+#: ../../docs/tools/ffed-qlc/gateway-troubleshooting.md:4
+#: 44d1fcfa7c07434c80031311f4b0e797
+msgid "Confirm `fnpqnn_gateway_mvp/algoquest_companion.py` is present."
+msgstr "Confirm `fnpqnn_gateway_mvp/algoquest_companion.py` is present."
+
+#: ../../docs/tools/ffed-qlc/gateway-troubleshooting.md:5
+#: a622c6470ae847259404eb1a5951eca6
+msgid ""
+"Call `/api/v1/health/live`; `200` confirms the FfeD-QLC process is alive."
+msgstr ""
+"Call `/api/v1/health/live`; `200` confirms the FfeD-QLC process is alive."
+
+#: ../../docs/tools/ffed-qlc/gateway-troubleshooting.md:6
+#: 5e70348bf1c9429fa02ea15435940166
+msgid ""
+"Call `/api/v1/health/ready`; `503` means the mandatory Gateway contract is "
+"unavailable."
+msgstr ""
+"Call `/api/v1/health/ready`; `503` means the mandatory Gateway contract is "
+"unavailable."
+
+#: ../../docs/tools/ffed-qlc/gateway-troubleshooting.md:7
+#: 4f56da98477542779453e992b573e1b4
+msgid ""
+"Never bypass readiness by manufacturing a session in the browser or SQLite."
+msgstr ""
+"Never bypass readiness by manufacturing a session in the browser or SQLite."
+
+#: ../../docs/tools/ffed-qlc/gateway-troubleshooting.md:9
+#: 90b67b7238ab43c0b2e8e9ab1f899ccc
+msgid ""
+"The adapter imports the reviewed Gateway contract module and invokes its "
+"validator. It does not read `.env`, browser state, provider cookies or API "
+"keys."
+msgstr ""
+"The adapter imports the reviewed Gateway contract module and invokes its "
+"validator. It does not read `.env`, browser state, provider cookies or API "
+"keys."
+
+#: ../../docs/tools/ffed-qlc/gateway-troubleshooting.md:11
+#: 50c8d72f30184872a47f35ccba0c9f47
+msgid ""
+"Compose supplies `../fnpqnn_gateway_MVP` as a named BuildKit context and "
+"copies only its Python package into `/gateway`. The Gateway dependency is "
+"immutable at runtime and credential files are not copied. SQLite data "
+"remains in a named volume."
+msgstr ""
+"Compose supplies `../fnpqnn_gateway_MVP` as a named BuildKit context and "
+"copies only its Python package into `/gateway`. The Gateway dependency is "
+"immutable at runtime and credential files are not copied. SQLite data "
+"remains in a named volume."
+
+#: ../../docs/tools/ffed-qlc/gateway-troubleshooting.md:13
+#: fd938f40d36245fe810c743a966e91dc
+msgid ""
+"For a direct build outside Compose, provide the same context explicitly:"
+msgstr ""
+"For a direct build outside Compose, provide the same context explicitly:"

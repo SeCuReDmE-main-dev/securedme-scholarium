@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/ffed-qlc/claim-boundaries.md:1
+#: dc76ad2e5969483496f6a50af43565ee
+msgid "Alpha Claim Boundaries"
+msgstr "Alpha Claim Boundaries"
+
+#: ../../docs/tools/ffed-qlc/claim-boundaries.md:3
+#: 6fe79d893b6944cba9eaa17cb11cd06f
+msgid "Supported statements"
+msgstr "Supported statements"
+
+#: ../../docs/tools/ffed-qlc/claim-boundaries.md:5
+#: 1866f3823e384986a307fed587d7fcbd
+msgid ""
+"FQLC1 uses ChaCha20-Poly1305 for authenticated encryption and scrypt for key"
+" derivation."
+msgstr ""
+"FQLC1 uses ChaCha20-Poly1305 for authenticated encryption and scrypt for key"
+" derivation."
+
+#: ../../docs/tools/ffed-qlc/claim-boundaries.md:6
+#: ddb9e699a9ef47a0b57d35fda83a3f21
+msgid ""
+"FfeD-QLC demonstrates structural permutation, exact geometric traces and "
+"bounded defensive analysis."
+msgstr ""
+"FfeD-QLC demonstrates structural permutation, exact geometric traces and "
+"bounded defensive analysis."
+
+#: ../../docs/tools/ffed-qlc/claim-boundaries.md:7
+#: 0738eed78b9d447e8dba54029575522b
+msgid "Generated evidence is reproducible and addressable by SHA-256."
+msgstr "Generated evidence is reproducible and addressable by SHA-256."
+
+#: ../../docs/tools/ffed-qlc/claim-boundaries.md:8
+#: 80f8f2923aef4cf1a0f1f4b10c9ae56d
+msgid ""
+"Vigil produces a schema-validated educational report under human review."
+msgstr ""
+"Vigil produces a schema-validated educational report under human review."
+
+#: ../../docs/tools/ffed-qlc/claim-boundaries.md:10
+#: 898673e2cd8040d2a222e7757f325758
+msgid "Rejected statements"
+msgstr "Rejected statements"
+
+#: ../../docs/tools/ffed-qlc/claim-boundaries.md:12
+#: 37495fa678ef4390a680ae9e604b6d11
+msgid "The geometric layer is a secure cipher or independent key source."
+msgstr "The geometric layer is a secure cipher or independent key source."
+
+#: ../../docs/tools/ffed-qlc/claim-boundaries.md:13
+#: ca53695afd5e4ab984f226562bef60aa
+msgid ""
+"FQLC1 is post-quantum, production-certified, invulnerable or externally "
+"audited."
+msgstr ""
+"FQLC1 is post-quantum, production-certified, invulnerable or externally "
+"audited."
+
+#: ../../docs/tools/ffed-qlc/claim-boundaries.md:14
+#: fc4d95c3965c4505be9247d54aa26d19
+msgid "A visual pattern supplies entropy."
+msgstr "A visual pattern supplies entropy."
+
+#: ../../docs/tools/ffed-qlc/claim-boundaries.md:15
+#: c991a3af34054b84803e8e21f9a222fe
+msgid ""
+"Vigil autonomously grades, certifies, publishes or analyzes real secrets."
+msgstr ""
+"Vigil autonomously grades, certifies, publishes or analyzes real secrets."
+
+#: ../../docs/tools/ffed-qlc/claim-boundaries.md:16
+#: ba5a2cd11ea94887b600f0842a9588aa
+msgid ""
+"A successful fixture exercise proves protection of a production system."
+msgstr ""
+"A successful fixture exercise proves protection of a production system."

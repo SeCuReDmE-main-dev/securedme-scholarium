@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -21,31 +21,46 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/algorithm-builder/architecture.md:1
-#: 5cae65140f914d008e012cb46bebf87a
+#: f466e886486f4bb18f5debea5e8acb03
 msgid "Architecture"
 msgstr "Architecture"
 
 #: ../../docs/tools/algorithm-builder/architecture.md:3
-#: 06ca9311c38d429d8d56cd1c6a13229b
+#: 72ae10319bd546dc877705487fce1c6f
 msgid ""
-"A React client and Express service coordinate visual graph editing, "
-"persistence, and inspectable algorithm structure."
+"A Chromium MV3 side panel, renderer-independent card engine, extension "
+"service worker, and Express/Postgres broker coordinate one bounded Mage "
+"artifact."
 msgstr ""
-"Un client React et un service Express coordonnent l'edition visuelle des "
-"graphes, la persistance et une structure algorithmique inspectable."
+"A Chromium MV3 side panel, renderer-independent card engine, extension "
+"service worker, and Express/Postgres broker coordinate one bounded Mage "
+"artifact."
 
 #: ../../docs/tools/algorithm-builder/architecture.md:5
-#: 28a949e59be24ba48ca7118f18e50d2a
+#: eedaab6f7b924a5aa8346086273b340e
 msgid "Data flow"
 msgstr "Flux de donnees"
 
 #: ../../docs/tools/algorithm-builder/architecture.md:11
-#: d6dbd4e6043340beaa733891c893d4dc
+#: 6299cc3b3ec6483fa19eb1d08d3b10a7
+msgid ""
+"The extension uses service-worker/content-script messaging and never reads "
+"the Colab DOM. Auth0 access tokens stay in `chrome.storage.session`; only a "
+"hashed learner reference and the hash of the short-lived callback capability"
+" are stored by the broker."
+msgstr ""
+"The extension uses service-worker/content-script messaging and never reads "
+"the Colab DOM. Auth0 access tokens stay in `chrome.storage.session`; only a "
+"hashed learner reference and the hash of the short-lived callback capability"
+" are stored by the broker."
+
+#: ../../docs/tools/algorithm-builder/architecture.md:13
+#: c0de92d91ecd496b9b6e9781eb34364d
 msgid "Provenance"
 msgstr "Provenance"
 
-#: ../../docs/tools/algorithm-builder/architecture.md:13
-#: 920ec1fbc52441edb83e87398d2c86ea
+#: ../../docs/tools/algorithm-builder/architecture.md:15
+#: 4d9ac2b50bd344ffbf90534bd73bdf0e
 msgid ""
 "Record the repository commit, configuration, input identifiers, execution "
 "command, output location, and validation result. A screenshot alone is not a"
@@ -55,13 +70,13 @@ msgstr ""
 "la commande d'execution, l'emplacement de sortie et le resultat de "
 "validation. Une capture seule n'est pas un artefact reproductible."
 
-#: ../../docs/tools/algorithm-builder/architecture.md:15
-#: c9fdaea83a194a5b9d897b2bff51a918
+#: ../../docs/tools/algorithm-builder/architecture.md:17
+#: 4eb08b2459284ca9bb8602b4df3a8253
 msgid "Failure behavior"
 msgstr "Comportement en cas d'echec"
 
-#: ../../docs/tools/algorithm-builder/architecture.md:17
-#: 3e583123cd5449ae9f49f59970c7121c
+#: ../../docs/tools/algorithm-builder/architecture.md:19
+#: d293691cd0fd4f718e9a7e4c5fadb75f
 msgid ""
 "Missing configuration, unavailable dependencies, invalid input, and failed "
 "tests must remain visible. The tool must not replace a failure with invented"
@@ -70,3 +85,10 @@ msgstr ""
 "Une configuration absente, des dependances indisponibles, une entree "
 "invalide et des tests echoues doivent rester visibles. L'outil ne doit pas "
 "remplacer un echec par un succes invente."
+
+#~ msgid ""
+#~ "A React client and Express service coordinate visual graph editing, "
+#~ "persistence, and inspectable algorithm structure."
+#~ msgstr ""
+#~ "Un client React et un service Express coordonnent l'edition visuelle des "
+#~ "graphes, la persistance et une structure algorithmique inspectable."

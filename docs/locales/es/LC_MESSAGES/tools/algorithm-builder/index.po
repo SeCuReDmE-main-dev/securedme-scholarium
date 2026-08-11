@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -21,69 +21,132 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/algorithm-builder/index.md:1
-#: bbb37a7c31ad45158665a762736a576f
+#: e08f80fb54f44cc4b3f920d796ec1afd
 msgid "Algorithm Builder"
 msgstr "Algorithm Builder"
 
 #: ../../docs/tools/algorithm-builder/index.md:8
-#: 134babd4b89244958d1b3ca32dc60609
+#: e755cb41e15a455bb7ef4e5827dbbdd6
 msgid ""
-"A visual workspace for composing, inspecting, and explaining algorithm "
-"structures."
+"A Chromium MV3 side-panel forge for building a deterministic Mage card "
+"program, validating it locally, and returning bound Colab evidence to "
+"AlgoQuest."
 msgstr ""
-"Un espacio visual para componer, inspeccionar y explicar estructuras "
-"algoritmicas."
+"A Chromium MV3 side-panel forge for building a deterministic Mage card "
+"program, validating it locally, and returning bound Colab evidence to "
+"AlgoQuest."
 
 #: ../../docs/tools/algorithm-builder/index.md:10
-#: 5b04e8790f894eb2b289ae3cc390f7b4
+#: 0cee53b1b29c41d6bdde6bfc724daaef
 msgid "Public status"
 msgstr "Estado publico"
 
 #: ../../docs/tools/algorithm-builder/index.md:12
-#: 4f0e2271ca9b4b26ae03051c5914fe29
+#: 69fa9e412fb94472acd398042be229f7
 msgid "**Runtime:** `browser-app`"
 msgstr "**Ejecucion:** `browser-app`"
 
 #: ../../docs/tools/algorithm-builder/index.md:13
-#: 0db88abe833e4c2bab21f41d9c0f381a
+#: d72ffbb92ab24c829c02ed85e33cbe08
 msgid "**Availability:** `pending`"
 msgstr "**Disponibilidad:** `pending`"
 
 #: ../../docs/tools/algorithm-builder/index.md:14
-#: 71f49183930a439eaa8008ed458df560
+#: be7293de96ec4d43b439f3363d99a80d
 msgid "**License:** `LicenseRef-SEL-2.0`"
 msgstr "**Licencia:** `LicenseRef-SEL-2.0`"
 
 #: ../../docs/tools/algorithm-builder/index.md:15
-#: e911a42e0e984df1aa7f18e8025f4ef8
+#: 826c352cb0f1422a96ce0400bb435382
 msgid "**Version:** `1.0.0`"
 msgstr "**Version:** `1.0.0`"
 
 #: ../../docs/tools/algorithm-builder/index.md:23
-#: 556d271a36444c01b86331480ce4ff40
+#: 88d5c2e7a9c3473ab3ca31c853f4c5bb
 msgid "Interfaces"
 msgstr "Interfaces"
 
 #: ../../docs/tools/algorithm-builder/index.md:25
-#: 9d92c0d4d57847bd9285994994eb07d7
-msgid "React visual builder"
-msgstr "React visual builder"
+#: 9c3a97a40e41411b9211d0f423ff47da
+msgid "Chromium 114+ Manifest V3 side panel"
+msgstr "Chromium 114+ Manifest V3 side panel"
 
 #: ../../docs/tools/algorithm-builder/index.md:26
-#: 9b71313e913e489ca9d2adc33251584b
-msgid "Express service"
-msgstr "Express service"
+#: 7f99ba361afc40419780e672e5d9ce12
+msgid "Renderer-independent Mage card AST and visible learning-run store"
+msgstr "Renderer-independent Mage card AST and visible learning-run store"
 
 #: ../../docs/tools/algorithm-builder/index.md:27
-#: 3353a0aa75ce47b19e817d145c2fea5d
-msgid "WebSocket collaboration channel"
-msgstr "WebSocket collaboration channel"
+#: b2ffc4cfcdb14d98b9690ec6498fd861
+msgid "Authenticated Express/Postgres broker"
+msgstr "Authenticated Express/Postgres broker"
+
+#: ../../docs/tools/algorithm-builder/index.md:28
+#: bec5a212752944a781c02faea1c5192b
+msgid "Generated Colab notebook and server-attested receipt return"
+msgstr "Generated Colab notebook and server-attested receipt return"
 
 #: ../../docs/tools/algorithm-builder/index.md:30
-#: 66a0001412d149228aa7d86252283b22
+#: d1d7394ec5674d1cb0d50b5a5e236779
+msgid "Current first-proof"
+msgstr "Current first-proof"
+
+#: ../../docs/tools/algorithm-builder/index.md:32
+#: 5b8af3b38af44063beff5e4263d44f4e
 msgid ""
-"The builder supports explanation and experimentation; generated structures "
-"remain subject to code review and tests."
+"The panel follows `Mission → Build → Check → Colab → Return → Reflect`. It "
+"preserves the build across retries and restart, supports keyboard card "
+"ordering, undo/redo, autosave, a learner-written model-limit explanation, "
+"and explicit JSON recovery."
 msgstr ""
-"El constructor facilita la explicacion y la experimentacion; las estructuras"
-" generadas siguen sujetas a revision de codigo y pruebas."
+"The panel follows `Mission → Build → Check → Colab → Return → Reflect`. It "
+"preserves the build across retries and restart, supports keyboard card "
+"ordering, undo/redo, autosave, a learner-written model-limit explanation, "
+"and explicit JSON recovery."
+
+#: ../../docs/tools/algorithm-builder/index.md:34
+#: 229ebb3a46ff46169d44a3221b31ce63
+msgid ""
+"The production bundle, engine, broker, notebook parity, privacy, and "
+"permission tests pass locally. The public runtime remains pending until real"
+" Auth0, HTTPS/Postgres, unpacked Chromium, and live Colab acceptance are "
+"complete."
+msgstr ""
+"The production bundle, engine, broker, notebook parity, privacy, and "
+"permission tests pass locally. The public runtime remains pending until real"
+" Auth0, HTTPS/Postgres, unpacked Chromium, and live Colab acceptance are "
+"complete."
+
+#: ../../docs/tools/algorithm-builder/index.md:37
+#: 7c47e6a6c0c74babb9aa53293be90b55
+msgid ""
+"The Builder owns editable artifacts, not missions or progression. AlgoQuest "
+"remains the sole pedagogical authority, and local verification is never "
+"labelled as Colab evidence."
+msgstr ""
+"The Builder owns editable artifacts, not missions or progression. AlgoQuest "
+"remains the sole pedagogical authority, and local verification is never "
+"labelled as Colab evidence."
+
+#~ msgid ""
+#~ "A visual workspace for composing, inspecting, and explaining algorithm "
+#~ "structures."
+#~ msgstr ""
+#~ "Un espacio visual para componer, inspeccionar y explicar estructuras "
+#~ "algoritmicas."
+
+#~ msgid "React visual builder"
+#~ msgstr "React visual builder"
+
+#~ msgid "Express service"
+#~ msgstr "Express service"
+
+#~ msgid "WebSocket collaboration channel"
+#~ msgstr "WebSocket collaboration channel"
+
+#~ msgid ""
+#~ "The builder supports explanation and experimentation; generated structures "
+#~ "remain subject to code review and tests."
+#~ msgstr ""
+#~ "El constructor facilita la explicacion y la experimentacion; las estructuras"
+#~ " generadas siguen sujetas a revision de codigo y pruebas."

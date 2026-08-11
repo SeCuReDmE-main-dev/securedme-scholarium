@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:1
+#: b6439ad5eb7849f6b091899abec84f1c
+msgid "Alpha Validation Record"
+msgstr "Alpha Validation Record"
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:3
+#: f9006dfb1c624059ba84321803d1bdd5
+msgid ""
+"This record describes the executable validation boundary for the supervised "
+"FfeD-QLC alpha."
+msgstr ""
+"This record describes the executable validation boundary for the supervised "
+"FfeD-QLC alpha."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:5
+#: cd98f0dbe8314d11ba377ca2587fa284
+msgid "Verified locally"
+msgstr "Verified locally"
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:7
+#: a67f399bfbc34ad589e443dce85ead59
+msgid "184 Python tests pass, including all nine bounded laboratories."
+msgstr "184 Python tests pass, including all nine bounded laboratories."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:8
+#: 2bf001ca835546ca90316a9b21f8f215
+msgid ""
+"Python and TypeScript expose the same ten versioned contract identifiers."
+msgstr ""
+"Python and TypeScript expose the same ten versioned contract identifiers."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:9
+#: 3827dd93379f4f52881fa09941a58f95
+msgid ""
+"Codex and Gemini Vigil vectors have equivalent contract content outside "
+"provider, identifier and timestamp fields."
+msgstr ""
+"Codex and Gemini Vigil vectors have equivalent contract content outside "
+"provider, identifier and timestamp fields."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:10
+#: 8e7684ea26554b7f8985772b77e10ef9
+msgid "Vitest component and contract tests pass."
+msgstr "Vitest component and contract tests pass."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:11
+#: 9d748318b5874a0c95433e364163bfbc
+msgid "Playwright passes on desktop and mobile viewports."
+msgstr "Playwright passes on desktop and mobile viewports."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:12
+#: 82c851c04c004ec0913e8ecf71aa3c87
+msgid "The Vite production build and frontend smoke check pass."
+msgstr "The Vite production build and frontend smoke check pass."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:13
+#: 053a9ba2761e4bb5a28134da19fc8a70
+msgid "MkDocs builds in strict mode."
+msgstr "MkDocs builds in strict mode."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:14
+#: 4125005415e24914830fdb0039544f76
+msgid ""
+"`npm audit` reports zero known vulnerabilities and `pip check` reports no "
+"broken requirements."
+msgstr ""
+"`npm audit` reports zero known vulnerabilities and `pip check` reports no "
+"broken requirements."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:15
+#: cfa92b36d89e479aae15e32fb0ae0c8f
+msgid "The multi-stage Docker image builds successfully."
+msgstr "The multi-stage Docker image builds successfully."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:16
+#: 4d1061b7afe84f2ab3b354b1b9aeaad9
+msgid ""
+"Docker Compose reaches `healthy` with the reviewed Gateway package supplied "
+"through a named BuildKit context."
+msgstr ""
+"Docker Compose reaches `healthy` with the reviewed Gateway package supplied "
+"through a named BuildKit context."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:17
+#: 0c17770ea2244335ae6179d439457a74
+msgid ""
+"A real Gateway integration check returns readiness, creates a pseudonymous "
+"session and exposes the eleven-tool suite registry without credential "
+"values."
+msgstr ""
+"A real Gateway integration check returns readiness, creates a pseudonymous "
+"session and exposes the eleven-tool suite registry without credential "
+"values."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:19
+#: 62cbe68920fd4d78b664d85b42314bd4
+msgid "Professor-enforced limits"
+msgstr "Professor-enforced limits"
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:21
+#: 717a67436f524adf816a1b9814f3db08
+msgid ""
+"The professor surface can reduce the project retry and geometry-trace "
+"budgets. The API validates every Tenebris field against the immutable alpha "
+"maximums. A student session cannot update these limits."
+msgstr ""
+"The professor surface can reduce the project retry and geometry-trace "
+"budgets. The API validates every Tenebris field against the immutable alpha "
+"maximums. A student session cannot update these limits."
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:23
+#: 90ef126e1300448491db27dad742111d
+msgid "Remaining boundary"
+msgstr "Remaining boundary"
+
+#: ../../docs/tools/ffed-qlc/alpha-validation.md:25
+#: ec59e72ea2ec43feba453fdac9faa49d
+msgid ""
+"This validation demonstrates internal consistency, bounded execution and "
+"reproducibility of the educational alpha. It is not a cryptographic audit, "
+"certification, production hardening review or post-quantum claim. External "
+"targets, arbitrary shell execution, real `.env` files and provider "
+"credentials remain outside the alpha."
+msgstr ""
+"This validation demonstrates internal consistency, bounded execution and "
+"reproducibility of the educational alpha. It is not a cryptographic audit, "
+"certification, production hardening review or post-quantum claim. External "
+"targets, arbitrary shell execution, real `.env` files and provider "
+"credentials remain outside the alpha."

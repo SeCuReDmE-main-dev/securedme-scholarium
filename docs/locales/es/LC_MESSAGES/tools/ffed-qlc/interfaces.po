@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -20,38 +20,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: ../../docs/tools/ffed-qlc/interfaces.md:1 6647136fb57f4c0ca48fabbdad2a02f7
+#: ../../docs/tools/ffed-qlc/interfaces.md:1 604a5c38ec134067804564d59c1fc264
 msgid "Interfaces"
 msgstr "Interfaces"
 
-#: ../../docs/tools/ffed-qlc/interfaces.md:3 1a907282c0dc41d6b45fd4bd3cac51bb
+#: ../../docs/tools/ffed-qlc/interfaces.md:3 863e88760c114ff4b2152a301dacd65d
 msgid ""
-"**Vite research workbench:** use only through the documented repository "
-"route."
+"**Vite student/professor workbench:** preserves separate learning and review"
+" authority."
 msgstr ""
-"**Vite research workbench:** usar solo mediante la ruta documentada del "
-"repositorio."
+"**Vite student/professor workbench:** preserves separate learning and review"
+" authority."
 
-#: ../../docs/tools/ffed-qlc/interfaces.md:4 4db0253d2d9f46a28108c865e86faff0
+#: ../../docs/tools/ffed-qlc/interfaces.md:4 df5e6a863fb343cab005575a696e3539
 msgid ""
 "**ffed-qlc command line:** use only through the documented repository route."
 msgstr ""
 "**ffed-qlc command line:** usar solo mediante la ruta documentada del "
 "repositorio."
 
-#: ../../docs/tools/ffed-qlc/interfaces.md:5 ef4cbe0643954647b02f3a00e253ecbb
+#: ../../docs/tools/ffed-qlc/interfaces.md:5 7d3514a3e5e447a0ba27428e7c18a9aa
 msgid ""
-"**Optional FastAPI adapter:** use only through the documented repository "
-"route."
+"**FastAPI `/api/v1`:** requires the reviewed Gateway contract for real alpha"
+" sessions; liveness remains distinct from readiness."
 msgstr ""
-"**Optional FastAPI adapter:** usar solo mediante la ruta documentada del "
-"repositorio."
+"**FastAPI `/api/v1`:** requires the reviewed Gateway contract for real alpha"
+" sessions; liveness remains distinct from readiness."
 
-#: ../../docs/tools/ffed-qlc/interfaces.md:7 7d60035819074b859432b4b8b2f3eb1b
+#: ../../docs/tools/ffed-qlc/interfaces.md:6 9a04b9882f92490abcfccc3221475b91
+msgid ""
+"**Vigil report:** schema-validates evidence and limitations but never "
+"assigns a final grade or security certification."
+msgstr ""
+"**Vigil report:** schema-validates evidence and limitations but never "
+"assigns a final grade or security certification."
+
+#: ../../docs/tools/ffed-qlc/interfaces.md:8 5e85a27ae3e6473b85c488eea74816f8
 msgid "Interface contract"
 msgstr "Contrato de interfaz"
 
-#: ../../docs/tools/ffed-qlc/interfaces.md:9 63734b5808b24b3b82a0728b9b76b2f5
+#: ../../docs/tools/ffed-qlc/interfaces.md:10 20de4ef17b8d4537abb9653bdf557f28
 msgid ""
 "Inputs must be explicit, outputs must be inspectable, errors must be "
 "returned as errors, and consequential external actions require human "
@@ -61,11 +69,11 @@ msgstr ""
 "devueltos como errores y las acciones externas importantes requieren "
 "aprobacion humana."
 
-#: ../../docs/tools/ffed-qlc/interfaces.md:11 45980498da0240e297fa3c2aecde01bd
+#: ../../docs/tools/ffed-qlc/interfaces.md:12 285319ddaa494b47be9ab4b738e67d95
 msgid "Compatibility"
 msgstr "Compatibilidad"
 
-#: ../../docs/tools/ffed-qlc/interfaces.md:13 599fabb809e649e1a0d18c91c6ab08bf
+#: ../../docs/tools/ffed-qlc/interfaces.md:14 2ff69b2462914f7cbcf06fb0a07f42ab
 msgid ""
 "Treat undocumented endpoints, commands, and browser controls as unsupported."
 " Confirm the current repository version before integrating another system."
@@ -73,3 +81,17 @@ msgstr ""
 "Considere no compatibles los endpoints, comandos y controles del navegador "
 "no documentados. Confirme la version actual del repositorio antes de "
 "integrar otro sistema."
+
+#~ msgid ""
+#~ "**Vite research workbench:** use only through the documented repository "
+#~ "route."
+#~ msgstr ""
+#~ "**Vite research workbench:** usar solo mediante la ruta documentada del "
+#~ "repositorio."
+
+#~ msgid ""
+#~ "**Optional FastAPI adapter:** use only through the documented repository "
+#~ "route."
+#~ msgstr ""
+#~ "**Optional FastAPI adapter:** usar solo mediante la ruta documentada del "
+#~ "repositorio."

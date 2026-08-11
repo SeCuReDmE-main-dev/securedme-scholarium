@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -20,58 +20,102 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: ../../docs/tools/ffed-qlc/index.md:1 83cf4bd4af494979a2bf0e3bb8107ce7
+#: ../../docs/tools/ffed-qlc/index.md:1 1d59fe535d1f4849a0bb420403bda9f8
 msgid "FfeD-QLC"
 msgstr "FfeD-QLC"
 
-#: ../../docs/tools/ffed-qlc/index.md:8 88282b496d1f42fbb866d6b393131924
+#: ../../docs/tools/ffed-qlc/index.md:8 a039529b683a4eb5b67a3e9025aeb708
 msgid ""
-"A bounded admissibility workbench for structured quantum and logical-"
-"computation experiments."
+"A supervised geometric-cryptography learning workbench where Vigil guides "
+"nine bounded laboratories and professors decide from reproducible evidence."
 msgstr ""
-"Un atelier d'admissibilite borne pour des experiences structurees de calcul "
-"quantique et logique."
+"A supervised geometric-cryptography learning workbench where Vigil guides "
+"nine bounded laboratories and professors decide from reproducible evidence."
 
-#: ../../docs/tools/ffed-qlc/index.md:10 5c34288192644648b57616223a13ce1e
+#: ../../docs/tools/ffed-qlc/index.md:10 a54dfc0fe90147efbbd0456db73ff468
 msgid "Public status"
 msgstr "Statut public"
 
-#: ../../docs/tools/ffed-qlc/index.md:12 0cd27dc22bde4dcc8e23709eb0b94908
+#: ../../docs/tools/ffed-qlc/index.md:12 05adbe342b54482c9b741f68375c18be
 msgid "**Runtime:** `browser-app`"
 msgstr "**Execution:** `browser-app`"
 
-#: ../../docs/tools/ffed-qlc/index.md:13 297030355bc347e09bfc195442fd3787
+#: ../../docs/tools/ffed-qlc/index.md:13 fd5bfcedaa2b47afadc0013d1d9ea5db
 msgid "**Availability:** `verified`"
 msgstr "**Disponibilite:** `verified`"
 
-#: ../../docs/tools/ffed-qlc/index.md:14 fa9403d2dd5d40b5b8533d86dcbb3e5d
+#: ../../docs/tools/ffed-qlc/index.md:14 2e7daa3971f6429f8a859cf2a75262c1
 msgid "**License:** `LicenseRef-SECL-2.0`"
 msgstr "**Licence:** `LicenseRef-SECL-2.0`"
 
-#: ../../docs/tools/ffed-qlc/index.md:15 fbefb43fd75b47f580988ac94a7bd689
+#: ../../docs/tools/ffed-qlc/index.md:15 36f1d0399c444e4cacfb31ef6e46736b
 msgid "**Version:** `0.1.0`"
 msgstr "**Version:** `0.1.0`"
 
-#: ../../docs/tools/ffed-qlc/index.md:23 3904c6f354754c90804b6f544912cd16
+#: ../../docs/tools/ffed-qlc/index.md:23 b71198884d19435198c57868441390d2
+msgid "Current alpha mechanism"
+msgstr "Current alpha mechanism"
+
+#: ../../docs/tools/ffed-qlc/index.md:25 beb71b0557e04e0e89247c0f5e368790
+msgid ""
+"`Gateway -> diagnostic -> orb project -> nine laboratories -> red/blue "
+"mission -> Vigil report -> professor decision -> portfolio`"
+msgstr ""
+"`Gateway -> diagnostic -> orb project -> nine laboratories -> red/blue "
+"mission -> Vigil report -> professor decision -> portfolio`"
+
+#: ../../docs/tools/ffed-qlc/index.md:27 4ea33ac0a2044cd58b430d2629a99d7e
+msgid ""
+"FQLC1 uses scrypt and ChaCha20-Poly1305 as its standards floor. Exact "
+"Apollonian traces and the geometric permutation are inspectable learning "
+"mechanisms, not independent cipher or post-quantum claims. Only synthetic "
+"fixtures are admitted."
+msgstr ""
+"FQLC1 uses scrypt and ChaCha20-Poly1305 as its standards floor. Exact "
+"Apollonian traces and the geometric permutation are inspectable learning "
+"mechanisms, not independent cipher or post-quantum claims. Only synthetic "
+"fixtures are admitted."
+
+#: ../../docs/tools/ffed-qlc/index.md:29 53c009abf0e147eb98d26f2fc1df7351
 msgid "Interfaces"
 msgstr "Interfaces"
 
-#: ../../docs/tools/ffed-qlc/index.md:25 471aaf401e9e4d71bb662c8b96266d8c
-msgid "Vite research workbench"
-msgstr "Vite research workbench"
+#: ../../docs/tools/ffed-qlc/index.md:31 2cc5199b904247a8974a5bd48d3d8cb8
+#, fuzzy
+msgid "Vite student and professor workbench"
+msgstr "Vite student and professor workbench"
 
-#: ../../docs/tools/ffed-qlc/index.md:26 36005ec61aac4cf094c7d7a3af6586f5
-msgid "ffed-qlc command line"
-msgstr "ffed-qlc command line"
+#: ../../docs/tools/ffed-qlc/index.md:32 7288ec0311974852a63612aaf993840b
+#, fuzzy
+msgid "`ffed-qlc` command line"
+msgstr "`ffed-qlc` command line"
 
-#: ../../docs/tools/ffed-qlc/index.md:27 646b3e3ab66a4fcf9d5c2d79f9e62341
-msgid "Optional FastAPI adapter"
-msgstr "Optional FastAPI adapter"
+#: ../../docs/tools/ffed-qlc/index.md:33 5cd3d41645964f93855c54b457901dd7
+msgid "Gateway-required FastAPI alpha surface under `/api/v1`"
+msgstr "Gateway-required FastAPI alpha surface under `/api/v1`"
 
-#: ../../docs/tools/ffed-qlc/index.md:30 927fb554d7de4572855d497d2ee93cea
+#: ../../docs/tools/ffed-qlc/index.md:34 771c81b281d34192a5d5013e1baa0623
+msgid ""
+"Vigil reports with `accept`, `suspend`, `reject`, or revision under "
+"professor authority"
+msgstr ""
+"Vigil reports with `accept`, `suspend`, `reject`, or revision under "
+"professor authority"
+
+#: ../../docs/tools/ffed-qlc/index.md:37 ab3354dd70b74d87a61f13513f88fb3d
 msgid ""
 "Candidate admission is a software decision trace, not proof of a physical or"
 " quantum claim."
 msgstr ""
 "L'admission d'un candidat est une trace de decision logicielle, pas la "
 "preuve d'une affirmation physique ou quantique."
+
+#~ msgid ""
+#~ "A bounded admissibility workbench for structured quantum and logical-"
+#~ "computation experiments."
+#~ msgstr ""
+#~ "Un atelier d'admissibilite borne pour des experiences structurees de calcul "
+#~ "quantique et logique."
+
+#~ msgid "Optional FastAPI adapter"
+#~ msgstr "Optional FastAPI adapter"

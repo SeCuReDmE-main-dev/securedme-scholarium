@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -21,31 +21,45 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/algoquest-qbit/architecture.md:1
-#: 2d107216f9504631a55c88fe56efdbd8
+#: 75e6dd7518a744d5a0dde314cfb84bab
 msgid "Architecture"
 msgstr "Arquitectura"
 
 #: ../../docs/tools/algoquest-qbit/architecture.md:3
-#: 7533a43fb03443fba1aee567f2088776
+#: 46a1ac19dc2243a38e08d4cac80c0540
+#, fuzzy
 msgid ""
-"A React and TypeScript learning client organized around challenges, guided "
-"planning, and reviewable learner actions."
+"A React and TypeScript learning client organized around challenges, governed"
+" Hero Books missions, guided planning, and reviewable learner actions."
 msgstr ""
-"Un cliente educativo React y TypeScript organizado en torno a desafios, "
-"planificacion guiada y acciones del estudiante revisables."
+"A React and TypeScript learning client organized around challenges, governed"
+" Hero Books missions, guided planning, and reviewable learner actions."
 
 #: ../../docs/tools/algoquest-qbit/architecture.md:5
-#: 34c096de35544061b27d0ccdbc55e417
+#: baf27586aa7a44cf918255c6e12dfa7f
 msgid "Data flow"
 msgstr "Flujo de datos"
 
 #: ../../docs/tools/algoquest-qbit/architecture.md:11
-#: 2f3e56eadb3d4926815421be3570ebe6
+#: aa85a4c7cf2a4fba91281488681ae11d
+msgid ""
+"AlgoQuest remains the canonical mission and progression owner. The Chromium "
+"extension transports typed evidence without reading the Colab DOM. Narrative"
+" rewards, learning evidence, execution receipts, and ephemeral observations "
+"remain separate records."
+msgstr ""
+"AlgoQuest remains the canonical mission and progression owner. The Chromium "
+"extension transports typed evidence without reading the Colab DOM. Narrative"
+" rewards, learning evidence, execution receipts, and ephemeral observations "
+"remain separate records."
+
+#: ../../docs/tools/algoquest-qbit/architecture.md:13
+#: f6903c519d4047f3beea59e1e4e50927
 msgid "Provenance"
 msgstr "Procedencia"
 
-#: ../../docs/tools/algoquest-qbit/architecture.md:13
-#: d4ae8f3f5c09437c808c37bf0cfea18f
+#: ../../docs/tools/algoquest-qbit/architecture.md:15
+#: c450a97312c2452f9884e0c36e292e05
 msgid ""
 "Record the repository commit, configuration, input identifiers, execution "
 "command, output location, and validation result. A screenshot alone is not a"
@@ -55,13 +69,13 @@ msgstr ""
 " entrada, el comando de ejecucion, la ubicacion de salida y el resultado de "
 "validacion. Una captura por si sola no es un artefacto reproducible."
 
-#: ../../docs/tools/algoquest-qbit/architecture.md:15
-#: 02cd4ff49d414d369dedd5b8f14e74a9
+#: ../../docs/tools/algoquest-qbit/architecture.md:17
+#: 8bcedf807a6e4f06877c698dcdf4d5cf
 msgid "Failure behavior"
 msgstr "Comportamiento ante fallos"
 
-#: ../../docs/tools/algoquest-qbit/architecture.md:17
-#: d8ba10f481e74401b2cbb076a85633f9
+#: ../../docs/tools/algoquest-qbit/architecture.md:19
+#: 047d856c80a24d2797c3c8c3d1f57085
 msgid ""
 "Missing configuration, unavailable dependencies, invalid input, and failed "
 "tests must remain visible. The tool must not replace a failure with invented"

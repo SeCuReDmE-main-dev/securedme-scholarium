@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/fnpqnn-gateway/operations.md:1
-#: e6e45efc646c412893a731f43bbe242b
+#: 7dfbfe97ec1e4a6a88fc83b21e1999d9
 msgid "Operations and contribution"
 msgstr "Operacion y contribucion"
 
 #: ../../docs/tools/fnpqnn-gateway/operations.md:3
-#: 92138df1a7dd42a3b48cbe10f6bf666d
+#: 424aa09298844d9d945f4dd5a2f3baf5
 msgid "Configuration"
 msgstr "Configuracion"
 
 #: ../../docs/tools/fnpqnn-gateway/operations.md:5
-#: 1b8c811754c6402897f1a08032df6694
+#: 78d8ff93cb8e4defa5233baec3585193
 msgid ""
 "Keep secrets outside documentation and source control. Use `.env.example` as"
 " the public contract and store real values only in the designated local "
@@ -42,12 +42,12 @@ msgstr ""
 " superficie local designada."
 
 #: ../../docs/tools/fnpqnn-gateway/operations.md:7
-#: aaf24120a6bd4b8c87c461422e4eb7b2
+#: 46faf3040cc84636bbf86de99d208a95
 msgid "Testing"
 msgstr "Pruebas"
 
 #: ../../docs/tools/fnpqnn-gateway/operations.md:9
-#: ff016e7fa9184c23a44006a01d52a235
+#: 221e584451f3419db010755c9ce456f3
 msgid ""
 "Run the repository checks listed in the quickstart. A passing narrow test "
 "does not prove unrelated interfaces or scientific claims."
@@ -57,42 +57,55 @@ msgstr ""
 "afirmaciones cientificas."
 
 #: ../../docs/tools/fnpqnn-gateway/operations.md:11
-#: b6d67989c8144bd98be02c7009a6545a
+#: e405fc9714b547be98047f315759773f
+msgid ""
+"Run the suite auth audit before presenting the adapter fleet as "
+"synchronized. A green audit means the policy files agree and forbidden "
+"material was not admitted; it is not a substitute for browser login testing "
+"in each application."
+msgstr ""
+"Run the suite auth audit before presenting the adapter fleet as "
+"synchronized. A green audit means the policy files agree and forbidden "
+"material was not admitted; it is not a substitute for browser login testing "
+"in each application."
+
+#: ../../docs/tools/fnpqnn-gateway/operations.md:13
+#: d351f9edcba9436a95ded741bc80e73e
 msgid "Troubleshooting"
 msgstr "Solucion de problemas"
 
-#: ../../docs/tools/fnpqnn-gateway/operations.md:13
-#: 59439ddb12534bfb80ce2fe7fe49d2bf
+#: ../../docs/tools/fnpqnn-gateway/operations.md:15
+#: be19c528c2bc457baaeee1606c5cf0ff
 msgid "Confirm the repository and branch."
 msgstr "Confirme el repositorio y la rama."
 
-#: ../../docs/tools/fnpqnn-gateway/operations.md:14
-#: 7e7187f8ddf8419581a235ec96a532ff
+#: ../../docs/tools/fnpqnn-gateway/operations.md:16
+#: d30ff456b678460aadad82dc43cf751f
 msgid "Reproduce with the smallest supported input."
 msgstr "Reproduzca con la entrada compatible mas pequena."
 
-#: ../../docs/tools/fnpqnn-gateway/operations.md:15
-#: 305f8b6e88a145439414adc8692010bf
+#: ../../docs/tools/fnpqnn-gateway/operations.md:17
+#: 65c79a8caa2b410a9ca25cc2e38ceee6
 msgid "Capture the exact command and error."
 msgstr "Registre el comando y el error exactos."
 
-#: ../../docs/tools/fnpqnn-gateway/operations.md:16
-#: 7e445b8b044b49939c667173fb824a8a
+#: ../../docs/tools/fnpqnn-gateway/operations.md:18
+#: c5bb23c44bc54b479030730aa720469b
 msgid "Check the documented runtime and lockfile."
 msgstr "Compruebe el runtime documentado y el archivo de bloqueo."
 
-#: ../../docs/tools/fnpqnn-gateway/operations.md:17
-#: 4381447e72d8460dbb16dc3da940a8e5
+#: ../../docs/tools/fnpqnn-gateway/operations.md:19
+#: 6edab2b204764ca69ce7ae99a1181333
 msgid "Open an issue with secret-free evidence."
 msgstr "Abra una incidencia con evidencia sin secretos."
 
-#: ../../docs/tools/fnpqnn-gateway/operations.md:19
-#: 779630e01655453aa61b75495f9f22a7
+#: ../../docs/tools/fnpqnn-gateway/operations.md:21
+#: a7dfac62130c435da1eabd1bd4df305e
 msgid "Security and privacy"
 msgstr "Seguridad y privacidad"
 
-#: ../../docs/tools/fnpqnn-gateway/operations.md:21
-#: 392be5a19bd24cf9be5b1b4dc19ee6ed
+#: ../../docs/tools/fnpqnn-gateway/operations.md:23
+#: a0c95c8730d5407190c68ce7b710b006
 msgid ""
 "The gateway transports and validates requests; it does not convert model "
 "output into scientific authority."
@@ -100,13 +113,13 @@ msgstr ""
 "La pasarela transporta y valida solicitudes; no convierte la salida de un "
 "modelo en autoridad cientifica."
 
-#: ../../docs/tools/fnpqnn-gateway/operations.md:23
-#: e43f94e2e7104364bdc533cf4c2efcb4
+#: ../../docs/tools/fnpqnn-gateway/operations.md:25
+#: 82b8e806ca884218a39791f293a2aa62
 msgid "Contributing"
 msgstr "Contribuir"
 
-#: ../../docs/tools/fnpqnn-gateway/operations.md:25
-#: fbdd496080d644b9a801e8865c237903
+#: ../../docs/tools/fnpqnn-gateway/operations.md:27
+#: 1df79417c6eb4352b06b577f9fce989a
 msgid ""
 "Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository "
 "license when present. Keep changes bounded and include the checks that "
@@ -116,13 +129,13 @@ msgstr ""
 "repositorio cuando existan. Mantenga los cambios acotados e incluya las "
 "comprobaciones que justifican su aceptacion."
 
-#: ../../docs/tools/fnpqnn-gateway/operations.md:27
-#: 745a94bb0c4649c2a5a70f4a1695f381
+#: ../../docs/tools/fnpqnn-gateway/operations.md:29
+#: d0569c866c7941108dd8edc37e37b0e4
 msgid "Releases"
 msgstr "Versiones publicadas"
 
-#: ../../docs/tools/fnpqnn-gateway/operations.md:29
-#: a245180da5aa41868d84e38b08978e43
+#: ../../docs/tools/fnpqnn-gateway/operations.md:31
+#: 2acb15bdcdcd41c6af0708fd40b98d67
 msgid ""
 "The current public documentation describes `0.1.0` with status `local-api`. "
 "Consult the repository history and release notes for changes."

@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/ffed-qlc/student-path.md:1
+#: 4001901110a341d4beb2af58c98577c3
+msgid "Student Path"
+msgstr "Student Path"
+
+#: ../../docs/tools/ffed-qlc/student-path.md:3
+#: 1c06e3aa4ba740b9b85277cbcaef477a
+msgid ""
+"Students enter through a Gateway-issued pseudonymous role. Prior suite "
+"metrics are useful but optional. When no prior evidence exists, Vigil starts"
+" at `lab-01` and records that the absence of history is not a failure."
+msgstr ""
+"Students enter through a Gateway-issued pseudonymous role. Prior suite "
+"metrics are useful but optional. When no prior evidence exists, Vigil starts"
+" at `lab-01` and records that the absence of history is not a failure."
+
+#: ../../docs/tools/ffed-qlc/student-path.md:5
+#: e1b35068744c4b2b9312d09e03e207f4
+msgid "Nine laboratories"
+msgstr "Nine laboratories"
+
+#: ../../docs/tools/ffed-qlc/student-path.md:7
+#: 7fcff1f92fa847b790cfcf23eef2b62a
+msgid "Identify the boundary between scrypt, AEAD and geometry."
+msgstr "Identify the boundary between scrypt, AEAD and geometry."
+
+#: ../../docs/tools/ffed-qlc/student-path.md:8
+#: a54dae10632848afaeb79660eddd030e
+msgid "Inspect an FQLC1 public header."
+msgstr "Inspect an FQLC1 public header."
+
+#: ../../docs/tools/ffed-qlc/student-path.md:9
+#: bf6f913fc540417091d4154b94e980bb
+msgid "Classify useful and avoidable metadata."
+msgstr "Classify useful and avoidable metadata."
+
+#: ../../docs/tools/ffed-qlc/student-path.md:10
+#: a5b77f293f2b4151b1833219e80ebb2a
+msgid "Compare source bytes with a geometric permutation."
+msgstr "Compare source bytes with a geometric permutation."
+
+#: ../../docs/tools/ffed-qlc/student-path.md:11
+#: e7a98c84327e43f299cf058e9347e127
+msgid "Verify exact Apollonian reflections, cycles and symmetry collisions."
+msgstr "Verify exact Apollonian reflections, cycles and symmetry collisions."
+
+#: ../../docs/tools/ffed-qlc/student-path.md:12
+#: dba6742c046146ca8fd2dd761a2bd7d3
+msgid "Run a bounded red-team action against a synthetic fixture."
+msgstr "Run a bounded red-team action against a synthetic fixture."
+
+#: ../../docs/tools/ffed-qlc/student-path.md:13
+#: c838b1b284574ec59d37238def224c8d
+msgid "Apply and document a defensive correction."
+msgstr "Apply and document a defensive correction."
+
+#: ../../docs/tools/ffed-qlc/student-path.md:14
+#: a7d92ae5b16e4fa29c11eac1347195b7
+msgid ""
+"Request a minimal metric from another Education tool through Vigil and the "
+"Gateway."
+msgstr ""
+"Request a minimal metric from another Education tool through Vigil and the "
+"Gateway."
+
+#: ../../docs/tools/ffed-qlc/student-path.md:15
+#: 93ec5142ff714187ad5ffe74b7c222c3
+msgid "Assemble a capstone orb and portfolio evidence bundle."
+msgstr "Assemble a capstone orb and portfolio evidence bundle."
+
+#: ../../docs/tools/ffed-qlc/student-path.md:17
+#: 8937a193b5394c8088710b8a678b1cfa
+msgid ""
+"Every run records the action, fixture, proof, limitation and Tenebris "
+"budgets. A successful action produces evidence, not a grade. Vigil organizes"
+" the evidence; a professor retains the final decision."
+msgstr ""
+"Every run records the action, fixture, proof, limitation and Tenebris "
+"budgets. A successful action produces evidence, not a grade. Vigil organizes"
+" the evidence; a professor retains the final decision."

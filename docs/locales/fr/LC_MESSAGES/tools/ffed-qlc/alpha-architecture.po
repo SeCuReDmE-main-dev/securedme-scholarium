@@ -1,0 +1,234 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:1
+#: f04123faa8784a79b4d27c4051432bb8
+msgid "FfeD-QLC Alpha Architecture"
+msgstr "FfeD-QLC Alpha Architecture"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:3
+#: 63b06652d93840eebe3c6725d5e0332b
+msgid "Operational path"
+msgstr "Operational path"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:5
+#: 526bbc09a11e4d37be2c3c1fecb3e92d
+msgid ""
+"`Gateway -> diagnostic -> orb project -> nine laboratories -> red/blue "
+"mission -> Vigil report -> professor decision -> portfolio`"
+msgstr ""
+"`Gateway -> diagnostic -> orb project -> nine laboratories -> red/blue "
+"mission -> Vigil report -> professor decision -> portfolio`"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:7
+#: 77982323e7de46b9a90ae1a3d9a1ed89
+msgid ""
+"The Gateway owns the credential-blind session contract. FfeD-QLC stores "
+"pseudonymous local learning state in SQLite and immutable generated evidence"
+" in a SHA-256-addressed artifact store. A real session cannot start when the"
+" Gateway contract is unavailable."
+msgstr ""
+"The Gateway owns the credential-blind session contract. FfeD-QLC stores "
+"pseudonymous local learning state in SQLite and immutable generated evidence"
+" in a SHA-256-addressed artifact store. A real session cannot start when the"
+" Gateway contract is unavailable."
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:9
+#: 29990737d9c94163abc755973f2b3d34
+msgid "Security boundary"
+msgstr "Security boundary"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:11
+#: 70b9ec9737b74460a0b4d295f93d37b7
+msgid "ChaCha20-Poly1305 supplies authenticated encryption."
+msgstr "ChaCha20-Poly1305 supplies authenticated encryption."
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:12
+#: 2859085ba6f64c5396014a17429be6ad
+msgid ""
+"scrypt supplies passphrase-based key derivation under the single supported "
+"alpha profile."
+msgstr ""
+"scrypt supplies passphrase-based key derivation under the single supported "
+"alpha profile."
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:13
+#: a8f026ae9fb941fc947e456699294bd7
+msgid ""
+"The geometric layer is an observable structural permutation and learning "
+"instrument."
+msgstr ""
+"The geometric layer is an observable structural permutation and learning "
+"instrument."
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:14
+#: 5eb65cac2ba04c809d038d37779468ef
+msgid ""
+"FQLC1 is an educational research container, not a certified or post-quantum "
+"system."
+msgstr ""
+"FQLC1 is an educational research container, not a certified or post-quantum "
+"system."
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:15
+#: 97bc894640fe49088706fe5b6fa52ea7
+msgid "Only synthetic fixtures are accepted by the mission engine."
+msgstr "Only synthetic fixtures are accepted by the mission engine."
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:16
+#: db85411f01d941b1956e6347597ad4f0
+msgid ""
+"Network targets, arbitrary shell commands, real `.env` files, credentials "
+"and private student records are outside the alpha."
+msgstr ""
+"Network targets, arbitrary shell commands, real `.env` files, credentials "
+"and private student records are outside the alpha."
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:18
+#: 778d09fe1306448e87a76805a3336d64
+msgid ""
+"The hierarchy remains `I -> I_system^S -> D_f -> dF -> i_fractal` throughout"
+" measurement and evidence generation."
+msgstr ""
+"The hierarchy remains `I -> I_system^S -> D_f -> dF -> i_fractal` throughout"
+" measurement and evidence generation."
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:20
+#: b544f71b1a3a459a94aa2d01481ecb93
+msgid "Components"
+msgstr "Components"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: 5281c4cf0790465db7a0d0e7f15434ce
+msgid "Component"
+msgstr "Component"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: dcc5616381274fbd85cb3963d4734b3f
+msgid "Responsibility"
+msgstr "Responsibility"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: d9edd766c6a24963a02cd7d70e64d346
+msgid "Authority boundary"
+msgstr "Authority boundary"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: cc3593007bd54ed4af4c21d4ac1fbf61
+msgid "Gateway"
+msgstr "Gateway"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: fd25a7724b3f464da3a1cc5f6f5d0ebe
+msgid "Role, consent, pseudonymous session, tool registry"
+msgstr "Role, consent, pseudonymous session, tool registry"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: b1b102f02d3d433f9ca83a86bdb3d942
+msgid "Never forwards credentials"
+msgstr "Never forwards credentials"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: e28b87bd2d2b4405b88004f845ecb37c
+msgid "SQLite store"
+msgstr "SQLite store"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: 4304a73dd0f74e3c8e51bc5916999144
+msgid "Projects, mission state, reports, decisions"
+msgstr "Projects, mission state, reports, decisions"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: 2e21281109e042fba3b848faed3042a9
+msgid "Local state only"
+msgstr "Local state only"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: 0aa532108ed84fbda9fb13e2fb96361f
+msgid "Artifact store"
+msgstr "Artifact store"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: 71e75b6bdd5a4a86a143b067f5502aae
+msgid "Immutable generated JSON evidence"
+msgstr "Immutable generated JSON evidence"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: 37788b90aff149bf83d7cac39950002e
+msgid "SHA-256 verified"
+msgstr "SHA-256 verified"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: 99049b677e9b47078df91ada05f405dd
+msgid "Mission engine"
+msgstr "Mission engine"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: e380bbdcde49447fad8430dfc09d26dd
+msgid "Allowlisted deterministic actions"
+msgstr "Allowlisted deterministic actions"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: e13b40521bd849d8aa4959ea12167822
+msgid "No shell or external target"
+msgstr "No shell or external target"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: 655458ba66354428b09681b627ab7eb3
+msgid "Vigil"
+msgstr "Vigil"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: 208f1b48648346239f281883c132b7fe
+msgid "Reports and bounded mascot handoffs"
+msgstr "Reports and bounded mascot handoffs"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: 17d1ee2a4a7d4481931124837fbfa7ed
+msgid "Advises; never grades"
+msgstr "Advises; never grades"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: f844fc2af21a4c6ba0cbe1b385bfd03b
+msgid "Professor surface"
+msgstr "Professor surface"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: 6edc1612f3d5443e910ea7e7e3088537
+msgid "Review, revise, accept, suspend, reject"
+msgstr "Review, revise, accept, suspend, reject"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md
+#: 33de80dd07b649e49bd0ce73efa768b2
+msgid "Final pedagogical decision"
+msgstr "Final pedagogical decision"
+
+#: ../../docs/tools/ffed-qlc/alpha-architecture.md:31
+#: f4b47224b0ea49489a6d6fca55007c1a
+msgid ""
+"New alpha resources live under `/api/v1`. Historical workbench routes under "
+"`/api` remain available during pre-alpha. `/api/v1/health/live` reports "
+"process health; `/api/v1/health/ready` additionally requires the Gateway."
+msgstr ""
+"New alpha resources live under `/api/v1`. Historical workbench routes under "
+"`/api` remain available during pre-alpha. `/api/v1/health/live` reports "
+"process health; `/api/v1/health/ready` additionally requires the Gateway."

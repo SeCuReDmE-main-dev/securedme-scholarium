@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:58-0400\n"
+"POT-Creation-Date: 2026-08-09 14:16-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: ../../docs/media/video-library.md:1 190bd695e6f74021bdb5add8e8b930e7
+#: ../../docs/media/video-library.md:1 0e0aa61860804a49a4f761dbeda80550
 msgid "Video library"
 msgstr "Videoteca"
 
-#: ../../docs/media/video-library.md:3 fdbe939dffe842b5abd016319ccc06ab
+#: ../../docs/media/video-library.md:3 17831365ab9a481692ac3c8aa6eadbd6
 msgid ""
 "Short and long-form videos are indexed together. Historical entries are "
 "preserved even when they leave the YouTube feed window; a missing pair or "
@@ -34,22 +34,22 @@ msgstr ""
 "conservan aunque salgan de la ventana del feed de YouTube; una pareja o "
 "transcripcion ausente permanece visible en lugar de inventarse."
 
-#: ../../docs/media/video-library.md:5 7b7b161921e34feeb259d454b8d4543f
+#: ../../docs/media/video-library.md:5 0cf57bfed4484a53a01c8d82b36169b1
 #, fuzzy
 msgid ""
 "**Channel:** [SeCuReDmE on "
-"YouTube](https://www.youtube.com/channel/UCYHLMJuIoJre3n39z7LUGIg)   "
-"**Indexed videos:** 15   **Last synchronized:** 2026-08-01T12:57:51-04:00"
+"YouTube](https://www.youtube.com/channel/UCYHLMJuIoJre3n39z7LUGIg)<br> "
+"**Indexed videos:** 15<br> **Last synchronized:** 2026-08-01T12:57:51-04:00"
 msgstr ""
 "**Channel:** [SeCuReDmE on "
-"YouTube](https://www.youtube.com/channel/UCYHLMJuIoJre3n39z7LUGIg)   "
-"**Indexed videos:** 15   **Last synchronized:** 2026-08-01T12:57:51-04:00"
+"YouTube](https://www.youtube.com/channel/UCYHLMJuIoJre3n39z7LUGIg)<br> "
+"**Indexed videos:** 15<br> **Last synchronized:** 2026-08-01T12:57:51-04:00"
 
-#: ../../docs/media/video-library.md:179 260a925f082248bbb920e24a8fb13970
+#: ../../docs/media/video-library.md:179 2305f2bc29064cd990b711df542802f3
 msgid "Maintenance"
 msgstr "Mantenimiento"
 
-#: ../../docs/media/video-library.md:181 fa99a5afcd5f46bf82c45cc4093578a1
+#: ../../docs/media/video-library.md:181 b40d462618e74d289d813d81b20ffda9
 msgid ""
 "Refresh the committed catalogue without adding a build-time network "
 "dependency:"
@@ -57,7 +57,7 @@ msgstr ""
 "Refresh the committed catalogue without adding a build-time network "
 "dependency:"
 
-#: ../../docs/media/video-library.md:188 8eea27bb9273473ba08ec8b80c04b32d
+#: ../../docs/media/video-library.md:188 cd6057e41aae442cbdd698738691ca5c
 #, fuzzy
 msgid ""
 "The JSON snapshot is stored in `docs/data/video-library.json`. Curated "

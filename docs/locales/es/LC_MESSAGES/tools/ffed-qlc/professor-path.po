@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:1
+#: 8947c39675c24a8ea1d6a2d5b4a3de9d
+msgid "Professor Path"
+msgstr "Professor Path"
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:3
+#: 29d16c731a8543cf889bb0feaead175c
+msgid ""
+"The professor uses a Gateway `teacher` session and a dedicated review "
+"surface."
+msgstr ""
+"The professor uses a Gateway `teacher` session and a dedicated review "
+"surface."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:5
+#: 6d34233d916e41c9b90157e1d3ffedad
+msgid "Responsibilities"
+msgstr "Responsibilities"
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:7
+#: 0c098f830c244fcab453cc506516de12
+msgid "Select or reduce Tenebris budgets."
+msgstr "Select or reduce Tenebris budgets."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:8
+#: a88068e9a40141638c59785aee5491cb
+msgid ""
+"Confirm that fixtures are synthetic and appropriate for the course level."
+msgstr ""
+"Confirm that fixtures are synthetic and appropriate for the course level."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:9
+#: 6719af2a2a0a43b0a45ec9267aac4745
+msgid "Review deterministic evidence before the Vigil explanation."
+msgstr "Review deterministic evidence before the Vigil explanation."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:10
+#: 7c71ba687c0a488bb9abd7e8f1b1cdb0
+msgid "Compare each claim with its mechanism and stated limitation."
+msgstr "Compare each claim with its mechanism and stated limitation."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:11
+#: 8950898d7424423f89e35bab07fd7d6b
+msgid "Accept, suspend, reject or request revision."
+msgstr "Accept, suspend, reject or request revision."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:12
+#: 05eefb307af342eb9d177b33e759a8ff
+msgid "Decide whether a portfolio export is suitable for publication."
+msgstr "Decide whether a portfolio export is suitable for publication."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:14
+#: 208c29c3df8043fea60a823a1f1dccce
+msgid ""
+"Vigil can recommend a route and request bounded handoffs from remote "
+"mascots. It cannot assign a final grade, certify security, publish evidence "
+"or override the professor."
+msgstr ""
+"Vigil can recommend a route and request bounded handoffs from remote "
+"mascots. It cannot assign a final grade, certify security, publish evidence "
+"or override the professor."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:16
+#: 1f849a9462b04063863157e88f4ee486
+msgid ""
+"The learning route covers a Secondary 5 bridge, applied college cryptography"
+" and university capstone evidence governance."
+msgstr ""
+"The learning route covers a Secondary 5 bridge, applied college cryptography"
+" and university capstone evidence governance."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:18
+#: 035ccfe3a8474a229b376b23436ca3d0
+msgid "Reduce a project budget"
+msgstr "Reduce a project budget"
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:20
+#: 8ea4ac1429124be786227e14ad924ce7
+msgid "Open a Gateway-backed teacher session."
+msgstr "Open a Gateway-backed teacher session."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:21
+#: 76be30a7a36b4901b8b1864dff86aa4f
+msgid "Select the supervised student project."
+msgstr "Select the supervised student project."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:22
+#: 2de8428d4eb54eca8bf4d4376377b93a
+msgid "Reduce mission retries or geometry trace steps in the Tenebris panel."
+msgstr "Reduce mission retries or geometry trace steps in the Tenebris panel."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:23
+#: 5dd778ca418d47af9200be99f475eb98
+msgid "Apply the profile and confirm the enforced state."
+msgstr "Apply the profile and confirm the enforced state."
+
+#: ../../docs/tools/ffed-qlc/professor-path.md:25
+#: c90cb4639abd4b13860ac5bfd7a56daf
+msgid ""
+"The API refuses unknown fields, zero or negative values, and every value "
+"above the alpha maximum. A student session cannot change a budget profile."
+msgstr ""
+"The API refuses unknown fields, zero or negative values, and every value "
+"above the alpha maximum. A student session cannot change a budget profile."

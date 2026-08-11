@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/algoquest-qbit/operations.md:1
-#: 4b427b41eca949a8bd208212ae10743e
+#: 95e5fa63d94b465b846b213a18563e5d
 msgid "Operations and contribution"
 msgstr "Operacion y contribucion"
 
 #: ../../docs/tools/algoquest-qbit/operations.md:3
-#: 5ccd89e254654bcd9fa035a1e4335b20
+#: ddfef596bbe04adca054b6181a3f4958
 msgid "Configuration"
 msgstr "Configuracion"
 
 #: ../../docs/tools/algoquest-qbit/operations.md:5
-#: 9053df33bb8948018c928a8588c4eb52
+#: 2e2706017f9d4ddcbb19bf98a0062005
 msgid ""
 "Keep secrets outside documentation and source control. Use `.env.example` as"
 " the public contract and store real values only in the designated local "
@@ -42,12 +42,12 @@ msgstr ""
 " superficie local designada."
 
 #: ../../docs/tools/algoquest-qbit/operations.md:7
-#: 673ae99518214107824cfbeec68a2e05
+#: d63c157927d34e02a8463a19205d3c79
 msgid "Testing"
 msgstr "Pruebas"
 
 #: ../../docs/tools/algoquest-qbit/operations.md:9
-#: 00ece6df3f1b47a5b58b883a8f16af67
+#: 5f6e8ef49f014987ae8e4aec302199e9
 msgid ""
 "Run the repository checks listed in the quickstart. A passing narrow test "
 "does not prove unrelated interfaces or scientific claims."
@@ -57,42 +57,42 @@ msgstr ""
 "afirmaciones cientificas."
 
 #: ../../docs/tools/algoquest-qbit/operations.md:11
-#: 777c2a99f8ed4f6ea3b601430b33facb
+#: f293c5d103b04b08a89615542d22dda4
 msgid "Troubleshooting"
 msgstr "Solucion de problemas"
 
 #: ../../docs/tools/algoquest-qbit/operations.md:13
-#: 085196dcad914bbbaf41762e94c1f538
+#: 044c148c138e4318801f00178013b4b4
 msgid "Confirm the repository and branch."
 msgstr "Confirme el repositorio y la rama."
 
 #: ../../docs/tools/algoquest-qbit/operations.md:14
-#: f6803d597e254b57b9644ce2455e8b54
+#: bc3385710bdd4e8c93aa8970f151ecbf
 msgid "Reproduce with the smallest supported input."
 msgstr "Reproduzca con la entrada compatible mas pequena."
 
 #: ../../docs/tools/algoquest-qbit/operations.md:15
-#: b4a041daf4be45efb67e7fce567eec60
+#: e6377c1d8fe54a909b03feb1498ab7d5
 msgid "Capture the exact command and error."
 msgstr "Registre el comando y el error exactos."
 
 #: ../../docs/tools/algoquest-qbit/operations.md:16
-#: 064f09fb9dcc4e9ab8db0020a3eb6aff
+#: 79c5b31e99044695be808712c9420768
 msgid "Check the documented runtime and lockfile."
 msgstr "Compruebe el runtime documentado y el archivo de bloqueo."
 
 #: ../../docs/tools/algoquest-qbit/operations.md:17
-#: fd2c8f988d7946e7bdc2d4ffb0eb1ace
+#: 85d931718f1346e0ad22f9c8374b6892
 msgid "Open an issue with secret-free evidence."
 msgstr "Abra una incidencia con evidencia sin secretos."
 
 #: ../../docs/tools/algoquest-qbit/operations.md:19
-#: fb7a4289de7b40ea88693180041819f4
+#: 4b55b3359c7f41a296ab65455f2b2d0d
 msgid "Security and privacy"
 msgstr "Seguridad y privacidad"
 
 #: ../../docs/tools/algoquest-qbit/operations.md:21
-#: 54c6a4615c2e4cf297c801a7eb113bc5
+#: 65aefa7087534a4a8c35c189d3dba82c
 msgid ""
 "Learning output is formative evidence. It is not a credential, assessment "
 "authority, or autonomous teaching decision."
@@ -101,12 +101,12 @@ msgstr ""
 "una autoridad evaluadora ni una decision docente autonoma."
 
 #: ../../docs/tools/algoquest-qbit/operations.md:23
-#: a92aa80c2ec74392b3e74e71f27f4757
+#: 1c51b73bb63a447d958bb51efa99450a
 msgid "Contributing"
 msgstr "Contribuir"
 
 #: ../../docs/tools/algoquest-qbit/operations.md:25
-#: b1295aa8644a4af987dd6ae4638496a1
+#: 8095d07f2ffe49bba5ac9396753bda5f
 msgid ""
 "Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository "
 "license when present. Keep changes bounded and include the checks that "
@@ -117,12 +117,12 @@ msgstr ""
 "comprobaciones que justifican su aceptacion."
 
 #: ../../docs/tools/algoquest-qbit/operations.md:27
-#: b4582af0320a48b1839f26a91e42239c
+#: 8145a55790e5455d98739639a1fa823b
 msgid "Releases"
 msgstr "Versiones publicadas"
 
 #: ../../docs/tools/algoquest-qbit/operations.md:29
-#: 0596ef2817d942b4bd397943324c6634
+#: fddc44e98fad40e78fc52d3b580cc569
 msgid ""
 "The current public documentation describes `0.0.0` with status `public-"
 "preview`. Consult the repository history and release notes for changes."
@@ -130,3 +130,16 @@ msgstr ""
 "La documentacion publica actual describe `0.0.0` con el estado `public-"
 "preview`. Consulte el historial del repositorio y las notas de version para "
 "conocer los cambios."
+
+#: ../../docs/tools/algoquest-qbit/operations.md:31
+#: ca9548fed8c7498fb85c24c3439fcd4c
+msgid ""
+"The Mage First-Proof mechanism is implemented and locally tested, but the "
+"public preview must not be described as a live Builder-to-Colab service "
+"until Auth0, the HTTPS broker, the unpacked extension, and a real Colab "
+"callback pass acceptance together."
+msgstr ""
+"The Mage First-Proof mechanism is implemented and locally tested, but the "
+"public preview must not be described as a live Builder-to-Colab service "
+"until Auth0, the HTTPS broker, the unpacked extension, and a real Colab "
+"callback pass acceptance together."

@@ -159,10 +159,12 @@ def validate_learning_assets() -> None:
 
 
 def validate_translations() -> None:
+    catalog_counts: dict[str, int] = {}
     for language in ("fr", "es"):
         locale_root = DOCS / "locales" / language / "LC_MESSAGES"
         catalogs = sorted(locale_root.rglob("*.po"))
-        require(len(catalogs) == 105, f"{language} exposes all 105 gettext catalogs")
+        catalog_counts[language] = len(catalogs)
+        require(len(catalogs) >= 105, f"{language} preserves the established gettext catalog baseline")
         entries = [entry for path in catalogs for entry in polib.pofile(str(path)) if not entry.obsolete]
         require(all(entry.msgstr for entry in entries), f"{language} gettext entries are complete")
         translated = sum(entry.msgstr != entry.msgid for entry in entries)
@@ -186,6 +188,7 @@ def validate_translations() -> None:
                 sum(entry.msgstr != entry.msgid for entry in page if not entry.obsolete) >= 3,
                 f"{language} localizes the {slug} entry page",
             )
+    require(catalog_counts["fr"] == catalog_counts["es"], "French and Spanish expose matching gettext catalog counts")
 
 
 def main() -> None:

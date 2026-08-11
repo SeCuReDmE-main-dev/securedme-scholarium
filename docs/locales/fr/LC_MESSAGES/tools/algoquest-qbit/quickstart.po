@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/algoquest-qbit/quickstart.md:1
-#: ca3e1d107bff4a0b8d59d996bb69eea1
+#: f8acf45fb536462bb68f9338928cbd25
 msgid "AlgoQuest Qbit Education quickstart"
 msgstr "AlgoQuest Qbit Education demarrage rapide"
 
 #: ../../docs/tools/algoquest-qbit/quickstart.md:3
-#: c05b22588302410488a086edcf8695fc
+#: 33ca0f5783d5427d97613ef1c01b8c78
 msgid "Requirements"
 msgstr "Prerequis"
 
 #: ../../docs/tools/algoquest-qbit/quickstart.md:5
-#: 9c3decc396284406b91ab4b0ba6fcb84
+#: c403d5ed09d046e290a0dd9575868d26
 msgid ""
 "Use a clean checkout, the runtime declared by the repository, and its "
 "committed lockfiles. Confirm the active branch before installing anything."
@@ -40,27 +40,27 @@ msgstr ""
 " verrouillage valides. Confirmez la branche active avant toute installation."
 
 #: ../../docs/tools/algoquest-qbit/quickstart.md:11
-#: 8e86fb49d7e04133821f8bcd3ff7c73b
+#: a8ec552834cc4d5ea49816f2bafbef00
 msgid "Install"
 msgstr "Installer"
 
 #: ../../docs/tools/algoquest-qbit/quickstart.md:17
-#: bda5bb837b8f47eb92b5124675732472
+#: 3bcd13d0862d40d689f7aa9fe8008821
 msgid "Start"
 msgstr "Demarrer"
 
 #: ../../docs/tools/algoquest-qbit/quickstart.md:23
-#: 1b079003baa940a6ab826656532787ea
+#: cccd63ebc90342a49320e8de40ec67cb
 msgid "Verify"
 msgstr "Verifier"
 
 #: ../../docs/tools/algoquest-qbit/quickstart.md:29
-#: fdc9c9e798f74a01a128206b66d9b3a1
+#: 87af5daf8c3c4cdfae4b302aa084abf3
 msgid "Human acceptance"
 msgstr "Acceptation humaine"
 
 #: ../../docs/tools/algoquest-qbit/quickstart.md:31
-#: 5d5db92021c447589329ff1efa28a761
+#: 01e363e60b4041e385189f5fbd5ced9a
 msgid ""
 "Inspect the output, logs, test results, and diff. Accept, request a "
 "correction, quarantine, or stop; do not silently promote a generated result."
@@ -68,3 +68,16 @@ msgstr ""
 "Inspectez la sortie, les journaux, les resultats de tests et le diff. "
 "Acceptez, demandez une correction, placez en quarantaine ou arretez; ne "
 "promouvez jamais silencieusement un resultat genere."
+
+#: ../../docs/tools/algoquest-qbit/quickstart.md:33
+#: 4947da566ce349fd8b54b3fc52245f8f
+msgid ""
+"`npm test` includes the v1 compatibility and Mage v2 contract checks, "
+"TypeScript, MkDocs, accessibility, browser behavior, and deterministic "
+"1/25/100 replay gates. It does not substitute for live extension, identity, "
+"Colab, or school acceptance."
+msgstr ""
+"`npm test` includes the v1 compatibility and Mage v2 contract checks, "
+"TypeScript, MkDocs, accessibility, browser behavior, and deterministic "
+"1/25/100 replay gates. It does not substitute for live extension, identity, "
+"Colab, or school acceptance."

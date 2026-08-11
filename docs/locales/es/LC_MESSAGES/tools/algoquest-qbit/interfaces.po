@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -21,44 +21,56 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/algoquest-qbit/interfaces.md:1
-#: c2af5e7e99fe4abc9b18f697ee798785
+#: 7cc845ae59a64ec69947f69d285c08b9
 msgid "Interfaces"
 msgstr "Interfaces"
 
 #: ../../docs/tools/algoquest-qbit/interfaces.md:3
-#: 701d2894fc4d4912b9ef7d8bba377fee
+#: e84abf9f801a49db8ca9559a6a938e06
 msgid ""
-"**React learning interface:** use only through the documented repository "
-"route."
+"**React Hero Books interface:** owns the current mission, prompt assignment,"
+" learner-visible state, and progression decision."
 msgstr ""
-"**React learning interface:** usar solo mediante la ruta documentada del "
-"repositorio."
+"**React Hero Books interface:** owns the current mission, prompt assignment,"
+" learner-visible state, and progression decision."
 
 #: ../../docs/tools/algoquest-qbit/interfaces.md:4
-#: d00fb5dc942c4dec91a511dc4da25391
+#: f38c40caf4b042bfbf5937a9b2e620dc
 msgid ""
-"**Teacher planning surface:** use only through the documented repository "
-"route."
+"**MV3 content bridge:** publishes `MissionEnvelope.v2` and admits bound "
+"Builder and Colab receipts; it does not use `BroadcastChannel` or scrape "
+"Colab."
 msgstr ""
-"**Teacher planning surface:** usar solo mediante la ruta documentada del "
-"repositorio."
+"**MV3 content bridge:** publishes `MissionEnvelope.v2` and admits bound "
+"Builder and Colab receipts; it does not use `BroadcastChannel` or scrape "
+"Colab."
 
 #: ../../docs/tools/algoquest-qbit/interfaces.md:5
-#: 86dd977bf917491eb3487e1d93c634a4
+#: 221ef64dcc964196928b0e0f6138f698
 msgid ""
-"**Vite development server:** use only through the documented repository "
-"route."
+"**Teacher planning surface:** receives bounded planning projections rather "
+"than raw learner evidence."
 msgstr ""
-"**Vite development server:** usar solo mediante la ruta documentada del "
-"repositorio."
+"**Teacher planning surface:** receives bounded planning projections rather "
+"than raw learner evidence."
 
-#: ../../docs/tools/algoquest-qbit/interfaces.md:7
-#: 5e42a384edd74a2288955a813496566e
+#: ../../docs/tools/algoquest-qbit/interfaces.md:6
+#: b03bc76f30f24b2680b2e1c6844732eb
+#, fuzzy
+msgid ""
+"**Vite development server:** local browser runtime used by the documented "
+"tests."
+msgstr ""
+"**Vite development server:** local browser runtime used by the documented "
+"tests."
+
+#: ../../docs/tools/algoquest-qbit/interfaces.md:8
+#: 9df1809ed3de4aaaac08a749bdda4b8c
 msgid "Interface contract"
 msgstr "Contrato de interfaz"
 
-#: ../../docs/tools/algoquest-qbit/interfaces.md:9
-#: 93cee0d404554d3289d138c18323b9c6
+#: ../../docs/tools/algoquest-qbit/interfaces.md:10
+#: 324a24007d904f12b4d0d1e481ff25fb
 msgid ""
 "Inputs must be explicit, outputs must be inspectable, errors must be "
 "returned as errors, and consequential external actions require human "
@@ -68,13 +80,24 @@ msgstr ""
 "devueltos como errores y las acciones externas importantes requieren "
 "aprobacion humana."
 
-#: ../../docs/tools/algoquest-qbit/interfaces.md:11
-#: 85bf8941273c465c82807637b0f7fac2
+#: ../../docs/tools/algoquest-qbit/interfaces.md:12
+#: caf37d15324a4498a8349312d70252cc
+msgid ""
+"Receipt admission recomputes canonical digests and rejects stale missions, "
+"wrong run or artifact bindings, secret-like fields, identity data, failed "
+"tests, and malformed broker attestations."
+msgstr ""
+"Receipt admission recomputes canonical digests and rejects stale missions, "
+"wrong run or artifact bindings, secret-like fields, identity data, failed "
+"tests, and malformed broker attestations."
+
+#: ../../docs/tools/algoquest-qbit/interfaces.md:14
+#: c34e241de9674d89b39b4d069b1ce147
 msgid "Compatibility"
 msgstr "Compatibilidad"
 
-#: ../../docs/tools/algoquest-qbit/interfaces.md:13
-#: 79e89b114f1c42f08bb86337e5ca3c74
+#: ../../docs/tools/algoquest-qbit/interfaces.md:16
+#: c726957d4f984cfb8def8937e95b130b
 msgid ""
 "Treat undocumented endpoints, commands, and browser controls as unsupported."
 " Confirm the current repository version before integrating another system."
@@ -82,3 +105,17 @@ msgstr ""
 "Considere no compatibles los endpoints, comandos y controles del navegador "
 "no documentados. Confirme la version actual del repositorio antes de "
 "integrar otro sistema."
+
+#~ msgid ""
+#~ "**React learning interface:** use only through the documented repository "
+#~ "route."
+#~ msgstr ""
+#~ "**React learning interface:** usar solo mediante la ruta documentada del "
+#~ "repositorio."
+
+#~ msgid ""
+#~ "**Teacher planning surface:** use only through the documented repository "
+#~ "route."
+#~ msgstr ""
+#~ "**Teacher planning surface:** usar solo mediante la ruta documentada del "
+#~ "repositorio."

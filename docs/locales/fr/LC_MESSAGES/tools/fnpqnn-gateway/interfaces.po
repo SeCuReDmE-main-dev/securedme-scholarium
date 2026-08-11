@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -21,12 +21,12 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/fnpqnn-gateway/interfaces.md:1
-#: aac4b3b5986f4c8384184ee1d14e7d09
+#: b5b0fa1b5a364a2983be23188acc061f
 msgid "Interfaces"
 msgstr "Interfaces"
 
 #: ../../docs/tools/fnpqnn-gateway/interfaces.md:3
-#: 9e736982248c43178958b27f11462bd8
+#: c3c7934f5a734e7f9c32bc33ddd3de17
 msgid ""
 "**fnpqnn-gateway CLI:** use only through the documented repository route."
 msgstr ""
@@ -34,12 +34,12 @@ msgstr ""
 "depot."
 
 #: ../../docs/tools/fnpqnn-gateway/interfaces.md:4
-#: c4b0e604c3954803924c2fffbe19f273
+#: 8317d3f25ab7446abfeaa8cf7b86d5c0
 msgid "**MCP server:** use only through the documented repository route."
 msgstr "**MCP server:** utiliser uniquement par la route documentee du depot."
 
 #: ../../docs/tools/fnpqnn-gateway/interfaces.md:5
-#: a47b5b06813842db850151e6825be15c
+#: 5c65f73fd9eb4e71bd13106ffd5b6b8b
 msgid ""
 "**Typed adapter boundary:** use only through the documented repository "
 "route."
@@ -47,13 +47,40 @@ msgstr ""
 "**Typed adapter boundary:** utiliser uniquement par la route documentee du "
 "depot."
 
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:6
+#: 31fa576cee04452dbaea28a115e128b0
+msgid ""
+"**Suite auth audit:** validates the twelve repository adapter templates and "
+"fails closed on missing policy or forbidden secret material."
+msgstr ""
+"**Suite auth audit:** validates the twelve repository adapter templates and "
+"fails closed on missing policy or forbidden secret material."
+
 #: ../../docs/tools/fnpqnn-gateway/interfaces.md:7
-#: 5a161fd3618b4e2da2dd1a5ec3684150
+#: d540a5b20cd94e2f9a2954dcbaf87db4
+msgid ""
+"**Fingerprint acceptance:** records a bounded, non-secret approval reference"
+" after provider-native authentication."
+msgstr ""
+"**Fingerprint acceptance:** records a bounded, non-secret approval reference"
+" after provider-native authentication."
+
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:8
+#: 502b91c5b628467eb14e37ad5882ce42
+msgid ""
+"**Application boundary:** every product owns its actual login UI, callback, "
+"account binding, session lifecycle, logout, and recovery."
+msgstr ""
+"**Application boundary:** every product owns its actual login UI, callback, "
+"account binding, session lifecycle, logout, and recovery."
+
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:10
+#: f2ed7ac1b8a34332a3b067faf94e4f5e
 msgid "Interface contract"
 msgstr "Contrat d'interface"
 
-#: ../../docs/tools/fnpqnn-gateway/interfaces.md:9
-#: ff6e6adc2307445ca810fbac7e717d15
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:12
+#: 07a52327088942a2894bf89c25544979
 msgid ""
 "Inputs must be explicit, outputs must be inspectable, errors must be "
 "returned as errors, and consequential external actions require human "
@@ -63,13 +90,13 @@ msgstr ""
 "retournees comme erreurs et les actions externes consequentes approuvees par"
 " une personne."
 
-#: ../../docs/tools/fnpqnn-gateway/interfaces.md:11
-#: 26e43f94b2c04fb9b71c58a5b543aab4
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:14
+#: 974bd54597a747dca5c184b11055dcfd
 msgid "Compatibility"
 msgstr "Compatibilite"
 
-#: ../../docs/tools/fnpqnn-gateway/interfaces.md:13
-#: edf06d8a9f0448ebbf019365ff34dcb8
+#: ../../docs/tools/fnpqnn-gateway/interfaces.md:16
+#: 060bafc5dcdd44eab7a172dc95997801
 msgid ""
 "Treat undocumented endpoints, commands, and browser controls as unsupported."
 " Confirm the current repository version before integrating another system."

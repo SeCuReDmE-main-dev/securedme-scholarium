@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/algorithm-builder/quickstart.md:1
-#: e9a3231f993443a889769f1c06a41732
+#: b7d23c5d4de44f848cfb9fd4585da8d6
 msgid "Algorithm Builder quickstart"
 msgstr "Algorithm Builder demarrage rapide"
 
 #: ../../docs/tools/algorithm-builder/quickstart.md:3
-#: b9e1dcd1033c4eb09cc3cb96ad7bff85
+#: 76a286721b7a47c1b496f4351d80d311
 msgid "Requirements"
 msgstr "Prerequis"
 
 #: ../../docs/tools/algorithm-builder/quickstart.md:5
-#: d4ad8aca3e9f4ad59bc54a85068b4040
+#: 1359e942b4f7451ea76ed4f6fb4bc319
 msgid ""
 "Use a clean checkout, the runtime declared by the repository, and its "
 "committed lockfiles. Confirm the active branch before installing anything."
@@ -40,27 +40,36 @@ msgstr ""
 " verrouillage valides. Confirmez la branche active avant toute installation."
 
 #: ../../docs/tools/algorithm-builder/quickstart.md:11
-#: 7453ac8d5a0940f19ecd17bf4196fcc2
+#: e3fcfdab9ef940139507ff13da46e21f
 msgid "Install"
 msgstr "Installer"
 
 #: ../../docs/tools/algorithm-builder/quickstart.md:17
-#: 6390e532e3c44672939d1fd6cd0ce89b
+#: 3db5e9fdd5ef4f739df36c5d41dc843a
 msgid "Start"
 msgstr "Demarrer"
 
 #: ../../docs/tools/algorithm-builder/quickstart.md:23
-#: 6f3dd78da8f64eadb1dbf89d1c27bd5b
+#: 8dd237922529410c88d6d590cb05cfaf
+msgid ""
+"For the side panel, build the unpacked extension and load `dist/extension` "
+"in Chromium 114 or later. Missing Auth0 configuration fails closed."
+msgstr ""
+"For the side panel, build the unpacked extension and load `dist/extension` "
+"in Chromium 114 or later. Missing Auth0 configuration fails closed."
+
+#: ../../docs/tools/algorithm-builder/quickstart.md:25
+#: 2729dd91e2914dc9bb4e80f88c4358fd
 msgid "Verify"
 msgstr "Verifier"
 
-#: ../../docs/tools/algorithm-builder/quickstart.md:29
-#: ce9a2dc16b0e47a396ec90f566e562df
+#: ../../docs/tools/algorithm-builder/quickstart.md:31
+#: 6a64e45025c6403d97bb59d91e60675e
 msgid "Human acceptance"
 msgstr "Acceptation humaine"
 
-#: ../../docs/tools/algorithm-builder/quickstart.md:31
-#: 5d661848d78043298c369966e8e9ae8e
+#: ../../docs/tools/algorithm-builder/quickstart.md:33
+#: ea810eba4cc142aaaa105e185a97c931
 msgid ""
 "Inspect the output, logs, test results, and diff. Accept, request a "
 "correction, quarantine, or stop; do not silently promote a generated result."
@@ -68,3 +77,14 @@ msgstr ""
 "Inspectez la sortie, les journaux, les resultats de tests et le diff. "
 "Acceptez, demandez une correction, placez en quarantaine ou arretez; ne "
 "promouvez jamais silencieusement un resultat genere."
+
+#: ../../docs/tools/algorithm-builder/quickstart.md:35
+#: fc564d8721f548b9b8dd63a71e4fa2b8
+msgid ""
+"The test suite executes the generated Python locally and compares it with "
+"the Builder AST. This is parity evidence, not a substitute for live Colab "
+"acceptance."
+msgstr ""
+"The test suite executes the generated Python locally and compares it with "
+"the Builder AST. This is parity evidence, not a substitute for live Colab "
+"acceptance."

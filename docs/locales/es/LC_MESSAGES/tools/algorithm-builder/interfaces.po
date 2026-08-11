@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-08-11 11:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -21,40 +21,53 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/algorithm-builder/interfaces.md:1
-#: 0c094d8e854342e1a70368b23d7f327f
+#: e3087a4c8837438a86eab4f3ecd7a583
 msgid "Interfaces"
 msgstr "Interfaces"
 
 #: ../../docs/tools/algorithm-builder/interfaces.md:3
-#: 83cac8d9314d49beb7223db274ed0534
+#: d2f4ada3d058445b869f1d5df1b85cec
 msgid ""
-"**React visual builder:** use only through the documented repository route."
+"**MV3 side panel:** receives presentation state and emits typed learner "
+"actions without owning canonical progression."
 msgstr ""
-"**React visual builder:** usar solo mediante la ruta documentada del "
-"repositorio."
+"**MV3 side panel:** receives presentation state and emits typed learner "
+"actions without owning canonical progression."
 
 #: ../../docs/tools/algorithm-builder/interfaces.md:4
-#: 7c4773958c1640e59ae08e364db937a1
-msgid "**Express service:** use only through the documented repository route."
+#: 33ff3ad39f5045e09abf159b8817fe8a
+msgid ""
+"**Extension service worker:** performs Auth0 Authorization Code with PKCE, "
+"broker calls, notebook download, and typed evidence return."
 msgstr ""
-"**Express service:** usar solo mediante la ruta documentada del repositorio."
+"**Extension service worker:** performs Auth0 Authorization Code with PKCE, "
+"broker calls, notebook download, and typed evidence return."
 
 #: ../../docs/tools/algorithm-builder/interfaces.md:5
-#: 07a875ae412d4a8dafa51f200ecbcdb4
+#: e0379c8234b6475faa8ed2070c180253
 msgid ""
-"**WebSocket collaboration channel:** use only through the documented "
-"repository route."
+"**Headless Mage engine:** validates eight ordered cards, generates "
+"deterministic Python, and recomputes canonical SHA-256 digests."
 msgstr ""
-"**WebSocket collaboration channel:** usar solo mediante la ruta documentada "
-"del repositorio."
+"**Headless Mage engine:** validates eight ordered cards, generates "
+"deterministic Python, and recomputes canonical SHA-256 digests."
 
-#: ../../docs/tools/algorithm-builder/interfaces.md:7
-#: 084f2a0ba0804319bac17754e77a20be
+#: ../../docs/tools/algorithm-builder/interfaces.md:6
+#: 67ba51aafc634a09b99092711518cb2f
+msgid ""
+"**Express/Postgres broker:** binds account, mission, artifact, callback, "
+"retry, cancellation, and execution receipt records."
+msgstr ""
+"**Express/Postgres broker:** binds account, mission, artifact, callback, "
+"retry, cancellation, and execution receipt records."
+
+#: ../../docs/tools/algorithm-builder/interfaces.md:8
+#: 2e5e6fbe43974f25a4b7f96b06c545a5
 msgid "Interface contract"
 msgstr "Contrato de interfaz"
 
-#: ../../docs/tools/algorithm-builder/interfaces.md:9
-#: 3f438175a0ed4e66aca54dc96f0468cb
+#: ../../docs/tools/algorithm-builder/interfaces.md:10
+#: 005957767a104e2ba355bb44ba70f61e
 msgid ""
 "Inputs must be explicit, outputs must be inspectable, errors must be "
 "returned as errors, and consequential external actions require human "
@@ -64,13 +77,24 @@ msgstr ""
 "devueltos como errores y las acciones externas importantes requieren "
 "aprobacion humana."
 
-#: ../../docs/tools/algorithm-builder/interfaces.md:11
-#: 5da228664d754ea5837117fcc36bcbe2
+#: ../../docs/tools/algorithm-builder/interfaces.md:12
+#: 0666a91bd83e47199ba520fff2d1a956
+msgid ""
+"The successful path does not require JSON copy/paste. JSON download/import "
+"remains the explicit recovery path. Broker outage, expired authentication, "
+"and failed verification preserve local work."
+msgstr ""
+"The successful path does not require JSON copy/paste. JSON download/import "
+"remains the explicit recovery path. Broker outage, expired authentication, "
+"and failed verification preserve local work."
+
+#: ../../docs/tools/algorithm-builder/interfaces.md:14
+#: 2f16355618164ef8a9f3b1aab1b96c25
 msgid "Compatibility"
 msgstr "Compatibilidad"
 
-#: ../../docs/tools/algorithm-builder/interfaces.md:13
-#: a514ad7b17be42fd874e594533323aea
+#: ../../docs/tools/algorithm-builder/interfaces.md:16
+#: 37e53cbc7a6948f2a4325320ee6f6fdd
 msgid ""
 "Treat undocumented endpoints, commands, and browser controls as unsupported."
 " Confirm the current repository version before integrating another system."
@@ -78,3 +102,20 @@ msgstr ""
 "Considere no compatibles los endpoints, comandos y controles del navegador "
 "no documentados. Confirme la version actual del repositorio antes de "
 "integrar otro sistema."
+
+#~ msgid ""
+#~ "**React visual builder:** use only through the documented repository route."
+#~ msgstr ""
+#~ "**React visual builder:** usar solo mediante la ruta documentada del "
+#~ "repositorio."
+
+#~ msgid "**Express service:** use only through the documented repository route."
+#~ msgstr ""
+#~ "**Express service:** usar solo mediante la ruta documentada del repositorio."
+
+#~ msgid ""
+#~ "**WebSocket collaboration channel:** use only through the documented "
+#~ "repository route."
+#~ msgstr ""
+#~ "**WebSocket collaboration channel:** usar solo mediante la ruta documentada "
+#~ "del repositorio."
