@@ -81,6 +81,7 @@ Scholarium is a professional, free-first social platform for people who learn, t
 | Verified contribution | Fixed-price verified contributor plan metadata, verification-gated preparation, server-side PayPal order creation, and server-side capture return path with no ranking effect. |
 | Integrations | Consent preparation contracts for ORCID, GitHub, Zenodo, Google Drive, QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, Antigravity/Gemini, and life-science discovery. |
 | Education toolchain | A learner-visible directory for Scholarium Teach, AlgoQuest, Algorithm Builder, FfeD-QLC, and the shared Gateway contract. |
+| WebMCP companion | Twelve honest Scholarium descriptors, a sanitized Hero Book projection, a minimal MV3 side panel, and a deterministic local Evidence Gate. Live Chrome/Edge qualification remains separate. |
 
 ## Teach and the first-proof toolchain
 

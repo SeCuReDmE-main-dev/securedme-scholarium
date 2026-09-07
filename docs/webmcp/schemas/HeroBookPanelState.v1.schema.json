@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scholarium.securedme.ca/schemas/HeroBookPanelState.v1.schema.json",
+  "title": "Hero Book panel state v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "revision", "heroBook", "hero", "mission"],
+  "properties": {
+    "schema": { "const": "HeroBookPanelState.v1" },
+    "revision": { "type": "integer", "minimum": 0 },
+    "heroBook": { "type": "object", "required": ["id"], "properties": { "id": { "type": "string", "minLength": 1, "maxLength": 96 }, "adaptation": { "type": "string", "maxLength": 120 }, "audience": { "type": "string", "maxLength": 64 }, "language": { "type": "string", "maxLength": 32 } } },
+    "hero": { "type": "object", "properties": { "id": { "type": "string", "maxLength": 160 }, "displayName": { "type": "string", "maxLength": 160 }, "role": { "type": "string", "maxLength": 80 }, "narrativeLevel": { "type": "string", "maxLength": 80 } } },
+    "mission": { "type": "object", "required": ["id"], "properties": { "id": { "type": "string", "minLength": 1, "maxLength": 160 }, "title": { "type": "string", "maxLength": 240 }, "promptRef": { "type": "string", "maxLength": 240 }, "step": { "enum": ["Mission", "Build", "Check", "Colab", "Return", "Reflect"] } } },
+    "characterSheet": { "type": "object" },
+    "inventory": { "type": "array", "maxItems": 64, "items": { "type": "object", "required": ["id", "kind"], "properties": { "id": { "type": "string" }, "kind": { "enum": ["tool", "equipment", "symbolic-weapon"] }, "state": { "enum": ["available", "equipped", "locked", "consumed"] } } } },
+    "deterministicDie": { "type": "object" },
+    "decisions": { "type": "array", "maxItems": 128 },
+    "storyPoints": { "type": "number", "minimum": 0 },
+    "pedagogicalEvidence": { "type": "array", "maxItems": 128 },
+    "knowledge": { "type": "object" },
+    "specialist": { "type": "object" }
+  }
+}

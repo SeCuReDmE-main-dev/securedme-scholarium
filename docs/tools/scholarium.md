@@ -30,6 +30,25 @@ git status --short --branch
 
 These signals are detected from public repository files. The README remains authoritative for exact installation and execution commands.
 
+## WebMCP and companion
+
+Scholarium exposes twelve descriptors under the strict `securedme.webmcp.v1`
+contract: ten product tools and the two shared companion tools. The page bridge
+registers them through `document.modelContext`; it does not claim browser support
+when that API is absent. `HeroBookPanelState.v1` remains owned by AlgoQuest, while
+Scholarium owns only its application state and returns staged proposals or bounded
+receipts.
+
+- [WebMCP contract, companion, and Evidence Gate](../webmcp/README.md)
+- [Scholarium tool interfaces](scholarium/interfaces.md)
+- [Scholarium operations](scholarium/operations.md)
+
+The unpacked Manifest V3 companion uses only `activeTab`, `scripting`,
+`sidePanel`, and `storage`. Product themes come from the verified internal Stitch
+design documents recorded in the theme registry; an explicit accessible
+SecuredMe Education fallback is used only when a dedicated product source is not
+available.
+
 ## Developer workflow
 
 ```text

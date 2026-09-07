@@ -8,6 +8,7 @@ const contract = {
   servers: [{ url: "/" }],
   paths: {
     "/api/v1/openapi.json": { get: { summary: "Read the canonical OpenAPI contract for the current public API version" } },
+    "/api/v1/webmcp/manifest": { get: { summary: "Read the strict Scholarium securedme.webmcp.v1 descriptor manifest" } },
     "/api/v1/account": { get: { summary: "Read the signed-in Scholarium account" } },
     "/api/v1/account/export": { get: { summary: "Download a private portable export of the signed-in account" } },
     "/api/v1/archive-manifests": { get: { summary: "Read owner-only archive manifests" }, post: { summary: "Register an owner-controlled external archive location without secrets" }, put: { summary: "Request archive restore or resynchronization" } },

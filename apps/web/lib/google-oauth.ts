@@ -34,8 +34,18 @@ function randomBase64Url(byteLength = 32) {
 }
 
 async function getRuntimeValue(name: string) {
-  const { env } = await import("cloudflare:workers");
-  const value = (env as unknown as Record<string, unknown>)[name];
+  let value: unknown;
+  try {
+    const { env } = await import("cloudflare:workers");
+    value = (env as unknown as Record<string, unknown>)[name];
+  } catch (error) {
+    // `vinext start` runs the production bundle in Node, where the
+    // Cloudflare-only module scheme is unavailable. Keep the same fail-closed
+    // behavior while allowing local production verification.
+    const code = error && typeof error === "object" && "code" in error ? String(error.code) : "";
+    if (code !== "ERR_UNSUPPORTED_ESM_URL_SCHEME") throw error;
+    value = typeof process !== "undefined" ? process.env[name] : undefined;
+  }
   return typeof value === "string" && value.trim() ? value.trim() : null;
 }
 

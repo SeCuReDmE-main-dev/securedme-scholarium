@@ -26,7 +26,10 @@ npm run dev
 ```powershell
 npm test
 npm run build
+npm run webmcp:evaluate
 ```
+
+To inspect the adaptive side panel, load `companion/` as an unpacked Manifest V3 extension in Chrome or Edge, open a supported SecuredMe Education page, and use the extension action. Unknown pages are refused and no host permission is requested.
 
 ## Human acceptance
 

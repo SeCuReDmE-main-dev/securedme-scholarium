@@ -1,0 +1,141 @@
+{
+  "schema": "securedme.webmcp.v1",
+  "manifestVersion": "1.0.0",
+  "product": {
+    "slug": "scholarium",
+    "name": "SecuredMe Scholarium",
+    "status": "public-pre-alpha",
+    "canonicalStateOwner": "algoquest",
+    "applicationStateOwner": "scholarium",
+    "pagePatterns": ["https://scholarium.securedme.ca/app", "http://localhost:3000/app"]
+  },
+  "boundaries": {
+    "authority": "Human-reviewed education and publication support only.",
+    "secrets": "Raw credentials, provider tokens, session cookies and private learner content are forbidden.",
+    "externalWrites": "EXECUTE tools require a signed-in server flow and a one-use human approval bound to the tool.",
+    "heroProgression": "AlgoQuest alone owns Hero Book progression, prompts, evidence admission, Knowledge Tokens and milestones."
+  },
+  "tools": [
+    {
+      "name": "securedme_companion_context",
+      "title": "Inspect companion context",
+      "description": "Read a sanitized projection of the active SecuredMe product, session capability and Hero Book cockpit without exposing identity, secrets or private evidence content.",
+      "mode": "READ",
+      "availability": "available",
+      "inputSchema": { "type": "object", "additionalProperties": false, "properties": {} },
+      "outputSchema": { "type": "object", "additionalProperties": false, "required": ["schema", "ok", "status", "data", "error", "receipt", "trace"], "properties": { "schema": { "const": "securedme.webmcp.v1" }, "ok": { "type": "boolean" }, "status": { "type": "string" }, "data": {}, "error": { "type": ["object", "null"] }, "receipt": { "type": "object" }, "trace": { "type": "object" } } },
+      "handler": { "kind": "local", "operation": "inspect_companion_context" }
+    },
+    {
+      "name": "securedme_qbit_plan_handoff",
+      "title": "Plan Qbit return",
+      "description": "Prepare a pointer-only return plan to the AlgoQuest Hero Book cockpit. It never advances progression or admits evidence.",
+      "mode": "STAGE",
+      "availability": "available",
+      "inputSchema": { "type": "object", "additionalProperties": false, "required": ["missionRef", "specialist", "returnChannel"], "properties": { "missionRef": { "type": "string", "minLength": 1, "maxLength": 160 }, "specialist": { "type": "string", "minLength": 1, "maxLength": 64 }, "returnChannel": { "type": "string", "minLength": 1, "maxLength": 160 }, "artifactPointer": { "type": "string", "maxLength": 240 }, "revision": { "type": "integer", "minimum": 0 } } },
+      "outputSchema": { "type": "object", "additionalProperties": false, "required": ["schema", "ok", "status", "data", "error", "receipt", "trace"], "properties": { "schema": { "const": "securedme.webmcp.v1" }, "ok": { "type": "boolean" }, "status": { "type": "string" }, "data": {}, "error": { "type": ["object", "null"] }, "receipt": { "type": "object" }, "trace": { "type": "object" } } },
+      "handler": { "kind": "local", "operation": "stage_qbit_return" }
+    },
+    {
+      "name": "scholarium_search_publications",
+      "title": "Search public publications",
+      "description": "Search public Scholarium work through the lexical research endpoint. Paid reach and private behavioural signals are excluded.",
+      "mode": "READ",
+      "availability": "available",
+      "inputSchema": { "type": "object", "additionalProperties": false, "required": ["query"], "properties": { "query": { "type": "string", "minLength": 2, "maxLength": 160 }, "limit": { "type": "integer", "minimum": 1, "maximum": 20 } } },
+      "outputSchema": { "type": "object", "additionalProperties": false, "required": ["schema", "ok", "status", "data", "error", "receipt", "trace"], "properties": { "schema": { "const": "securedme.webmcp.v1" }, "ok": { "type": "boolean" }, "status": { "type": "string" }, "data": {}, "error": { "type": ["object", "null"] }, "receipt": { "type": "object" }, "trace": { "type": "object" } } },
+      "handler": { "kind": "http", "method": "GET", "path": "/api/v1/search" }
+    },
+    {
+      "name": "scholarium_inspect_publication",
+      "title": "Inspect a public publication",
+      "description": "Read one public publication from the public feed projection. Private author identifiers and removed work remain excluded.",
+      "mode": "READ",
+      "availability": "available",
+      "inputSchema": { "type": "object", "additionalProperties": false, "required": ["publicationId"], "properties": { "publicationId": { "type": "string", "minLength": 1, "maxLength": 160 } } },
+      "outputSchema": { "type": "object", "additionalProperties": false, "required": ["schema", "ok", "status", "data", "error", "receipt", "trace"], "properties": { "schema": { "const": "securedme.webmcp.v1" }, "ok": { "type": "boolean" }, "status": { "type": "string" }, "data": {}, "error": { "type": ["object", "null"] }, "receipt": { "type": "object" }, "trace": { "type": "object" } } },
+      "handler": { "kind": "http", "method": "GET", "path": "/api/v1/publications" }
+    },
+    {
+      "name": "scholarium_inspect_provenance",
+      "title": "Inspect provenance receipt",
+      "description": "Read a public SHA-256 provenance receipt. A receipt proves a recorded version, not scientific truth or legal ownership.",
+      "mode": "READ",
+      "availability": "available",
+      "inputSchema": { "type": "object", "additionalProperties": false, "required": ["publicationId", "version"], "properties": { "publicationId": { "type": "string", "minLength": 1, "maxLength": 160 }, "version": { "type": "integer", "minimum": 1 } } },
+      "outputSchema": { "type": "object", "additionalProperties": false, "required": ["schema", "ok", "status", "data", "error", "receipt", "trace"], "properties": { "schema": { "const": "securedme.webmcp.v1" }, "ok": { "type": "boolean" }, "status": { "type": "string" }, "data": {}, "error": { "type": ["object", "null"] }, "receipt": { "type": "object" }, "trace": { "type": "object" } } },
+      "handler": { "kind": "http", "method": "GET", "path": "/api/v1/provenance/verify" }
+    },
+    {
+      "name": "scholarium_inspect_teach_lesson",
+      "title": "Inspect Teach lesson",
+      "description": "Read the public deterministic Teach starter lesson and assistance contract without advancing a learner checkpoint.",
+      "mode": "READ",
+      "availability": "available",
+      "inputSchema": { "type": "object", "additionalProperties": false, "properties": {} },
+      "outputSchema": { "type": "object", "additionalProperties": false, "required": ["schema", "ok", "status", "data", "error", "receipt", "trace"], "properties": { "schema": { "const": "securedme.webmcp.v1" }, "ok": { "type": "boolean" }, "status": { "type": "string" }, "data": {}, "error": { "type": ["object", "null"] }, "receipt": { "type": "object" }, "trace": { "type": "object" } } },
+      "handler": { "kind": "http", "method": "GET", "path": "/api/v1/teach/lesson" }
+    },
+    {
+      "name": "scholarium_inspect_integrations",
+      "title": "Inspect integration contracts",
+      "description": "Read declared consent-first integrations and their authority boundaries. A listed provider is not evidence of a live connection.",
+      "mode": "READ",
+      "availability": "available",
+      "inputSchema": { "type": "object", "additionalProperties": false, "properties": {} },
+      "outputSchema": { "type": "object", "additionalProperties": false, "required": ["schema", "ok", "status", "data", "error", "receipt", "trace"], "properties": { "schema": { "const": "securedme.webmcp.v1" }, "ok": { "type": "boolean" }, "status": { "type": "string" }, "data": {}, "error": { "type": ["object", "null"] }, "receipt": { "type": "object" }, "trace": { "type": "object" } } },
+      "handler": { "kind": "http", "method": "GET", "path": "/api/v1/integrations" }
+    },
+    {
+      "name": "scholarium_stage_publication_draft",
+      "title": "Stage publication draft",
+      "description": "Validate and stage a reviewable publication proposal locally. It does not create, publish, rank or upload anything.",
+      "mode": "STAGE",
+      "availability": "available",
+      "inputSchema": { "type": "object", "additionalProperties": false, "required": ["title", "abstract", "type"], "properties": { "title": { "type": "string", "minLength": 1, "maxLength": 240 }, "abstract": { "type": "string", "minLength": 1, "maxLength": 12000 }, "type": { "type": "string", "enum": ["research_note", "white_paper", "project_update", "article", "report", "teaching_artifact", "growth_story"] }, "topicSlugs": { "type": "array", "maxItems": 12, "items": { "type": "string", "maxLength": 64 } } } },
+      "outputSchema": { "type": "object", "additionalProperties": false, "required": ["schema", "ok", "status", "data", "error", "receipt", "trace"], "properties": { "schema": { "const": "securedme.webmcp.v1" }, "ok": { "type": "boolean" }, "status": { "type": "string" }, "data": {}, "error": { "type": ["object", "null"] }, "receipt": { "type": "object" }, "trace": { "type": "object" } } },
+      "handler": { "kind": "local", "operation": "stage_publication" }
+    },
+    {
+      "name": "scholarium_stage_formalization",
+      "title": "Stage formalization outline",
+      "description": "Create a non-blocking QuaNthoR outline through Scholarium. The result is a draft and never a proof or scientific verdict.",
+      "mode": "STAGE",
+      "availability": "available",
+      "inputSchema": { "type": "object", "additionalProperties": false, "required": ["kind", "title", "text"], "properties": { "kind": { "type": "string", "enum": ["research_article", "white_paper", "book_chapter", "presentation", "project_brief", "short_video", "life_science_protocol", "mizar_proof"] }, "title": { "type": "string", "minLength": 1, "maxLength": 240 }, "text": { "type": "string", "minLength": 1, "maxLength": 12000 } } },
+      "outputSchema": { "type": "object", "additionalProperties": false, "required": ["schema", "ok", "status", "data", "error", "receipt", "trace"], "properties": { "schema": { "const": "securedme.webmcp.v1" }, "ok": { "type": "boolean" }, "status": { "type": "string" }, "data": {}, "error": { "type": ["object", "null"] }, "receipt": { "type": "object" }, "trace": { "type": "object" } } },
+      "handler": { "kind": "http", "method": "POST", "path": "/api/v1/quanthor-formalization", "sideEffect": "none" }
+    },
+    {
+      "name": "scholarium_stage_tool_connection",
+      "title": "Stage tool connection",
+      "description": "Prepare a provider-scope proposal for human review without recording consent, redirecting or storing a credential.",
+      "mode": "STAGE",
+      "availability": "available",
+      "inputSchema": { "type": "object", "additionalProperties": false, "required": ["provider", "purpose"], "properties": { "provider": { "type": "string", "minLength": 1, "maxLength": 64 }, "purpose": { "type": "string", "minLength": 1, "maxLength": 240 } } },
+      "outputSchema": { "type": "object", "additionalProperties": false, "required": ["schema", "ok", "status", "data", "error", "receipt", "trace"], "properties": { "schema": { "const": "securedme.webmcp.v1" }, "ok": { "type": "boolean" }, "status": { "type": "string" }, "data": {}, "error": { "type": ["object", "null"] }, "receipt": { "type": "object" }, "trace": { "type": "object" } } },
+      "handler": { "kind": "local", "operation": "stage_tool_connection" }
+    },
+    {
+      "name": "scholarium_prepare_webauth_handoff",
+      "title": "Prepare WebAuth handoff",
+      "description": "Prepare a pointer-only Codex/OpenAI or Antigravity/Gemini handoff. Provider credentials and raw prompts remain with the provider.",
+      "mode": "STAGE",
+      "availability": "available",
+      "inputSchema": { "type": "object", "additionalProperties": false, "required": ["provider", "purpose"], "properties": { "provider": { "type": "string", "enum": ["codex_openai", "antigravity_gemini"] }, "purpose": { "type": "string", "minLength": 1, "maxLength": 240 }, "contextKind": { "type": "string", "maxLength": 64 }, "contextReference": { "type": "string", "maxLength": 240 } } },
+      "outputSchema": { "type": "object", "additionalProperties": false, "required": ["schema", "ok", "status", "data", "error", "receipt", "trace"], "properties": { "schema": { "const": "securedme.webmcp.v1" }, "ok": { "type": "boolean" }, "status": { "type": "string" }, "data": {}, "error": { "type": ["object", "null"] }, "receipt": { "type": "object" }, "trace": { "type": "object" } } },
+      "handler": { "kind": "local", "operation": "stage_webauth_handoff" }
+    },
+    {
+      "name": "scholarium_submit_publication",
+      "title": "Submit publication",
+      "description": "Reserved execute boundary for an approved, signed-in and idempotent publication submission. It remains unavailable until the server accepts a tool-bound one-use approval and idempotency key.",
+      "mode": "EXECUTE",
+      "availability": "planned",
+      "unavailableReason": "The existing publication API is authenticated but does not yet consume a WebMCP one-use approval or idempotency key.",
+      "inputSchema": { "type": "object", "additionalProperties": false, "required": ["proposalRef", "idempotencyKey", "approval"], "properties": { "proposalRef": { "type": "string", "minLength": 1, "maxLength": 240 }, "idempotencyKey": { "type": "string", "minLength": 16, "maxLength": 160 }, "approval": { "type": "object", "additionalProperties": false, "required": ["token", "audience", "expiresAt", "confirmed"], "properties": { "token": { "type": "string", "minLength": 16, "maxLength": 240 }, "audience": { "const": "scholarium_submit_publication" }, "expiresAt": { "type": "string", "format": "date-time" }, "confirmed": { "const": true } } } } },
+      "outputSchema": { "type": "object", "additionalProperties": false, "required": ["schema", "ok", "status", "data", "error", "receipt", "trace"], "properties": { "schema": { "const": "securedme.webmcp.v1" }, "ok": { "type": "boolean" }, "status": { "type": "string" }, "data": {}, "error": { "type": ["object", "null"] }, "receipt": { "type": "object" }, "trace": { "type": "object" } } },
+      "handler": { "kind": "unavailable" }
+    }
+  ]
+}

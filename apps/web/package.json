@@ -11,6 +11,8 @@
     "start": "vinext start",
     "test": "npm run build && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .vinext --ignore-pattern .wrangler --ignore-pattern .playwright-cli --ignore-pattern output --ignore-pattern tsconfig.tsbuildinfo",
+    "webmcp:evaluate": "node ../../tools/webmcp_evidence_gate.mjs --require-b-plus",
+    "webmcp:evaluate:suite": "node ../../tools/webmcp_evidence_gate.mjs --require-b-plus --require-suite-complete",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {

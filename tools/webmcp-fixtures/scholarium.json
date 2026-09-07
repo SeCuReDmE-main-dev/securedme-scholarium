@@ -1,0 +1,26 @@
+{
+  "schema": "securedme.webmcp.fixtures.v1",
+  "product": "scholarium",
+  "tools": {
+    "securedme_companion_context": { "validInput": {}, "invalidInput": { "rawPrompt": "forbidden" }, "expectedStatus": "completed" },
+    "securedme_qbit_plan_handoff": { "validInput": { "missionRef": "mission:fixture", "specialist": "scholarium", "returnChannel": "algoquest:return", "revision": 2 }, "invalidInput": {}, "expectedStatus": "staged" },
+    "scholarium_search_publications": { "validInput": { "query": "deterministic research", "limit": 5 }, "invalidInput": { "query": "x" }, "expectedStatus": "completed" },
+    "scholarium_inspect_publication": { "validInput": { "publicationId": "publication:fixture" }, "invalidInput": {}, "expectedStatus": "completed" },
+    "scholarium_inspect_provenance": { "validInput": { "publicationId": "publication:fixture", "version": 1 }, "invalidInput": { "publicationId": "publication:fixture", "version": 0 }, "expectedStatus": "completed" },
+    "scholarium_inspect_teach_lesson": { "validInput": {}, "invalidInput": { "password": "forbidden" }, "expectedStatus": "completed" },
+    "scholarium_inspect_integrations": { "validInput": {}, "invalidInput": { "extra": true }, "expectedStatus": "completed" },
+    "scholarium_stage_publication_draft": { "validInput": { "title": "Fixture note", "abstract": "Synthetic deterministic evidence fixture.", "type": "research_note", "topicSlugs": ["testing"] }, "invalidInput": { "title": "", "abstract": "x", "type": "unknown" }, "expectedStatus": "staged" },
+    "scholarium_stage_formalization": { "validInput": { "kind": "research_article", "title": "Fixture outline", "text": "A bounded fixture with https://example.invalid/source" }, "invalidInput": { "kind": "unknown" }, "expectedStatus": "staged" },
+    "scholarium_stage_tool_connection": { "validInput": { "provider": "quanthor", "purpose": "Review a bounded fixture" }, "invalidInput": { "provider": "", "purpose": "" }, "expectedStatus": "staged" },
+    "scholarium_prepare_webauth_handoff": { "validInput": { "provider": "codex_openai", "purpose": "Review a staged fixture", "contextKind": "publication", "contextReference": "publication:fixture" }, "invalidInput": { "provider": "unknown", "purpose": "x" }, "expectedStatus": "staged" },
+    "scholarium_submit_publication": { "validInput": { "proposalRef": "proposal:fixture", "idempotencyKey": "fixture-idempotency-0001", "approval": { "token": "fixture-approval-0001", "audience": "scholarium_submit_publication", "expiresAt": "2030-01-01T00:00:00.000Z", "confirmed": true } }, "invalidInput": {}, "unauthorizedInput": { "proposalRef": "proposal:fixture", "idempotencyKey": "fixture-idempotency-0002", "approval": { "token": "fixture-approval-0002", "audience": "different_tool", "expiresAt": "2030-01-01T00:00:00.000Z", "confirmed": true } }, "expectedStatus": "unavailable", "expectedUnauthorizedStatus": "unavailable" }
+  },
+  "journeys": [
+    ["securedme_companion_context", "scholarium_search_publications", "scholarium_inspect_publication"],
+    ["securedme_companion_context", "scholarium_inspect_publication", "scholarium_inspect_provenance"],
+    ["securedme_companion_context", "scholarium_stage_publication_draft", "scholarium_stage_formalization"],
+    ["securedme_companion_context", "scholarium_inspect_integrations", "scholarium_stage_tool_connection"],
+    ["securedme_companion_context", "scholarium_prepare_webauth_handoff", "securedme_qbit_plan_handoff"],
+    ["scholarium_inspect_teach_lesson", "securedme_qbit_plan_handoff"]
+  ]
+}

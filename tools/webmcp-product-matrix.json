@@ -1,0 +1,31 @@
+{
+  "schema": "securedme.webmcp.product-matrix.v1",
+  "suiteRoot": "..",
+  "commonTools": ["securedme_companion_context", "securedme_qbit_plan_handoff"],
+  "products": [
+    { "slug": "algoquest", "repository": "algoquest-ams-discovry-labs-module-" },
+    { "slug": "algorithm-builder", "repository": "algorithm-builder-app" },
+    { "slug": "visual-algorithm-designer", "repository": "VisualAlgorithmDesigner" },
+    { "slug": "scholarium", "repository": "securedme-scholarium" },
+    { "slug": "ffed-qlc", "repository": "FfeD-QLC-MVP" },
+    { "slug": "fnp-qnn", "repository": "FNP-QNN-MVP" },
+    { "slug": "gateway", "repository": "fnpqnn_gateway_MVP" },
+    { "slug": "quanthor", "repository": "QuaNThoR" },
+    { "slug": "synthia", "repository": "Synthia" },
+    { "slug": "retailguard", "repository": "market-guardian-retailguard" },
+    { "slug": "tesla-workbench", "repository": "tesla-resonance-recovery-workbench" },
+    { "slug": "vot-guardian", "repository": "V.O.T-Guardian" }
+  ],
+  "manifestCandidates": [
+    "webmcp/manifest.json",
+    "public/webmcp/manifest.json",
+    "apps/web/public/webmcp/manifest.json",
+    "apps/web/public/webmcp/securedme-{slug}.manifest.json",
+    "public/webmcp/securedme-{slug}.manifest.json"
+  ],
+  "fixtureCandidates": [
+    "webmcp/fixtures.json",
+    "tools/webmcp-fixtures/{slug}.json",
+    "tests/fixtures/webmcp.json"
+  ]
+}

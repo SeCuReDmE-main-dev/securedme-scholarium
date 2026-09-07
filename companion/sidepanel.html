@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SecuredMe Companion</title><link rel="stylesheet" href="sidepanel.css"></head>
+<body>
+  <header><span class="eyebrow">SECUREDME EDUCATION · PRE-ALPHA</span><h1>Hero Book Companion</h1><p id="surface-status" role="status">Inspecting the active page…</p></header>
+  <section class="cockpit" aria-label="Persistent Hero Book context">
+    <dl><div><dt>Hero</dt><dd id="hero">Not provided</dd></div><div><dt>Hero Book</dt><dd id="hero-book">Not provided</dd></div><div><dt>Mission</dt><dd id="mission">Not provided</dd></div><div><dt>Qbit</dt><dd id="qbit">Return planner</dd></div><div><dt>Specialist</dt><dd id="specialist">None</dd></div></dl>
+  </section>
+  <nav aria-label="Companion sections"><button data-tab="catalog" aria-pressed="true">Catalog</button><button data-tab="context" aria-pressed="false">Context</button><button data-tab="handoff" aria-pressed="false">Handoff</button></nav>
+  <main>
+    <section id="catalog" class="tab"><label>Tool<select id="tool-select"></select></label><p id="tool-description"></p><form id="tool-form"></form><pre id="result" aria-live="polite"></pre></section>
+    <section id="context" class="tab" hidden><p>The cockpit projection is stored locally in the extension. It excludes names, raw prompts, answers, audio, credentials and provider sessions.</p><textarea id="context-json" rows="12" spellcheck="false" aria-label="Sanitized Hero Book context"></textarea><button id="save-context">Save sanitized projection</button><p id="context-status" role="status"></p></section>
+    <section id="handoff" class="tab" hidden><p>Qbit creates a pointer-only return plan. AlgoQuest remains the only progression authority.</p><label>Mission reference<input id="handoff-mission" maxlength="160"></label><label>Artifact pointer<input id="handoff-pointer" maxlength="240"></label><button id="prepare-handoff">Prepare return plan</button><pre id="handoff-result" aria-live="polite"></pre></section>
+  </main>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
