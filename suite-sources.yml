@@ -7,7 +7,7 @@ tools:
   - {slug: algorithm-builder, repository: algorithm-builder-app, ref: 94015ac9dd87614fb14646320e28de764973f03a}
   - {slug: ffed-qlc, repository: FfeD-QLC-MVP, ref: 0afa07982d0e90a2d640f372e435c604befb4a68}
   - {slug: fnp-qnn, repository: FNP-QNN-MVP, ref: ba8a20be695a53efe9c636d424df92bda35fd9f9}
-  - {slug: fnpqnn-gateway, repository: fnpqnn_gateway_MVP, ref: b04f19d6933b93414a791a9f14fe9832f99e962d}
+  - {slug: fnpqnn-gateway, repository: fnpqnn_gateway_MVP, ref: 4c8498b293d1fd1c78224e1456667f07411fe075}
   - {slug: retailguard, repository: market-guardian-retailguard, ref: 921634703ebe426f00056bb1c078de388a439c0a}
   - {slug: quanthor, repository: QuaNThoR, ref: 4eb20ffaa05bd275e814d84950ee82758f181e7f}
   - {slug: scholarium, repository: securedme-scholarium, ref: 1f6dd7720dafb3c60de55ede4de7b07c33a2777d}
