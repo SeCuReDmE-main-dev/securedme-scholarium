@@ -10,6 +10,7 @@ Generated output, simulations, classifications, and agent suggestions remain rev
 
 - [Start in 15 minutes](getting-started/15-minute-tutorial.md) to learn the common operating method.
 - [Open the tool library](tools/index.md) for installation, interfaces, tests, and public boundaries.
+- [Inspect the WebMCP companion and Evidence Gate](webmcp/README.md) for the shared tool contract, Hero Book cockpit, and qualification boundary.
 - [Use the 40 collaboration contracts](prompts/index.md) when you need a bounded, reusable prompt.
 - [Browse the video library](media/video-library.md) to connect short explanations with long-form walkthroughs.
 
@@ -19,6 +20,7 @@ Generated output, simulations, classifications, and agent suggestions remain rev
 
 getting-started/15-minute-tutorial
 tools/index
+webmcp/README
 prompts/index
 media/video-library
 ```
