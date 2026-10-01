@@ -3,10 +3,12 @@ import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 
 const state = ".state";
-const wrangler = join(process.cwd(), "node_modules", ".bin", process.platform === "win32" ? "wrangler.cmd" : "wrangler");
+const wrangler = join(process.cwd(), "node_modules", "wrangler", "bin", "wrangler.js");
 
 function run(args, expected = 0) {
-  const result = spawnSync(wrangler, args, { encoding: "utf8", shell: process.platform === "win32" });
+  // Direct Node invocation keeps SQL as one argument on Windows and Linux,
+  // and avoids interpreting commands through a shell.
+  const result = spawnSync(process.execPath, [wrangler, ...args], { encoding: "utf8" });
   if (result.error || result.status !== expected) {
     throw new Error(`wrangler ${args.join(" ")} returned ${result.status}: ${result.error?.message || result.stderr || result.stdout}`);
   }
