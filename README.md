@@ -10,7 +10,7 @@
 
 Organize supervised teaching, tool practice, documentation and confidential safety review.
 
-[Public surface](https://scholarium.securedme.ca/) · [Tool documentation](https://securedme-main-dev.github.io/securedme-scholarium/en/tools/scholarium/) · [Education hub](https://securedme.ca/product/education/)
+[Public surface](https://www.scholarium.securedme.ca/) · [Tool documentation](https://securedme-main-dev.github.io/securedme-scholarium/en/tools/scholarium/) · [Education hub](https://securedme.ca/product/education/)
 
 **Status:** pre-alpha, active public development. Public pages and a successful local test do not establish a deployed school service. E2B sponsorship recognition is separate from runtime availability and included quota.
 
