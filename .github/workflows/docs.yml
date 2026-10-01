@@ -49,6 +49,9 @@ jobs:
           path: site
 
   deploy:
+    # Publishing reviewed source must not implicitly authorize a live change.
+    # Launch this workflow manually after the approved deployment plan.
+    if: github.event_name == 'workflow_dispatch'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

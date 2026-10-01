@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     createdAt: now,
     updatedAt: now,
   };
-  const operations = [db.insert(growthStories).values(story)];
+  const operations: Parameters<typeof db.batch>[0][number][] = [db.insert(growthStories).values(story)];
   let provenanceReceipt = null;
   if (publicationId) {
     const abstract = [capsule.context, capsule.reflection, capsule.reframe.publishedExpression].filter(Boolean).join("\n\n");

@@ -23,6 +23,7 @@ gettext_compact = False
 gettext_uuid = True
 exclude_patterns = [
     "_build",
+    "repository-presentation-history-*.md",
     "[A-Z]*.md",
     "IDEA_*.md",
     "accessibility/**",
@@ -61,6 +62,7 @@ html_title = f"SeCuReDmE Developer Library - {LANGUAGE.upper()}"
 html_logo = "assets/education/education-icon.png"
 html_favicon = "assets/education/education-icon.png"
 html_static_path = ["_static"]
+templates_path = ["_templates"]
 html_css_files = ["securedme-sphinx.css"]
 html_js_files = ["securedme-sphinx.js"]
 html_baseurl = f"https://securedme-main-dev.github.io/securedme-scholarium/{LANGUAGE}/"

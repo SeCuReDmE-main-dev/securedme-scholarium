@@ -7,6 +7,8 @@ import { getPlatformIdentity, signInRequired } from "../../../lib/platform-ident
 const kinds = new Set(["biography", "affiliation", "teaching", "service", "project"]);
 type SectionInput = { body?: unknown; displayOrder?: unknown; id?: unknown; sectionKind?: unknown; title?: unknown; visibility?: unknown };
 
+function textField(value: unknown, field: string, maximum: number, required?: true): string;
+function textField(value: unknown, field: string, maximum: number, required: false): string | undefined;
 function textField(value: unknown, field: string, maximum: number, required = true) {
   if (value === undefined && !required) return undefined;
   if (typeof value !== "string" || (required && !value.trim()) || value.length > maximum) throw new Error(`${field} must be at most ${maximum} characters${required ? " and cannot be empty" : ""}`);

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-09-30 20:25-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -21,12 +21,12 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/scholarium/architecture.md:1
-#: 18016fd9a20f4f808a33d72790b79435
+#: db3689809ee0476f9de3e8cce74733d1
 msgid "Architecture"
 msgstr "Architecture"
 
 #: ../../docs/tools/scholarium/architecture.md:3
-#: 98696ca15387479e9c2a939ec718cf3a
+#: 371ef5776d0548389aa47279e7ff42ca
 msgid ""
 "A public web application and a separate static documentation pipeline share "
 "reviewed suite metadata without sharing private state."
@@ -35,17 +35,17 @@ msgstr ""
 "partagent les metadonnees revisees de la suite sans partager d'etat prive."
 
 #: ../../docs/tools/scholarium/architecture.md:5
-#: cb2144bfeaf04cb39cfdd751fd7a5686
+#: d96829a832234151a206955dfd8ae8ad
 msgid "Data flow"
 msgstr "Flux de donnees"
 
 #: ../../docs/tools/scholarium/architecture.md:11
-#: f669bd3b35b94850b9fbac08676400fa
+#: 2896bafde18d453b872e019e2f3ced82
 msgid "Provenance"
 msgstr "Provenance"
 
 #: ../../docs/tools/scholarium/architecture.md:13
-#: c27b84e23fe24777a2de460f5965a607
+#: cb269db848b24653b7aaa51e4e1089ef
 msgid ""
 "Record the repository commit, configuration, input identifiers, execution "
 "command, output location, and validation result. A screenshot alone is not a"
@@ -56,12 +56,12 @@ msgstr ""
 "validation. Une capture seule n'est pas un artefact reproductible."
 
 #: ../../docs/tools/scholarium/architecture.md:15
-#: 8129f5170d704c228b7dad1a55897d4b
+#: daf5cea641a24256b916a306b41ddec5
 msgid "Failure behavior"
 msgstr "Comportement en cas d'echec"
 
 #: ../../docs/tools/scholarium/architecture.md:17
-#: f730408e106c4fe7a46da90662b527c9
+#: f426647595864d59919b8eacfca2b3c1
 msgid ""
 "Missing configuration, unavailable dependencies, invalid input, and failed "
 "tests must remain visible. The tool must not replace a failure with invented"
@@ -70,3 +70,36 @@ msgstr ""
 "Une configuration absente, des dependances indisponibles, une entree "
 "invalide et des tests echoues doivent rester visibles. L'outil ne doit pas "
 "remplacer un echec par un succes invente."
+
+#: ../../docs/tools/scholarium/architecture.md:19
+#: 54de5c1f85cf4a51aea22cab0794e22b
+msgid "Companion layering"
+msgstr "Companion layering"
+
+#: ../../docs/tools/scholarium/architecture.md:21
+#: c2d9a19a0a9146e5a74b583342dfb98d
+msgid ""
+"The companion keeps a sanitized persistent Hero Book projection separate "
+"from the temporary Scholarium specialist surface. AlgoQuest remains the "
+"canonical progression owner. Scholarium can inspect context and stage a "
+"pointer-only return; it cannot consume a prompt, admit evidence, award a "
+"Knowledge Token, or advance a milestone."
+msgstr ""
+"The companion keeps a sanitized persistent Hero Book projection separate "
+"from the temporary Scholarium specialist surface. AlgoQuest remains the "
+"canonical progression owner. Scholarium can inspect context and stage a "
+"pointer-only return; it cannot consume a prompt, admit evidence, award a "
+"Knowledge Token, or advance a milestone."
+
+#: ../../docs/tools/scholarium/architecture.md:23
+#: 5342f5d0b8c344c1bf6139b06388931f
+msgid ""
+"The browser bridge reads the canonical manifest, registers descriptors only "
+"when `document.modelContext` exists, and delegates to bounded same-origin "
+"handlers. The shared MV3 side panel derives forms from those schemas and "
+"applies a per-product theme without changing its information architecture."
+msgstr ""
+"The browser bridge reads the canonical manifest, registers descriptors only "
+"when `document.modelContext` exists, and delegates to bounded same-origin "
+"handlers. The shared MV3 side panel derives forms from those schemas and "
+"applies a per-product theme without changing its information architecture."

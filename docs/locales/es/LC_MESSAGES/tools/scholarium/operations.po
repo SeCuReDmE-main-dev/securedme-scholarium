@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-09-30 20:25-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/scholarium/operations.md:1
-#: 90bfea3f78d443438ee7e0989ba0a670
+#: d9968bd9c9594fe185b6a539a4938088
 msgid "Operations and contribution"
 msgstr "Operacion y contribucion"
 
 #: ../../docs/tools/scholarium/operations.md:3
-#: dcab39f1f5cf4a189f833f96a43f7c74
+#: 1a642f21c562424caff4e85cdb64013a
 msgid "Configuration"
 msgstr "Configuracion"
 
 #: ../../docs/tools/scholarium/operations.md:5
-#: 1a92c12d9e854423a5cc367a09dfdf48
+#: e60cbfa6d488471e81ac7d906f8de209
 msgid ""
 "Keep secrets outside documentation and source control. Use `.env.example` as"
 " the public contract and store real values only in the designated local "
@@ -42,12 +42,12 @@ msgstr ""
 " superficie local designada."
 
 #: ../../docs/tools/scholarium/operations.md:7
-#: 5e826b75e7c5404e87dbbd66f727affa
+#: d6bf218941db493d8ece047f82248ec9
 msgid "Testing"
 msgstr "Pruebas"
 
 #: ../../docs/tools/scholarium/operations.md:9
-#: 31d7bb920d444bf194478583e135bee1
+#: 0e1005f535124867a0d5dcc9436d89a1
 msgid ""
 "Run the repository checks listed in the quickstart. A passing narrow test "
 "does not prove unrelated interfaces or scientific claims."
@@ -57,42 +57,92 @@ msgstr ""
 "afirmaciones cientificas."
 
 #: ../../docs/tools/scholarium/operations.md:11
-#: 1fc8714f4c0346519bff8386fe193f1c
+#: 9a1f624fee44457986c303688a4e4bab
+msgid "For the local WebMCP gate:"
+msgstr "For the local WebMCP gate:"
+
+#: ../../docs/tools/scholarium/operations.md:19
+#: fe8b245ab44c4ee8998d53f4985a358d
+msgid ""
+"Generated JSON, HTML, Markdown, SARIF, and SHA-bound receipts are written "
+"under `output/webmcp-evidence/`. The suite gate loads the twelve repository "
+"exports declared in `tools/webmcp-product-matrix.json`, permits only the two"
+" shared tool-name repetitions, and requires 144 descriptors, 122 unique "
+"names, and 72 journeys. Missing exports remain explicit. Chrome and Edge "
+"discovery remain `not_run` until tested in those browsers; the local score "
+"must not be presented as browser evidence."
+msgstr ""
+"Generated JSON, HTML, Markdown, SARIF, and SHA-bound receipts are written "
+"under `output/webmcp-evidence/`. The suite gate loads the twelve repository "
+"exports declared in `tools/webmcp-product-matrix.json`, permits only the two"
+" shared tool-name repetitions, and requires 144 descriptors, 122 unique "
+"names, and 72 journeys. Missing exports remain explicit. Chrome and Edge "
+"discovery remain `not_run` until tested in those browsers; the local score "
+"must not be presented as browser evidence."
+
+#: ../../docs/tools/scholarium/operations.md:21
+#: e5666a3c5e66460cb6090bfa471fa46b
+msgid ""
+"For a production-runtime smoke check, build and start the Vinext server, "
+"then verify both the application page and the versioned manifest endpoint:"
+msgstr ""
+"For a production-runtime smoke check, build and start the Vinext server, "
+"then verify both the application page and the versioned manifest endpoint:"
+
+#: ../../docs/tools/scholarium/operations.md:32
+#: 39cfa522db334d0cb06834bfc6e1c3af
+msgid ""
+"Both requests must return HTTP 200, `/app` must contain nonblank Scholarium "
+"HTML, and the manifest must declare `securedme.webmcp.v1`, twelve tools, and"
+" `canonicalStateOwner: algoquest`. The local Node production runner reads "
+"configuration from `process.env` only when the Cloudflare runtime module is "
+"not available; an absent session secret remains a fail-closed "
+"unauthenticated state."
+msgstr ""
+"Both requests must return HTTP 200, `/app` must contain nonblank Scholarium "
+"HTML, and the manifest must declare `securedme.webmcp.v1`, twelve tools, and"
+" `canonicalStateOwner: algoquest`. The local Node production runner reads "
+"configuration from `process.env` only when the Cloudflare runtime module is "
+"not available; an absent session secret remains a fail-closed "
+"unauthenticated state."
+
+#: ../../docs/tools/scholarium/operations.md:38
+#: e4eaa57a574f411a96abf2de904c7d5b
 msgid "Troubleshooting"
 msgstr "Solucion de problemas"
 
-#: ../../docs/tools/scholarium/operations.md:13
-#: ff4e74c1c07a4d5387cacff60ee9ddb4
+#: ../../docs/tools/scholarium/operations.md:40
+#: ff144dd507b74a55922d44aa1d21f5cc
 msgid "Confirm the repository and branch."
 msgstr "Confirme el repositorio y la rama."
 
-#: ../../docs/tools/scholarium/operations.md:14
-#: c48890255ef342d7abdb6383373afb79
+#: ../../docs/tools/scholarium/operations.md:41
+#: 89b8a740148543efbdc7ae49418d0f2e
 msgid "Reproduce with the smallest supported input."
 msgstr "Reproduzca con la entrada compatible mas pequena."
 
-#: ../../docs/tools/scholarium/operations.md:15
-#: 054a5e2acfe54427b350f316909e2b44
+#: ../../docs/tools/scholarium/operations.md:42
+#: 65d27f749cd945dea03a54849307500a
 msgid "Capture the exact command and error."
 msgstr "Registre el comando y el error exactos."
 
-#: ../../docs/tools/scholarium/operations.md:16
-#: 76b2c42f2c9c4312991c2eb3e9bbdc8f
+#: ../../docs/tools/scholarium/operations.md:43
+#: fb691510724641c996d3f38295ab485d
 msgid "Check the documented runtime and lockfile."
 msgstr "Compruebe el runtime documentado y el archivo de bloqueo."
 
-#: ../../docs/tools/scholarium/operations.md:17
-#: 0a32783e3d0540b0a0c2d5b23e231c55
+#: ../../docs/tools/scholarium/operations.md:44
+#: 722e2b74015842f0be58875dd1e03e13
 msgid "Open an issue with secret-free evidence."
 msgstr "Abra una incidencia con evidencia sin secretos."
 
-#: ../../docs/tools/scholarium/operations.md:19
-#: 4fdc8a160f114670a42d408273686645
+#: ../../docs/tools/scholarium/operations.md:46
+#: e00f6f92661f4e23b781cc5b65faeadf
 msgid "Security and privacy"
 msgstr "Seguridad y privacidad"
 
-#: ../../docs/tools/scholarium/operations.md:21
-#: b9b3c6c2b4f1485dbb3a94cadaa8eb76
+#: ../../docs/tools/scholarium/operations.md:48
+#: e893941a957e46eaaefa68a3bdeb1d34
 msgid ""
 "Scholarium organizes and publishes reviewed material; it is not an academic,"
 " legal, or taxonomic authority."
@@ -100,13 +150,13 @@ msgstr ""
 "Scholarium organiza y publica material revisado; no es una autoridad "
 "academica, juridica ni taxonomica."
 
-#: ../../docs/tools/scholarium/operations.md:23
-#: 4943b99e5f114d538e53238b871ad6e2
+#: ../../docs/tools/scholarium/operations.md:50
+#: d75ad1aaf6394060b3db0a57dc413e67
 msgid "Contributing"
 msgstr "Contribuir"
 
-#: ../../docs/tools/scholarium/operations.md:25
-#: ab6005ff82fd4a6b82215c257c305a0e
+#: ../../docs/tools/scholarium/operations.md:52
+#: 4e18b35b85bc435196c7be3dcecd15b6
 msgid ""
 "Read `CONTRIBUTING.md`, `SECURITY.md`, `SAFETY.md`, and the repository "
 "license when present. Keep changes bounded and include the checks that "
@@ -116,13 +166,13 @@ msgstr ""
 "repositorio cuando existan. Mantenga los cambios acotados e incluya las "
 "comprobaciones que justifican su aceptacion."
 
-#: ../../docs/tools/scholarium/operations.md:27
-#: 7265c2cad8334fc1a230bb8f08ec3678
+#: ../../docs/tools/scholarium/operations.md:54
+#: 53c0751c078940649305ff15e6636503
 msgid "Releases"
 msgstr "Versiones publicadas"
 
-#: ../../docs/tools/scholarium/operations.md:29
-#: 1d5e0028369740819ac02d3cf3e4579e
+#: ../../docs/tools/scholarium/operations.md:56
+#: 647cba9870ed4f3c8e4280bde61297ff
 msgid ""
 "The current public documentation describes `pre-alpha` with status `public-"
 "pre-alpha`. Consult the repository history and release notes for changes."

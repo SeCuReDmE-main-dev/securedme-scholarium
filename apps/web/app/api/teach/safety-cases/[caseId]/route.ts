@@ -1,6 +1,6 @@
 import { getDb } from "../../../../../db";
 import { getPlatformIdentity, signInRequired } from "../../../../../lib/platform-identity";
-import { assertSchoolSafetyCasesEnabled } from "../../../../../lib/teach-safety-datadog";
+import { assertSchoolSafetyCasesEnabled } from "../../../../../lib/teach-safety-telemetry";
 import { getSchoolSafetyCase, schoolSafetyErrorResponse } from "../../../../../lib/teach-safety-case-service";
 
 export async function GET(_request: Request, context: { params: Promise<{ caseId: string }> }) {

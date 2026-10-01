@@ -100,7 +100,7 @@ export const integrationCatalog = [
   {
     id: "privacy_monitor",
     name: "Privacy monitor",
-    purpose: "Keep optional activity insights on the device. Datadog is reserved for platform reliability metadata and never receives publication text, profile content, or per-user containers.",
+    purpose: "Keep optional activity insights on the device. Optional local OpenTelemetry receives only bounded technical reliability metadata, never publication text, profile content, learner records or per-user containers.",
     scopes: ["device_local_only"],
     writesExternalRecord: false,
   },

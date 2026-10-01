@@ -119,7 +119,7 @@ export async function sourceBoundMediaDraft(input: TeachMediaGenerationInput) {
     kind,
     durationMinutes,
     limit,
-    source,
+    source: { ...source, kind: source.kind },
     script: {
       format: kind === "video" ? "short_evidence_story" : "evidence_podcast",
       sections,

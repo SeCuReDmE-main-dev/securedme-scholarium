@@ -6,6 +6,8 @@ import { getPlatformIdentity, signInRequired } from "../../../lib/platform-ident
 
 type HandoffInput = { contextKind?: unknown; contextReference?: unknown; provider?: unknown; purpose?: unknown };
 
+function shortText(value: unknown, field: string, maximum: number, optional?: false): string;
+function shortText(value: unknown, field: string, maximum: number, optional: true): string | null;
 function shortText(value: unknown, field: string, maximum: number, optional = false) {
   if (value === undefined && optional) return null;
   if (typeof value !== "string" || !value.trim() || value.trim().length > maximum) throw new Error(`${field} is required and must be at most ${maximum} characters`);

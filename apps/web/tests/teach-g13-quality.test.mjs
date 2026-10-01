@@ -79,8 +79,8 @@ test("finds no high-confidence secrets or learner content in Teach logs and adap
   assert.match(gate5, /rawIdentityIncluded: false/);
   assert.match(gate5, /externalAdapterReceivesUserId: false/);
   const localInsights = await readFile(join(webRoot, "lib", "local-insights.ts"), "utf8");
-  assert.match(localInsights, /Datadog may receive platform-level reliability metadata only/);
-  assert.match(localInsights, /never receives a per-user container, publication content, or personal behavior record/);
+  assert.match(localInsights, /Local OpenTelemetry receives bounded platform reliability counters only/);
+  assert.match(localInsights, /Personal containers, publications, cases and learner behaviour stay private/);
 });
 
 test("defines a fail-closed degraded mode for every active private adapter", () => {

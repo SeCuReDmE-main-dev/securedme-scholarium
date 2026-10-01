@@ -3,7 +3,7 @@ import { getDb } from "../../../db";
 import { interactionReports, publicationComments, publicationReactions, publications, userBoundaries, users } from "../../../db/schema";
 import { getPlatformIdentity, signInRequired } from "../../../lib/platform-identity";
 import { createSchoolSafetyCase } from "../../../lib/teach-safety-case-service";
-import { schoolSafetyRuntimeConfig } from "../../../lib/teach-safety-datadog";
+import { schoolSafetyRuntimeConfig } from "../../../lib/teach-safety-telemetry";
 
 const reactionKinds = new Set(["insightful", "helpful", "question"]);
 const reportReasons = new Set(["harassment", "personal_data", "unsafe", "spam", "copyright", "other"]);

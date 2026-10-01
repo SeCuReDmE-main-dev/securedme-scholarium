@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-09-30 20:25-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/scholarium/quickstart.md:1
-#: 8bc86e569ff449e1a3d11ea8f8941446
+#: 1d45e96a3b3b42378904f18549430dba
 msgid "SecuredMe Scholarium quickstart"
 msgstr "SecuredMe Scholarium demarrage rapide"
 
 #: ../../docs/tools/scholarium/quickstart.md:3
-#: 7ac8d9824fc044b88b8ee590871f4465
+#: 0efe20be4c3645019289af150288fa9e
 msgid "Requirements"
 msgstr "Prerequis"
 
 #: ../../docs/tools/scholarium/quickstart.md:5
-#: d2e3afd286624a27bc98acbda3319642
+#: 55933d2086db419f8022410ddf07f9b7
 msgid ""
 "Use a clean checkout, the runtime declared by the repository, and its "
 "committed lockfiles. Confirm the active branch before installing anything."
@@ -40,27 +40,40 @@ msgstr ""
 " verrouillage valides. Confirmez la branche active avant toute installation."
 
 #: ../../docs/tools/scholarium/quickstart.md:11
-#: 1aaf492f7b064eb08dde1fec6b0ae244
+#: 22b89b33450648f28c53808266289edf
 msgid "Install"
 msgstr "Installer"
 
 #: ../../docs/tools/scholarium/quickstart.md:18
-#: 8871ea8e9b1d44448d28a68de0a4927d
+#: 33585419784443bcbe353929ce92f2fa
 msgid "Start"
 msgstr "Demarrer"
 
 #: ../../docs/tools/scholarium/quickstart.md:24
-#: 2a90f788c2404b739c3116739cd6badf
+#: bafd00c41af64ce39dc96679055bd7c9
 msgid "Verify"
 msgstr "Verifier"
 
-#: ../../docs/tools/scholarium/quickstart.md:31
-#: 3a161d75d2484849a7282fe1248f6dec
+#: ../../docs/tools/scholarium/quickstart.md:32
+#: be36f7ee53ef4bd7badeb8efadbd32dd
+msgid ""
+"To inspect the adaptive side panel, load `companion/` as an unpacked "
+"Manifest V3 extension in Chrome or Edge, open a supported SecuredMe "
+"Education page, and use the extension action. Unknown pages are refused and "
+"no host permission is requested."
+msgstr ""
+"To inspect the adaptive side panel, load `companion/` as an unpacked "
+"Manifest V3 extension in Chrome or Edge, open a supported SecuredMe "
+"Education page, and use the extension action. Unknown pages are refused and "
+"no host permission is requested."
+
+#: ../../docs/tools/scholarium/quickstart.md:34
+#: 88b547cdcdef44d2bd60f8eb0842d537
 msgid "Human acceptance"
 msgstr "Acceptation humaine"
 
-#: ../../docs/tools/scholarium/quickstart.md:33
-#: a6446442be264c5d8e25dbb11aaebc35
+#: ../../docs/tools/scholarium/quickstart.md:36
+#: 8d9fc86db3044220b8b3abda911c0b70
 msgid ""
 "Inspect the output, logs, test results, and diff. Accept, request a "
 "correction, quarantine, or stop; do not silently promote a generated result."

@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { index, integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
+import { index, integer, sqliteTable, text, uniqueIndex, type AnySQLiteColumn } from "drizzle-orm/sqlite-core";
 
 export const users = sqliteTable("users", {
   id: text("id").primaryKey(),
@@ -324,7 +324,7 @@ export const publicationComments = sqliteTable("publication_comments", {
   id: text("id").primaryKey(),
   publicationId: text("publication_id").notNull().references(() => publications.id),
   authorId: text("author_id").notNull().references(() => users.id),
-  parentCommentId: text("parent_comment_id").references(() => publicationComments.id),
+  parentCommentId: text("parent_comment_id").references((): AnySQLiteColumn => publicationComments.id),
   body: text("body").notNull(),
   status: text("status").notNull().default("visible"),
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
@@ -338,7 +338,7 @@ export const interactionReports = sqliteTable("interaction_reports", {
   id: text("id").primaryKey(),
   reporterId: text("reporter_id").notNull().references(() => users.id),
   publicationId: text("publication_id").references(() => publications.id),
-  commentId: text("comment_id").references(() => publicationComments.id),
+  commentId: text("comment_id").references((): AnySQLiteColumn => publicationComments.id),
   reason: text("reason").notNull(),
   details: text("details"),
   status: text("status").notNull().default("open"),
@@ -1295,7 +1295,7 @@ export const teachSchoolSafetyAppeals = sqliteTable("teach_school_safety_appeals
   index("teach_school_safety_appeal_reviewer_idx").on(table.reviewerUserId, table.createdAt),
 ]);
 
-/** Redacted Datadog outbox. It is disabled until an explicit external gate is approved. */
+/** Private delivery journal; only bounded technical counters reach the local collector. */
 export const teachSchoolSafetyOutbox = sqliteTable("teach_school_safety_outbox", {
   id: text("id").primaryKey(),
   caseId: text("case_id").notNull().references(() => teachSchoolSafetyCases.id),
@@ -1303,6 +1303,7 @@ export const teachSchoolSafetyOutbox = sqliteTable("teach_school_safety_outbox",
   operation: text("operation").notNull(),
   redactedPayload: text("redacted_payload").notNull(),
   idempotencyKey: text("idempotency_key").notNull(),
+  requestDigest: text("request_digest"),
   status: text("status").notNull().default("disabled"),
   attempts: integer("attempts").notNull().default(0),
   nextAttemptAt: text("next_attempt_at"),

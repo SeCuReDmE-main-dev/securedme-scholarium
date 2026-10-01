@@ -52,12 +52,14 @@ test("defines the twelve-product suite matrix and only two repeatable common too
   assert.deepEqual(matrix.commonTools, ["securedme_companion_context", "securedme_qbit_plan_handoff"]);
 });
 
-test("passes the deterministic local WebMCP Evidence Gate", () => {
+test("schema checks cannot certify unexecuted WebMCP handlers", () => {
   const gate = spawnSync(process.execPath, [join(repoRoot, "tools", "webmcp_evidence_gate.mjs"), "--check", "--require-b-plus"], { cwd: repoRoot, encoding: "utf8" });
-  assert.equal(gate.status, 0, `${gate.stdout}\n${gate.stderr}`);
+  assert.equal(gate.status, 1, 'qualification must refuse when handlers were not executed');
   const summary = JSON.parse(gate.stdout);
-  assert.equal(summary.passed, true);
-  assert.ok(summary.score >= 85);
+  assert.equal(summary.passed, false);
+  assert.equal(summary.score, null);
+  assert.equal(summary.grade, null);
+  assert.equal(summary.runtimeQualified, false);
   assert.equal(summary.barriersFailed, 0);
   assert.equal(summary.fixtures, 12);
 });

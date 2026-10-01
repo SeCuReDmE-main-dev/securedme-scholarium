@@ -49,7 +49,7 @@ const contract = {
     "/api/v1/teach/safety-cases/{caseId}": { get: { summary: "Read one authority-bounded synthetic school safety case and its append-only transition ledger" } },
     "/api/v1/teach/safety-cases/{caseId}/transitions": { post: { summary: "Apply one authorized, version-checked human transition from the explicit school safety matrix" } },
     "/api/v1/teach/safety-cases/{caseId}/appeals": { post: { summary: "Submit a private reporter appeal requiring review by a second authorized administrator" } },
-    "/api/v1/teach/safety-cases/reconcile": { post: { summary: "Process a bounded redacted Datadog outbox only after explicit administrative and runtime approval" } },
+    "/api/v1/teach/safety-cases/reconcile": { post: { summary: "Deliver bounded technical counters to a local collector after administrative confirmation; case data remains private" } },
     "/api/v1/teach/projects": { get: { summary: "Read authorized project threads with milestones, versions, files, sources, and contributions" }, post: { summary: "Create a private, circle, or public project thread" }, delete: { summary: "Delete an owner-controlled project thread" } },
     "/api/v1/teach/projects/entries": { post: { summary: "Add a milestone, version, file, source, or contribution to an authorized project" }, delete: { summary: "Delete an owner- or contributor-controlled project entry" } },
     "/api/v1/teach/circles": { get: { summary: "Read learning circles where the signed-in account is an owner or member" }, post: { summary: "Create a class, team, music, art, interest, or peer-support circle" }, put: { summary: "Invite a member to an owner-controlled circle" } },

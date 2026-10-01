@@ -9,7 +9,7 @@ type ToolDescriptor = {
   handler: { kind: "local" | "http" | "unavailable"; operation?: string; method?: "GET" | "POST"; path?: string };
 };
 
-type RuntimeContext = { authenticated: boolean; provider: string | null; heroBookState?: unknown };
+type RuntimeContext = { authenticated: boolean; provider: string | null; heroBookState?: unknown; signal?: AbortSignal };
 type SchemaNode = { type?: string; const?: unknown; enum?: unknown[]; minLength?: number; maxLength?: number; minimum?: number; maximum?: number; maxItems?: number; additionalProperties?: boolean; required?: string[]; properties?: Record<string, SchemaNode>; items?: SchemaNode };
 
 const MAX_RESPONSE_BYTES = 256_000;
@@ -33,7 +33,8 @@ function inputErrors(schema: SchemaNode, value: unknown, path = "input"): string
   } else if (schema.type === "array") {
     if (!Array.isArray(value)) return [...errors, `${path} must be an array`];
     if (schema.maxItems !== undefined && value.length > schema.maxItems) errors.push(`${path} has too many items`);
-    if (schema.items) value.forEach((item, index) => errors.push(...inputErrors(schema.items, item, `${path}[${index}]`)));
+    const itemSchema = schema.items;
+    if (itemSchema) value.forEach((item, index) => errors.push(...inputErrors(itemSchema, item, `${path}[${index}]`)));
   } else if (schema.type === "string") {
     if (typeof value !== "string") return [...errors, `${path} must be a string`];
     if (schema.minLength !== undefined && value.length < schema.minLength) errors.push(`${path} is too short`);
@@ -64,15 +65,15 @@ async function readJson(response: Response) {
   try { return JSON.parse(text) as unknown; } catch { throw new Error("invalid_json_response"); }
 }
 
-async function boundedFetch(path: string, init?: RequestInit) {
+async function boundedFetch(path: string, init?: RequestInit, signal?: AbortSignal) {
   const controller = new AbortController();
-  const timer = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
   try {
-    const response = await fetch(path, { ...init, credentials: "same-origin", headers: { "accept": "application/json", ...(init?.body ? { "content-type": "application/json" } : {}), ...init?.headers }, signal: controller.signal });
+    const response = await fetch(path, { ...init, credentials: "same-origin", headers: { "accept": "application/json", ...(init?.body ? { "content-type": "application/json" } : {}), ...init?.headers }, signal: signal ? AbortSignal.any([controller.signal, signal]) : controller.signal });
     const data = await readJson(response);
     if (!response.ok) return { ok: false as const, status: response.status, data };
     return { ok: true as const, status: response.status, data };
-  } finally { window.clearTimeout(timer); }
+  } finally { clearTimeout(timer); }
 }
 
 function localResult(tool: ToolDescriptor, input: Record<string, unknown>, context: RuntimeContext) {
@@ -107,11 +108,12 @@ function localResult(tool: ToolDescriptor, input: Record<string, unknown>, conte
 }
 
 export async function executeScholariumTool(tool: ToolDescriptor, rawInput: unknown, context: RuntimeContext) {
+  if (context.signal?.aborted) return envelope(tool, "rejected", null, { code: "aborted", message: "This tool lifecycle has ended." });
   const input = rawInput && typeof rawInput === "object" && !Array.isArray(rawInput) ? rawInput as Record<string, unknown> : {};
   if (containsForbiddenField(input)) return envelope(tool, "rejected", null, { code: "forbidden_field", message: "Secret, identity, raw prompt, answer or audio fields are not accepted." });
   const validationErrors = inputErrors(tool.inputSchema as SchemaNode, input);
   if (validationErrors.length) return envelope(tool, "rejected", { validationErrors: validationErrors.slice(0, 12) }, { code: "invalid_input", message: "The input does not match the closed tool schema." });
-  if (tool.availability !== "available" || tool.handler.kind === "unavailable") return envelope(tool, "unavailable", { reason: tool.unavailableReason ?? "Capability is not available." });
+  if (tool.availability !== "available" || tool.handler.kind === "unavailable") return envelope(tool, "unavailable", null, { code: "handler_unavailable", message: tool.unavailableReason ?? "Capability is not available." });
   if (tool.handler.kind === "local") return localResult(tool, input, context);
   try {
     let path = tool.handler.path!;
@@ -120,7 +122,7 @@ export async function executeScholariumTool(tool: ToolDescriptor, rawInput: unkn
     if (tool.name === "scholarium_inspect_publication") path += "?mode=chronological";
     if (tool.name === "scholarium_inspect_provenance") path += `?publicationId=${encodeURIComponent(cleanText(input.publicationId, 160))}&version=${Math.max(1, Number(input.version) || 1)}`;
     if (tool.handler.method === "POST") init = { method: "POST", body: JSON.stringify(input) };
-    const result = await boundedFetch(path, init);
+    const result = await boundedFetch(path, init, context.signal);
     if (!result.ok) return envelope(tool, "failed", result.data, { code: `http_${result.status}`, message: "The Scholarium service returned an explicit error." });
     if (tool.name === "scholarium_inspect_publication") {
       const publications = (result.data as { publications?: Array<{ id?: string }> })?.publications ?? [];

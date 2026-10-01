@@ -232,9 +232,15 @@ export async function POST(request: Request) {
       ...(safety.action === "quarantine" && safety.reasonCode ? [db.insert(moderationCases).values({ createdAt: now, id: crypto.randomUUID(), publicationId, reasonCode: safety.reasonCode, source: "publication_secret_scan", status: "open" })] : []),
     ]);
     if (topicSlugs.length) {
-      await db.batch(topicSlugs.map((slug) => db.insert(topics).values({ id: crypto.randomUUID(), label: topicLabel(slug), slug }).onConflictDoNothing()));
+      const topicWrites = topicSlugs.map((slug) => db.insert(topics).values({ id: crypto.randomUUID(), label: topicLabel(slug), slug }).onConflictDoNothing());
+      const [firstWrite, ...remainingWrites] = topicWrites;
+      if (firstWrite) await db.batch([firstWrite, ...remainingWrites]);
       const createdTopics = await db.select({ id: topics.id }).from(topics).where(inArray(topics.slug, topicSlugs));
-      if (createdTopics.length) await db.batch(createdTopics.map((topic) => db.insert(publicationTopics).values({ id: crypto.randomUUID(), publicationId, topicId: topic.id }).onConflictDoNothing()));
+      if (createdTopics.length) {
+        const linkWrites = createdTopics.map((topic) => db.insert(publicationTopics).values({ id: crypto.randomUUID(), publicationId, topicId: topic.id }).onConflictDoNothing());
+        const [firstWrite, ...remainingWrites] = linkWrites;
+        if (firstWrite) await db.batch([firstWrite, ...remainingWrites]);
+      }
     }
 
     return Response.json({

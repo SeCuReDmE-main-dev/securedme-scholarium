@@ -86,9 +86,15 @@ export async function POST(request: Request) {
       ]);
       const topicSlugs = jsonTopics(item.topicSlugs);
       if (topicSlugs.length) {
-        await db.batch(topicSlugs.map((slug) => db.insert(topics).values({ id: crypto.randomUUID(), slug, label: topicLabel(slug) }).onConflictDoNothing()));
+        const topicWrites = topicSlugs.map((slug) => db.insert(topics).values({ id: crypto.randomUUID(), slug, label: topicLabel(slug) }).onConflictDoNothing());
+        const [firstWrite, ...remainingWrites] = topicWrites;
+        if (firstWrite) await db.batch([firstWrite, ...remainingWrites]);
         const topicRows = await db.select({ id: topics.id }).from(topics).where(inArray(topics.slug, topicSlugs));
-        if (topicRows.length) await db.batch(topicRows.map((topic) => db.insert(publicationTopics).values({ id: crypto.randomUUID(), publicationId, topicId: topic.id }))); 
+        if (topicRows.length) {
+          const linkWrites = topicRows.map((topic) => db.insert(publicationTopics).values({ id: crypto.randomUUID(), publicationId, topicId: topic.id }));
+          const [firstWrite, ...remainingWrites] = linkWrites;
+          if (firstWrite) await db.batch([firstWrite, ...remainingWrites]);
+        }
       }
       imported.push({ id: publicationId, status, title: item.title, visibility });
     }

@@ -63,7 +63,7 @@ async function sha256Hex(value: string) {
 }
 
 async function sha256Bytes(value: Uint8Array) {
-  const digest = await crypto.subtle.digest("SHA-256", value);
+  const digest = await crypto.subtle.digest("SHA-256", new Uint8Array(value));
   return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 

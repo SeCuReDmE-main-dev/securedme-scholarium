@@ -1,0 +1,433 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 Jean-Sebastien Beaulieu
+# This file is distributed under the same license as the SeCuReDmE Developer
+# Library package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 20:25-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../docs/webmcp/README.md:1 bb8303700b8f473a9875f2f501278a82
+msgid "Scholarium WebMCP, companion, and Evidence Gate"
+msgstr "Scholarium WebMCP, companion, and Evidence Gate"
+
+#: ../../docs/webmcp/README.md:3 e56103fcb9fc4520abba5815c3c2835f
+msgid ""
+"Status: public pre-alpha. This implementation exposes reviewable browser "
+"tools; it does not make Scholarium, Qbit, Codex, Gemini, or the companion an"
+" autonomous educational, scientific, editorial, safety, or progression "
+"authority."
+msgstr ""
+"Status: public pre-alpha. This implementation exposes reviewable browser "
+"tools; it does not make Scholarium, Qbit, Codex, Gemini, or the companion an"
+" autonomous educational, scientific, editorial, safety, or progression "
+"authority."
+
+#: ../../docs/webmcp/README.md:5 7ec9f9aacb8d45d3870d71393f02e8d5
+msgid "Canonical sources"
+msgstr "Canonical sources"
+
+#: ../../docs/webmcp/README.md:7 636785d963624206bb661860621302eb
+msgid ""
+"Runtime manifest: `apps/web/public/webmcp/securedme-"
+"scholarium.manifest.json`"
+msgstr ""
+"Runtime manifest: `apps/web/public/webmcp/securedme-"
+"scholarium.manifest.json`"
+
+#: ../../docs/webmcp/README.md:8 1a727efa61ab488fa2e53129a7566bcc
+msgid "Manifest schema: `docs/webmcp/schemas/securedme.webmcp.v1.schema.json`"
+msgstr ""
+"Manifest schema: `docs/webmcp/schemas/securedme.webmcp.v1.schema.json`"
+
+#: ../../docs/webmcp/README.md:9 dd027a62a4504923b07e7566ddcdc310
+msgid ""
+"Hero Book schema: `docs/webmcp/schemas/HeroBookPanelState.v1.schema.json`"
+msgstr ""
+"Hero Book schema: `docs/webmcp/schemas/HeroBookPanelState.v1.schema.json`"
+
+#: ../../docs/webmcp/README.md:10 5527bcf4856f4cef8818b8553fcb7356
+msgid "Browser bridge: `apps/web/app/components/webmcp-bridge.tsx`"
+msgstr "Browser bridge: `apps/web/app/components/webmcp-bridge.tsx`"
+
+#: ../../docs/webmcp/README.md:11 50e0d9425b8948b0accd985c383cb057
+msgid "Handlers and sanitized envelopes: `apps/web/lib/webmcp/`"
+msgstr "Handlers and sanitized envelopes: `apps/web/lib/webmcp/`"
+
+#: ../../docs/webmcp/README.md:12 7f4512997b364297afc414b4fb9c8bed
+msgid "Shared extension: `companion/`"
+msgstr "Shared extension: `companion/`"
+
+#: ../../docs/webmcp/README.md:13 d8cdc5dd8840424ea0b973c594c79ea8
+msgid "Local evaluator: `tools/webmcp_evidence_gate.mjs`"
+msgstr "Local evaluator: `tools/webmcp_evidence_gate.mjs`"
+
+#: ../../docs/webmcp/README.md:14 a45a477933224c2bad4fd26b699f1fa0
+msgid "Deterministic fixtures: `tools/webmcp-fixtures/scholarium.json`"
+msgstr "Deterministic fixtures: `tools/webmcp-fixtures/scholarium.json`"
+
+#: ../../docs/webmcp/README.md:16 0366b11801a642c39986073b28d4a3ca
+msgid ""
+"The `/app` page publishes exactly twelve descriptors: the ten Scholarium "
+"tools below and two common tools. A descriptor is registered only when the "
+"browser exposes `document.modelContext.registerTool`. The machine-readable "
+"manifest remains available at `/api/v1/webmcp/manifest` even when the "
+"experimental browser runtime is absent. Its repository source remains "
+"`apps/web/public/webmcp/securedme-scholarium.manifest.json`."
+msgstr ""
+"The `/app` page publishes exactly twelve descriptors: the ten Scholarium "
+"tools below and two common tools. A descriptor is registered only when the "
+"browser exposes `document.modelContext.registerTool`. The machine-readable "
+"manifest remains available at `/api/v1/webmcp/manifest` even when the "
+"experimental browser runtime is absent. Its repository source remains "
+"`apps/web/public/webmcp/securedme-scholarium.manifest.json`."
+
+#: ../../docs/webmcp/README.md:18 840b444574d140b695a88dabe1103db9
+msgid "Common tools"
+msgstr "Common tools"
+
+#: ../../docs/webmcp/README.md 05045b8795234a07a2eb5ac79cf9938d
+#: 7928f65374ef48d9bcc113bd7ecc5344
+msgid "Tool"
+msgstr "Herramienta"
+
+#: ../../docs/webmcp/README.md 63f06398b4e2498fab2fefbd8d4a811e
+#: c5d74822e28a4b9ca5193b4b6986b3ca
+msgid "Mode"
+msgstr "Mode"
+
+#: ../../docs/webmcp/README.md b90d0a683ae54fe4976f9d7710c61a46
+msgid "Boundary"
+msgstr "Boundary"
+
+#: ../../docs/webmcp/README.md 47fd7e5f291547079cd5f370402401c8
+msgid "`securedme_companion_context`"
+msgstr "`securedme_companion_context`"
+
+#: ../../docs/webmcp/README.md 09d42d2ad38f476f83fec6dac0a39a6f
+#: 66314bb1323b4d0b89cab40bbd939893 6a47d836f94e46599caa1430d94490c6
+#: b26a3ddb542442ba890ac47b8f2a1b2d d69fe832c8e24dda8e9afc2a8d142b82
+#: dbcaa700ddf1498dbdfd27e2a1fc45b4
+msgid "READ"
+msgstr "READ"
+
+#: ../../docs/webmcp/README.md 6a48f58674694e4d93a8e5dbd9527257
+msgid ""
+"Returns product, capability-only session state, and a sanitized Hero Book "
+"projection. It excludes display name, email, identity, secrets, raw prompts,"
+" answers, audio, and evidence content."
+msgstr ""
+"Returns product, capability-only session state, and a sanitized Hero Book "
+"projection. It excludes display name, email, identity, secrets, raw prompts,"
+" answers, audio, and evidence content."
+
+#: ../../docs/webmcp/README.md bcdafdf2bd534e17a1ec22289360f499
+msgid "`securedme_qbit_plan_handoff`"
+msgstr "`securedme_qbit_plan_handoff`"
+
+#: ../../docs/webmcp/README.md 2841848d51f04487b387bc127f30ad98
+#: 5c9ee02afb214a8bb70a365cbbd209d4 87908bbea21043a590e2f85e31b9b072
+#: b30aa18729e14ac292ff3b0a8dd94238 cd0013febf3443c5a1eb4a2a2d9d55f6
+msgid "STAGE"
+msgstr "STAGE"
+
+#: ../../docs/webmcp/README.md c4a6bf1e4e97403ea58a25aa40105770
+msgid ""
+"Creates a pointer-only return plan. It never advances AlgoQuest, admits "
+"evidence, awards tokens, or changes a milestone."
+msgstr ""
+"Creates a pointer-only return plan. It never advances AlgoQuest, admits "
+"evidence, awards tokens, or changes a milestone."
+
+#: ../../docs/webmcp/README.md:25 4d2e21178b7c41f580f5a63e3031b803
+msgid "Scholarium tools"
+msgstr "Scholarium tools"
+
+#: ../../docs/webmcp/README.md 60f2e0c8183b402c99f91d7d974fe094
+msgid "Current state"
+msgstr "Current state"
+
+#: ../../docs/webmcp/README.md caabffb774134180854c57297c77b2e5
+msgid "`scholarium_search_publications`"
+msgstr "`scholarium_search_publications`"
+
+#: ../../docs/webmcp/README.md f9efd92bcc7a4b74ad12e7c2a8687eca
+msgid "Calls the public lexical search endpoint."
+msgstr "Calls the public lexical search endpoint."
+
+#: ../../docs/webmcp/README.md d62984661c944352bb5d8f153fccff71
+msgid "`scholarium_inspect_publication`"
+msgstr "`scholarium_inspect_publication`"
+
+#: ../../docs/webmcp/README.md c77bfe2dc89b48328ddd726e6aaaa828
+msgid "Reads and filters the public feed projection."
+msgstr "Reads and filters the public feed projection."
+
+#: ../../docs/webmcp/README.md f220ed7e9454496c9845dd56cb96ef3d
+msgid "`scholarium_inspect_provenance`"
+msgstr "`scholarium_inspect_provenance`"
+
+#: ../../docs/webmcp/README.md 54707de5c67e4ee78de1ccab57b98b9c
+msgid ""
+"Reads a public provenance receipt without turning it into a truth claim."
+msgstr ""
+"Reads a public provenance receipt without turning it into a truth claim."
+
+#: ../../docs/webmcp/README.md 32121016d0f943a4a14e337cea13f9bc
+msgid "`scholarium_inspect_teach_lesson`"
+msgstr "`scholarium_inspect_teach_lesson`"
+
+#: ../../docs/webmcp/README.md 07ec6357453c42b4a8ae9e0c3561cd3d
+msgid "Reads the public deterministic starter lesson; no checkpoint change."
+msgstr "Reads the public deterministic starter lesson; no checkpoint change."
+
+#: ../../docs/webmcp/README.md a9e02aad25434c969e2c439330039bb7
+msgid "`scholarium_inspect_integrations`"
+msgstr "`scholarium_inspect_integrations`"
+
+#: ../../docs/webmcp/README.md 4461225b68ac4c20adfddc2a1ac55193
+msgid ""
+"Reads consent-first integration contracts; listing is not connection proof."
+msgstr ""
+"Reads consent-first integration contracts; listing is not connection proof."
+
+#: ../../docs/webmcp/README.md f728b65175cd40a790ea68a5533b1ecd
+msgid "`scholarium_stage_publication_draft`"
+msgstr "`scholarium_stage_publication_draft`"
+
+#: ../../docs/webmcp/README.md 17e6304011964cf68f79caf2f874031f
+msgid "Creates a local review proposal; no publication or upload."
+msgstr "Creates a local review proposal; no publication or upload."
+
+#: ../../docs/webmcp/README.md bc1defeda7a8469db568e6f5ff71c0b2
+msgid "`scholarium_stage_formalization`"
+msgstr "`scholarium_stage_formalization`"
+
+#: ../../docs/webmcp/README.md 3deaea98ee294b0cbff24f238b482bc2
+msgid "Uses the existing non-blocking QuaNthoR preview endpoint."
+msgstr "Uses the existing non-blocking QuaNthoR preview endpoint."
+
+#: ../../docs/webmcp/README.md 1a27f58378374329824aa3a3249c0526
+msgid "`scholarium_stage_tool_connection`"
+msgstr "`scholarium_stage_tool_connection`"
+
+#: ../../docs/webmcp/README.md 0a964f70a795411a87bff5973a9dcb29
+msgid "Creates a scope proposal; no consent record or redirect."
+msgstr "Creates a scope proposal; no consent record or redirect."
+
+#: ../../docs/webmcp/README.md b39bfe4838c64ff69a4cf89453b01254
+msgid "`scholarium_prepare_webauth_handoff`"
+msgstr "`scholarium_prepare_webauth_handoff`"
+
+#: ../../docs/webmcp/README.md 51a2edaedf974211a3fbd119029bc639
+msgid ""
+"Creates a credential-free pointer plan for the official Codex/OpenAI or "
+"Antigravity/Gemini route."
+msgstr ""
+"Creates a credential-free pointer plan for the official Codex/OpenAI or "
+"Antigravity/Gemini route."
+
+#: ../../docs/webmcp/README.md dab190f0d759402eb1a6a668793535bf
+msgid "`scholarium_submit_publication`"
+msgstr "`scholarium_submit_publication`"
+
+#: ../../docs/webmcp/README.md 68c12f7100e746f49d230bb12073438f
+msgid "EXECUTE"
+msgstr "EXECUTE"
+
+#: ../../docs/webmcp/README.md a6b6059124cd4f3aa321f7152dd82ac2
+msgid ""
+"`planned` and fail-closed. The existing publication API has no WebMCP one-"
+"use approval or idempotency contract, so the tool does not claim success."
+msgstr ""
+"`planned` and fail-closed. The existing publication API has no WebMCP one-"
+"use approval or idempotency contract, so the tool does not claim success."
+
+#: ../../docs/webmcp/README.md:40 acc90afce8e44f21a1a5b4c310a41e59
+msgid ""
+"Every result uses `securedme.webmcp.v1`, an explicit status, a receipt "
+"summary, and a content-free trace. Network handlers use same-origin "
+"credentials, an eight-second timeout, a 256 KB response cap, and explicit "
+"HTTP failure results."
+msgstr ""
+"Every result uses `securedme.webmcp.v1`, an explicit status, a receipt "
+"summary, and a content-free trace. Network handlers use same-origin "
+"credentials, an eight-second timeout, a 256 KB response cap, and explicit "
+"HTTP failure results."
+
+#: ../../docs/webmcp/README.md:42 7528d598996046969743aa61e762d2ac
+msgid "Hero Book projection"
+msgstr "Hero Book projection"
+
+#: ../../docs/webmcp/README.md:44 8f15180225ca4899b8c02d70e7f39c17
+msgid ""
+"`HeroBookPanelState.v1` can describe the Hero Book, hero role, mission, "
+"journey step, declared talents, inventory kind and state, deterministic-die "
+"receipt reference, decisions, story points, pedagogical evidence references,"
+" Knowledge Token count, milestones, specialist, return channel, and "
+"revision."
+msgstr ""
+"`HeroBookPanelState.v1` can describe the Hero Book, hero role, mission, "
+"journey step, declared talents, inventory kind and state, deterministic-die "
+"receipt reference, decisions, story points, pedagogical evidence references,"
+" Knowledge Token count, milestones, specialist, return channel, and "
+"revision."
+
+#: ../../docs/webmcp/README.md:46 4ba34702dff34bc4bb07e02f2221b794
+msgid ""
+"The companion projection deliberately removes the hero's name and "
+"identifier, seed material, inventory labels, evidence content, raw answers, "
+"raw prompts, provider sessions, and credential-shaped fields. The state "
+"declares `canonicalStateOwner: algoquest`; Scholarium only reads the "
+"projection and stages returns."
+msgstr ""
+"The companion projection deliberately removes the hero's name and "
+"identifier, seed material, inventory labels, evidence content, raw answers, "
+"raw prompts, provider sessions, and credential-shaped fields. The state "
+"declares `canonicalStateOwner: algoquest`; Scholarium only reads the "
+"projection and stages returns."
+
+#: ../../docs/webmcp/README.md:48 ed397b5a85d24490b8853cb6b0043444
+msgid "Companion MV3"
+msgstr "Companion MV3"
+
+#: ../../docs/webmcp/README.md:50 03a6b2300acb4923867d0d8377feeb35
+msgid ""
+"Load `companion/` as an unpacked extension in Chrome or Edge. Its only "
+"permissions are:"
+msgstr ""
+"Load `companion/` as an unpacked extension in Chrome or Edge. Its only "
+"permissions are:"
+
+#: ../../docs/webmcp/README.md:56 fbd3d6b5d18b45748005eac251fbfcf6
+msgid ""
+"It has no host permissions. The active tab must be a known SecuredMe "
+"Education hostname. Unknown pages are rejected. The side panel renders forms"
+" from the page manifest, shows the persistent sanitized cockpit, and "
+"prepares a pointer-only Qbit return. EXECUTE controls remain disabled when "
+"the descriptor is unavailable."
+msgstr ""
+"It has no host permissions. The active tab must be a known SecuredMe "
+"Education hostname. Unknown pages are rejected. The side panel renders forms"
+" from the page manifest, shows the persistent sanitized cockpit, and "
+"prepares a pointer-only Qbit return. EXECUTE controls remain disabled when "
+"the descriptor is unavailable."
+
+#: ../../docs/webmcp/README.md:58 b5eb08e54460473aaa996d8f554e437a
+msgid ""
+"The theme registry covers the twelve locked slugs. Product-specific tokens "
+"come from the internal Stitch `DESIGN.md` where present. Missing product "
+"design files use the accessible SecuredMe Education fallback and record that"
+" fallback in `sourceStatus`; no missing palette is invented. RetailGuard is "
+"mapped to the V.I.S Guardian internal workbench source. VAD records both its"
+" dark Education workbench and its light cyber-heritage source."
+msgstr ""
+"The theme registry covers the twelve locked slugs. Product-specific tokens "
+"come from the internal Stitch `DESIGN.md` where present. Missing product "
+"design files use the accessible SecuredMe Education fallback and record that"
+" fallback in `sourceStatus`; no missing palette is invented. RetailGuard is "
+"mapped to the V.I.S Guardian internal workbench source. VAD records both its"
+" dark Education workbench and its light cyber-heritage source."
+
+#: ../../docs/webmcp/README.md:60 7ca52349e0a648dc9a5354ec0723f698
+msgid "Evidence Gate"
+msgstr "Evidence Gate"
+
+#: ../../docs/webmcp/README.md:62 7d868fa33b9e4953be6c1f44f56a1608
+msgid "Run from the repository root:"
+msgstr "Run from the repository root:"
+
+#: ../../docs/webmcp/README.md:70 86ceb017b23240b98513888504f3c6c6
+msgid ""
+"The first command is read-only and suitable for tests. The second writes "
+"JSON, HTML, Markdown, SARIF, and a SHA-bound receipt under `output/webmcp-"
+"evidence/`. The third also fails unless the twelve exports produce 144 "
+"descriptors, 122 unique names, 72 journeys, B+ per product, and no absolute "
+"barrier. `tools/webmcp-product-matrix.json` declares repository and export "
+"candidates; `--manifest=<slug>=<path>` and `--fixtures=<slug>=<path>` can "
+"bind a nonstandard export without copying it. Only the two common tool names"
+" may repeat across products."
+msgstr ""
+"The first command is read-only and suitable for tests. The second writes "
+"JSON, HTML, Markdown, SARIF, and a SHA-bound receipt under `output/webmcp-"
+"evidence/`. The third also fails unless the twelve exports produce 144 "
+"descriptors, 122 unique names, 72 journeys, B+ per product, and no absolute "
+"barrier. `tools/webmcp-product-matrix.json` declares repository and export "
+"candidates; `--manifest=<slug>=<path>` and `--fixtures=<slug>=<path>` can "
+"bind a nonstandard export without copying it. Only the two common tool names"
+" may repeat across products."
+
+#: ../../docs/webmcp/README.md:72 59bff75e0bcc4f1db98da56312e7227d
+msgid ""
+"The evaluator checks descriptor counts, global collisions, closed input "
+"schemas, modes, handlers or explicit unavailability, execute "
+"approval/idempotency shape, fail-closed boundaries, permission minimization,"
+" deterministic positive and invalid fixtures, six agentic journeys per "
+"product, theme provenance, and WCAG text contrast. Missing sibling exports "
+"are reported as `not_available`; they are never synthesized."
+msgstr ""
+"The evaluator checks descriptor counts, global collisions, closed input "
+"schemas, modes, handlers or explicit unavailability, execute "
+"approval/idempotency shape, fail-closed boundaries, permission minimization,"
+" deterministic positive and invalid fixtures, six agentic journeys per "
+"product, theme provenance, and WCAG text contrast. Missing sibling exports "
+"are reported as `not_available`; they are never synthesized."
+
+#: ../../docs/webmcp/README.md:74 a4253ed725c544b0801eace82075332a
+msgid ""
+"The local score reserves five discovery points for live browser "
+"qualification. A local A- therefore does not claim that Chrome or Edge "
+"discovery ran. Browser versions, WebMCP flags, extension loading, actual "
+"`getTools()` discovery, and the same journeys in both browsers remain "
+"separate qualification evidence."
+msgstr ""
+"The local score reserves five discovery points for live browser "
+"qualification. A local A- therefore does not claim that Chrome or Edge "
+"discovery ran. Browser versions, WebMCP flags, extension loading, actual "
+"`getTools()` discovery, and the same journeys in both browsers remain "
+"separate qualification evidence."
+
+#: ../../docs/webmcp/README.md:76 28ad489d420842cd8abcfbcdca6a4788
+msgid "Known gaps"
+msgstr "Known gaps"
+
+#: ../../docs/webmcp/README.md:78 2a7f56472c9c448395baf97aa84ca367
+msgid "Live Chrome and Edge discovery are not executed by the local CLI."
+msgstr "Live Chrome and Edge discovery are not executed by the local CLI."
+
+#: ../../docs/webmcp/README.md:79 85822496b0874906b7cc8ebd3d4f4c59
+msgid ""
+"The execute publication wrapper is intentionally unavailable pending a "
+"server-side one-use approval and idempotency contract."
+msgstr ""
+"The execute publication wrapper is intentionally unavailable pending a "
+"server-side one-use approval and idempotency contract."
+
+#: ../../docs/webmcp/README.md:80 d57391715d9e4eef86ca026ff44c20e0
+msgid ""
+"Other product manifests and handlers remain owned by their product "
+"repositories; this repository does not simulate them."
+msgstr ""
+"Other product manifests and handlers remain owned by their product "
+"repositories; this repository does not simulate them."
+
+#: ../../docs/webmcp/README.md:81 1e2f23298412427c98e5260f21b001cc
+msgid ""
+"The companion stores only a sanitized local projection. Cross-product "
+"durable Hero Book persistence remains an AlgoQuest-owned integration task."
+msgstr ""
+"The companion stores only a sanitized local projection. Cross-product "
+"durable Hero Book persistence remains an AlgoQuest-owned integration task."

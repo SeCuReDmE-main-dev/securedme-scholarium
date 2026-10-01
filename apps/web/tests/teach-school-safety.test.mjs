@@ -14,10 +14,12 @@ import {
   schoolSafetyCaseVisibilityDecision,
 } from "../lib/teach-safety-case-contracts.ts";
 import {
-  deliverSchoolSafetyDatadogCase,
-  schoolSafetyDatadogPayload,
+  deliverSchoolSafetyMetric,
+  schoolSafetyTechnicalMetric,
+  schoolSafetyOtlpBody,
+  localMetricsEndpoint,
   schoolSafetyRuntimeConfig,
-} from "../lib/teach-safety-datadog.ts";
+} from "../lib/teach-safety-telemetry.ts";
 
 test("defines the eight normal and five exceptional states without implicit transitions", () => {
   assert.deepEqual(schoolSafetyNormalStates, [
@@ -112,159 +114,61 @@ test("declares zero raw evidence, identity, diagnosis, or automated verdict in t
   assert.equal(schoolSafetyPrivacyContract.realLearnerDataAllowed, false);
   assert.equal(schoolSafetyPrivacyContract.humanDecisionRequired, true);
   for (const forbidden of ["name", "email", "raw_evidence", "diagnosis", "automated_accusation"]) {
-    assert.ok(schoolSafetyPrivacyContract.datadogForbidden.includes(forbidden));
+    assert.ok(schoolSafetyPrivacyContract.telemetryForbidden.includes(forbidden));
   }
 });
 
-test("maps a redacted deterministic Datadog payload", async () => {
-  const payload = await schoolSafetyDatadogPayload({
-    caseId: "case-opaque-0001",
-    organizationId: "synthetic-school-private-id",
-    category: "unsafe",
-    proposedSeverity: "high",
-    state: "under_review",
-    createdAt: "2026-07-31T12:00:00.000Z",
-    updatedAt: "2026-07-31T12:10:00.000Z",
-    environment: "prealpha",
-    policyVersion: "synthetic-v1",
-  });
-  const serialized = JSON.stringify(payload);
-  assert.match(payload.tenantRef, /^tenant_[a-f0-9]{24}$/);
-  assert.doesNotMatch(serialized, /synthetic-school-private-id/);
-  assert.doesNotMatch(serialized, /email|password|report_text|raw_evidence|diagnosis/iu);
+test("projects only technical OTLP counters, without case or learner attributes", () => {
+  const metric = schoolSafetyTechnicalMetric("transition", "prealpha");
+  assert.deepEqual(metric, { schema: "scholarium.school-safety-technical-metric.v1", operation: "transition", environment: "prealpha" });
+  const body = schoolSafetyOtlpBody(metric, 1_800_000_000_000);
+  const point = body.resourceMetrics[0].scopeMetrics[0].metrics[0].sum.dataPoints[0];
+  assert.equal(point.asInt, "1");
+  assert.equal(point.timeUnixNano, "1800000000000000000");
+  assert.deepEqual(point.attributes, [{ key: "operation", value: { stringValue: "transition" } }]);
+  assert.doesNotMatch(JSON.stringify(body), /case_id|tenant|severity|category|report_text|email|diagnosis|evidence/iu);
+  assert.throws(() => schoolSafetyOtlpBody({ ...metric, caseId: "private" }), /OTEL_METRIC_INVALID/);
 });
 
-test("refuses Datadog delivery unless both flags and explicit approval are present", async () => {
+test("disabled telemetry performs no request and missing bindings keep cases closed", async () => {
   let calls = 0;
-  await assert.rejects(() => deliverSchoolSafetyDatadogCase({
-    enabled: false,
-    writeApproved: false,
-    site: null,
-    apiKey: null,
-    appKey: null,
-    projectId: null,
-    typeId: null,
-    environment: "prealpha",
-  }, {
-    payload: {
-      schema: "scholarium.school-safety-datadog.v1",
-      caseId: "case-opaque-0001",
-      tenantRef: "tenant_000000000000000000000000",
-      category: "unsafe",
-      proposedSeverity: "standard",
-      state: "received",
-      createdAt: "2026-07-31T12:00:00.000Z",
-      updatedAt: "2026-07-31T12:00:00.000Z",
-      service: "securedme-scholarium",
-      environment: "prealpha",
-      policyVersion: "synthetic-v1",
-      normalizedOutcome: null,
-    },
-    transport: async () => {
-      calls += 1;
-      return new Response("{}");
-    },
-  }), /DATADOG_CASE_SYNC_NOT_APPROVED/);
-  assert.equal(calls, 0);
-});
-
-test("fails closed when Cloudflare runtime bindings are unavailable", async () => {
   const config = await schoolSafetyRuntimeConfig();
   assert.equal(config.casesEnabled, false);
   assert.equal(config.enabled, false);
-  assert.equal(config.writeApproved, false);
-  assert.equal(config.apiKey, null);
-  assert.equal(config.appKey, null);
+  assert.equal(config.endpoint, null);
+  assert.deepEqual(await deliverSchoolSafetyMetric(config, schoolSafetyTechnicalMetric("create", "test"), async () => { calls++; return new Response("{}"); }), { status: "disabled" });
+  assert.equal(calls, 0);
 });
 
-test("exercises create, status, and attribute Datadog requests with a simulated transport only", async () => {
-  const requests = [];
-  const transport = async (url, init) => {
-    requests.push({ url: String(url), init });
-    const body = requests.length === 1
-      ? JSON.stringify({ data: [] })
-      : requests.length === 2
-        ? JSON.stringify({ data: { id: "external-case-001" } })
-        : "{}";
-    return new Response(body, {
-      status: 200,
-      headers: { "content-type": "application/json" },
-    });
-  };
-  const payload = {
-    schema: "scholarium.school-safety-datadog.v1",
-    caseId: "case-opaque-0001",
-    tenantRef: "tenant_000000000000000000000000",
-    category: "unsafe",
-    proposedSeverity: "urgent",
-    state: "under_review",
-    createdAt: "2026-07-31T12:00:00.000Z",
-    updatedAt: "2026-07-31T12:10:00.000Z",
-    service: "securedme-scholarium",
-    environment: "prealpha",
-    policyVersion: "synthetic-v1",
-    normalizedOutcome: null,
-  };
-  const delivered = await deliverSchoolSafetyDatadogCase({
-    enabled: true,
-    writeApproved: true,
-    site: "datadoghq.com",
-    apiKey: "fixture-api-key",
-    appKey: "fixture-app-key",
-    projectId: "fixture-project",
-    typeId: "fixture-type",
-    environment: "prealpha",
-  }, { payload, transport });
-  assert.deepEqual(delivered, { externalCaseId: "external-case-001", status: "sent" });
-  assert.equal(requests.length, 4);
-  assert.match(requests[0].url, /\/api\/v2\/cases\?/);
-  assert.equal(requests[0].init?.method, "GET");
-  assert.match(requests[1].url, /\/api\/v2\/cases$/);
-  assert.match(requests[2].url, /\/status$/);
-  assert.match(requests[3].url, /\/attributes$/);
-  const bodies = requests.map((request) => String(request.init?.body ?? "")).join("\n");
-  assert.doesNotMatch(bodies, /fixture-api-key|fixture-app-key|email|password|raw_evidence|diagnosis/iu);
+test("refuses remote, credential-bearing and redirected collector endpoints", async () => {
+  for (const url of ["https://example.com:4318/v1/metrics", "http://localhost:4318/v1/metrics", "http://user:password@127.0.0.1:4318/v1/metrics", "http://127.0.0.1:4318/v1/metrics?secret=private", "http://127.0.0.1:4319/v1/metrics", "http://127.0.0.1:4318/v1/logs"]) assert.equal(localMetricsEndpoint(url), null);
+  const config = { casesEnabled: true, enabled: true, endpoint: "https://example.com:4318/v1/metrics", environment: "test" };
+  let calls = 0;
+  await assert.rejects(() => deliverSchoolSafetyMetric(config, schoolSafetyTechnicalMetric("create", "test"), async () => { calls++; return new Response("{}"); }), /OTEL_LOCAL_ENDPOINT_REQUIRED/);
+  assert.equal(calls, 0);
 });
 
-test("reconciles an existing Datadog case before retrying a create", async () => {
+test("sends a bounded JSON metric to loopback without credentials", async () => {
   const requests = [];
-  const title = "Scholarium school safety case-opaque-retry";
-  const transport = async (url, init) => {
-    requests.push({ url: String(url), init });
-    const body = requests.length === 1
-      ? JSON.stringify({ data: [{ id: "existing-case-001", attributes: { title } }] })
-      : "{}";
-    return new Response(body, { status: 200, headers: { "content-type": "application/json" } });
-  };
-  const delivered = await deliverSchoolSafetyDatadogCase({
-    enabled: true,
-    writeApproved: true,
-    site: "datadoghq.com",
-    apiKey: "fixture-api-key",
-    appKey: "fixture-app-key",
-    projectId: "fixture-project",
-    typeId: "fixture-type",
-    environment: "prealpha",
-  }, {
-    payload: {
-      schema: "scholarium.school-safety-datadog.v1",
-      caseId: "case-opaque-retry",
-      tenantRef: "tenant_000000000000000000000000",
-      category: "unsafe",
-      proposedSeverity: "standard",
-      state: "received",
-      createdAt: "2026-07-31T12:00:00.000Z",
-      updatedAt: "2026-07-31T12:00:00.000Z",
-      service: "securedme-scholarium",
-      environment: "prealpha",
-      policyVersion: "synthetic-v1",
-      normalizedOutcome: null,
-    },
-    transport,
+  const config = { casesEnabled: true, enabled: true, endpoint: "http://127.0.0.1:4318/v1/metrics", environment: "test" };
+  const result = await deliverSchoolSafetyMetric(config, schoolSafetyTechnicalMetric("create", "test"), async (url, init) => {
+    requests.push({ url, init }); return new Response("{}");
   });
-  assert.deepEqual(delivered, { externalCaseId: "existing-case-001", status: "sent" });
-  assert.equal(requests.length, 3);
-  assert.equal(requests.filter((request) => request.init?.method === "POST" && /\/api\/v2\/cases$/.test(request.url)).length, 0);
+  assert.deepEqual(result, { status: "sent" });
+  assert.equal(requests.length, 1);
+  assert.equal(requests[0].url, config.endpoint);
+  assert.equal(requests[0].init.method, "POST");
+  assert.equal(requests[0].init.credentials, "omit");
+  assert.equal(requests[0].init.redirect, "error");
+  assert.deepEqual(requests[0].init.headers, { "content-type": "application/json" });
+  assert.doesNotMatch(requests[0].init.body, /caseId|organizationId|tenant|category|severity|authorization/iu);
+});
+
+test("collector failure and partial success never claim full delivery", async () => {
+  const config = { casesEnabled: true, enabled: true, endpoint: "http://127.0.0.1:4318/v1/metrics", environment: "test" };
+  const metric = schoolSafetyTechnicalMetric("appeal", "test");
+  await assert.rejects(() => deliverSchoolSafetyMetric(config, metric, async () => new Response("private diagnostic", { status: 503 })), /OTEL_HTTP_503/);
+  await assert.rejects(() => deliverSchoolSafetyMetric(config, metric, async () => new Response('{"partialSuccess":{"rejectedDataPoints":"1"}}')), /OTEL_PARTIAL_SUCCESS/);
 });
 
 test("persists tenant, idempotency, append-only, second-review, API, and UI controls", async () => {
@@ -300,7 +204,8 @@ test("persists tenant, idempotency, append-only, second-review, API, and UI cont
   assert.match(panel, /aria-live="polite"/);
   assert.match(panel, /Une priorité proposée n’est jamais un verdict/);
   assert.match(envTemplate, /SCHOLARIUM_SAFETY_CASES_ENABLED=false/);
-  assert.match(envTemplate, /DATADOG_CASE_SYNC_ENABLED=false/);
+  assert.match(envTemplate, /SCHOLARIUM_OTEL_ENABLED=false/);
+  assert.doesNotMatch(envTemplate, /DD_API_KEY|DATADOG_CASE/);
   assert.match(reportRoute, /schoolSafetyCaseStatus/);
   assert.doesNotMatch(service + panel, /Synthia/iu);
 });

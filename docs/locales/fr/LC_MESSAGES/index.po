@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-09-30 20:25-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -20,15 +20,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: ../../docs/index.md:16
+#: ../../docs/index.md:17
 msgid "Start"
 msgstr "Demarrer"
 
-#: ../../docs/index.md:1 e28bb743ab8f401780805051dfd27648
+#: ../../docs/index.md:1 8fd59850006e4a2caa5e1bc3b457ab68
 msgid "SeCuReDmE Developer Library"
 msgstr "Bibliotheque developpeur SeCuReDmE"
 
-#: ../../docs/index.md:3 1b89dd73d1b84c09a3ddc5d28b417c61
+#: ../../docs/index.md:3 198feb7bd43640529898b3357b187049
 msgid ""
 "Public technical documentation for the twelve tools in the SeCuReDmE "
 "Education suite. The catalogue tells you where to enter; this library "
@@ -40,7 +40,7 @@ msgstr ""
 "comment chaque systeme fonctionne, ce qu'il valide et ou la revision humaine"
 " demeure obligatoire."
 
-#: ../../docs/index.md:6 d7d2bc9f4bd44a01a909b0e32ab53368
+#: ../../docs/index.md:6 fb6787292e574db9bb0a7cd975639001
 msgid ""
 "Generated output, simulations, classifications, and agent suggestions remain"
 " reviewable artifacts. They do not become scientific, legal, security, "
@@ -50,11 +50,11 @@ msgstr ""
 "restent des artefacts a reviser. Elles ne deviennent pas, a elles seules, "
 "une autorite scientifique, juridique, securitaire, clinique ou editoriale."
 
-#: ../../docs/index.md:9 866542ed47ed4f27adc0a21b8bf5a7f0
+#: ../../docs/index.md:9 fc5acf9d9cbc42728a29b4be67ee0696
 msgid "Start with the route that matches your work"
 msgstr "Commencez par la route qui correspond a votre travail"
 
-#: ../../docs/index.md:11 0fdd6c774c884a49af36b69ed27b4a10
+#: ../../docs/index.md:11 f6c9e36046bd41e9b34e475346c13a16
 msgid ""
 "[Start in 15 minutes](getting-started/15-minute-tutorial.md) to learn the "
 "common operating method."
@@ -62,7 +62,7 @@ msgstr ""
 "[Start in 15 minutes](getting-started/15-minute-tutorial.md) to learn the "
 "common operating method."
 
-#: ../../docs/index.md:12 7315c81364b744958878843f27a0beae
+#: ../../docs/index.md:12 f32b4ed149374b2f82a254909603971d
 msgid ""
 "[Open the tool library](tools/index.md) for installation, interfaces, tests,"
 " and public boundaries."
@@ -70,7 +70,15 @@ msgstr ""
 "[Open the tool library](tools/index.md) for installation, interfaces, tests,"
 " and public boundaries."
 
-#: ../../docs/index.md:13 1c4ca878f2b7412eb53cef50c10dffa1
+#: ../../docs/index.md:13 003160f9e3e84227a932f5a01247dc95
+msgid ""
+"[Inspect the WebMCP companion and Evidence Gate](webmcp/README.md) for the "
+"shared tool contract, Hero Book cockpit, and qualification boundary."
+msgstr ""
+"[Inspect the WebMCP companion and Evidence Gate](webmcp/README.md) for the "
+"shared tool contract, Hero Book cockpit, and qualification boundary."
+
+#: ../../docs/index.md:14 15e3dba7bc7c41e582a9ee4ec0adafcb
 msgid ""
 "[Use the 40 collaboration contracts](prompts/index.md) when you need a "
 "bounded, reusable prompt."
@@ -78,7 +86,7 @@ msgstr ""
 "[Use the 40 collaboration contracts](prompts/index.md) when you need a "
 "bounded, reusable prompt."
 
-#: ../../docs/index.md:14 3dbf14da7b9e486297c618048da7724d
+#: ../../docs/index.md:15 ea225780aea84e829448767a756bb02d
 msgid ""
 "[Browse the video library](media/video-library.md) to connect short "
 "explanations with long-form walkthroughs."
@@ -86,11 +94,11 @@ msgstr ""
 "[Browse the video library](media/video-library.md) to connect short "
 "explanations with long-form walkthroughs."
 
-#: ../../docs/index.md:26 4eddc1492038409ca997d5acc00c39fa
+#: ../../docs/index.md:28 bd13cafe187241b3a6f06d729c7f8fd5
 msgid "Documentation contract"
 msgstr "Contrat documentaire"
 
-#: ../../docs/index.md:28 9c6cdd154577486bb279193901f9cd3f
+#: ../../docs/index.md:30 05885fa50dc040fd88fa764b55e14260
 msgid ""
 "Every tool documents the same technical surface: status, prerequisites, "
 "installation, quickstart, architecture, interfaces, configuration, examples,"
@@ -104,11 +112,11 @@ msgstr ""
 "source. Le depot qui implemente l'outil demeure la reference; Scholarium "
 "agrege et valide sa documentation publique."
 
-#: ../../docs/index.md:30 c0f23094baf54b9f8f4e282a858b846b
+#: ../../docs/index.md:32 54ea4821fa4b4683bfd3d040873277f9
 msgid "Public entry point"
 msgstr "Porte d'entree publique"
 
-#: ../../docs/index.md:32 89c2875763f54b0caaa6e11fbcc80c14
+#: ../../docs/index.md:34 174e99c166404b73b53ce8b8cb334626
 msgid ""
 "The human-facing catalogue remains [SeCuReDmE "
 "Education](https://securedme.ca/product/education/). Browser-ready tools "

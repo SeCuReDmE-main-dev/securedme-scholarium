@@ -1,0 +1,19 @@
+{
+  "schema": "securedme.public-browser-setup.v1",
+  "feature": "HTMLInCanvas",
+  "observed_trial_max_chrome": 154,
+  "expires_unix": 1792454400,
+  "renewal_review_date": "2026-10-12",
+  "registrations": [
+    {
+      "origin": "https://securedme.ca:443",
+      "match_subdomains": true,
+      "token": "AtEgOalbLZw0fFNKslueWQiWuSXkDfeHfSJuYGuh+vFchwlhaxO+fIglTSAnYt+e3vq0HyBVEi4XpCJpf0Rl9QgAAABleyJvcmlnaW4iOiJodHRwczovL3NlY3VyZWRtZS5jYTo0NDMiLCJmZWF0dXJlIjoiSFRNTEluQ2FudmFzIiwiZXhwaXJ5IjoxNzkyNDU0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZX0="
+    },
+    {
+      "origin": "https://securedme-main-dev.github.io:443",
+      "match_subdomains": false,
+      "token": "AhKHBzmwpJ3WptlEMhAfma67wcp5Hh7R1Vj2fkqL+1vTH9FWhNpq3Rnj3U9yWRx5ehCgZ09RQtXawsTq0EY9GgYAAABieyJvcmlnaW4iOiJodHRwczovL3NlY3VyZWRtZS1tYWluLWRldi5naXRodWIuaW86NDQzIiwiZmVhdHVyZSI6IkhUTUxJbkNhbnZhcyIsImV4cGlyeSI6MTc5MjQ1NDQwMH0="
+    }
+  ]
+}

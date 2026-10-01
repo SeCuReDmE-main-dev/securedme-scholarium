@@ -1,0 +1,178 @@
+<h1 align="center">SecuredMe Scholarium</h1>
+
+<!-- SECUREDME-REPOSITORY-IMAGE:START -->
+![SecuredMe Scholarium — SecuredMe Education pre-alpha](docs/assets/repository/readme-banner-2026.png)
+
+[Repository social preview](docs/assets/repository/github-social-preview-2026.jpg) · [Presentation history](docs/repository-presentation-history-2026-09-30.md)
+<!-- SECUREDME-REPOSITORY-IMAGE:END -->
+
+<!-- SECUREDME-ZENODO:START -->
+<p align="center">
+  <a href="https://doi.org/10.5281/zenodo.21893191"><img alt="Zenodo DOI: 10.5281/zenodo.21893191" src="https://img.shields.io/badge/Zenodo%20DOI-10.5281%2Fzenodo.21893191-1682D4?style=for-the-badge" /></a>
+</p>
+<!-- SECUREDME-ZENODO:END -->
+
+<!-- SECUREDME-CPAI-MESH:START -->
+[![CodeProject.AI local connector](https://img.shields.io/badge/CodeProject.AI-local%20connector-1F6FEB)](infra/codeproject-ai/README.md)
+
+Local runtime availability must be checked; historical inference reports do not establish current readiness.
+<!-- SECUREDME-CPAI-MESH:END -->
+
+[Embedded CodeProject.AI node operations](infra/codeproject-ai/README.md)
+
+<p align="center">
+  <strong>An open, education-first home for research, projects, teaching work, and the people who make them.</strong><br />
+  Publish with context. Learn in public. Keep discovery free.
+</p>
+
+<p align="center">
+  <a href="https://www.scholarium.securedme.ca">Public pre-alpha</a> ·
+  <a href="https://www.scholarium.securedme.ca/privacy">Privacy</a> ·
+  <a href="https://github.com/SeCuReDmE-main-dev/securedme-scholarium/issues">Feedback</a>
+</p>
+
+[![SecuredMe Education Suite public calendar](https://img.shields.io/badge/SecuredMe%20Education%20Suite-public%20calendar%20%7C%20pre--alpha%20%7C%20active%20public%20development-5484ED?style=for-the-badge&logo=googlecalendar&logoColor=white)](https://calendrier.securedme.ca)
+
+**Attribution:** Jean-Sebastien Beaulieu · [ORCID 0009-0007-2904-0443](https://orcid.org/0009-0007-2904-0443) · [SecuredMe](https://securedme.ca) · [Scholarium](https://www.scholarium.securedme.ca)
+
+<!-- SECUREDME-SUITE-BADGES:START -->
+[![License SEL-2.0](https://img.shields.io/badge/license-SEL--2.0-6F42FF)](LICENSE)
+[![Pre-alpha](https://img.shields.io/badge/status-pre--alpha-0E7490)](AGENTS.md)
+[![Issues](https://img.shields.io/github/issues/SeCuReDmE-main-dev/securedme-scholarium)](https://github.com/SeCuReDmE-main-dev/securedme-scholarium/issues)
+[![Main history](https://img.shields.io/github/last-commit/SeCuReDmE-main-dev/securedme-scholarium/main)](https://github.com/SeCuReDmE-main-dev/securedme-scholarium/commits/main/)
+<!-- SECUREDME-SUITE-BADGES:END -->
+
+<!-- SECUREDME-STARTUP-SUPPORT:START -->
+[![SPONSORED BY E2B FOR STARTUPS](https://img.shields.io/badge/SPONSORED%20BY-E2B%20FOR%20STARTUPS-ff3001?style=for-the-badge&labelColor=black)](https://e2b.dev/startups)
+
+E2B supports SecuredMe through E2B for Startups. Sponsorship recognition is separate from runtime availability and included quotas.
+<!-- SECUREDME-STARTUP-SUPPORT:END -->
+
+> **Maintainer review.** This pre-alpha repository accepts reproducible issues and reviewed maintenance changes. Protected-branch reviews and human authorization remain required; an issue does not promise a response or delivery date.
+
+> [!IMPORTANT]
+> **Pre-alpha — active public development.** Scholarium is being built in public, but it is not yet a production social network. The public preview is for product validation. PayPal checkout now fails closed unless dedicated live credentials and a live webhook ID are configured; provider review, public moderation operations, and youth-flow legal review remain gated.
+
+## Why Scholarium exists
+
+Scholarium is a professional, free-first social platform for people who learn, teach, research, maintain open-source work, and build in public. It combines readable social discovery with the discipline of academic context:
+
+- a research note can live next to its sources, files, version history, and license;
+- a teacher can celebrate a student project without turning it into a popularity contest;
+- a maintainer can show an open project without accepting code changes in the social feed;
+- a beginner can use structure without being punished for not knowing formal writing conventions.
+
+### Product invariants
+
+1. **No pay-to-rank.** Subscription tier, contribution amount, and paid tools never change feed reach.
+2. **Free core publishing.** A person can share and discover work without buying visibility.
+3. **Provenance, not legal overclaiming.** Scholarium creates a timestamped publication receipt; it does not replace copyright registration, DOI, ISBN, or legal advice.
+4. **Human review stays human.** AI can structure, explain, and trace work. It does not become a proof authority, taxonomic authority, moderator of last resort, or scientific authority.
+5. **Privacy by default.** Local activity insights are off by default, stay in the browser when enabled, and exclude post text, files, contacts, location, and provider tokens.
+
+## What is implemented today
+
+| Surface | Current capability |
+| --- | --- |
+| Signal | Professional research/education feed, search, followed topics, transparent ranking controls, and chronological option. |
+| Publishing | Research notes, white papers, project updates, short videos, and teaching artifacts with a processing status and provenance receipt contract. |
+| Files | Typed upload contract, SHA-256 hashing, and R2 metadata shape for supported documents, data files, archives, and video. |
+| QuaNthoR | A non-blocking formalization coach for articles, white papers, chapters, presentations, project briefs, videos, life-science protocols, and Mizar-proof handoff. |
+| Profiles | Avatar/banner preview, themes, accent colour, badges, local-only insight preference, and consent-first tool connections. |
+| Identity | ChatGPT WebAuth plus separate Google, GitHub, and PayPal entry routes. Each provider identity remains separate until an explicit future account-linking flow is reviewed. The twelve-tool Gateway adapter policy is shared, but deployed login acceptance remains application-specific. PayPal is sandbox-configured; Google and GitHub await their own provider credentials. |
+| Verified contribution | Fixed-price verified contributor plan metadata, verification-gated preparation, server-side PayPal order creation, and server-side capture return path with no ranking effect. |
+| Integrations | Consent preparation contracts for ORCID, GitHub, Zenodo, Google Drive, QuaNthoR, Synthia, SecuredMe Blog, Codex/OpenAI, Antigravity/Gemini, and life-science discovery. |
+| Education toolchain | A learner-visible directory for Scholarium Teach, AlgoQuest, Algorithm Builder, FfeD-QLC, and the shared Gateway contract. |
+| WebMCP companion | Twelve honest Scholarium descriptors, a sanitized Hero Book projection, a minimal MV3 side panel, and a deterministic local Evidence Gate. Live Chrome/Edge qualification remains separate. |
+
+## Teach and the first-proof toolchain
+
+Scholarium Teach now has a deterministic syllable-engine core, versioned language blocks, synthetic D1 proof, and explicit non-diagnostic audio, image, mastery, and provenance boundaries. Its execution ledger records 161 of 163 actions complete. The remaining gates are material: real-student pilots are prohibited until qualified Quebec and France/EU legal review is signed, and remote VS Code tunnel authentication is unavailable while local development remains usable. This is a strong pre-alpha mechanism, not a certified teaching method or an open child pilot.
+
+The web application also exposes the current Education journey without collapsing responsibilities:
+
+`AlgoQuest mission -> Algorithm Builder artifact -> Colab execution evidence -> AlgoQuest progression`
+
+FfeD-QLC is the supervised geometric-cryptography path, with Vigil organizing evidence and a professor retaining the final decision. The Gateway audits the twelve shared WebAuth adapter contracts and rejects secret material; it is not a hosted identity provider and does not make every product login live by itself.
+
+## QuaNthoR in Scholarium
+
+QuaNthoR is deliberately a **coach, not a gatekeeper**. It helps a person make the structure of their work clearer so formats remain understandable across the community. It never blocks publishing because a source, section, or title is still incomplete.
+
+For formal mathematics, it can prepare a Mizar-oriented plan and hand the draft to QuaNthoR/Mizar. A guide is never represented as a verified proof until the separate formal verifier accepts it.
+
+For life-science work, it can prepare a source-aware protocol outline. This is not clinical advice, ethics approval, biosafety approval, or a scientific conclusion.
+
+## Identity, tools, and privacy
+
+Official AI-assisted school routes are **Codex/OpenAI** and **Antigravity/Gemini** only. Scholarium uses the provider's own browser/WebAuth session where available; it does not request or store a raw provider token in student or teacher flows.
+
+Tool attachments are consent-first. A connection can be prepared in a profile, but it must be explicitly approved before a provider redirect or any external write occurs. GitHub collaboration remains on GitHub: Scholarium can show attribution and project context but is not a replacement code editor.
+
+The optional `Privacy monitor` is intentionally device-local. Datadog is a platform reliability lane, not a per-user container and not a destination for personal content or behavioral profiles.
+
+## Architecture
+
+```text
+apps/web/
+  app/                 React/Vinext interface and API routes
+  db/                  Drizzle D1 schema and migrations
+  drizzle/             Generated migration history
+  lib/                 Provenance, identity, policy, integration, and privacy contracts
+  tests/               Rendered-interface and safety-contract checks
+  worker/              Worker entry point
+```
+
+The app is a Vinext/React application designed for Cloudflare Workers. Logical D1 (`DB`) and R2 (`MEDIA`) bindings are declared in [`apps/web/.openai/hosting.json`](apps/web/.openai/hosting.json). Files and records are only durable when those bindings are provided by the deployment environment.
+
+## Run locally
+
+Prerequisite: Node.js 22.13 or later.
+
+```powershell
+cd apps/web
+npm install
+npm run dev
+```
+
+Then open the local address printed by Vinext (normally `http://localhost:3000`).
+
+### Validate
+
+```powershell
+cd apps/web
+npm test
+```
+
+The suite builds the Worker-compatible application and checks the rendered product contract: anti-pay-to-rank, provenance, QuaNthoR's non-blocking role, local-only insights, WebAuth binding, and consent-first profile connections.
+
+The canonical public resource API lives under `/api/v1`, with the schema published at `/api/v1/openapi.json`. Existing unversioned resource routes are compatibility aliases only during pre-alpha migration. See [docs/API-VERSIONING.md](docs/API-VERSIONING.md).
+
+To regenerate Drizzle SQL after a schema change:
+
+```powershell
+npm run db:generate
+```
+
+## Public repository and contribution boundary
+
+This repository contains the public-safe Scholarium source. Credentials, cPanel details, deployment secrets, identity documents, biometric templates, private correspondence, and unpublished research stay outside this repository.
+
+Community feedback is welcome through GitHub Issues, without any promised response or delivery date. The maintained school-tool route is still pre-alpha, and pull requests are not accepted during the active code-finishing week. Do not submit secrets, personal identity documents, private student data, or unsupported provider integrations.
+
+## Not yet launched
+
+- live PayPal provider review and launch credentials;
+- payment-provider checkout for the fixed 0.99 USD/month verified-contributor contribution;
+- Google and GitHub provider credentials, redirect registration, and launch validation;
+- production moderation operation, appeals, and legal review for youth flows;
+- resumable uploads, malware scanning, document extraction, video transcoding, and Live infrastructure;
+- full external service execution for Drive, GitHub, email, calendar, contacts, DOI, and life-science sources.
+
+These are intentional launch gates, not features silently represented as complete.
+
+## Governance and license
+
+> **Official school governance.** Scholarium follows the SecuredMe Education boundary: Codex/OpenAI and Antigravity/Gemini are the only official AI-assisted school routes. Do not add Ollama Cloud, uncensored local models, raw-token student flows, or unknown provider routes. See [SCHOOL_TOOL_GOVERNANCE.md](SCHOOL_TOOL_GOVERNANCE.md) and [AGENTS.md](AGENTS.md).
+
+> **License.** This project uses the Secured Educational License 2.0 (SEL-2.0). It is provided for education, research, simulation, classroom training, and supervised learning. See [LICENSE](LICENSE), [NOTICE](NOTICE), [DISCLAIMER](DISCLAIMER), and [SAFETY.md](SAFETY.md).

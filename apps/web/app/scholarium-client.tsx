@@ -198,6 +198,7 @@ type ArchiveManifest = {
 };
 const profileToolOptions = [
   { id: "quanthor", label: "QuaNthoR" },
+  { id: "quantech_vid", label: "QuaNTecH-ViD" },
   { id: "synthia", label: "Synthia" },
   { id: "securedme_blog", label: "SecuredMe Blog" },
   { id: "codex_openai", label: "Codex / OpenAI" },
@@ -309,7 +310,7 @@ type ApiPublication = {
   topics?: string[];
   type: string;
 };
-type LibrarySearchResult = ApiPublication & { reasons: string[]; score: number; topics: Array<{ label: string; slug: string }> };
+type LibrarySearchResult = Omit<ApiPublication, "topics"> & { reasons: string[]; score: number; topics: Array<{ label: string; slug: string }> };
 type CommunityComment = {
   author: string;
   authorId: string;
@@ -390,6 +391,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
   const [savedCollectionSaving, setSavedCollectionSaving] = useState(false);
   const [selectedSavedCollectionId, setSelectedSavedCollectionId] = useState<string | null>(null);
   const [publications, setPublications] = useState(initialPublications);
+  const [feedRefreshNonce, setFeedRefreshNonce] = useState(0);
   const [feedMode, setFeedMode] = useState<FeedMode>("discovery");
   const [serverFeed, setServerFeed] = useState(false);
   const [feedLoading, setFeedLoading] = useState(false);
@@ -698,7 +700,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
     const timeout = window.setTimeout(refresh, query.trim() ? 220 : 0);
     const liveRefresh = window.setInterval(refresh, 30_000);
     return () => { active = false; window.clearTimeout(clearPendingUpdate); window.clearTimeout(timeout); window.clearInterval(liveRefresh); };
-  }, [feedMode, query]);
+  }, [feedMode, query, feedRefreshNonce]);
 
   const showPendingLiveFeed = () => {
     if (!pendingLiveFeed) return;
@@ -858,20 +860,21 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       });
       const payload = await response.json() as { error?: string; prepared?: QuantechRenderPreparation };
       if (!response.ok || !payload.prepared) throw new Error(payload.error ?? "The QuaNTecH provider handoff could not be prepared.");
-      setQuantechPreparation(payload.prepared);
+      const prepared = payload.prepared;
+      setQuantechPreparation(prepared);
       setQuantechRequests((current) => [{
         aspect: mediaProductionAspect,
         createdAt: new Date().toISOString(),
-        entitlementStatus: payload.prepared.entitlement.status,
-        handoffUrl: payload.prepared.handoffUrl,
-        id: payload.prepared.requestId,
-        provider: payload.prepared.provider,
+        entitlementStatus: prepared.entitlement.status,
+        handoffUrl: prepared.handoffUrl,
+        id: prepared.requestId,
+        provider: prepared.provider,
         qualityPreset: mediaProductionQuality,
         reviewMode: mediaProductionReviewMode,
-        scriptDigest: payload.prepared.payloadBoundary.scriptDigest,
-        sourceUrlCount: payload.prepared.payloadBoundary.sourceUrlCount,
-        status: payload.prepared.status,
-      }, ...current.filter((request) => request.id !== payload.prepared?.requestId)].slice(0, 12));
+        scriptDigest: prepared.payloadBoundary.scriptDigest,
+        sourceUrlCount: prepared.payloadBoundary.sourceUrlCount,
+        status: prepared.status,
+      }, ...current.filter((request) => request.id !== prepared.requestId)].slice(0, 12));
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "The QuaNTecH provider handoff could not be prepared.");
     } finally {
@@ -1065,7 +1068,7 @@ export function ScholariumClient({ session }: { session: { displayName: string |
       const payload = await response.json() as { error?: string; imported?: Array<{ title: string; visibility: string }> };
       if (!response.ok) throw new Error(payload.error ?? "The selected Academia publications could not be imported.");
       setAcademiaMigration((migration) => migration ? { ...migration, state: "imported", items: migration.items.map((item) => item.selected ? { ...item, status: "imported" } : item) } : migration);
-      void loadPublications();
+      setFeedRefreshNonce((current) => current + 1);
       setNotice(`${payload.imported?.length ?? 0} publication(s) imported. Private remains the default; only your selected public items can enter public discovery.`);
     } catch (error) { setNotice(error instanceof Error ? error.message : "The selected Academia publications could not be imported."); }
     finally { setAcademiaMigrating(false); }

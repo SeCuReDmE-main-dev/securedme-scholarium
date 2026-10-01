@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, inArray, isNull, lte } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, isNull, lte, or } from "drizzle-orm";
 import {
   roleAssignments,
   teachSchoolSafetyAppeals,
@@ -24,11 +24,12 @@ import {
   type SchoolSafetyState,
 } from "./teach-safety-case-contracts";
 import {
-  deliverSchoolSafetyDatadogCase,
-  schoolSafetyDatadogPayload,
+  deliverSchoolSafetyMetric,
+  schoolSafetyTechnicalMetric,
+  validSchoolSafetyMetric,
   schoolSafetyRuntimeConfig,
-  type SchoolSafetyDatadogPayload,
-} from "./teach-safety-datadog";
+  type SchoolSafetyTelemetryConfig,
+} from "./teach-safety-telemetry";
 
 type ScholariumDb = Awaited<ReturnType<typeof import("../db").getDb>>;
 type RoleContext = {
@@ -75,7 +76,11 @@ async function sha256(value: string) {
 }
 
 async function idempotencyDigest(scope: string, userId: string, key: string) {
-  return sha256([scope, userId, key].join(":"));
+  return sha256(JSON.stringify([scope, userId, key]));
+}
+
+function requireMatchingReplay(stored: string | null, requested: string) {
+  if (!stored || stored !== requested) fail("SCHOOL_SAFETY_IDEMPOTENCY_CONFLICT", 409);
 }
 
 async function activeContexts(db: ScholariumDb, userId: string): Promise<RoleContext[]> {
@@ -193,20 +198,10 @@ async function outboxRecord(input: {
   eventId: string;
   idempotencyKey: string;
   operation: string;
+  requestDigest: string;
 }) {
   const runtime = await schoolSafetyRuntimeConfig();
-  const payload = await schoolSafetyDatadogPayload({
-    caseId: input.caseRow.id,
-    organizationId: input.caseRow.organizationId,
-    category: input.caseRow.category,
-    proposedSeverity: input.caseRow.proposedSeverity as "standard" | "high" | "urgent",
-    state: input.caseRow.status as SchoolSafetyState,
-    createdAt: input.caseRow.createdAt,
-    updatedAt: input.caseRow.updatedAt,
-    environment: runtime.environment,
-    policyVersion: input.caseRow.policyVersion,
-    resolutionCode: input.caseRow.resolutionCode,
-  });
+  const payload = schoolSafetyTechnicalMetric(input.operation, runtime.environment);
   return {
     id: crypto.randomUUID(),
     caseId: input.caseRow.id,
@@ -214,7 +209,8 @@ async function outboxRecord(input: {
     operation: input.operation,
     redactedPayload: JSON.stringify(payload),
     idempotencyKey: input.idempotencyKey,
-    status: runtime.enabled && runtime.writeApproved ? "pending" : "disabled",
+    requestDigest: input.requestDigest,
+    status: runtime.enabled && runtime.endpoint ? "pending" : "disabled",
     attempts: 0,
     createdAt: input.caseRow.updatedAt,
     updatedAt: input.caseRow.updatedAt,
@@ -233,12 +229,15 @@ export async function createSchoolSafetyCase(
   const reporter = reporterContext(contexts, contract.organizationId);
   if (!reporter || !schoolSafetyReporterRoles.includes(reporter.role as SchoolSafetyReporterRole)) fail("ACTIVE_SCHOOL_REPORTER_ROLE_REQUIRED", 403);
   const policy = await activeSyntheticPolicy(db, contract.organizationId);
-  const idempotencyKey = await idempotencyDigest("create", userId, contract.idempotencyKey);
-  const [replay] = await db.select({ caseId: teachSchoolSafetyOutbox.caseId }).from(teachSchoolSafetyOutbox)
+  const idempotencyKey = await idempotencyDigest("create:" + contract.organizationId, userId, contract.idempotencyKey);
+  const requestDigest = await sha256(JSON.stringify({ contract, sourceReportId: options.sourceReportId ?? null }));
+  const [replay] = await db.select({ caseId: teachSchoolSafetyOutbox.caseId, requestDigest: teachSchoolSafetyOutbox.requestDigest }).from(teachSchoolSafetyOutbox)
     .where(eq(teachSchoolSafetyOutbox.idempotencyKey, idempotencyKey)).limit(1);
   if (replay) {
+    requireMatchingReplay(replay.requestDigest, requestDigest);
     const [existing] = await db.select().from(teachSchoolSafetyCases).where(eq(teachSchoolSafetyCases.id, replay.caseId)).limit(1);
-    if (existing) return { case: publicCaseProjection(existing, userId, false), replayed: true };
+    if (existing?.reporterUserId === userId && existing.organizationId === contract.organizationId) return { case: publicCaseProjection(existing, userId, false), replayed: true };
+    fail("SCHOOL_SAFETY_CASE_ACCESS_DENIED", 403);
   }
 
   const now = new Date().toISOString();
@@ -280,6 +279,7 @@ export async function createSchoolSafetyCase(
     eventId: event.id,
     idempotencyKey,
     operation: "create",
+    requestDigest,
   });
   await db.batch([
     db.insert(teachSchoolSafetyEvidence).values({
@@ -418,11 +418,13 @@ export async function transitionSchoolSafetyCase(db: ScholariumDb, userId: strin
   if (contract.toState === "appealed") fail("USE_SCHOOL_SAFETY_APPEAL_ROUTE", 400);
   const access = await accessibleCase(db, userId, contract.caseId);
   const idempotencyKey = await idempotencyDigest("transition:" + contract.caseId, userId, contract.idempotencyKey);
-  const [replay] = await db.select({ id: teachSchoolSafetyEvents.id }).from(teachSchoolSafetyEvents).where(and(
-    eq(teachSchoolSafetyEvents.caseId, contract.caseId),
-    eq(teachSchoolSafetyEvents.idempotencyKey, idempotencyKey),
-  )).limit(1);
-  if (replay) return { ...(await getSchoolSafetyCase(db, userId, contract.caseId)), replayed: true };
+  const requestDigest = await sha256(JSON.stringify({ contract, assigneeUserId: boundedText(input.assigneeUserId, 180) || userId }));
+  const [replay] = await db.select({ requestDigest: teachSchoolSafetyOutbox.requestDigest }).from(teachSchoolSafetyOutbox)
+    .where(eq(teachSchoolSafetyOutbox.idempotencyKey, idempotencyKey)).limit(1);
+  if (replay) {
+    requireMatchingReplay(replay.requestDigest, requestDigest);
+    return { ...(await getSchoolSafetyCase(db, userId, contract.caseId)), replayed: true };
+  }
   if (access.row.version !== contract.expectedVersion) fail("SCHOOL_SAFETY_VERSION_CONFLICT", 409);
 
   const administrativeContext = adminContext(access.contexts, access.row.organizationId);
@@ -437,7 +439,7 @@ export async function transitionSchoolSafetyCase(db: ScholariumDb, userId: strin
   });
   if (!decision.allowed) fail(decision.code, 403);
   if (["under_review", "action_pending", "resolved", "closed"].includes(contract.toState)
-    && access.row.assignedAdminUserId && access.row.assignedAdminUserId !== userId) {
+    && access.row.status !== "appealed" && access.row.assignedAdminUserId && access.row.assignedAdminUserId !== userId) {
     fail("CASE_ASSIGNED_TO_ANOTHER_ADMINISTRATOR", 409);
   }
 
@@ -470,6 +472,7 @@ export async function transitionSchoolSafetyCase(db: ScholariumDb, userId: strin
       sameOrganization: Boolean(administrativeContext),
     });
     if (!reviewer.allowed) fail(reviewer.code, 403);
+    assigneeUserId = userId;
   }
 
   const previous = await latestEvent(db, access.row.id);
@@ -502,6 +505,7 @@ export async function transitionSchoolSafetyCase(db: ScholariumDb, userId: strin
     eventId: event.id,
     idempotencyKey,
     operation: "transition",
+    requestDigest,
   });
   const operations: Parameters<ScholariumDb["batch"]>[0][number][] = [
     db.update(teachSchoolSafetyCases).set({
@@ -519,7 +523,7 @@ export async function transitionSchoolSafetyCase(db: ScholariumDb, userId: strin
     db.insert(teachSchoolSafetyEvents).values(event),
     db.insert(teachSchoolSafetyOutbox).values(outbox),
   ];
-  if (contract.toState === "assigned" && assigneeUserId) {
+  if ((contract.toState === "assigned" || pendingAppeal) && assigneeUserId) {
     operations.push(
       db.update(teachSchoolSafetyAssignments).set({ active: false, releasedAt: now }).where(and(
         eq(teachSchoolSafetyAssignments.caseId, access.row.id),
@@ -555,14 +559,16 @@ export async function appealSchoolSafetyCase(db: ScholariumDb, userId: string, i
   if (!contract.valid) fail("SCHOOL_SAFETY_APPEAL_INPUT_INVALID", 400);
   const access = await accessibleCase(db, userId, contract.caseId);
   if (!access.reporter || access.row.reporterUserId !== userId) fail("ONLY_REPORTER_CAN_APPEAL", 403);
+  const idempotencyKey = await idempotencyDigest("appeal:" + contract.caseId, userId, contract.idempotencyKey);
+  const requestDigest = await sha256(JSON.stringify(contract));
+  const [replay] = await db.select({ requestDigest: teachSchoolSafetyOutbox.requestDigest }).from(teachSchoolSafetyOutbox)
+    .where(eq(teachSchoolSafetyOutbox.idempotencyKey, idempotencyKey)).limit(1);
+  if (replay) {
+    requireMatchingReplay(replay.requestDigest, requestDigest);
+    return { ...(await getSchoolSafetyCase(db, userId, contract.caseId)), replayed: true };
+  }
   if (access.row.status !== "resolved") fail("RESOLVED_CASE_REQUIRED_FOR_APPEAL", 409);
   if (access.row.version !== contract.expectedVersion) fail("SCHOOL_SAFETY_VERSION_CONFLICT", 409);
-  const idempotencyKey = await idempotencyDigest("appeal:" + contract.caseId, userId, contract.idempotencyKey);
-  const [replay] = await db.select({ id: teachSchoolSafetyEvents.id }).from(teachSchoolSafetyEvents).where(and(
-    eq(teachSchoolSafetyEvents.caseId, contract.caseId),
-    eq(teachSchoolSafetyEvents.idempotencyKey, idempotencyKey),
-  )).limit(1);
-  if (replay) return { ...(await getSchoolSafetyCase(db, userId, contract.caseId)), replayed: true };
   const previous = await latestEvent(db, access.row.id);
   if (!previous || previous.sequence !== access.row.version) fail("SCHOOL_SAFETY_HASH_CHAIN_INVALID", 409);
 
@@ -586,6 +592,7 @@ export async function appealSchoolSafetyCase(db: ScholariumDb, userId: string, i
     eventId: event.id,
     idempotencyKey,
     operation: "appeal",
+    requestDigest,
   });
   await db.batch([
     db.insert(teachSchoolSafetyEvidence).values({
@@ -621,11 +628,9 @@ export async function appealSchoolSafetyCase(db: ScholariumDb, userId: string, i
   return { ...(await getSchoolSafetyCase(db, userId, access.row.id)), replayed: false };
 }
 
-function safeDatadogError(error: unknown) {
-  const message = error instanceof Error ? error.message : "DATADOG_DELIVERY_FAILED";
-  return /^DATADOG_[A-Z0-9_]+$/u.test(message) || /^DATADOG_HTTP_[0-9]{3}$/u.test(message)
-    ? message
-    : "DATADOG_DELIVERY_FAILED";
+function safeTelemetryError(error: unknown) {
+  const message = error instanceof Error ? error.message : "OTEL_DELIVERY_FAILED";
+  return /^OTEL_[A-Z0-9_]+$/u.test(message) ? message : "OTEL_DELIVERY_FAILED";
 }
 
 export async function reconcileSchoolSafetyOutbox(
@@ -633,82 +638,64 @@ export async function reconcileSchoolSafetyOutbox(
   userId: string,
   input: Record<string, unknown>,
   transport?: typeof fetch,
+  runtimeOverride?: SchoolSafetyTelemetryConfig,
 ) {
-  if (input.confirmation !== "APPLY:DATADOG_CASES") fail("DATADOG_RECONCILIATION_CONFIRMATION_REQUIRED", 403);
-  const config = await schoolSafetyRuntimeConfig();
-  if (!config.enabled || !config.writeApproved) fail("DATADOG_CASE_SYNC_NOT_APPROVED", 403);
+  if (input.confirmation !== "APPLY:LOCAL_TELEMETRY") fail("LOCAL_TELEMETRY_CONFIRMATION_REQUIRED", 403);
+  const config = runtimeOverride ?? await schoolSafetyRuntimeConfig();
   const contexts = await activeContexts(db, userId);
   const adminOrganizationIds = [...new Set(contexts
     .filter((context) => schoolSafetyAdministrativeRoles.includes(context.role as typeof schoolSafetyAdministrativeRoles[number]))
     .map((context) => context.organizationId))];
   if (!adminOrganizationIds.length) fail("ACTIVE_SCHOOL_ADMIN_ROLE_REQUIRED", 403);
+  if (!config.enabled) return { schema: "scholarium.school-safety-reconciliation.v2", processed: 0, results: [], telemetry: "disabled", externalWriteApproved: false, privateEvidenceIncluded: false };
   const requestedLimit = typeof input.limit === "number" && Number.isInteger(input.limit) ? input.limit : 5;
   const limit = Math.min(10, Math.max(1, requestedLimit));
   const now = new Date().toISOString();
-  const rows = await db.select().from(teachSchoolSafetyOutbox).where(and(
-    inArray(teachSchoolSafetyOutbox.status, ["disabled", "pending", "retry"]),
+  const due = and(
+    inArray(teachSchoolSafetyOutbox.caseId, db.select({ id: teachSchoolSafetyCases.id }).from(teachSchoolSafetyCases)
+      .where(inArray(teachSchoolSafetyCases.organizationId, adminOrganizationIds))),
+    inArray(teachSchoolSafetyOutbox.status, ["disabled", "pending", "retry", "processing"]),
     or(isNull(teachSchoolSafetyOutbox.nextAttemptAt), lte(teachSchoolSafetyOutbox.nextAttemptAt, now)),
-  )).orderBy(asc(teachSchoolSafetyOutbox.createdAt)).limit(limit);
+  );
+  const rows = await db.select().from(teachSchoolSafetyOutbox).where(due)
+    .orderBy(asc(teachSchoolSafetyOutbox.createdAt)).limit(limit);
   const results: Array<{ caseId: string; status: string }> = [];
   for (const row of rows) {
-    const [caseRow] = await db.select().from(teachSchoolSafetyCases).where(and(
-      eq(teachSchoolSafetyCases.id, row.caseId),
-      inArray(teachSchoolSafetyCases.organizationId, adminOrganizationIds),
-    )).limit(1);
-    if (!caseRow) continue;
-    const payload = parseJson<SchoolSafetyDatadogPayload | null>(row.redactedPayload, null);
-    if (!payload || payload.schema !== "scholarium.school-safety-datadog.v1") {
-      await db.update(teachSchoolSafetyOutbox).set({
-        status: "failed",
-        lastErrorCode: "DATADOG_REDACTED_PAYLOAD_INVALID",
-        updatedAt: now,
-      }).where(eq(teachSchoolSafetyOutbox.id, row.id));
+    // CAS lease prevents simultaneous reconcilers from emitting the same row.
+    const claimed = await db.update(teachSchoolSafetyOutbox).set({ status: "processing", nextAttemptAt: new Date(Date.now() + 60_000).toISOString() })
+      .where(and(eq(teachSchoolSafetyOutbox.id, row.id), eq(teachSchoolSafetyOutbox.status, row.status),
+        or(isNull(teachSchoolSafetyOutbox.nextAttemptAt), lte(teachSchoolSafetyOutbox.nextAttemptAt, now))))
+      .returning({ id: teachSchoolSafetyOutbox.id });
+    if (!claimed.length) continue;
+    const payload = parseJson<unknown>(row.redactedPayload, null);
+    // Legacy case-oriented payloads remain private and are never re-exported.
+    if (!validSchoolSafetyMetric(payload)) {
+      await db.update(teachSchoolSafetyOutbox).set({ status: "failed", lastErrorCode: "OTEL_METRIC_INVALID", nextAttemptAt: null, updatedAt: now })
+        .where(eq(teachSchoolSafetyOutbox.id, row.id));
       results.push({ caseId: row.caseId, status: "failed" });
       continue;
     }
     try {
-      const delivered = await deliverSchoolSafetyDatadogCase(config, {
-        externalCaseId: row.externalCaseId,
-        payload,
-        transport,
-      });
+      await deliverSchoolSafetyMetric(config, payload, transport);
       const sentAt = new Date().toISOString();
       await db.batch([
-        db.update(teachSchoolSafetyOutbox).set({
-          status: "sent",
-          attempts: row.attempts + 1,
-          externalCaseId: delivered.externalCaseId,
-          lastErrorCode: null,
-          nextAttemptAt: null,
-          sentAt,
-          updatedAt: sentAt,
-        }).where(eq(teachSchoolSafetyOutbox.id, row.id)),
-        db.update(teachSchoolSafetyCases).set({ telemetryStatus: "synced", updatedAt: sentAt })
-          .where(eq(teachSchoolSafetyCases.id, row.caseId)),
+        db.update(teachSchoolSafetyOutbox).set({ status: "sent", attempts: row.attempts + 1, externalCaseId: null,
+          lastErrorCode: null, nextAttemptAt: null, sentAt, updatedAt: sentAt }).where(eq(teachSchoolSafetyOutbox.id, row.id)),
+        db.update(teachSchoolSafetyCases).set({ telemetryStatus: "synced" }).where(eq(teachSchoolSafetyCases.id, row.caseId)),
       ]);
       results.push({ caseId: row.caseId, status: "sent" });
     } catch (error) {
       const attempts = row.attempts + 1;
       const retryAt = new Date(Date.now() + Math.min(3_600_000, 30_000 * (2 ** Math.min(attempts - 1, 7)))).toISOString();
       await db.batch([
-        db.update(teachSchoolSafetyOutbox).set({
-          status: attempts >= 8 ? "failed" : "retry",
-          attempts,
-          lastErrorCode: safeDatadogError(error),
-          nextAttemptAt: attempts >= 8 ? null : retryAt,
-          updatedAt: new Date().toISOString(),
-        }).where(eq(teachSchoolSafetyOutbox.id, row.id)),
-        db.update(teachSchoolSafetyCases).set({ telemetryStatus: "degraded" })
-          .where(eq(teachSchoolSafetyCases.id, row.caseId)),
+        db.update(teachSchoolSafetyOutbox).set({ status: attempts >= 8 ? "failed" : "retry", attempts,
+          lastErrorCode: safeTelemetryError(error), nextAttemptAt: attempts >= 8 ? null : retryAt, updatedAt: new Date().toISOString() })
+          .where(eq(teachSchoolSafetyOutbox.id, row.id)),
+        db.update(teachSchoolSafetyCases).set({ telemetryStatus: "degraded" }).where(eq(teachSchoolSafetyCases.id, row.caseId)),
       ]);
       results.push({ caseId: row.caseId, status: attempts >= 8 ? "failed" : "retry" });
     }
   }
-  return {
-    schema: "scholarium.school-safety-reconciliation.v1",
-    processed: results.length,
-    results,
-    externalWriteApproved: true,
-    privateEvidenceIncluded: false,
-  };
+  return { schema: "scholarium.school-safety-reconciliation.v2", processed: results.length, results,
+    externalWriteApproved: false, localTechnicalMetricsOnly: true, privateEvidenceIncluded: false };
 }

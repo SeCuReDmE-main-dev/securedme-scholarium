@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SeCuReDmE Developer Library 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 12:27-0400\n"
+"POT-Creation-Date: 2026-09-30 20:25-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -21,12 +21,12 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: ../../docs/tools/scholarium/interfaces.md:1
-#: 2d1112f46de344e8b3d1fefecf223548
+#: 58d24f4eb1ad4fcd977cbd6cd696474a
 msgid "Interfaces"
 msgstr "Interfaces"
 
 #: ../../docs/tools/scholarium/interfaces.md:3
-#: 212665f2ea40457a8a66df52948c6570
+#: eaedafc175ad4f0fa8595b8b4f663c7e
 msgid ""
 "**Public research commons:** use only through the documented repository "
 "route."
@@ -35,13 +35,13 @@ msgstr ""
 "repositorio."
 
 #: ../../docs/tools/scholarium/interfaces.md:4
-#: 854862af612243e5afec778fc105c9ff
+#: d873f5796d4e42c8b46260393e7159c0
 msgid "**Teach workspace:** use only through the documented repository route."
 msgstr ""
 "**Teach workspace:** usar solo mediante la ruta documentada del repositorio."
 
 #: ../../docs/tools/scholarium/interfaces.md:5
-#: 1009d1bd5ceb4bb590a0f044204a8588
+#: ce0026dabd374cbdae5a92715c62c73c
 msgid ""
 "**Publication routes:** use only through the documented repository route."
 msgstr ""
@@ -49,7 +49,7 @@ msgstr ""
 "repositorio."
 
 #: ../../docs/tools/scholarium/interfaces.md:6
-#: 747f9f4cefde4df5a44cdcdee8966013
+#: c2065429529f496abfb8d6e7e5ad6979
 msgid ""
 "**Sphinx documentation aggregator:** use only through the documented "
 "repository route."
@@ -58,12 +58,12 @@ msgstr ""
 "del repositorio."
 
 #: ../../docs/tools/scholarium/interfaces.md:8
-#: a34bf108a1934a4a850ab65857063ca8
+#: 383d5703d6194dc69524846a7d6f82a7
 msgid "Interface contract"
 msgstr "Contrato de interfaz"
 
 #: ../../docs/tools/scholarium/interfaces.md:10
-#: d080302e775a4727b5a16325aa9abcd6
+#: 9c45a98f995f4ecda00b36fa00e9d5ed
 msgid ""
 "Inputs must be explicit, outputs must be inspectable, errors must be "
 "returned as errors, and consequential external actions require human "
@@ -74,12 +74,12 @@ msgstr ""
 "aprobacion humana."
 
 #: ../../docs/tools/scholarium/interfaces.md:12
-#: 6e978d938f8f487aa3c54a656a536417
+#: 480cee1873bd4580afb2d7441532ad52
 msgid "Compatibility"
 msgstr "Compatibilidad"
 
 #: ../../docs/tools/scholarium/interfaces.md:14
-#: 20481cce9a5c4407b49480ff401b7065
+#: f2e2cc084adb490f9b86e3fa778d285b
 msgid ""
 "Treat undocumented endpoints, commands, and browser controls as unsupported."
 " Confirm the current repository version before integrating another system."
@@ -87,3 +87,44 @@ msgstr ""
 "Considere no compatibles los endpoints, comandos y controles del navegador "
 "no documentados. Confirme la version actual del repositorio antes de "
 "integrar otro sistema."
+
+#: ../../docs/tools/scholarium/interfaces.md:16
+#: 0311344f42c94f94bc4da5313ba08bfb
+#, fuzzy
+msgid "WebMCP interface"
+msgstr "WebMCP interface"
+
+#: ../../docs/tools/scholarium/interfaces.md:18
+#: cc7196d65fe94c8f84442fe8d35a0e6f
+msgid ""
+"The real `/app` page owns a machine-readable `securedme.webmcp.v1` manifest "
+"and registers exactly twelve descriptors when the browser provides the "
+"experimental WebMCP runtime. Ten descriptors belong to Scholarium; "
+"`securedme_companion_context` and `securedme_qbit_plan_handoff` are shared "
+"suite contracts."
+msgstr ""
+"The real `/app` page owns a machine-readable `securedme.webmcp.v1` manifest "
+"and registers exactly twelve descriptors when the browser provides the "
+"experimental WebMCP runtime. Ten descriptors belong to Scholarium; "
+"`securedme_companion_context` and `securedme_qbit_plan_handoff` are shared "
+"suite contracts."
+
+#: ../../docs/tools/scholarium/interfaces.md:20
+#: cb8352a94b894126a4c0cf8439262e82
+msgid ""
+"READ tools inspect public or capability-only projections. STAGE tools "
+"prepare reviewable local proposals. The only declared EXECUTE tool is "
+"currently `planned` and returns explicit unavailability because the "
+"publication service does not yet consume a tool-bound one-use approval and "
+"idempotency key."
+msgstr ""
+"READ tools inspect public or capability-only projections. STAGE tools "
+"prepare reviewable local proposals. The only declared EXECUTE tool is "
+"currently `planned` and returns explicit unavailability because the "
+"publication service does not yet consume a tool-bound one-use approval and "
+"idempotency key."
+
+#: ../../docs/tools/scholarium/interfaces.md:22
+#: b49bc16318af4607bf0a58f3a07ce187
+msgid "See [the complete WebMCP contract](../../webmcp/README.md)."
+msgstr "See [the complete WebMCP contract](../../webmcp/README.md)."

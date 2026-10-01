@@ -196,8 +196,8 @@ export function schoolSafetyAppealReviewerDecision(input: {
 export const schoolSafetyPrivacyContract = {
   schema: "scholarium.school-safety-privacy.v1",
   evidenceStorage: "private_d1_reference_only",
-  datadogAllowed: ["opaque_case_id", "pseudonymous_tenant", "category", "proposed_severity", "state", "timestamps", "service", "environment", "policy_version", "normalized_outcome"],
-  datadogForbidden: ["name", "email", "direct_user_id", "report_text", "image", "audio", "video", "private_conversation", "diagnosis", "psychological_profile", "individual_risk_score", "automated_accusation", "raw_evidence"],
+  telemetryAllowed: ["service", "environment", "operation", "technical_count"],
+  telemetryForbidden: ["case_id", "tenant", "category", "severity", "case_state", "name", "email", "direct_user_id", "report_text", "image", "audio", "video", "private_conversation", "diagnosis", "psychological_profile", "individual_risk_score", "automated_accusation", "raw_evidence"],
   aiAuthority: "auxiliary_redacted_assistance_only",
   humanDecisionRequired: true,
   realLearnerDataAllowed: false,

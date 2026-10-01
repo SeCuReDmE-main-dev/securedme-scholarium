@@ -1,0 +1,24 @@
+# Public project tokens initialize the consent-gated browser SDK.
+# They cannot read private PostHog data. Personal phx_ tokens remain forbidden.
+# https://posthog.com/docs/privacy#is-it-ok-for-my-api-key-to-be-exposed-and-public
+title = "SecuredMe Education secret policy"
+minVersion = "v8.25.0"
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+[[rules.allowlists]]
+description = "Exact public PostHog project token in enumerated browser adapters only"
+condition = "AND"
+regexTarget = "secret"
+regexes = ["^phc_kXRL4FyfQ4W3XqbuCGnYfxMRbPanSnSfnfWxuZqELeZR$"]
+paths = ["^(?:apps/web/public/securedme\\-public/securedme\\-public\\-analytics\\.js|docs/_static/securedme\\-public/securedme\\-public\\-analytics\\.js|docs/securedme\\-public/securedme\\-public\\-analytics\\.js)$"]
+
+
+[[rules.allowlists]]
+description = "Exact public Chrome Origin Trial tokens in the browser setup manifest"
+condition = "AND"
+regexTarget = "secret"
+regexes = ["^AtEgOalbLZw0fFNKslueWQiWuSXkDfeHfSJuYGuh\\+vFchwlhaxO\\+fIglTSAnYt\\+e3vq0HyBVEi4XpCJpf0Rl9QgAAABleyJvcmlnaW4iOiJodHRwczovL3NlY3VyZWRtZS5jYTo0NDMiLCJmZWF0dXJlIjoiSFRNTEluQ2FudmFzIiwiZXhwaXJ5IjoxNzkyNDU0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZX0=$", "^AhKHBzmwpJ3WptlEMhAfma67wcp5Hh7R1Vj2fkqL\\+1vTH9FWhNpq3Rnj3U9yWRx5ehCgZ09RQtXawsTq0EY9GgYAAABieyJvcmlnaW4iOiJodHRwczovL3NlY3VyZWRtZS1tYWluLWRldi5naXRodWIuaW86NDQzIiwiZmVhdHVyZSI6IkhUTUxJbkNhbnZhcyIsImV4cGlyeSI6MTc5MjQ1NDQwMH0=$"]
+paths = ["^apps/web/app/public-browser-setup\\.json$"]

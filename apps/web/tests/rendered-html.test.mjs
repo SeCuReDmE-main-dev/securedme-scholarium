@@ -3,16 +3,28 @@ import { readFile, readdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import test from "node:test";
+import { Miniflare, convertV4MiniflareOptions } from "miniflare";
 
 async function render() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-  return worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
-    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
-    { waitUntil() {}, passThroughOnException() {} },
-  );
+  const root = fileURLToPath(new URL("../dist/server/", import.meta.url));
+  const files = await readdir(root, { recursive: true });
+  const modules = [
+    { type: "ESModule", path: path.join(root, "index.js") },
+    ...files.filter((name) => name !== "index.js" && /\.(js|mjs|wasm)$/.test(name))
+      .map((name) => ({ type: name.endsWith(".wasm") ? "CompiledWasm" : "ESModule", path: path.join(root, name) })),
+  ];
+  // Vinext 1 uses cloudflare:workers in its production bundle. Run the
+  // actual built Worker in workerd, with no real credentials or database.
+  const runtime = new Miniflare(convertV4MiniflareOptions({
+    name: "scholarium-render-test", modules, modulesRoot: root,
+    compatibilityDate: "2026-09-30", compatibilityFlags: ["nodejs_compat"],
+    serviceBindings: { ASSETS: async () => new Response("Not found", { status: 404 }) },
+  }));
+  try {
+    const response = await runtime.dispatchFetch("http://localhost/", { headers: { accept: "text/html" } });
+    const html = await response.text();
+    return new Response(html, { status: response.status, headers: response.headers });
+  } finally { await runtime.dispose(); }
 }
 
 async function listApiRouteFiles(dir) {
@@ -211,7 +223,8 @@ test("keeps behavior insights local and opt-in", async () => {
   assert.match(page, /Enable local-only activity insights on this device/);
   assert.match(page, /Kept only in this browser/);
   assert.match(contract, /device_local_only/);
-  assert.match(contract, /Datadog may receive platform-level reliability metadata only/);
+  assert.match(contract, /Local OpenTelemetry receives bounded platform reliability counters only/);
+  assert.match(contract, /Personal containers, publications, cases and learner behaviour stay private/);
 });
 
 test("prepares reader accessibility, notification, and translation preferences without ranking leakage", async () => {
@@ -299,7 +312,7 @@ test("offers separate provider sign-in paths without automatic email account mer
 });
 
 test("applies one documented security baseline at the Worker boundary", async () => {
-  const worker = await readFile(new URL("../worker/index.ts", import.meta.url), "utf8");
+  const worker = await readFile(new URL("../worker/security-headers.ts", import.meta.url), "utf8");
   assert.match(worker, /function withSecurityHeaders/);
   assert.match(worker, /Content-Security-Policy/);
   assert.match(worker, /frame-ancestors 'none'/);
@@ -763,7 +776,10 @@ test("keeps community interactions account-bound, reportable, and limited in dep
 });
 
 test("uses a canonical versioned API surface and retains a documented compatibility boundary", async () => {
-  const worker = await readFile(new URL("../worker/index.ts", import.meta.url), "utf8");
+  const entry = await readFile(new URL("../worker/index.ts", import.meta.url), "utf8");
+  const worker = await readFile(new URL("../worker/security-headers.ts", import.meta.url), "utf8");
+  assert.match(entry, /handler.fetch\(requestForCanonicalApi\(request\)/);
+  assert.match(entry, /withSecurityHeaders\(request,/);
   const openapi = await readFile(new URL("../app/api/openapi.json/route.ts", import.meta.url), "utf8");
   const client = await readFile(new URL("../app/scholarium-client.tsx", import.meta.url), "utf8");
   const docs = await readFile(new URL("../../../docs/API-VERSIONING.md", import.meta.url), "utf8");
